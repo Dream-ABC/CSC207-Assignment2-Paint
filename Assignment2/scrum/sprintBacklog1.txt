@@ -6,10 +6,10 @@
 # Sprint 1 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.001 : UTORID : NotStarted
+TYPE     : BUG BUG1.001 : wenjess1 : NotStarted
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1 
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 1 hour    ACTUAL :
 ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
