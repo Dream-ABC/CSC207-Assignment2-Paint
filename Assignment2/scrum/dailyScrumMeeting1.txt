@@ -1,20 +1,23 @@
 # Fill in, commit and push each day.
-Member name:      email:     utorid:   
+Member name:Dipal Hingorani email:dipal.hingorani@mail.utoronto.ca utorid:hingor13
 
 Oct 14,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday:Assignment Not Released.
+	What I will do today:Assignment Not Released.
+	Obstacles I face:Assignment Not being Released.
 
 Oct 15,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday:Assignment Not Released.
+	What I will do today: Read through the Instructions for the assignment and
+	add members.txt and starter code to the repo.
+	Obstacles I face: No Obstacles
 
 Oct 16,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday:Read through the instructions for the assignment and
+    added members.txt and starter code to the repo.
+	What I will do today: Add a User Story to productBacklog and meet with team
+	members to set up the productBacklog and sprintBacklog. Also create 2 User Stories.
+	Obstacles I face: Coming up with unique ideas
 
 Oct 17,2024
 	What I did yesterday:
