@@ -1,4 +1,4 @@
 member1: hingor13 Dipal Hingorani dipal.hingorani@mail.utoronto.ca
 member2: UTORID NAME CONTACT_INFO
-member3: UTORID NAME CONTACT_INFO
+member3: wenjess1 Jessica Wen jessica.wen@mail.utoronto.ca
 member4: pengxi60 Xingwei Peng mikewazowski.peng@mail.utoronto.ca
