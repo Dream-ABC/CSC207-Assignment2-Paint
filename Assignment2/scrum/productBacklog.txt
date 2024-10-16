@@ -119,6 +119,24 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : USER STORY US1.008 : wenjess1 : NotStarted
+NAME     : Eraser
+PRIORITY : 2
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to erase parts of previous drawings
+SO THAT  :
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.009 : wenjess1 : NotStarted
+NAME     : Selection tool
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to select drawings on the canvas
+SO THAT  : I can move it to around as desired (e.g. place it in another spot)
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG1.001 : UTORID : NotStarted 
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1
