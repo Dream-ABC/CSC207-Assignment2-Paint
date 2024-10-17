@@ -72,7 +72,7 @@ I WANT   : To be able to select the current drawing color, to be applied
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.006 : UTORID : NotStarted 
+TYPE     : USER STORY US?.006 : UTORID : NotStarted
 NAME     : Fill style selector
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -172,6 +172,24 @@ ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to clear the current canvas.
 SO THAT  : I can start over when I am not satisfied with my drawing.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
+NAME     : Copy/Paste
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to copy/paste certain selections.
+SO THAT  : I can reuse existing drawings on the canvas.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.015 : pengxi60 : NotStarted
+NAME     : tool-in-use Icon
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to know what feature I selected
+SO THAT  : I perform an action with 100% certainty that I am not performing another action.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.001 : UTORID : NotStarted 
