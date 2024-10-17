@@ -156,6 +156,24 @@ I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : USER STORY US?.012 : tianshi8 : NotStarted
+NAME     : Save canvas
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to save the current canvas as a file.
+SO THAT  : I can reopen it later and continue editing.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.013 : tianshi8 : NotStarted
+NAME     : Clear canvas
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to clear the current canvas.
+SO THAT  : I can start over when I am not satisfied with my drawing.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG1.001 : UTORID : NotStarted 
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1
