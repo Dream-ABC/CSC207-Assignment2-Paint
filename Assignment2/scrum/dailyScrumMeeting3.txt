@@ -1,20 +1,20 @@
 # Fill in, commit and push each day.
-Member name:      email:     utorid:   
+Member name: Jessica Wen     email: jessica.wen@mail.utoronto.ca    utorid: wenjess1
 
 Oct 14,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Assignment was not released yet
+	What I will do today: Assignment was not released yet
+	Obstacles I face: Assignment was not released yet
 
 Oct 15,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Assignment was not released yet
+	What I will do today: Read through the instructions and get an understanding of the assignment
+	Obstacles I face: Not understanding what exactly the scrum and backlogs are for
 
 Oct 16,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Read through the instructions and got an understanding of the assignment
+	What I will do today: Make 2 user stories, delegating sprintBacklog1 tasks
+	Obstacles I face: Understanding how to do my chosen tasks
 
 Oct 17,2024
 	What I did yesterday:

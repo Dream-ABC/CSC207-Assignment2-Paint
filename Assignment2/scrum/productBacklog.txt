@@ -124,8 +124,8 @@ NAME     : Eraser
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : To be able to erase parts of previous drawings
-SO THAT  :
+I WANT   : To be able to erase previous drawings
+SO THAT  : I have more customizability with the Paint application
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.009 : wenjess1 : NotStarted
