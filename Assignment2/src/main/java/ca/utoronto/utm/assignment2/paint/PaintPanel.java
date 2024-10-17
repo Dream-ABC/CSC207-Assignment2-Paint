@@ -68,8 +68,13 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
             case "Rectangle": break;
             case "Square": break;
             case "Squiggle":
-                if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
+                if (mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
+                    this.model.addPath();
                     this.model.addPoint(new Point(mouseEvent.getX(), mouseEvent.getY()));
+                } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
+                    this.model.addPoint(new Point(mouseEvent.getX(), mouseEvent.getY()));
+                } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
+                    this.model.finishPath();
                 }
                 break;
             case "Polyline": break;
@@ -82,13 +87,17 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                 GraphicsContext g2d = this.getGraphicsContext2D();
                 g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
                 // Draw Lines
-                ArrayList<Point> points = this.model.getPoints();
+                // ArrayList<Point> points = this.model.getPoints();
+                ArrayList<ArrayList<Point>> paths = this.model.getPaths();
 
-                g2d.setFill(Color.RED);
-                for(int i=0;i<points.size()-1; i++){
-                        Point p1=points.get(i);
-                        Point p2=points.get(i+1);
-                        g2d.strokeLine(p1.x,p1.y,p2.x,p2.y);
+                for (ArrayList<Point> points : paths) {
+
+                    g2d.setFill(Color.RED);
+                    for (int i = 0; i < points.size() - 1; i++) {
+                        Point p1 = points.get(i);
+                        Point p2 = points.get(i + 1);
+                        g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
+                    }
                 }
 
                 // Draw Circles
