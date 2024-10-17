@@ -13,7 +13,7 @@ Oct 15,2024
 
 Oct 16,2024
 	What I did yesterday: Understood both the source code and assignment instructions.
-	What I will do today: Assigning sprintBacklog4 tasks
+	What I will do today: Add 2 user stories.
 	Obstacles I face: Identifying code that needs fixing and figuring out how to listen for mouse drag.
 
 Oct 17,2024
