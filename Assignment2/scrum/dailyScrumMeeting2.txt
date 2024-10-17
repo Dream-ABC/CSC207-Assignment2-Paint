@@ -1,20 +1,24 @@
 # Fill in, commit and push each day.
-Member name:      email:     utorid:   
+Member name: Shiqi Tian     email: cheryl.tian@mail.utoronto.ca    utorid: tianshi8
 
 Oct 14,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Assignment not released.
+	What I will do today: Assignment not released.
+	Obstacles I face: Assignment not released.
 
 Oct 15,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Assignment not released.
+	What I will do today: Read through the instructions for the assignment and add my
+	                      information to member.txt.
+	Obstacles I face: Understanding the tasks.
 
 Oct 16,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Read through the instructions for the assignment and add my
+	                      information to member.txt.
+	What I will do today: Read through the starter code and add 2 user stories to
+	                      productBacklog.txt, meet with team members and discuss the
+	                      task division.
+	Obstacles I face: Familiarize and adapt to Scrum.
 
 Oct 17,2024
 	What I did yesterday:
