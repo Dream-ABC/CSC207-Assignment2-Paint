@@ -1,20 +1,20 @@
 # Fill in, commit and push each day.
-Member name:      email:     utorid:   
+Member name: Xingwei Peng email: mikewazowski.peng@mail.utoronto.ca utorid: pengxi60
 
 Oct 14,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Assignment was not released yet
+	What I will do today: Assignment was not released yet
+	Obstacles I face: Assignment was not released yet
 
 Oct 15,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Assignment was not released yet
+	What I will do today: Read through the source code and assignment instructions.
+	Obstacles I face: Not understanding how the source code works and what the assignment is asking.
 
 Oct 16,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Understood both the source code and assignment instructions.
+	What I will do today: Assigning sprintBacklog4 tasks
+	Obstacles I face: Identifying code that needs fixing and figuring out how to listen for mouse drag.
 
 Oct 17,2024
 	What I did yesterday:
