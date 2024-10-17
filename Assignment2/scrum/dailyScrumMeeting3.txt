@@ -14,7 +14,7 @@ Oct 15,2024
 Oct 16,2024
 	What I did yesterday: Read through the instructions and got an understanding of the assignment
 	What I will do today: Make 2 user stories, delegating sprintBacklog1 tasks
-	Obstacles I face: Understanding how to do my chosen tasks
+	Obstacles I face: Understanding how to complete my chosen tasks, becoming familiar with the code
 
 Oct 17,2024
 	What I did yesterday:
