@@ -21,9 +21,11 @@ Oct 16,2024
 	Obstacles I face: Familiarize and adapt to Scrum.
 
 Oct 17,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Read through the starter code and add 2 user stories to
+                          productBacklog.txt, meet with team members and discuss the
+                          task division.
+	What I will do today: Finished fixing BUG1.005.
+	Obstacles I face: Familiarize and adapt to Scrum.
 
 Oct 18,2024
 	What I did yesterday:
