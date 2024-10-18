@@ -22,9 +22,9 @@ Oct 17,2024
 	Obstacles I face: Learning how to add icons, choosing good icons, how to make branches and merge them
 
 Oct 18,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Learned how to add images onto buttons, how to make branches and merge into main (resolving conflicts)
+	What I will do today: Work on my next task, user story 1.002
+	Obstacles I face: Understanding the architecture of the code, working with the current code to implement my new task
 
 Oct 19,2024
 	What I did yesterday:
