@@ -3,24 +3,46 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEvent> {
 
         private View view;
 
-        public ShapeChooserPanel(View view) {
+        public ShapeChooserPanel(View view) throws FileNotFoundException {
 
                 this.view = view;
 
                 String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline" };
+                ImageView[] buttonImages = new ImageView[buttonLabels.length];
+                String[] imageFiles = {"Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
+                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
+                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/square.png",
+                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
+                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/polyline.png"};
+
+                for (int i = 0; i < buttonLabels.length; i++) {
+                        FileInputStream input = new FileInputStream(imageFiles[i]);
+                        Image image = new Image(input);
+                        ImageView imageView = new ImageView(image);
+                        imageView.setFitWidth(30);
+                        imageView.setFitHeight(30);
+                        imageView.setPreserveRatio(true);
+                        buttonImages[i] = imageView;
+                }
 
                 int row = 0;
-                for (String label : buttonLabels) {
-                        Button button = new Button(label);
+                for (int i = 0; i < buttonLabels.length; i++) {
+                        Button button = new Button(buttonLabels[i]);
                         button.setMinWidth(100);
                         this.add(button, 0, row);
                         row++;
                         button.setOnAction(this);
+                        button.setGraphic(buttonImages[i]);
                 }
         }
 
