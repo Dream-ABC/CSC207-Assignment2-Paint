@@ -17,9 +17,9 @@ Oct 16,2024
 	Obstacles I face: Understanding how to complete my chosen tasks, becoming familiar with the code
 
 Oct 17,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Made 2 user stories, selected 2 sprintBacklog1 tasks
+	What I will do today: Complete BUG1.001
+	Obstacles I face: Learning how to add icons, choosing good icons, how to make branches and merge them
 
 Oct 18,2024
 	What I did yesterday:
