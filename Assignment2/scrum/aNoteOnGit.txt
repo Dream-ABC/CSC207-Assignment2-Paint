@@ -17,7 +17,7 @@ You will be working on the cs.utoronto.utm.assignment packages.
    a) Commit and push the completed branch
    b) Switch to master
    c) Pull from remote (to ensure that you have the latest version of master)
-   d) Merge your branch into master, resolving conflicts etc.
+   d) Merge your branch into master, resolving conflictgit commit --amends etc.
    e) Commit and push to remote
 5) Repeat steps 0-4 on the next user story/bug
 

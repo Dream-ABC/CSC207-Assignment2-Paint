@@ -11,13 +11,15 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+
 public class View implements EventHandler<ActionEvent> {
 
         private PaintModel paintModel;
         private PaintPanel paintPanel;
         private ShapeChooserPanel shapeChooserPanel;
 
-        public View(PaintModel model, Stage stage) {
+        public View(PaintModel model, Stage stage) throws FileNotFoundException {
             this.paintModel = model;
 
             this.paintPanel = new PaintPanel(this.paintModel);
