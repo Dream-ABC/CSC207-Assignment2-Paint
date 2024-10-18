@@ -71,8 +71,10 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                 if (mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
                     this.model.addPath();
                     this.model.addPoint(new Point(mouseEvent.getX(), mouseEvent.getY()));
+
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
                     this.model.addPoint(new Point(mouseEvent.getX(), mouseEvent.getY()));
+
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
                     this.model.finishPath();
                 }
