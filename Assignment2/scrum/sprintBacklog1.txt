@@ -43,7 +43,7 @@ ISSUE    : The first click should specify the center of the circle, with
 TYPE     : BUG BUG1.007 : hingor13 : NotStarted
 NAME     : Rectangle drawing is broken
 PRIORITY : 1
-ESTIMATE : 1 hour   ACTUAL :
+ESTIMATE : 1 hour   ACTUAL : 20 minutes
 ISSUE    : If the rectangle is dragged towards another side than bottom right,
            the topLeft corner should be updated.
 --------------------------------------------------------------------------
