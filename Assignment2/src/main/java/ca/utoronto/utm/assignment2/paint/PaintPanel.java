@@ -85,6 +85,9 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     if(this.rectangle!=null){
                         double width = Math.abs(this.rectangle.getTopLeft().x-mouseEvent.getX());
                         double height = Math.abs(this.rectangle.getTopLeft().y-mouseEvent.getY());
+                        double x = Math.min(this.rectangle.getTopLeft().x, mouseEvent.getX());
+                        double y = Math.min(this.rectangle.getTopLeft().y, mouseEvent.getY());
+                        this.rectangle.setTopLeft(new Point(x, y));
                         this.rectangle.setWidth(width);
                         this.rectangle.setHeight(height);
                         this.model.addRectangle(this.rectangle);
