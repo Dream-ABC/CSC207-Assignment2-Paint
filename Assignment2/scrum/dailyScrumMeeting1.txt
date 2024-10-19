@@ -20,19 +20,19 @@ Oct 16,2024
 	Obstacles I face: Coming up with unique ideas
 
 Oct 17,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday:Wrote two User Stories and had meeting with team members to delegate tasks.
+	What I will do today: Absolutely Nothing since I was busy with another assignment.
+	Obstacles I face: Not having enough time.
 
 Oct 18,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing, since I have been working an assignment for another course.
+	What I will do today: Nothing, since I am still working on that assignment.
+	Obstacles I face: Too much work.
 
 Oct 19,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing.
+	What I will do today: Finish US1.003 and attempt to finish BUG1.002.
+	Obstacles I face: None.
 
 Oct 20,2024
 	What I did yesterday:
