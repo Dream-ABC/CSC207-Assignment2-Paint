@@ -249,6 +249,14 @@ ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.007 : hingor13 : NotStarted
+NAME     : Rectangle drawing is broken
+PRIORITY : 1
+ESTIMATE : 1 hour   ACTUAL :
+ISSUE    : If the rectangle is dragged towards another side than bottom right,
+           the topLeft corner should be updated.
+--------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
