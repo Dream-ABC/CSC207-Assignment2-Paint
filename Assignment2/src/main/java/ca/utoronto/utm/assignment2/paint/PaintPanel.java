@@ -61,7 +61,6 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                                 double radius = Math.abs(this.circle.getCentre().x-mouseEvent.getX());
                                 this.circle.setRadius(radius);
                                 this.model.addCircle(this.circle);
-                                System.out.println(this.model.getCircles() + " all circles");
                                 System.out.println("Added Circle");
                                 this.circle=null;
                         }
