@@ -48,21 +48,27 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
             case "Circle":
                 if(mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
                     System.out.println("Started Circle");
-                     Point centre = new Point(mouseEvent.getX(), mouseEvent.getY());
-                        this.circle=new Circle(centre, 0);
+                    Point centre = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    this.circle = new Circle(centre, 0);
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
 
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_MOVED)) {
 
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
                     if(this.circle!=null){
-                                // Problematic notion of radius and centre!!
-                                double radius = Math.abs(this.circle.getCentre().x-mouseEvent.getX());
-                                this.circle.setRadius(radius);
-                                this.model.addCircle(this.circle);
-                                System.out.println("Added Circle");
-                                this.circle=null;
-                        }
+                        // Problematic notion of radius and centre!!
+                        double dx = this.circle.getCentre().x-mouseEvent.getX();
+                        double dy = this.circle.getCentre().y-mouseEvent.getY();
+                        double radius = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+                        double newX = this.circle.getCentre().x-radius;
+                        double newY = this.circle.getCentre().y-radius;
+                        Point newCentre = new Point(newX, newY);
+                        this.circle.setCentre(newCentre);
+                        this.circle.setRadius(radius*2);
+                        this.model.addCircle(this.circle);
+                        System.out.println("Added Circle");
+                        this.circle=null;
+                    }
                 }
 
                 break;
