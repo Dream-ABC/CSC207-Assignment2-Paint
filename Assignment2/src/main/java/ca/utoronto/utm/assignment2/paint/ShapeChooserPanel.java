@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;      // dont know yet
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.Image;
@@ -48,6 +49,13 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
         @Override
         public void handle(ActionEvent event) {
+                for (Node node: this.getChildren()) {
+                        if (node instanceof Button) {
+                                Button button = (Button) node;
+                                button.setStyle("");
+                        }
+                }
+                ((Button) event.getSource()).setStyle("-fx-background-color: lightblue");
                 String command = ((Button) event.getSource()).getText();
                 view.setMode(command);
                 System.out.println(command);
