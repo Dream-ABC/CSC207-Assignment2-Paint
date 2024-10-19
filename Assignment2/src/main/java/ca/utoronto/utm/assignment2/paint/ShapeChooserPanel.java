@@ -19,11 +19,11 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
                 String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline" };
                 ImageView[] buttonImages = new ImageView[buttonLabels.length];
-                String[] imageFiles = {"Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/square.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/polyline.png"};
+                String[] imageFiles = {"src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/square.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/polyline.png"};
 
                 for (int i = 0; i < buttonLabels.length; i++) {
                         FileInputStream input = new FileInputStream(imageFiles[i]);
