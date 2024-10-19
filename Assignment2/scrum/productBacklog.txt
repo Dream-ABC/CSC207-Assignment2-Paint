@@ -157,21 +157,22 @@ SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.012 : tianshi8 : NotStarted
-NAME     : Save canvas
+NAME     : Layer Support
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : To be able to save the current canvas as a file.
-SO THAT  : I can reopen it later and continue editing.
+I WANT   : To be able to add new layers.
+SO THAT  : I can independently edit different layers and flexibly control
+           the drawing effects.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.013 : tianshi8 : NotStarted
-NAME     : Clear canvas
+NAME     : Transparency
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : To be able to clear the current canvas.
-SO THAT  : I can start over when I am not satisfied with my drawing.
+I WANT   : To be able to adjust the transparency of each object.
+SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
