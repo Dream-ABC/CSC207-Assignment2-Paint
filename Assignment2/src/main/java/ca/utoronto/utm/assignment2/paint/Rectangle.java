@@ -3,11 +3,13 @@ package ca.utoronto.utm.assignment2.paint;
 
 public class Rectangle {
     private Point topLeft;
-    private Point bottomRight;
+    private double width;
+    private double height;
 
-    public Rectangle(Point topLeft, Point bottomRight){
+    public Rectangle(Point topLeft, double width, double height){
         this.topLeft = topLeft;
-        this.bottomRight = bottomRight;
+        this.width = width;
+        this.height = height;
     }
 
     public Point getTopLeft() {
@@ -18,12 +20,19 @@ public class Rectangle {
         this.topLeft = topLeft;
     }
 
-    public Point getBottomRight() {
-        return bottomRight;
+    public double getWidth() {
+        return width;
     }
 
-    public void setBottomRight(Point bottomRight) {
-        this.bottomRight = bottomRight;
+    public void setWidth(double width) {
+        this.width = width;
+    }
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 
 }

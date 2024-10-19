@@ -70,15 +70,17 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                 if(mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
                     System.out.println("Started Rectangle");
                     Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
-                    this.rectangle=new Rectangle(topLeft, topLeft);
+                    this.rectangle=new Rectangle(topLeft, 0, 0);
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
 
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_MOVED)) {
 
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
                     if(this.rectangle!=null){
-                        Point bottomRight = new Point(mouseEvent.getX(), mouseEvent.getY());
-                        this.rectangle.setBottomRight(bottomRight);
+                        double width = Math.abs(this.rectangle.getTopLeft().x-mouseEvent.getX());
+                        double height = Math.abs(this.rectangle.getTopLeft().y-mouseEvent.getY());
+                        this.rectangle.setWidth(width);
+                        this.rectangle.setHeight(height);
                         this.model.addRectangle(this.rectangle);
                         System.out.println("Added Rectangle");
                         this.rectangle=null;
@@ -135,11 +137,11 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
 
                 g2d.setFill(Color.BLUE);
                 for(Rectangle r: this.model.getRectangles()){
-                    double x1 = r.getTopLeft().x;
-                    double y1 = r.getTopLeft().y;
-                    double x2 = r.getBottomRight().x;
-                    double y2 = r.getBottomRight().y;
-                    g2d.fillRect(x1, y1, x2, y2);
+                    double x = r.getTopLeft().x;
+                    double y = r.getTopLeft().y;
+                    double w = r.getWidth();
+                    double h = r.getHeight();
+                    g2d.fillRect(x, y, w, h);
                 }
     }
 }
