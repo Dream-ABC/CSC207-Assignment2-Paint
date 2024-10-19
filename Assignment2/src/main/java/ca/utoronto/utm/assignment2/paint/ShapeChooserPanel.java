@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;      // dont know yet
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.image.Image;
@@ -19,11 +20,11 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
                 String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline" };
                 ImageView[] buttonImages = new ImageView[buttonLabels.length];
-                String[] imageFiles = {"Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/square.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
-                        "Assignment2/src/main/java/ca/utoronto/utm/assignment2/images/polyline.png"};
+                String[] imageFiles = {"src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/square.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/polyline.png"};
 
                 for (int i = 0; i < buttonLabels.length; i++) {
                         FileInputStream input = new FileInputStream(imageFiles[i]);
@@ -48,6 +49,13 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
         @Override
         public void handle(ActionEvent event) {
+                for (Node node: this.getChildren()) {
+                        if (node instanceof Button) {
+                                Button button = (Button) node;
+                                button.setStyle("");
+                        }
+                }
+                ((Button) event.getSource()).setStyle("-fx-background-color: lightblue");
                 String command = ((Button) event.getSource()).getText();
                 view.setMode(command);
                 System.out.println(command);
