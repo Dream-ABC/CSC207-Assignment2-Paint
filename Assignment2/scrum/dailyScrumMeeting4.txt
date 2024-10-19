@@ -17,19 +17,19 @@ Oct 16,2024
 	Obstacles I face: Identifying code that needs fixing and figuring out how to listen for mouse drag.
 
 Oct 17,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Added 2 user stories.
+	What I will do today: Nothing, working on assignment for another course
+	Obstacles I face: still working on assignment for another course.
 
 Oct 18,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing.
+	What I will do today: Nothing, working on assignment for another course
+	Obstacles I face: still working on assignment for another course.
 
 Oct 19,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing
+	What I will do today: Fix BUG1.006
+	Obstacles I face: Understanding how circles are displayed works.
 
 Oct 20,2024
 	What I did yesterday:
