@@ -230,13 +230,6 @@ ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG1.008 : hingor13 : NotStarted
-NAME     : Drawing selection mode not indicated at start of Program
-PRIORITY : 1
-ESTIMATE : 1 hour   ACTUAL :
-ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
---------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
@@ -275,6 +268,13 @@ PRIORITY : 1
 ESTIMATE : 1 hour   ACTUAL : 20 minutes
 ISSUE    : If the rectangle is dragged towards another side than bottom right,
            the topLeft corner should be updated.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.008 : hingor13 : completed
+NAME     : Drawing selection mode not indicated at start of Program
+PRIORITY : 1
+ESTIMATE : 1 hour   ACTUAL : 5 minutes
+ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
