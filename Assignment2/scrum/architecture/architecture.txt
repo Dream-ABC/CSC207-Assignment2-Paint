@@ -6,8 +6,10 @@ High Level Architecture:
 	To keep the code simple, a partial MVC was implemented.
 	
 	Model
-	The Model captures enough information to re-draw the sketch of
-	the user.
+	The Model, PaintModel, captures enough information to re-draw the sketch of the user.
+	PaintModel currently captures all the Points, Circles, Rectangles, and Paths.
+	It notifies the View, PaintPanel, of any changes that occur.
+	Specifically, it notifies the view when a new Point/Circle/Rectangle/Path is added to the model.
 	
 	View+Controller
 	There is a View class as well as a few, what we call, view components.

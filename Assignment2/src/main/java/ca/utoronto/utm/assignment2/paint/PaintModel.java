@@ -11,7 +11,6 @@ public class PaintModel extends Observable {
         private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
         private ArrayList<ArrayList<Point>> paths=new ArrayList<>();
 
-
         public void addPoint(Point p){
                 this.points.add(p);
                 this.setChanged();

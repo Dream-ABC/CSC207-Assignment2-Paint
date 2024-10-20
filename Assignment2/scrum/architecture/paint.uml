@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ca.utoronto.utm.assignment2.paint</OriginalElement>
+  <nodes>
+    <node x="424.5" y="819.5">ca.utoronto.utm.assignment2.paint.PaintModel</node>
+    <node x="393.5" y="1537.0">ca.utoronto.utm.assignment2.paint.View</node>
+    <node x="370.0" y="1212.0">ca.utoronto.utm.assignment2.paint.ShapeChooserPanel</node>
+    <node x="86.0" y="540.5">ca.utoronto.utm.assignment2.paint.Circle</node>
+    <node x="513.5" y="1780.5">ca.utoronto.utm.assignment2.paint.Paint</node>
+    <node x="92.0" y="1308.5">ca.utoronto.utm.assignment2.paint.PaintPanel</node>
+    <node x="100.5" y="204.0">ca.utoronto.utm.assignment2.paint.Point</node>
+    <node x="305.5" y="389.0">ca.utoronto.utm.assignment2.paint.Rectangle</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintPanel" target="ca.utoronto.utm.assignment2.paint.Rectangle" relationship="CREATE">
+      <point x="-63.5" y="-62.5" />
+      <point x="155.5" y="1251.0" />
+      <point x="159.0" y="1251.0" />
+      <point x="159.0" y="971.0" />
+      <point x="239.0" y="971.0" />
+      <point x="239.0" y="671.0" />
+      <point x="439.0" y="671.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintPanel" target="ca.utoronto.utm.assignment2.paint.Rectangle" relationship="TO_ONE">
+      <point x="63.5" y="-62.5" />
+      <point x="282.5" y="1271.0" />
+      <point x="279.0" y="1271.0" />
+      <point x="279.0" y="691.0" />
+      <point x="599.0" y="691.0" />
+      <point x="599.0" y="351.0" />
+      <point x="439.0" y="351.0" />
+      <point x="0.0" y="-62.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintPanel" target="ca.utoronto.utm.assignment2.paint.Circle" relationship="CREATE">
+      <point x="-63.5" y="-62.5" />
+      <point x="155.5" y="1251.0" />
+      <point x="159.0" y="1251.0" />
+      <point x="159.0" y="971.0" />
+      <point x="179.0" y="971.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintPanel" target="ca.utoronto.utm.assignment2.paint.PaintModel" relationship="TO_ONE">
+      <point x="63.5" y="-62.5" />
+      <point x="282.5" y="1271.0" />
+      <point x="279.0" y="1271.0" />
+      <point x="279.0" y="1171.0" />
+      <point x="659.0" y="1171.0" />
+      <point x="659.0" y="1111.0" />
+      <point x="399.0" y="1111.0" />
+      <point x="399.0" y="771.0" />
+      <point x="559.0" y="771.0" />
+      <point x="0.0" y="-131.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.View" target="ca.utoronto.utm.assignment2.paint.PaintPanel" relationship="CREATE">
+      <point x="-52.75" y="-74.0" />
+      <point x="446.25" y="1511.0" />
+      <point x="419.0" y="1511.0" />
+      <point x="419.0" y="1451.0" />
+      <point x="59.0" y="1451.0" />
+      <point x="59.0" y="1271.0" />
+      <point x="155.5" y="1271.0" />
+      <point x="-63.5" y="-62.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Paint" target="ca.utoronto.utm.assignment2.paint.View" relationship="CREATE">
+      <point x="-42.75" y="-50.5" />
+      <point x="556.25" y="1751.0" />
+      <point x="559.0" y="1751.0" />
+      <point x="559.0" y="1711.0" />
+      <point x="359.0" y="1711.0" />
+      <point x="359.0" y="1491.0" />
+      <point x="446.25" y="1491.0" />
+      <point x="-52.75" y="-74.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintPanel" target="ca.utoronto.utm.assignment2.paint.Point" relationship="TO_ONE">
+      <point x="63.5" y="-62.5" />
+      <point x="282.5" y="1271.0" />
+      <point x="279.0" y="1271.0" />
+      <point x="279.0" y="971.0" />
+      <point x="359.0" y="971.0" />
+      <point x="359.0" y="731.0" />
+      <point x="679.0" y="731.0" />
+      <point x="679.0" y="311.0" />
+      <point x="439.0" y="311.0" />
+      <point x="439.0" y="291.0" />
+      <point x="248.25" y="291.0" />
+      <point x="49.25" y="27.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.ShapeChooserPanel" target="ca.utoronto.utm.assignment2.paint.View" relationship="TO_ONE">
+      <point x="54.5" y="39.0" />
+      <point x="533.5" y="1471.0" />
+      <point x="551.75" y="1471.0" />
+      <point x="52.75" y="-74.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.View" target="ca.utoronto.utm.assignment2.paint.ShapeChooserPanel" relationship="TO_ONE">
+      <point x="52.75" y="-74.0" />
+      <point x="551.75" y="1511.0" />
+      <point x="579.0" y="1511.0" />
+      <point x="579.0" y="1391.0" />
+      <point x="533.5" y="1391.0" />
+      <point x="54.5" y="39.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintModel" target="ca.utoronto.utm.assignment2.paint.Rectangle" relationship="TO_MANY">
+      <point x="0.0" y="-131.5" />
+      <point x="559.0" y="791.0" />
+      <point x="639.0" y="791.0" />
+      <point x="639.0" y="771.0" />
+      <point x="599.0" y="771.0" />
+      <point x="599.0" y="351.0" />
+      <point x="439.0" y="351.0" />
+      <point x="0.0" y="-62.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Paint" target="ca.utoronto.utm.assignment2.paint.View" relationship="TO_ONE">
+      <point x="42.75" y="-50.5" />
+      <point x="641.75" y="1751.0" />
+      <point x="639.0" y="1751.0" />
+      <point x="639.0" y="1491.0" />
+      <point x="551.75" y="1491.0" />
+      <point x="52.75" y="-74.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Rectangle" target="ca.utoronto.utm.assignment2.paint.Point" relationship="TO_ONE">
+      <point x="0.0" y="-62.0" />
+      <point x="439.0" y="291.0" />
+      <point x="248.25" y="291.0" />
+      <point x="49.25" y="27.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.View" target="ca.utoronto.utm.assignment2.paint.PaintPanel" relationship="TO_ONE">
+      <point x="52.75" y="-74.0" />
+      <point x="551.75" y="1511.0" />
+      <point x="579.0" y="1511.0" />
+      <point x="579.0" y="1391.0" />
+      <point x="619.0" y="1391.0" />
+      <point x="619.0" y="1191.0" />
+      <point x="282.5" y="1191.0" />
+      <point x="63.5" y="-62.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Paint" target="ca.utoronto.utm.assignment2.paint.PaintModel" relationship="TO_ONE">
+      <point x="42.75" y="-50.5" />
+      <point x="641.75" y="1751.0" />
+      <point x="639.0" y="1751.0" />
+      <point x="639.0" y="1731.0" />
+      <point x="739.0" y="1731.0" />
+      <point x="739.0" y="1131.0" />
+      <point x="659.0" y="1131.0" />
+      <point x="659.0" y="1111.0" />
+      <point x="399.0" y="1111.0" />
+      <point x="399.0" y="771.0" />
+      <point x="559.0" y="771.0" />
+      <point x="0.0" y="-131.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintPanel" target="ca.utoronto.utm.assignment2.paint.Point" relationship="CREATE">
+      <point x="-63.5" y="-62.5" />
+      <point x="155.5" y="1251.0" />
+      <point x="159.0" y="1251.0" />
+      <point x="159.0" y="971.0" />
+      <point x="59.0" y="971.0" />
+      <point x="59.0" y="511.0" />
+      <point x="149.75" y="511.0" />
+      <point x="-49.25" y="27.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.View" target="ca.utoronto.utm.assignment2.paint.ShapeChooserPanel" relationship="CREATE">
+      <point x="-52.75" y="-74.0" />
+      <point x="446.25" y="1511.0" />
+      <point x="419.0" y="1511.0" />
+      <point x="419.0" y="1451.0" />
+      <point x="424.5" y="1451.0" />
+      <point x="-54.5" y="39.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Circle" target="ca.utoronto.utm.assignment2.paint.Point" relationship="TO_ONE">
+      <point x="0.0" y="-50.5" />
+      <point x="179.0" y="311.0" />
+      <point x="439.0" y="311.0" />
+      <point x="439.0" y="291.0" />
+      <point x="248.25" y="291.0" />
+      <point x="49.25" y="27.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.View" target="ca.utoronto.utm.assignment2.paint.PaintModel" relationship="TO_ONE">
+      <point x="52.75" y="-74.0" />
+      <point x="551.75" y="1511.0" />
+      <point x="579.0" y="1511.0" />
+      <point x="579.0" y="1391.0" />
+      <point x="659.0" y="1391.0" />
+      <point x="659.0" y="1111.0" />
+      <point x="399.0" y="1111.0" />
+      <point x="399.0" y="771.0" />
+      <point x="559.0" y="771.0" />
+      <point x="0.0" y="-131.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintPanel" target="ca.utoronto.utm.assignment2.paint.Circle" relationship="TO_ONE">
+      <point x="63.5" y="-62.5" />
+      <point x="282.5" y="1271.0" />
+      <point x="279.0" y="1271.0" />
+      <point x="279.0" y="971.0" />
+      <point x="319.0" y="971.0" />
+      <point x="319.0" y="711.0" />
+      <point x="639.0" y="711.0" />
+      <point x="639.0" y="331.0" />
+      <point x="179.0" y="331.0" />
+      <point x="0.0" y="-50.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintModel" target="ca.utoronto.utm.assignment2.paint.Circle" relationship="TO_MANY">
+      <point x="0.0" y="-131.5" />
+      <point x="559.0" y="791.0" />
+      <point x="639.0" y="791.0" />
+      <point x="639.0" y="331.0" />
+      <point x="179.0" y="331.0" />
+      <point x="0.0" y="-50.5" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PaintModel" target="ca.utoronto.utm.assignment2.paint.Point" relationship="TO_MANY">
+      <point x="0.0" y="-131.5" />
+      <point x="559.0" y="791.0" />
+      <point x="639.0" y="791.0" />
+      <point x="639.0" y="751.0" />
+      <point x="719.0" y="751.0" />
+      <point x="719.0" y="311.0" />
+      <point x="439.0" y="311.0" />
+      <point x="439.0" y="291.0" />
+      <point x="248.25" y="291.0" />
+      <point x="49.25" y="27.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Paint" target="ca.utoronto.utm.assignment2.paint.PaintModel" relationship="CREATE">
+      <point x="-42.75" y="-50.5" />
+      <point x="556.25" y="1751.0" />
+      <point x="559.0" y="1751.0" />
+      <point x="559.0" y="1711.0" />
+      <point x="699.0" y="1711.0" />
+      <point x="699.0" y="1151.0" />
+      <point x="559.0" y="1151.0" />
+      <point x="0.0" y="131.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.39870435806831567" showDependencies="true" x="408.9999999999999" y="849.0" />
+  <SelectedNodes>
+    <node>ca.utoronto.utm.assignment2.paint.Point</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
