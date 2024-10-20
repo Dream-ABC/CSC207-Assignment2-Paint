@@ -16,20 +16,6 @@
 # as appropriate.
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.002 : UTORID : NotStarted 
-NAME     : Draw Circle Feedback
-PRIORITY : 2 
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : As a user is specifying a Circle, during the drag, a 'current'
-           circle should be on display. As the user drags, the 'current'
-           circle changes in real time so that a circle is drawn with
-           centre at users initial circle click, with radius out to
-           the current dragged mouse position.
-SO THAT  : I can see the circle I am about to build on release of the mouse
-           button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US?.005 : UTORID : NotStarted 
 NAME     : Color selector
 PRIORITY : 3
@@ -223,6 +209,20 @@ AS A     : user
 I WANT   : To click the center of the circle, drag, and release to specify
            a circle to be drawn in the current style.
 SO THAT  : I can add circles to my canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.002 : wenjess1 : Completed
+NAME     : Draw Circle Feedback
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 3 hours
+AS A     : user
+I WANT   : As a user is specifying a Circle, during the drag, a 'current'
+           circle should be on display. As the user drags, the 'current'
+           circle changes in real time so that a circle is drawn with
+           centre at users initial circle click, with radius out to
+           the current dragged mouse position.
+SO THAT  : I can see the circle I am about to build on release of the mouse
+           button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US1.003 : hingor13 : NotStarted

@@ -27,9 +27,10 @@ Oct 18,2024
 	Obstacles I face: Understanding the architecture of the code, working with the current code to implement my new task
 
 Oct 19,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Worked on US1.002 to figure out how to add a 'current' circle
+	What I will do today: Continue working on US1.002, to complete it today
+	Obstacles I face: Figuring out how to write code so that the 'current' circle matches the final circle drawn.
+	                  In particular, I need to ensure that the centre of the circle is the user's first click
 
 Oct 20,2024
 	What I did yesterday:
