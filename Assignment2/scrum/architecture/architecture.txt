@@ -9,7 +9,7 @@ High Level Architecture:
 	The Model, PaintModel, captures enough information to re-draw the sketch of the user.
 	PaintModel currently captures all the Points, Circles, Rectangles, and Paths.
 	It notifies the View, PaintPanel, of any changes that occur.
-	Specifically, it notifies the view when a new Point/Circle/Rectangle/Path is added to the model.
+	In particular, it notifies PaintPanel when a new Point/Circle/Rectangle/Path is added to the Model.
 	
 	View+Controller
 	There is a View class as well as a few, what we call, view components.
@@ -45,7 +45,71 @@ DESIGN PATTERNS USED
 	Composite:
 	Factory:
 	Builder:
-	Observer/Observable:
-	... (any others you find useful) ...
+	Observer/Observable: PaintModel - Observable, PaintPanel - Observer
 
 OTHER ARCHITECTURE DISCUSSIONS
+---------------------------------------------------------------------
+Understanding of the current organization of the code
+
+As discussed in section 'High Level Architecture', there is an MVC architecture in place.
+
+PaintModel, which is the Model, is composed of shape classes (Circle, Point, Rectangle).
+As the model, PaintModel manages the data for the Paint program.
+The data, in this case, is the drawings that should be displayed on the view.
+As an Observable, PaintModel notifies its observer (PaintPanel) whenever a new shape is created.
+Referring to the UML diagram, new shapes are appended to its corresponding ArrayList
+through the add[shapeName] method.
+
+PaintPanel, which is one of the view components, is also an Observer.
+It observes the PaintModel and performs various actions depending on the mouse event and mode
+(user-selected desired shape to draw) through the handle(MouseEvent) method.
+There are currently three shapes that can be drawn: Circle, Rectangle, Path
+Each shape is described through a class (Path is described through the Point class).
+As seen in the UML diagram, each shape class have different attributes.
+PaintPanel, which is composed of these shapes classes, use those attributes to accurately draw each shape
+and display them on the view.
+
+ShapeChooserPanel is another one of the view components.
+It creates buttons and displays them onto the view for the user,
+so that users can choose which shape they want to draw.
+Moreover, as explained within the section 'High Level Architecture', ShapeChooserPanel can interact with PaintPanel.
+Whenever a ShapeChooserPanel button is clicked (button that corresponds to drawing a Circle, Rectangle, or Path),
+there is a corresponding mode change in the PaintPanel.
+
+There is also a main View, which is the View class.
+View contains the model (PaintModel) and view components (PaintPanel, ShapeChooserPanel).
+It displays the view components onto the stage, and updates the model as needed.
+View also creates and displays a menu bar onto the stage.
+ShapeChooserPanel interacts with PaintPanel through View.
+Specifically, ShapeChooserPanel updates the mode attribute of PaintPanel, through the View's setMode method.
+
+Paint is the application, and just connects the Model and View (+Controller) to itself.
+This is where the stage for the program is, and where the program runs.
+
+Shapes, in particular Circle and Rectangle, are composed of Points.
+Circle's attribute centre is a Point, and Rectangle's topLeft is a Point.
+This is done to simplify how the (x,y) coordinates of a point is represented in code.
+The Path shape is created using a starting Point and an ending Point.
+---------------------------------------------------------------------
+How to extend current code to add another shape feature
+
+With the current code architecture,
+adding a new shape features can be done by creating subclasses of the current shape classes available
+(Circle, Rectangle, Point) or creating a new separate class.
+
+PaintModel must be modified to include new attributes and methods for the new shape feature.
+There will need to be a new ArrayList attribute for the shape, an add[shapeName] method, and a get[shapeName] method.
+
+Also, ShapeChooserPanel will need a new button corresponding to the new shape, so that
+users can actually choose to draw the new shape.
+This means the constructor must be modified to include the new button.
+The new button's label will correspond to the PaintPanel's mode when drawing this new shape.
+
+Lastly, PaintPanel's handle method needs to be updated with a new case "[shapeName]",
+with code for what needs to occur when various mouse actions (e.g. press, drag, move, release) occur.
+    - Mouse press should typically be the centre/anchor point of the new shape drawing (similar to how the
+      first mouse press is the centre of a Circle, or the first mouse press is the top left of a Rectangle).
+    - Mouse drag should display the shape in mid-construction, so that the user can see the shape they're
+      about to build on release of the mouse button.
+    - Mouse move currently has no function for any shapes
+    - Mouse release should display the final shape drawn onto the canvas.

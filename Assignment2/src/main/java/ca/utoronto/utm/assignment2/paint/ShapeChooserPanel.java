@@ -17,6 +17,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
         public ShapeChooserPanel(View view) throws FileNotFoundException {
                 this.view = view;
 
+                String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline" };
                 String[] imageFiles = {"src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/square.png",
@@ -36,8 +37,8 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
                 int row = 0;
                 for (int i = 0; i < imageFiles.length; i++) {
-                        Button button = new Button();
-                        button.setMinWidth(70);
+                        Button button = new Button(buttonLabels[i]);
+                        button.setMinWidth(100);
                         this.add(button, 0, row);
                         row++;
                         button.setOnAction(this);
