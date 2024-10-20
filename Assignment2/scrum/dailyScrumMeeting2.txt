@@ -24,18 +24,18 @@ Oct 17,2024
 	What I did yesterday: Read through the starter code and add 2 user stories to
                           productBacklog.txt, meet with team members and discuss the
                           task division.
-	What I will do today: Finished fixing BUG1.005.
+	What I will do today: Work on fixing BUG1.005.
 	Obstacles I face: Familiarize and adapt to Scrum.
 
 Oct 18,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Work on fixing BUG1.005.
+	What I will do today: Finish BUG1.005 and push it.
+	Obstacles I face: Handle git merge.
 
 Oct 19,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finish BUG1.005 and push it.
+	What I will do today: Edit user stories.
+	Obstacles I face: Handle git conflict.
 
 Oct 20,2024
 	What I did yesterday:
