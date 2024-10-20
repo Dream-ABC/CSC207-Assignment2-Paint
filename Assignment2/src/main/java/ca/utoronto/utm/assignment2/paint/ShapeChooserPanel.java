@@ -39,6 +39,9 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                 int row = 0;
                 for (int i = 0; i < buttonLabels.length; i++) {
                         Button button = new Button(buttonLabels[i]);
+                        if (i == 0) {
+                                button.setStyle("-fx-background-color: lightblue");
+                        }
                         button.setMinWidth(100);
                         this.add(button, 0, row);
                         row++;
