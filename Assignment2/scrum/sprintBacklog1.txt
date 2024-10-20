@@ -48,6 +48,13 @@ ISSUE    : If the rectangle is dragged towards another side than bottom right,
            the topLeft corner should be updated.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : BUG BUG1.008 : hingor13 : NotStarted
+NAME     : Drawing selection mode not indicated at start of Program
+PRIORITY : 1
+ESTIMATE : 1 hour   ACTUAL :
+ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US1.002 : wenjess1 : NotStarted
 NAME     : Draw Circle Feedback
 PRIORITY : 2

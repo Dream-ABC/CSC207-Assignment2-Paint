@@ -230,6 +230,13 @@ ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.008 : hingor13 : NotStarted
+NAME     : Drawing selection mode not indicated at start of Program
+PRIORITY : 1
+ESTIMATE : 1 hour   ACTUAL :
+ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
+--------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
