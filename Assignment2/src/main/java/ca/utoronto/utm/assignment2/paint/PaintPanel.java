@@ -14,6 +14,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
     private String mode="Circle";
     private PaintModel model;
 
+    public Point origin;
     public Circle circle; // This is VERY UGLY, should somehow fix this!!
     public Rectangle rectangle;
 
@@ -76,15 +77,24 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                 if(mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
                     System.out.println("Started Rectangle");
                     Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    this.origin = new Point(topLeft.x, topLeft.y);
                     this.rectangle=new Rectangle(topLeft, 0, 0);
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
+                    double width = Math.abs(this.origin.x-mouseEvent.getX());
+                    double height = Math.abs(this.origin.y-mouseEvent.getY());
+                    double x = Math.min(this.origin.x, mouseEvent.getX());
+                    double y = Math.min(this.origin.y, mouseEvent.getY());
+                    this.rectangle.setTopLeft(new Point(x, y));
+                    this.rectangle.setWidth(width);
+                    this.rectangle.setHeight(height);
+                    this.model.addRectangle(this.rectangle);
 
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_MOVED)) {
 
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
                     if(this.rectangle!=null){
-                        double width = Math.abs(this.rectangle.getTopLeft().x-mouseEvent.getX());
-                        double height = Math.abs(this.rectangle.getTopLeft().y-mouseEvent.getY());
+                        double width = Math.abs(this.origin.x-mouseEvent.getX());
+                        double height = Math.abs(this.origin.y-mouseEvent.getY());
                         double x = Math.min(this.rectangle.getTopLeft().x, mouseEvent.getX());
                         double y = Math.min(this.rectangle.getTopLeft().y, mouseEvent.getY());
                         this.rectangle.setTopLeft(new Point(x, y));
