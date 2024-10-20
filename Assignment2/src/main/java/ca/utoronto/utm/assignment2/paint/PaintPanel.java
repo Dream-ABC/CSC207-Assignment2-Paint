@@ -50,20 +50,31 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                      Point centre = new Point(mouseEvent.getX(), mouseEvent.getY());
                      this.circle=new Circle(centre, 0);
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
-                    double currRadius = Math.abs(this.circle.getCentre().x-mouseEvent.getX());
-                    this.circle.setRadius(currRadius);
+                    double currDx = this.circle.getCentre().x-mouseEvent.getX();
+                    double currDy = this.circle.getCentre().y-mouseEvent.getY();
+                    double currRadius = Math.sqrt(Math.pow(currDx, 2) + Math.pow(currDy, 2));
+                    double currX = this.circle.getCentre().x-currRadius;
+                    double currY = this.circle.getCentre().y-currRadius;
+                    Point newCentre = new Point(currX, currY);
+                    this.circle.setCentre(newCentre);
+                    this.circle.setRadius(currRadius*2);
                     this.model.addCircle(this.circle);
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_MOVED)) {
 
                 } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
                     if(this.circle!=null){
-                                // Problematic notion of radius and centre!!
-                                double radius = Math.abs(this.circle.getCentre().x-mouseEvent.getX());
-                                this.circle.setRadius(radius);
-                                this.model.addCircle(this.circle);
-                                System.out.println("Added Circle");
-                                this.circle=null;
-                        }
+                        double dx = this.circle.getCentre().x-mouseEvent.getX();
+                        double dy = this.circle.getCentre().y-mouseEvent.getY();
+                        double radius = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+                        double newX = this.circle.getCentre().x-radius;
+                        double newY = this.circle.getCentre().y-radius;
+                        Point newCentre = new Point(newX, newY);
+                        this.circle.setCentre(newCentre);
+                        this.circle.setRadius(radius*2);
+                        this.model.addCircle(this.circle);
+                        System.out.println("Added Circle");
+                        this.circle=null;
+                    }
                 }
 
                 break;
