@@ -13,10 +13,10 @@ ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.002 : hingor13 : NotStarted
+TYPE     : BUG BUG1.002 : hingor13 : Completed
 NAME     : Drawing selection mode not indicated
 PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Currently, you can't tell which mode "Circle", "Rectangle", ...
            is currently selected. Is there a way
            to highlight the currently selected mode?
@@ -40,7 +40,7 @@ ISSUE    : The first click should specify the center of the circle, with
            implementation.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.007 : hingor13 : NotStarted
+TYPE     : BUG BUG1.007 : hingor13 : Completed
 NAME     : Rectangle drawing is broken
 PRIORITY : 1
 ESTIMATE : 1 hour   ACTUAL : 20 minutes

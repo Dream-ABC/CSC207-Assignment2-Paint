@@ -190,15 +190,6 @@ ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.002 : hingor13 : NotStarted
-NAME     : Drawing selection mode not indicated
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
-ISSUE    : Currently, you can't tell which mode "Circle", "Rectangle", ...
-           is currently selected. Is there a way
-           to highlight the currently selected mode?
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : BUG BUG?.003 : UTORID : NotStarted 
 NAME     : Architecture behind choosing selection mode is poor
 PRIORITY : 3
@@ -239,14 +230,6 @@ ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG1.007 : hingor13 : Completed
-NAME     : Rectangle drawing is broken
-PRIORITY : 1
-ESTIMATE : 1 hour   ACTUAL : 20 minutes
-ISSUE    : If the rectangle is dragged towards another side than bottom right,
-           the topLeft corner should be updated.
---------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
@@ -268,6 +251,23 @@ AS A     : user
 I WANT   : To click on one corner of a rectangle, drag, and release to
 		   specify two corners of a rectangle to be drawn in the current style.
 SO THAT  : I can add rectangles to my canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.002 : hingor13 : Completed
+NAME     : Drawing selection mode not indicated
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : Currently, you can't tell which mode "Circle", "Rectangle", ...
+           is currently selected. Is there a way
+           to highlight the currently selected mode?
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.007 : hingor13 : Completed
+NAME     : Rectangle drawing is broken
+PRIORITY : 1
+ESTIMATE : 1 hour   ACTUAL : 20 minutes
+ISSUE    : If the rectangle is dragged towards another side than bottom right,
+           the topLeft corner should be updated.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
