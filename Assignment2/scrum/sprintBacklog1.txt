@@ -6,7 +6,7 @@
 # Sprint 1 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.001 : wenjess1 : Completed
+TYPE     : BUG BUG1.001 : wenjess1 : Complete
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1 
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -55,7 +55,7 @@ ESTIMATE : 1 hour   ACTUAL : 5 minutes
 ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.002 : wenjess1 : Completed
+TYPE     : USER STORY US1.002 : wenjess1 : Complete
 NAME     : Draw Circle Feedback
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 3 hours

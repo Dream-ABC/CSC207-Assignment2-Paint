@@ -87,12 +87,14 @@ SO THAT  :
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.008 : wenjess1 : NotStarted
-NAME     : Eraser
+NAME     : Stroke Eraser
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : To be able to erase previous drawings
-SO THAT  : I have more customizability with the Paint application
+I WANT   : To be able to erase drawings on the canvas
+SO THAT  : I have more customizability with the Paint application.
+           In particular, this would enhance my ease of control over the canvas
+           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.009 : wenjess1 : NotStarted
@@ -101,7 +103,7 @@ PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select drawings on the canvas
-SO THAT  : I can move it to around as desired (e.g. place it in another spot)
+SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.010 : hingor13 : NotStarted
@@ -202,7 +204,7 @@ I WANT   : To click the center of the circle, drag, and release to specify
 SO THAT  : I can add circles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.002 : wenjess1 : Completed
+TYPE     : USER STORY US1.002 : wenjess1 : Complete
 NAME     : Draw Circle Feedback
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 3 hours
@@ -233,6 +235,13 @@ ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid construction.
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.001 : wenjess1 : Complete
+NAME     : Icons instead of text for drawing mode selection
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.002 : hingor13 : Completed

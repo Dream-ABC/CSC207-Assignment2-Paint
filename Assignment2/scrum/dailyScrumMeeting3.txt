@@ -33,9 +33,10 @@ Oct 19,2024
 	                  In particular, I need to ensure that the centre of the circle is the user's first click
 
 Oct 20,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed US1.002 and fixed minor remaining issues for BUG1.001
+	What I will do today: Complete architecture.txt
+	Obstacles I face: Understanding what exactly is expected to be written inside architecture.txt
+	                  Communicating my thoughts clearly and appropriately using technical terms
 
 Oct 21,2024
 	What I did yesterday:
