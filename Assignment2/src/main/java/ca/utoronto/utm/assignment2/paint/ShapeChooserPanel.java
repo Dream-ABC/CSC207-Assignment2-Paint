@@ -17,15 +17,15 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
                 this.view = view;
 
-                String[] buttonLabels = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline" };
-                ImageView[] buttonImages = new ImageView[buttonLabels.length];
+                String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline" };
+                ImageView[] buttonImages = new ImageView[buttonIds.length];
                 String[] imageFiles = {"src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/square.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/polyline.png"};
 
-                for (int i = 0; i < buttonLabels.length; i++) {
+                for (int i = 0; i < buttonIds.length; i++) {
                         FileInputStream input = new FileInputStream(imageFiles[i]);
                         Image image = new Image(input);
                         ImageView imageView = new ImageView(image);
@@ -36,8 +36,9 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                 }
 
                 int row = 0;
-                for (int i = 0; i < buttonLabels.length; i++) {
-                        Button button = new Button(buttonLabels[i]);
+                for (int i = 0; i < buttonIds.length; i++) {
+                        Button button = new Button();
+                        button.setId(buttonIds[i]);
                         button.setMinWidth(100);
                         this.add(button, 0, row);
                         row++;
@@ -48,7 +49,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
         @Override
         public void handle(ActionEvent event) {
-                String command = ((Button) event.getSource()).getText();
+                String command = ((Button) event.getSource()).getId();
                 view.setMode(command);
                 System.out.println(command);
         }
