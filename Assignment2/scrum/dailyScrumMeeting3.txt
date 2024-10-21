@@ -39,9 +39,9 @@ Oct 20,2024
 	                  Communicating my thoughts clearly and appropriately using technical terms
 
 Oct 21,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed architecture.txt and added uml diagram
+	What I will do today: Meet with my team to delegate tasks for Sprint2, discuss our game plan, and work on my assigned tasks
+	Obstacles I face: Figuring out how to change the architecture to solve the tasks in Sprint2
 
 Oct 22,2024
 	What I did yesterday:
