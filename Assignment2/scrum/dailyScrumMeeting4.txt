@@ -32,9 +32,9 @@ Oct 19,2024
 	Obstacles I face: Understanding how circles are displayed works.
 
 Oct 20,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Fixed BUG1.006 and completed US1.004
+	What I will do today: Work on architecture.txt
+	Obstacles I face: Small details that impact the clarity of the code's architecture.
 
 Oct 21,2024
 	What I did yesterday:
