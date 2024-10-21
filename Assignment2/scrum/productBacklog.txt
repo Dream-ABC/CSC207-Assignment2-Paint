@@ -154,12 +154,13 @@ SO THAT  : I can reuse existing drawings on the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.015 : pengxi60 : NotStarted
-NAME     : tool-in-use Icon
+NAME     : Canvas Scalability
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : To be able to know what feature I selected
-SO THAT  : I perform an action with 100% certainty that I am not performing another action.
+I WANT   : A canvas that I can increase and decrease on demand
+SO THAT  : I can have the freedom in changing the dimension of the canvas
+           for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG?.003 : UTORID : NotStarted 
