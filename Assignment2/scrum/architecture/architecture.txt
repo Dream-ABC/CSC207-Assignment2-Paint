@@ -118,3 +118,10 @@ with code for what needs to occur when various mouse actions (e.g. press, drag, 
       about to build on release of the mouse button.
     - Mouse move currently has no function for any shapes
     - Mouse release should display the final shape drawn onto the canvas.
+---------------------------------------------------------------------
+ISSUES WITH THE CURRENT ARCHITECTURE
+
+There exists an instance of tight coupling between ShapeChooserPanel, View and the PaintPanel. These three
+modules are closely connected, as the ShapeChooserPanel directly calls View.setMode() to change the drawing
+mode in the PaintPanel. It presents issues with maintainability as high dependency often requires modifications
+to several files, as well as reusability as the modules are not independent and rely on others in order to work.
