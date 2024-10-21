@@ -38,9 +38,11 @@ Oct 19,2024
 	Obstacles I face: Handle git conflict.
 
 Oct 20,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Edit user stories.
+    What I will do today: Review design patterns and try to figure out how to use them
+    	                  in this project. Prepare for tomorrow's meeting.
+    Obstacles I face: Memorizing all the design patterns, figuring out a proper way to
+    	              use them.
 
 Oct 21,2024
 	What I did yesterday:

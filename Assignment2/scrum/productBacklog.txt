@@ -246,7 +246,7 @@ ISSUE    : Currently, you can't tell which mode "Circle", "Rectangle", ...
            to highlight the currently selected mode?
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.005 : tianshi8 : Completed
+TYPE     : BUG BUG1.005 : tianshi8 : Complete
 NAME     : Squiggle is broken
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
