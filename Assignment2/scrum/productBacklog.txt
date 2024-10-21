@@ -162,13 +162,6 @@ I WANT   : To be able to know what feature I selected
 SO THAT  : I perform an action with 100% certainty that I am not performing another action.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.001 : UTORID : NotStarted 
-NAME     : Icons instead of text for drawing mode selection
-PRIORITY : 1
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : BUG BUG?.003 : UTORID : NotStarted 
 NAME     : Architecture behind choosing selection mode is poor
 PRIORITY : 3
