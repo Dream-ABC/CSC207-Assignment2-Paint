@@ -87,6 +87,7 @@ It displays the view components onto the stage and updates the model as needed.
 View also creates and displays a menu bar onto the stage.
 ShapeChooserPanel interacts with PaintPanel through View.
 Specifically, ShapeChooserPanel updates the mode attribute of PaintPanel, through the View's setMode method.
+Also, note that view components implement their own controllers (as described in section 'High Level Architecture').
 
 Paint is the application, and it connects the Model (PaintModel) and View + Controller (View) to itself.
 This is where the stage for the program is, and where the program runs.
