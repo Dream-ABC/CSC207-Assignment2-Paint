@@ -35,9 +35,9 @@ Oct 19,2024
 	Obstacles I face: None.
 
 Oct 20,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished BUG1.002, BUG1.007, BUG1.008, US1.003
+	What I will do today:Nothing, since we are done Sprint 1
+	Obstacles I face: None
 
 Oct 21,2024
 	What I did yesterday:
