@@ -88,7 +88,7 @@ View also creates and displays a menu bar onto the stage.
 ShapeChooserPanel interacts with PaintPanel through View.
 Specifically, ShapeChooserPanel updates the mode attribute of PaintPanel, through the View's setMode method.
 
-Paint is the application, and it connects the Model (PaintModel) and View (View) to itself.
+Paint is the application, and it connects the Model (PaintModel) and View + Controller (View) to itself.
 This is where the stage for the program is, and where the program runs.
 
 Shapes are composed of Points.
@@ -123,5 +123,5 @@ ISSUES WITH THE CURRENT ARCHITECTURE
 
 There exists an instance of tight coupling between ShapeChooserPanel, View and the PaintPanel. These three
 modules are closely connected, as the ShapeChooserPanel directly calls View.setMode() to change the drawing
-mode in the PaintPanel. It presents issues with maintainability as high dependency often requires modifications
-to several files, as well as reusability as the modules are not independent and rely on others in order to work.
+mode in the PaintPanel. This presents issues with maintainability as high dependency often requires modifications
+to several files, as well as reusability since the modules are not independent and rely on others in order to work.
