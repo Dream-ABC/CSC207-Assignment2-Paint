@@ -40,9 +40,9 @@ Oct 20,2024
 	Obstacles I face: None
 
 Oct 21,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing, since we are done Sprint 1
+	What I will do today: I will try and complete US2.016
+	Obstacles I face: None (or time).
 
 Oct 22,2024
 	What I did yesterday:

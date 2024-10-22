@@ -17,17 +17,16 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
            'if' blocks in the PaintPanel mouse event code.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.016 : UTORID : NotStarted
-NAME     : Draw Square with Feedback & Shape Selection
+TYPE     : USER STORY US2.016 : hingor13 : Started
+NAME     : Draw Square with Feedback
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL :
 AS A     : user
-I WANT   : to select a Square tool, then click on one corner of the
-           square, drag, and release to specify the side lengths of a
-           square by taking the maximum between the width and height
-           difference from one corner to the mouse, that is drawn in the
-           current style, with real-time feedback showing the current
-           square as I drag.
+I WANT   : to click on one corner of the square, drag, and release to
+           specify the side lengths of a square by taking the maximum
+           between the width and height difference from one corner to
+           the mouse, that is drawn in the current style, with real-time
+           feedback showing the current square as I drag.
 SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
