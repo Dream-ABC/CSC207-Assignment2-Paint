@@ -6,7 +6,7 @@
 # Sprint 2 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : BUG BUG2.003 : UTORID : NotStarted
+TYPE     : BUG BUG2.003 : tianshi8 : NotStarted
 NAME     : Architecture behind choosing selection mode is poor
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
