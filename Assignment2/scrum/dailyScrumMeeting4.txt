@@ -37,9 +37,9 @@ Oct 20,2024
 	Obstacles I face: Small details that impact the clarity of the code's architecture.
 
 Oct 21,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Started a new discussion in architecture.txt
+	What I will do today: Create user stories and delegate tasks.
+	Obstacles I face: How to divide up the work to make it more manageable for our team.
 
 Oct 22,2024
 	What I did yesterday:
