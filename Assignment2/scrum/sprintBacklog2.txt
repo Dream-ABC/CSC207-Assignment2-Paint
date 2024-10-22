@@ -31,7 +31,7 @@ SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.017 : UTORID : NotStarted
+TYPE     : USER STORY US2.017 : wenjess1 : NotStarted
 NAME     : Draw Oval with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL :
