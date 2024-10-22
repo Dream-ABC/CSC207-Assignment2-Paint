@@ -45,9 +45,11 @@ Oct 20,2024
     	              use them.
 
 Oct 21,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Review design patterns and try to figure out how to use them
+                          in this project. Prepare for tomorrow's meeting.
+	What I will do today: Meet with the team to finalize work division for sprint 2.
+	Obstacles I face: Understanding how to effectively apply the Factory pattern in the
+	                  project.
 
 Oct 22,2024
 	What I did yesterday:
