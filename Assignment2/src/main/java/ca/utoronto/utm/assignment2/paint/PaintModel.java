@@ -9,9 +9,11 @@ public class PaintModel extends Observable {
         private ArrayList<Point> points=new ArrayList<Point>();
         private ArrayList<Circle> circles=new ArrayList<Circle>();
         private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
+        private ArrayList<Squiggle> paths=new ArrayList<>();
         private ArrayList<Square> squares = new ArrayList<Square>();
-        private ArrayList<ArrayList<Point>> paths=new ArrayList<>();
         private ArrayList<Oval> ovals=new ArrayList<>();
+
+        private ArrayList<Shape> allShapes = new ArrayList<>();
 
         public void addPoint(Point p){
                 this.points.add(p);
@@ -20,10 +22,6 @@ public class PaintModel extends Observable {
         }
         public ArrayList<Point> getPoints(){
                 return points;
-        }
-
-        public ArrayList<ArrayList<Point>> getPaths(){
-                return paths;
         }
 
         public void addCircle(Circle c){
@@ -44,19 +42,29 @@ public class PaintModel extends Observable {
                 return rectangles;
         }
 
+        public void addPath(Squiggle p){
+                this.paths.add(p);
+                this.setChanged();
+                this.notifyObservers();
+        }
+
+        public void updatePath() {
+                this.setChanged();
+                this.notifyObservers();
+        }
+
+        public ArrayList<Squiggle> getPaths(){
+                return paths;
+        }
+
         public void addSquare(Square s){
                 this.squares.add(s);
                 this.setChanged();
                 this.notifyObservers();
         }
+
         public ArrayList<Square> getSquares(){
                 return squares;
-        }
-
-        public void addPath(){
-                this.paths.add(this.points);
-                this.setChanged();
-                this.notifyObservers();
         }
 
         public void addOval(Oval o){
@@ -67,10 +75,13 @@ public class PaintModel extends Observable {
 
         public ArrayList<Oval> getOvals() { return ovals;}
 
-        public void finishPath() {
-                this.points = new ArrayList<Point>();
+        public void addShape(Shape shape) {
+                this.allShapes.add(shape);
                 this.setChanged();
                 this.notifyObservers();
         }
 
+        public ArrayList<Shape> getAllShapes(){
+                return allShapes;
+        }
 }

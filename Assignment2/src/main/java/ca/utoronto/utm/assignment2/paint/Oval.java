@@ -1,10 +1,19 @@
 package ca.utoronto.utm.assignment2.paint;
 
-public class Oval {
+import javafx.scene.paint.Color;
+
+public class Oval implements Shape {
     private Point origin;
     private Point topLeft;
     private double width;
     private double height;
+    private Color color;
+
+    public Oval() {
+        this.width = 0;
+        this.height = 0;
+        this.color = Color.PURPLE;
+    }
 
     public Oval(Point origin, Point topLeft, double width, double height) {
         this.origin = origin;
@@ -15,6 +24,10 @@ public class Oval {
 
     public Point getOrigin() {
         return this.origin;
+    }
+
+    public void setOrigin(Point origin) {
+        this.origin = origin;
     }
 
     public Point getTopLeft() {
@@ -34,5 +47,21 @@ public class Oval {
     }
 
     public double getHeight() { return this.height; }
+
     public void setHeight(double height) { this.height = height; }
+
+    @Override
+    public Color getColour() {
+        return this.color;
+    }
+
+    @Override
+    public int getThickness() {
+        return -1;
+    }
+
+    @Override
+    public String getShape() {
+        return "Oval";
+    }
 }

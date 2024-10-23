@@ -1,9 +1,18 @@
 package ca.utoronto.utm.assignment2.paint;
 
 
-public class Square {
+import javafx.scene.paint.Color;
+
+public class Square implements Shape {
     private Point topLeft;
-    private double side;;
+    private Point origin;
+    private double side;
+    private Color color;
+
+    public Square() {
+        this.side = 0;
+        this.color = Color.ORANGE;
+    }
 
     public Square(Point topLeft, double side){
         this.topLeft = topLeft;
@@ -26,4 +35,26 @@ public class Square {
         this.side = side;
     }
 
+    public Point getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(Point origin) {
+        this.origin = origin;
+    }
+
+    @Override
+    public Color getColour() {
+        return this.color;
+    }
+
+    @Override
+    public int getThickness() {
+        return -1;
+    }
+
+    @Override
+    public String getShape() {
+        return "Square";
+    }
 }
