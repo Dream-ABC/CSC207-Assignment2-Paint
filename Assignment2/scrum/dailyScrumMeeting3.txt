@@ -49,9 +49,9 @@ Oct 22,2024
 	Obstacles I face: What the Oval class should look like and its attributes, how to implement it into the code
 
 Oct 23,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed my Oval drawing task
+	What I will do today: Consider, with my groupmates, on how to change the architecture of ShapeChooserPanel to make it more modular
+	Obstacles I face: Thinking of what design patterns would be best to use, and how to refactor code
 
 Oct 24,2024
 	What I did yesterday:
