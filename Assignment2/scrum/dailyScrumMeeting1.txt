@@ -45,9 +45,9 @@ Oct 21,2024
 	Obstacles I face: None (or time).
 
 Oct 22,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Started US2.016
+	What I will do today: Finished US2.016
+	Obstacles I face: None, except design choices for square.
 
 Oct 23,2024
 	What I did yesterday:
