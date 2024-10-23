@@ -17,6 +17,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
     public Point origin;
     public Circle circle; // This is VERY UGLY, should somehow fix this!!
     public Rectangle rectangle;
+    public Oval oval;
 
     public PaintPanel(PaintModel model) {
         super(300, 300);
@@ -130,6 +131,31 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                 break;
             case "Polyline": break;
             default: break;
+            case "Oval":
+                if (mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
+                    Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    this.oval = new Oval(topLeft, topLeft, 0, 0);
+                } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
+                    double newWidth = Math.abs(this.oval.getOrigin().x-mouseEvent.getX());
+                    double newHeight = Math.abs(this.oval.getOrigin().y-mouseEvent.getY());
+                    this.oval.setWidth(newWidth);
+                    this.oval.setHeight(newHeight);
+                    double x = Math.min(this.oval.getOrigin().x, mouseEvent.getX());
+                    double y = Math.min(this.oval.getOrigin().y, mouseEvent.getY());
+                    this.oval.setTopLeft(new Point(x, y));
+                    this.model.addOval(this.oval);
+                } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
+                    double newWidth = Math.abs(this.oval.getOrigin().x-mouseEvent.getX());
+                    double newHeight = Math.abs(this.oval.getOrigin().y-mouseEvent.getY());
+                    this.oval.setWidth(newWidth);
+                    this.oval.setHeight(newHeight);
+                    double x = Math.min(this.oval.getOrigin().x, mouseEvent.getX());
+                    double y = Math.min(this.oval.getOrigin().y, mouseEvent.getY());
+                    this.oval.setTopLeft(new Point(x, y));
+                    this.model.addOval(this.oval);
+                    this.oval=null;
+                }
+                break;
         }
     }
     @Override
@@ -154,6 +180,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                 // Draw Circles
                 ArrayList<Circle> circles = this.model.getCircles();
                 ArrayList<Rectangle> rectangles = this.model.getRectangles();
+                ArrayList<Oval> ovals = this.model.getOvals();
 
                 g2d.setFill(Color.GREEN);
                 for(Circle c: this.model.getCircles()){
@@ -170,6 +197,15 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     double w = r.getWidth();
                     double h = r.getHeight();
                     g2d.fillRect(x, y, w, h);
+                }
+
+                g2d.setFill(Color.PURPLE);
+                for(Oval oval: this.model.getOvals()){
+                    double x = oval.getTopLeft().x;
+                    double y = oval.getTopLeft().y;
+                    double width = oval.getWidth();
+                    double height = oval.getHeight();
+                    g2d.fillOval(x, y, width, height);
                 }
     }
 }
