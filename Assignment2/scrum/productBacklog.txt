@@ -163,20 +163,6 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.016 : hingor13 : Started
-NAME     : Draw Square with Feedback
-PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL :
-AS A     : user
-I WANT   : To click on one corner of the square, drag, and release to
-           specify the side lengths of a square by taking the maximum
-           between the width and height difference from one corner to
-           the mouse, that is drawn in the current style, with real-time
-           feedback showing the current square as I drag.
-SO THAT  : I can easily add squares to my canvas and see the square I am
-           building before releasing the mouse button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US2.018 : pengxi60 : Started
 NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
@@ -302,6 +288,20 @@ I WANT   : To select an oval tool, then click on one corner of an oval,
            the oval to be drawn in the current style, with real-time
            feedback showing the current oval as I drag.
 SO THAT  : I can easily add ovals to my canvas and see the oval I am
+           building before releasing the mouse button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US2.016 : hingor13 : Completed
+NAME     : Draw Square with Feedback
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To click on one corner of the square, drag, and release to
+           specify the side lengths of a square by taking the maximum
+           between the width and height difference from one corner to
+           the mouse, that is drawn in the current style, with real-time
+           feedback showing the current square as I drag.
+SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 

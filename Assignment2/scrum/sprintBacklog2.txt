@@ -17,10 +17,10 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
            'if' blocks in the PaintPanel mouse event code.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.016 : hingor13 : Started
+TYPE     : USER STORY US2.016 : hingor13 : Completed
 NAME     : Draw Square with Feedback
 PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL :
+ESTIMATE : 4 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : To click on one corner of the square, drag, and release to
            specify the side lengths of a square by taking the maximum
