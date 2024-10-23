@@ -281,7 +281,7 @@ ISSUE    : The first click should specify the center of the circle, with
 TYPE     : USER STORY US2.017 : wenjess1 : Complete
 NAME     : Draw Oval with Feedback & Shape Selection
 PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL :
+ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : To select an oval tool, then click on one corner of an oval,
            drag, and release to specify two corners of a bounding box of
