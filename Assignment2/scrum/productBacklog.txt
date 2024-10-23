@@ -177,19 +177,6 @@ SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.017 : wenjess1 : NotStarted
-NAME     : Draw Oval with Feedback & Shape Selection
-PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL :
-AS A     : user
-I WANT   : To select an oval tool, then click on one corner of an oval,
-           drag, and release to specify two corners of a bounding box of
-           the oval to be drawn in the current style, with real-time
-           feedback showing the current oval as I drag.
-SO THAT  : I can easily add ovals to my canvas and see the oval I am
-           building before releasing the mouse button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US2.018 : pengxi60 : Started
 NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
@@ -303,6 +290,19 @@ ESTIMATE : 2 hours    ACTUAL : 1 hour
 ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US2.017 : wenjess1 : Complete
+NAME     : Draw Oval with Feedback & Shape Selection
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL :
+AS A     : user
+I WANT   : To select an oval tool, then click on one corner of an oval,
+           drag, and release to specify two corners of a bounding box of
+           the oval to be drawn in the current style, with real-time
+           feedback showing the current oval as I drag.
+SO THAT  : I can easily add ovals to my canvas and see the oval I am
+           building before releasing the mouse button.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
