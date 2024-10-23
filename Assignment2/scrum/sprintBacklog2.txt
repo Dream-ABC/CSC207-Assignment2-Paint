@@ -49,10 +49,10 @@ NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL :
 AS A     : user
-I WANT   : To select a triangle tool, then click on one corner of an
-           triangle, drag, and release to specify two corners of a bounding
-           box of the triangle to be drawn in the current style, with
-           real-time feedback showing the current triangle as I drag.
+I WANT   : To select an isosceles triangle tool, then click on one corner of
+           an isosceles triangle, drag, and release to specify two corners of
+           a bounding box of the isosceles triangle to be drawn in the current
+           style, with real-time feedback showing the current triangle as I drag.
 SO THAT  : I can easily add triangles to my canvas and see the triangle I
            am building before releasing the mouse button.
 --------------------------------------------------------------------------

@@ -42,9 +42,9 @@ Oct 21,2024
 	Obstacles I face: How to divide up the work to make it more manageable for our team.
 
 Oct 22,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Created new user stories for sprint2
+	What I will do today: Refine US2.018 to avoid obscurities.
+	Obstacles I face: What kind of triangle should be drawn.
 
 Oct 23,2024
 	What I did yesterday:
