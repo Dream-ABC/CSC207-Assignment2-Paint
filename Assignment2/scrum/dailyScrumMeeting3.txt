@@ -44,9 +44,9 @@ Oct 21,2024
 	Obstacles I face: Figuring out how to change the architecture to solve the tasks in Sprint2
 
 Oct 22,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Selected my task for Sprint 2 (making Oval)
+	What I will do today: Work on Oval
+	Obstacles I face: What the Oval class should look like and its attributes, how to implement it into the code
 
 Oct 23,2024
 	What I did yesterday:
