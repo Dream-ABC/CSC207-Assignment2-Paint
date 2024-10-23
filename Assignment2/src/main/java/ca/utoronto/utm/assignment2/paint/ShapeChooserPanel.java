@@ -24,7 +24,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                         "src/main/java/ca/utoronto/utm/assignment2/images/square.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/polyline.png",
-                        "src/main/java/ca/utoronto/utm/assignment2/images/circle.png"};
+                        "src/main/java/ca/utoronto/utm/assignment2/images/oval.png"};
 
                 for (int i = 0; i < buttonIds.length; i++) {
                         FileInputStream input = new FileInputStream(imageFiles[i]);
