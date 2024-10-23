@@ -17,6 +17,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
     public Point origin;
     public Circle circle; // This is VERY UGLY, should somehow fix this!!
     public Rectangle rectangle;
+    public Square square;
 
     public PaintPanel(PaintModel model) {
         super(300, 300);
@@ -115,7 +116,62 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     }
                 }
                 break;
-            case "Square": break;
+            case "Square":
+                if(mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
+                    System.out.println("Started Square");
+                    Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
+                    this.origin = new Point(topLeft.x, topLeft.y);
+                    this.square=new Square(topLeft, 0);
+                } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
+                    double x = mouseEvent.getX();
+                    double y = mouseEvent.getY();
+                    double width = Math.abs(origin.x - x);
+                    double height = Math.abs(origin.y - y);
+                    double sideLength = Math.min(width, height);
+                    square.setSide(sideLength);
+
+                    if (x < origin.x && y < origin.y) {
+                        square.setTopLeft(new Point(origin.x - square.getSide(), origin.y - square.getSide()));
+                    }
+                    else if (x < origin.x) {
+                        square.setTopLeft(new Point(origin.x - square.getSide(), origin.y));
+                    }
+                    else if (y < origin.y){
+                        square.setTopLeft(new Point(origin.x, origin.y - square.getSide()));
+                    }
+                    else {
+                        square.setTopLeft(new Point(origin.x, origin.y));
+                    }
+                    this.model.addSquare(this.square);
+                } else if (mouseEventType.equals(MouseEvent.MOUSE_MOVED)) {
+
+                } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
+                    if(this.square!=null){
+                        double x = mouseEvent.getX();
+                        double y = mouseEvent.getY();
+                        double width = Math.abs(origin.x - x);
+                        double height = Math.abs(origin.y - y);
+                        double sideLength = Math.min(width, height);
+                        square.setSide(sideLength);
+
+                        if (x < origin.x && y < origin.y) {
+                            square.setTopLeft(new Point(origin.x - square.getSide(), origin.y - square.getSide()));
+                        }
+                        else if (x < origin.x) {
+                            square.setTopLeft(new Point(origin.x - square.getSide(), origin.y));
+                        }
+                        else if (y < origin.y){
+                            square.setTopLeft(new Point(origin.x, origin.y - square.getSide()));
+                        }
+                        else {
+                            square.setTopLeft(new Point(origin.x, origin.y));
+                        }
+                        this.model.addSquare(this.square);
+                        System.out.println("Added Square");
+                        this.square=null;
+                    }
+                }
+                break;
             case "Squiggle":
                 if (mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
                     this.model.addPath();
@@ -170,6 +226,14 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     double w = r.getWidth();
                     double h = r.getHeight();
                     g2d.fillRect(x, y, w, h);
+                }
+
+                g2d.setFill(Color.ORANGE);
+                for(Square s: this.model.getSquares()){
+                    double x = s.getTopLeft().x;
+                    double y = s.getTopLeft().y;
+                    double sd = s.getSide();
+                    g2d.fillRect(x, y, sd, sd);
                 }
     }
 }
