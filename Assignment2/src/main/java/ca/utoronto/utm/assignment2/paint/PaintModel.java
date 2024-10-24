@@ -12,6 +12,7 @@ public class PaintModel extends Observable {
         private ArrayList<Square> squares = new ArrayList<Square>();
         private ArrayList<ArrayList<Point>> paths=new ArrayList<>();
         private ArrayList<Oval> ovals=new ArrayList<>();
+        private ArrayList<Triangle> triangles=new ArrayList<>();
 
         public void addPoint(Point p){
                 this.points.add(p);
@@ -66,6 +67,14 @@ public class PaintModel extends Observable {
         }
 
         public ArrayList<Oval> getOvals() { return ovals;}
+
+        public void addTriangle(Triangle t){
+                this.triangles.add(t);
+                this.setChanged();
+                this.notifyObservers();
+        }
+
+        public ArrayList<Triangle> getTriangles() { return triangles;}
 
         public void finishPath() {
                 this.points = new ArrayList<Point>();
