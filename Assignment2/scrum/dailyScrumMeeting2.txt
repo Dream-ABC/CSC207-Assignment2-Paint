@@ -52,19 +52,22 @@ Oct 21,2024
 	                  project.
 
 Oct 22,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Meet with the team to finalize work division for sprint 2.
+	What I will do today: Fix BUG2.003. Refactor the code to follow the factory pattern.
+	Obstacles I face: Applying the factory pattern in practice, transitioning from theory
+	                  to implementation.
 
 Oct 23,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Fix BUG2.003. Refactor the code to follow the factory pattern.
+	What I will do today: Add strategy pattern.
+	Obstacles I face: Deciding between using an interface or an abstract class.
 
 Oct 24,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Add strategy pattern.
+	What I will do today: Integrate the Triangle class into both the factory pattern and
+	                      the strategy pattern.
+	Obstacles I face: The code is getting complicated, and it might be worth attempting
+	                  to simplify it.
 
 Oct 25,2024
 	What I did yesterday:
