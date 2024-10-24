@@ -163,10 +163,10 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.018 : pengxi60 : Started
+TYPE     : USER STORY US2.018 : pengxi60 : Completed
 NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL :
+ESTIMATE : 4 hours    ACTUAL : 2 hours
 AS A     : user
 I WANT   : To select a triangle tool, then click on one corner of an
            triangle, drag, and release to specify two corners of a bounding
