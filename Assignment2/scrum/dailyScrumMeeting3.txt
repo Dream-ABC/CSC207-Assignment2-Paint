@@ -59,9 +59,9 @@ Oct 24,2024
 	Obstacles I face: Understanding the different design patterns and considering how well they would fit this issue
 
 Oct 25,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Continue learning about different design patterns
+	What I will do today: Think about how to implement the Factory method for SquareChooserPanel
+	Obstacles I face: Understanding how to use Factory effectively
 
 Oct 26,2024
 	What I did yesterday:
