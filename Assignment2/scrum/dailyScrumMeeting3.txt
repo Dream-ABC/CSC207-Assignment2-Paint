@@ -54,9 +54,9 @@ Oct 23,2024
 	Obstacles I face: Thinking of what design patterns would be best to use, and how to refactor code
 
 Oct 24,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Considered how to solve Bug2.003
+	What I will do today: Continue thinking about what design patterns to use and how to best structure the code/architecture
+	Obstacles I face: Understanding the different design patterns and considering how well they would fit this issue
 
 Oct 25,2024
 	What I did yesterday:
