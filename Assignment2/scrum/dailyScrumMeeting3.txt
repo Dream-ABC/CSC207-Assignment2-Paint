@@ -64,9 +64,9 @@ Oct 25,2024
 	Obstacles I face: Understanding how to use Factory effectively
 
 Oct 26,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Understood the Factory design pattern
+	What I will do today: Help my teammate implement the Factory design pattern
+	Obstacles I face: Refactoring code correctly
 
 Oct 27,2024
 	What I did yesterday:
