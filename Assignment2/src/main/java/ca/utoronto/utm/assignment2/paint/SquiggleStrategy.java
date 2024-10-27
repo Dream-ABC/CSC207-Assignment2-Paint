@@ -30,7 +30,7 @@ public class SquiggleStrategy implements ShapeStrategy {
         Squiggle squiggle = (Squiggle) this.panel.getShape();
         Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
         squiggle.addPoint(point);
-        this.panel.getModel().updatePath();
+        this.panel.getModel().notifyUpdate();
     }
 
     @Override

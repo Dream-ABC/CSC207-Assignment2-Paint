@@ -1,11 +1,11 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import javafx.collections.ObservableList;
 import javafx.scene.canvas.Canvas;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -19,12 +19,6 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
     private ShapeStrategy strategy;
     private ShapeFactory shapeFactory = new ShapeFactory();
     private StrategyFactory strategyFactory = new StrategyFactory();
-
-    // public Point origin;
-    // public Circle circle; // This is VERY UGLY, should somehow fix this!!
-    // public Rectangle rectangle;
-    // public Square square;
-    // public Oval oval;
 
     public PaintPanel(PaintModel model) {
         super(300, 300);
@@ -90,57 +84,21 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
         } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
             this.strategy.mouseReleased(mouseEvent);
         }  // add more actions here
-
-        // Later when we learn about inner classes...
-        // https://docs.oracle.com/javafx/2/events/DraggablePanelsExample.java.htm
-
     }
+    // Later when we learn about inner classes...
+    // https://docs.oracle.com/javafx/2/events/DraggablePanelsExample.java.htm
 
     @Override
     public void update(Observable o, Object arg) {
-        // PROBLEM: since squiggles are printed before circles and circles are
-        //          printed before rectangles, so rectangles will always be
-        //          displayed above other shapes, no matter the order you draw it
 
         GraphicsContext g2d = this.getGraphicsContext2D();
         g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
-//        // Draw Lines
-//        // ArrayList<Point> points = this.model.getPoints();
-//        ArrayList<Squiggle> squiggles = this.model.getPaths();
-//
-//        for (Squiggle path : squiggles) {
-//            g2d.setFill(Color.RED);
-//            for (int i = 0; i < path.getpoints().size() - 1; i++) {
-//                Point p1 = path.getpoints().get(i);
-//                Point p2 = path.getpoints().get(i + 1);
-//                g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
-//            }
-//        }
-//
-//        // Draw Circles
-//        ArrayList<Circle> circles = this.model.getCircles();
-//        ArrayList<Rectangle> rectangles = this.model.getRectangles();
-//
-//        g2d.setFill(Color.GREEN);
-//        for (Circle c : circles) {
-//            double x = c.getCentre().x;
-//            double y = c.getCentre().y;
-//            double radius = c.getRadius();
-//            g2d.fillOval(x, y, radius, radius);
-//        }
-//
-//        g2d.setFill(Color.BLUE);
-//        for (Rectangle r : rectangles) {
-//            double x = r.getTopLeft().x;
-//            double y = r.getTopLeft().y;
-//            double w = r.getWidth();
-//            double h = r.getHeight();
-//            g2d.fillRect(x, y, w, h);
-//        }
 
         ArrayList<Shape> allShapes = this.model.getAllShapes();
+
         for (Shape shape : allShapes) {
-            g2d.setFill(shape.getColour());
+            g2d.setFill(shape.getColor());
+
             switch (shape.getShape().toLowerCase()) {  // ignore case
                 case "circle":
                     Circle c = (Circle) shape;
@@ -149,6 +107,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     double radius = c.getRadius();
                     g2d.fillOval(cx, cy, radius, radius);
                     break;
+
                 case "rectangle":
                     Rectangle r = (Rectangle) shape;
                     double rx = r.getTopLeft().x;
@@ -157,6 +116,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     double h = r.getHeight();
                     g2d.fillRect(rx, ry, w, h);
                     break;
+
                 case "squiggle":
                     Squiggle sq = (Squiggle) shape;
                     for (int i = 0; i < sq.getpoints().size() - 1; i++) {
@@ -165,6 +125,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                         g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
                     }
                     break;
+
                 case "square":
                     Square s = (Square) shape;
                     double sx = s.getTopLeft().x;
@@ -172,6 +133,7 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     double sd = s.getSide();
                     g2d.fillRect(sx, sy, sd, sd);
                     break;
+
                 case "oval":
                     Oval oval = (Oval) shape;
                     double ox = oval.getTopLeft().x;
@@ -179,6 +141,19 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
                     double width = oval.getWidth();
                     double height = oval.getHeight();
                     g2d.fillOval(ox, oy, width, height);
+                    break;
+
+                case "triangle":
+                    Triangle triangle = (Triangle) shape;
+                    ObservableList<Double> points = triangle.getPoints();
+                    double[] xPoints = new double[3];
+                    double[] yPoints = new double[3];
+                    for (int i = 0; i < 3; i++) {
+                        xPoints[i] = points.get(i);
+                        yPoints[i] = points.get(i + 3);
+                    }
+                    g2d.fillPolygon(xPoints, yPoints, 3);
+                    break;
             }
         }
     }

@@ -10,7 +10,7 @@ public class Point implements Shape {
         }
 
         @Override
-        public Color getColour() {
+        public Color getColor() {
                 return null;
         }
 

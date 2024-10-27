@@ -13,8 +13,10 @@ public class StrategyFactory {
                 return new SquareStrategy(panel);
             case "oval":
                 return new OvalStrategy(panel);
+            case "triangle":
+                return new TriangleStrategy(panel);
 
-            // add more shapes here
+            // add more strategies here
 
             default:
                 break;

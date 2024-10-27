@@ -51,7 +51,7 @@ public class Oval implements Shape {
     public void setHeight(double height) { this.height = height; }
 
     @Override
-    public Color getColour() {
+    public Color getColor() {
         return this.color;
     }
 

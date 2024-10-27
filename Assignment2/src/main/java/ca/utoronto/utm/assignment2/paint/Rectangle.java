@@ -62,7 +62,7 @@ public class Rectangle implements Shape {
     }
 
     @Override
-    public Color getColour() {
+    public Color getColor() {
         return this.color;
     }
 

@@ -47,14 +47,14 @@ Oct 22,2024
 	Obstacles I face: What kind of triangle should be drawn.
 
 Oct 23,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Revised US2.018
+	What I will do today: Finish US2.018 allowing the user to add triangles to the canvas
+	Obstacles I face: Understanding how all the modules come together to enable the user to draw a shape
 
 Oct 24,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished US2.018
+	What I will do today: Study for a midterm
+	Obstacles I face: Not getting enough sleep...
 
 Oct 25,2024
 	What I did yesterday:

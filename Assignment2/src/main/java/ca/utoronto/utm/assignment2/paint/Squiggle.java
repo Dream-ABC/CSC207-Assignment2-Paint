@@ -23,7 +23,7 @@ public class Squiggle implements Shape {
     }
 
     @Override
-    public Color getColour() {
+    public Color getColor() {
         return this.color;
     }
 

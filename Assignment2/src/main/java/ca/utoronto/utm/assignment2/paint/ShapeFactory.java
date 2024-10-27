@@ -13,6 +13,8 @@ public class ShapeFactory {
                 return new Square();
             case "oval":
                 return new Oval();
+            case "triangle":
+                return new Triangle();
 
             // add more shapes here
 

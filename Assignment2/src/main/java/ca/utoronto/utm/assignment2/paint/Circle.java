@@ -43,7 +43,7 @@ public class Circle implements Shape{
         }
 
         @Override
-        public Color getColour() {
+        public Color getColor() {
                 return this.color;
         }
 
