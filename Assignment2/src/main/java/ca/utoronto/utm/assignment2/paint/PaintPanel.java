@@ -1,24 +1,22 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.collections.ObservableList;
 import javafx.scene.canvas.Canvas;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
+import java.util.function.Consumer;
 
 public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Observer {
     private String mode = "Circle";
     private PaintModel model;
-
     private Shape shape;
     private ShapeStrategy strategy;
     private ShapeFactory shapeFactory;
     private StrategyFactory strategyFactory;
+    Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
 
     public PaintPanel(PaintModel model) {
         super(300, 300);
@@ -34,6 +32,12 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
         this.addEventHandler(MouseEvent.MOUSE_MOVED, this);
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, this);
         this.addEventHandler(MouseEvent.MOUSE_DRAGGED, this);
+
+        this.eventHandlers = new HashMap<>();
+        eventHandlers.put(MouseEvent.MOUSE_PRESSED, event -> strategy.mousePressed(event));
+        eventHandlers.put(MouseEvent.MOUSE_DRAGGED, event -> strategy.mouseDragged(event));
+        eventHandlers.put(MouseEvent.MOUSE_RELEASED, event -> strategy.mouseReleased(event));
+        // add more mouse events here
     }
 
     public String getMode() {
@@ -70,15 +74,10 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
         this.strategy = strategyFactory.getStrategy(this.mode, this);
         EventType<MouseEvent> mouseEventType = (EventType<MouseEvent>) mouseEvent.getEventType();
 
-        if (mouseEventType.equals(MouseEvent.MOUSE_PRESSED)) {
-            this.strategy.mousePressed(mouseEvent);
-
-        } else if (mouseEventType.equals(MouseEvent.MOUSE_DRAGGED)) {
-            this.strategy.mouseDragged(mouseEvent);
-
-        } else if (mouseEventType.equals(MouseEvent.MOUSE_RELEASED)) {
-            this.strategy.mouseReleased(mouseEvent);
-        }  // add more actions here
+        Consumer<MouseEvent> handler = eventHandlers.get(mouseEventType);
+        if (handler != null) {
+            handler.accept(mouseEvent);
+        }
     }
     // Later when we learn about inner classes...
     // https://docs.oracle.com/javafx/2/events/DraggablePanelsExample.java.htm
