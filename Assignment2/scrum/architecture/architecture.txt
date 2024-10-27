@@ -39,11 +39,19 @@ DESIGN PATTERNS USED
 	discuss it below. Only add design patterns if they simplify and improve
 	the code. I see at least two that would greatly improve code. 
 		
-	Strategy:
+	Strategy: Each shape will have a corresponding strategy class dedicated to handling mouse events.
+	          All these strategy classes will implement a common ShapeStrategy interface, which ensures
+	          that each shape's behavior is consistent and interchangeable. This encapsulates the
+	          behavior specific to each shape, promoting flexibility and separation of concerns.
 	Command: 
 	Singleton:
 	Composite:
-	Factory:
+	Factory: The use of ShapeFactory and StrategyFactory will facilitate the creation of different shape
+	         instances and their corresponding strategies. This approach promotes loose coupling and
+	         enhances code maintainability. Additionally, adding new shapes becomes straightforward since
+	         we can simply implement the Shape interface and ShapeStrategy interface, then register the new
+	         shape and strategy with the two factories without modifying existing code, making the system
+	         more scalable and adaptable to future requirements.
 	Builder:
 	Observer/Observable: PaintModel - Observable, PaintPanel - Observer
 
