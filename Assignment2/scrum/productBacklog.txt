@@ -176,10 +176,10 @@ SO THAT  : I can easily add triangles to my canvas and see the triangle I
            am building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG2.003 : tianshi8 : NotStarted
+TYPE     : BUG BUG2.003 : tianshi8 : Complete
 NAME     : Architecture behind choosing selection mode is poor
 PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 4 hours    ACTUAL : 6 hours
 ISSUE    : Code is not modular and is difficult to expand. Need a better
            architecture behind selecting a drawing mode, and handling
            the drawing events. Consider some design patterns here.
