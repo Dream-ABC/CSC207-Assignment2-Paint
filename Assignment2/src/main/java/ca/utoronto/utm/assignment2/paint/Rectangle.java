@@ -1,11 +1,30 @@
 package ca.utoronto.utm.assignment2.paint;
 
 
-public class Rectangle {
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+public class Rectangle implements Shape {
     private Point topLeft;
     private double width;
     private double height;
+    private Point origin;
+    private Color color;
 
+    /*
+    Constructor with no parameter. This constructor
+    creates a default rectangle with width 0 and height 0.
+     */
+    public Rectangle() {
+        this.width = 0;
+        this.height = 0;
+        this.color = Color.BLUE;
+    }
+
+    /*
+    Constructor that created a circle with user defined
+    topLeft, width and height.
+     */
     public Rectangle(Point topLeft, double width, double height){
         this.topLeft = topLeft;
         this.width = width;
@@ -35,4 +54,32 @@ public class Rectangle {
         this.height = height;
     }
 
+    public Point getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(Point origin) {
+        this.origin = origin;
+    }
+
+    @Override
+    public Color getColor() {
+        return this.color;
+    }
+
+    @Override
+    public int getThickness() {
+        return -1;
+    }
+
+    @Override
+    public String getShape() {
+        return "Rectangle";
+    }
+
+    @Override
+    public void display(GraphicsContext g2d) {
+        g2d.fillRect(this.topLeft.x, this.topLeft.y,
+                this.width, this.height);
+    }
 }

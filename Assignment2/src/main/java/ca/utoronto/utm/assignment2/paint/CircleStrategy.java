@@ -1,0 +1,63 @@
+package ca.utoronto.utm.assignment2.paint;
+
+import javafx.scene.input.MouseEvent;
+
+public class CircleStrategy implements ShapeStrategy {
+
+    private PaintPanel panel;
+
+    public CircleStrategy(PaintPanel p) {
+        this.panel = p;
+    }
+
+    @Override
+    public void mousePressed(MouseEvent mouseEvent) {
+        System.out.println("Started Circle");
+        Point centre = new Point(mouseEvent.getX(), mouseEvent.getY());
+
+        // Create a circle using factory
+        ShapeFactory shapeFactory = panel.getShapeFactory();
+        Circle circle = (Circle) shapeFactory.getShape(panel.getMode());
+        this.panel.setShape(circle);
+
+        // Set info of circle (radius=0)
+        circle.setCentre(centre);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent mouseEvent) {
+        Circle circle = (Circle) this.panel.getShape();
+        double dx = circle.getCentre().x-mouseEvent.getX();
+        double dy = circle.getCentre().y-mouseEvent.getY();
+        double radius = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+        Point oldCentre = circle.getCentre();
+        double newX = circle.getCentre().x-radius;
+        double newY = circle.getCentre().y-radius;
+        Point newCentre = new Point(newX, newY);
+        circle.setCentre(newCentre);
+        circle.setRadius(radius*2);
+        // this.panel.getModel().addCircle(circle);
+        this.panel.getModel().addShape(circle);
+        circle.setCentre(oldCentre);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent mouseEvent) {
+        Circle circle = (Circle) this.panel.getShape();
+        if(circle!=null){
+            // Problematic notion of radius and centre!!
+            double dx = circle.getCentre().x-mouseEvent.getX();
+            double dy = circle.getCentre().y-mouseEvent.getY();
+            double radius = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+            double newX = circle.getCentre().x-radius;
+            double newY = circle.getCentre().y-radius;
+            Point newCentre = new Point(newX, newY);
+            circle.setCentre(newCentre);
+            circle.setRadius(radius*2);
+            // this.panel.getModel().addCircle(circle);
+            this.panel.getModel().addShape(circle);
+            System.out.println("Added Circle");
+            this.panel.setShape(null);
+        }
+    }
+}
