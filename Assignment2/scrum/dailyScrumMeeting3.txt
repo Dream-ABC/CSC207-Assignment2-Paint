@@ -69,9 +69,9 @@ Oct 26,2024
 	Obstacles I face: Refactoring code correctly
 
 Oct 27,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Considered how to refactor code to implement design patterns to change architecture
+	What I will do today: Double check all the work we needed to get done by Sprint2
+	Obstacles I face: Double-checking assignment instructions
 
 Oct 28,2024
 	What I did yesterday:
