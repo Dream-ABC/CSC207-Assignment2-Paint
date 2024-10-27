@@ -72,11 +72,14 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
     public void handle(MouseEvent mouseEvent) {
 
         this.strategy = strategyFactory.getStrategy(this.mode, this);
-        EventType<MouseEvent> mouseEventType = (EventType<MouseEvent>) mouseEvent.getEventType();
 
-        Consumer<MouseEvent> handler = eventHandlers.get(mouseEventType);
-        if (handler != null) {
-            handler.accept(mouseEvent);
+        if (this.strategy != null) {
+            EventType<MouseEvent> mouseEventType = (EventType<MouseEvent>) mouseEvent.getEventType();
+
+            Consumer<MouseEvent> handler = eventHandlers.get(mouseEventType);
+            if (handler != null) {
+                handler.accept(mouseEvent);
+            }
         }
     }
     // Later when we learn about inner classes...
