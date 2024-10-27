@@ -65,9 +65,9 @@ Oct 25,2024
 	Obstacles I face: None
 
 Oct 26,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing
+	What I will do today: Nothing
+	Obstacles I face: None
 
 Oct 27,2024
 	What I did yesterday:
