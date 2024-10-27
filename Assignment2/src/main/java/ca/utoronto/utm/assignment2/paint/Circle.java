@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Circle implements Shape{
@@ -55,5 +56,11 @@ public class Circle implements Shape{
         @Override
         public String getShape() {
                 return "Circle";
+        }
+
+        @Override
+        public void display(GraphicsContext g2d) {
+                g2d.fillOval(this.centre.x, this.centre.y,
+                        this.radius, this.radius);
         }
 }

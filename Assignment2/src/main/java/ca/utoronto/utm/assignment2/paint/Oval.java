@@ -1,5 +1,6 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Oval implements Shape {
@@ -63,5 +64,11 @@ public class Oval implements Shape {
     @Override
     public String getShape() {
         return "Oval";
+    }
+
+    @Override
+    public void display(GraphicsContext g2d) {
+        g2d.fillOval(this.topLeft.x, this.topLeft.y,
+                this.width, this.height);
     }
 }

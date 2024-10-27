@@ -1,5 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import javafx.collections.ObservableList;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
@@ -75,6 +77,18 @@ public class Triangle extends Polygon implements Shape {
     @Override
     public String getShape() {
         return "Triangle";
+    }
+
+    @Override
+    public void display(GraphicsContext g2d) {
+        ObservableList<Double> points = this.getPoints();
+        double[] xPoints = new double[3];
+        double[] yPoints = new double[3];
+        for (int i = 0; i < 3; i++) {
+            xPoints[i] = points.get(i);
+            yPoints[i] = points.get(i + 3);
+        }
+        g2d.fillPolygon(xPoints, yPoints, 3);
     }
 }
 

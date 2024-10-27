@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Rectangle implements Shape {
@@ -74,5 +75,11 @@ public class Rectangle implements Shape {
     @Override
     public String getShape() {
         return "Rectangle";
+    }
+
+    @Override
+    public void display(GraphicsContext g2d) {
+        g2d.fillRect(this.topLeft.x, this.topLeft.y,
+                this.width, this.height);
     }
 }
