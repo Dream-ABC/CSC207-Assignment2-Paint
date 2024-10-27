@@ -72,13 +72,13 @@ Oct 24,2024
 Oct 25,2024
 	What I did yesterday: Integrate the Triangle class into both the factory pattern and
                           the strategy pattern.
-	What I will do today: Simplify the code.
-	Obstacles I face: Looking for a way to eliminate the use of switch blocks and if statements.
+	What I will do today: Nothing. Need to focus on reviewing for my midterm.
+	Obstacles I face: Reviewing for midterm.
 
 Oct 26,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing. Need to focus on reviewing for my midterm.
+	What I will do today: Simplify the code.
+	Obstacles I face: Looking for a way to eliminate the use of switch blocks and if statements.
 
 Oct 27,2024
 	What I did yesterday:
