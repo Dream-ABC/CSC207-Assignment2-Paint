@@ -74,9 +74,9 @@ Oct 27,2024
 	Obstacles I face: Double-checking assignment instructions
 
 Oct 28,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Ensured all commits and pushes were made for Sprint2
+	What I will do today: Update the architecture document to be more detailed
+	Obstacles I face: Knowing what to write and using correct terminology
 
 Oct 29,2024
 	What I did yesterday:
