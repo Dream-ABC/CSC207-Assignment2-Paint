@@ -163,30 +163,6 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.018 : pengxi60 : Completed
-NAME     : Draw Triangle with Feedback & Shape Selection
-PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL : 2 hours
-AS A     : user
-I WANT   : To select a triangle tool, then click on one corner of an
-           triangle, drag, and release to specify two corners of a bounding
-           box of the triangle to be drawn in the current style, with
-           real-time feedback showing the current triangle as I drag.
-SO THAT  : I can easily add triangles to my canvas and see the triangle I
-           am building before releasing the mouse button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG2.003 : tianshi8 : Complete
-NAME     : Architecture behind choosing selection mode is poor
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 6 hours
-ISSUE    : Code is not modular and is difficult to expand. Need a better
-           architecture behind selecting a drawing mode, and handling
-           the drawing events. Consider some design patterns here.
-           Refactor ShapeChooserPanel and PaintPanel to get rid of the
-           'if' blocks in the PaintPanel mouse event code.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : BUG BUG?.004 : UTORID : NotStarted 
 NAME     : Architecture behind Model is poor
 PRIORITY : 3
@@ -225,7 +201,7 @@ SO THAT  : I can see the circle I am about to build on release of the mouse
            button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.003 : hingor13 : NotStarted
+TYPE     : USER STORY US1.003 : hingor13 : Completed
 NAME     : Draw Rectangle
 PRIORITY : 2
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -303,6 +279,30 @@ I WANT   : To click on one corner of the square, drag, and release to
            feedback showing the current square as I drag.
 SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US2.018 : pengxi60 : Completed
+NAME     : Draw Triangle with Feedback & Shape Selection
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 2 hours
+AS A     : user
+I WANT   : To select a triangle tool, then click on one corner of an
+           triangle, drag, and release to specify two corners of a bounding
+           box of the triangle to be drawn in the current style, with
+           real-time feedback showing the current triangle as I drag.
+SO THAT  : I can easily add triangles to my canvas and see the triangle I
+           am building before releasing the mouse button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG2.003 : tianshi8 : Complete
+NAME     : Architecture behind choosing selection mode is poor
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+ISSUE    : Code is not modular and is difficult to expand. Need a better
+           architecture behind selecting a drawing mode, and handling
+           the drawing events. Consider some design patterns here.
+           Refactor ShapeChooserPanel and PaintPanel to get rid of the
+           'if' blocks in the PaintPanel mouse event code.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
