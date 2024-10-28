@@ -54,6 +54,8 @@ DESIGN PATTERNS USED
 	         more scalable and adaptable to future requirements.
 	Builder:
 	Observer/Observable: PaintModel - Observable, PaintPanel - Observer
+	                     When a new Shape is drawn by the user, PaintModel notifies PaintPanel.
+	                     PaintPanel then updates its view to display the Shapes onto the canvas.
 
 
 
