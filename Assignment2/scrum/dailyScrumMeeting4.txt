@@ -57,24 +57,24 @@ Oct 24,2024
 	Obstacles I face: Not getting enough sleep...
 
 Oct 25,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished Midterm
+	What I will do today: Sleep
+	Obstacles I face: Sleep
 
 Oct 26,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Sleep
+	What I will do today: Sleep
+	Obstacles I face: Sleep
 
 Oct 27,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Sleep
+	What I will do today: Go to the gym.
+	Obstacles I face: Not being able to touch grass.
 
 Oct 28,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Went to the gym for 30 minutes before almost passing out.
+	What I will do today: Add a User Story to the product backlog
+	Obstacles I face: Nothing but sleep...
 
 Oct 29,2024
 	What I did yesterday:
