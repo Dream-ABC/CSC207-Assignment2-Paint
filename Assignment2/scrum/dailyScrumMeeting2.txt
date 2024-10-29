@@ -81,19 +81,20 @@ Oct 26,2024
 	Obstacles I face: Looking for a way to eliminate the use of switch blocks and if statements.
 
 Oct 27,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Simplify the code.
+	What I will do today: Nothing. My work for this sprint is done.
+	Obstacles I face: None.
 
 Oct 28,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing. My work for this sprint is done.
+	What I will do today: Nothing. Sprint 3 hasn't released yet.
+	Obstacles I face: None.
 
 Oct 29,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing. Sprint 3 hasn't released yet.
+	What I will do today: Have a scrum meeting and pick some user stories.
+	Obstacles I face: Thinking through how to implement transparency
+	                  adjustments using JavaFX.
 
 Oct 30,2024
 	What I did yesterday:

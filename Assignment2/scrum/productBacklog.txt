@@ -172,6 +172,36 @@ I WANT   : to add a textbox.
 SO THAT  : I can add text to the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
+NAME     : Canvas Background Colour
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT : to be able to change the background color of the canvas.
+SO THAT : I can customize the appearance of the canvas to match my project
+          needs or personal preference.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.018 : tianshi8 : NotStarted
+NAME     : Brush Style
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT : to choose from various brush styles (e.g., pencil, pen, marker).
+SO THAT : I can achieve different textures and line effects in my drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.019 : tianshi8 : NotStarted
+NAME     : Text Editor
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT : to add and customize text on the canvas with options to change the
+         font, size, and colour.
+SO THAT : I can create more personalized and visually distinct text elements
+          within my drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG?.004 : UTORID : NotStarted 
 NAME     : Architecture behind Model is poor
 PRIORITY : 3
