@@ -163,6 +163,15 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : USER STORY US?.016 : pengxi60 : NotStarted
+NAME     : Add Textbox
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : to add a textbox.
+SO THAT  : I can add text to the canvas.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG?.004 : UTORID : NotStarted 
 NAME     : Architecture behind Model is poor
 PRIORITY : 3
