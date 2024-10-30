@@ -84,9 +84,9 @@ Oct 29,2024
 	Obstacles I face: Understanding how to complete my chosen tasks
 
 Oct 30,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Had a meeting with my team to delegate tasks for this sprint
+	What I will do today: Consider how to implement my user stories
+	Obstacles I face: Knowing how to refactor the code, designing good architecture and writing good code, etc
 
 Oct 31,2024
 	What I did yesterday:
