@@ -79,9 +79,9 @@ Oct 28,2024
 	Obstacles I face: Knowing what to write and using correct terminology
 
 Oct 29,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Updated architecture document
+	What I will do today: Choose tasks for Sprint 3 to work on
+	Obstacles I face: Understanding how to complete my chosen tasks
 
 Oct 30,2024
 	What I did yesterday:
