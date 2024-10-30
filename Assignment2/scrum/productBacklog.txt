@@ -173,13 +173,14 @@ SO THAT  : I can add text to the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
-NAME     : Canvas Background Colour
+NAME     : Filling Tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT : to be able to change the background color of the canvas.
-SO THAT : I can customize the appearance of the canvas to match my project
-          needs or personal preference.
+I WANT : to click on a shape or the background to fill it with a specific
+         colour.
+SO THAT : I can quickly add colours to different parts of my drawing without
+          manually painting every area.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.018 : tianshi8 : NotStarted
