@@ -97,9 +97,10 @@ Oct 29,2024
 	                  adjustments using JavaFX.
 
 Oct 30,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Have a scrum meeting and pick some user stories.
+	What I will do today: Start working on US3.012. Discover bugs on File
+	                      and Edit menu.
+	Obstacles I face: Figuring out how to store and manage different layers.
 
 Oct 31,2024
 	What I did yesterday:
