@@ -33,6 +33,7 @@ public class View implements EventHandler<ActionEvent> {
             stage.setScene(scene);
             stage.setTitle("Paint");
             stage.show();
+            root.requestFocus();
         }
 
         public PaintModel getPaintModel() {
