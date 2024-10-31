@@ -4,4 +4,31 @@
 
 # Sprint 3 Oct 27-Nov 03, 2024
 # Sprint 3 Backlog UserStories go below
-
+--------------------------------------------------------------------------
+TYPE     : BUG BUG?.007 : wenjess1 : NotStarted
+NAME     : Default shape selection is incorrect
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
+           It would be best to have no default shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.008 : wenjess1 : NotStarted
+NAME     : Stroke Eraser
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to erase drawings on the canvas
+SO THAT  : I have more customizability with the Paint application.
+           In particular, this would enhance my ease of control over the canvas
+           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.009 : wenjess1 : NotStarted
+NAME     : Selection tool
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to select drawings on the canvas
+SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
+--------------------------------------------------------------------------
