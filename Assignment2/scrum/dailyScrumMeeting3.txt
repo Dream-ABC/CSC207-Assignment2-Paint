@@ -89,9 +89,9 @@ Oct 30,2024
 	Obstacles I face: Knowing how to refactor the code, designing good architecture and writing good code, etc
 
 Oct 31,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Thought about how to make a selection tool
+	What I will do today: Try to actually make the selection tool
+	Obstacles I face: How to indicate to the user what they're selecting, how to actually select something and move it, ...
 
 Nov 1,2024
 	What I did yesterday:
