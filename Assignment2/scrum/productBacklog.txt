@@ -125,7 +125,7 @@ I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.012 : tianshi8 : NotStarted
+TYPE     : USER STORY US3.012 : tianshi8 : Started
 NAME     : Layer Support
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -221,6 +221,30 @@ PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
            It would be best to have no default shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG?.008 : tianshi8 : NotStarted
+NAME     : File menu is not implemented
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : The File menu is currently non-functional. The program should
+           implement the following features:
+               create a new file
+               save the current canvas as a file
+               load a file onto the canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG?.009 : tianshi8 : NotStarted
+NAME     : Edit menu is not implemented
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : The Edit menu is currently non-functional. The program should
+           implement the following features:
+               cut a selected shape
+               copy a selected shape
+               paste a selected shape
+               undo the last action
+               redo the previously undone action
 --------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
