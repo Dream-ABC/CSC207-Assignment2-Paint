@@ -1,15 +1,14 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.scene.canvas.Canvas;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 import java.util.*;
 import java.util.function.Consumer;
 
-public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Observer {
+public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observer {
     private String mode = "Circle";
     private PaintModel model;
     private Shape shape;
@@ -19,13 +18,17 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
 
     public PaintPanel(PaintModel model) {
-        super(300, 300);
+        // super(300, 300);
 
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
 
         this.model = model;
         this.model.addObserver(this);
+
+        PaintLayer initLayer = new PaintLayer(300, 300);
+        this.model.addLayer(initLayer);
+        this.model.selectLayer(initLayer);
 
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, this);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, this);
@@ -56,11 +59,23 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
         return model;
     }
 
-    public Shape getShape() {
+    public void switchLayer(PaintLayer layer) {
+        this.model.selectLayer(layer);
+    }
+
+    public void addLayer(PaintLayer layer) {
+        this.model.addLayer(layer);
+    }
+
+    public void removeLayer(PaintLayer layer) {
+        this.model.removeLayer(layer);
+    }
+
+    public Shape getCurrentShape() {
         return shape;
     }
 
-    public void setShape(Shape shape) {
+    public void setCurrentShape(Shape shape) {
         this.shape = shape;
     }
 
@@ -82,21 +97,29 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
             }
         }
     }
+
     // Later when we learn about inner classes...
     // https://docs.oracle.com/javafx/2/events/DraggablePanelsExample.java.htm
 
     @Override
     public void update(Observable o, Object arg) {
+        System.out.println("ready to update");
+        this.getChildren().setAll(this.model.getLayers());
 
-        GraphicsContext g2d = this.getGraphicsContext2D();
-        g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
+//        GraphicsContext g2d = this.getGraphicsContext2D();
+//        g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
 
-        ArrayList<Shape> allShapes = this.model.getAllShapes();
+//        ArrayList<Shape> allShapes = this.model.getAllShapes();
+//
+//        for (Shape shape : allShapes) {
+//            g2d.setFill(shape.getColor());
+//            shape.display(g2d);
+//        }
 
-        for (Shape shape : allShapes) {
-            g2d.setFill(shape.getColor());
+        System.out.println("layers:"+this.model.getLayers());
 
-            shape.display(g2d);
+        for (PaintLayer layer : this.model.getLayers()) {
+            layer.display();
         }
     }
 }

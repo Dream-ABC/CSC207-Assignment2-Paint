@@ -17,7 +17,7 @@ public class SquiggleStrategy implements ShapeStrategy {
 
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Squiggle squiggle = (Squiggle) shapeFactory.getShape(panel.getMode());
-        this.panel.setShape(squiggle);
+        this.panel.setCurrentShape(squiggle);
 
         // Set info of squiggle (start point)
         // this.panel.getModel().addPath(squiggle);
@@ -27,7 +27,7 @@ public class SquiggleStrategy implements ShapeStrategy {
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Squiggle squiggle = (Squiggle) this.panel.getShape();
+        Squiggle squiggle = (Squiggle) this.panel.getCurrentShape();
         Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
         squiggle.addPoint(point);
         this.panel.getModel().notifyUpdate();
@@ -36,6 +36,6 @@ public class SquiggleStrategy implements ShapeStrategy {
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         System.out.println("Added Squiggle");
-        this.panel.setShape(null);
+        this.panel.setCurrentShape(null);
     }
 }

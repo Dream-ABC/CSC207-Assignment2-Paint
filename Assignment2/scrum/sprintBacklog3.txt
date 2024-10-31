@@ -5,3 +5,13 @@
 # Sprint 3 Oct 27-Nov 03, 2024
 # Sprint 3 Backlog UserStories go below
 
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.012 : tianshi8 : Started
+NAME     : Layer Support
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to add new layers.
+SO THAT  : I can independently edit different layers and flexibly control
+           the drawing effects.
+--------------------------------------------------------------------------
