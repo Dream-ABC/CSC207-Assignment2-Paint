@@ -19,37 +19,34 @@ public class View implements EventHandler<ActionEvent> {
         private LayerChooserController layerChooserController;
 
         public View(PaintModel model, Stage stage) throws FileNotFoundException {
-            this.paintModel = model;
+                this.paintModel = model;
 
-            this.paintPanel = new PaintPanel(this.paintModel);
-            this.shapeChooserPanel = new ShapeChooserPanel(this);
-            this.layerChooserPanel = new LayerChooserPanel(this);
-            this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
+                this.paintPanel = new PaintPanel(this.paintModel);
+                this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
+                this.layerChooserPanel = new LayerChooserPanel(this);
+                this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
 
-            BorderPane root = new BorderPane();
-            root.setTop(createMenuBar());
-            root.setCenter(this.paintPanel);
-            root.setLeft(this.shapeChooserPanel);
-            ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
-            root.setRight(layerPane);
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Paint");
-            stage.show();
-            root.requestFocus();
+                BorderPane root = new BorderPane();
+                root.setTop(createMenuBar());
+                root.setCenter(this.paintPanel);
+                root.setLeft(this.shapeChooserPanel);
+                ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
+                root.setRight(layerPane);
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setTitle("Paint");
+                stage.show();
+                root.requestFocus();
         }
 
         public PaintModel getPaintModel() {
                 return this.paintModel;
         }
 
-        // ugly way to do this?
-        public void setMode(String mode){
-            this.paintPanel.setMode(mode);
-        }
         public void setLayer(String layerName){
                 this.layerChooserController.selectLayer(layerName);
         }
+
         private MenuBar createMenuBar() {
 
                 MenuBar menuBar = new MenuBar();

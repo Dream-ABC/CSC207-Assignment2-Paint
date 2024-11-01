@@ -1,4 +1,5 @@
 package ca.utoronto.utm.assignment2.paint;
+import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;      // dont know yet
@@ -9,13 +10,14 @@ import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Observer;
 
 public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEvent> {
 
-        private View view;
+        private PaintModel model;
 
-        public ShapeChooserPanel(View view) throws FileNotFoundException {
-                this.view = view;
+        public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
+                this.model = model;
 
                 String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Oval", "Triangle" };
                 ImageView[] buttonImages = new ImageView[buttonIds.length];
@@ -59,7 +61,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                 }
                 ((Button) event.getSource()).setStyle("-fx-background-color: lightblue");
                 String command = ((Button) event.getSource()).getId();
-                view.setMode(command);
+                model.setMode(command);
                 System.out.println(command);
         }
 }
