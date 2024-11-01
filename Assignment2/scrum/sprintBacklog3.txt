@@ -68,6 +68,16 @@ SO THAT  : I can undo something I did incorrectly or imperfectly, and able
            to redo it if I undo something I didn't want to.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : USER STORY US3.012 : tianshi8 : Completed
+NAME     : Layer Support
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL :
+AS A     : user
+I WANT   : To be able to add new layers.
+SO THAT  : I can independently edit different layers and flexibly control
+           the drawing effects.
+------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US3.015 : hingor13 : NotStarted
 NAME     : Canvas Scalability
 PRIORITY : 3
