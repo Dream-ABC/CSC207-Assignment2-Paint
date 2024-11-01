@@ -94,9 +94,9 @@ Oct 31,2024
 	Obstacles I face: How to indicate to the user what they're selecting, how to actually select something and move it, ...
 
 Nov 1,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed BUG2.007
+	What I will do today: Continue working on the selection tool
+	Obstacles I face: Making clean and smart changes to code and/or architecture
 
 Nov 2,2024
 	What I did yesterday:
