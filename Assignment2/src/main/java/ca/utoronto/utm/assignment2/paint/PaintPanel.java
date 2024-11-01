@@ -20,7 +20,6 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
 
     public PaintPanel(PaintModel model) {
         super(300, 300);
-
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
 

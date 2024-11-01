@@ -29,12 +29,20 @@ public class View implements EventHandler<ActionEvent> {
             root.setTop(createMenuBar());
             root.setCenter(this.paintPanel);
             root.setLeft(this.shapeChooserPanel);
-            paintPanel.widthProperty().bind(root.widthProperty());
-            paintPanel.heightProperty().bind(root.heightProperty());
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Paint");
+            this.paintPanel.update(this.paintModel, null);
             stage.show();
+
+            stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
+                paintPanel.setWidth(newWidth.doubleValue());
+                paintPanel.update(this.paintModel, null);
+            });
+            stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+                paintPanel.setHeight(newHeight.doubleValue());
+                paintPanel.update(this.paintModel, null);
+            });
             root.requestFocus();
         }
 
