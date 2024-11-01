@@ -29,6 +29,8 @@ public class View implements EventHandler<ActionEvent> {
             root.setTop(createMenuBar());
             root.setCenter(this.paintPanel);
             root.setLeft(this.shapeChooserPanel);
+            paintPanel.widthProperty().bind(root.widthProperty());
+            paintPanel.heightProperty().bind(root.heightProperty());
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Paint");
