@@ -105,13 +105,13 @@ Oct 30,2024
 Oct 31,2024
 	What I did yesterday: Start working on US3.012. Discover bugs on File
                           and Edit menu.
-	What I will do today: Added GUI for layers.
+	What I will do today: Add GUI for layers.
 	Obstacles I face: Managing buttons and updating button states.
 
 Nov 1,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Add GUI for layers.
+	What I will do today: Solve pull request for BUG3.004. Start US3.013.
+	Obstacles I face: Positioning the sliders in the GUI.
 
 Nov 2,2024
 	What I did yesterday:
