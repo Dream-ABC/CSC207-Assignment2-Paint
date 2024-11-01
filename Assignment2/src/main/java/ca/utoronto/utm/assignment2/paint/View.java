@@ -23,7 +23,7 @@ public class View implements EventHandler<ActionEvent> {
             this.paintModel = model;
 
             this.paintPanel = new PaintPanel(this.paintModel);
-            this.shapeChooserPanel = new ShapeChooserPanel(this);
+            this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
 
             BorderPane root = new BorderPane();
             root.setTop(createMenuBar());
@@ -40,10 +40,6 @@ public class View implements EventHandler<ActionEvent> {
                 return this.paintModel;
         }
 
-        // ugly way to do this?
-        public void setMode(String mode){
-            this.paintPanel.setMode(mode);
-        }
         private MenuBar createMenuBar() {
 
                 MenuBar menuBar = new MenuBar();

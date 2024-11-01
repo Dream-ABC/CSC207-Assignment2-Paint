@@ -44,14 +44,6 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
         return mode;
     }
 
-    /**
-     * Controller aspect of this
-     */
-    public void setMode(String mode) {
-        this.mode = mode;
-        System.out.println(this.mode);
-    }
-
     public PaintModel getModel() {
         return model;
     }
@@ -87,6 +79,8 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
 
     @Override
     public void update(Observable o, Object arg) {
+        PaintModel model = (PaintModel) o;
+        this.mode = model.getMode();
 
         GraphicsContext g2d = this.getGraphicsContext2D();
         g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
