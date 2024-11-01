@@ -2,6 +2,7 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -26,9 +27,8 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.model = model;
         this.model.addObserver(this);
 
-        PaintLayer initLayer = new PaintLayer(300, 300);
-        this.model.addLayer(initLayer);
-        this.model.selectLayer(initLayer);
+        // init layer
+        this.model.addLayer(new PaintLayer());
 
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, this);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, this);
@@ -59,17 +59,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return model;
     }
 
-    public void switchLayer(PaintLayer layer) {
-        this.model.selectLayer(layer);
-    }
-
-    public void addLayer(PaintLayer layer) {
-        this.model.addLayer(layer);
-    }
-
-    public void removeLayer(PaintLayer layer) {
-        this.model.removeLayer(layer);
-    }
 
     public Shape getCurrentShape() {
         return shape;
@@ -103,7 +92,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("ready to update");
         this.getChildren().setAll(this.model.getLayers());
 
 //        GraphicsContext g2d = this.getGraphicsContext2D();
@@ -115,8 +103,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 //            g2d.setFill(shape.getColor());
 //            shape.display(g2d);
 //        }
-
-        System.out.println("layers:"+this.model.getLayers());
 
         for (PaintLayer layer : this.model.getLayers()) {
             layer.display();

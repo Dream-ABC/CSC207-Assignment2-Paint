@@ -8,10 +8,15 @@ public class PaintModel extends Observable {
     // private ArrayList<Shape> allShapes = new ArrayList<>();
     private PaintLayer selectedLayer;
 
-    public void selectLayer(PaintLayer layer) {
-        this.selectedLayer = layer;
+    public boolean selectLayer(String layerName) {
+        int layerIndex = Integer.parseInt(layerName.substring(5));
+        if (layerIndex == layers.indexOf(this.selectedLayer)) {
+            return false;  // nothing changed
+        }
+        this.selectedLayer = layers.get(layerIndex);
         this.setChanged();
         this.notifyObservers();
+        return true;
     }
 
     public void addLayer(PaintLayer layer) {
@@ -31,6 +36,13 @@ public class PaintModel extends Observable {
             // if the current layer is removed, automatically switch to the next layer
             this.selectedLayer = this.layers.getFirst();
         }
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+    public void switchLayerVisible(String layerName) {
+        int layerIndex = Integer.parseInt(layerName.substring(5));
+        layers.get(layerIndex).switchVisible();
         this.setChanged();
         this.notifyObservers();
     }
