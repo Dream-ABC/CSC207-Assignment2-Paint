@@ -4,10 +4,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -18,17 +15,23 @@ public class View implements EventHandler<ActionEvent> {
         private PaintModel paintModel;
         private PaintPanel paintPanel;
         private ShapeChooserPanel shapeChooserPanel;
+        private LayerChooserPanel layerChooserPanel;
+        private LayerChooserController layerChooserController;
 
         public View(PaintModel model, Stage stage) throws FileNotFoundException {
             this.paintModel = model;
 
             this.paintPanel = new PaintPanel(this.paintModel);
             this.shapeChooserPanel = new ShapeChooserPanel(this);
+            this.layerChooserPanel = new LayerChooserPanel(this);
+            this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
 
             BorderPane root = new BorderPane();
             root.setTop(createMenuBar());
             root.setCenter(this.paintPanel);
             root.setLeft(this.shapeChooserPanel);
+            ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
+            root.setRight(layerPane);
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Paint");
@@ -43,6 +46,9 @@ public class View implements EventHandler<ActionEvent> {
         // ugly way to do this?
         public void setMode(String mode){
             this.paintPanel.setMode(mode);
+        }
+        public void setLayer(String layerName){
+                this.layerChooserController.selectLayer(layerName);
         }
         private MenuBar createMenuBar() {
 

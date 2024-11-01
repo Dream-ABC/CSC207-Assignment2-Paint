@@ -20,18 +20,19 @@ public class TriangleStrategy implements ShapeStrategy {
         // Create a triangle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Triangle triangle = (Triangle) shapeFactory.getShape(panel.getMode());
-        this.panel.setShape(triangle);
+        this.panel.setCurrentShape(triangle);
 
         // Set info of triangle (radius=0)
         triangle.setOrigin(origin);
         triangle.setTopLeft(topLeft);
         triangle.updatePoints();
+        this.panel.getModel().addShape(triangle);
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
 
-        Triangle triangle = (Triangle) this.panel.getShape();
+        Triangle triangle = (Triangle) this.panel.getCurrentShape();
         double newWidth = Math.abs(triangle.getOrigin().x-mouseEvent.getX());
         double newHeight = Math.abs(triangle.getOrigin().y-mouseEvent.getY());
         triangle.setBase(newWidth);
@@ -42,12 +43,14 @@ public class TriangleStrategy implements ShapeStrategy {
         triangle.updatePoints();
 
         // this.panel.getModel().addtriangle(triangle);
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(triangle);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        Triangle triangle = (Triangle) this.panel.getShape();
+        Triangle triangle = (Triangle) this.panel.getCurrentShape();
 
         double newWidth = Math.abs(triangle.getOrigin().x-mouseEvent.getX());
         double newHeight = Math.abs(triangle.getOrigin().y-mouseEvent.getY());
@@ -59,8 +62,10 @@ public class TriangleStrategy implements ShapeStrategy {
         triangle.updatePoints();
 
         // this.panel.getModel().addtriangle(triangle);
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(triangle);
         System.out.println("Added Triangle");
-        this.panel.setShape(null);
+        this.panel.setCurrentShape(null);
     }
 }

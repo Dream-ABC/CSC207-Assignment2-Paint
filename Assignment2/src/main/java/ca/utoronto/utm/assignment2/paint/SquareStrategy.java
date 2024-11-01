@@ -19,16 +19,17 @@ public class SquareStrategy implements ShapeStrategy {
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Square square = (Square) shapeFactory.getShape(panel.getMode());
-        this.panel.setShape(square);
+        this.panel.setCurrentShape(square);
 
         // Set info of circle (radius=0)
         square.setOrigin(origin);
         square.setTopLeft(topLeft);
+        this.panel.getModel().addShape(square);
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Square square = (Square) this.panel.getShape();
+        Square square = (Square) this.panel.getCurrentShape();
         Point origin = square.getOrigin();
         double x = mouseEvent.getX();
         double y = mouseEvent.getY();
@@ -50,12 +51,14 @@ public class SquareStrategy implements ShapeStrategy {
             square.setTopLeft(new Point(origin.x, origin.y));
         }
         // this.panel.getModel().addSquare(square);
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(square);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        Square square = (Square) this.panel.getShape();
+        Square square = (Square) this.panel.getCurrentShape();
         Point origin = square.getOrigin();
         if(square!=null){
             double x = mouseEvent.getX();
@@ -78,9 +81,11 @@ public class SquareStrategy implements ShapeStrategy {
                 square.setTopLeft(new Point(origin.x, origin.y));
             }
             // this.panel.getModel().addSquare(square);
+            Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+            this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShape(square);
             System.out.println("Added Square");
-            this.panel.setShape(null);
+            this.panel.setCurrentShape(null);
         }
     }
 }

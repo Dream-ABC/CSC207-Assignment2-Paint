@@ -18,15 +18,16 @@ public class CircleStrategy implements ShapeStrategy {
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Circle circle = (Circle) shapeFactory.getShape(panel.getMode());
-        this.panel.setShape(circle);
+        this.panel.setCurrentShape(circle);
 
         // Set info of circle (radius=0)
         circle.setCentre(centre);
+        this.panel.getModel().addShape(circle);
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Circle circle = (Circle) this.panel.getShape();
+        Circle circle = (Circle) this.panel.getCurrentShape();
         double dx = circle.getCentre().x-mouseEvent.getX();
         double dy = circle.getCentre().y-mouseEvent.getY();
         double radius = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
@@ -37,13 +38,15 @@ public class CircleStrategy implements ShapeStrategy {
         circle.setCentre(newCentre);
         circle.setRadius(radius*2);
         // this.panel.getModel().addCircle(circle);
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(circle);
         circle.setCentre(oldCentre);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        Circle circle = (Circle) this.panel.getShape();
+        Circle circle = (Circle) this.panel.getCurrentShape();
         if(circle!=null){
             // Problematic notion of radius and centre!!
             double dx = circle.getCentre().x-mouseEvent.getX();
@@ -55,9 +58,11 @@ public class CircleStrategy implements ShapeStrategy {
             circle.setCentre(newCentre);
             circle.setRadius(radius*2);
             // this.panel.getModel().addCircle(circle);
+            Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+            this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShape(circle);
             System.out.println("Added Circle");
-            this.panel.setShape(null);
+            this.panel.setCurrentShape(null);
         }
     }
 }
