@@ -114,8 +114,8 @@ Nov 1,2024
 	Obstacles I face: Positioning the sliders in the GUI.
 
 Nov 2,2024
-	What I did yesterday:
-	What I will do today:
+	What I did yesterday: Solve pull request for BUG3.004. Start US3.013.
+	What I will do today: Finish US3.013, refine functions in US3.012. Start US3.005
 	Obstacles I face:
 
 Nov 3,2024

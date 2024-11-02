@@ -14,7 +14,7 @@ ISSUE    : When the user launches the Paint program, the default shape selection
            It would be best to have no default shape selected.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.005 : tianshi8 : NotStarted
+TYPE     : USER STORY US3.005 : tianshi8 : Started
 NAME     : Color selector
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL :
@@ -76,7 +76,16 @@ AS A     : user
 I WANT   : To be able to add new layers.
 SO THAT  : I can independently edit different layers and flexibly control
            the drawing effects.
-------------------------------------
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.013 : tianshi8 : Complete
+NAME     : Transparency
+PRIORITY : 3
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To be able to adjust the transparency of each object.
+SO THAT  : I can control the visibility of different elements in my artwork.
+--------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.015 : hingor13 : NotStarted
 NAME     : Canvas Scalability

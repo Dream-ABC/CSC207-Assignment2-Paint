@@ -16,7 +16,7 @@
 # as appropriate.
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.005 : tianshi8 : NotStarted
+TYPE     : USER STORY US3.005 : tianshi8 : Started
 NAME     : Color selector
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -134,15 +134,6 @@ AS A     : user
 I WANT   : To be able to add new layers.
 SO THAT  : I can independently edit different layers and flexibly control
            the drawing effects.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US3.013 : tianshi8 : Started
-NAME     : Transparency
-PRIORITY : 3
-ESTIMATE : 2 hours    ACTUAL :
-AS A     : user
-I WANT   : To be able to adjust the transparency of each object.
-SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
@@ -376,6 +367,15 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
            the drawing events. Consider some design patterns here.
            Refactor ShapeChooserPanel and PaintPanel to get rid of the
            'if' blocks in the PaintPanel mouse event code.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.013 : tianshi8 : Complete
+NAME     : Transparency
+PRIORITY : 3
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To be able to adjust the transparency of each object.
+SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
