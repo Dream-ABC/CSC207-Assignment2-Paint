@@ -66,4 +66,13 @@ public class PaintModel extends Observable {
         this.setChanged();
         this.notifyObservers();
     }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+        this.setChanged();
+        this.notifyObservers();
+    }
+    public String getMode() {
+        return mode;
+    }
 }
