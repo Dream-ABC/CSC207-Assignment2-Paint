@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
 public interface Shape {
     Color getColor();
     int getThickness();
-    double getTransparency();
-    void setTransparency(int transparency);
+    double getOpaqueness();
+    void setOpaqueness(int opaque);
     String getShape();
     void display(GraphicsContext g2d);
 }

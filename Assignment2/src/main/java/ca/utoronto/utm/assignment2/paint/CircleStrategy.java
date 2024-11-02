@@ -22,7 +22,7 @@ public class CircleStrategy implements ShapeStrategy {
 
         // Set info of circle (radius=0)
         circle.setCentre(centre);
-        circle.setTransparency(this.panel.getTransparency());
+        circle.setOpaqueness(this.panel.getOpaqueness());
         this.panel.getModel().addShape(circle);
     }
 

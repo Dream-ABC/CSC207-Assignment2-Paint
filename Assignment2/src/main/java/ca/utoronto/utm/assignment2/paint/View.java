@@ -18,7 +18,7 @@ public class View implements EventHandler<ActionEvent> {
     private ShapeChooserPanel shapeChooserPanel;
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
-    private TransparenySlider transparenySlider;
+    private OpaquenessSlider opaquenessSlider;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
@@ -110,9 +110,9 @@ public class View implements EventHandler<ActionEvent> {
 
         menu = new Menu("Options");
 
-        menuItem = new MenuItem("Transparency");
-        this.transparenySlider = new TransparenySlider(this.paintPanel, this);
-        menuItem.setOnAction(event -> showTransparencySlider()); // Show the slider popup
+        menuItem = new MenuItem("Opaqueness");
+        this.opaquenessSlider = new OpaquenessSlider(this.paintPanel);
+        menuItem.setOnAction(event -> showOpaquenessSlider()); // Show the slider popup
         menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);
@@ -120,12 +120,12 @@ public class View implements EventHandler<ActionEvent> {
         return menuBar;
     }
 
-    private void showTransparencySlider() {
+    private void showOpaquenessSlider() {
         // Prevent unexpected actions on canvas
         this.paintPanel.setDisable(true);
 
         Popup popup = new Popup();
-        popup.getContent().add(this.transparenySlider.getSlider()); // Add the transparency slider directly to the popup
+        popup.getContent().add(this.opaquenessSlider.getSlider()); // Add the opaqueness slider directly to the popup
         popup.setAutoHide(true);
 
         // when the popup event is ended (popup closed), enable actions on canvas again

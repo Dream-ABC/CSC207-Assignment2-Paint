@@ -4,9 +4,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
 
-public class TransparenySlider extends Slider implements ChangeListener {
+public class OpaquenessSlider extends Slider implements ChangeListener {
 
-    private View view;
     private PaintPanel paintPanel;
     private Slider slider;
 
@@ -15,22 +14,19 @@ public class TransparenySlider extends Slider implements ChangeListener {
      * its values to transparency settings for shapes, and adds it to the view.
      *
      * @param paintPanel the main panel where drawing actions are managed.
-     * @param view the main interface displaying user drawing actions.
      */
-    public TransparenySlider(PaintPanel paintPanel, View view) {
+    public OpaquenessSlider(PaintPanel paintPanel) {
 
-        this.view = view;
         this.paintPanel = paintPanel;
+        this.paintPanel.setOpaqueness(100);
 
         // Create popup and slider
         this.slider = new Slider(0, 100, 100);
         this.slider.setShowTickLabels(true);
         this.slider.setMajorTickUnit(10);
         this.slider.setBlockIncrement(1);
-        System.out.println("slider style set");
 
         // Add event handler
-        System.out.println("add listener");
         this.slider.valueProperty().addListener(this);
     }
 
@@ -55,6 +51,6 @@ public class TransparenySlider extends Slider implements ChangeListener {
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
         int transparencyValue = ((Number) newValue).intValue();
         System.out.println(transparencyValue);
-        this.paintPanel.setTransparency(transparencyValue);
+        this.paintPanel.setOpaqueness(transparencyValue);
     }
 }

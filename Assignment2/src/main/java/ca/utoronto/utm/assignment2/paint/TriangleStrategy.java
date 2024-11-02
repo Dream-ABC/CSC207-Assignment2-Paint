@@ -26,7 +26,7 @@ public class TriangleStrategy implements ShapeStrategy {
         triangle.setOrigin(origin);
         triangle.setTopLeft(topLeft);
         triangle.updatePoints();
-        triangle.setTransparency(this.panel.getTransparency());
+        triangle.setOpaqueness(this.panel.getOpaqueness());
         this.panel.getModel().addShape(triangle);
     }
 
