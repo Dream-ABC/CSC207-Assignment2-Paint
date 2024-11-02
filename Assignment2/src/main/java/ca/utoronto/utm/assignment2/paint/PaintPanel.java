@@ -16,6 +16,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     private ShapeFactory shapeFactory;
     private StrategyFactory strategyFactory;
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
+    private Eraser eraser;
 
     public PaintPanel(PaintModel model) {
 
@@ -57,6 +58,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     public void setCurrentShape(Shape shape) {
         this.shape = shape;
     }
+
+    public Eraser getEraser() { return eraser; }
+
+    public void setEraser(Eraser eraser) { this.eraser = eraser; }
 
     public ShapeFactory getShapeFactory() {
         return shapeFactory;

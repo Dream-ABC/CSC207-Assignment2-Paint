@@ -12,6 +12,7 @@ public class PaintLayer extends Canvas {
     private boolean lastVisible;
     private Color color;
     private ArrayList<Shape> shapes = new ArrayList<>();
+    private Eraser eraser;
 
     public PaintLayer() {
         super(300, 300);  // default size
@@ -35,6 +36,9 @@ public class PaintLayer extends Canvas {
     public void removeShape(Shape shape) {
         this.shapes.remove(shape);
     }
+
+    public void addEraser(Eraser eraser) {this.eraser = eraser;}
+    public void removeEraser(Eraser eraser) {this.eraser = null;}
 
     public ArrayList<Shape> getShapes() {
         return shapes;
