@@ -99,9 +99,9 @@ Nov 1,2024
 	Obstacles I face: Making clean and smart changes to code and/or architecture
 
 Nov 2,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Considered how to make an eraser tool
+	What I will do today: Add javadocs, work on US stories, help a teammate do pull requests
+	Obstacles I face: How to make it work with my teammates' new code
 
 Nov 3,2024
 	What I did yesterday:
