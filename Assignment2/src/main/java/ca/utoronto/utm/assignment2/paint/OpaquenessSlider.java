@@ -3,6 +3,7 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
+import javafx.stage.Popup;
 
 public class OpaquenessSlider extends Slider implements ChangeListener {
 
@@ -25,6 +26,7 @@ public class OpaquenessSlider extends Slider implements ChangeListener {
         this.slider.setShowTickLabels(true);
         this.slider.setMajorTickUnit(10);
         this.slider.setBlockIncrement(1);
+        this.slider.setPrefWidth(200);
 
         // Add event handler
         this.slider.valueProperty().addListener(this);
@@ -40,6 +42,23 @@ public class OpaquenessSlider extends Slider implements ChangeListener {
     }
 
     /**
+     *
+     */
+    public void show() {
+        // Prevent unexpected actions on canvas
+        this.paintPanel.setDisable(true);
+
+        Popup popup = new Popup();
+        popup.getContent().add(this.slider); // Add the opaqueness slider directly to the popup
+        popup.setAutoHide(true);
+
+        // when the popup event is ended (popup closed), enable actions on canvas again
+        popup.setOnHidden(event -> this.paintPanel.setDisable(false));
+
+        popup.show(this.paintPanel.getScene().getWindow());
+    }
+
+    /**
      * Whenever the value of the transparency slider changes, makes changes
      * in paint panel as well.
      *
@@ -50,7 +69,6 @@ public class OpaquenessSlider extends Slider implements ChangeListener {
     @Override
     public void changed(ObservableValue observable, Object oldValue, Object newValue) {
         int transparencyValue = ((Number) newValue).intValue();
-        System.out.println(transparencyValue);
         this.paintPanel.setOpaqueness(transparencyValue);
     }
 }

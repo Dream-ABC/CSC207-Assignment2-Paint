@@ -121,17 +121,7 @@ public class View implements EventHandler<ActionEvent> {
     }
 
     private void showOpaquenessSlider() {
-        // Prevent unexpected actions on canvas
-        this.paintPanel.setDisable(true);
-
-        Popup popup = new Popup();
-        popup.getContent().add(this.opaquenessSlider.getSlider()); // Add the opaqueness slider directly to the popup
-        popup.setAutoHide(true);
-
-        // when the popup event is ended (popup closed), enable actions on canvas again
-        popup.setOnHidden(event -> this.paintPanel.setDisable(false));
-
-        popup.show(this.paintPanel.getScene().getWindow());
+        this.opaquenessSlider.show();
     }
 
     @Override
