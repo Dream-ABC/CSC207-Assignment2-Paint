@@ -146,12 +146,12 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.016 : pengxi60 : NotStarted
-NAME     : Add Textbox
+NAME     : Paint GUI overhaul
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : to add a textbox.
-SO THAT  : I can add text to the canvas.
+I WANT   : an appealing and interactable user interface
+SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
