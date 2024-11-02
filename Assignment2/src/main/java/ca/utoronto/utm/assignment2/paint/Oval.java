@@ -2,6 +2,8 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Rectangle;
 
 public class Oval implements Shape {
     private Point origin;
@@ -64,6 +66,13 @@ public class Oval implements Shape {
     @Override
     public String getShape() {
         return "Oval";
+    }
+
+    @Override
+    public boolean overlaps(Eraser eraser) {
+        Rectangle e = new Rectangle(eraser.getCentre().x+(eraser.getDimension()/2.0), eraser.getCentre().y+(eraser.getDimension()/2.0), eraser.getDimension(), eraser.getDimension());
+        Ellipse o = new Ellipse(this.topLeft.x-this.width,this.topLeft.y-this.height, this.width, this.height);
+        return e.getBoundsInParent().intersects(o.getBoundsInParent());
     }
 
     @Override

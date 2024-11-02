@@ -19,7 +19,7 @@ public class Squiggle implements Shape {
         this.points.add(p);
     }
     
-    public ArrayList<Point> getpoints() {
+    public ArrayList<Point> getPoints() {
         return this.points;
     }
 
@@ -36,6 +36,11 @@ public class Squiggle implements Shape {
     @Override
     public String getShape() {
         return "Squiggle";
+    }
+
+    @Override
+    public boolean overlaps(Eraser eraser) {
+        return false;
     }
 
     @Override

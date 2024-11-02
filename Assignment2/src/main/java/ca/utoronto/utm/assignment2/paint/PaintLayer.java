@@ -80,7 +80,6 @@ public class PaintLayer extends Canvas {
                 shape.display(g2d);
             }
         }
-        System.out.println("eraser" + this.eraser);
         if (this.eraser != null){
             eraser.display(g2d);
         }

@@ -78,6 +78,13 @@ public class Rectangle implements Shape {
     }
 
     @Override
+    public boolean overlaps(Eraser eraser) {
+        javafx.scene.shape.Rectangle e = new javafx.scene.shape.Rectangle(eraser.getCentre().x+(eraser.getDimension()/2.0), eraser.getCentre().y+(eraser.getDimension()/2.0), eraser.getDimension(), eraser.getDimension());
+        javafx.scene.shape.Rectangle r = new javafx.scene.shape.Rectangle(this.topLeft.x, this.topLeft.y, this.width, this.height);
+        return e.getBoundsInParent().intersects(r.getBoundsInParent());
+    }
+
+    @Override
     public void display(GraphicsContext g2d) {
         g2d.fillRect(this.topLeft.x, this.topLeft.y,
                 this.width, this.height);

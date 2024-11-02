@@ -1,11 +1,14 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class Eraser {
     private Point centre;
+    private int dimension;
 
+    public Eraser(){
+        this.dimension = 14;
+    }
     public Eraser(Point centre){
         this.centre = centre;
     }
@@ -18,9 +21,10 @@ public class Eraser {
         this.centre = centre;
     }
 
+    public int getDimension(){ return this.dimension; }
+
     public void display(GraphicsContext g2d) {
-        System.out.println(this.centre.x + " " + this.centre.y);
-        g2d.strokeOval(this.centre.x, this.centre.y,
-                14, 14);
+        g2d.strokeRect(this.centre.x, this.centre.y,
+                this.dimension, this.dimension);
     }
 }

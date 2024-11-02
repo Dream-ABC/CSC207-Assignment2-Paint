@@ -1,8 +1,8 @@
 package ca.utoronto.utm.assignment2.paint;
 
-
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class Circle implements Shape{
         private Point centre;
@@ -56,6 +56,13 @@ public class Circle implements Shape{
         @Override
         public String getShape() {
                 return "Circle";
+        }
+
+        @Override
+        public boolean overlaps(Eraser eraser) {
+                Rectangle e = new Rectangle(eraser.getCentre().x+(eraser.getDimension()/2.0), eraser.getCentre().y+(eraser.getDimension()/2.0), eraser.getDimension(), eraser.getDimension());
+                javafx.scene.shape.Circle c = new javafx.scene.shape.Circle(this.centre.x, this.centre.y, this.radius);
+                return e.getBoundsInParent().intersects(c.getBoundsInParent());
         }
 
         @Override

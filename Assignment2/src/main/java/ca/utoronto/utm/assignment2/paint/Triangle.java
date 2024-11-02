@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 
 public class Triangle extends Polygon implements Shape {
     private Point topLeft;
@@ -77,6 +78,24 @@ public class Triangle extends Polygon implements Shape {
     @Override
     public String getShape() {
         return "Triangle";
+    }
+
+    @Override
+    public boolean overlaps(Eraser eraser) {
+        javafx.scene.shape.Rectangle e = new Rectangle(eraser.getCentre().x+(eraser.getDimension()/2.0), eraser.getCentre().y+(eraser.getDimension()/2.0), eraser.getDimension(), eraser.getDimension());
+        Polygon t = new Polygon();
+        ObservableList<Double> points = this.getPoints();
+        double[] xPoints = new double[3];
+        double[] yPoints = new double[3];
+        for (int i = 0; i < 3; i++) {
+            xPoints[i] = points.get(i);
+            yPoints[i] = points.get(i + 3);
+        }
+        t.getPoints().addAll(
+                xPoints[0], yPoints[0],
+                xPoints[1], yPoints[1],
+                xPoints[2], yPoints[2]);
+        return e.getBoundsInParent().intersects(t.getBoundsInParent());
     }
 
     @Override

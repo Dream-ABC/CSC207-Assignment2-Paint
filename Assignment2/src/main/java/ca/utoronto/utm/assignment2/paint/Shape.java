@@ -7,5 +7,6 @@ public interface Shape {
     Color getColor();
     int getThickness();
     String getShape();
+    boolean overlaps(Eraser eraser);
     void display(GraphicsContext g2d);
 }
