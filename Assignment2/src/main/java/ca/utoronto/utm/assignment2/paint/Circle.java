@@ -8,6 +8,7 @@ public class Circle implements Shape{
         private Point centre;
         private double radius;
         private Color color;
+        private double transparency;
 
         /*
         Constructor with no parameter. This constructor
@@ -16,6 +17,7 @@ public class Circle implements Shape{
         public Circle() {
                 this.radius = 0;
                 this.color = Color.GREEN;
+                this.transparency = 1.0;
         }
 
         /*
@@ -25,6 +27,8 @@ public class Circle implements Shape{
         public Circle(Point centre, double radius){
                 this.centre = centre;
                 this.radius = radius;
+                this.color = Color.GREEN;
+                this.transparency = 1.0;
         }
 
         public Point getCentre() {
@@ -54,12 +58,23 @@ public class Circle implements Shape{
         }
 
         @Override
+        public void setTransparency(int transparency) {
+                this.transparency = transparency / 100.0;
+        }
+
+        @Override
+        public double getTransparency() {
+                return this.transparency;
+        }
+
+        @Override
         public String getShape() {
                 return "Circle";
         }
 
         @Override
         public void display(GraphicsContext g2d) {
+                g2d.setGlobalAlpha(this.transparency);
                 g2d.fillOval(this.centre.x, this.centre.y,
                         this.radius, this.radius);
         }

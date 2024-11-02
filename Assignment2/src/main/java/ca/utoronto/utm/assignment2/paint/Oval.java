@@ -9,11 +9,13 @@ public class Oval implements Shape {
     private double width;
     private double height;
     private Color color;
+    private double transparency;
 
     public Oval() {
         this.width = 0;
         this.height = 0;
         this.color = Color.PURPLE;
+        this.transparency = 1.0;
     }
 
     public Oval(Point origin, Point topLeft, double width, double height) {
@@ -21,6 +23,8 @@ public class Oval implements Shape {
         this.topLeft = topLeft;
         this.width = width;
         this.height = height;
+        this.color = Color.PURPLE;
+        this.transparency = 1.0;
     }
 
     public Point getOrigin() {
@@ -62,12 +66,23 @@ public class Oval implements Shape {
     }
 
     @Override
+    public void setTransparency(int transparency) {
+        this.transparency = transparency / 100.0;
+    }
+
+    @Override
+    public double getTransparency() {
+        return this.transparency;
+    }
+
+    @Override
     public String getShape() {
         return "Oval";
     }
 
     @Override
     public void display(GraphicsContext g2d) {
+        g2d.setGlobalAlpha(this.transparency);
         g2d.fillOval(this.topLeft.x, this.topLeft.y,
                 this.width, this.height);
     }

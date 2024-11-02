@@ -24,6 +24,7 @@ public class OvalStrategy implements ShapeStrategy {
         // Set info of circle (radius=0)
         oval.setOrigin(topLeft);
         oval.setTopLeft(topLeft);
+        oval.setTransparency(this.panel.getTransparency());
         this.panel.getModel().addShape(oval);
     }
 
@@ -37,7 +38,7 @@ public class OvalStrategy implements ShapeStrategy {
         double x = Math.min(oval.getOrigin().x, mouseEvent.getX());
         double y = Math.min(oval.getOrigin().y, mouseEvent.getY());
         oval.setTopLeft(new Point(x, y));
-        // this.panel.getModel().addOval(circle);
+
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(oval);
@@ -53,7 +54,7 @@ public class OvalStrategy implements ShapeStrategy {
         double x = Math.min(oval.getOrigin().x, mouseEvent.getX());
         double y = Math.min(oval.getOrigin().y, mouseEvent.getY());
         oval.setTopLeft(new Point(x, y));
-        // this.panel.getModel().addOval(circle);
+
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(oval);

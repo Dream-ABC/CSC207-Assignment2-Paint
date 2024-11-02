@@ -12,6 +12,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     private String mode = "Circle";
     private PaintModel model;
     private Shape shape;
+    private int transparency;
     private ShapeStrategy strategy;
     private ShapeFactory shapeFactory;
     private StrategyFactory strategyFactory;
@@ -49,7 +50,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return model;
     }
 
-
     public Shape getCurrentShape() {
         return shape;
     }
@@ -60,6 +60,14 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     public ShapeFactory getShapeFactory() {
         return shapeFactory;
+    }
+
+    public void setTransparency(int transparency) {
+        this.transparency = transparency;
+    }
+
+    public int getTransparency() {
+        return transparency;
     }
 
     @Override

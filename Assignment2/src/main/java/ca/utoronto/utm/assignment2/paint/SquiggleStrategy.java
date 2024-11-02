@@ -20,7 +20,7 @@ public class SquiggleStrategy implements ShapeStrategy {
         this.panel.setCurrentShape(squiggle);
 
         // Set info of squiggle (start point)
-        // this.panel.getModel().addPath(squiggle);
+        squiggle.setTransparency(this.panel.getTransparency());
         this.panel.getModel().addShape(squiggle);
         squiggle.addPoint(point);
     }

@@ -26,6 +26,7 @@ public class TriangleStrategy implements ShapeStrategy {
         triangle.setOrigin(origin);
         triangle.setTopLeft(topLeft);
         triangle.updatePoints();
+        triangle.setTransparency(this.panel.getTransparency());
         this.panel.getModel().addShape(triangle);
     }
 
@@ -42,7 +43,6 @@ public class TriangleStrategy implements ShapeStrategy {
         triangle.setTopLeft(new Point(x, y));
         triangle.updatePoints();
 
-        // this.panel.getModel().addtriangle(triangle);
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(triangle);
@@ -61,7 +61,6 @@ public class TriangleStrategy implements ShapeStrategy {
         triangle.setTopLeft(new Point(x, y));
         triangle.updatePoints();
 
-        // this.panel.getModel().addtriangle(triangle);
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(triangle);
