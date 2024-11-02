@@ -46,4 +46,10 @@ public class Squiggle implements Shape {
             g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
         }
     }
+
+    public void shift(double x, double y) {
+        for (Point p : this.points) {
+            p.shift(x,y);
+        }
+    }
 }

@@ -71,4 +71,8 @@ public class Oval implements Shape {
         g2d.fillOval(this.topLeft.x, this.topLeft.y,
                 this.width, this.height);
     }
+    public void shift(double x, double y) {
+        this.topLeft.x += x;
+        this.topLeft.y += y;
+    }
 }

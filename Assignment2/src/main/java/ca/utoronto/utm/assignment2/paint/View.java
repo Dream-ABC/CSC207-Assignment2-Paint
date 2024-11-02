@@ -18,16 +18,17 @@ public class View implements EventHandler<ActionEvent> {
         private PaintModel paintModel;
         private PaintPanel paintPanel;
         private ShapeChooserPanel shapeChooserPanel;
+        private ResizeableCanvas canvas;
 
         public View(PaintModel model, Stage stage) throws FileNotFoundException {
             this.paintModel = model;
-
             this.paintPanel = new PaintPanel(this.paintModel);
+            this.canvas = new ResizeableCanvas(paintPanel);
             this.shapeChooserPanel = new ShapeChooserPanel(this);
 
             BorderPane root = new BorderPane();
             root.setTop(createMenuBar());
-            root.setCenter(this.paintPanel);
+            root.setCenter(this.canvas);
             root.setLeft(this.shapeChooserPanel);
             Scene scene = new Scene(root);
             stage.setScene(scene);

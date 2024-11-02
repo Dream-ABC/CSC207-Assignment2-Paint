@@ -90,5 +90,9 @@ public class Triangle extends Polygon implements Shape {
         }
         g2d.fillPolygon(xPoints, yPoints, 3);
     }
+    public void shift(double x, double y) {
+        this.topLeft.x += x;
+        this.topLeft.y += y;
+    }
 }
 

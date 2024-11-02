@@ -64,4 +64,9 @@ public class Square implements Shape {
         g2d.fillRect(this.topLeft.x, this.topLeft.y,
                 this.side, this.side);
     }
+
+    public void shift(double x, double y) {
+        this.topLeft.x += x;
+        this.topLeft.y += y;
+    }
 }

@@ -63,4 +63,8 @@ public class Circle implements Shape{
                 g2d.fillOval(this.centre.x, this.centre.y,
                         this.radius, this.radius);
         }
+        public void shift(double x, double y) {
+                this.centre.x += x;
+                this.centre.y += y;
+        }
 }
