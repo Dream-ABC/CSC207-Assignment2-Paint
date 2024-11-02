@@ -27,7 +27,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.model.addObserver(this);
 
         // init layer
-        this.model.addLayer(new PaintLayer());
+        this.model.addLayer();
 
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, this);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, this);
@@ -94,7 +94,11 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.getChildren().setAll(this.model.getLayers());
 
         for (PaintLayer layer : this.model.getLayers()) {
-            layer.display();
+            GraphicsContext g2d = layer.getGraphicsContext2D();
+            g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
+            if (layer.getVisible()) {
+                layer.display(g2d);
+            }
         }
     }
 }

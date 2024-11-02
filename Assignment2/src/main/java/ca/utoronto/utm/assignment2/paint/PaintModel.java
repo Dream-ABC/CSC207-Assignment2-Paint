@@ -5,7 +5,6 @@ import java.util.Observable;
 
 public class PaintModel extends Observable {
     private ArrayList<PaintLayer> layers = new ArrayList<>();
-    // private ArrayList<Shape> allShapes = new ArrayList<>();
     private PaintLayer selectedLayer;
 
     public boolean selectLayer(String layerName) {
@@ -19,7 +18,8 @@ public class PaintModel extends Observable {
         return true;
     }
 
-    public void addLayer(PaintLayer layer) {
+    public void addLayer() {
+        PaintLayer layer = new PaintLayer();
         this.layers.add(layer);
         this.selectedLayer = layer;
         this.setChanged();
@@ -40,6 +40,8 @@ public class PaintModel extends Observable {
             // when the last layer is removed
             this.selectedLayer = this.layers.get(currIndex - 1);
         }
+
+        this.selectedLayer.setStatus("removed");
 
         this.setChanged();
         this.notifyObservers();
@@ -66,13 +68,8 @@ public class PaintModel extends Observable {
     }
 
     public void addShape(Shape shape) {
-        // this.allShapes.add(shape);
         this.selectedLayer.addShape(shape);
         this.setChanged();
         this.notifyObservers();
     }
-
-//        public ArrayList<Shape> getAllShapes(){
-//                return allShapes;
-//        }
 }
