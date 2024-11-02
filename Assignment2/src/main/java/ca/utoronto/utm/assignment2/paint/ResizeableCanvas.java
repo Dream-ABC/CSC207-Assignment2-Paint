@@ -2,6 +2,7 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -9,7 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class ResizeableCanvas extends StackPane {
+public class ResizeableCanvas extends StackPane implements EventHandler<MouseEvent> {
     PaintPanel panel;
 
     public ResizeableCanvas(PaintPanel panel) {
@@ -75,6 +76,7 @@ public class ResizeableCanvas extends StackPane {
         System.out.println("Resize complete. New size: " + panel.getWidth() + " x " + panel.getHeight());
     }
 
+    @Override
     public void handle(MouseEvent event) {
         System.out.println("Starting resize");
         double newWidth = event.getSceneX() - panel.getLayoutX();
