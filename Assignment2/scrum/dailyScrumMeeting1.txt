@@ -95,9 +95,9 @@ Oct 31,2024
 	Obstacles I face: Festivals
 
 Nov 1,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Started US3.015
+	What I will do today: Work more on US3.015
+	Obstacles I face: Facing Bugs.
 
 Nov 2,2024
 	What I did yesterday:
