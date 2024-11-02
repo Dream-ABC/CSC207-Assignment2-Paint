@@ -38,10 +38,10 @@ SO THAT  :  I can use consistent colors and easily switch colors while
             drawing different shapes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.008 : wenjess1 : NotStarted
+TYPE     : USER STORY US3.008 : wenjess1 : Started
 NAME     : Stroke Eraser
 PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 1 day    ACTUAL :
 AS A     : user
 I WANT   : To be able to erase drawings on the canvas
 SO THAT  : I have more customizability with the Paint application.
