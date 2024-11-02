@@ -2,21 +2,13 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
-
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-
-import java.io.FileNotFoundException;
-
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 public class LayerChooserPanel extends GridPane implements EventHandler<ActionEvent> {
 
@@ -24,6 +16,9 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
     private ArrayList<ImageView> buttonImages;
 
     public void updateAllLayers() {
+
+        this.getChildren().clear();
+
         ArrayList<PaintLayer> layers = view.getPaintModel().getLayers();
         for (int i = 0; i < layers.size(); i++) {
             // Snapshot the Canvas content (layer) as a list of thumbnails
@@ -70,8 +65,17 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         button.setId("Layer+");
         button.setMinWidth(100);
         this.add(button, 0, row);
+        row++;
         button.setOnAction(this);
         button.setText("+");
+
+        // Button for removing layer
+        button = new Button();
+        button.setId("Layer-");
+        button.setMinWidth(100);
+        this.add(button, 0, row);
+        button.setOnAction(this);
+        button.setText("-");
     }
 
     public LayerChooserPanel(View view) {
@@ -89,7 +93,7 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
                 button.setStyle("");
             }
         }
-        // ((Button) event.getSource()).setStyle("-fx-background-color: lightblue");
+
         String command = ((Button) event.getSource()).getId();
         view.setLayer(command);
         System.out.println(command);

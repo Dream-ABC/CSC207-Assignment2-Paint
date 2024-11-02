@@ -19,7 +19,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
 
     public PaintPanel(PaintModel model) {
-        // super(300, 300);
 
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
@@ -93,16 +92,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     @Override
     public void update(Observable o, Object arg) {
         this.getChildren().setAll(this.model.getLayers());
-
-//        GraphicsContext g2d = this.getGraphicsContext2D();
-//        g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
-
-//        ArrayList<Shape> allShapes = this.model.getAllShapes();
-//
-//        for (Shape shape : allShapes) {
-//            g2d.setFill(shape.getColor());
-//            shape.display(g2d);
-//        }
 
         for (PaintLayer layer : this.model.getLayers()) {
             layer.display();

@@ -26,16 +26,21 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
 
-    public void removeLayer(PaintLayer layer) {
+    public void removeLayer() {
         if (this.layers.size() <= 1) {
             // when there is only one layer, the user cannot remove it
             return;
         }
-        this.layers.remove(layer);
-        if (layer.equals(this.selectedLayer)) {
-            // if the current layer is removed, automatically switch to the next layer
-            this.selectedLayer = this.layers.getFirst();
+        int currIndex = this.layers.indexOf(this.selectedLayer);
+        this.layers.remove(this.selectedLayer);
+
+        if (currIndex <= this.layers.size() - 1) {
+            this.selectedLayer = this.layers.get(currIndex);
+        } else {
+            // when the last layer is removed
+            this.selectedLayer = this.layers.get(currIndex - 1);
         }
+
         this.setChanged();
         this.notifyObservers();
     }
