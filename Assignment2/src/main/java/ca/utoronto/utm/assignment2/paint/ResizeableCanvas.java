@@ -1,5 +1,8 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -7,10 +10,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class ResizeableCanvas extends StackPane {
+    PaintPanel panel;
 
     public ResizeableCanvas(PaintPanel panel) {
         super();
 
+        this.panel = panel;
         BorderPane pane = new BorderPane();
         pane.setPrefSize(panel.getWidth()+20, panel.getHeight()+20);
         pane.setCenter(panel);
@@ -48,6 +53,8 @@ public class ResizeableCanvas extends StackPane {
     }
 
     private void addResizingActions(ResizingButton topLeft, ResizingButton bottomLeft, ResizingButton topRight, ResizingButton bottomRight, PaintPanel panel) {
+        panel.getModel().addObserver(bottomRight);
+
         bottomRight.setOnMousePressed(event -> handleResizeStart(event, bottomRight));
         bottomRight.setOnMouseDragged(event -> handleResize(event, panel, bottomRight));
         bottomRight.setOnMouseReleased(event -> handleResizeEnd(panel));
@@ -65,6 +72,15 @@ public class ResizeableCanvas extends StackPane {
     }
 
     private void handleResizeEnd(PaintPanel panel) {
+        System.out.println("Resize complete. New size: " + panel.getWidth() + " x " + panel.getHeight());
+    }
+
+    public void handle(MouseEvent event) {
+        System.out.println("Starting resize");
+        double newWidth = event.getSceneX() - panel.getLayoutX();
+        double newHeight = event.getSceneY() - panel.getLayoutY();
+        panel.setWidth(newWidth);
+        panel.setHeight(newHeight);
         System.out.println("Resize complete. New size: " + panel.getWidth() + " x " + panel.getHeight());
     }
 }
