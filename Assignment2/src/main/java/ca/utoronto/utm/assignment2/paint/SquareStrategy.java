@@ -24,6 +24,7 @@ public class SquareStrategy implements ShapeStrategy {
         // Set info of circle (radius=0)
         square.setOrigin(origin);
         square.setTopLeft(topLeft);
+        square.setOpaqueness(this.panel.getOpaqueness());
         this.panel.getModel().addShape(square);
     }
 
@@ -50,7 +51,7 @@ public class SquareStrategy implements ShapeStrategy {
         else {
             square.setTopLeft(new Point(origin.x, origin.y));
         }
-        // this.panel.getModel().addSquare(square);
+
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(square);
@@ -80,7 +81,7 @@ public class SquareStrategy implements ShapeStrategy {
             else {
                 square.setTopLeft(new Point(origin.x, origin.y));
             }
-            // this.panel.getModel().addSquare(square);
+
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShape(square);

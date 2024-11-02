@@ -24,6 +24,7 @@ public class RectangleStrategy implements ShapeStrategy {
         // Set info of rectangle (radius=0)
         rectangle.setTopLeft(topLeft);
         rectangle.setOrigin(origin);
+        rectangle.setOpaqueness(this.panel.getOpaqueness());
         this.panel.getModel().addShape(rectangle);
     }
 
@@ -39,7 +40,7 @@ public class RectangleStrategy implements ShapeStrategy {
         rectangle.setTopLeft(new Point(x, y));
         rectangle.setWidth(width);
         rectangle.setHeight(height);
-        // this.panel.getModel().addRectangle(rectangle);
+
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(rectangle);
@@ -58,7 +59,7 @@ public class RectangleStrategy implements ShapeStrategy {
             rectangle.setTopLeft(new Point(x, y));
             rectangle.setWidth(width);
             rectangle.setHeight(height);
-            // this.panel.getModel().addRectangle(rectangle);
+
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShape(rectangle);

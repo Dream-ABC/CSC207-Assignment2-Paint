@@ -22,6 +22,7 @@ public class CircleStrategy implements ShapeStrategy {
 
         // Set info of circle (radius=0)
         circle.setCentre(centre);
+        circle.setOpaqueness(this.panel.getOpaqueness());
         this.panel.getModel().addShape(circle);
     }
 
@@ -37,7 +38,7 @@ public class CircleStrategy implements ShapeStrategy {
         Point newCentre = new Point(newX, newY);
         circle.setCentre(newCentre);
         circle.setRadius(radius*2);
-        // this.panel.getModel().addCircle(circle);
+
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(circle);
@@ -57,7 +58,7 @@ public class CircleStrategy implements ShapeStrategy {
             Point newCentre = new Point(newX, newY);
             circle.setCentre(newCentre);
             circle.setRadius(radius*2);
-            // this.panel.getModel().addCircle(circle);
+
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShape(circle);

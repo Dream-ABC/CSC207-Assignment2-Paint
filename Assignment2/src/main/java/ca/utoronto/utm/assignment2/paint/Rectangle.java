@@ -10,6 +10,7 @@ public class Rectangle implements Shape {
     private double height;
     private Point origin;
     private Color color;
+    private double opaqueness;
 
     /*
     Constructor with no parameter. This constructor
@@ -19,6 +20,7 @@ public class Rectangle implements Shape {
         this.width = 0;
         this.height = 0;
         this.color = Color.BLUE;
+        this.opaqueness = 1.0;
     }
 
     /*
@@ -29,6 +31,8 @@ public class Rectangle implements Shape {
         this.topLeft = topLeft;
         this.width = width;
         this.height = height;
+        this.color = Color.BLUE;
+        this.opaqueness = 1.0;
     }
 
     public Point getTopLeft() {
@@ -73,12 +77,23 @@ public class Rectangle implements Shape {
     }
 
     @Override
+    public void setOpaqueness(int opaque) {
+        this.opaqueness = opaque / 100.0;
+    }
+
+    @Override
+    public double getOpaqueness() {
+        return this.opaqueness;
+    }
+
+    @Override
     public String getShape() {
         return "Rectangle";
     }
 
     @Override
     public void display(GraphicsContext g2d) {
+        g2d.setGlobalAlpha(this.opaqueness);
         g2d.fillRect(this.topLeft.x, this.topLeft.y,
                 this.width, this.height);
     }
