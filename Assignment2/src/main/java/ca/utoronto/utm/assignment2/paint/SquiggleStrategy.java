@@ -20,9 +20,8 @@ public class SquiggleStrategy implements ShapeStrategy {
         this.panel.setCurrentShape(squiggle);
 
         // Set info of squiggle (start point)
-        // this.panel.getModel().addPath(squiggle);
-        this.panel.getModel().addShape(squiggle);
         squiggle.addPoint(point);
+        this.panel.getModel().addShape(squiggle);
     }
 
     @Override
@@ -30,11 +29,19 @@ public class SquiggleStrategy implements ShapeStrategy {
         Squiggle squiggle = (Squiggle) this.panel.getCurrentShape();
         Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
         squiggle.addPoint(point);
-        this.panel.getModel().notifyUpdate();
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
+        this.panel.getModel().addShape(squiggle);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
+        Squiggle squiggle = (Squiggle) this.panel.getCurrentShape();
+        Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
+        squiggle.addPoint(point);
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
+        this.panel.getModel().addShape(squiggle);
         System.out.println("Added Squiggle");
         this.panel.setCurrentShape(null);
     }

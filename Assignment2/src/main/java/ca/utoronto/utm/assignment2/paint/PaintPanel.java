@@ -58,7 +58,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return model;
     }
 
-
     public Shape getCurrentShape() {
         return shape;
     }

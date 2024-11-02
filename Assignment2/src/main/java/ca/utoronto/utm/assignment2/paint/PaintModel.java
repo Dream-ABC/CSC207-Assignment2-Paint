@@ -52,11 +52,6 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
 
-    public void notifyUpdate() {
-        this.setChanged();
-        this.notifyObservers();
-    }
-
     public ArrayList<PaintLayer> getLayers() {
         return layers;
     }
