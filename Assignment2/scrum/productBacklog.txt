@@ -126,16 +126,6 @@ I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.012 : tianshi8 : Started
-NAME     : Layer Support
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to add new layers.
-SO THAT  : I can independently edit different layers and flexibly control
-           the drawing effects.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
 NAME     : Copy/Paste
 PRIORITY : 3
@@ -367,6 +357,16 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
            the drawing events. Consider some design patterns here.
            Refactor ShapeChooserPanel and PaintPanel to get rid of the
            'if' blocks in the PaintPanel mouse event code.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.012 : tianshi8 : Complete
+NAME     : Layer Support
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+AS A     : user
+I WANT   : To be able to add new layers.
+SO THAT  : I can independently edit different layers and flexibly control
+           the drawing effects.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.013 : tianshi8 : Complete
