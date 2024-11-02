@@ -2,6 +2,7 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -19,6 +20,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
 
     public PaintPanel(PaintModel model) {
+        // super(300, 300);
 
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
@@ -27,7 +29,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.model.addObserver(this);
 
         // init layer
-        this.model.addLayer(new PaintLayer());
+        this.model.addLayer();
 
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, this);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, this);
@@ -46,9 +48,18 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return mode;
     }
 
+    /**
+     * Controller aspect of this
+     */
+    public void setMode(String mode) {
+        this.mode = mode;
+        System.out.println(this.mode);
+    }
+
     public PaintModel getModel() {
         return model;
     }
+
 
     public Shape getCurrentShape() {
         return shape;
@@ -95,7 +106,11 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.mode = model.getMode();
 
         for (PaintLayer layer : this.model.getLayers()) {
-            layer.display();
+            GraphicsContext g2d = layer.getGraphicsContext2D();
+            g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
+            if (layer.getVisible()) {
+                layer.display(g2d);
+            }
         }
     }
 }

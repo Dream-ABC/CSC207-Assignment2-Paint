@@ -1,7 +1,5 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.scene.control.Button;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,19 +18,14 @@ public class LayerChooserController implements Observer {
     public void selectLayer(String layerName) {
         if (layerName.equals("Layer+")) {
             // layer added
-            this.model.addLayer(new PaintLayer());
-        } else if (!this.model.selectLayer(layerName)){
+            this.model.addLayer();
+        } else if (layerName.equals("Layer-")) {
+            // layer removed
+            this.model.removeLayer();
+        } else if (!this.model.selectLayer(layerName)) {
             // layer hided/showed
             this.model.switchLayerVisible(layerName);
         }
-    }
-
-    public void addLayer(PaintLayer layer) {
-        this.model.addLayer(layer);
-    }
-
-    public void removeLayer(PaintLayer layer) {
-        this.model.removeLayer(layer);
     }
 
     @Override

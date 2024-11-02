@@ -9,15 +9,15 @@ import java.util.ArrayList;
 public class PaintLayer extends Canvas {
 
     private boolean isVisible;
-    private boolean lastVisible;
+    private String status;  // "changed", "unchanged", "removed"
     private Color color;
-    private ArrayList<Shape> shapes = new ArrayList<>();
+    private ArrayList<Shape> shapes;
 
     public PaintLayer() {
         super(300, 300);  // default size
         this.shapes = new ArrayList<>();
         this.isVisible = true;
-        this.lastVisible = true;
+        this.status = "changed";
         this.color = Color.TRANSPARENT;
     }
 
@@ -25,15 +25,18 @@ public class PaintLayer extends Canvas {
         super(width, height);
         this.shapes = new ArrayList<>();
         this.isVisible = true;
+        this.status = "changed";
         this.color = Color.TRANSPARENT;
     }
 
     public void addShape(Shape shape) {
         this.shapes.add(shape);
+        this.status = "changed";
     }
 
     public void removeShape(Shape shape) {
         this.shapes.remove(shape);
+        this.status = "changed";
     }
 
     public ArrayList<Shape> getShapes() {
@@ -41,7 +44,6 @@ public class PaintLayer extends Canvas {
     }
 
     public void switchVisible() {
-        this.lastVisible = this.isVisible;
         this.isVisible = !this.isVisible;
     }
 
@@ -49,8 +51,12 @@ public class PaintLayer extends Canvas {
         return this.isVisible;
     }
 
-    public boolean getLastVisible() {
-        return this.lastVisible;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return this.status;
     }
 
     public void setColor(Color color) {
@@ -61,20 +67,15 @@ public class PaintLayer extends Canvas {
         return this.color;
     }
 
-    public void display() {
-        GraphicsContext g2d = this.getGraphicsContext2D();
-        g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
+    public void display(GraphicsContext g2d) {
+        // background
+        g2d.setFill(this.color);
+        g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-        if (this.getVisible()) {
-            // background
-            g2d.setFill(this.color);
-            g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
-
-            // shapes on this layer
-            for (Shape shape : this.shapes) {
-                g2d.setFill(shape.getColor());
-                shape.display(g2d);
-            }
+        // shapes on this layer
+        for (Shape shape : this.shapes) {
+            g2d.setFill(shape.getColor());
+            shape.display(g2d);
         }
     }
 }
