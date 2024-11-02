@@ -73,6 +73,12 @@ public class PaintModel extends Observable {
                 this.notifyObservers();
         }
 
+        public void removeEraser() {
+                this.selectedLayer.removeEraser();
+                this.setChanged();
+                this.notifyObservers();
+        }
+
         public void setMode(String mode) {
                 this.mode = mode;
                 this.setChanged();

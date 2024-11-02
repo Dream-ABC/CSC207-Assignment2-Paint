@@ -38,7 +38,7 @@ public class PaintLayer extends Canvas {
     }
 
     public void addEraser(Eraser eraser) {this.eraser = eraser;}
-    public void removeEraser(Eraser eraser) {this.eraser = null;}
+    public void removeEraser() {this.eraser = null;}
 
     public ArrayList<Shape> getShapes() {
         return shapes;
@@ -79,6 +79,10 @@ public class PaintLayer extends Canvas {
                 g2d.setFill(shape.getColor());
                 shape.display(g2d);
             }
+        }
+        System.out.println("eraser" + this.eraser);
+        if (this.eraser != null){
+            eraser.display(g2d);
         }
     }
 }

@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observer {
-    private String mode = "Circle";
+    private String mode;
     private PaintModel model;
     private Shape shape;
     private ShapeStrategy strategy;

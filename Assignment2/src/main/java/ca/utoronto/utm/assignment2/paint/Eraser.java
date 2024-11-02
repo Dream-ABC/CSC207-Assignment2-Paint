@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Eraser {
     private Point centre;
@@ -18,7 +19,8 @@ public class Eraser {
     }
 
     public void display(GraphicsContext g2d) {
-        g2d.fillOval(this.centre.x, this.centre.y,
-                50, 50);
+        System.out.println(this.centre.x + " " + this.centre.y);
+        g2d.strokeOval(this.centre.x, this.centre.y,
+                14, 14);
     }
 }
