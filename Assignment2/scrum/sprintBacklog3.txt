@@ -97,7 +97,7 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.016 : pengxi60 : Started
+TYPE     : USER STORY US3.016 : pengxi60 : Started
 NAME     : Paint GUI overhaul
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
