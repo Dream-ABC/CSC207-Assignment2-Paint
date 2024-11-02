@@ -6,7 +6,7 @@
 # Sprint 3 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.007 : wenjess1 : Started
+TYPE     : BUG BUG3.007 : wenjess1 : Complete
 NAME     : Default shape selection is incorrect
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
