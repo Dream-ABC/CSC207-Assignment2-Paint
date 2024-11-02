@@ -35,14 +35,14 @@ public class View implements EventHandler<ActionEvent> {
             this.paintPanel.update(this.paintModel, null);
             stage.show();
 
-            stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
-                paintPanel.setWidth(newWidth.doubleValue());
-                paintPanel.update(this.paintModel, null);
-            });
-            stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-                paintPanel.setHeight(newHeight.doubleValue());
-                paintPanel.update(this.paintModel, null);
-            });
+//            stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
+//                paintPanel.setWidth(newWidth.doubleValue());
+//                paintPanel.update(this.paintModel, null);
+//            });
+//            stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+//                paintPanel.setHeight(newHeight.doubleValue());
+//                paintPanel.update(this.paintModel, null);
+//            });
             root.requestFocus();
         }
 
