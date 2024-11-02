@@ -67,8 +67,7 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
                     this.buttonImages.replace(layerIndex, this.buttonImages.get(layerIndex + 1));
                 }
                 this.buttonImages.remove(layers.size());
-                this.buttonImages.remove(layers.size());
-                layers.get(i).setStatus("unchanged");
+                layers.remove(layers.get(i));
             }
         }
 
