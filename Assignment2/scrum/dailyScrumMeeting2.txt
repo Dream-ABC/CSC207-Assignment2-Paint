@@ -111,12 +111,14 @@ Oct 31,2024
 Nov 1,2024
 	What I did yesterday: Add GUI for layers.
 	What I will do today: Solve pull request for BUG3.004. Start US3.013.
-	Obstacles I face: Positioning the sliders in the GUI.
+	Obstacles I face: Positioning the sliders in the GUI. Managing layers.
 
 Nov 2,2024
 	What I did yesterday: Solve pull request for BUG3.004. Start US3.013.
-	What I will do today: Finish US3.013, refine functions in US3.012. Start US3.005
-	Obstacles I face:
+	What I will do today: Finish US3.013, refine functions in US3.012.
+	                      Finish US3.005.
+	Obstacles I face: When closing the color picker, the Paint window moves to the
+	                  back behind other application windows.
 
 Nov 3,2024
 	What I did yesterday:

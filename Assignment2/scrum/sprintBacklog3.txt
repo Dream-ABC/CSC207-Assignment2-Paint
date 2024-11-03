@@ -14,10 +14,10 @@ ISSUE    : When the user launches the Paint program, the default shape selection
            It would be best to have no default shape selected.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.005 : tianshi8 : Started
+TYPE     : USER STORY US3.005 : tianshi8 : Complete
 NAME     : Color selector
 PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL :
+ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : To be able to select the current drawing color, to be applied
            to subsequent shapes. Example:
