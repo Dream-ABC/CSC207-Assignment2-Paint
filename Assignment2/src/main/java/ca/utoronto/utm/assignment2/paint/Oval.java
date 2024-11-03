@@ -90,6 +90,7 @@ public class Oval implements Shape {
         allPoints.add(new Point(leftX, bottomY));
         allPoints.add(new Point(rightX, topY));
         allPoints.add(new Point(rightX, bottomY));
+        allPoints.add(eraser.getCentre());
         for (Point point : allPoints) {
             if (Math.pow((point.x-h)/a, 2) + Math.pow((point.y-k)/b, 2) <= 1){
                 return true;
