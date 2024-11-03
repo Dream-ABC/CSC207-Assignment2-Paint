@@ -10,9 +10,11 @@ public class AddLayerCommand implements Command {
     }
 
     public void execute() {
-        this.model.getLayers().add(this.layer);
+        if (!(this.model.getLayers().contains(layer))) {
+            this.model.getLayers().add(layer);
+        }
     }
     public void undo() {
-        this.model.getLayers().remove(this.layer);
+        this.model.removeLayer(this.layer);
     }
 }
