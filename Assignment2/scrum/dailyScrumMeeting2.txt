@@ -121,9 +121,10 @@ Nov 2,2024
 	                  back behind other application windows.
 
 Nov 3,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finish US3.013, refine functions in US3.012.
+                          Finish US3.005.
+	What I will do today: Merged BUG3.010 and US3.016. Help other members.
+	Obstacles I face: Fixing merge conflicts.
 
 Nov 4,2024
 	What I did yesterday:
