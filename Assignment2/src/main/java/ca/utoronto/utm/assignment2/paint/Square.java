@@ -62,9 +62,17 @@ public class Square implements Shape {
 
     @Override
     public boolean overlaps(Eraser eraser) {
-        Rectangle e = new Rectangle(eraser.getCentre().x+(eraser.getDimension()/2.0), eraser.getCentre().y+(eraser.getDimension()/2.0), eraser.getDimension(), eraser.getDimension());
-        Rectangle s = new Rectangle(this.topLeft.x, this.topLeft.y, this.side, this.side);
-        return e.getBoundsInParent().intersects(s.getBoundsInParent());
+        double eraserLeft = eraser.getCentre().x-(eraser.getDimension()/2.0);
+        double eraserRight = eraser.getCentre().x+(eraser.getDimension()/2.0);
+        double eraserTop = eraser.getCentre().y-(eraser.getDimension()/2.0);
+        double eraserBottom = eraser.getCentre().y+(eraser.getDimension()/2.0);
+
+        double rectLeft = this.topLeft.x;
+        double rectRight = this.topLeft.x + this.side;
+        double rectTop = this.topLeft.y;
+        double rectBottom = this.topLeft.y + this.side;
+
+        return eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom;
     }
 
     @Override

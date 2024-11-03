@@ -79,9 +79,17 @@ public class Rectangle implements Shape {
 
     @Override
     public boolean overlaps(Eraser eraser) {
-        javafx.scene.shape.Rectangle e = new javafx.scene.shape.Rectangle(eraser.getCentre().x+(eraser.getDimension()/2.0), eraser.getCentre().y+(eraser.getDimension()/2.0), eraser.getDimension(), eraser.getDimension());
-        javafx.scene.shape.Rectangle r = new javafx.scene.shape.Rectangle(this.topLeft.x, this.topLeft.y, this.width, this.height);
-        return e.getBoundsInParent().intersects(r.getBoundsInParent());
+        double eraserLeft = eraser.getCentre().x-(eraser.getDimension()/2.0);
+        double eraserRight = eraser.getCentre().x+(eraser.getDimension()/2.0);
+        double eraserTop = eraser.getCentre().y-(eraser.getDimension()/2.0);
+        double eraserBottom = eraser.getCentre().y+(eraser.getDimension()/2.0);
+
+        double rectLeft = this.topLeft.x;
+        double rectRight = this.topLeft.x + this.width;
+        double rectTop = this.topLeft.y;
+        double rectBottom = this.topLeft.y + this.height;
+
+        return eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom;
     }
 
     @Override
