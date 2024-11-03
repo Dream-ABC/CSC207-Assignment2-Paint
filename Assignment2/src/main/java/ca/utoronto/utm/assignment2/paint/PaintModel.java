@@ -15,15 +15,19 @@ public class PaintModel extends Observable {
         if (layerIndex == layers.indexOf(this.selectedLayer)) {
             return false;  // nothing changed
         }
-        this.selectedLayer = layers.get(layerIndex);
+        history.execute(new ChangeLayerCommand(this.selectedLayer, layers.get(layerIndex), this));
         this.setChanged();
         this.notifyObservers();
         return true;
     }
 
-    public void addLayer() {
+    public void addLayer(boolean init) {
         PaintLayer layer = new PaintLayer();
-        history.execute(new AddLayerCommand(this, layer));
+        if (init) {
+            this.layers.add(layer);
+        } else {
+            history.execute(new AddLayerCommand(this, layer));
+        }
         this.selectedLayer = layer;
         this.setChanged();
         this.notifyObservers();
@@ -67,6 +71,9 @@ public class PaintModel extends Observable {
     public PaintLayer getSelectedLayer() {
         return selectedLayer;
     }
+    void setSelectedLayer(PaintLayer selectedLayer) {
+        this.selectedLayer = selectedLayer;
+    }
 
     public void addShape(Shape shape) {
         this.selectedLayer.addShape(shape);
@@ -74,13 +81,14 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
     public void addShapeFinal(Shape shape) {
-        history.execute(new AddShapeCommand(shape, this.getSelectedLayer()));
+        history.execute(new AddShapeCommand(shape, this.getSelectedLayer(), history));
         this.setChanged();
         this.notifyObservers();
     }
 
     public void removeShape(Shape shape) {
-        history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer()));
+        //history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer(), history));
+        this.selectedLayer.removeShape(shape);
         this.setChanged();
         this.notifyObservers();
     }
@@ -90,16 +98,19 @@ public class PaintModel extends Observable {
         this.setChanged();
         this.notifyObservers();
     }
+
+    public void storeState(){
+        history.execute(new EraserStrokeCommand(this.selectedLayer, history));
+    }
+
     public void addEraser(Eraser eraser) {
-        // debateable to have this as a command
         this.selectedLayer.addEraser(eraser);
-        //history.execute(new AddEraserCommand(eraser, this.selectedLayer));
         this.setChanged();
         this.notifyObservers();
     }
 
-    public void removeEraser(int removedShapes) {
-        history.execute(new EraserStrokeCommand(removedShapes, history));
+    public void removeEraser() {
+        //history.execute(new EraserStrokeCommand(removedShapes, history));
         this.selectedLayer.removeEraser();
         this.setChanged();
         this.notifyObservers();

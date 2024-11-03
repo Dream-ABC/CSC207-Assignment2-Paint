@@ -12,6 +12,7 @@ public class EraserStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
+        this.panel.getModel().storeState();
         Eraser eraser = new Eraser();
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x-(eraser.getDimension()/2.0), topLeft.y-(eraser.getDimension()/2.0));
@@ -32,22 +33,19 @@ public class EraserStrategy implements ShapeStrategy {
     }
 
     private void eraseDrawings(){
-        PaintLayer currLayer = this.panel.getModel().getSelectedLayer();
-        ArrayList<Shape> removeShapes = new ArrayList<Shape>();
-        for (Shape shape : currLayer.getShapes()) {
+        ArrayList<Shape> currLayer = new ArrayList<>(this.panel.getModel().getSelectedLayer().getShapes());
+        for (Shape shape : currLayer) {
             if (shape.overlaps(this.panel.getEraser())) {
-                removeShapes.add(shape);
+                this.panel.getEraser().addRemovedShapes(shape);
+                this.panel.getModel().removeShape(shape);
             }
-        }
-        for (Shape shape: removeShapes){
-            currLayer.removeShape(shape);
-            this.panel.getEraser().incrementRemovedShapes();
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        this.panel.getModel().removeEraser(this.panel.getEraser().getRemovedShapes());
+        this.panel.getModel().getHistory().addToLast(this.panel.getEraser().getRemovedShapes());
+        this.panel.getModel().removeEraser();
         this.panel.setEraser(null);
     }
 }

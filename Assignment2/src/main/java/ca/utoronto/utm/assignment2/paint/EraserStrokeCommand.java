@@ -1,21 +1,30 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import java.util.ArrayList;
+
 public class EraserStrokeCommand implements Command {
-    private int removedShapes;
+    private PaintLayer layer;
     private CommandHistory history;
-    public EraserStrokeCommand(int m, CommandHistory h) {
-        removedShapes = m;
+    private ArrayList<Shape> removedShapes;
+    private boolean changed = false;
+    public EraserStrokeCommand(PaintLayer l, CommandHistory h) {
+        layer = l;
         history = h;
     }
     public void execute() {
-        for (int i = 0; i < removedShapes; i++) {
-            history.redo();
+        history.addState(new ArrayList<Shape>(layer.getShapes()));
+        if (changed) {
+            for (Shape s: removedShapes) {
+                layer.removeShape(s);
+            }
+            changed = false;
         }
     }
     public void undo() {
-        System.out.println(removedShapes);
-        for (int i = 0; i < removedShapes; i++) {
-            history.undo();
-        }
+        this.layer.setShapes(history.revertState());
+        changed = true;
+    }
+    public void addRemovedShapes(ArrayList<Shape> shapes) {
+        removedShapes = shapes;
     }
 }

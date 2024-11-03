@@ -33,7 +33,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.model.addObserver(this);
 
         // init layer
-        this.model.addLayer();
+        this.model.addLayer(true);
 
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, this);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, this);

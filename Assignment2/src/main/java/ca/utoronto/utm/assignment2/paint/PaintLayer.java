@@ -51,6 +51,9 @@ public class PaintLayer extends Canvas {
     public ArrayList<Shape> getShapes() {
         return shapes;
     }
+    void setShapes(ArrayList<Shape> shapes) {
+        this.shapes = shapes;
+    }
 
     public void switchVisible() {
         this.isVisible = !this.isVisible;

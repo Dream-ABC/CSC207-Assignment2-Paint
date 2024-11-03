@@ -2,14 +2,16 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.ArrayList;
+
 public class Eraser {
     private Point centre;
     private int dimension;
-    private int removedShapes;
+    private ArrayList<Shape> removedShapes;
 
     public Eraser(){
         this.dimension = 14;
-        this.removedShapes = 0;
+        this.removedShapes = new ArrayList<>();
     }
     public Eraser(Point centre){
         this.centre = centre;
@@ -25,10 +27,10 @@ public class Eraser {
 
     public int getDimension(){ return this.dimension; }
 
-    public void incrementRemovedShapes(){
-        this.removedShapes++;
+    public void addRemovedShapes(Shape shape){
+        this.removedShapes.add(shape);
     }
-    public int getRemovedShapes(){
+    public ArrayList<Shape> getRemovedShapes(){
         return this.removedShapes;
     }
 
