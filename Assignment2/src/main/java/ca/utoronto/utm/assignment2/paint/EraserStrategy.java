@@ -40,13 +40,14 @@ public class EraserStrategy implements ShapeStrategy {
             }
         }
         for (Shape shape: removeShapes){
-            this.panel.getModel().removeShape(shape);
+            currLayer.removeShape(shape);
+            this.panel.getEraser().incrementRemovedShapes();
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        this.panel.getModel().removeEraser();
+        this.panel.getModel().removeEraser(this.panel.getEraser().getRemovedShapes());
         this.panel.setEraser(null);
     }
 }

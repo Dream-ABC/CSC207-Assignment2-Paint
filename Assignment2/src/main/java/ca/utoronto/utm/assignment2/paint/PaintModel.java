@@ -34,6 +34,8 @@ public class PaintModel extends Observable {
             // when there is only one layer, the user cannot remove it
 
             this.selectedLayer.setStatus("removed");
+//            this.layers.remove(this.selectedLayer);
+//            history.execute(new DeleteLayerCommand(this, this.selectedLayer));
 
             int currIndex = this.layers.indexOf(this.selectedLayer);
 
@@ -48,9 +50,12 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
 
+
+
+
     public void switchLayerVisible(String layerName) {
         int layerIndex = Integer.parseInt(layerName.substring(5));
-        layers.get(layerIndex).switchVisible();
+        history.execute(new ChangeLayerVisibilityCommand(layers.get(layerIndex)));
         this.setChanged();
         this.notifyObservers();
     }
@@ -76,6 +81,8 @@ public class PaintModel extends Observable {
 
     public void removeShape(Shape shape) {
         history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer()));
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public void setMode(String mode) {
@@ -91,7 +98,8 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
 
-    public void removeEraser() {
+    public void removeEraser(int removedShapes) {
+        history.execute(new EraserStrokeCommand(removedShapes, history));
         this.selectedLayer.removeEraser();
         this.setChanged();
         this.notifyObservers();

@@ -13,6 +13,6 @@ public class DeleteShapeCommand implements Command {
         this.layer.removeShape(this.shape);
     }
     public void undo() {
-        this.layer.addShape(this.shape);
+        this.layer.addShapeFirst(this.shape);
     }
 }

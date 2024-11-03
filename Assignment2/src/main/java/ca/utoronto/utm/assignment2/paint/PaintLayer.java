@@ -35,6 +35,11 @@ public class PaintLayer extends Canvas {
         this.status = "changed";
     }
 
+    public void addShapeFirst(Shape shape) {
+        this.shapes.add(0, shape);
+        this.status = "changed";
+    }
+
     public void removeShape(Shape shape) {
         this.shapes.remove(shape);
         this.status = "changed";
