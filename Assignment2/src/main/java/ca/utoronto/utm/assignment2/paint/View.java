@@ -58,7 +58,6 @@ public class View implements EventHandler<ActionEvent> {
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
         this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
-        root.setTop(createMenuBar());
         root.setCenter(this.paintPanel);
         root.setLeft(this.shapeChooserPanel);
         ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
