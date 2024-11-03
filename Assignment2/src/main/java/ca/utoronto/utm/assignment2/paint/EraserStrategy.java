@@ -12,7 +12,6 @@ public class EraserStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println("Started Eraser");
         Eraser eraser = new Eraser();
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x-(eraser.getDimension()/2.0), topLeft.y-(eraser.getDimension()/2.0));
@@ -29,7 +28,6 @@ public class EraserStrategy implements ShapeStrategy {
         Point centre = new Point(topLeft.x-(eraser.getDimension()/2.0), topLeft.y-(eraser.getDimension()/2.0));
         eraser.setCentre(centre);
         this.panel.getModel().addEraser(eraser);
-        System.out.println("x:" + eraser.getCentre().x + " y:" + eraser.getCentre().y);
         eraseDrawings();
     }
 
