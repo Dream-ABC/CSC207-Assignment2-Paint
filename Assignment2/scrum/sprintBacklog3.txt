@@ -108,3 +108,13 @@ ISSUE    : Having a list of different types of drawable things in the
            Consider some design patterns, or change of responsibility
            here.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.010 : hingor13 : Started
+NAME     : Redundant Opacity Slider
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
+           already available in the color picker tool. Removing the slider
+           will simplify the UI and reduce potential conflicts in opaqueness
+           control.
+--------------------------------------------------------------------------
