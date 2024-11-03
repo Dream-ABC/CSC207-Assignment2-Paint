@@ -173,16 +173,6 @@ ISSUE    : The Edit menu is currently non-functional. The program should
                undo the last action
                redo the previously undone action
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.010 : hingor13 : Started
-NAME     : Redundant Opacity Slider
-PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL :
-ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
-           already available in the color picker tool. Removing the slider
-           will simplify the UI and reduce potential conflicts in opaqueness
-           control.
---------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
@@ -386,6 +376,16 @@ ISSUE    : Having a list of different types of drawable things in the
            so that it is more flexible, and easier to work with.
            Consider some design patterns, or change of responsibility
            here.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.010 : hingor13 : Completed
+NAME     : Redundant Opacity Slider
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL :15 minutes
+ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
+           already available in the color picker tool. Removing the slider
+           will simplify the UI and reduce potential conflicts in opaqueness
+           control.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################

@@ -49,7 +49,7 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.010 : hingor13 : NotStarted
+TYPE     : USER STORY US3.010 : hingor13 : Started
 NAME     : Undo/Redo button
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL :
@@ -78,7 +78,7 @@ I WANT   : To be able to adjust the transparency of each object.
 SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.015 : hingor13 : NotStarted
+TYPE     : USER STORY US3.015 : hingor13 : Started
 NAME     : Canvas Scalability
 PRIORITY : 3
 ESTIMATE : 3 hours    ACTUAL :
@@ -109,10 +109,10 @@ ISSUE    : Having a list of different types of drawable things in the
            here.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.010 : hingor13 : Started
+TYPE     : BUG BUG3.010 : hingor13 : Completed
 NAME     : Redundant Opacity Slider
 PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL :
+ESTIMATE : 1 hour    ACTUAL :15 minutes
 ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
            already available in the color picker tool. Removing the slider
            will simplify the UI and reduce potential conflicts in opaqueness
