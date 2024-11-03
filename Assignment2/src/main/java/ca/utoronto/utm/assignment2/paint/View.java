@@ -45,8 +45,10 @@ public class View implements EventHandler<ActionEvent> {
         ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
         root.setRight(layerPane);
         Scene scene = new Scene(root);
+
         FileInputStream inputIcon = new FileInputStream(iconImageFile);
         Image iconImage = new Image(inputIcon);
+
         stage.getIcons().add(iconImage);
         stage.setScene(scene);
         stage.setTitle("Paint");

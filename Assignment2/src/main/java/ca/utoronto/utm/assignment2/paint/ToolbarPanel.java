@@ -15,7 +15,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> {
 
@@ -60,7 +59,11 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> 
             button.setGraphic(buttonContent);
             button.setId(buttonIds[i]);
             button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
-//            button.setOnAction(this);
+
+            button.setOnAction(this);
+
+            button.setOnMouseEntered(e -> button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;"));
+            button.setOnMouseExited(e -> button.setStyle("-fx-background-color: transparent; -fx-padding: 10;"));
 
             Label label = new Label(buttonIds[i]);
             label.setStyle("-fx-font-size: 12px; -fx-text-fill: #666465; -fx-text-alignment: center;");
@@ -90,13 +93,14 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent event) {
         for (Node node : this.getChildren()) {
-            if (node instanceof Button) {
-                Button button = (Button) node;
-                button.setStyle("-fx-background-color: transparent; -fx-padding: 10;"); // Transparent background
+            if (node instanceof VBox) {
+                VBox container = (VBox) node;
+                Button button = (Button) container.getChildren().getFirst();
+                button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
             }
         }
-
-
+        Button button = (Button) event.getSource();
+        button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
     }
 }
 
