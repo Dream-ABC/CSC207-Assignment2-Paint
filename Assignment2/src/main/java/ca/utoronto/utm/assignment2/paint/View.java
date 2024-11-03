@@ -9,6 +9,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -25,6 +26,14 @@ public class View implements EventHandler<ActionEvent> {
             this.paintPanel = new PaintPanel(this.paintModel);
             this.canvas = new ResizeableCanvas(paintPanel);
             this.shapeChooserPanel = new ShapeChooserPanel(this);
+
+//            Pane root = new Pane();
+//            MenuBar menuBar = createMenuBar();
+//            this.shapeChooserPanel.setLayoutX(0);
+//            this.shapeChooserPanel.setLayoutY(menuBar.getHeight());
+//            this.paintPanel.setLayoutX(menuBar.getHeight());
+//            this.paintPanel.setLayoutY(shapeChooserPanel.getWidth());
+//            root.getChildren().addAll(menuBar, shapeChooserPanel, paintPanel);
 
             BorderPane root = new BorderPane();
             root.setTop(createMenuBar());
