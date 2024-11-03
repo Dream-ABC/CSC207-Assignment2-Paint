@@ -21,18 +21,23 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
 
     private WritableImage createThumbnail(PaintLayer layer) {
 
-        if (layer.getVisible()) {
+//        if (layer.getVisible()) {
             return layer.snapshot(new SnapshotParameters(), null);
-        }
-
-        Canvas tempCanvas = new Canvas(layer.getWidth(), layer.getHeight());
-        GraphicsContext g2d = tempCanvas.getGraphicsContext2D();
-
-        // thumbnail is independent of visibility
-        g2d.clearRect(0, 0, layer.getWidth(), layer.getHeight());
-        layer.display(g2d);
-
-        return tempCanvas.snapshot(new SnapshotParameters(), null);
+//        } else {
+//            layer.setVisible(true);
+//            WritableImage store = layer.snapshot(new SnapshotParameters(), null);
+//            layer.setVisible(false);
+//            return store;
+//        }
+//
+//        Canvas tempCanvas = new Canvas(layer.getWidth(), layer.getHeight());
+//        GraphicsContext g2d = tempCanvas.getGraphicsContext2D();
+//
+//        // thumbnail is independent of visibility
+//        g2d.clearRect(0, 0, layer.getWidth(), layer.getHeight());
+//        layer.display(g2d);
+//
+//        return tempCanvas.snapshot(new SnapshotParameters(), null);
     }
 
     public void updateAllLayers() {
@@ -40,10 +45,12 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         this.getChildren().clear();
 
         ArrayList<PaintLayer> layers = this.model.getLayers();
+        buttonImages = new HashMap<>();
         for (int i = 0; i < layers.size(); i++) {
             // Snapshot the Canvas content (layer) as a list of thumbnails
-            if (layers.get(i).getStatus().equals("changed")) {  // only update when visible
-
+//            if (layers.get(i).getStatus().equals("changed")) {  // only update when visible
+                boolean store = layers.get(i).getVisible();
+                layers.get(i).setVisible(true);
                 WritableImage snapshot = createThumbnail(layers.get(i));
 
                 // Create an ImageView to display the thumbnail and set the zoom size
@@ -51,24 +58,27 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
                 thumbnail.setFitWidth(30);
                 thumbnail.setFitHeight(30);
                 thumbnail.setPreserveRatio(true);
+                thumbnail.setId("Layer" + i);
+                this.buttonImages.put(i, thumbnail);
+                layers.get(i).setVisible(store);
 
-                if (this.buttonImages.size() > i) {
-                    this.buttonImages.replace(i, thumbnail);
-                } else {
-                    thumbnail.setId("Layer" + i);
-                    this.buttonImages.put(i, thumbnail);
-                }
+//                if (this.buttonImages.size() > i) {
+//                    this.buttonImages.replace(i, thumbnail);
+//                } else {
+//                    thumbnail.setId("Layer" + i);
+//                    this.buttonImages.put(i, thumbnail);
+//                }
 
                 // Update status flag
-                layers.get(i).setStatus("unchanged");
+//                layers.get(i).setStatus("unchanged");
 
-            } else if (layers.get(i).getStatus().equals("removed")) {
-                for (int layerIndex = i; layerIndex < layers.size(); layerIndex++) {
-                    this.buttonImages.replace(layerIndex, this.buttonImages.get(layerIndex + 1));
-                }
-                this.buttonImages.remove(layers.size());
-                layers.remove(layers.get(i));
-            }
+//            } else if (layers.get(i).getStatus().equals("removed")) {
+//                for (int layerIndex = i; layerIndex < layers.size(); layerIndex++) {
+//                    this.buttonImages.replace(layerIndex, this.buttonImages.get(layerIndex + 1));
+//                }
+//                this.buttonImages.remove(layers.size());
+//                layers.remove(layers.get(i));
+//            }
         }
 
         int row = 0;
@@ -131,4 +141,5 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         view.setLayer(command);
         System.out.println(command);
     }
+
 }

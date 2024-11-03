@@ -40,4 +40,7 @@ public class CommandHistory {
             ((EraserStrokeCommand) store).addRemovedShapes(state);
         }
     }
+    public void popLastCommand(){
+        this.undoStack.pop();
+    }
 }

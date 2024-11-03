@@ -23,7 +23,7 @@ public class PaintModel extends Observable {
 
     public void addLayer() {
         PaintLayer layer = new PaintLayer();
-        history.execute(new AddLayerCommand(this, layer));
+        history.execute(new AddLayerCommand(this, layer, history));
         this.selectedLayer = layer;
         this.setChanged();
         this.notifyObservers();
@@ -39,7 +39,7 @@ public class PaintModel extends Observable {
 
             layer.setStatus("removed");
 //            this.layers.remove(this.selectedLayer);
-//            history.execute(new DeleteLayerCommand(this, this.selectedLayer));
+            history.execute(new DeleteLayerCommand(this, this.selectedLayer, history));
             if (this.selectedLayer == layer) {
                 int currIndex = this.layers.indexOf(layer);
 
@@ -55,6 +55,8 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
 
+    public void removeLayerFinal(PaintLayer layer) {
+    }
 
 
 
