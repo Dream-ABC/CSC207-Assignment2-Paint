@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 public class Triangle extends Polygon implements Shape {
     private Point topLeft;
     private double base;
@@ -80,10 +82,12 @@ public class Triangle extends Polygon implements Shape {
         return "Triangle";
     }
 
+    private double areaOfTriangle(double x1, double y1, double x2, double y2, double x3, double y3) {
+        return Math.abs((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2.0);
+    }
+
     @Override
     public boolean overlaps(Eraser eraser) {
-        javafx.scene.shape.Rectangle e = new Rectangle(eraser.getCentre().x+(eraser.getDimension()/2.0), eraser.getCentre().y+(eraser.getDimension()/2.0), eraser.getDimension(), eraser.getDimension());
-        Polygon t = new Polygon();
         ObservableList<Double> points = this.getPoints();
         double[] xPoints = new double[3];
         double[] yPoints = new double[3];
@@ -91,11 +95,32 @@ public class Triangle extends Polygon implements Shape {
             xPoints[i] = points.get(i);
             yPoints[i] = points.get(i + 3);
         }
-        t.getPoints().addAll(
-                xPoints[0], yPoints[0],
-                xPoints[1], yPoints[1],
-                xPoints[2], yPoints[2]);
-        return e.getBoundsInParent().intersects(t.getBoundsInParent());
+        // Area A = [ x1(y2 – y3) + x2(y3 – y1) + x3(y1-y2)]/2
+        double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
+
+        double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
+        double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
+        double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
+        double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
+        ArrayList<Point> allPoints = new ArrayList<Point>();
+        allPoints.add(new Point(leftX, topY));
+        allPoints.add(new Point(leftX, bottomY));
+        allPoints.add(new Point(rightX, topY));
+        allPoints.add(new Point(rightX, bottomY));
+        for (Point point : allPoints) {
+            // Area A = [ x0(y1 – y2) + x1(y2 – y0) + x2(y0-y1)]/2
+            // A = (x0, y0), B = (x1, y1), C = (x2, y2), P = x, y
+            // ABP
+            double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
+            // PBC
+            double a2 = areaOfTriangle(point.x, point.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
+            // APC
+            double a3 = areaOfTriangle(xPoints[0], yPoints[0], point.x, point.y, xPoints[2], yPoints[2]);
+            if (a1 + a2 + a3 == A){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
