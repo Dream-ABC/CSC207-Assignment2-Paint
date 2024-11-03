@@ -13,15 +13,15 @@ public class CircleStrategy implements ShapeStrategy {
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         System.out.println("Started Circle");
-        Point centre = new Point(mouseEvent.getX(), mouseEvent.getY());
-
+        Point firstClick = new Point(mouseEvent.getX(), mouseEvent.getY());
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Circle circle = (Circle) shapeFactory.getShape(panel.getMode());
         this.panel.setCurrentShape(circle);
 
         // Set info of circle (radius=0)
-        circle.setCentre(centre);
+        circle.setCentre(firstClick);
+        circle.setTopLeft(firstClick);
         circle.setOpaqueness(this.panel.getOpaqueness());
         circle.setColor(this.panel.getColor());
         this.panel.getModel().addShape(circle);
@@ -33,33 +33,29 @@ public class CircleStrategy implements ShapeStrategy {
         double dx = circle.getCentre().x-mouseEvent.getX();
         double dy = circle.getCentre().y-mouseEvent.getY();
         double radius = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-        Point oldCentre = circle.getCentre();
         double newX = circle.getCentre().x-radius;
         double newY = circle.getCentre().y-radius;
-        Point newCentre = new Point(newX, newY);
-        circle.setCentre(newCentre);
-        circle.setRadius(radius*2);
-
+        Point newTopLeft = new Point(newX, newY);
+        circle.setTopLeft(newTopLeft);
+        circle.setDiameter(radius*2);
+        // this.panel.getModel().addCircle(circle);
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(circle);
-        circle.setCentre(oldCentre);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         Circle circle = (Circle) this.panel.getCurrentShape();
         if(circle!=null){
-            // Problematic notion of radius and centre!!
             double dx = circle.getCentre().x-mouseEvent.getX();
             double dy = circle.getCentre().y-mouseEvent.getY();
             double radius = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
             double newX = circle.getCentre().x-radius;
             double newY = circle.getCentre().y-radius;
-            Point newCentre = new Point(newX, newY);
-            circle.setCentre(newCentre);
-            circle.setRadius(radius*2);
-
+            Point newTopLeft = new Point(newX, newY);
+            circle.setTopLeft(newTopLeft);
+            circle.setDiameter(radius*2);
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShape(circle);

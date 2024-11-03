@@ -12,6 +12,7 @@ public class PaintLayer extends Canvas {
     private String status;  // "changed", "unchanged", "removed"
     private Color color;
     private ArrayList<Shape> shapes;
+    private Eraser eraser;
 
     public PaintLayer() {
         super(300, 300);  // default size
@@ -38,6 +39,9 @@ public class PaintLayer extends Canvas {
         this.shapes.remove(shape);
         this.status = "changed";
     }
+
+    public void addEraser(Eraser eraser) {this.eraser = eraser;}
+    public void removeEraser() {this.eraser = null;}
 
     public ArrayList<Shape> getShapes() {
         return shapes;
@@ -76,6 +80,9 @@ public class PaintLayer extends Canvas {
         for (Shape shape : this.shapes) {
             g2d.setFill(shape.getColor());
             shape.display(g2d);
+        }
+        if (this.eraser != null){
+            eraser.display(g2d);
         }
     }
 }

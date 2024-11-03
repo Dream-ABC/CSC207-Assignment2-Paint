@@ -19,7 +19,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
         public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
                 this.model = model;
 
-                String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Oval", "Triangle" };
+                String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Oval", "Triangle", "Eraser"};
                 ImageView[] buttonImages = new ImageView[buttonIds.length];
                 String[] imageFiles = {"src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
@@ -27,7 +27,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                         "src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/polyline.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/oval.png",
-                        "src/main/java/ca/utoronto/utm/assignment2/images/triangle.png"};
+                        "src/main/java/ca/utoronto/utm/assignment2/images/triangle.png", "src/main/java/ca/utoronto/utm/assignment2/images/eraser.png"};
 
                 for (int i = 0; i < buttonIds.length; i++) {
                         FileInputStream input = new FileInputStream(imageFiles[i]);

@@ -11,7 +11,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observer {
-    private String mode = "Circle";
+    private String mode;
     private PaintModel model;
     private Shape shape;
 
@@ -19,6 +19,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     private ShapeFactory shapeFactory;
     private StrategyFactory strategyFactory;
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
+    private Eraser eraser;
 
     private int opaqueness;
     private Color color;
@@ -70,6 +71,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     public void setCurrentShape(Shape shape) {
         this.shape = shape;
     }
+
+    public Eraser getEraser() { return eraser; }
+
+    public void setEraser(Eraser eraser) { this.eraser = eraser; }
 
     public ShapeFactory getShapeFactory() {
         return shapeFactory;
