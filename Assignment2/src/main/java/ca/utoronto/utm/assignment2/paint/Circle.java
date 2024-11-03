@@ -16,7 +16,7 @@ public class Circle implements Shape{
          */
         public Circle() {
                 this.radius = 0;
-                this.color = Color.GREEN;
+                this.color = Color.BLACK;
                 this.opaqueness = 1.0;
         }
 
@@ -27,7 +27,7 @@ public class Circle implements Shape{
         public Circle(Point centre, double radius){
                 this.centre = centre;
                 this.radius = radius;
-                this.color = Color.GREEN;
+                this.color = Color.BLACK;
                 this.opaqueness = 1.0;
         }
 
@@ -53,6 +53,11 @@ public class Circle implements Shape{
         }
 
         @Override
+        public void setColor(Color color) {
+                this.color = color;
+        }
+
+        @Override
         public int getThickness() {
                 return -1;
         }
@@ -75,6 +80,7 @@ public class Circle implements Shape{
         @Override
         public void display(GraphicsContext g2d) {
                 g2d.setGlobalAlpha(this.opaqueness);
+                g2d.setFill(this.color);
                 g2d.fillOval(this.centre.x, this.centre.y,
                         this.radius, this.radius);
         }

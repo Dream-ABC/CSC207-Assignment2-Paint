@@ -16,7 +16,7 @@ public class Triangle extends Polygon implements Shape {
     public Triangle() {
         this.base = 0.0;
         this.height = 0.0;
-        this.color = Color.RED;
+        this.color = Color.BLACK;
         this.opaqueness = 1.0;
     }
 
@@ -24,7 +24,7 @@ public class Triangle extends Polygon implements Shape {
         this.topLeft = topLeft;
         this.base = base;
         this.height = height;
-        this.color = Color.RED;
+        this.color = Color.BLACK;
         this.opaqueness = 1.0;
     }
 
@@ -74,6 +74,11 @@ public class Triangle extends Polygon implements Shape {
     }
 
     @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
     public int getThickness() {
         return -1;
     }
@@ -103,6 +108,7 @@ public class Triangle extends Polygon implements Shape {
             yPoints[i] = points.get(i + 3);
         }
         g2d.setGlobalAlpha(this.opaqueness);
+        g2d.setFill(this.color);
         g2d.fillPolygon(xPoints, yPoints, 3);
     }
 }

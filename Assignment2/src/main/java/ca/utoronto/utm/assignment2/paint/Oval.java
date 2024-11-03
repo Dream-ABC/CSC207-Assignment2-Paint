@@ -14,7 +14,7 @@ public class Oval implements Shape {
     public Oval() {
         this.width = 0;
         this.height = 0;
-        this.color = Color.PURPLE;
+        this.color = Color.BLACK;
         this.opaqueness = 1.0;
     }
 
@@ -23,7 +23,7 @@ public class Oval implements Shape {
         this.topLeft = topLeft;
         this.width = width;
         this.height = height;
-        this.color = Color.PURPLE;
+        this.color = Color.BLACK;
         this.opaqueness = 1.0;
     }
 
@@ -61,6 +61,11 @@ public class Oval implements Shape {
     }
 
     @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
     public int getThickness() {
         return -1;
     }
@@ -83,6 +88,7 @@ public class Oval implements Shape {
     @Override
     public void display(GraphicsContext g2d) {
         g2d.setGlobalAlpha(this.opaqueness);
+        g2d.setFill(this.color);
         g2d.fillOval(this.topLeft.x, this.topLeft.y,
                 this.width, this.height);
     }

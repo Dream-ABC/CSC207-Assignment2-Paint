@@ -6,22 +6,24 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 
 public class View implements EventHandler<ActionEvent> {
 
+    private Stage stage;
     private PaintModel paintModel;
     private PaintPanel paintPanel;
     private ShapeChooserPanel shapeChooserPanel;
+    private ColorPickerPopup colorPickerPopup;
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
     private OpaquenessSlider opaquenessSlider;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
+        this.stage = stage;
 
         this.paintPanel = new PaintPanel(this.paintModel);
         this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
@@ -29,6 +31,7 @@ public class View implements EventHandler<ActionEvent> {
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
 
         BorderPane root = new BorderPane();
+        this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
         root.setTop(createMenuBar());
         root.setCenter(this.paintPanel);
         root.setLeft(this.shapeChooserPanel);
@@ -43,6 +46,10 @@ public class View implements EventHandler<ActionEvent> {
 
     public PaintModel getPaintModel() {
         return this.paintModel;
+    }
+
+    public Stage getStage() {
+        return this.stage;
     }
 
     public void setLayer(String layerName) {
@@ -112,16 +119,16 @@ public class View implements EventHandler<ActionEvent> {
 
         menuItem = new MenuItem("Opaqueness");
         this.opaquenessSlider = new OpaquenessSlider(this.paintPanel);
-        menuItem.setOnAction(event -> showOpaquenessSlider()); // Show the slider popup
+        menuItem.setOnAction(event -> this.opaquenessSlider.show()); // Show the slider popup
+        menu.getItems().add(menuItem);
+
+        menuItem = new MenuItem("Colors");
+        menuItem.setOnAction(this); // Show the color popup
         menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);
 
         return menuBar;
-    }
-
-    private void showOpaquenessSlider() {
-        this.opaquenessSlider.show();
     }
 
     @Override
@@ -131,6 +138,8 @@ public class View implements EventHandler<ActionEvent> {
         System.out.println(command);
         if (command.equals("Exit")) {
             Platform.exit();
+        } else if (command.equals("Colors")) {
+            this.colorPickerPopup.display();
         }
     }
 }
