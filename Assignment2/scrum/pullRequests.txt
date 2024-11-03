@@ -7,3 +7,4 @@ BUG3.004 author:pengxi60 puller:tianshi8 status:Completed
  US3.013 author:tianshi8 puller:wenjess1 status:Completed
  US3.012 author:tianshi8 puller:hingor13 status:Rejected
  US3.012 author:tianshi8 puller:hingor13 status:InProcess
+ US3.008 author:wenjess1 puller:         status:Waiting
