@@ -10,7 +10,6 @@ public class Paint extends Application {
         View view; // View + Controller
 
         public static void main(String[] args) {
-                System.setProperty("prism.order", "sw");
                 launch(args);
         }
 
