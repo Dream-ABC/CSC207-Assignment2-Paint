@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -19,6 +21,8 @@ public class View implements EventHandler<ActionEvent> {
     private PaintModel paintModel;
     private PaintPanel paintPanel;
     private ToolbarPanel toolbarPanel;
+    private StatusbarPanel statusbarPanel;
+    private ZoomPanel zoomPanel;
     private ShapeChooserPanel shapeChooserPanel;
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
@@ -29,6 +33,8 @@ public class View implements EventHandler<ActionEvent> {
 
         this.paintPanel = new PaintPanel(this.paintModel);
         this.toolbarPanel = new ToolbarPanel();
+        this.statusbarPanel = new StatusbarPanel(this.paintPanel);
+        this.zoomPanel = new ZoomPanel();
         this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
@@ -38,8 +44,16 @@ public class View implements EventHandler<ActionEvent> {
         VBox topPanel = new VBox();
         topPanel.getChildren().addAll(createMenuBar(), this.toolbarPanel);
 
+        Region spacer = new Region();
+        spacer.setStyle("-fx-background-color: #f8f1f0");
+
+        HBox bottomPanel = new HBox();
+        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS); // Let the spacer expand
+        bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
+
         BorderPane root = new BorderPane();
         root.setTop(topPanel);
+        root.setBottom(bottomPanel);
         root.setCenter(this.paintPanel);
         root.setLeft(this.shapeChooserPanel);
         ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);

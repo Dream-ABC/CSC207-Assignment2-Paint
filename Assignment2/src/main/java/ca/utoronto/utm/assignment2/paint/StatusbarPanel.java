@@ -1,30 +1,19 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class StatusbarPanel extends GridPane implements EventHandler<ActionEvent> {
+public class StatusbarPanel extends GridPane {
     private PaintPanel paintPanel;
 
     public StatusbarPanel(PaintPanel paintPanel) throws FileNotFoundException {
-        String[] buttonIds = {"zoomOut", "zoomIn"};
-        ImageView[] buttonImages = new ImageView[buttonIds.length];
-        String[] buttonImageFiles = {
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/ZoomOut.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/ZoomIn.png",
-        };
         String[] imageFiles = {
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Cursor.png",
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/ObjectSize.png",
@@ -32,7 +21,9 @@ public class StatusbarPanel extends GridPane implements EventHandler<ActionEvent
         };
 
         this.paintPanel = paintPanel;
-        this.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
+
+        this.setStyle("-fx-background-color: #f8f1f0;");
+        this.setPadding(new Insets(7, 0, 7, 10));
 
         int col = 0;
         for (int i = 0; i < imageFiles.length; i++) {
@@ -43,33 +34,25 @@ public class StatusbarPanel extends GridPane implements EventHandler<ActionEvent
             this.add(imageView, col, 0);
             col++;
 
-            TextArea textArea = new TextArea();
-            textArea.setEditable(false);
+            TextField textField = new TextField();
+            textField.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 12px;");
+            textField.setPrefWidth(110);
+            textField.setPrefHeight(12);
+            textField.setEditable(false);
+            textField.setText("1325 x 748px");
 
-            this.add(textArea, col, 0);
+            this.add(textField, col, 0);
             col++;
 
-            if (i < imageFiles.length) {
+            if (i < imageFiles.length - 1) {
                 Separator separator = new Separator();
                 separator.setOrientation(javafx.geometry.Orientation.VERTICAL);
                 separator.setPrefWidth(1);
                 separator.setPrefHeight(10);
-                separator.setPadding(new Insets(4, 0, 4, 3));
+                separator.setPadding(new Insets(4, 4, 4, 0));
                 this.add(separator, col, 0);
                 col++;
             }
         }
-    }
-    @Override
-    public void handle(ActionEvent event) {
-        for (Node node : this.getChildren()) {
-            if (node instanceof VBox) {
-                VBox container = (VBox) node;
-                Button button = (Button) container.getChildren().getFirst();
-                button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
-            }
-        }
-        Button button = (Button) event.getSource();
-        button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
     }
 }

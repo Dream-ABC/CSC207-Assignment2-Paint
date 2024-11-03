@@ -30,7 +30,6 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> 
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Colors.png",
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Layers.png"
         };
-
         String arrowImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/DownArrowModifier.png";
 
         this.setStyle("-fx-background-color: #fcf8f7");
