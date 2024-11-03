@@ -40,7 +40,7 @@ public class EraserStrategy implements ShapeStrategy {
             }
         }
         for (Shape shape: removeShapes){
-            currLayer.removeShape(shape);
+            this.panel.getModel().removeShape(shape);
         }
     }
 

@@ -8,6 +8,8 @@ public class PaintModel extends Observable {
     private PaintLayer selectedLayer;
     private String mode = "";
 
+    private CommandHistory history = new CommandHistory();
+
     public boolean selectLayer(String layerName) {
         int layerIndex = Integer.parseInt(layerName.substring(5));
         if (layerIndex == layers.indexOf(this.selectedLayer)) {
@@ -21,7 +23,7 @@ public class PaintModel extends Observable {
 
     public void addLayer() {
         PaintLayer layer = new PaintLayer();
-        this.layers.add(layer);
+        history.execute(new AddLayerCommand(this, layer));
         this.selectedLayer = layer;
         this.setChanged();
         this.notifyObservers();
@@ -66,6 +68,15 @@ public class PaintModel extends Observable {
         this.setChanged();
         this.notifyObservers();
     }
+    public void addShapeFinal(Shape shape) {
+        history.execute(new AddShapeCommand(shape, this.getSelectedLayer()));
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+    public void removeShape(Shape shape) {
+        history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer()));
+    }
 
     public void setMode(String mode) {
         this.mode = mode;
@@ -73,7 +84,9 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
     public void addEraser(Eraser eraser) {
+        // debateable to have this as a command
         this.selectedLayer.addEraser(eraser);
+        //history.execute(new AddEraserCommand(eraser, this.selectedLayer));
         this.setChanged();
         this.notifyObservers();
     }
@@ -83,6 +96,23 @@ public class PaintModel extends Observable {
         this.setChanged();
         this.notifyObservers();
     }
+
+    public void undo(){
+        history.undo();
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+    public void redo(){
+        history.redo();
+        this.setChanged();
+        this.notifyObservers();
+    }
+
+    public CommandHistory getHistory() {
+        return history;
+    }
+
 
     public String getMode() {
         return mode;

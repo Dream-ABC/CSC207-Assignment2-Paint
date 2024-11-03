@@ -134,11 +134,11 @@ public class View implements EventHandler<ActionEvent> {
 
         menu.getItems().add(new SeparatorMenuItem());
         menuItem = new MenuItem("Undo");
-        menuItem.setOnAction(this);
+        menuItem.setOnAction(event -> this.paintModel.undo());
         menu.getItems().add(menuItem);
 
         menuItem = new MenuItem("Redo");
-        menuItem.setOnAction(this);
+        menuItem.setOnAction(event -> this.paintModel.redo());
         menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);

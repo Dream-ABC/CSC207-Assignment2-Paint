@@ -63,7 +63,7 @@ public class RectangleStrategy implements ShapeStrategy {
 
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
-            this.panel.getModel().addShape(rectangle);
+            this.panel.getModel().addShapeFinal(rectangle);
             System.out.println("Added Rectangle");
             this.panel.setCurrentShape(null);
         }

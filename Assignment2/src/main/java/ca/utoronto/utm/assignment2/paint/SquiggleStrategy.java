@@ -43,7 +43,7 @@ public class SquiggleStrategy implements ShapeStrategy {
         squiggle.addPoint(point);
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
-        this.panel.getModel().addShape(squiggle);
+        this.panel.getModel().addShapeFinal(squiggle);
         System.out.println("Added Squiggle");
         this.panel.setCurrentShape(null);
     }

@@ -85,7 +85,7 @@ public class SquareStrategy implements ShapeStrategy {
 
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
-            this.panel.getModel().addShape(square);
+            this.panel.getModel().addShapeFinal(square);
             System.out.println("Added Square");
             this.panel.setCurrentShape(null);
         }
