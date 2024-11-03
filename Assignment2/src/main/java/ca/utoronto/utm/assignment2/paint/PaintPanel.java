@@ -5,6 +5,7 @@ import javafx.event.EventType;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -13,14 +14,16 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     private String mode = "Circle";
     private PaintModel model;
     private Shape shape;
-    private int opaqueness;
+
     private ShapeStrategy strategy;
     private ShapeFactory shapeFactory;
     private StrategyFactory strategyFactory;
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
 
+    private int opaqueness;
+    private Color color;
+
     public PaintPanel(PaintModel model) {
-        // super(300, 300);
 
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
@@ -60,7 +63,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return model;
     }
 
-
     public Shape getCurrentShape() {
         return shape;
     }
@@ -79,6 +81,14 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     public int getOpaqueness() {
         return this.opaqueness;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return this.color;
     }
 
     @Override

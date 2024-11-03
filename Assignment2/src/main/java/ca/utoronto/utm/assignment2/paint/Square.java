@@ -13,14 +13,14 @@ public class Square implements Shape {
 
     public Square() {
         this.side = 0;
-        this.color = Color.ORANGE;
+        this.color = Color.BLACK;
         this.opaqueness = 1.0;
     }
 
     public Square(Point topLeft, double side){
         this.topLeft = topLeft;
         this.side = side;
-        this.color = Color.ORANGE;
+        this.color = Color.BLACK;
         this.opaqueness = 1.0;
     }
 
@@ -54,6 +54,11 @@ public class Square implements Shape {
     }
 
     @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
     public int getThickness() {
         return -1;
     }
@@ -76,6 +81,7 @@ public class Square implements Shape {
     @Override
     public void display(GraphicsContext g2d) {
         g2d.setGlobalAlpha(this.opaqueness);
+        g2d.setFill(this.color);
         g2d.fillRect(this.topLeft.x, this.topLeft.y,
                 this.side, this.side);
     }
