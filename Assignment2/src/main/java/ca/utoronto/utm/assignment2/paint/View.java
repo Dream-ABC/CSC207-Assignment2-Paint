@@ -5,16 +5,24 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class View implements EventHandler<ActionEvent> {
 
     private PaintModel paintModel;
     private PaintPanel paintPanel;
+    private ToolbarPanel toolbarPanel;
+    private StatusbarPanel statusbarPanel;
+    private ZoomPanel zoomPanel;
     private ShapeChooserPanel shapeChooserPanel;
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
@@ -24,17 +32,38 @@ public class View implements EventHandler<ActionEvent> {
         this.paintModel = model;
 
         this.paintPanel = new PaintPanel(this.paintModel);
+        this.toolbarPanel = new ToolbarPanel();
+        this.statusbarPanel = new StatusbarPanel(this.paintPanel);
+        this.zoomPanel = new ZoomPanel();
         this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
 
+        String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
+
+        VBox topPanel = new VBox();
+        topPanel.getChildren().addAll(createMenuBar(), this.toolbarPanel);
+
+        Region spacer = new Region();
+        spacer.setStyle("-fx-background-color: #f8f1f0");
+
+        HBox bottomPanel = new HBox();
+        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS); // Let the spacer expand
+        bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
+
         BorderPane root = new BorderPane();
-        root.setTop(createMenuBar());
+        root.setTop(topPanel);
+        root.setBottom(bottomPanel);
         root.setCenter(this.paintPanel);
         root.setLeft(this.shapeChooserPanel);
         ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
         root.setRight(layerPane);
         Scene scene = new Scene(root);
+
+        FileInputStream inputIcon = new FileInputStream(iconImageFile);
+        Image iconImage = new Image(inputIcon);
+
+        stage.getIcons().add(iconImage);
         stage.setScene(scene);
         stage.setTitle("Paint");
         stage.show();
@@ -108,7 +137,7 @@ public class View implements EventHandler<ActionEvent> {
 
         // Another menu for Options
 
-        menu = new Menu("Options");
+        menu = new Menu("View");
 
         menuItem = new MenuItem("Opaqueness");
         this.opaquenessSlider = new OpaquenessSlider(this.paintPanel);
@@ -116,6 +145,7 @@ public class View implements EventHandler<ActionEvent> {
         menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);
+        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
         return menuBar;
     }
