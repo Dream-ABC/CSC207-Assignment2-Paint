@@ -7,8 +7,6 @@ public interface Shape {
     void setColor(Color color);
     Color getColor();
     int getThickness();
-    double getOpaqueness();
-    void setOpaqueness(int opaque);
     String getShape();
     boolean overlaps(Eraser eraser);
     void display(GraphicsContext g2d);

@@ -24,7 +24,6 @@ public class SquareStrategy implements ShapeStrategy {
         // Set info of circle (radius=0)
         square.setOrigin(origin);
         square.setTopLeft(topLeft);
-        square.setOpaqueness(this.panel.getOpaqueness());
         square.setColor(this.panel.getColor());
         this.panel.getModel().addShape(square);
     }

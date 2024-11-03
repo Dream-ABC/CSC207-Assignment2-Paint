@@ -24,7 +24,6 @@ public class RectangleStrategy implements ShapeStrategy {
         // Set info of rectangle (radius=0)
         rectangle.setTopLeft(topLeft);
         rectangle.setOrigin(origin);
-        rectangle.setOpaqueness(this.panel.getOpaqueness());
         rectangle.setColor(this.panel.getColor());
         this.panel.getModel().addShape(rectangle);
     }

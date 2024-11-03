@@ -20,7 +20,6 @@ public class SquiggleStrategy implements ShapeStrategy {
         this.panel.setCurrentShape(squiggle);
 
         // Set info of squiggle (start point)
-        squiggle.setOpaqueness(this.panel.getOpaqueness());
         squiggle.addPoint(point);
         squiggle.setColor(this.panel.getColor());
         this.panel.getModel().addShape(squiggle);

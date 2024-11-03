@@ -22,7 +22,6 @@ public class CircleStrategy implements ShapeStrategy {
         // Set info of circle (radius=0)
         circle.setCentre(firstClick);
         circle.setTopLeft(firstClick);
-        circle.setOpaqueness(this.panel.getOpaqueness());
         circle.setColor(this.panel.getColor());
         this.panel.getModel().addShape(circle);
     }

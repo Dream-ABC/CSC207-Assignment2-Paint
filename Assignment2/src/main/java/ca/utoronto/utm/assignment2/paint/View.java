@@ -28,7 +28,6 @@ public class View implements EventHandler<ActionEvent> {
     private ColorPickerPopup colorPickerPopup;
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
-    private OpaquenessSlider opaquenessSlider;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
@@ -147,10 +146,6 @@ public class View implements EventHandler<ActionEvent> {
 
         menu = new Menu("View");
 
-        menuItem = new MenuItem("Opaqueness");
-        this.opaquenessSlider = new OpaquenessSlider(this.paintPanel);
-        menuItem.setOnAction(event -> this.opaquenessSlider.show()); // Show the slider popup
-        menu.getItems().add(menuItem);
 
         menuItem = new MenuItem("Colors");
         menuItem.setOnAction(this); // Show the color popup
