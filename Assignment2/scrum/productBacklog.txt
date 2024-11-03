@@ -63,17 +63,6 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.008 : wenjess1 : NotStarted
-NAME     : Stroke Eraser
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to erase drawings on the canvas
-SO THAT  : I have more customizability with the Paint application.
-           In particular, this would enhance my ease of control over the canvas
-           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US?.009 : wenjess1 : NotStarted
 NAME     : Selection tool
 PRIORITY : 3
@@ -159,26 +148,6 @@ I WANT : to add and customize text on the canvas with options to change the
          font, size, and colour.
 SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG?.004 : UTORID : NotStarted 
-NAME     : Architecture behind Model is poor
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. Need to re-architect the Model
-           so that it is more flexible, and easier to work with.
-           Consider some design patterns, or change of responsibility
-           here.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG?.007 : wenjess1 : NotStarted
-NAME     : Default shape selection is incorrect
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
-           It would be best to have no default shape selected.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG?.008 : tianshi8 : NotStarted
@@ -284,6 +253,14 @@ ISSUE    : The first click should specify the center of the circle, with
            implementation.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : BUG BUG3.007 : wenjess1 : Complete
+NAME     : Default shape selection is incorrect
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
+           It would be best to have no default shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US2.017 : wenjess1 : Complete
 NAME     : Draw Oval with Feedback & Shape Selection
 PRIORITY : 1
@@ -376,6 +353,29 @@ ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : To be able to adjust the transparency of each object.
 SO THAT  : I can control the visibility of different elements in my artwork.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.008 : wenjess1 : Complete
+NAME     : Stroke Eraser
+PRIORITY : 3
+ESTIMATE : 1 day    ACTUAL : 1 day
+AS A     : user
+I WANT   : To be able to erase drawings on the canvas
+SO THAT  : I have more customizability with the Paint application.
+           In particular, this would enhance my ease of control over the canvas
+           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.004 : pengxi60 : Completed
+NAME     : Architecture behind Model is poor
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. In fact, it is currently incorrect, with
+           Squiggle's not drawing properly. Need to re-architect the Model
+           so that it is more flexible, and easier to work with.
+           Consider some design patterns, or change of responsibility
+           here.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
