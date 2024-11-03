@@ -21,7 +21,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
     private Eraser eraser;
 
-    private int opaqueness;
     private Color color;
 
     public PaintPanel(PaintModel model) {
@@ -78,14 +77,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     public ShapeFactory getShapeFactory() {
         return shapeFactory;
-    }
-
-    public void setOpaqueness(int opaqueness) {
-        this.opaqueness = opaqueness;
-    }
-
-    public int getOpaqueness() {
-        return this.opaqueness;
     }
 
     public void setColor(Color color) {

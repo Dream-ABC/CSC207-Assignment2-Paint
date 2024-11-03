@@ -24,7 +24,6 @@ public class OvalStrategy implements ShapeStrategy {
         // Set info of circle (radius=0)
         oval.setOrigin(topLeft);
         oval.setTopLeft(topLeft);
-        oval.setOpaqueness(this.panel.getOpaqueness());
         oval.setColor(this.panel.getColor());
         this.panel.getModel().addShape(oval);
     }

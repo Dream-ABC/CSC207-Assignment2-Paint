@@ -13,13 +13,11 @@ public class Triangle extends Polygon implements Shape {
     private double height;
     private Point origin;
     private Color color;
-    private double opaqueness;
 
     public Triangle() {
         this.base = 0.0;
         this.height = 0.0;
         this.color = Color.BLACK;
-        this.opaqueness = 1.0;
     }
 
     public Triangle(Point topLeft, double base, double height) {
@@ -27,7 +25,6 @@ public class Triangle extends Polygon implements Shape {
         this.base = base;
         this.height = height;
         this.color = Color.BLACK;
-        this.opaqueness = 1.0;
     }
 
     public Point getTopLeft() {
@@ -86,16 +83,6 @@ public class Triangle extends Polygon implements Shape {
     }
 
     @Override
-    public void setOpaqueness(int opaque) {
-        this.opaqueness = opaque / 100.0;
-    }
-
-    @Override
-    public double getOpaqueness() {
-        return this.opaqueness;
-    }
-
-    @Override
     public String getShape() {
         return "Triangle";
     }
@@ -146,7 +133,6 @@ public class Triangle extends Polygon implements Shape {
             xPoints[i] = points.get(i);
             yPoints[i] = points.get(i + 3);
         }
-        g2d.setGlobalAlpha(this.opaqueness);
         g2d.setFill(this.color);
         g2d.fillPolygon(xPoints, yPoints, 3);
     }
