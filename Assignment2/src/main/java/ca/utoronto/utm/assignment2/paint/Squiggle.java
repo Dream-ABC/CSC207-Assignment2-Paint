@@ -61,7 +61,7 @@ public class Squiggle implements Shape {
             Point p1 = this.points.get(i);
             Point p2 = this.points.get(i + 1);
             g2d.setGlobalAlpha(this.opaqueness);
-            g2d.setFill(this.color);
+            g2d.setStroke(this.color);  // since there's no fill colour
             g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
         }
     }
