@@ -18,14 +18,6 @@ public class Eraser {
     }
 
     /**
-     * Constructs an eraser, represented as a square that is of size 14, at a user-specified centre.
-     */
-    public Eraser(Point centre){
-        this.dimension = 14;
-        this.centre = centre;
-    }
-
-    /**
      * @return the centre of the Eraser
      */
     public Point getCentre() {

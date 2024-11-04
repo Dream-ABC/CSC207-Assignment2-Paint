@@ -14,21 +14,10 @@ public class Circle implements Shape{
         private Color color;
 
         /**
-         * Constructs a default black circle with a diameter of 0 and full opaqueness.
+         * Constructs a default black circle with a diameter of 0.
          */
         public Circle() {
                 this.diameter = 0;
-                this.color = Color.BLACK;
-        }
-
-        /**
-         * Constructs a circle user defined centre and diameter.
-         * The default state of a Circle is black with full opaqueness.
-         */
-        public Circle(Point centre, double diameter){
-                this.centre = centre;
-                this.topLeft = centre;
-                this.diameter = diameter;
                 this.color = Color.BLACK;
         }
 
@@ -50,13 +39,6 @@ public class Circle implements Shape{
          * @return the centre of the Circle.
          */
         public Point getCentre() { return this.centre; }
-
-        /**
-         * @return the diameter of the Circle.
-         */
-        public double getDiameter() {
-                return this.diameter;
-        }
 
         /**
          * Sets the diameter of the Circle.
