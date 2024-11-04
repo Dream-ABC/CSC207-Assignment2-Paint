@@ -5,6 +5,10 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
+/**
+ * A class to represent drawing ovals.
+ * Oval implements the Shape interface.
+ */
 public class Oval implements Shape {
     private Point origin;
     private Point topLeft;
@@ -12,6 +16,9 @@ public class Oval implements Shape {
     private double height;
     private Color color;
 
+    /**
+     * Constructs a default black oval with a width and height of 0.
+     */
     public Oval() {
         this.width = 0;
         this.height = 0;
