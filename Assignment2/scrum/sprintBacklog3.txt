@@ -49,10 +49,10 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.010 : hingor13 : Started
+TYPE     : USER STORY US3.010 : hingor13 : Completed
 NAME     : Undo/Redo button
 PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL :
+ESTIMATE : 4 hours    ACTUAL : 1 day
 AS A     : user
 I WANT   : To be able to Undo or Redo any edits I make to the canvas.
 SO THAT  : I can undo something I did incorrectly or imperfectly, and able

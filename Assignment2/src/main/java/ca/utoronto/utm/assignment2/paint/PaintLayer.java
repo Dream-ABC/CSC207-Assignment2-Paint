@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class PaintLayer extends Canvas {
 
-    private boolean isVisible;
     private String status;  // "changed", "unchanged", "removed"
     private Color color;
     private ArrayList<Shape> shapes;
@@ -17,7 +16,7 @@ public class PaintLayer extends Canvas {
     public PaintLayer() {
         super(300, 300);  // default size
         this.shapes = new ArrayList<>();
-        this.isVisible = true;
+        this.setVisible(true);
         this.status = "changed";
         this.color = Color.TRANSPARENT;
     }
@@ -25,19 +24,21 @@ public class PaintLayer extends Canvas {
     public PaintLayer(int width, int height) {
         super(width, height);
         this.shapes = new ArrayList<>();
-        this.isVisible = true;
+        this.setVisible(true);
         this.status = "changed";
         this.color = Color.TRANSPARENT;
     }
 
     public void addShape(Shape shape) {
         this.shapes.add(shape);
-        this.status = "changed";
+    }
+
+    public void addShapeFirst(Shape shape) {
+        this.shapes.add(0, shape);
     }
 
     public void removeShape(Shape shape) {
         this.shapes.remove(shape);
-        this.status = "changed";
     }
 
     public void addEraser(Eraser eraser) {this.eraser = eraser;}
@@ -47,20 +48,8 @@ public class PaintLayer extends Canvas {
         return shapes;
     }
 
-    public void switchVisible() {
-        this.isVisible = !this.isVisible;
-    }
-
-    public boolean getVisible() {
-        return this.isVisible;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getStatus() {
-        return this.status;
+    void setShapes(ArrayList<Shape> shapes) {
+        this.shapes = shapes;
     }
 
     public void setColor(Color color) {

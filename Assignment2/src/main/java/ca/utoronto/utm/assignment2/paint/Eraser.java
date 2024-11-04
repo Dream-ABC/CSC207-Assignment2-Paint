@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
+import java.util.ArrayList;
 
 /**
  * A class to represent an eraser.
@@ -9,12 +10,14 @@ import javafx.scene.canvas.GraphicsContext;
 public class Eraser {
     private Point centre;
     private int dimension;
+    private ArrayList<Shape> removedShapes;
 
     /**
      * Constructs a default eraser, represented as a square that is of size 14.
      */
     public Eraser(){
         this.dimension = 14;
+        this.removedShapes = new ArrayList<>();
     }
 
     /**
@@ -35,6 +38,13 @@ public class Eraser {
      * @return the dimension of the Eraser
      */
     public int getDimension(){ return this.dimension; }
+
+    public void addRemovedShapes(Shape shape){
+        this.removedShapes.add(shape);
+    }
+    public ArrayList<Shape> getRemovedShapes(){
+        return this.removedShapes;
+    }
 
     /**
      * Displays the Eraser, represented as a square, centered at the user's current mouse location.

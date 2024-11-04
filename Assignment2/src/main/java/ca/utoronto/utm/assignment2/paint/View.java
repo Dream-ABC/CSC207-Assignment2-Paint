@@ -159,13 +159,19 @@ public class View implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        System.out.println(((MenuItem) event.getSource()).getText());
+//        System.out.println(((MenuItem) event.getSource()).getText());
         String command = ((MenuItem) event.getSource()).getText();
-        System.out.println(command);
+//        System.out.println(command);
         if (command.equals("Exit")) {
             Platform.exit();
         } else if (command.equals("Colors")) {
             this.colorPickerPopup.display();
+        } else if (command.equals("Undo")){
+            this.paintModel.undo();
+        } else if (command.equals("Redo")){
+            this.paintModel.redo();
         }
+
+        this.paintModel.notifyChange();
     }
 }

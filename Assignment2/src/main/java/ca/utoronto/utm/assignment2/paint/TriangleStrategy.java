@@ -63,7 +63,7 @@ public class TriangleStrategy implements ShapeStrategy {
 
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
-        this.panel.getModel().addShape(triangle);
+        this.panel.getModel().addShapeFinal(triangle);
         System.out.println("Added Triangle");
         this.panel.setCurrentShape(null);
     }
