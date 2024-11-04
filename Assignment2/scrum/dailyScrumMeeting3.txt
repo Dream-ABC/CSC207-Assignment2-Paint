@@ -109,9 +109,9 @@ Nov 3,2024
 	Obstacles I face: Writing good and effective javadocs + architecture.txt
 
 Nov 4,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Wrote javadocs for code
+	What I will do today: Meet with my team to delegate sprint 4 tasks
+	Obstacles I face: Ensuring I don't take on more than I can handle, while also helping my team complete all the tasks
 
 Nov 5,2024
 	What I did yesterday:
