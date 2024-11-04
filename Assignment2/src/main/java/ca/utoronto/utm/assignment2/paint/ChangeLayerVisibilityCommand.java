@@ -6,9 +6,9 @@ public class ChangeLayerVisibilityCommand implements Command {
         this.layer = l;
     }
     public void execute() {
-        layer.switchVisible();
+        layer.setVisible(!layer.isVisible());
     }
     public void undo() {
-        layer.switchVisible();
+        layer.setVisible(!layer.isVisible());;
     }
 }

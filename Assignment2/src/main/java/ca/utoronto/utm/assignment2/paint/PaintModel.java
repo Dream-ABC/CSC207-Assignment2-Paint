@@ -16,8 +16,7 @@ public class PaintModel extends Observable {
             return false;  // nothing changed
         }
         history.execute(new ChangeLayerCommand(this.selectedLayer, layers.get(layerIndex), this));
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
         return true;
     }
 
@@ -25,8 +24,7 @@ public class PaintModel extends Observable {
         PaintLayer layer = new PaintLayer();
         history.execute(new AddLayerCommand(this, layer, history));
         this.selectedLayer = layer;
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public void removeLayer(){
@@ -37,25 +35,19 @@ public class PaintModel extends Observable {
         if (this.layers.size() > 1) {
             // when there is only one layer, the user cannot remove it
 
-            layer.setStatus("removed");
 //            this.layers.remove(this.selectedLayer);
-            history.execute(new DeleteLayerCommand(this, this.selectedLayer, history));
+            int currIndex = this.layers.indexOf(selectedLayer);
+            history.execute(new DeleteLayerCommand(this, layer, history));
             if (this.selectedLayer == layer) {
-                int currIndex = this.layers.indexOf(layer);
-
                 if (currIndex == 0) {
-                    this.selectedLayer = this.layers.get(currIndex + 1);
+                    this.selectedLayer = this.layers.get(currIndex);
                 } else {
                     // when the last layer is removed
                     this.selectedLayer = this.layers.get(currIndex - 1);
                 }
             }
         }
-        this.setChanged();
-        this.notifyObservers();
-    }
-
-    public void removeLayerFinal(PaintLayer layer) {
+        notifyChange();
     }
 
 
@@ -63,8 +55,7 @@ public class PaintModel extends Observable {
     public void switchLayerVisible(String layerName) {
         int layerIndex = Integer.parseInt(layerName.substring(5));
         history.execute(new ChangeLayerVisibilityCommand(layers.get(layerIndex)));
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public ArrayList<PaintLayer> getLayers() {
@@ -80,26 +71,22 @@ public class PaintModel extends Observable {
 
     public void addShape(Shape shape) {
         this.selectedLayer.addShape(shape);
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
     public void addShapeFinal(Shape shape) {
         history.execute(new AddShapeCommand(shape, this.getSelectedLayer(), history));
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public void removeShape(Shape shape) {
         //history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer(), history));
         this.selectedLayer.removeShape(shape);
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public void setMode(String mode) {
         this.mode = mode;
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public void storeState(){
@@ -108,25 +95,26 @@ public class PaintModel extends Observable {
 
     public void addEraser(Eraser eraser) {
         this.selectedLayer.addEraser(eraser);
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public void removeEraser() {
         //history.execute(new EraserStrokeCommand(removedShapes, history));
         this.selectedLayer.removeEraser();
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public void undo(){
         history.undo();
-        this.setChanged();
-        this.notifyObservers();
+        notifyChange();
     }
 
     public void redo(){
         history.redo();
+        notifyChange();
+    }
+
+    public void notifyChange(){
         this.setChanged();
         this.notifyObservers();
     }

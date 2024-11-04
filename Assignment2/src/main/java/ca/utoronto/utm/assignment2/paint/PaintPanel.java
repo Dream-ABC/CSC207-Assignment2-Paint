@@ -123,7 +123,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         for (PaintLayer layer : this.model.getLayers()) {
             GraphicsContext g2d = layer.getGraphicsContext2D();
             g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
-            if (layer.getVisible()) {
+            if (layer.isVisible()) {
                 layer.display(g2d);
             }
         }
