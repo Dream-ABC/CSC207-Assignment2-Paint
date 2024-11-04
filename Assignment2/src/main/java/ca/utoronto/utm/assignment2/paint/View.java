@@ -3,13 +3,16 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -27,32 +30,32 @@ public class View implements EventHandler<ActionEvent> {
             canvas = new ResizableCanvas(400, 300, paintPanel);
             this.shapeChooserPanel = new ShapeChooserPanel(this);
 
-//            Pane root = new Pane();
-//            MenuBar menuBar = createMenuBar();
-//            this.shapeChooserPanel.setLayoutX(0);
-//            this.shapeChooserPanel.setLayoutY(menuBar.getHeight());
-//            this.paintPanel.setLayoutX(menuBar.getHeight());
-//            this.paintPanel.setLayoutY(shapeChooserPanel.getWidth());
-//            root.getChildren().addAll(menuBar, shapeChooserPanel, paintPanel);
-
             BorderPane root = new BorderPane();
             root.setTop(createMenuBar());
             root.setLeft(this.shapeChooserPanel);
-            root.setCenter(this.canvas);
+
+            HBox centerHorizontal = new HBox();
+            centerHorizontal.setAlignment(Pos.CENTER);
+            VBox centerVertical = new VBox();
+            centerVertical.setAlignment(Pos.CENTER);
+            centerHorizontal.getChildren().add(centerVertical);
+            centerVertical.getChildren().add(this.canvas);
+
+            root.setCenter(centerHorizontal);
+
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Paint");
             this.paintPanel.update(this.paintModel, null);
             stage.show();
 
-//            stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
-//                paintPanel.setWidth(newWidth.doubleValue());
-//                paintPanel.update(this.paintModel, null);
-//            });
-//            stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-//                paintPanel.setHeight(newHeight.doubleValue());
-//                paintPanel.update(this.paintModel, null);
-//            });
+            stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
+                root.setPrefWidth(newWidth.doubleValue());
+            });
+            stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+                root.setPrefHeight(newHeight.doubleValue());
+            });
+
             root.requestFocus();
         }
 

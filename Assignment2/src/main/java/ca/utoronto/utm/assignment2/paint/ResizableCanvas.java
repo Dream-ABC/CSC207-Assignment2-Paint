@@ -1,19 +1,17 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 public class ResizableCanvas extends Pane {
-    private final Canvas canvas;
-    private final double handleSize = 10;
+    private final PaintPanel canvas;
+    private final double handleSize = 5;
 
-    // Handles (resize buttons)
     private final Button topLeftHandle, topHandle, topRightHandle;
     private final Button rightHandle, bottomRightHandle, bottomHandle;
     private final Button bottomLeftHandle, leftHandle;
 
-    public ResizableCanvas(double initialWidth, double initialHeight, Canvas panel) {
+    public ResizableCanvas(double initialWidth, double initialHeight, PaintPanel panel) {
         this.canvas = panel;
         getChildren().add(canvas);
 
@@ -32,12 +30,17 @@ public class ResizableCanvas extends Pane {
         canvas.setHeight(initialHeight);
         setPrefSize(initialWidth + handleSize, initialHeight + handleSize);
 
+        setupDragEvents();
+
+        setUpPositions();
     }
 
     private Button createHandle() {
         Button handle = new Button();
         handle.setPrefSize(handleSize, handleSize);
-        handle.setStyle("-fx-background-color: blue; -fx-border-color: blue;"); // Styling for visibility
+        handle.setMaxSize(handleSize, handleSize);
+        handle.setMinSize(handleSize, handleSize);
+        handle.setStyle("-fx-background-color: gray; -fx-border-color: black;"); // Styling for visibility
         return handle;
     }
 
@@ -53,30 +56,23 @@ public class ResizableCanvas extends Pane {
     }
 
     private void resizeCanvas(double mouseX, double mouseY, int xMultiplier, int yMultiplier) {
-        // Calculate new width and height for canvas based on handle movement
         double newWidth = canvas.getWidth() + xMultiplier * mouseX;
         double newHeight = canvas.getHeight() + yMultiplier * mouseY;
 
-        // Set minimum canvas size
-        newWidth = Math.max(50, newWidth);
-        newHeight = Math.max(50, newHeight);
 
-        // Update canvas and pane size
         canvas.setWidth(newWidth);
         canvas.setHeight(newHeight);
         setPrefSize(newWidth + handleSize, newHeight + handleSize);
 
-        // Update handle positions
-        layoutChildren();
+        setUpPositions();
+        this.canvas.update(this.canvas.getModel(), null);
     }
 
-    @Override
-    protected void layoutChildren() {
+    private void setUpPositions() {
         double w = canvas.getWidth();
         double h = canvas.getHeight();
         double halfHandle = handleSize / 2;
 
-        // Position handles around the canvas
         setPosition(topLeftHandle, -halfHandle, -halfHandle);
         setPosition(topHandle, w / 2 - halfHandle, -halfHandle);
         setPosition(topRightHandle, w - halfHandle, -halfHandle);
@@ -86,9 +82,8 @@ public class ResizableCanvas extends Pane {
         setPosition(bottomLeftHandle, -halfHandle, h - halfHandle);
         setPosition(leftHandle, -halfHandle, h / 2 - halfHandle);
 
-        // Set the canvas position within the pane
-        canvas.setLayoutX(0);
-        canvas.setLayoutY(0);
+        canvas.setLayoutX(halfHandle);
+        canvas.setLayoutY(halfHandle);
     }
 
     private void setPosition(Button handle, double x, double y) {
