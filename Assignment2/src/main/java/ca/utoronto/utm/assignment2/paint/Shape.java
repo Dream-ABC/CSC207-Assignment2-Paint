@@ -8,5 +8,4 @@ public interface Shape {
     int getThickness();
     String getShape();
     void display(GraphicsContext g2d);
-    void shift(double x, double y);
 }

@@ -65,8 +65,4 @@ public class Square implements Shape {
                 this.side, this.side);
     }
 
-    public void shift(double x, double y) {
-        this.topLeft.x += x;
-        this.topLeft.y += y;
-    }
 }
