@@ -72,16 +72,6 @@ I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.010 : hingor13 : NotStarted
-NAME     : Undo/Redo button
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL :
-AS A     : user
-I WANT   : To be able to Undo or Redo any edits I make to the canvas.
-SO THAT  : I can undo something I did incorrectly or imperfectly, and able
-           to redo it if I undo something I didn't want to.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US?.011 : hingor13 : NotStarted
 NAME     : Magnifier Tool
 PRIORITY : 3
@@ -364,6 +354,16 @@ I WANT   : To be able to erase drawings on the canvas
 SO THAT  : I have more customizability with the Paint application.
            In particular, this would enhance my ease of control over the canvas
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.010 : hingor13 : Completed
+NAME     : Undo/Redo button
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL :1 day
+AS A     : user
+I WANT   : To be able to Undo or Redo any edits I make to the canvas.
+SO THAT  : I can undo something I did incorrectly or imperfectly, and able
+           to redo it if I undo something I didn't want to.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.004 : pengxi60 : Completed
