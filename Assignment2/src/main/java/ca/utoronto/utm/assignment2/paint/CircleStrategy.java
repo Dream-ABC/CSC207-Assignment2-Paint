@@ -57,7 +57,7 @@ public class CircleStrategy implements ShapeStrategy {
             circle.setDiameter(radius*2);
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
-            this.panel.getModel().addShape(circle);
+            this.panel.getModel().addShapeFinal(circle);
             System.out.println("Added Circle");
             this.panel.setCurrentShape(null);
         }

@@ -2,6 +2,7 @@ module ca.utoronto.utm.assignment2 {
     requires javafx.controls;
     requires javafx.fxml;
     requires jdk.xml.dom;
+    requires javafx.graphics;
 
 
     opens ca.utoronto.utm.assignment2 to javafx.fxml;
