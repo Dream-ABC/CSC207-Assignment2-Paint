@@ -2,7 +2,6 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 
 /**
@@ -26,15 +25,14 @@ public class Oval implements Shape {
     }
 
     /**
-     * @return the origin of the Oval (the first mouse click)
+     * @return the origin of the Oval (first mouse click)
      */
     public Point getOrigin() {
         return this.origin;
     }
 
     /**
-     * Sets the origin of the Oval (the first mouse click).
-     * @param origin
+     * @param origin origin of Oval (first mouse click)
      */
     public void setOrigin(Point origin) {
         this.origin = origin;
@@ -48,8 +46,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the top left point of the Oval.
-     * @param topLeft
+     * @param topLeft top left point of Oval
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
@@ -63,8 +60,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the width of the Oval.
-     * @param width
+     * @param width width of Oval
      */
     public void setWidth(double width) {
         this.width = width;
@@ -76,8 +72,7 @@ public class Oval implements Shape {
     public double getHeight() { return this.height; }
 
     /**
-     * Sets the height of the Oval.
-     * @param height
+     * @param height height of Oval
      */
     public void setHeight(double height) { this.height = height; }
 
@@ -90,8 +85,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the color of the Circle.
-     * @param color
+     * @param color color of Circle
      */
     @Override
     public void setColor(Color color) {
@@ -115,7 +109,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Check if the Eraser is overlapping the Oval.
+     * Checks if the Eraser is overlapping the Oval.
      * If it is, then the Eraser will erase the Oval.
      * @param eraser the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Oval, False otherwise

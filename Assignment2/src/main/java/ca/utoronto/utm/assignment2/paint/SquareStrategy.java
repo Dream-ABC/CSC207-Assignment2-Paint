@@ -37,16 +37,16 @@ public class SquareStrategy implements ShapeStrategy {
         double width = Math.abs(origin.x - x);
         double height = Math.abs(origin.y - y);
         double sideLength = Math.min(width, height);
-        square.setSide(sideLength);
+        square.setSize(sideLength);
 
         if (x < origin.x && y < origin.y) {
-            square.setTopLeft(new Point(origin.x - square.getSide(), origin.y - square.getSide()));
+            square.setTopLeft(new Point(origin.x - square.getSize(), origin.y - square.getSize()));
         }
         else if (x < origin.x) {
-            square.setTopLeft(new Point(origin.x - square.getSide(), origin.y));
+            square.setTopLeft(new Point(origin.x - square.getSize(), origin.y));
         }
         else if (y < origin.y){
-            square.setTopLeft(new Point(origin.x, origin.y - square.getSide()));
+            square.setTopLeft(new Point(origin.x, origin.y - square.getSize()));
         }
         else {
             square.setTopLeft(new Point(origin.x, origin.y));
@@ -67,16 +67,16 @@ public class SquareStrategy implements ShapeStrategy {
             double width = Math.abs(origin.x - x);
             double height = Math.abs(origin.y - y);
             double sideLength = Math.min(width, height);
-            square.setSide(sideLength);
+            square.setSize(sideLength);
 
             if (x < origin.x && y < origin.y) {
-                square.setTopLeft(new Point(origin.x - square.getSide(), origin.y - square.getSide()));
+                square.setTopLeft(new Point(origin.x - square.getSize(), origin.y - square.getSize()));
             }
             else if (x < origin.x) {
-                square.setTopLeft(new Point(origin.x - square.getSide(), origin.y));
+                square.setTopLeft(new Point(origin.x - square.getSize(), origin.y));
             }
             else if (y < origin.y){
-                square.setTopLeft(new Point(origin.x, origin.y - square.getSide()));
+                square.setTopLeft(new Point(origin.x, origin.y - square.getSize()));
             }
             else {
                 square.setTopLeft(new Point(origin.x, origin.y));

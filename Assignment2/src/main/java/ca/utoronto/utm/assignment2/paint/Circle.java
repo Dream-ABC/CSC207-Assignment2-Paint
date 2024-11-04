@@ -22,16 +22,14 @@ public class Circle implements Shape{
         }
 
         /**
-         * Sets the centre of the Circle.
-         * @param centre
+         * @param centre centre of Circle
          */
         public void setCentre(Point centre) {
                 this.centre = centre;
         }
 
         /**
-         * Sets the top left point of the Circle.
-         * @param topLeft
+         * @param topLeft top left corner of Circle
          */
         public void setTopLeft(Point topLeft) { this.topLeft = topLeft; }
 
@@ -41,8 +39,7 @@ public class Circle implements Shape{
         public Point getCentre() { return this.centre; }
 
         /**
-         * Sets the diameter of the Circle.
-         * @param diameter
+         * @param diameter diameter of Circle
          */
         public void setDiameter(double diameter) {
                 this.diameter = diameter;
@@ -57,8 +54,7 @@ public class Circle implements Shape{
         }
 
         /**
-         * Sets the color of the Circle.
-         * @param color
+         * @param color color of Circle
          */
         @Override
         public void setColor(Color color) {
@@ -82,7 +78,7 @@ public class Circle implements Shape{
         }
 
         /**
-         * Check if the Eraser is overlapping the Circle.
+         * Checks if the Eraser is overlapping the Circle.
          * If it is, then the Eraser will erase the Circle.
          * @param eraser the Eraser instance which is currently erasing drawings
          * @return True if the Eraser should erase this Circle, False otherwise

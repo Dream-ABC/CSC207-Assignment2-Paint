@@ -25,8 +25,7 @@ public class Eraser {
     }
 
     /**
-     * Sets the centre of the Eraser.
-     * @param centre
+     * @param centre centre of Eraser's square representation
      */
     public void setCentre(Point centre) {
         this.centre = centre;
