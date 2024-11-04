@@ -25,62 +25,101 @@ public class Oval implements Shape {
         this.color = Color.BLACK;
     }
 
-    public Oval(Point origin, Point topLeft, double width, double height) {
-        this.origin = origin;
-        this.topLeft = topLeft;
-        this.width = width;
-        this.height = height;
-        this.color = Color.BLACK;
-    }
-
+    /**
+     * @return the origin of the Oval (the first mouse click)
+     */
     public Point getOrigin() {
         return this.origin;
     }
 
+    /**
+     * Sets the origin of the Oval (the first mouse click).
+     * @param origin
+     */
     public void setOrigin(Point origin) {
         this.origin = origin;
     }
 
+    /**
+     * @return the top left point of the Oval
+     */
     public Point getTopLeft() {
         return this.topLeft;
     }
 
+    /**
+     * Sets the top left point of the Oval.
+     * @param topLeft
+     */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
     }
 
+    /**
+     * @return the width of the Oval
+     */
     public double getWidth() {
         return this.width;
     }
 
+    /**
+     * Sets the width of the Oval.
+     * @param width
+     */
     public void setWidth(double width) {
         this.width = width;
     }
 
+    /**
+     * @return the height of the Oval
+     */
     public double getHeight() { return this.height; }
 
+    /**
+     * Sets the height of the Oval.
+     * @param height
+     */
     public void setHeight(double height) { this.height = height; }
 
+    /**
+     * @return the color of the Circle
+     */
     @Override
     public Color getColor() {
         return this.color;
     }
 
+    /**
+     * Sets the color of the Circle.
+     * @param color
+     */
     @Override
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**
+     * @return the stroke thickness of the Circle
+     */
     @Override
     public int getThickness() {
         return -1;
     }
 
+    /**
+     * @return 'Oval' as a string
+     */
     @Override
     public String getShape() {
         return "Oval";
     }
 
+    /**
+     * Check if the Eraser is overlapping the Oval.
+     * If it is, then the Eraser will erase the Oval.
+     * @param eraser the Eraser instance which is currently erasing drawings
+     * @return True if the Eraser should erase this Oval, False otherwise
+     */
     @Override
     public boolean overlaps(Eraser eraser) {
         double h = this.topLeft.x+this.width/2.0;
@@ -112,6 +151,10 @@ public class Oval implements Shape {
         return false;
     }
 
+    /**
+     * Displays the Oval with user-created color and size.
+     * @param g2d GraphicsContext
+     */
     @Override
     public void display(GraphicsContext g2d) {
         g2d.setFill(this.color);
