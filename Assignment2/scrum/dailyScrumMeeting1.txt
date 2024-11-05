@@ -110,9 +110,9 @@ Nov 3,2024
 	Obstacles I face: Lots of bugs
 
 Nov 4,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished US3.010
+	What I will do today: Finish US3.015
+	Obstacles I face: A few bug fixes.
 
 Nov 5,2024
 	What I did yesterday:
