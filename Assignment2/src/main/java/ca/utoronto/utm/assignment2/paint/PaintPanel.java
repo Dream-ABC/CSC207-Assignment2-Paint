@@ -1,30 +1,38 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.scene.canvas.Canvas;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 import java.util.*;
 import java.util.function.Consumer;
 
-public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Observer {
-    private String mode = "Circle";
+public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observer {
+    private String mode;
     private PaintModel model;
     private Shape shape;
+
     private ShapeStrategy strategy;
     private ShapeFactory shapeFactory;
     private StrategyFactory strategyFactory;
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
+    private Eraser eraser;
+
+    private Color color;
 
     public PaintPanel(PaintModel model) {
-        super(300, 300);
+
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
 
         this.model = model;
         this.model.addObserver(this);
+
+        // init layer
+        this.model.addLayer();
 
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, this);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, this);
@@ -55,16 +63,28 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
         return model;
     }
 
-    public Shape getShape() {
+    public Shape getCurrentShape() {
         return shape;
     }
 
-    public void setShape(Shape shape) {
+    public void setCurrentShape(Shape shape) {
         this.shape = shape;
     }
 
+    public Eraser getEraser() { return eraser; }
+
+    public void setEraser(Eraser eraser) { this.eraser = eraser; }
+
     public ShapeFactory getShapeFactory() {
         return shapeFactory;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return this.color;
     }
 
     @Override
@@ -81,21 +101,22 @@ public class PaintPanel extends Canvas implements EventHandler<MouseEvent>, Obse
             }
         }
     }
+
     // Later when we learn about inner classes...
     // https://docs.oracle.com/javafx/2/events/DraggablePanelsExample.java.htm
 
     @Override
     public void update(Observable o, Object arg) {
+        this.getChildren().setAll(this.model.getLayers());
+        PaintModel model = (PaintModel) o;
+        this.mode = model.getMode();
 
-        GraphicsContext g2d = this.getGraphicsContext2D();
-        g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
-
-        ArrayList<Shape> allShapes = this.model.getAllShapes();
-
-        for (Shape shape : allShapes) {
-            g2d.setFill(shape.getColor());
-
-            shape.display(g2d);
+        for (PaintLayer layer : this.model.getLayers()) {
+            GraphicsContext g2d = layer.getGraphicsContext2D();
+            g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
+            if (layer.isVisible()) {
+                layer.display(g2d);
+            }
         }
     }
 }

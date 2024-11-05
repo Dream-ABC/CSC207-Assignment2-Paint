@@ -19,16 +19,18 @@ public class OvalStrategy implements ShapeStrategy {
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Oval oval = (Oval) shapeFactory.getShape(panel.getMode());
-        this.panel.setShape(oval);
+        this.panel.setCurrentShape(oval);
 
         // Set info of circle (radius=0)
         oval.setOrigin(topLeft);
         oval.setTopLeft(topLeft);
+        oval.setColor(this.panel.getColor());
+        this.panel.getModel().addShape(oval);
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Oval oval = (Oval) this.panel.getShape();
+        Oval oval = (Oval) this.panel.getCurrentShape();
         double newWidth = Math.abs(oval.getOrigin().x-mouseEvent.getX());
         double newHeight = Math.abs(oval.getOrigin().y-mouseEvent.getY());
         oval.setWidth(newWidth);
@@ -36,13 +38,15 @@ public class OvalStrategy implements ShapeStrategy {
         double x = Math.min(oval.getOrigin().x, mouseEvent.getX());
         double y = Math.min(oval.getOrigin().y, mouseEvent.getY());
         oval.setTopLeft(new Point(x, y));
-        // this.panel.getModel().addOval(circle);
+
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(oval);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        Oval oval = (Oval) this.panel.getShape();
+        Oval oval = (Oval) this.panel.getCurrentShape();
         double newWidth = Math.abs(oval.getOrigin().x-mouseEvent.getX());
         double newHeight = Math.abs(oval.getOrigin().y-mouseEvent.getY());
         oval.setWidth(newWidth);
@@ -50,9 +54,11 @@ public class OvalStrategy implements ShapeStrategy {
         double x = Math.min(oval.getOrigin().x, mouseEvent.getX());
         double y = Math.min(oval.getOrigin().y, mouseEvent.getY());
         oval.setTopLeft(new Point(x, y));
-        // this.panel.getModel().addOval(circle);
-        this.panel.getModel().addShape(oval);
+
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
+        this.panel.getModel().addShapeFinal(oval);
         System.out.println("Added Oval");
-        this.panel.setShape(null);
+        this.panel.setCurrentShape(null);
     }
 }

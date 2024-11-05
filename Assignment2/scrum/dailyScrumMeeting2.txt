@@ -103,24 +103,28 @@ Oct 30,2024
 	Obstacles I face: Figuring out how to store and manage different layers.
 
 Oct 31,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Start working on US3.012. Discover bugs on File
+                          and Edit menu.
+	What I will do today: Add GUI for layers.
+	Obstacles I face: Managing buttons and updating button states.
 
 Nov 1,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Add GUI for layers.
+	What I will do today: Solve pull request for BUG3.004. Start US3.013.
+	Obstacles I face: Positioning the sliders in the GUI. Managing layers.
 
 Nov 2,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Solve pull request for BUG3.004. Start US3.013.
+	What I will do today: Finish US3.013, refine functions in US3.012.
+	                      Finish US3.005.
+	Obstacles I face: When closing the color picker, the Paint window moves to the
+	                  back behind other application windows.
 
 Nov 3,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finish US3.013, refine functions in US3.012.
+                          Finish US3.005.
+	What I will do today: Merged BUG3.010 and US3.016. Help other members.
+	Obstacles I face: Fixing merge conflicts.
 
 Nov 4,2024
 	What I did yesterday:

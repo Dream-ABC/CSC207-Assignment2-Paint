@@ -19,16 +19,18 @@ public class RectangleStrategy implements ShapeStrategy {
         // Create a rectangle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Rectangle rectangle = (Rectangle) shapeFactory.getShape(panel.getMode());
-        this.panel.setShape(rectangle);
+        this.panel.setCurrentShape(rectangle);
 
         // Set info of rectangle (radius=0)
         rectangle.setTopLeft(topLeft);
         rectangle.setOrigin(origin);
+        rectangle.setColor(this.panel.getColor());
+        this.panel.getModel().addShape(rectangle);
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Rectangle rectangle = (Rectangle) panel.getShape();
+        Rectangle rectangle = (Rectangle) panel.getCurrentShape();
         Point origin = rectangle.getOrigin();
 
         double width = Math.abs(origin.x - mouseEvent.getX());
@@ -38,13 +40,15 @@ public class RectangleStrategy implements ShapeStrategy {
         rectangle.setTopLeft(new Point(x, y));
         rectangle.setWidth(width);
         rectangle.setHeight(height);
-        // this.panel.getModel().addRectangle(rectangle);
+
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(rectangle);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        Rectangle rectangle = (Rectangle) panel.getShape();
+        Rectangle rectangle = (Rectangle) panel.getCurrentShape();
         Point origin = rectangle.getOrigin();
 
         if (rectangle != null) {
@@ -55,10 +59,12 @@ public class RectangleStrategy implements ShapeStrategy {
             rectangle.setTopLeft(new Point(x, y));
             rectangle.setWidth(width);
             rectangle.setHeight(height);
-            // this.panel.getModel().addRectangle(rectangle);
-            this.panel.getModel().addShape(rectangle);
+
+            Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+            this.panel.getModel().getSelectedLayer().removeShape(shape);
+            this.panel.getModel().addShapeFinal(rectangle);
             System.out.println("Added Rectangle");
-            this.panel.setShape(null);
+            this.panel.setCurrentShape(null);
         }
     }
 }

@@ -77,19 +77,19 @@ Oct 28,2024
 	Obstacles I face: Nothing but sleep...
 
 Oct 29,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Added a user story to the product backlog
+	What I will do today: Nothing
+	Obstacles I face: Nothing
 
 Oct 30,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing
+	What I will do today: Nothing
+	Obstacles I face: Nothing
 
 Oct 31,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Nothing
+	What I will do today: Branch out and begin working on BUG3.004
+	Obstacles I face: Understanding the architecture behind model and how it interacts with other modules.
 
 Nov 1,2024
 	What I did yesterday:

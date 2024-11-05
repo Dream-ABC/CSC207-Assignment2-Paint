@@ -1,0 +1,8 @@
+S&O: 3
+WM: 3
+AE: 3.5
+
+Feedback:
+- [S&O] Ii is suggested to list the idea in a parallel structure in architecture.txt so that readers can quickly get the idea. The indentation in productBacklog.txt is not consistent. For example, in the ISSUE part, in "Squiggle is broken", the indentation is different on different lines.
+- [WM] There are some grammar mistakes. For example, in architecture.txt, "each shape class have different attributes." Should be has. In "Icons instead of text for drawing mode selection" in productBacklog.txt, there is no subject in the sentence for ISSUE.
+- [AE] In the several final lines in architecture.txt, one sentence is separated in a newline, cut in the half, is not friendly to reading.

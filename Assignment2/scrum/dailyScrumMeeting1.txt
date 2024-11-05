@@ -95,19 +95,19 @@ Oct 31,2024
 	Obstacles I face: Festivals
 
 Nov 1,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Started US3.015
+	What I will do today: Work more on US3.015
+	Obstacles I face: Facing Bugs.
 
 Nov 2,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday:Continued Work on US3.015
+	What I will do today: Continue work on US3.015 and start new US.
+	Obstacles I face: Figuring out how to implement the draggable icons in corner of canvas to resize.
 
 Nov 3,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Worked on US3.015 and US3.010
+	What I will do today: Continue work and try and finish one of them.
+	Obstacles I face: Lots of bugs
 
 Nov 4,2024
 	What I did yesterday:

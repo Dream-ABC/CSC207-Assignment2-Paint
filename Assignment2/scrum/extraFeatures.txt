@@ -1,0 +1,21 @@
+(replicate sections below for each feature you want to highlight)
+--------------------------------------------------------------------------------
+FeatureName: (name)
+
+Description: 
+	(describe the feature)
+
+
+Reference: 
+	(list of the BUG/US involved in creating this feature)
+--------------------------------------------------------------------------------
+FeatureName: (name)
+
+Description: 
+	(describe the feature)
+
+
+Reference: 
+	(list of the BUG/US involved in creating this feature)
+--------------------------------------------------------------------------------
+...

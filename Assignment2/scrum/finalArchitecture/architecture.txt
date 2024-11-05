@@ -1,0 +1,24 @@
+# Architecture
+
+# MVC
+# ModelClasses
+	(list your classes here, no description)
+# ViewClasses
+	(list your classes here, no description)
+# ControllerClasses
+	(list your classes here, no description)
+
+# (other logical  ways of collecting your classes)
+	
+# Design Patterns Used (collections of classes into DP)
+--------------------------------------------------------------------------------
+	(For each design pattern, pull from  and modify designPatternTemplate.txt)
+
+--------------------------------------------------------------------------------
+# High Level Architecture Discussion
+
+	(Put all of the above together in a collection of stories which tell the
+	developer how to modify, extend, or understand your code)
+
+	(For each story, pull from and modify the highLevelTemplate.txt)
+

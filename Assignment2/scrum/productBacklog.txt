@@ -16,29 +16,6 @@
 # as appropriate.
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.005 : UTORID : NotStarted 
-NAME     : Color selector
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to select the current drawing color, to be applied
-           to subsequent shapes. Example: 
-           		selects color red 
-           		mode circle
-           		draw a circle
-           		draw a circle
-           		mode rectangle
-           		draw a rectangle
-           		select color green
-           		draw a rectangle
-           		draw a rectangle
-           		select mode squiggle
-           		draw a squiggle
-           	results in two red circles and a red rectangle as well as
-           	two green rectangles and a green squiggle
-SO THAT  : 
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US?.006 : UTORID : NotStarted
 NAME     : Fill style selector
 PRIORITY : 3
@@ -86,17 +63,6 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.008 : wenjess1 : NotStarted
-NAME     : Stroke Eraser
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to erase drawings on the canvas
-SO THAT  : I have more customizability with the Paint application.
-           In particular, this would enhance my ease of control over the canvas
-           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US?.009 : wenjess1 : NotStarted
 NAME     : Selection tool
 PRIORITY : 3
@@ -106,16 +72,6 @@ I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.010 : hingor13 : NotStarted
-NAME     : Undo/Redo button
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL :
-AS A     : user
-I WANT   : To be able to Undo or Redo any edits I make to the canvas.
-SO THAT  : I can undo something I did incorrectly or imperfectly, and able
-           to redo it if I undo something I didn't want to.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US?.011 : hingor13 : NotStarted
 NAME     : Magnifier Tool
 PRIORITY : 3
@@ -123,25 +79,6 @@ ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US3.012 : tianshi8 : Started
-NAME     : Layer Support
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to add new layers.
-SO THAT  : I can independently edit different layers and flexibly control
-           the drawing effects.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.013 : tianshi8 : NotStarted
-NAME     : Transparency
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to adjust the transparency of each object.
-SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
@@ -164,12 +101,12 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.016 : pengxi60 : NotStarted
-NAME     : Add Textbox
+NAME     : Paint GUI overhaul
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : to add a textbox.
-SO THAT  : I can add text to the canvas.
+I WANT   : an appealing and interactable user interface
+SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
@@ -201,26 +138,6 @@ I WANT : to add and customize text on the canvas with options to change the
          font, size, and colour.
 SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG?.004 : UTORID : NotStarted 
-NAME     : Architecture behind Model is poor
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. Need to re-architect the Model
-           so that it is more flexible, and easier to work with.
-           Consider some design patterns, or change of responsibility
-           here.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG?.007 : wenjess1 : NotStarted
-NAME     : Default shape selection is incorrect
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
-           It would be best to have no default shape selected.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG?.008 : tianshi8 : NotStarted
@@ -296,7 +213,7 @@ TYPE     : BUG BUG1.001 : wenjess1 : Complete
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
+ISSUE    : It would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.002 : hingor13 : Completed
@@ -324,6 +241,14 @@ ESTIMATE : 2 hours    ACTUAL : 1 hour
 ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.007 : wenjess1 : Complete
+NAME     : Default shape selection is incorrect
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
+           It would be best to have no default shape selected.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US2.017 : wenjess1 : Complete
@@ -375,6 +300,92 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
            the drawing events. Consider some design patterns here.
            Refactor ShapeChooserPanel and PaintPanel to get rid of the
            'if' blocks in the PaintPanel mouse event code.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.005 : tianshi8 : Complete
+NAME     : Color selector
+PRIORITY : 3
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To be able to select the current drawing color, to be applied
+           to subsequent shapes. Example:
+           		selects color red
+           		mode circle
+           		draw a circle
+           		draw a circle
+           		mode rectangle
+           		draw a rectangle
+           		select color green
+           		draw a rectangle
+           		draw a rectangle
+           		select mode squiggle
+           		draw a squiggle
+           	results in two red circles and a red rectangle as well as
+           	two green rectangles and a green squiggle
+SO THAT  : I can use consistent colors and easily switch colors while
+           drawing different shapes.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.012 : tianshi8 : Complete
+NAME     : Layer Support
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+AS A     : user
+I WANT   : To be able to add new layers.
+SO THAT  : I can independently edit different layers and flexibly control
+           the drawing effects.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.013 : tianshi8 : Complete
+NAME     : Transparency
+PRIORITY : 3
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To be able to adjust the transparency of each object.
+SO THAT  : I can control the visibility of different elements in my artwork.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.008 : wenjess1 : Complete
+NAME     : Stroke Eraser
+PRIORITY : 3
+ESTIMATE : 1 day    ACTUAL : 1 day
+AS A     : user
+I WANT   : To be able to erase drawings on the canvas
+SO THAT  : I have more customizability with the Paint application.
+           In particular, this would enhance my ease of control over the canvas
+           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.010 : hingor13 : Completed
+NAME     : Undo/Redo button
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL :1 day
+AS A     : user
+I WANT   : To be able to Undo or Redo any edits I make to the canvas.
+SO THAT  : I can undo something I did incorrectly or imperfectly, and able
+           to redo it if I undo something I didn't want to.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.004 : pengxi60 : Completed
+NAME     : Architecture behind Model is poor
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. In fact, it is currently incorrect, with
+           Squiggle's not drawing properly. Need to re-architect the Model
+           so that it is more flexible, and easier to work with.
+           Consider some design patterns, or change of responsibility
+           here.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.010 : hingor13 : Completed
+NAME     : Redundant Opacity Slider
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL :15 minutes
+ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
+           already available in the color picker tool. Removing the slider
+           will simplify the UI and reduce potential conflicts in opaqueness
+           control.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################

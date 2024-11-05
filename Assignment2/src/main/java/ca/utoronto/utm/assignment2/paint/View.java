@@ -5,137 +5,187 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class View implements EventHandler<ActionEvent> {
 
-        private PaintModel paintModel;
-        private PaintPanel paintPanel;
-        private ShapeChooserPanel shapeChooserPanel;
-        private ResizableCanvas canvas;
+    private Stage stage;
+    private PaintModel paintModel;
+    private PaintPanel paintPanel;
+    private ToolbarPanel toolbarPanel;
+    private StatusbarPanel statusbarPanel;
+    private ZoomPanel zoomPanel;
+    private ShapeChooserPanel shapeChooserPanel;
+    private ColorPickerPopup colorPickerPopup;
+    private LayerChooserPanel layerChooserPanel;
+    private LayerChooserController layerChooserController;
+    private ResizableCanvas canvas;
 
-        public View(PaintModel model, Stage stage) throws FileNotFoundException {
-            this.paintModel = model;
-            this.paintPanel = new PaintPanel(this.paintModel);
-            canvas = new ResizableCanvas(400, 300, paintPanel);
-            this.shapeChooserPanel = new ShapeChooserPanel(this);
+    public View(PaintModel model, Stage stage) throws FileNotFoundException {
+        this.paintModel = model;
+        this.stage = stage;
 
-            BorderPane root = new BorderPane();
-            root.setTop(createMenuBar());
-            root.setLeft(this.shapeChooserPanel);
+        this.paintPanel = new PaintPanel(this.paintModel);
+        this.toolbarPanel = new ToolbarPanel();
+        this.statusbarPanel = new StatusbarPanel(this.paintPanel);
+        this.zoomPanel = new ZoomPanel();
+        this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
+        this.layerChooserPanel = new LayerChooserPanel(this);
+        this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
 
-            HBox centerHorizontal = new HBox();
-            centerHorizontal.setAlignment(Pos.CENTER);
-            VBox centerVertical = new VBox();
-            centerVertical.setAlignment(Pos.CENTER);
-            centerHorizontal.getChildren().add(centerVertical);
-            centerVertical.getChildren().add(this.canvas);
+        String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
-            root.setCenter(centerHorizontal);
+        VBox topPanel = new VBox();
+        topPanel.getChildren().addAll(createMenuBar(), this.toolbarPanel);
 
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Paint");
-            this.paintPanel.update(this.paintModel, null);
-            stage.show();
+        Region spacer = new Region();
+        spacer.setStyle("-fx-background-color: #f8f1f0");
 
-            stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
-                root.setPrefWidth(newWidth.doubleValue());
-            });
-            stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-                root.setPrefHeight(newHeight.doubleValue());
-            });
+        HBox bottomPanel = new HBox();
+        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS); // Let the spacer expand
+        bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
 
-            root.requestFocus();
+        BorderPane root = new BorderPane();
+        root.setTop(topPanel);
+        root.setBottom(bottomPanel);
+        this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
+        root.setCenter(this.paintPanel);
+        root.setLeft(this.shapeChooserPanel);
+        ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
+        root.setRight(layerPane);
+        Scene scene = new Scene(root);
+
+//        HBox centerHorizontal = new HBox();
+//        centerHorizontal.setAlignment(Pos.CENTER);
+//        VBox centerVertical = new VBox();
+//        centerVertical.setAlignment(Pos.CENTER);
+//        centerHorizontal.getChildren().add(centerVertical);
+//        centerVertical.getChildren().add(this.canvas);
+//
+//        root.setCenter(centerHorizontal);
+
+        FileInputStream inputIcon = new FileInputStream(iconImageFile);
+        Image iconImage = new Image(inputIcon);
+
+        stage.getIcons().add(iconImage);
+        stage.setScene(scene);
+        stage.setTitle("Paint");
+        stage.show();
+        root.requestFocus();
+    }
+
+    public PaintModel getPaintModel() {
+        return this.paintModel;
+    }
+
+    public Stage getStage() {
+        return this.stage;
+    }
+
+    public void setLayer(String layerName) {
+        this.layerChooserController.selectLayer(layerName);
+    }
+
+    private MenuBar createMenuBar() {
+
+        MenuBar menuBar = new MenuBar();
+        Menu menu;
+        MenuItem menuItem;
+
+        // A menu for File
+
+        menu = new Menu("File");
+
+        menuItem = new MenuItem("New");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuItem = new MenuItem("Open");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuItem = new MenuItem("Save");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menu.getItems().add(new SeparatorMenuItem());
+
+        menuItem = new MenuItem("Exit");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuBar.getMenus().add(menu);
+
+        // Another menu for Edit
+
+        menu = new Menu("Edit");
+
+        menuItem = new MenuItem("Cut");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuItem = new MenuItem("Copy");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuItem = new MenuItem("Paste");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menu.getItems().add(new SeparatorMenuItem());
+        menuItem = new MenuItem("Undo");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuItem = new MenuItem("Redo");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuBar.getMenus().add(menu);
+
+        // Another menu for Options
+
+        menu = new Menu("View");
+
+
+        menuItem = new MenuItem("Colors");
+        menuItem.setOnAction(this); // Show the color popup
+        menu.getItems().add(menuItem);
+
+        menuBar.getMenus().add(menu);
+        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
+
+        return menuBar;
+    }
+
+    @Override
+    public void handle(ActionEvent event) {
+//        System.out.println(((MenuItem) event.getSource()).getText());
+        String command = ((MenuItem) event.getSource()).getText();
+//        System.out.println(command);
+        if (command.equals("Exit")) {
+            Platform.exit();
+        } else if (command.equals("Colors")) {
+            this.colorPickerPopup.display();
+        } else if (command.equals("Undo")){
+            this.paintModel.undo();
+        } else if (command.equals("Redo")){
+            this.paintModel.redo();
         }
 
-        public PaintModel getPaintModel() {
-                return this.paintModel;
-        }
-
-        // ugly way to do this?
-        public void setMode(String mode){
-            this.paintPanel.setMode(mode);
-        }
-        private MenuBar createMenuBar() {
-
-                MenuBar menuBar = new MenuBar();
-                Menu menu;
-                MenuItem menuItem;
-
-                // A menu for File
-
-                menu = new Menu("File");
-
-                menuItem = new MenuItem("New");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menuItem = new MenuItem("Open");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menuItem = new MenuItem("Save");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menu.getItems().add(new SeparatorMenuItem());
-
-                menuItem = new MenuItem("Exit");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menuBar.getMenus().add(menu);
-
-                // Another menu for Edit
-
-                menu = new Menu("Edit");
-
-                menuItem = new MenuItem("Cut");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menuItem = new MenuItem("Copy");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menuItem = new MenuItem("Paste");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menu.getItems().add(new SeparatorMenuItem());
-                menuItem = new MenuItem("Undo");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menuItem = new MenuItem("Redo");
-                menuItem.setOnAction(this);
-                menu.getItems().add(menuItem);
-
-                menuBar.getMenus().add(menu);
-
-                return menuBar;
-        }
-
-
-        @Override
-        public void handle(ActionEvent event) {
-                System.out.println(((MenuItem) event.getSource()).getText());
-                String command = ((MenuItem) event.getSource()).getText();
-                System.out.println(command);
-                if (command.equals("Exit")) {
-                        Platform.exit();
-                }
-        }
-
+        this.paintModel.notifyChange();
+    }
 }

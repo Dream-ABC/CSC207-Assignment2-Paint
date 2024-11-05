@@ -17,25 +17,33 @@ public class SquiggleStrategy implements ShapeStrategy {
 
         ShapeFactory shapeFactory = panel.getShapeFactory();
         Squiggle squiggle = (Squiggle) shapeFactory.getShape(panel.getMode());
-        this.panel.setShape(squiggle);
+        this.panel.setCurrentShape(squiggle);
 
         // Set info of squiggle (start point)
-        // this.panel.getModel().addPath(squiggle);
-        this.panel.getModel().addShape(squiggle);
         squiggle.addPoint(point);
+        squiggle.setColor(this.panel.getColor());
+        this.panel.getModel().addShape(squiggle);
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Squiggle squiggle = (Squiggle) this.panel.getShape();
+        Squiggle squiggle = (Squiggle) this.panel.getCurrentShape();
         Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
         squiggle.addPoint(point);
-        this.panel.getModel().notifyUpdate();
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
+        this.panel.getModel().addShape(squiggle);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
+        Squiggle squiggle = (Squiggle) this.panel.getCurrentShape();
+        Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
+        squiggle.addPoint(point);
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
+        this.panel.getModel().addShapeFinal(squiggle);
         System.out.println("Added Squiggle");
-        this.panel.setShape(null);
+        this.panel.setCurrentShape(null);
     }
 }
