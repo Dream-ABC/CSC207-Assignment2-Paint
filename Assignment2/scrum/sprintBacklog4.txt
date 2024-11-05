@@ -71,3 +71,70 @@ ESTIMATE : 4 hours    ACTUAL :
 ISSUE    : The current stroke eraser doesn't erase strokes properly when
            line thickness of shapes are changed.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.019 : tianshi8 : NotStarted
+NAME     : Text Editor
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT : to add and customize text on the canvas with options to change the
+         font, size, and colour.
+SO THAT : I can create more personalized and visually distinct text elements
+          within my drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.008 : tianshi8 : NotStarted
+NAME     : File menu is not implemented
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : The File menu is currently non-functional. The program should
+           implement the following features:
+               create a new file
+               save the current canvas as a file
+               load a file onto the canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.001 : pengxi60 : NotStarted
+NAME     : Draw Polyline
+PRIORITY : 1
+ESTIMATE : 2 hours ACTUAL : 2 hours
+AS A     : user
+I WANT   : To click the center of the circle, drag, and release to specify
+           a circle to be drawn in the current style.
+SO THAT  : I can add circles to my canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.011 : pengxi60 : NotStarted
+NAME     : Magnifier Tool
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to focus on a specific part of the canvas.
+SO THAT  : I can edit a specific part of the canvas with more precision.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.011 : pengxi60 : NotStarted
+NAME     : UI
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    :
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.015 : hingor13 : NotStarted
+NAME     : Canvas Scalability
+PRIORITY : 3
+ESTIMATE : 3 hours    ACTUAL :
+AS A     : user
+I WANT   : A canvas that I can increase and decrease on demand
+SO THAT  : I can have the freedom in changing the dimension of the canvas
+           for my intents and purposes.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.009 : hingor13 : NotStarted
+NAME     : Selection tool
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to select drawings on the canvas
+SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
+--------------------------------------------------------------------------
