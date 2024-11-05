@@ -39,7 +39,7 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.007 : UTORID : NotStarted 
+TYPE     : USER STORY US?.007 : UTORID : NotStarted
 NAME     : Line thickness selector
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -350,7 +350,7 @@ NAME     : Stroke Eraser
 PRIORITY : 3
 ESTIMATE : 1 day    ACTUAL : 1 day
 AS A     : user
-I WANT   : To be able to erase drawings on the canvas
+I WANT   : To be able to erase an entire stroke on the canvas
 SO THAT  : I have more customizability with the Paint application.
            In particular, this would enhance my ease of control over the canvas
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
