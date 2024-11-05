@@ -83,7 +83,7 @@ SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.008 : tianshi8 : NotStarted
+TYPE     : BUG BUG4.008 : tianshi8 : Started
 NAME     : File menu is not implemented
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :

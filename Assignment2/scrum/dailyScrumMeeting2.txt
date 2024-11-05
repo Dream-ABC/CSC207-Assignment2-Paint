@@ -127,14 +127,14 @@ Nov 3,2024
 	Obstacles I face: Fixing merge conflicts.
 
 Nov 4,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Merged BUG3.010 and US3.016. Help other members.
+	What I will do today: Have a meeting with group members.
+	Obstacles I face: Discussing which work should I take.
 
 Nov 5,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Have a meeting with group members.
+	What I will do today: Start BUG4.008.
+	Obstacles I face: Saving the canvas as a file.
 
 Nov 6,2024
 	What I did yesterday:
