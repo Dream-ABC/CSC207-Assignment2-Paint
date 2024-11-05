@@ -96,12 +96,11 @@ ISSUE    : The File menu is currently non-functional. The program should
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.001 : pengxi60 : NotStarted
 NAME     : Draw Polyline
-PRIORITY : 1
-ESTIMATE : 2 hours ACTUAL : 2 hours
+PRIORITY : 3
+ESTIMATE :  ACTUAL :
 AS A     : user
-I WANT   : To click the center of the circle, drag, and release to specify
-           a circle to be drawn in the current style.
-SO THAT  : I can add circles to my canvas
+I WANT   :
+SO THAT  : I can add polylines to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.011 : pengxi60 : NotStarted
