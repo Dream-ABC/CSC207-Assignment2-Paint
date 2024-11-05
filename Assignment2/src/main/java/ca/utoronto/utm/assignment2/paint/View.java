@@ -7,14 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -46,6 +39,8 @@ public class View implements EventHandler<ActionEvent> {
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
 
+        this.canvas = new ResizableCanvas(1500, 700, this.paintPanel);
+
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
         VBox topPanel = new VBox();
@@ -59,23 +54,19 @@ public class View implements EventHandler<ActionEvent> {
         bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
 
         BorderPane root = new BorderPane();
+
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.getChildren().add(this.canvas);
+        root.setCenter(grid);
+
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
         this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
-        root.setCenter(this.paintPanel);
         root.setLeft(this.shapeChooserPanel);
         ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
         root.setRight(layerPane);
         Scene scene = new Scene(root);
-
-//        HBox centerHorizontal = new HBox();
-//        centerHorizontal.setAlignment(Pos.CENTER);
-//        VBox centerVertical = new VBox();
-//        centerVertical.setAlignment(Pos.CENTER);
-//        centerHorizontal.getChildren().add(centerVertical);
-//        centerVertical.getChildren().add(this.canvas);
-//
-//        root.setCenter(centerHorizontal);
 
         FileInputStream inputIcon = new FileInputStream(iconImageFile);
         Image iconImage = new Image(inputIcon);
@@ -84,6 +75,9 @@ public class View implements EventHandler<ActionEvent> {
         stage.setScene(scene);
         stage.setTitle("Paint");
         stage.show();
+        stage.setWidth(1800);
+        stage.setHeight(1000);
+        canvas.setUpPositions();
         root.requestFocus();
     }
 

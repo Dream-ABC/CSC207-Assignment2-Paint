@@ -79,7 +79,6 @@ public class PaintModel extends Observable {
     }
 
     public void removeShape(Shape shape) {
-        //history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer(), history));
         this.selectedLayer.removeShape(shape);
         notifyChange();
     }
