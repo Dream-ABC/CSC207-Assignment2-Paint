@@ -63,7 +63,7 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.009 : wenjess1 : NotStarted
+TYPE     : USER STORY US?.009 : hingor13 : NotStarted
 NAME     : Selection tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -79,6 +79,25 @@ ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.020 : wenjess1 : NotStarted
+NAME     : Precision Eraser
+PRIORITY : 3
+ESTIMATE : 1 day    ACTUAL :
+AS A     : user
+I WANT   : To be able to erase a precise section of a drawing on the canvas
+SO THAT  : I have more customizability with the Paint application.
+           In particular, this would enhance my ease of control over the canvas
+           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.010 : wenjess1 : NotStarted
+NAME     : Stroke Eraser working with varying line thickness
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL :
+ISSUE    : The current stroke eraser doesn't erase strokes properly when
+           line thickness of shapes are changed.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
