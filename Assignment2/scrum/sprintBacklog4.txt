@@ -64,7 +64,7 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.010 : wenjess1 : NotStarted
+TYPE     : BUG BUG4.010 : wenjess1 : NotStarted
 NAME     : Stroke Eraser working with varying line thickness
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL :
