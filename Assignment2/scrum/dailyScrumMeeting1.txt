@@ -115,9 +115,9 @@ Nov 4,2024
 	Obstacles I face: A few bug fixes.
 
 Nov 5,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Worked on US3.015.
+	What I will do today: Plan on figuring out the math for the padding for US3.015.
+	Obstacles I face: The Math ain't Mathing.
 
 Nov 6,2024
 	What I did yesterday:
