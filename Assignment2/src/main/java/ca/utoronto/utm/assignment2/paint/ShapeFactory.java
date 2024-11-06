@@ -15,6 +15,8 @@ public class ShapeFactory {
                 return new Oval();
             case "triangle":
                 return new Triangle();
+            case "text":
+                return new Text();
 
             // add more shapes here
 
