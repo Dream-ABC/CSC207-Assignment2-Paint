@@ -117,6 +117,8 @@ public class ResizableCanvas extends Pane implements Observer {
         }
     }
 
+    public double getCanvasWidth(){return this.canvas.getWidth()-handleSize;}
+
     @Override
     public void update(Observable o, Object arg) {
         updateLayers();
