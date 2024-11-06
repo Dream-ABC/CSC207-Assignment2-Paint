@@ -10,4 +10,4 @@ BUG3.004 author:pengxi60 puller:tianshi8 status:Completed
  US3.016 author:pengxi60 puller:tianshi8 status:Completed
  US3.010 author:hingor13 puller:tianshi8 status:Completed
 BUG3.010 author:hingor13 puller:tianshi8 status:Completed
- US3.015 author:hingor13 puller:pengxi60 status:InProcess
+ US3.015 author:hingor13 puller:pengxi60 status:Rejected
