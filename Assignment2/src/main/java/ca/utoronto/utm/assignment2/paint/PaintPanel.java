@@ -20,6 +20,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     private StrategyFactory strategyFactory;
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
     private Eraser eraser;
+    private SelectionTool selection;
 
     private Color color;
 
@@ -74,6 +75,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     public Eraser getEraser() { return eraser; }
 
     public void setEraser(Eraser eraser) { this.eraser = eraser; }
+
+    public SelectionTool getSelectionTool() {return selection;}
+
+    public void setSelectionTool(SelectionTool selection) {this.selection = selection;}
 
     public ShapeFactory getShapeFactory() {
         return shapeFactory;

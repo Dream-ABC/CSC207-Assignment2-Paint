@@ -104,6 +104,15 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public void addSelectionTool(SelectionTool selectionTool) {
+        this.selectedLayer.addSelectionTool(selectionTool);
+        notifyChange();
+    }
+    public void removeSelectionTool() {
+        this.selectedLayer.removeSelectionTool();
+        notifyChange();
+    }
+
     public void undo(){
         history.undo();
         notifyChange();
