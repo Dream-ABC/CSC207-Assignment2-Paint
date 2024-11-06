@@ -68,11 +68,11 @@ public class Squiggle implements Shape {
      * @return True if the Eraser should erase this Squiggle, False otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
-        double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
-        double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
-        double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
-        double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
+    public boolean overlaps(Tool eraser) {
+        double leftX = eraser.getCentre().x-(eraser.getDimensionX()/2.0);
+        double rightX = eraser.getCentre().x+(eraser.getDimensionX()/2.0);
+        double topY = eraser.getCentre().y-(eraser.getDimensionY()/2.0);
+        double bottomY = eraser.getCentre().y+(eraser.getDimensionY()/2.0);
         for (Point p : this.points) {
             if (leftX <= p.x && p.x <= rightX && topY <= p.y && p.y <= bottomY){
                 return true;

@@ -11,6 +11,6 @@ public interface Shape {
     Color getColor();
     int getThickness();
     String getShape();
-    boolean overlaps(Eraser eraser);
+    boolean overlaps(Tool eraser);
     void display(GraphicsContext g2d);
 }

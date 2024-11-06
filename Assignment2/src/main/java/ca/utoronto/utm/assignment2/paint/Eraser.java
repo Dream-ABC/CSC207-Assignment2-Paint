@@ -7,16 +7,18 @@ import java.util.ArrayList;
  * A class to represent an eraser.
  * Erasers are represented as a square, where the user's mouse is the centre of the square.
  */
-public class Eraser {
+public class Eraser implements Tool{
     private Point centre;
-    private int dimension;
+    private double dimensionX;
+    private double dimensionY;
     private ArrayList<Shape> removedShapes;
 
     /**
      * Constructs a default eraser, represented as a square that is of size 14.
      */
     public Eraser(){
-        this.dimension = 14;
+        this.dimensionX = 14;
+        this.dimensionY = 14;
         this.removedShapes = new ArrayList<>();
     }
 
@@ -37,7 +39,8 @@ public class Eraser {
     /**
      * @return the dimension of the Eraser
      */
-    public int getDimension(){ return this.dimension; }
+    public double getDimensionX(){ return this.dimensionX; }
+    public double getDimensionY(){ return this.dimensionY; }
 
     public void addRemovedShapes(Shape shape){
         this.removedShapes.add(shape);
@@ -52,6 +55,6 @@ public class Eraser {
      */
     public void display(GraphicsContext g2d) {
         g2d.strokeRect(this.centre.x, this.centre.y,
-                this.dimension, this.dimension);
+                this.dimensionX, this.dimensionY);
     }
 }
