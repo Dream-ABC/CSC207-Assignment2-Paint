@@ -41,7 +41,9 @@ public class FileHandlePopup {
                 this.handler.openImage();
 
             } else if (result.get() == buttonPAINT) {
-                this.handler.openCommands();
+                if (this.newFile()) {
+                    this.handler.openCommands();
+                }
             }
         }
     }
@@ -72,10 +74,10 @@ public class FileHandlePopup {
         }
     }
 
-    public void newFile() {
+    public boolean newFile() {
         this.panel.setDisable(true);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Create New File");
+        alert.setTitle("New File");
         alert.setHeaderText("Your current progress will be lost!");
         alert.setContentText("Do you want to proceed?");
 
@@ -87,7 +89,10 @@ public class FileHandlePopup {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonYes) {
             this.model.newFile();
+            this.panel.setDisable(false);
+            return true;
         }
         this.panel.setDisable(false);
+        return false;
     }
 }

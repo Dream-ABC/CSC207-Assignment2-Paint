@@ -185,5 +185,8 @@ public class Triangle extends Polygon implements Shape {
         g2d.setFill(this.color);
         g2d.fillPolygon(xPoints, yPoints, 3);
     }
+
+    @Override
+    public void setShape(String[] data) {}
 }
 

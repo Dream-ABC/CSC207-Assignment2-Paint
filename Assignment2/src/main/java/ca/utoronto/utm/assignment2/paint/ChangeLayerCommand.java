@@ -20,6 +20,6 @@ public class ChangeLayerCommand implements Command {
     }
 
     public String toString() {
-        return "ChangeLayer#" + this.model.getLayers().indexOf(this.newLayer) + "\n";
+        return "ChangeLayer#" + this.model.getLayers().indexOf(this.newLayer);
     }
 }

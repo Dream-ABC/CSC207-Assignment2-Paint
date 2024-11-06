@@ -42,6 +42,6 @@ public class EraserStrokeCommand implements Command {
             shapes.append(",");
         }
 
-        return "EraserStroke#" + shapes + "\n";
+        return "EraserStroke#" + shapes;
     }
 }

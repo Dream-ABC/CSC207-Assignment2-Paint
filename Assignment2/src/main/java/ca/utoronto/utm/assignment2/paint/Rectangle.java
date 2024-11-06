@@ -142,4 +142,7 @@ public class Rectangle implements Shape {
         g2d.fillRect(this.topLeft.x, this.topLeft.y,
                 this.width, this.height);
     }
+
+    @Override
+    public void setShape(String[] data) {}
 }

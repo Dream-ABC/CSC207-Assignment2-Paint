@@ -23,6 +23,6 @@ public class AddShapeCommand implements Command {
     }
 
     public String toString() {
-        return "AddShape#" + this.shape.getShape() + "\n";
+        return "AddShape#" + this.shape.toString();
     }
 }

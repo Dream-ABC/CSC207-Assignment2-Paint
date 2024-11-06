@@ -94,4 +94,7 @@ public class Squiggle implements Shape {
             g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
         }
     }
+
+    @Override
+    public void setShape(String[] data) {}
 }

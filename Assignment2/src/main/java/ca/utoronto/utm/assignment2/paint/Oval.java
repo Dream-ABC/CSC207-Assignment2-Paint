@@ -155,4 +155,7 @@ public class Oval implements Shape {
         g2d.fillOval(this.topLeft.x, this.topLeft.y,
                 this.width, this.height);
     }
+
+    @Override
+    public void setShape(String[] data) {}
 }

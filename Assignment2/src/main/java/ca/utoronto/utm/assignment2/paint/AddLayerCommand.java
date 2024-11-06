@@ -23,6 +23,6 @@ public class AddLayerCommand implements Command {
     }
 
     public String toString() {
-        return "AddLayer#" + this.layer.getWidth() + "," + this.layer.getHeight() + "\n";
+        return "AddLayer#" + this.layer.getWidth() + "," + this.layer.getHeight();
     }
 }

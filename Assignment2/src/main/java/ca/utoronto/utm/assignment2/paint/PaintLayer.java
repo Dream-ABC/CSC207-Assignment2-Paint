@@ -66,7 +66,6 @@ public class PaintLayer extends Canvas {
 
     public void setBackground(Image img) {
         this.background = img;
-        System.out.println("background set");
     }
 
     public void display(GraphicsContext g2d) {
@@ -76,9 +75,8 @@ public class PaintLayer extends Canvas {
 
         if (this.background != null) {
             g2d.drawImage(this.background, 0, 0, this.getWidth(), this.getHeight());
-            System.out.println("background drawn");
         }
-        System.out.println(shapes.size());
+
         // shapes on this layer
         for (Shape shape : this.shapes) {
             g2d.setFill(shape.getColor());

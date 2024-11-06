@@ -16,6 +16,8 @@ public class PatternParser {
 
         String commandType = content.substring(0, content.indexOf("#"));
         int beginIndex = content.indexOf("#") + 1;
+        System.out.println(commandType);
+        System.out.println(content.substring(beginIndex));
 
         switch (commandType) {
             case "WIDTH":
@@ -33,8 +35,15 @@ public class PatternParser {
                 return new AddLayerCommand(model, new PaintLayer(width, height), history);
 
             case "AddShape":
-                String shapeType = content.substring(beginIndex, content.indexOf(":"));
-                Shape shape = panel.getShapeFactory().getShape(shapeType);
+                    String shapeType = content.substring(beginIndex, content.indexOf("{"));
+                    System.out.println(shapeType);
+                    Shape shape = panel.getShapeFactory().getShape(shapeType);
+
+                    String[] dataString = content.substring(content.indexOf("{") + 1,
+                            content.indexOf("}")).split(",");
+                    System.out.println(dataString);
+                    shape.setShape(dataString);
+
                 return new AddShapeCommand(shape, model.getSelectedLayer(), history);
 
             case "ChangeLayer":

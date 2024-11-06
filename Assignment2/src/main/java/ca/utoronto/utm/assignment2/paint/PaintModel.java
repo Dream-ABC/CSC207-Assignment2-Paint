@@ -84,7 +84,6 @@ public class PaintModel extends Observable {
 
     public void addShapeFinal(Shape shape) {
         history.execute(new AddShapeCommand(shape, this.getSelectedLayer(), history));
-        System.out.println("shape added"); // not added
         notifyChange();
     }
 

@@ -24,6 +24,6 @@ public class DeleteLayerCommand implements Command {
     }
 
     public String toString() {
-        return "DeleteLayer#" + this.model.getLayers().indexOf(this.layer) + "\n";
+        return "DeleteLayer#" + this.model.getLayers().indexOf(this.layer);
     }
 }

@@ -126,4 +126,7 @@ public class Square implements Shape {
         g2d.fillRect(this.topLeft.x, this.topLeft.y,
                 this.size, this.size);
     }
+
+    @Override
+    public void setShape(String[] data) {}
 }

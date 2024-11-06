@@ -13,4 +13,5 @@ public interface Shape {
     String getShape();
     boolean overlaps(Eraser eraser);
     void display(GraphicsContext g2d);
+    void setShape(String[] data);
 }

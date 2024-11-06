@@ -19,6 +19,6 @@ public class ChangeLayerVisibilityCommand implements Command {
     }
 
     public String toString() {
-        return "ChangeVisibility#" + this.model.getLayers().indexOf(this.layer) + "\n";
+        return "ChangeVisibility#" + this.model.getLayers().indexOf(this.layer);
     }
 }

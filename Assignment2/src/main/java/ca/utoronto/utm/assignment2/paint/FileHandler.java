@@ -22,8 +22,8 @@ public class FileHandler {
     public void saveImage() {
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT Files", "*.txt"));
-        fileChooser.setTitle("Save panel Image");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
+        fileChooser.setTitle("Save as .png File");
         File filePath = fileChooser.showSaveDialog(null);
 
         int width = (int) panel.getModel().getSelectedLayer().getWidth();
@@ -32,11 +32,11 @@ public class FileHandler {
         WritableImage writableImage = new WritableImage(width, height);
         panel.snapshot(new SnapshotParameters(), writableImage);
 
-        BufferedImage bufferedImage = new BufferedImage((int) panel.getWidth(), (int) panel.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         PixelReader pixelReader = writableImage.getPixelReader();
 
-        for (int y = 0; y < (int) panel.getHeight(); y++) {
-            for (int x = 0; x < (int) panel.getWidth(); x++) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
                 int argb = pixelReader.getArgb(x, y);
                 bufferedImage.setRGB(x, y, argb);
             }
@@ -55,7 +55,7 @@ public class FileHandler {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
-        fileChooser.setTitle("Open Image File");
+        fileChooser.setTitle("Open .png File");
         File file = fileChooser.showOpenDialog(null);
 
         if (file != null) {
@@ -90,6 +90,7 @@ public class FileHandler {
                 writer.write("HEIGHT#" + this.panel.getModel().getSelectedLayer().getHeight() + "\n");
 
                 String allCommands = this.panel.getModel().savePaint();
+                System.out.println(allCommands);
                 writer.write(allCommands);
 
                 System.out.println("Paint saved successfully: " + filePath.getAbsolutePath());
@@ -112,16 +113,20 @@ public class FileHandler {
         if (file != null) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 ArrayList<Command> commands = new ArrayList<>();
-                String line;
-                while ((line = reader.readLine()) != null) {
+                String line = reader.readLine();
+                while (line != null) {
+                    System.out.println(line);
                     Command command = PatternParser.parseLine(line, this.panel);
                     if (command != null) {
                         commands.add(command);
+                        System.out.println(command);
                     }
-
-                    System.out.println("Paint loaded successfully: " + file.getAbsolutePath());
-                    this.panel.getModel().openPaint(commands);
+                    line = reader.readLine();
                 }
+
+                System.out.println("Paint loaded successfully: " + file.getAbsolutePath());
+                this.panel.getModel().openPaint(commands);
+
             } catch (Exception e) {
                 System.out.println("Failed to load paint: " + e.getMessage());
             }
