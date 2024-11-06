@@ -6,4 +6,5 @@ public interface ShapeStrategy {
     void mousePressed(MouseEvent mouseEvent);
     void mouseDragged(MouseEvent mouseEvent);
     void mouseReleased(MouseEvent mouseEvent);
+    void mouseClicked(MouseEvent mouseEvent);
 }

@@ -41,7 +41,7 @@ public class View implements EventHandler<ActionEvent> {
         this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
-        this.textEditorDialog = new TextEditorDialog(this.paintPanel, this);
+        this.textEditorDialog = new TextEditorDialog(new Text(), this.paintPanel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 

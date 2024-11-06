@@ -10,29 +10,22 @@ import java.awt.*;
 
 public class TextEditorDialog extends Dialog {
 
+    private PaintPanel paintPanel;
     private Text text;
     private ComboBox fontChooser;
     private ComboBox sizeChooser;
-    private CheckBox bold;
-    private CheckBox italic;
-    private CheckBox underline;
-    private CheckBox strikethrough;
+    private ToggleButton boldButton;
+    private ToggleButton italicButton;
+    private ToggleButton underlineButton;
+    private ToggleButton strikethroughButton;
 
-    public TextEditorDialog(Text text) {
+    public TextEditorDialog(Text text, PaintPanel paintPanel) {
+        this.paintPanel = paintPanel;
+        this.text = text;
         setBoxes();
     }
 
     private void setBoxes() {
-
-        this.fontChooser = new ComboBox();
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        String[] fontNames = ge.getAvailableFontFamilyNames();
-        this.fontChooser.setValue(fontNames[0]);  // default font
-        this.fontChooser.getItems().addAll(fontNames);
-
-        this.sizeChooser = new ComboBox();
-        this.sizeChooser.setValue(12);  // default size
-        this.sizeChooser.getItems().addAll(8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72);
 
 //        // default text font
 //        javafx.scene.text.Text text = new javafx.scene.text.Text("Sample Text");
@@ -40,22 +33,27 @@ public class TextEditorDialog extends Dialog {
 
         // font chooser comboBox
         this.fontChooser = new ComboBox<>();
-        this.fontChooser.getItems().addAll("Microsoft YaHei UI", "Arial", "Verdana", "Courier New");
-        this.fontChooser.setValue("Microsoft YaHei UI");
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        String[] fontNames = ge.getAvailableFontFamilyNames();
+        this.fontChooser.getItems().addAll(fontNames);
+        this.fontChooser.setValue("Microsoft YaHei UI");  // default font
         this.fontChooser.setOnAction(e -> {
-            this.text.setFont(javafx.scene.text.Font.font((String) fontChooser.getValue(), this.text.getFont().getSize()));
+            this.text.setFont(javafx.scene.text.Font.font((String) fontChooser.getValue(),
+                    this.text.getFont().getSize()));
         });
 
         // size chooser comboBox
         this.sizeChooser = new ComboBox<>();
-        this.sizeChooser.getItems().addAll("8", "10", "12", "14", "16", "18", "20");
-        this.sizeChooser.setValue("8");
+        this.sizeChooser.getItems().addAll("8", "9", "10", "11", "12", "14", "16", "18", "20",
+                "22", "24", "26", "28", "36", "48", "72");
+        this.sizeChooser.setValue("8");  // default size
         this.sizeChooser.setOnAction(e -> {
-            this.text.setFont(Font.font(this.text.getFont().getFamily(), Integer.parseInt((String) this.sizeChooser.getValue())));
+            this.text.setFont(Font.font(this.text.getFont().getFamily(),
+                    Integer.parseInt((String) this.sizeChooser.getValue())));
         });
 
         // font style buttons
-        ToggleButton boldButton = new ToggleButton("B");
+        this.boldButton = new ToggleButton("B");
         boldButton.setStyle("-fx-font-weight: bold;");
         boldButton.setOnAction(e -> {
             if (boldButton.isSelected()) {
@@ -65,7 +63,7 @@ public class TextEditorDialog extends Dialog {
             }
         });
 
-        ToggleButton italicButton = new ToggleButton("I");
+        this.italicButton = new ToggleButton("I");
         italicButton.setStyle("-fx-font-style: italic;");
         italicButton.setOnAction(e -> {
             if (italicButton.isSelected()) {
@@ -75,7 +73,7 @@ public class TextEditorDialog extends Dialog {
             }
         });
 
-        ToggleButton underlineButton = new ToggleButton("U");
+        this.underlineButton = new ToggleButton("U");
         underlineButton.setStyle("-fx-underline: true;");
         underlineButton.setOnAction(e -> {
             if (underlineButton.isSelected()) {
@@ -85,15 +83,26 @@ public class TextEditorDialog extends Dialog {
             }
         });
 
-        // 创建一个水平布局
-        HBox hbox = new HBox(10, fontComboBox, sizeComboBox, boldButton, italicButton, underlineButton);
-        hbox.setStyle("-fx-padding: 10;");
+        this.strikethroughButton = new ToggleButton("S");
+        underlineButton.setStyle("-fx-strikethrough: true;");
+        underlineButton.setOnAction(e -> {
+            if (underlineButton.isSelected()) {
+                text.setStrikethrough(true);
+            } else {
+                text.setStrikethrough(false);
+            }
+        });
     }
 
     public void display() {
         this.setTitle("Text Editor");
 
-        HBox hbox = new HBox(10, fontChooser, sizeChooser, bold, italic, underline, strikethrough);
+        // put all choosers and buttons together
+        HBox hbox = new HBox(10, this.fontChooser, this.sizeChooser,
+                boldButton, italicButton, underlineButton, strikethroughButton);
+        hbox.setStyle("-fx-padding: 10;");
+
         this.getDialogPane().setContent(hbox);
+        this.show();
     }
 }

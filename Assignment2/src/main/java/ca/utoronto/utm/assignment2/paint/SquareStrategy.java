@@ -89,4 +89,8 @@ public class SquareStrategy implements ShapeStrategy {
             this.panel.setCurrentShape(null);
         }
     }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+    }
 }

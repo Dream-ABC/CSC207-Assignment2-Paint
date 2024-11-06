@@ -48,4 +48,8 @@ public class EraserStrategy implements ShapeStrategy {
         this.panel.getModel().removeEraser();
         this.panel.setEraser(null);
     }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+    }
 }

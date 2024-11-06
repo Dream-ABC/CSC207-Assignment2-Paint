@@ -46,4 +46,8 @@ public class SquiggleStrategy implements ShapeStrategy {
         System.out.println("Added Squiggle");
         this.panel.setCurrentShape(null);
     }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+    }
 }

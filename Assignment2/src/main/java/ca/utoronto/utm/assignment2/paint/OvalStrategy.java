@@ -61,4 +61,8 @@ public class OvalStrategy implements ShapeStrategy {
         System.out.println("Added Oval");
         this.panel.setCurrentShape(null);
     }
+
+    @Override
+    public void mouseClicked(MouseEvent mouseEvent) {
+    }
 }

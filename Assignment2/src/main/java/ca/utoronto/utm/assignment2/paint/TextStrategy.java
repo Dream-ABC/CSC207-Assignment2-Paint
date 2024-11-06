@@ -52,4 +52,19 @@ public class TextStrategy implements ShapeStrategy {
         System.out.println("Added Text");
         this.panel.setCurrentShape(null);
     }
+
+    @Override
+    public void mouseClicked(javafx.scene.input.MouseEvent mouseEvent) {
+        System.out.println("Clicked Text");
+        Point firstClick = new Point(mouseEvent.getX(), mouseEvent.getY());
+        // Create a text using factory
+        ShapeFactory shapeFactory = panel.getShapeFactory();
+        Text text = (Text) shapeFactory.getShape(panel.getMode());
+        this.panel.setCurrentShape(text);
+
+        // Set info of text
+        text.setTopLeft(firstClick);
+        text.setColor(this.panel.getColor());
+        this.panel.getModel().addShape(text);
+    }
 }
