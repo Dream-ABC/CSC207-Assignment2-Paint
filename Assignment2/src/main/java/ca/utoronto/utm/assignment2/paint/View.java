@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -28,6 +27,7 @@ public class View implements EventHandler<ActionEvent> {
     private ColorPickerPopup colorPickerPopup;
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
+    private FileHandlePopup fileHandlePopup;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
@@ -40,6 +40,7 @@ public class View implements EventHandler<ActionEvent> {
         this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
+        this.fileHandlePopup = new FileHandlePopup(this.paintPanel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
@@ -171,12 +172,12 @@ public class View implements EventHandler<ActionEvent> {
         } else if (command.equals("Redo")) {
             this.paintModel.redo();
         } else if (command.equals("New")) {
-            this.paintModel.newFile(new FileHandler(this.paintPanel));
+            this.fileHandlePopup.newFile();
         } else if (command.equals("Open")) {
-            this.paintModel.openFile(new FileHandler(this.paintPanel));
+            this.fileHandlePopup.openFile();
         } else if (command.equals("Save")) {
 //            this.paintModel.saveFile(new FileHandler(this.paintPanel));
-            this.paintModel.saveCommands(new FileHandler(this.paintPanel));
+            this.fileHandlePopup.saveFile();
         }
 
         this.paintModel.notifyChange();

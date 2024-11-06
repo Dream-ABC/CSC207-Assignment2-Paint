@@ -25,7 +25,12 @@ public class PaintModel extends Observable {
     }
 
     public void addLayer() {
-        PaintLayer layer = new PaintLayer();
+        PaintLayer layer;
+        if (this.selectedLayer == null) {
+            layer = new PaintLayer();
+        } else {
+            layer = new PaintLayer(this.selectedLayer.getWidth(), this.selectedLayer.getHeight());
+        }
         history.execute(new AddLayerCommand(this, layer, history));
         this.selectedLayer = layer;
         notifyChange();
@@ -79,6 +84,7 @@ public class PaintModel extends Observable {
 
     public void addShapeFinal(Shape shape) {
         history.execute(new AddShapeCommand(shape, this.getSelectedLayer(), history));
+        System.out.println("shape added"); // not added
         notifyChange();
     }
 
@@ -118,30 +124,37 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-    public void newFile(FileHandler handler) {
-
+    public void newFile() {
+        this.layers.clear();
+        PaintLayer layer = new PaintLayer();
+        this.layers.add(layer);
+        this.selectedLayer = layer;
+        history.reset();
+        notifyChange();
     }
 
-    public void openFile(FileHandler handler) {
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
-        fileChooser.setTitle("Open Image File");
-        File file = fileChooser.showOpenDialog(null);
-
-        if (file != null) {
+    public void openImage(Image image) {
+        if (image != null) {
+            this.selectedLayer.setBackground(image);
             notifyChange();
         }
     }
 
-    public void saveFile(FileHandler handler) {
-        // not a command, cannot be undone/redone
-        handler.saveImage();
+    public void openPaint(ArrayList<Command> commands) {
+        for (Command command : commands) {
+            this.history.execute(command);
+        }
         notifyChange();
     }
 
-    public void saveCommands(FileHandler handler) {
-
+    public String savePaint() {
+        // convert all commands to string
+        StringBuilder allCommands = new StringBuilder();
+        for (Command command : this.history.getUndoStack()) {
+            allCommands.append(command.toString());
+            allCommands.append("\n");
+        }
+        return allCommands.toString();
     }
 
     public void notifyChange() {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PaintLayer extends Canvas {
 
 //    private String status;  // "changed", "unchanged", "removed"
-//    private Color color;
+    private Color color;
     private ArrayList<Shape> shapes;
     private Eraser eraser;
     private Image background;
@@ -20,17 +20,16 @@ public class PaintLayer extends Canvas {
         this.shapes = new ArrayList<>();
         this.setVisible(true);
 //        this.status = "changed";
-//        this.color = Color.TRANSPARENT;
+        this.color = Color.TRANSPARENT;
         this.background = null;
-        System.out.println("background Initialized");
     }
 
-    public PaintLayer(int width, int height) {
+    public PaintLayer(double width, double height) {
         super(width, height);
         this.shapes = new ArrayList<>();
         this.setVisible(true);
 //        this.status = "changed";
-//        this.color = Color.TRANSPARENT;
+        this.color = Color.TRANSPARENT;
         this.background = null;
     }
 
@@ -57,13 +56,13 @@ public class PaintLayer extends Canvas {
         this.shapes = shapes;
     }
 
-//    public void setColor(Color color) {
-//        this.color = color;
-//    }
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
-//    public Color getColor() {
-//        return this.color;
-//    }
+    public Color getColor() {
+        return this.color;
+    }
 
     public void setBackground(Image img) {
         this.background = img;
@@ -72,14 +71,14 @@ public class PaintLayer extends Canvas {
 
     public void display(GraphicsContext g2d) {
         // background
-//        g2d.setFill(this.color);
+        g2d.setFill(this.color);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         if (this.background != null) {
             g2d.drawImage(this.background, 0, 0, this.getWidth(), this.getHeight());
             System.out.println("background drawn");
         }
-
+        System.out.println(shapes.size());
         // shapes on this layer
         for (Shape shape : this.shapes) {
             g2d.setFill(shape.getColor());
@@ -88,15 +87,5 @@ public class PaintLayer extends Canvas {
         if (this.eraser != null){
             eraser.display(g2d);
         }
-    }
-
-    public String toString() {
-
-        StringBuilder shapes = new StringBuilder();
-        for (Shape s : this.shapes) {
-            shapes.append(s.toString());
-        }
-
-        return "PaintLayer:" + "shapes=" + shapes + "background=" + this.background.getUrl() + "&";
     }
 }

@@ -5,12 +5,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Stack;
+import java.util.ArrayList;
 
 public class FileHandler {
 
@@ -46,65 +45,86 @@ public class FileHandler {
         File savedFile = new File(filePath.getPath());
         try {
             ImageIO.write(bufferedImage, "png", savedFile);
-            System.out.println("Image saved as: " + filePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Failed to save image.");
+            System.out.println("Image saved successfully: " + filePath.getAbsolutePath());
+        } catch (Exception e) {
+            System.out.println("Failed to save image: " + e.getMessage());
         }
     }
 
-    public void loadImage(PaintLayer layer, File file) {
+    public void openImage() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
+        fileChooser.setTitle("Open Image File");
+        File file = fileChooser.showOpenDialog(null);
+
         if (file != null) {
             try {
                 Image image = new Image(file.toURI().toString());
-                if (image.isError()) {
-                    System.out.println("Failed to load image, please check the file path: " + file.getAbsolutePath());
-                    return;
-                }
-
-                layer.setBackground(image);
                 System.out.println("Image loaded successfully: " + file.getAbsolutePath());
+                this.panel.getModel().openImage(image);
+
             } catch (Exception e) {
                 System.out.println("Failed to load image: " + e.getMessage());
             }
         }
     }
 
-    public void saveCommands() throws IOException {
+    public void savePaint() {
 
-        CommandHistory commandHistory = this.panel.getModel().getHistory();
-        StringBuilder allCommands = new StringBuilder();
-        for (Command command : commandHistory.getUndoStack()) {
-            allCommands.append(command.toString());
-            allCommands.append("\n");
+        // add file chooser
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "Custom Format Files (*.paint)", "*.paint");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Save as .paint File");
+        File filePath = fileChooser.showSaveDialog(null);
+
+        if (filePath != null) {
+            try {
+                File savedFile = new File(filePath.getPath());
+                BufferedWriter writer = new BufferedWriter(new FileWriter(savedFile));
+
+                // write in all commands
+                writer.write("WIDTH#" + this.panel.getModel().getSelectedLayer().getWidth() + "\n");
+                writer.write("HEIGHT#" + this.panel.getModel().getSelectedLayer().getHeight() + "\n");
+
+                String allCommands = this.panel.getModel().savePaint();
+                writer.write(allCommands);
+
+                System.out.println("Paint saved successfully: " + filePath.getAbsolutePath());
+
+            } catch (Exception e) {
+                System.out.println("Failed to save paint: " + e.getMessage());
+            }
         }
+    }
+
+    public void openCommands() {
 
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "Custom Format Files (*.paint)", "*.paint");
         fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setTitle("Open .paint File");
+        File file = fileChooser.showOpenDialog(null);
 
-        fileChooser.setTitle("Save panel Image");
-        File filePath = fileChooser.showSaveDialog(null);
+        if (file != null) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                ArrayList<Command> commands = new ArrayList<>();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    Command command = PatternParser.parseLine(line, this.panel);
+                    if (command != null) {
+                        commands.add(command);
+                    }
 
-        File savedFile = new File(filePath.getPath());
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(savedFile));
-
-        writer.write("WIDTH#" + this.panel.getModel().getSelectedLayer().getWidth() + "\n");
-        writer.write("HEIGHT#" + this.panel.getModel().getSelectedLayer().getHeight() + "\n");
-        writer.write(allCommands.toString());
-    }
-
-    public void loadCommands(PaintLayer layer, File file) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-               Command command = PatternParser.parseLine(line, this.panel);
-               this.panel.getModel().getHistory().execute(command);
+                    System.out.println("Paint loaded successfully: " + file.getAbsolutePath());
+                    this.panel.getModel().openPaint(commands);
+                }
+            } catch (Exception e) {
+                System.out.println("Failed to load paint: " + e.getMessage());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

@@ -8,8 +8,6 @@ public class PatternParser {
     private PaintPanel panel;
     private PaintModel model;
     private CommandHistory history;
-    private static double WIDTH;
-    private static double HEIGHT;
 
     public static Command parseLine(String content, PaintPanel panel) {
         PaintModel model = panel.getModel();
@@ -29,7 +27,10 @@ public class PatternParser {
                 return null;
 
             case "AddLayer":
-                return new AddLayerCommand(model, new PaintLayer(), history);
+                String[] size = content.substring(beginIndex).split(",");
+                double width = Double.parseDouble(size[0]);
+                double height = Double.parseDouble(size[1]);
+                return new AddLayerCommand(model, new PaintLayer(width, height), history);
 
             case "AddShape":
                 String shapeType = content.substring(beginIndex, content.indexOf(":"));

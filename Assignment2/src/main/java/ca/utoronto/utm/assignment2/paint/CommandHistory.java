@@ -47,4 +47,10 @@ public class CommandHistory {
     public Stack<Command> getUndoStack() {
         return this.undoStack;
     }
+
+    public void reset() {
+        this.undoStack.clear();
+        this.redoStack.clear();
+        this.stateStack.clear();
+    }
 }
