@@ -43,4 +43,8 @@ public class CommandHistory {
     public void popLastCommand(){
         this.undoStack.pop();
     }
+
+    public Stack<Command> getUndoStack() {
+        return this.undoStack;
+    }
 }

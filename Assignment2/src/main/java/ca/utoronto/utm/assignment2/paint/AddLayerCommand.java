@@ -21,4 +21,8 @@ public class AddLayerCommand implements Command {
             history.undo();
         }
     }
+
+    public String toString() {
+        return "AddLayer#" + "\n";
+    }
 }

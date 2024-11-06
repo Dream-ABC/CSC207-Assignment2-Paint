@@ -17,7 +17,12 @@ public class AddShapeCommand implements Command {
         history.addState(new ArrayList<Shape>(this.layer.getShapes()));
         this.layer.addShape(this.shape);
     }
+
     public void undo() {
         this.layer.setShapes(history.revertState());
+    }
+
+    public String toString() {
+        return "AddShape#" + this.shape.getShape() + "\n";
     }
 }

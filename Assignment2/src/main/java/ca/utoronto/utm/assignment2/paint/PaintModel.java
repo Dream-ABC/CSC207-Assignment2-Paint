@@ -1,5 +1,9 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -27,7 +31,7 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-    public void removeLayer(){
+    public void removeLayer() {
         removeLayer(this.selectedLayer);
     }
 
@@ -50,11 +54,9 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-
-
     public void switchLayerVisible(String layerName) {
         int layerIndex = Integer.parseInt(layerName.substring(5));
-        history.execute(new ChangeLayerVisibilityCommand(layers.get(layerIndex)));
+        history.execute(new ChangeLayerVisibilityCommand(layers.get(layerIndex), this));
         notifyChange();
     }
 
@@ -65,6 +67,7 @@ public class PaintModel extends Observable {
     public PaintLayer getSelectedLayer() {
         return selectedLayer;
     }
+
     void setSelectedLayer(PaintLayer selectedLayer) {
         this.selectedLayer = selectedLayer;
     }
@@ -73,6 +76,7 @@ public class PaintModel extends Observable {
         this.selectedLayer.addShape(shape);
         notifyChange();
     }
+
     public void addShapeFinal(Shape shape) {
         history.execute(new AddShapeCommand(shape, this.getSelectedLayer(), history));
         notifyChange();
@@ -89,7 +93,7 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-    public void storeState(){
+    public void storeState() {
         history.execute(new EraserStrokeCommand(this.selectedLayer, history));
     }
 
@@ -104,17 +108,43 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-    public void undo(){
+    public void undo() {
         history.undo();
         notifyChange();
     }
 
-    public void redo(){
+    public void redo() {
         history.redo();
         notifyChange();
     }
 
-    public void notifyChange(){
+    public void newFile(FileHandler handler) {
+
+    }
+
+    public void openFile(FileHandler handler) {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
+        fileChooser.setTitle("Open Image File");
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            notifyChange();
+        }
+    }
+
+    public void saveFile(FileHandler handler) {
+        // not a command, cannot be undone/redone
+        handler.saveImage();
+        notifyChange();
+    }
+
+    public void saveCommands(FileHandler handler) {
+
+    }
+
+    public void notifyChange() {
         this.setChanged();
         this.notifyObservers();
     }

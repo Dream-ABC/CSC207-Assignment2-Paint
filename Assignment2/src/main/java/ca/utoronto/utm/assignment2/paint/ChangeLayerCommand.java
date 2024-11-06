@@ -14,7 +14,12 @@ public class ChangeLayerCommand implements Command {
     public void execute() {
         this.model.setSelectedLayer(newLayer);
     }
+
     public void undo() {
         this.model.setSelectedLayer(oldLayer);
+    }
+
+    public String toString() {
+        return "ChangeLayer#" + this.model.getLayers().indexOf(this.newLayer) + "\n";
     }
 }

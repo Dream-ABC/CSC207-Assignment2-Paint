@@ -166,10 +166,17 @@ public class View implements EventHandler<ActionEvent> {
             Platform.exit();
         } else if (command.equals("Colors")) {
             this.colorPickerPopup.display();
-        } else if (command.equals("Undo")){
+        } else if (command.equals("Undo")) {
             this.paintModel.undo();
-        } else if (command.equals("Redo")){
+        } else if (command.equals("Redo")) {
             this.paintModel.redo();
+        } else if (command.equals("New")) {
+            this.paintModel.newFile(new FileHandler(this.paintPanel));
+        } else if (command.equals("Open")) {
+            this.paintModel.openFile(new FileHandler(this.paintPanel));
+        } else if (command.equals("Save")) {
+//            this.paintModel.saveFile(new FileHandler(this.paintPanel));
+            this.paintModel.saveCommands(new FileHandler(this.paintPanel));
         }
 
         this.paintModel.notifyChange();

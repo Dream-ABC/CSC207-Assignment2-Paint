@@ -11,7 +11,6 @@ public class DeleteLayerCommand implements Command {
         this.history = h;
     }
 
-
     public void execute() {
         if (this.model.getLayers().size() > 1) {
             this.model.getLayers().remove(this.layer);
@@ -19,7 +18,12 @@ public class DeleteLayerCommand implements Command {
             history.popLastCommand();
         }
     }
+
     public void undo() {
         this.model.getLayers().add(this.layer);
+    }
+
+    public String toString() {
+        return "DeleteLayer#" + this.model.getLayers().indexOf(this.layer) + "\n";
     }
 }
