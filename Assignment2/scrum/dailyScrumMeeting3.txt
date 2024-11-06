@@ -114,9 +114,9 @@ Nov 4,2024
 	Obstacles I face: Ensuring I don't take on more than I can handle, while also helping my team complete all the tasks
 
 Nov 5,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Put sprints into sprintBacklog4
+	What I will do today: Think about how to effectively implement my tasks
+	Obstacles I face: Knowing how to change the code, creating effective classes and architecture
 
 Nov 6,2024
 	What I did yesterday:
