@@ -63,7 +63,7 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.009 : hingor13 : NotStarted
+TYPE     : USER STORY US4.451 : hingor13 : NotStarted
 NAME     : Selection tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -72,7 +72,7 @@ I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.011 : hingor13 : NotStarted
+TYPE     : USER STORY US4.441 : hingor13 : NotStarted
 NAME     : Magnifier Tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -81,7 +81,7 @@ I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.020 : wenjess1 : NotStarted
+TYPE     : USER STORY US4.411 : wenjess1 : NotStarted
 NAME     : Precision Eraser
 PRIORITY : 3
 ESTIMATE : 1 day    ACTUAL :
@@ -92,7 +92,7 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.010 : wenjess1 : NotStarted
+TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
 NAME     : Stroke Eraser working with varying line thickness
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL :
@@ -148,7 +148,7 @@ I WANT : to choose from various brush styles (e.g., pencil, pen, marker).
 SO THAT : I can achieve different textures and line effects in my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.019 : tianshi8 : NotStarted
+TYPE     : USER STORY US4.421 : tianshi8 : NotStarted
 NAME     : Text Editor
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -159,7 +159,7 @@ SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG?.008 : tianshi8 : NotStarted
+TYPE     : BUG BUG4.468 : tianshi8 : NotStarted
 NAME     : File menu is not implemented
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
