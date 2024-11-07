@@ -285,7 +285,7 @@ ISSUE    : Having a list of different types of drawable things in the
            here.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.007 : wenjess1 : Complete
+TYPE     : BUG BUG3.301 : wenjess1 : Complete
 NAME     : Default shape selection is incorrect
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -376,7 +376,7 @@ I WANT   : To be able to adjust the transparency of each object.
 SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.008 : wenjess1 : Complete
+TYPE     : USER STORY US3.311 : wenjess1 : Complete
 NAME     : Stroke Eraser
 PRIORITY : 3
 ESTIMATE : 1 day    ACTUAL : 1 day
@@ -387,7 +387,7 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.010 : hingor13 : Complete
+TYPE     : USER STORY US3.321 : hingor13 : Complete
 NAME     : Undo/Redo button
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL :1 day
