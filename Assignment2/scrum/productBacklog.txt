@@ -119,7 +119,7 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.016 : pengxi60 : NotStarted
+TYPE     : USER STORY US3.361 : pengxi60 : NotStarted
 NAME     : Paint GUI overhaul
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -285,7 +285,7 @@ ISSUE    : Having a list of different types of drawable things in the
            here.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.301 : wenjess1 : Complete
+TYPE     : BUG BUG3.371 : wenjess1 : Complete
 NAME     : Default shape selection is incorrect
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
