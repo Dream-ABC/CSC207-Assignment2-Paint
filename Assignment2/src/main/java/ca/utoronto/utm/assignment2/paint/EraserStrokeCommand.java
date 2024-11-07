@@ -9,19 +9,19 @@ public class EraserStrokeCommand implements Command {
     private ArrayList<Shape> removedShapes;
     private boolean changed = false;
     private ArrayList<Integer> indices;
+    private ArrayList<Shape> originalShapes;
 
     public EraserStrokeCommand(PaintLayer l, CommandHistory h) {
         layer = l;
         history = h;
         indices = new ArrayList<>();
+        originalShapes = (ArrayList<Shape>) l.getShapes().clone();
     }
 
     public void execute() {
         history.addState(new ArrayList<Shape>(layer.getShapes()));
         if (changed) {
             for (Shape s: removedShapes) {
-                indices.add(layer.getShapes().indexOf(s));
-                System.out.println("index added to this.indices in eraser command:"+layer.getShapes().indexOf(s));
                 layer.removeShape(s);
             }
             changed = false;
@@ -35,6 +35,9 @@ public class EraserStrokeCommand implements Command {
 
     public void addRemovedShapes(ArrayList<Shape> shapes) {
         removedShapes = shapes;
+        for (Shape s: shapes) {
+            indices.add(originalShapes.indexOf(s));
+        }
     }
 
     public String toString() {

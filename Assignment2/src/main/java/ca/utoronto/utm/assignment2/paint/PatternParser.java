@@ -66,6 +66,8 @@ public class PatternParser {
                 }
 
                 EraserStrokeCommand command = new EraserStrokeCommand(model.getSelectedLayer(), history);
+
+                model.storeState();
                 command.addRemovedShapes(shapes);
                 for (Shape s : shapes) {
                     model.getSelectedLayer().removeShape(s);

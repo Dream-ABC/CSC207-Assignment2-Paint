@@ -92,6 +92,7 @@ public class FileHandler {
                 writer.write("HEIGHT#" + this.panel.getModel().getSelectedLayer().getHeight() + "\n");
 
                 String allCommands = this.panel.getModel().savePaint();
+                System.out.println(allCommands);
                 writer.write(allCommands);
                 writer.close();
 
@@ -118,6 +119,7 @@ public class FileHandler {
                 while (line != null) {
                     Command command = PatternParser.parseLine(line, this.panel);
                     if (command != null) {
+                        System.out.println("execute:"+command);
                         this.panel.getModel().openPaint(command);
                     }
                     line = reader.readLine();
