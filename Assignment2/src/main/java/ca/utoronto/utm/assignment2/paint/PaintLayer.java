@@ -86,4 +86,12 @@ public class PaintLayer extends Canvas {
             eraser.display(g2d);
         }
     }
+
+    public void reset() {
+        this.shapes.clear();
+        this.color = Color.TRANSPARENT;
+        this.background = null;
+        this.eraser = null;
+        this.setVisible(true);
+    }
 }

@@ -124,12 +124,16 @@ public class Circle implements Shape {
 
     @Override
     public void setShape(String[] data) {
-        this.topLeft = new Point(Double.parseDouble(data[1]), Double.parseDouble(data[2]));
-        this.centre = new Point(Double.parseDouble(data[3]), Double.parseDouble(data[4]));
-        this.diameter = Double.parseDouble(data[5]);
-        this.color = Color.web(data[6]);
+        this.topLeft = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+        this.centre = new Point(Double.parseDouble(data[2]), Double.parseDouble(data[3]));
+        this.diameter = Double.parseDouble(data[4]);
+        this.color = Color.web(data[5]);
     }
 
+    /**
+     * Returns a string representation of a circle.
+     * @return a string representation of the circle
+     */
     public String toString() {
         return "Circle{" + this.topLeft.x + "," + this.topLeft.y + ","
                 + this.centre.x + "," + this.centre.y + "," +

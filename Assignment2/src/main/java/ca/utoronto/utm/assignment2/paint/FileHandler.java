@@ -26,28 +26,30 @@ public class FileHandler {
         fileChooser.setTitle("Save as .png File");
         File filePath = fileChooser.showSaveDialog(null);
 
-        int width = (int) panel.getModel().getSelectedLayer().getWidth();
-        int height = (int) panel.getModel().getSelectedLayer().getHeight();
+        if (filePath != null) {
+            int width = (int) panel.getModel().getSelectedLayer().getWidth();
+            int height = (int) panel.getModel().getSelectedLayer().getHeight();
 
-        WritableImage writableImage = new WritableImage(width, height);
-        panel.snapshot(new SnapshotParameters(), writableImage);
+            WritableImage writableImage = new WritableImage(width, height);
+            panel.snapshot(new SnapshotParameters(), writableImage);
 
-        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        PixelReader pixelReader = writableImage.getPixelReader();
+            BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            PixelReader pixelReader = writableImage.getPixelReader();
 
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                int argb = pixelReader.getArgb(x, y);
-                bufferedImage.setRGB(x, y, argb);
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    int argb = pixelReader.getArgb(x, y);
+                    bufferedImage.setRGB(x, y, argb);
+                }
             }
-        }
 
-        File savedFile = new File(filePath.getPath());
-        try {
-            ImageIO.write(bufferedImage, "png", savedFile);
-            System.out.println("Image saved successfully: " + filePath.getAbsolutePath());
-        } catch (Exception e) {
-            System.out.println("Failed to save image: " + e.getMessage());
+            File savedFile = new File(filePath.getPath());
+            try {
+                ImageIO.write(bufferedImage, "png", savedFile);
+                System.out.println("Image saved successfully: " + filePath.getAbsolutePath());
+            } catch (Exception e) {
+                System.out.println("Failed to save image: " + e.getMessage());
+            }
         }
     }
 
@@ -90,8 +92,8 @@ public class FileHandler {
                 writer.write("HEIGHT#" + this.panel.getModel().getSelectedLayer().getHeight() + "\n");
 
                 String allCommands = this.panel.getModel().savePaint();
-                System.out.println(allCommands);
                 writer.write(allCommands);
+                writer.close();
 
                 System.out.println("Paint saved successfully: " + filePath.getAbsolutePath());
 
@@ -101,7 +103,7 @@ public class FileHandler {
         }
     }
 
-    public void openCommands() {
+    public void openPaint() {
 
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
@@ -112,20 +114,16 @@ public class FileHandler {
 
         if (file != null) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                ArrayList<Command> commands = new ArrayList<>();
                 String line = reader.readLine();
                 while (line != null) {
-                    System.out.println(line);
                     Command command = PatternParser.parseLine(line, this.panel);
                     if (command != null) {
-                        commands.add(command);
-                        System.out.println(command);
+                        this.panel.getModel().openPaint(command);
                     }
                     line = reader.readLine();
                 }
-
+                reader.close();
                 System.out.println("Paint loaded successfully: " + file.getAbsolutePath());
-                this.panel.getModel().openPaint(commands);
 
             } catch (Exception e) {
                 System.out.println("Failed to load paint: " + e.getMessage());

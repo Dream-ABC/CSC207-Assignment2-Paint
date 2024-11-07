@@ -6,6 +6,7 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Stack;
 
 public class PaintModel extends Observable {
     private ArrayList<PaintLayer> layers = new ArrayList<>();
@@ -32,7 +33,6 @@ public class PaintModel extends Observable {
             layer = new PaintLayer(this.selectedLayer.getWidth(), this.selectedLayer.getHeight());
         }
         history.execute(new AddLayerCommand(this, layer, history));
-        this.selectedLayer = layer;
         notifyChange();
     }
 
@@ -75,6 +75,7 @@ public class PaintModel extends Observable {
 
     void setSelectedLayer(PaintLayer selectedLayer) {
         this.selectedLayer = selectedLayer;
+        notifyChange();
     }
 
     public void addShape(Shape shape) {
@@ -83,7 +84,7 @@ public class PaintModel extends Observable {
     }
 
     public void addShapeFinal(Shape shape) {
-        history.execute(new AddShapeCommand(shape, this.getSelectedLayer(), history));
+        history.execute(new AddShapeCommand(shape, this.getSelectedLayer(), history, this));
         notifyChange();
     }
 
@@ -132,6 +133,11 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public void resetLayer() {
+        this.selectedLayer.reset();
+        notifyChange();
+    }
+
     public void openImage(Image image) {
         if (image != null) {
             this.selectedLayer.setBackground(image);
@@ -139,17 +145,18 @@ public class PaintModel extends Observable {
         }
     }
 
-    public void openPaint(ArrayList<Command> commands) {
-        for (Command command : commands) {
-            this.history.execute(command);
-        }
+    public void openPaint(Command command) {
+        this.history.execute(command);
         notifyChange();
     }
 
     public String savePaint() {
         // convert all commands to string
         StringBuilder allCommands = new StringBuilder();
-        for (Command command : this.history.getUndoStack()) {
+        Stack<Command> undoStack = this.history.getUndoStack();
+
+        // remove init AddLayerCommand
+        for (Command command : undoStack.subList(1, undoStack.size())) {
             allCommands.append(command.toString());
             allCommands.append("\n");
         }

@@ -54,4 +54,19 @@ public class Eraser {
         g2d.strokeRect(this.centre.x, this.centre.y,
                 this.dimension, this.dimension);
     }
+
+    public void setEraser(String[] data) {
+        this.centre = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+        this.dimension = Integer.parseInt(data[2]);
+    }
+
+    /**
+     * Returns a string representation of the Eraser object.
+     * The format includes the centre coordinates and the dimension.
+     *
+     * @return a string representation of the Eraser object
+     */
+    public String toString() {
+        return "Eraser{" + this.centre.x + "," + this.centre.y + "," + this.dimension + "}";
+    }
 }

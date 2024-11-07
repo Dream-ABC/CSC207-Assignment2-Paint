@@ -5,6 +5,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Window;
 
 import java.util.Optional;
 
@@ -20,9 +21,33 @@ public class FileHandlePopup {
         this.handler = new FileHandler(this.panel);
     }
 
+    private boolean newLayer() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("New Layer");
+        alert.setHeaderText("Your progress on the current layer will be lost!");
+        alert.setContentText("Do you want to proceed?");
+
+        // set buttons
+        ButtonType buttonYes = new ButtonType("Yes");
+        ButtonType buttonNo = new ButtonType("No");
+        alert.getButtonTypes().setAll(buttonYes, buttonNo);
+
+        // set close request
+        Window window = alert.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(e -> alert.hide());
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonYes) {
+            this.model.resetLayer();
+            return true;
+        }
+        return false;
+    }
+
     public void openFile() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Choosing file type");
+        dialog.setOnCloseRequest(event -> dialog.close());
 
         VBox dialogContent = new VBox();
         dialogContent.setSpacing(10);
@@ -30,19 +55,24 @@ public class FileHandlePopup {
 
         dialog.getDialogPane().setContent(dialogContent);
 
+        // set buttons
         ButtonType buttonPNG = new ButtonType(".png");
         ButtonType buttonPAINT = new ButtonType(".paint");
         dialog.getDialogPane().getButtonTypes().addAll(buttonPNG, buttonPAINT);
 
-        // 显示对话框，并等待用户选择
+        // set close request
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(e -> dialog.hide());
+
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent()) {
             if (result.get() == buttonPNG) {
-                this.handler.openImage();
-
+                if (this.newLayer()) {
+                    this.handler.openImage();
+                }
             } else if (result.get() == buttonPAINT) {
                 if (this.newFile()) {
-                    this.handler.openCommands();
+                    this.handler.openPaint();
                 }
             }
         }
@@ -58,11 +88,15 @@ public class FileHandlePopup {
 
         dialog.getDialogPane().setContent(dialogContent);
 
+        // set buttons
         ButtonType buttonPNG = new ButtonType(".png");
         ButtonType buttonPAINT = new ButtonType(".paint");
         dialog.getDialogPane().getButtonTypes().addAll(buttonPNG, buttonPAINT);
 
-        // 显示对话框，并等待用户选择
+        // set close request
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(e -> dialog.hide());
+
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent()) {
             if (result.get() == buttonPNG) {
@@ -75,24 +109,25 @@ public class FileHandlePopup {
     }
 
     public boolean newFile() {
-        this.panel.setDisable(true);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("New File");
         alert.setHeaderText("Your current progress will be lost!");
         alert.setContentText("Do you want to proceed?");
 
+        // set buttons
         ButtonType buttonYes = new ButtonType("Yes");
         ButtonType buttonNo = new ButtonType("No");
-
         alert.getButtonTypes().setAll(buttonYes, buttonNo);
+
+        // set close request
+        Window window = alert.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(e -> alert.hide());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonYes) {
             this.model.newFile();
-            this.panel.setDisable(false);
             return true;
         }
-        this.panel.setDisable(false);
         return false;
     }
 }

@@ -1,14 +1,16 @@
 package ca.utoronto.utm.assignment2.paint;
 
 public class ChangeLayerCommand implements Command {
-    PaintLayer oldLayer;
-    PaintLayer newLayer;
-    PaintModel model;
+    private PaintLayer oldLayer;
+    private PaintLayer newLayer;
+    private PaintModel model;
+    private int index;
 
     public ChangeLayerCommand(PaintLayer o, PaintLayer n, PaintModel m) {
         oldLayer = o;
         newLayer = n;
         model = m;
+        index = m.getLayers().indexOf(this.newLayer);
     }
 
     public void execute() {
@@ -20,6 +22,6 @@ public class ChangeLayerCommand implements Command {
     }
 
     public String toString() {
-        return "ChangeLayer#" + this.model.getLayers().indexOf(this.newLayer);
+        return "ChangeLayer#" + this.index;
     }
 }

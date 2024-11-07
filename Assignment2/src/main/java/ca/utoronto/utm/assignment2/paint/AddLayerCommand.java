@@ -1,9 +1,9 @@
 package ca.utoronto.utm.assignment2.paint;
 
 public class AddLayerCommand implements Command {
-    PaintLayer layer;
-    PaintModel model;
-    CommandHistory history;
+    private PaintLayer layer;
+    private PaintModel model;
+    private CommandHistory history;
 
     public AddLayerCommand(PaintModel m, PaintLayer l, CommandHistory h) {
         this.layer = l;
@@ -13,7 +13,9 @@ public class AddLayerCommand implements Command {
 
     public void execute() {
         this.model.getLayers().add(layer);
+        this.model.setSelectedLayer(layer);
     }
+
     public void undo() {
         if (this.model.getLayers().size() > 1) {
             this.model.getLayers().remove(this.layer);

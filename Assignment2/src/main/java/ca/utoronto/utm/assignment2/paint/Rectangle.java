@@ -144,5 +144,22 @@ public class Rectangle implements Shape {
     }
 
     @Override
-    public void setShape(String[] data) {}
+    public void setShape(String[] data) {
+        this.topLeft = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+        this.width = Double.parseDouble(data[2]);
+        this.height = Double.parseDouble(data[3]);
+        this.origin = new Point(Double.parseDouble(data[4]), Double.parseDouble(data[5]));
+        this.color = Color.web(data[6]);
+    }
+
+    /**
+     * Returns a string representation of a rectangle.
+     * @return a string representation of the rectangle
+     */
+    public String toString() {
+        return "Rectangle{" + this.topLeft.x + "," + this.topLeft.y + ","
+                + this.width + "," + this.height + ","
+                + this.origin.x + "," + this.origin.y + ","
+                + this.color.toString() + "}";
+    }
 }

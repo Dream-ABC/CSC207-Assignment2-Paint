@@ -2,6 +2,7 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 /**
@@ -23,6 +24,7 @@ public class Squiggle implements Shape {
 
     /**
      * Adds a new point to the user's squiggle drawing.
+     *
      * @param p new point in Squiggle
      */
     public void addPoint(Point p) {
@@ -64,17 +66,18 @@ public class Squiggle implements Shape {
     /**
      * Checks if the Eraser is overlapping the Squiggle.
      * If it is, then the Eraser will erase the entire Squiggle.
+     *
      * @param eraser the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Squiggle, False otherwise
      */
     @Override
     public boolean overlaps(Eraser eraser) {
-        double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
-        double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
-        double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
-        double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
+        double leftX = eraser.getCentre().x - (eraser.getDimension() / 2.0);
+        double rightX = eraser.getCentre().x + (eraser.getDimension() / 2.0);
+        double topY = eraser.getCentre().y - (eraser.getDimension() / 2.0);
+        double bottomY = eraser.getCentre().y + (eraser.getDimension() / 2.0);
         for (Point p : this.points) {
-            if (leftX <= p.x && p.x <= rightX && topY <= p.y && p.y <= bottomY){
+            if (leftX <= p.x && p.x <= rightX && topY <= p.y && p.y <= bottomY) {
                 return true;
             }
         }
@@ -83,6 +86,7 @@ public class Squiggle implements Shape {
 
     /**
      * Displays the Squiggle with user-created color and points they drew.
+     *
      * @param g2d GraphicsContext
      */
     @Override
@@ -96,5 +100,25 @@ public class Squiggle implements Shape {
     }
 
     @Override
-    public void setShape(String[] data) {}
+    public void setShape(String[] data) {
+        this.color = Color.web(data[0]);
+        for (int i = 1; i < data.length; i += 2) {
+            double x = Double.parseDouble(data[i]);
+            double y = Double.parseDouble(data[i + 1]);
+            this.points.add(new Point(x, y));
+        }
+    }
+
+    /**
+     * Returns a string representation of a squiggle.
+     *
+     * @return a string representation of the squiggle
+     */
+    public String toString() {
+        StringBuilder points = new StringBuilder();
+        for (Point p : this.points) {
+            points.append(p.x + "," + p.y + ",");
+        }
+        return "Squiggle{" + this.color.toString() + "," + points + "}";
+    }
 }

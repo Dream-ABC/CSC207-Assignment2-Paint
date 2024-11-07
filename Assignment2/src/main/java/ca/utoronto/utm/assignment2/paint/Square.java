@@ -128,5 +128,20 @@ public class Square implements Shape {
     }
 
     @Override
-    public void setShape(String[] data) {}
+    public void setShape(String[] data) {
+        this.topLeft = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+        this.origin = new Point(Double.parseDouble(data[2]), Double.parseDouble(data[3]));
+        this.size = Double.parseDouble(data[4]);
+        this.color = Color.web(data[5]);
+    }
+
+    /**
+     * Returns a string representation of a square.
+     * @return a string representation of the square
+     */
+    public String toString() {
+        return "Square{" + this.topLeft.x + "," + this.topLeft.y + ","
+                + this.origin.x + "," + this.origin.y + "," +
+                this.size + "," + this.color.toString() + "}";
+    }
 }
