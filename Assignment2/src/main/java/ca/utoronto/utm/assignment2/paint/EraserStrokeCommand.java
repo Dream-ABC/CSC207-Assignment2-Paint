@@ -40,6 +40,10 @@ public class EraserStrokeCommand implements Command {
         }
     }
 
+    public ArrayList<Shape> getRemovedShapes() {
+        return removedShapes;
+    }
+
     public String toString() {
 
         StringBuilder shapes = new StringBuilder();

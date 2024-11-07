@@ -69,9 +69,11 @@ public class PatternParser {
 
                 model.storeState();
                 command.addRemovedShapes(shapes);
+                System.out.println(command.getRemovedShapes());
                 for (Shape s : shapes) {
                     model.getSelectedLayer().removeShape(s);
                 }
+                panel.getModel().getHistory().addToLast(panel.getEraser().getRemovedShapes());
                 return command;
 
             default:

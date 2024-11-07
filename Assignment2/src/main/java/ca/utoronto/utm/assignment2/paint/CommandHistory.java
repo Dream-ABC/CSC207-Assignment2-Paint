@@ -1,4 +1,5 @@
 package ca.utoronto.utm.assignment2.paint;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -12,6 +13,7 @@ public class CommandHistory {
         undoStack.push(command);
         redoStack.clear();
     }
+
     public void undo() {
         if (!(undoStack.isEmpty())) {
             Command command = undoStack.pop();
@@ -31,16 +33,16 @@ public class CommandHistory {
     public void addState(ArrayList<Shape> state) {
         stateStack.push(state);
     }
-    public ArrayList<Shape> revertState(){
+
+    public ArrayList<Shape> revertState() {
         return stateStack.pop();
     }
+
     public void addToLast(ArrayList<Shape> state) {
-        Command store = undoStack.peek();
-        if (store instanceof EraserStrokeCommand){
-            ((EraserStrokeCommand) store).addRemovedShapes(state);
-        }
+        ((EraserStrokeCommand) undoStack.peek()).addRemovedShapes(state);
     }
-    public void popLastCommand(){
+
+    public void popLastCommand() {
         this.undoStack.pop();
     }
 
