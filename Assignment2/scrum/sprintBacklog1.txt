@@ -72,3 +72,11 @@ AS A     : user
 I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid-construction.
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.101 : hingor13 : Complete
+NAME     : Rectangle drawing is broken
+PRIORITY : 1
+ESTIMATE : 1 hour   ACTUAL : 1 hour
+ISSUE    : If the rectangle is dragged towards another side than bottom right,
+           the topLeft corner should be updated.
+--------------------------------------------------------------------------
