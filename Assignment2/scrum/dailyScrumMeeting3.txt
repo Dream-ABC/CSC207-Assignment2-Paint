@@ -119,9 +119,9 @@ Nov 5,2024
 	Obstacles I face: Knowing how to change the code, creating effective classes and architecture
 
 Nov 6,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Thought about how to implement my tasks
+	What I will do today: Fix some naming conventions that we didn't follow (whoops...)
+	Obstacles I face: Figuring out how to rename things, making sure I follow the instructions, etc
 
 Nov 7,2024
 	What I did yesterday:
