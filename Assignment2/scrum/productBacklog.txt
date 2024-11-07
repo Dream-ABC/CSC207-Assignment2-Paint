@@ -16,7 +16,7 @@
 # as appropriate.
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.006 : UTORID : NotStarted
+TYPE     : USER STORY US4.006 : UTORID : NotStarted
 NAME     : Fill style selector
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -39,7 +39,7 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
 SO THAT  : 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.007 : UTORID : NotStarted
+TYPE     : USER STORY US4.007 : UTORID : NotStarted
 NAME     : Line thickness selector
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -209,7 +209,7 @@ SO THAT  : I can see the circle I am about to build on release of the mouse
            button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.003 : hingor13 : Completed
+TYPE     : USER STORY US1.003 : hingor13 : Complete
 NAME     : Draw Rectangle
 PRIORITY : 2
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -219,7 +219,7 @@ I WANT   : To click on one corner of a rectangle, drag, and release to
 SO THAT  : I can add rectangles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.004 : pengxi60 : Completed
+TYPE     : USER STORY US1.004 : pengxi60 : Complete
 NAME     : Draw Rectangle Feedback
 PRIORITY : 2
 ESTIMATE : 2 hours    ACTUAL : 1 hour
@@ -235,7 +235,7 @@ ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : It would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.002 : hingor13 : Completed
+TYPE     : BUG BUG1.002 : hingor13 : Complete
 NAME     : Drawing selection mode not indicated
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -253,13 +253,36 @@ ISSUE    : Squiggles are connected to each other by a straight line.
            the issue is with the representation of the squiggles in the Model.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.006 : pengxi60 : Completed
+TYPE     : BUG BUG1.006 : pengxi60 : Complete
 NAME     : Circle drawing is broken
 PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG2.003 : tianshi8 : Complete
+NAME     : Architecture behind choosing selection mode is poor
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+ISSUE    : Code is not modular and is difficult to expand. Need a better
+           architecture behind selecting a drawing mode, and handling
+           the drawing events. Consider some design patterns here.
+           Refactor ShapeChooserPanel and PaintPanel to get rid of the
+           'if' blocks in the PaintPanel mouse event code.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.004 : pengxi60 : Complete
+NAME     : Architecture behind Model is poor
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. In fact, it is currently incorrect, with
+           Squiggle's not drawing properly. Need to re-architect the Model
+           so that it is more flexible, and easier to work with.
+           Consider some design patterns, or change of responsibility
+           here.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.007 : wenjess1 : Complete
@@ -283,7 +306,7 @@ SO THAT  : I can easily add ovals to my canvas and see the oval I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.016 : hingor13 : Completed
+TYPE     : USER STORY US2.016 : hingor13 : Complete
 NAME     : Draw Square with Feedback
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 1 hour
@@ -297,7 +320,7 @@ SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.018 : pengxi60 : Completed
+TYPE     : USER STORY US2.018 : pengxi60 : Complete
 NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 2 hours
@@ -308,17 +331,6 @@ I WANT   : To select a triangle tool, then click on one corner of an
            real-time feedback showing the current triangle as I drag.
 SO THAT  : I can easily add triangles to my canvas and see the triangle I
            am building before releasing the mouse button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG2.003 : tianshi8 : Complete
-NAME     : Architecture behind choosing selection mode is poor
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 6 hours
-ISSUE    : Code is not modular and is difficult to expand. Need a better
-           architecture behind selecting a drawing mode, and handling
-           the drawing events. Consider some design patterns here.
-           Refactor ShapeChooserPanel and PaintPanel to get rid of the
-           'if' blocks in the PaintPanel mouse event code.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.005 : tianshi8 : Complete
@@ -375,7 +387,7 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.010 : hingor13 : Completed
+TYPE     : USER STORY US3.010 : hingor13 : Complete
 NAME     : Undo/Redo button
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL :1 day
@@ -385,19 +397,7 @@ SO THAT  : I can undo something I did incorrectly or imperfectly, and able
            to redo it if I undo something I didn't want to.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.004 : pengxi60 : Completed
-NAME     : Architecture behind Model is poor
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. Need to re-architect the Model
-           so that it is more flexible, and easier to work with.
-           Consider some design patterns, or change of responsibility
-           here.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.010 : hingor13 : Completed
+TYPE     : BUG BUG3.010 : hingor13 : Complete
 NAME     : Redundant Opacity Slider
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL :15 minutes
