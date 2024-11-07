@@ -24,9 +24,9 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
            		draw a rectangle
            		select mode squiggle
            		draw a squiggle
-           	results in two solid circles and a solid rectangle as well as
-           	two outlined rectangles and a squiggle
-SO THAT  :
+           results in two solid circles and a solid rectangle as well as
+           two outlined rectangles and a squiggle
+SO THAT  : I can decide whether I want to draw solid or outlined shapes, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.007 : wenjess1 : NotStarted
@@ -48,9 +48,9 @@ I WANT   : To be able to select the current line thickness, to be applied
            		draw a rectangle
            		select mode squiggle
            		draw a squiggle
-           	results in two thinly outlined circles and a thinly outlined
-           	rectangle as well as two thickly outlined rectangles and a thick squiggle
-SO THAT  :
+           results in two thinly outlined circles and a thinly outlined
+           rectangle as well as two thickly outlined rectangles and a thick squiggle
+SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : NotStarted

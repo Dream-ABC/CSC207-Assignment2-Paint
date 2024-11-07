@@ -22,7 +22,7 @@ PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select the current drawing style (filled or outline), to be applied
-           to subsequent shapes. Example: 
+           to subsequent shapes. Example:
            		selects fill style solid
            		mode circle
            		draw a circle
@@ -34,9 +34,9 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
            		draw a rectangle
            		select mode squiggle
            		draw a squiggle
-           	results in two solid circles and a solid rectangle as well as
-           	two outlined rectangles and a squiggle
-SO THAT  : 
+           results in two solid circles and a solid rectangle as well as
+           two outlined rectangles and a squiggle
+SO THAT  : I can decide whether I want to draw solid or outlined shapes, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.007 : wenjess1 : NotStarted
@@ -46,7 +46,7 @@ ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select the current line thickness, to be applied
            to subsequent shapes. Example:
-           		select fill style outline 
+           		select fill style outline
            		selects line thickness 1
            		mode circle
            		draw a circle
@@ -58,9 +58,9 @@ I WANT   : To be able to select the current line thickness, to be applied
            		draw a rectangle
            		select mode squiggle
            		draw a squiggle
-           	results in two thinly outlined circles and a thinly outlined 
-           	rectangle as well as two thickly outlined rectangles and a thick squiggle
-SO THAT  : 
+           results in two thinly outlined circles and a thinly outlined
+           rectangle as well as two thickly outlined rectangles and a thick squiggle
+SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
