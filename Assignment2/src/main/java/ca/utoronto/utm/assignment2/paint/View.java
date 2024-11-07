@@ -89,6 +89,9 @@ public class View implements EventHandler<ActionEvent> {
         canvas.setUpPositions();
         centerCanvas();
         this.paintModel.setView(this);
+        stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {centerCanvas();});
+        stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {centerCanvas();});
+
         root.requestFocus();
     }
 
@@ -105,24 +108,14 @@ public class View implements EventHandler<ActionEvent> {
     }
 
     public void centerCanvas() {
-//        System.out.println(shapeChooserPanel.getWidth());
-//        System.out.println(layerChooserPanel.getWidth());
-//        System.out.println(stage.getHeight());
-//        System.out.println(topPanel.getHeight());
-//        System.out.println(bottomPanel.getHeight());
-
-
-        // Calculate the available width and height
         double availableWidth = stage.getWidth() - shapeChooserPanel.getWidth() - layerChooserPanel.getWidth();
         double availableHeight = stage.getHeight() - topPanel.getHeight() - bottomPanel.getHeight();
 
-        // Calculate the padding needed to center the canvas within the available area
         double paddingTop = (availableHeight - canvas.getHeight()) / 2;
         double paddingLeft = (availableWidth - canvas.getWidth()) / 2;
 
-        // Set the padding only if the calculated values are valid and non-negative
-        paddingTop = Math.max(paddingTop, 0);
-        paddingLeft = Math.max(paddingLeft, 0);
+        paddingTop = Math.max(paddingTop, 0)/2;
+        paddingLeft = Math.max(paddingLeft, 0)/2;
 
         // Apply padding to center the canvas within the grid
         grid.setPadding(new Insets(paddingTop, 0, 0, paddingLeft));

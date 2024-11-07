@@ -34,6 +34,8 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         WritableImage snapshot;
         boolean store = layer.isVisible();
         layer.setVisible(true);
+        if (layer.getWidth() < 100) {layer.setWidth(100);}
+        if (layer.getHeight() < 100) {layer.setHeight(100);}
         GraphicsContext g2d = layer.getGraphicsContext2D();
         g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
         layer.display(g2d);
