@@ -142,9 +142,9 @@ Nov 6,2024
 	Obstacles I face: Reading string commands properly.
 
 Nov 7,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finish BUG4.468. Start US4.421.
+	What I will do today: Fix BUG4.468. Continue to work on US4.421.
+	Obstacles I face: Store EraserStrokeCommand as a string. Update text content on canvas.
 
 Nov 8,2024
 	What I did yesterday:
