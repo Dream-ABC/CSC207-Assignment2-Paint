@@ -133,13 +133,13 @@ Nov 4,2024
 
 Nov 5,2024
 	What I did yesterday: Have a meeting with group members.
-	What I will do today: Start BUG4.008.
+	What I will do today: Start BUG4.468.
 	Obstacles I face: Saving the canvas as a file.
 
 Nov 6,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Start BUG4.468.
+	What I will do today: Finish BUG4.468. Start US4.421.
+	Obstacles I face: Reading string commands properly.
 
 Nov 7,2024
 	What I did yesterday:
