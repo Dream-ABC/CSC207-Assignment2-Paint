@@ -109,7 +109,7 @@ I WANT   : To be able to copy/paste certain selections.
 SO THAT  : I can reuse existing drawings on the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.015 : hingor13 : NotStarted
+TYPE     : USER STORY US3.351 : hingor13 : NotStarted
 NAME     : Canvas Scalability
 PRIORITY : 3
 ESTIMATE : 3 hours    ACTUAL :

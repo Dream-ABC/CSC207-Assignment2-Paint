@@ -78,7 +78,7 @@ I WANT   : To be able to adjust the transparency of each object.
 SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.015 : hingor13 : Incomplete
+TYPE     : USER STORY US3.351 : hingor13 : Incomplete
 NAME     : Canvas Scalability
 PRIORITY : 3
 ESTIMATE : 3 hours    ACTUAL :
@@ -88,7 +88,7 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.016 : pengxi60 : Started
+TYPE     : USER STORY US3.016 : pengxi60 : Incomplete
 NAME     : Paint GUI overhaul
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -97,7 +97,7 @@ I WANT   : an appealing and interactable user interface
 SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.004 : pengxi60 : Completed
+TYPE     : BUG BUG3.004 : pengxi60 : Complete
 NAME     : Architecture behind Model is poor
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
