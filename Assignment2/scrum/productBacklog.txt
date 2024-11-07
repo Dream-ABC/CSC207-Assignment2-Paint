@@ -357,7 +357,7 @@ SO THAT  : I can use consistent colors and easily switch colors while
            drawing different shapes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.012 : tianshi8 : Complete
+TYPE     : USER STORY US3.331 : tianshi8 : Complete
 NAME     : Layer Support
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL : 6 hours
@@ -367,7 +367,7 @@ SO THAT  : I can independently edit different layers and flexibly control
            the drawing effects.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.013 : tianshi8 : Complete
+TYPE     : USER STORY US3.341 : tianshi8 : Complete
 NAME     : Transparency
 PRIORITY : 3
 ESTIMATE : 2 hours    ACTUAL : 1 hour
