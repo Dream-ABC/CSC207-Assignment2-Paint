@@ -44,7 +44,7 @@ SO THAT  : I can easily add ovals to my canvas and see the oval I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.018 : pengxi60 : Completed
+TYPE     : USER STORY US2.231 : pengxi60 : Complete
 NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 2 hours
