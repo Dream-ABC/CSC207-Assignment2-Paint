@@ -120,6 +120,14 @@ AS A     : user
 I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.481 : hingor13 : Started
+NAME     : Undo/Redo Bug while run on Initial Canvas with no changes
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
+           duplicate canvases have been created.
+--------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------

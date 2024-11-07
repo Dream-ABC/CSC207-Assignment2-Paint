@@ -138,3 +138,11 @@ PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    :
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.481 : hingor13 : Started
+NAME     : Undo/Redo Bug while run on Initial Canvas with no changes
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
+           duplicate canvases have been created.
+--------------------------------------------------------------------------
