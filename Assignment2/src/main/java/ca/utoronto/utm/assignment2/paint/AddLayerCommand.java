@@ -18,6 +18,7 @@ public class AddLayerCommand implements Command {
         if (this.model.getLayers().size() > 1) {
             this.model.getLayers().remove(this.layer);
         } else {
+            history.popLastRedoCommand();
             history.undo();
         }
     }
