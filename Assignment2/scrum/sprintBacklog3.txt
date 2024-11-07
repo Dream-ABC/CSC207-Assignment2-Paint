@@ -8,7 +8,7 @@
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.005 : tianshi8 : Complete
 NAME     : Color selector
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : To be able to select the current drawing color, to be applied
@@ -32,7 +32,7 @@ SO THAT  :  I can use consistent colors and easily switch colors while
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.311 : wenjess1 : Complete
 NAME     : Stroke Eraser
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 1 day    ACTUAL : 1 day
 AS A     : user
 I WANT   : To be able to erase drawings on the canvas
@@ -43,7 +43,7 @@ SO THAT  : I have more customizability with the Paint application.
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.321 : hingor13 : Complete
 NAME     : Undo/Redo button
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 1 day
 AS A     : user
 I WANT   : To be able to Undo or Redo any edits I make to the canvas.
@@ -53,7 +53,7 @@ SO THAT  : I can undo something I did incorrectly or imperfectly, and able
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.331 : tianshi8 : Complete
 NAME     : Layer Support
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 6 hours
 AS A     : user
 I WANT   : To be able to add new layers.
@@ -63,7 +63,7 @@ SO THAT  : I can independently edit different layers and flexibly control
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.341 : tianshi8 : Complete
 NAME     : Transparency
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : To be able to adjust the transparency of each object.
@@ -72,7 +72,7 @@ SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.351 : hingor13 : Incomplete
 NAME     : Canvas Scalability
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 3 hours    ACTUAL :
 AS A     : user
 I WANT   : A canvas that I can increase and decrease on demand
@@ -82,7 +82,7 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.361 : pengxi60 : Incomplete
 NAME     : Paint GUI overhaul
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : an appealing and interactable user interface
@@ -91,7 +91,7 @@ SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.004 : pengxi60 : Complete
 NAME     : Architecture behind Model is poor
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    : Having a list of different types of drawable things in the
            model is cumbersome. In fact, it is currently incorrect, with
@@ -103,7 +103,7 @@ ISSUE    : Having a list of different types of drawable things in the
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.371 : wenjess1 : Complete
 NAME     : Default shape selection is incorrect
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
            It would be best to have no default shape selected.

@@ -8,7 +8,7 @@
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.351 : hingor13 : NotStarted
 NAME     : Canvas Scalability
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 3 hours    ACTUAL :
 AS A     : user
 I WANT   : A canvas that I can increase and decrease on demand
@@ -18,7 +18,7 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.006 : wenjess1 : NotStarted
 NAME     : Fill style selector
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select the current drawing style (filled or outline), to be applied
@@ -41,7 +41,7 @@ SO THAT  :
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.007 : wenjess1 : NotStarted
 NAME     : Line thickness selector
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select the current line thickness, to be applied
@@ -65,7 +65,7 @@ SO THAT  :
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.411 : wenjess1 : NotStarted
 NAME     : Precision Eraser
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 1 day    ACTUAL :
 AS A     : user
 I WANT   : To be able to erase a precise section of a drawing on the canvas
@@ -76,7 +76,7 @@ SO THAT  : I have more customizability with the Paint application.
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.421 : tianshi8 : NotStarted
 NAME     : Text Editor
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT : to add and customize text on the canvas with options to change the
@@ -114,7 +114,7 @@ SO THAT  : I can move it to around the canvas as desired (e.g. place it in anoth
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
 NAME     : Stroke Eraser working with varying line thickness
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL :
 ISSUE    : The current stroke eraser doesn't erase strokes properly when
            line thickness of shapes are changed.
@@ -122,7 +122,7 @@ ISSUE    : The current stroke eraser doesn't erase strokes properly when
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.468 : tianshi8 : Started
 NAME     : File menu is not implemented
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    : The File menu is currently non-functional. The program should
            implement the following features:
