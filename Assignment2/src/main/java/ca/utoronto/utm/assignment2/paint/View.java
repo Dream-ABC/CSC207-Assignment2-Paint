@@ -45,7 +45,7 @@ public class View implements EventHandler<ActionEvent> {
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
 
-        this.canvas = new ResizableCanvas(1500, 700, this.paintPanel);
+        this.canvas = new ResizableCanvas(700, 400, this.paintPanel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
@@ -84,11 +84,11 @@ public class View implements EventHandler<ActionEvent> {
         stage.setScene(scene);
         stage.setTitle("Paint");
         stage.show();
-        stage.setWidth(1800);
-        stage.setHeight(1000);
+        stage.setWidth(1000);
+        stage.setHeight(700);
         canvas.setUpPositions();
         centerCanvas();
-
+        this.paintModel.setView(this);
         root.requestFocus();
     }
 
