@@ -6,14 +6,6 @@
 # Sprint 3 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.371 : wenjess1 : Complete
-NAME     : Default shape selection is incorrect
-PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
-           It would be best to have no default shape selected.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US3.005 : tianshi8 : Complete
 NAME     : Color selector
 PRIORITY : 3
@@ -109,7 +101,15 @@ ISSUE    : Having a list of different types of drawable things in the
            here.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.010 : hingor13 : Completed
+TYPE     : BUG BUG3.371 : wenjess1 : Complete
+NAME     : Default shape selection is incorrect
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
+           It would be best to have no default shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.381 : hingor13 : Completed
 NAME     : Redundant Opacity Slider
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL :15 minutes

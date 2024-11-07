@@ -397,7 +397,7 @@ SO THAT  : I can undo something I did incorrectly or imperfectly, and able
            to redo it if I undo something I didn't want to.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.010 : hingor13 : Complete
+TYPE     : BUG BUG3.381 : hingor13 : Complete
 NAME     : Redundant Opacity Slider
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL :15 minutes
