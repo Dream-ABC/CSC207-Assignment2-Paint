@@ -93,13 +93,14 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.431 : pengxi60 : NotStarted
+TYPE     : USER STORY US4.431 : pengxi60 : Started
 NAME     : Draw Polyline
 PRIORITY : 3
-ESTIMATE :  ACTUAL :
+ESTIMATE : 4 hours ACTUAL :
 AS A     : user
-I WANT   :
-SO THAT  : I can add polylines to my canvas
+I WANT   : to add polylines and custom polygons on the canvas
+SO THAT  : I can have more freedom with the type of lines and shapes I can
+           draw on the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.441 : pengxi60 : NotStarted
