@@ -32,7 +32,7 @@ public class SelectionToolStrategy implements ShapeStrategy{
         double height = Math.abs(origin.y - mouseEvent.getY());
         double x = Math.min(origin.x, mouseEvent.getX());
         double y = Math.min(origin.y, mouseEvent.getY());
-        selection.setCentre(new Point(x, y));
+        selection.setCentre(new Point(x + width/2, y + height/2));
         selection.setDimensionX(width);
         selection.setDimensionY(height);
 

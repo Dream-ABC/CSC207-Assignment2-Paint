@@ -54,7 +54,7 @@ public class Eraser implements Tool{
      * @param g2d GraphicsContext
      */
     public void display(GraphicsContext g2d) {
-        g2d.strokeRect(this.centre.x, this.centre.y,
+        g2d.strokeRect(this.centre.x - dimensionX/2, this.centre.y - dimensionY/2,
                 this.dimensionX, this.dimensionY);
     }
 }
