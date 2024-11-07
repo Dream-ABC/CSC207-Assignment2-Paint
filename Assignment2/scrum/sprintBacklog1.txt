@@ -80,3 +80,10 @@ ESTIMATE : 1 hour   ACTUAL : 1 hour
 ISSUE    : If the rectangle is dragged towards another side than bottom right,
            the topLeft corner should be updated.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.111 : hingor13 : Complete
+NAME     : Drawing selection mode not indicated at start of Program
+PRIORITY : 2
+ESTIMATE : 1 hour   ACTUAL : 1 hour
+ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
+--------------------------------------------------------------------------
