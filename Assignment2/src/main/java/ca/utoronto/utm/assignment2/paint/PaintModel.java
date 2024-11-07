@@ -7,6 +7,7 @@ public class PaintModel extends Observable {
     private ArrayList<PaintLayer> layers = new ArrayList<>();
     private PaintLayer selectedLayer;
     private String mode = "";
+    private View view;
 
     private CommandHistory history = new CommandHistory();
 
@@ -79,7 +80,6 @@ public class PaintModel extends Observable {
     }
 
     public void removeShape(Shape shape) {
-        //history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer(), history));
         this.selectedLayer.removeShape(shape);
         notifyChange();
     }
@@ -117,6 +117,13 @@ public class PaintModel extends Observable {
     public void notifyChange(){
         this.setChanged();
         this.notifyObservers();
+        if (this.view != null) {
+            this.view.centerCanvas();
+        }
+    }
+
+    public void setView(View view){
+        this.view = view;
     }
 
     public CommandHistory getHistory() {

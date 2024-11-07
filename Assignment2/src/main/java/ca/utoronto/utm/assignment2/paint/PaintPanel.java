@@ -25,6 +25,8 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     public PaintPanel(PaintModel model) {
 
+        setMinSize(100, 100);
+
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
 
@@ -107,6 +109,11 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     @Override
     public void update(Observable o, Object arg) {
+        for (PaintLayer layer : this.model.getLayers()){
+            if (layer.getWidth() < 100){layer.setWidth(100);}
+            if (layer.getHeight() < 100){layer.setHeight(100);}
+        }
+
         this.getChildren().setAll(this.model.getLayers());
         PaintModel model = (PaintModel) o;
         this.mode = model.getMode();
