@@ -10,10 +10,10 @@ TYPE     : BUG BUG1.001 : wenjess1 : Complete
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1 
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : Would be nice to have icons instead of "Circle", "Rectangle", ...
+ISSUE    : It would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.002 : hingor13 : Completed
+TYPE     : BUG BUG1.002 : hingor13 : Complete
 NAME     : Drawing selection mode not indicated
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -27,11 +27,11 @@ NAME     : Squiggle is broken
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
 ISSUE    : Squiggles are connected to each other by a straight line. Each drag
-                   of the mouse should be a separate squiggle. Possibly
+           of the mouse should be a separate squiggle. Possibly
            the issue is with the representation of the squiggles in the Model.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.006 : pengxi60 : Finished
+TYPE     : BUG BUG1.006 : pengxi60 : Complete
 NAME     : Circle drawing is broken
 PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 30 minutes
@@ -54,7 +54,7 @@ SO THAT  : I can see the circle I am about to build on release of the mouse
            button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.003 : hingor13 : Completed
+TYPE     : USER STORY US1.003 : hingor13 : Complete
 NAME     : Draw Rectangle
 PRIORITY : 2
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -64,7 +64,7 @@ I WANT   : To click on one corner of a rectangle, drag, and release to
 SO THAT  : I can add rectangles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.004 : pengxi60 : Completed
+TYPE     : USER STORY US1.004 : pengxi60 : Complete
 NAME     : Draw Rectangle Feedback
 PRIORITY : 2
 ESTIMATE : 2 hours   ACTUAL : 1 hour
