@@ -103,6 +103,16 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : USER STORY US4.431 : pengxi60 : Started
+NAME     : Draw Polyline
+PRIORITY : 3
+ESTIMATE : 4 hours ACTUAL :
+AS A     : user
+I WANT   : To add polylines and custom polygons on the canvas
+SO THAT  : I can have more freedom with the type of lines and shapes I can
+           draw on the canvas.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US4.441 : hingor13 : NotStarted
 NAME     : Magnifier Tool
 PRIORITY : 3
@@ -289,7 +299,7 @@ NAME     : Paint GUI overhaul
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : an appealing and interactable user interface
+I WANT   : An appealing and interactable user interface
 SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -383,10 +393,10 @@ NAME     : Filling Tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT : to click on a shape or the background to fill it with a specific
-         colour.
-SO THAT : I can quickly add colours to different parts of my drawing without
-          manually painting every area.
+I WANT   : To click on a shape or the background to fill it with a specific
+           colour.
+SO THAT  : I can quickly add colours to different parts of my drawing without
+           manually painting every area.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.018 : tianshi8 : NotStarted
@@ -394,8 +404,8 @@ NAME     : Brush Style
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT : to choose from various brush styles (e.g., pencil, pen, marker).
-SO THAT : I can achieve different textures and line effects in my drawings.
+I WANT   : To choose from various brush styles (e.g., pencil, pen, marker).
+SO THAT  : I can achieve different textures and line effects in my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG?.009 : tianshi8 : NotStarted

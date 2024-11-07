@@ -31,7 +31,7 @@ NAME     : Paint GUI overhaul
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : an appealing and interactable user interface
+I WANT   : An appealing and interactable user interface
 SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------

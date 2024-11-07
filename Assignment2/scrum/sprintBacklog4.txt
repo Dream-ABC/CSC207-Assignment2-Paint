@@ -98,7 +98,7 @@ NAME     : Draw Polyline
 PRIORITY : 3
 ESTIMATE : 4 hours ACTUAL :
 AS A     : user
-I WANT   : to add polylines and custom polygons on the canvas
+I WANT   : To add polylines and custom polygons on the canvas
 SO THAT  : I can have more freedom with the type of lines and shapes I can
            draw on the canvas.
 --------------------------------------------------------------------------
