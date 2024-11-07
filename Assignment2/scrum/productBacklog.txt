@@ -293,7 +293,7 @@ ISSUE    : When the user launches the Paint program, the default shape selection
            It would be best to have no default shape selected.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.017 : wenjess1 : Complete
+TYPE     : USER STORY US2.221 : wenjess1 : Complete
 NAME     : Draw Oval with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 1 hour
@@ -306,7 +306,7 @@ SO THAT  : I can easily add ovals to my canvas and see the oval I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.016 : hingor13 : Complete
+TYPE     : USER STORY US2.211 : hingor13 : Complete
 NAME     : Draw Square with Feedback
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 1 hour
