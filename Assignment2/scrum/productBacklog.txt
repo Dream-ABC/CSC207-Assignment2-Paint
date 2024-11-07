@@ -93,16 +93,6 @@ SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.351 : hingor13 : NotStarted
-NAME     : Canvas Scalability
-PRIORITY : 2
-ESTIMATE : 3 hours    ACTUAL :
-AS A     : user
-I WANT   : A canvas that I can increase and decrease on demand
-SO THAT  : I can have the freedom in changing the dimension of the canvas
-           for my intents and purposes.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US4.431 : pengxi60 : Started
 NAME     : Draw Polyline
 PRIORITY : 3
@@ -122,24 +112,13 @@ I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.451 : hingor13 : NotStarted
+TYPE     : USER STORY US4.451 : hingor13 : Started
 NAME     : Selection tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.468 : tianshi8 : Complete
-NAME     : File menu is not implemented
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 4 hours
-ISSUE    : The File menu is currently non-functional. The program should
-           implement the following features:
-               create a new file
-               save the current canvas as a file
-               load a file onto the canvas
 --------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
@@ -220,7 +199,6 @@ AS A     : user
 I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid-construction.
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
-
 --------------------------------------------------------------------------
 TYPE     : BUG BUG2.003 : tianshi8 : Complete
 NAME     : Architecture behind choosing selection mode is poor
@@ -272,7 +250,6 @@ I WANT   : To select a triangle tool, then click on one corner of an
 SO THAT  : I can easily add triangles to my canvas and see the triangle I
            am building before releasing the mouse button.
 --------------------------------------------------------------------------
-
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.004 : pengxi60 : Complete
 NAME     : Architecture behind Model is poor
@@ -375,6 +352,27 @@ ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
            already available in the color picker tool. Removing the slider
            will simplify the UI and reduce potential conflicts in opaqueness
            control.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.351 : hingor13 : Complete
+NAME     : Canvas Scalability
+PRIORITY : 2
+ESTIMATE : 3 hours    ACTUAL : 3 days
+AS A     : user
+I WANT   : A canvas that I can increase and decrease on demand
+SO THAT  : I can have the freedom in changing the dimension of the canvas
+           for my intents and purposes.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.468 : tianshi8 : Complete
+NAME     : File menu is not implemented
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 4 hours
+ISSUE    : The File menu is currently non-functional. The program should
+           implement the following features:
+               create a new file
+               save the current canvas as a file
+               load a file onto the canvas
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################

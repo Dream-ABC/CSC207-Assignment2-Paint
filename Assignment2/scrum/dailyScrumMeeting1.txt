@@ -120,9 +120,9 @@ Nov 5,2024
 	Obstacles I face: The Math ain't Mathing.
 
 Nov 6,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Worked on US3.015
+	What I will do today: Complete US3.015 and Work on US4.009
+	Obstacles I face: None
 
 Nov 7,2024
 	What I did yesterday:
