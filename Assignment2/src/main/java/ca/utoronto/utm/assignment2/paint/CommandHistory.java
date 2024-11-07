@@ -15,8 +15,8 @@ public class CommandHistory {
     public void undo() {
         if (!(undoStack.isEmpty())) {
             Command command = undoStack.pop();
-            command.undo();
             redoStack.push(command);
+            command.undo();
         }
     }
 
@@ -43,4 +43,5 @@ public class CommandHistory {
     public void popLastCommand(){
         this.undoStack.pop();
     }
+    public void popLastRedoCommand(){this.redoStack.pop();}
 }
