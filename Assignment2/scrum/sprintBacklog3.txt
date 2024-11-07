@@ -109,7 +109,7 @@ ISSUE    : When the user launches the Paint program, the default shape selection
            It would be best to have no default shape selected.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.381 : hingor13 : Completed
+TYPE     : BUG BUG3.381 : hingor13 : Complete
 NAME     : Redundant Opacity Slider
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL :15 minutes
