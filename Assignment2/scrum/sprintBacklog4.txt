@@ -6,16 +6,6 @@
 # Sprint 4 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.351 : hingor13 : NotStarted
-NAME     : Canvas Scalability
-PRIORITY : 2
-ESTIMATE : 3 hours    ACTUAL :
-AS A     : user
-I WANT   : A canvas that I can increase and decrease on demand
-SO THAT  : I can have the freedom in changing the dimension of the canvas
-           for my intents and purposes.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US4.006 : wenjess1 : NotStarted
 NAME     : Fill style selector
 PRIORITY : 1
@@ -63,6 +53,14 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  :
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
+NAME     : Stroke Eraser working with varying line thickness
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL :
+ISSUE    : The current stroke eraser doesn't erase strokes properly when
+           line thickness of shapes are changed.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US4.411 : wenjess1 : NotStarted
 NAME     : Precision Eraser
 PRIORITY : 2
@@ -83,6 +81,16 @@ I WANT : to add and customize text on the canvas with options to change the
          font, size, and colour.
 SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.351 : hingor13 : NotStarted
+NAME     : Canvas Scalability
+PRIORITY : 2
+ESTIMATE : 3 hours    ACTUAL :
+AS A     : user
+I WANT   : A canvas that I can increase and decrease on demand
+SO THAT  : I can have the freedom in changing the dimension of the canvas
+           for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.431 : pengxi60 : NotStarted
@@ -110,14 +118,6 @@ ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
-NAME     : Stroke Eraser working with varying line thickness
-PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL :
-ISSUE    : The current stroke eraser doesn't erase strokes properly when
-           line thickness of shapes are changed.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.468 : tianshi8 : Started

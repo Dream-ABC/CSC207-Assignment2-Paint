@@ -6,6 +6,35 @@
 # Sprint 3 Backlog UserStories go below
 
 --------------------------------------------------------------------------
+TYPE     : BUG BUG3.004 : pengxi60 : Complete
+NAME     : Architecture behind Model is poor
+PRIORITY : 1
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. In fact, it is currently incorrect, with
+           Squiggle's not drawing properly. Need to re-architect the Model
+           so that it is more flexible, and easier to work with.
+           Consider some design patterns, or change of responsibility
+           here.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.371 : wenjess1 : Complete
+NAME     : Default shape selection is incorrect
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
+           It would be best to have no default shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.361 : pengxi60 : Complete
+NAME     : Paint GUI overhaul
+PRIORITY : 1
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : an appealing and interactable user interface
+SO THAT  : I can work in a flexible and user-friendly environment.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US3.005 : tianshi8 : Complete
 NAME     : Color selector
 PRIORITY : 2
@@ -80,36 +109,7 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.361 : pengxi60 : Incomplete
-NAME     : Paint GUI overhaul
-PRIORITY : 1
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : an appealing and interactable user interface
-SO THAT  : I can work in a flexible and user-friendly environment.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.004 : pengxi60 : Complete
-NAME     : Architecture behind Model is poor
-PRIORITY : 1
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. Need to re-architect the Model
-           so that it is more flexible, and easier to work with.
-           Consider some design patterns, or change of responsibility
-           here.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.371 : wenjess1 : Complete
-NAME     : Default shape selection is incorrect
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
-           It would be best to have no default shape selected.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.381 : hingor13 : Complete
+TYPE     : BUG BUG3.341 : hingor13 : Complete
 NAME     : Redundant Opacity Slider
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL :15 minutes
