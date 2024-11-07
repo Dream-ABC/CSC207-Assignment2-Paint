@@ -12,4 +12,4 @@ BUG3.004 author:pengxi60 puller:tianshi8 status:Completed
 BUG3.010 author:hingor13 puller:tianshi8 status:Completed
  US3.015 author:hingor13 puller:pengxi60 status:Completed
 BUG4.468 author:tianshi8 puller:hingor13 status:Rejected
-BUG4.481 author:hingor13 puller:         status:Waiting
+BUG4.481 author:hingor13 puller:tianshi8 status:Completed
