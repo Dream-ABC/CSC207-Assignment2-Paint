@@ -42,36 +42,6 @@ public class Eraser implements Tool{
     public double getDimensionX(){ return this.dimensionX; }
     public double getDimensionY(){ return this.dimensionY; }
 
-    /**
-     * @return the left x-coordinate of the Eraser
-     */
-    public double getLeftX(){ return this.centre.x-(this.dimension/2.0);}
-    /**
-     * @return the right x-coordinate of the Eraser
-     */
-    public double getRightX(){ return this.centre.x+(this.dimension/2.0); }
-    /**
-     * @return the top y-coordinate of the Eraser
-     */
-    public double getTopY(){ return this.centre.y-(this.dimension/2.0); }
-    /**
-     * @return the bottom y-coordinate of the Eraser
-     */
-    public double getBottomY() { return this.centre.y+(this.dimension/2.0); }
-
-    /**
-     * @return an ArrayList of all the corner points and centre point of an Eraser
-     */
-    public ArrayList<Point> getAllPoints(){
-        ArrayList<Point> allPoints = new ArrayList<Point>();
-        allPoints.add(new Point(this.getLeftX(), this.getTopY()));
-        allPoints.add(new Point(this.getLeftX(), this.getBottomY()));
-        allPoints.add(new Point(this.getRightX(), this.getTopY()));
-        allPoints.add(new Point(this.getRightX(), this.getBottomY()));
-        allPoints.add(this.centre);
-        return allPoints;
-    }
-
     public void addRemovedShapes(Shape shape){
         this.removedShapes.add(shape);
     }
