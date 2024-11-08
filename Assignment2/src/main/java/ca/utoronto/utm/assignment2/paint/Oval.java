@@ -14,6 +14,7 @@ public class Oval implements Shape {
     private double height;
     private Color color;
     private final String fillStyle;
+    private double thickness;
 
     /**
      * Constructs a default black oval with a width and height of 0.
@@ -23,6 +24,7 @@ public class Oval implements Shape {
         this.height = 0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
+        this.thickness = 1;
     }
 
     /**
@@ -97,7 +99,7 @@ public class Oval implements Shape {
      * @return the stroke thickness of the Circle
      */
     @Override
-    public int getThickness() {
+    public double getThickness() {
         return -1;
     }
 
@@ -155,6 +157,7 @@ public class Oval implements Shape {
         }
         else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
+            g2d.setLineWidth(this.thickness);
             g2d.strokeOval(this.topLeft.x, this.topLeft.y,
                     this.width, this.height);
         }

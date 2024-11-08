@@ -69,7 +69,7 @@ public class Polyline implements Shape {
      * @return the stroke thickness of the Polyline
      */
     @Override
-    public int getThickness() {
+    public double getThickness() {
         return -1;
     }
 

@@ -85,7 +85,7 @@ public class Square implements Shape {
      * @return the stroke thickness of the Square
      */
     @Override
-    public int getThickness() {
+    public double getThickness() {
         return -1;
     }
 

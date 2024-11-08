@@ -101,7 +101,7 @@ public class Rectangle implements Shape {
      * @return the stroke thickness of the Rectangle
      */
     @Override
-    public int getThickness() {
+    public double getThickness() {
         return -1;
     }
 

@@ -106,7 +106,7 @@ public class Triangle extends Polygon implements Shape {
      * @return the stroke thickness of the Triangle
      */
     @Override
-    public int getThickness() {
+    public double getThickness() {
         return -1;
     }
 
