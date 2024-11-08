@@ -111,14 +111,9 @@ public class Text implements Shape {
         return this.color;
     }
 
-    /**
-     * Retrieves the thickness of the text object.
-     *
-     * @return an integer representing the thickness
-     */
     @Override
-    public int getThickness() {
-        return -1;
+    public void setLineThickness(double lineThickness) {
+
     }
 
     /**
@@ -144,10 +139,10 @@ public class Text implements Shape {
         double top = this.textNode.getLayoutBounds().getMinY() + topLeft.y;
         double bottom = this.textNode.getLayoutBounds().getMaxY() + topLeft.y;
 
-        double eraserLeft = tool.getCentre().x-(tool.getDimensionX()/2.0);
-        double eraserRight = tool.getCentre().x+(tool.getDimensionX()/2.0);
-        double eraserTop = tool.getCentre().y-(tool.getDimensionY()/2.0);
-        double eraserBottom = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        double eraserLeft = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double eraserRight = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double eraserTop = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double eraserBottom = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
 
         return eraserRight >= left && eraserLeft <= right && eraserBottom >= top && eraserTop <= bottom;
     }

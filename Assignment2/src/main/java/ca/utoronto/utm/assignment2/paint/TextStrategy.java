@@ -21,7 +21,7 @@ public class TextStrategy implements ShapeStrategy {
     public TextStrategy(PaintPanel p) {
         this.panel = p;
         // create new shape
-        this.text = (Text) this.panel.getShapeFactory().getShape("Text", "");
+        this.text = (Text) this.panel.getShapeFactory().getShape("Text", "", 0);
         // set text editor
         this.textEditorDialog = new TextEditorDialog(this.panel, this.text);
     }
