@@ -72,10 +72,10 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.421 : tianshi8 : Started
+TYPE     : USER STORY US4.421 : tianshi8 : Complete
 NAME     : Text Editor
 PRIORITY : 2
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 4 hours    ACTUAL : 7 hours
 AS A     : user
 I WANT : to add and customize text on the canvas with options to change the
          font, size, and colour.
@@ -123,7 +123,7 @@ SO THAT  : I can register which shapes have been selected by the tool.
            drawings around the canvas or copying and pasting drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.468 : tianshi8 : Complete
+TYPE     : BUG BUG4.468 : tianshi8 : Started
 NAME     : File menu is not implemented
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 4 hours

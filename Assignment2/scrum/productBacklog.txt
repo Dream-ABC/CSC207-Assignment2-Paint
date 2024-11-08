@@ -59,17 +59,6 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.421 : tianshi8 : Started
-NAME     : Text Editor
-PRIORITY : 2
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT : to add and customize text on the canvas with options to change the
-         font, size, and colour.
-SO THAT : I can create more personalized and visually distinct text elements
-          within my drawings.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US4.431 : pengxi60 : Completed
 NAME     : Draw Polyline
 PRIORITY : 3
@@ -406,6 +395,17 @@ ISSUE    : When the user clicks any button for the first time, the Paint
            program display changes. In particular, the sizing of the canvas
            and the layers display is shifted. It would be better for the
            program display to remain the same at all times.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.421 : tianshi8 : Complete
+NAME     : Text Editor
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 7 hours
+AS A     : user
+I WANT : to add and customize text on the canvas with options to change the
+         font, size, and colour.
+SO THAT : I can create more personalized and visually distinct text elements
+          within my drawings.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################

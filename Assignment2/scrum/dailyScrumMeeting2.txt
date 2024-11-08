@@ -24,16 +24,16 @@ Oct 17,2024
 	What I did yesterday: Read through the starter code and add 2 user stories to
                           productBacklog.txt, meet with team members and discuss the
                           task division.
-	What I will do today: Work on fixing BUG1.005.
+	What I will do today: Work on fixing squiggle bug.
 	Obstacles I face: Familiarize and adapt to Scrum.
 
 Oct 18,2024
-	What I did yesterday: Work on fixing BUG1.005.
+	What I did yesterday: Work on fixing squiggle bug.
 	What I will do today: Finish BUG1.005 and push it.
 	Obstacles I face: Handle git merge.
 
 Oct 19,2024
-	What I did yesterday: Finish BUG1.005 and push it.
+	What I did yesterday: Fixed squiggle bug and push it.
 	What I will do today: Edit user stories.
 	Obstacles I face: Handle git conflict.
 
@@ -53,12 +53,12 @@ Oct 21,2024
 
 Oct 22,2024
 	What I did yesterday: Meet with the team to finalize work division for sprint 2.
-	What I will do today: Fix BUG2.003. Refactor the code to follow the factory pattern.
+	What I will do today: Fix architecture. Refactor the code to follow the factory pattern.
 	Obstacles I face: Applying the factory pattern in practice, transitioning from theory
 	                  to implementation.
 
 Oct 23,2024
-	What I did yesterday: Fix BUG2.003. Refactor the code to follow the factory pattern.
+	What I did yesterday: Fix architecture. Refactor the code to follow the factory pattern.
 	What I will do today: Add strategy pattern.
 	Obstacles I face: Deciding between using an interface or an abstract class.
 
@@ -98,61 +98,61 @@ Oct 29,2024
 
 Oct 30,2024
 	What I did yesterday: Have a scrum meeting and pick some user stories.
-	What I will do today: Start working on US3.012. Discover bugs on File
+	What I will do today: Start working on layer feature. Discover bugs on File
 	                      and Edit menu.
 	Obstacles I face: Figuring out how to store and manage different layers.
 
 Oct 31,2024
-	What I did yesterday: Start working on US3.012. Discover bugs on File
+	What I did yesterday: Start working on layer feature. Discover bugs on File
                           and Edit menu.
 	What I will do today: Add GUI for layers.
 	Obstacles I face: Managing buttons and updating button states.
 
 Nov 1,2024
 	What I did yesterday: Add GUI for layers.
-	What I will do today: Solve pull request for BUG3.004. Start US3.013.
+	What I will do today: Solve pull requests. Start working on transparency feature.
 	Obstacles I face: Positioning the sliders in the GUI. Managing layers.
 
 Nov 2,2024
-	What I did yesterday: Solve pull request for BUG3.004. Start US3.013.
-	What I will do today: Finish US3.013, refine functions in US3.012.
-	                      Finish US3.005.
+	What I did yesterday: Solve pull requests. Start working on transparency feature.
+	What I will do today: Finish transparency feature, refine layer functionality.
+	                      Finish colour picker.
 	Obstacles I face: When closing the color picker, the Paint window moves to the
 	                  back behind other application windows.
 
 Nov 3,2024
-	What I did yesterday: Finish US3.013, refine functions in US3.012.
-                          Finish US3.005.
-	What I will do today: Merged BUG3.010 and US3.016. Help other members.
+	What I did yesterday: Finish transparency feature, refine layer functionality.
+                          Finish colour picker.
+	What I will do today: Handle pull requests. Help other members.
 	Obstacles I face: Fixing merge conflicts.
 
 Nov 4,2024
-	What I did yesterday: Merged BUG3.010 and US3.016. Help other members.
+	What I did yesterday: Handle pull requests. Help other members.
 	What I will do today: Have a meeting with group members.
 	Obstacles I face: Discussing which work should I take.
 
 Nov 5,2024
 	What I did yesterday: Have a meeting with group members.
-	What I will do today: Start BUG4.468.
+	What I will do today: Start implementing File menu.
 	Obstacles I face: Saving the canvas as a file.
 
 Nov 6,2024
-	What I did yesterday: Start BUG4.468.
-	What I will do today: Finish BUG4.468. Start US4.421.
+	What I did yesterday: Start implementing File menu.
+	What I will do today: Finish File menu. Start text editor.
 	Obstacles I face: Reading string commands properly.
 
 Nov 7,2024
-	What I did yesterday: Finish BUG4.468. Start US4.421.
-	What I will do today: Fix BUG4.468. Continue to work on US4.421.
+	What I did yesterday: Finish File menu. Start text editor.
+	What I will do today: Fix File menu. Continue to work on text editor.
 	Obstacles I face: Store EraserStrokeCommand as a string. Update text content on canvas.
 
 Nov 8,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Fix File menu. Continue to work on text editor.
+	What I will do today: Finish text editor.
+	Obstacles I face: Listening to user inputs.
 
 Nov 9,2024
-	What I did yesterday:
+	What I did yesterday: Finish text editor.
 	What I will do today:
 	Obstacles I face:
 
