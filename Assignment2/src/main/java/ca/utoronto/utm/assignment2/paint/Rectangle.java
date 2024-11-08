@@ -120,21 +120,22 @@ public class Rectangle implements Shape {
      * @return True if the Eraser should erase this Rectangle, False otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
+    public boolean overlaps(Tool tool) {
+        double eraserLeft = tool.getCentre().x-(tool.getDimensionX()/2.0);
+        double eraserRight = tool.getCentre().x+(tool.getDimensionX()/2.0);
+        double eraserTop = tool.getCentre().y-(tool.getDimensionY()/2.0);
+        double eraserBottom = tool.getCentre().y+(tool.getDimensionY()/2.0);
+
         double rectLeft = this.topLeft.x;
         double rectRight = this.topLeft.x + this.width;
         double rectTop = this.topLeft.y;
         double rectBottom = this.topLeft.y + this.height;
 
-        return eraser.getRightX() >= rectLeft &&
-                eraser.getLeftX() <= rectRight &&
-                eraser.getBottomY() >= rectTop &&
-                eraser.getTopY() <= rectBottom;
+        return eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom;
     }
 
     /**
      * Displays the Rectangle with user-created color and size.
-     *
      * @param g2d GraphicsContext
      */
     @Override

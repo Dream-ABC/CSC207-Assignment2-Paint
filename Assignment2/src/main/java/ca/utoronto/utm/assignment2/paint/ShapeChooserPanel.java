@@ -19,7 +19,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
         public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
                 this.model = model;
 
-                String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Oval", "Triangle", "Eraser", "Outline", "Solid"};
+                String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Oval", "Triangle", "Eraser", "Outline", "Solid", "SelectionTool"};
                 ImageView[] buttonImages = new ImageView[buttonIds.length];
                 String[] imageFiles = {"src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
@@ -30,7 +30,8 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                         "src/main/java/ca/utoronto/utm/assignment2/images/triangle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/eraser.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/outline.png",
-                        "src/main/java/ca/utoronto/utm/assignment2/images/solid.png"};
+                        "src/main/java/ca/utoronto/utm/assignment2/images/solid.png"
+                        "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png"};
 
                 for (int i = 0; i < buttonIds.length; i++) {
                         FileInputStream input = new FileInputStream(imageFiles[i]);
@@ -56,11 +57,11 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
 
         @Override
         public void handle(ActionEvent event) {
+                this.model.removeSelectionTool();
+
                 for (Node node: this.getChildren()) {
-                        if (node instanceof Button) {
-                                Button button = (Button) node;
-                                button.setStyle("");
-                        }
+                    Button button = (Button) node;
+                    button.setStyle("");
                 }
                 ((Button) event.getSource()).setStyle("-fx-background-color: lightblue");
                 String command = ((Button) event.getSource()).getId();

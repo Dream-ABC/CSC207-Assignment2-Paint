@@ -11,6 +11,7 @@ public class PaintLayer extends Canvas {
     private String status;  // "changed", "unchanged", "removed"
     private ArrayList<Shape> shapes;
     private Eraser eraser;
+    private SelectionTool selectionTool;
 
     public PaintLayer() {
         super(300, 300);  // default size
@@ -41,6 +42,9 @@ public class PaintLayer extends Canvas {
     public void addEraser(Eraser eraser) {this.eraser = eraser;}
     public void removeEraser() {this.eraser = null;}
 
+    public void addSelectionTool(SelectionTool selectionTool) {this.selectionTool = selectionTool;}
+    public void removeSelectionTool() {this.selectionTool = null;}
+
     public ArrayList<Shape> getShapes() {
         return shapes;
     }
@@ -61,6 +65,9 @@ public class PaintLayer extends Canvas {
         }
         if (this.eraser != null){
             eraser.display(g2d);
+        }
+        if (this.selectionTool != null){
+            selectionTool.display(g2d);
         }
     }
 }

@@ -82,32 +82,36 @@ public class Circle implements Shape{
         /**
          * Checks if the Eraser is overlapping the Circle.
          * If it is, then the Eraser will erase the Circle.
-         * @param eraser the Eraser instance which is currently erasing drawings
-         * @return True if the Eraser should erase this Circle, False otherwise
+         * @param tool the tool instance which is currently checking for overlaps
+         * @return True if the tool should find an overlap, False otherwise
          */
         @Override
-        public boolean overlaps(Eraser eraser) {
-                double Px, Py;
-                if (Math.abs(this.centre.x - eraser.getLeftX()) < Math.abs(this.centre.x - eraser.getRightX())){
-                        Px = eraser.getLeftX();
-                }
-                else{
-                        Px = eraser.getRightX();
-                }
+        public boolean overlaps(Tool tool) {
+                double radius = this.diameter / 2.0;
 
-                if (Math.abs(this.centre.y - eraser.getTopY()) < Math.abs(this.centre.y - eraser.getBottomY())){
-                        Py = eraser.getTopY();
-                }
-                else{
-                        Py = eraser.getBottomY();
-                }
-                double distance = Math.sqrt(Math.pow(this.centre.x - Px, 2) + Math.pow(this.centre.y - Py, 2));
-                return distance <= (this.diameter/2.0);
+                double rectHalfWidth = tool.getDimensionX() / 2.0;
+                double rectHalfHeight = tool.getDimensionY() / 2.0;
+
+                double rectLeft = tool.getCentre().x - rectHalfWidth;
+                double rectRight = tool.getCentre().x + rectHalfWidth;
+                double rectTop = tool.getCentre().y - rectHalfHeight;
+                double rectBottom = getCentre().y + rectHalfHeight;
+
+                double closestX = clamp(this.centre.x, rectLeft, rectRight);
+                double closestY = clamp(this.centre.y, rectTop, rectBottom);
+
+                double distanceX = this.centre.x - closestX;
+                double distanceY = this.centre.y - closestY;
+                double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+                return distanceSquared <= (radius * radius);
+        }
+        private double clamp(double value, double min, double max) {
+                return Math.max(min, Math.min(max, value));
         }
 
         /**
          * Displays the Circle with user-created color and size.
-         *
          * @param g2d GraphicsContext
          */
         @Override

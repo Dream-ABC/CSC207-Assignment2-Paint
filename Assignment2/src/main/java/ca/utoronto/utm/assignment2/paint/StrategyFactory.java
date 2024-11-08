@@ -19,6 +19,8 @@ public class StrategyFactory {
                 return new EraserStrategy(panel);
             case "polyline":
                 return new PolylineStrategy(panel);
+            case "selectiontool":
+                return new SelectionToolStrategy(panel);
             // add more strategies here
 
             default:

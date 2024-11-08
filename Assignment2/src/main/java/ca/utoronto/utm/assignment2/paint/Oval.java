@@ -112,29 +112,33 @@ public class Oval implements Shape {
     /**
      * Checks if the Eraser is overlapping the Oval.
      * If it is, then the Eraser will erase the Oval.
-     * @param eraser the Eraser instance which is currently erasing drawings
+     * @param tool the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Oval, False otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
-        double h = this.topLeft.x+this.width/2.0;
-        double k = this.topLeft.y+this.height/2.0;
-        double a, b;
-        if (this.height > this.width){
-            a = this.height/2.0;
-            b = this.width/2.0;
-        }
-        else{
-            a = this.width/2.0;
-            b = this.height/2.0;
-        }
+    public boolean overlaps(Tool tool) {
+        double ovalCenterX = topLeft.x + (width / 2);
+        double ovalCenterY = topLeft.y + (height / 2);
+        double radiusX = width / 2;
+        double radiusY = height / 2;
 
-        for (Point point : eraser.getAllPoints()) {
-            if (Math.pow((point.x-h)/a, 2) + Math.pow((point.y-k)/b, 2) <= 1){
-                return true;
-            }
-        }
-        return false;
+        double rectLeft = tool.getCentre().x - (tool.getDimensionX() / 2);
+        double rectRight = tool.getCentre().x + (tool.getDimensionX() / 2);
+        double rectTop = tool.getCentre().y - (tool.getDimensionY() / 2);
+        double rectBottom = tool.getCentre().y + (tool.getDimensionY() / 2);
+
+        double closestX = clamp(ovalCenterX, rectLeft, rectRight);
+        double closestY = clamp(ovalCenterY, rectTop, rectBottom);
+
+        double distanceX = (ovalCenterX - closestX) / radiusX;
+        double distanceY = (ovalCenterY - closestY) / radiusY;
+        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+        return distanceSquared <= 1;
+    }
+
+    private double clamp(double value, double min, double max) {
+        return Math.max(min, Math.min(max, value));
     }
 
     /**

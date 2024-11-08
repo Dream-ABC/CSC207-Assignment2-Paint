@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import java.util.ArrayList;
 
 /**
  * A class to represent drawing isosceles triangles.
@@ -127,39 +128,56 @@ public class Triangle extends Polygon implements Shape {
      * @param y3 y-coord of third point on triangle
      * @return the area of the triangle
      */
-    private double areaOfTriangle(Point p1, Point p2, Point p3) {
-        return Math.abs((p1.x*(p2.y-p3.y) + p2.x*(p3.y-p1.y)+ p3.x*(p1.y-p2.y))/2.0);
+    private double areaOfTriangle(double x1, double y1, double x2, double y2, double x3, double y3) {
+        return Math.abs((x1*(y2-y3) + x2*(y3-y1)+ x3*(y1-y2))/2.0);
     }
 
     /**
      * Checks if the Eraser is overlapping the Triangle.
      * If it is, then the Eraser will erase the Triangle.
-     * @param eraser the Eraser instance which is currently erasing drawings
+     * @param tool the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Triangle, False otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
+    public boolean overlaps(Tool tool) {
         ObservableList<Double> points = this.getPoints();
-        Point[] tPoints = new Point[3];
+        double[] xPoints = new double[3];
+        double[] yPoints = new double[3];
         for (int i = 0; i < 3; i++) {
-            tPoints[i] = new Point(points.get(i), points.get(i+3));
+            xPoints[i] = points.get(i);
+            yPoints[i] = points.get(i + 3);
         }
-        double A = areaOfTriangle(tPoints[0], tPoints[1], tPoints[2]);
+        double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
 
-        for (Point ePoint : eraser.getAllPoints()) {
-            double a1 = areaOfTriangle(tPoints[0], tPoints[1], ePoint);
-            double a2 = areaOfTriangle(ePoint, tPoints[1], tPoints[2]);
-            double a3 = areaOfTriangle(tPoints[0], ePoint, tPoints[2]);
+        double leftX = tool.getCentre().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getCentre().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getCentre().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        ArrayList<Point> allPoints = new ArrayList<Point>();
+        allPoints.add(new Point(leftX, topY));
+        allPoints.add(new Point(leftX, bottomY));
+        allPoints.add(new Point(rightX, topY));
+        allPoints.add(new Point(rightX, bottomY));
+        allPoints.add(tool.getCentre());
+
+        for (Point point : allPoints) {
+            double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
+            double a2 = areaOfTriangle(point.x, point.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
+            double a3 = areaOfTriangle(xPoints[0], yPoints[0], point.x, point.y, xPoints[2], yPoints[2]);
             if (a1 + a2 + a3 == A){
                 return true;
             }
         }
+
+        for (int i = 0; i < 3; i++){
+            if ((leftX <= xPoints[i]) && (xPoints[i] <= rightX) && (topY <= yPoints[i]) && (yPoints[i] <= bottomY)) {return true;}
+        }
+
         return false;
     }
 
     /**
      * Displays the Triangle with user-created color and size.
-     *
      * @param g2d GraphicsContext
      */
     @Override

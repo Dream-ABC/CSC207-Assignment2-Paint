@@ -68,12 +68,13 @@ public class Squiggle implements Shape {
      * @return True if the Eraser should erase this Squiggle, False otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
+    public boolean overlaps(Tool tool) {
+        double leftX = tool.getCentre().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getCentre().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getCentre().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getCentre().y+(tool.getDimensionY()/2.0);
         for (Point p : this.points) {
-            if (eraser.getLeftX() <= p.x &&
-                    p.x <= eraser.getRightX() &&
-                    eraser.getTopY() <= p.y &&
-                    p.y <= eraser.getBottomY()){
+            if (leftX <= p.x && p.x <= rightX && topY <= p.y && p.y <= bottomY){
                 return true;
             }
         }
@@ -82,7 +83,6 @@ public class Squiggle implements Shape {
 
     /**
      * Displays the Squiggle with user-created color and points they drew.
-     *
      * @param g2d GraphicsContext
      */
     @Override

@@ -16,6 +16,7 @@ public class LayerChooserController implements Observer {
     }
 
     public void selectLayer(String layerName) {
+        this.model.removeSelectionTool();
         if (layerName.equals("Layer+")) {
             // layer added
             this.model.addLayer();
