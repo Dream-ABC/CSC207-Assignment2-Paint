@@ -21,7 +21,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
     private StrokeEraser strokeEraser;
     private SelectionTool selection;
-    private PrecisionEraser precisionEraser;
 
     private Color color;
 
@@ -89,9 +88,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     public StrokeEraser getStrokeEraser() { return strokeEraser; }
 
     public void setStrokeEraser(StrokeEraser strokeEraser) { this.strokeEraser = strokeEraser; }
-
-    public PrecisionEraser getPrecisionEraser() { return precisionEraser; }
-    public void setPrecisionEraser(PrecisionEraser precisionEraser) { this.precisionEraser = precisionEraser; }
 
     public SelectionTool getSelectionTool() {return selection;}
 

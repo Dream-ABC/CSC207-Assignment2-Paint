@@ -18,29 +18,27 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
         Point centre = new Point(topLeft.x, topLeft.y);
         precisionEraser.setTopLeft(centre);
         precisionEraser.addPoint(topLeft);
-        this.panel.setPrecisionEraser(precisionEraser);
-        this.panel.getModel().addPrecisionEraser(precisionEraser);
+        this.panel.setCurrentShape(precisionEraser);
+        this.panel.getModel().addShape(precisionEraser);
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        PrecisionEraser precisionEraser = panel.getPrecisionEraser();
+        PrecisionEraser precisionEraser = (PrecisionEraser) this.panel.getCurrentShape();
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x, topLeft.y);
         precisionEraser.setTopLeft(centre);
         precisionEraser.addPoint(topLeft);
-        this.panel.getModel().addPrecisionEraser(precisionEraser);
+        this.panel.getModel().addShape(precisionEraser);
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        PrecisionEraser precisionEraser = (PrecisionEraser) this.panel.getPrecisionEraser();
+        PrecisionEraser precisionEraser = (PrecisionEraser) this.panel.getCurrentShape();
         if(precisionEraser!=null) {
             Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
             precisionEraser.addPoint(topLeft);
             this.panel.getModel().addShapeFinal(precisionEraser);
-            this.panel.getModel().removePrecisionEraser();
-            this.panel.setPrecisionEraser(null);
             this.panel.setCurrentShape(null);
         }
     }

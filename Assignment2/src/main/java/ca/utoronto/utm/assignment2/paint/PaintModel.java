@@ -54,8 +54,6 @@ public class PaintModel extends Observable {
     public void removeLayer(PaintLayer layer) {
         if (this.layers.size() > 1) {
             // when there is only one layer, the user cannot remove it
-
-//            this.layers.remove(this.selectedLayer);
             int currIndex = this.layers.indexOf(selectedLayer);
             history.execute(new DeleteLayerCommand(this, layer, history));
             if (this.selectedLayer == layer) {
@@ -116,18 +114,7 @@ public class PaintModel extends Observable {
     }
 
     public void removeStrokeEraser() {
-        //history.execute(new EraserStrokeCommand(removedShapes, history));
         this.selectedLayer.removeStrokeEraser();
-        notifyChange();
-    }
-
-    public void addPrecisionEraser(PrecisionEraser precisionEraser){
-        this.selectedLayer.addPrecisionEraser(precisionEraser);
-        notifyChange();
-    }
-
-    public void removePrecisionEraser(){
-        this.selectedLayer.removePrecisionEraser();
         notifyChange();
     }
 
