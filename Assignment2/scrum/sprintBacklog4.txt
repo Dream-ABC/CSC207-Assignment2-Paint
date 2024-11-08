@@ -150,9 +150,17 @@ ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.482 : wenjess1 : Complete
-NAME     : Improve precision of circle selection for erasing
+NAME     : Improve precision of registering circle overlap for erasing
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL : 1 hour
 ISSUE    : The stroke eraser currently removes Circle drawings prematurely,
            before the mouse cursor actually touches the Circle.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.483 : wenjess1 : Complete
+NAME     : Improve precision of registering text overlap for erasing
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The stroke eraser currently removes Text prematurely,
+           before the mouse cursor actually touches the Text.
 --------------------------------------------------------------------------
