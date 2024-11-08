@@ -125,9 +125,9 @@ Nov 6,2024
 	Obstacles I face: None
 
 Nov 7,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Made Major Progress on US4.009
+	What I will do today: Finish US4.009, create and fixed a few more smaller bugs.
+	Obstacles I face: None
 
 Nov 8,2024
 	What I did yesterday:
