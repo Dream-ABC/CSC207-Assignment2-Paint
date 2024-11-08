@@ -61,10 +61,10 @@ ISSUE    : The current stroke eraser doesn't erase strokes properly when
            line thickness of shapes are changed.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.411 : wenjess1 : NotStarted
+TYPE     : USER STORY US4.411 : wenjess1 : Complete
 NAME     : Precision Eraser
 PRIORITY : 2
-ESTIMATE : 1 day    ACTUAL :
+ESTIMATE : 1 day    ACTUAL : 1 day
 AS A     : user
 I WANT   : To be able to erase a precise section of a drawing on the canvas
 SO THAT  : I have more customizability with the Paint application.
