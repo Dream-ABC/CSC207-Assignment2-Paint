@@ -6,6 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -49,14 +50,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     public String getMode() {
         return mode;
-    }
-
-    /**
-     * Controller aspect of this
-     */
-    public void setMode(String mode) {
-        this.mode = mode;
-        System.out.println(this.mode);
     }
 
     public PaintModel getModel() {

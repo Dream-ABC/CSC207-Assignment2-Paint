@@ -1,17 +1,24 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Window;
 
-import java.awt.*;
+public class TextEditorDialog {
 
-public class TextEditorDialog extends Dialog {
-
+    private Dialog<Void> dialog;
     private PaintPanel paintPanel;
-    private Text text;
+    private Text displayedText;
+
+    private TextField textField;
     private ComboBox fontChooser;
     private ComboBox sizeChooser;
     private ToggleButton boldButton;
@@ -19,90 +26,107 @@ public class TextEditorDialog extends Dialog {
     private ToggleButton underlineButton;
     private ToggleButton strikethroughButton;
 
-    public TextEditorDialog(Text text, PaintPanel paintPanel) {
+    public TextEditorDialog(PaintPanel paintPanel, Text displayedText) {
         this.paintPanel = paintPanel;
-        this.text = text;
-        setBoxes();
+        this.displayedText = displayedText;
+        this.displayedText.setColor(this.paintPanel.getColor());
+
+        this.dialog = new Dialog<>();
+        // close dialog by "X" button or "Enter" button
+        Window window = this.dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest(event -> window.hide());
+
+        this.dialog.getDialogPane().setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                window.hide();
+            }
+        });
+    }
+
+    private void updateFont() {
+        this.displayedText.setFont(this.getSelectedFont());
+        this.paintPanel.getModel().notifyChange();
     }
 
     private void setBoxes() {
-
-//        // default text font
-//        javafx.scene.text.Text text = new javafx.scene.text.Text("Sample Text");
-//        text.setFont(javafx.scene.text.Font.font("Microsoft YaHei UI", 20));
-
-        // font chooser comboBox
+        // font chooser menu
         this.fontChooser = new ComboBox<>();
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        String[] fontNames = ge.getAvailableFontFamilyNames();
+        // get all fonts
+        String[] fontNames = Font.getFamilies().toArray(new String[0]);
         this.fontChooser.getItems().addAll(fontNames);
-        this.fontChooser.setValue("Microsoft YaHei UI");  // default font
+        this.fontChooser.setValue(fontNames[0]);  // default font
         this.fontChooser.setOnAction(e -> {
-            this.text.setFont(javafx.scene.text.Font.font((String) fontChooser.getValue(),
-                    this.text.getFont().getSize()));
+            this.updateFont();
         });
 
-        // size chooser comboBox
+        // size chooser menu
         this.sizeChooser = new ComboBox<>();
         this.sizeChooser.getItems().addAll("8", "9", "10", "11", "12", "14", "16", "18", "20",
                 "22", "24", "26", "28", "36", "48", "72");
-        this.sizeChooser.setValue("8");  // default size
+        this.sizeChooser.setValue("12");  // default size
         this.sizeChooser.setOnAction(e -> {
-            this.text.setFont(Font.font(this.text.getFont().getFamily(),
-                    Integer.parseInt((String) this.sizeChooser.getValue())));
+            this.updateFont();
         });
 
         // font style buttons
         this.boldButton = new ToggleButton("B");
         boldButton.setStyle("-fx-font-weight: bold;");
         boldButton.setOnAction(e -> {
-            if (boldButton.isSelected()) {
-                text.setStyle("-fx-font-weight: bold;");
-            } else {
-                text.setStyle("-fx-font-weight: normal;");
-            }
+            this.updateFont();
         });
 
         this.italicButton = new ToggleButton("I");
         italicButton.setStyle("-fx-font-style: italic;");
         italicButton.setOnAction(e -> {
-            if (italicButton.isSelected()) {
-                text.setStyle("-fx-font-style: italic;");
-            } else {
-                text.setStyle("-fx-font-style: normal;");
-            }
+            this.updateFont();
         });
 
         this.underlineButton = new ToggleButton("U");
         underlineButton.setStyle("-fx-underline: true;");
         underlineButton.setOnAction(e -> {
-            if (underlineButton.isSelected()) {
-                text.setUnderline(true);
-            } else {
-                text.setUnderline(false);
-            }
+            this.displayedText.setUnderline(this.underlineButton.isSelected());
+            this.paintPanel.getModel().notifyChange();
         });
 
         this.strikethroughButton = new ToggleButton("S");
-        underlineButton.setStyle("-fx-strikethrough: true;");
-        underlineButton.setOnAction(e -> {
-            if (underlineButton.isSelected()) {
-                text.setStrikethrough(true);
-            } else {
-                text.setStrikethrough(false);
-            }
+        strikethroughButton.setStyle("-fx-strikethrough: true;");
+        strikethroughButton.setOnAction(e -> {
+            this.displayedText.setStrikethrough(this.strikethroughButton.isSelected());
+            this.paintPanel.getModel().notifyChange();
+        });
+
+        // text field and listener
+        this.textField = new TextField();
+        textField.setOnKeyTyped(event -> {
+            String userInput = textField.getText();
+            this.displayedText.setText(userInput);
+            this.paintPanel.getModel().notifyChange();
         });
     }
 
-    public void display() {
-        this.setTitle("Text Editor");
+    public Font getSelectedFont() {
+        FontWeight weight = boldButton.isSelected() ? FontWeight.BOLD : FontWeight.NORMAL;
+        FontPosture posture = italicButton.isSelected() ? FontPosture.ITALIC : FontPosture.REGULAR;
 
-        // put all choosers and buttons together
+        return Font.font((String) this.fontChooser.getValue(), weight, posture,
+                Integer.parseInt((String) this.sizeChooser.getValue()));
+    }
+
+    public void display() {
+        // init all buttons, choosers and text field
+        this.setBoxes();
+
+        // put all choosers and buttons in one line
         HBox hbox = new HBox(10, this.fontChooser, this.sizeChooser,
                 boldButton, italicButton, underlineButton, strikethroughButton);
         hbox.setStyle("-fx-padding: 10;");
 
-        this.getDialogPane().setContent(hbox);
-        this.show();
+        // put text field in another line
+        VBox vbox = new VBox(10, hbox, textField);
+
+        // show dialog
+        this.dialog.setTitle("Text Editor");
+        this.dialog.getDialogPane().setContent(vbox);
+        this.dialog.showAndWait();
     }
 }

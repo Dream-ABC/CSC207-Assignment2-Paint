@@ -28,7 +28,6 @@ public class View implements EventHandler<ActionEvent> {
     private ColorPickerPopup colorPickerPopup;
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
-    private TextEditorDialog textEditorDialog;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
@@ -41,7 +40,6 @@ public class View implements EventHandler<ActionEvent> {
         this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
-        this.textEditorDialog = new TextEditorDialog(new Text(), this.paintPanel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
@@ -152,10 +150,6 @@ public class View implements EventHandler<ActionEvent> {
         menuItem.setOnAction(this); // Show the color popup
         menu.getItems().add(menuItem);
 
-        menuItem = new MenuItem("Font");
-        menuItem.setOnAction(this); // Show the color popup
-        menu.getItems().add(menuItem);
-
         menuBar.getMenus().add(menu);
         menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
@@ -171,8 +165,6 @@ public class View implements EventHandler<ActionEvent> {
             Platform.exit();
         } else if (command.equals("Colors")) {
             this.colorPickerPopup.display();
-        } else if (command.equals("Font")) {
-            this.textEditorDialog.display();
         } else if (command.equals("Undo")){
             this.paintModel.undo();
         } else if (command.equals("Redo")){
