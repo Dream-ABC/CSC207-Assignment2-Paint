@@ -13,3 +13,4 @@ BUG3.341 author:hingor13 puller:tianshi8 status:Completed
  US3.351 author:hingor13 puller:pengxi60 status:Completed
 BUG4.468 author:tianshi8 puller:hingor13 status:Rejected
 BUG4.481 author:hingor13 puller:tianshi8 status:Completed
+ US4.006 author:wenjess1 puller:         status:Waiting

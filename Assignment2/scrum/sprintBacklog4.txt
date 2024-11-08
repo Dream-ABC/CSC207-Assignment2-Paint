@@ -6,7 +6,7 @@
 # Sprint 4 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.006 : wenjess1 : NotStarted
+TYPE     : USER STORY US4.006 : wenjess1 : InProgress
 NAME     : Fill style selector
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
