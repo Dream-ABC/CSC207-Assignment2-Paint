@@ -54,7 +54,7 @@ SO THAT  : I can decide the line lineThickness of my outlined drawings, for more
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
-NAME     : Stroke Eraser working with varying line lineThickness
+NAME     : Stroke Eraser working with varying line thickness
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL :
 ISSUE    : The current stroke eraser doesn't erase strokes properly when
