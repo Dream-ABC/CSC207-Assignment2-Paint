@@ -29,10 +29,10 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
 SO THAT  : I can decide whether I want to draw solid or outlined shapes, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.007 : wenjess1 : NotStarted
-NAME     : Line lineThickness selector
+TYPE     : USER STORY US4.007 : wenjess1 : Complete
+NAME     : Line thickness selector
 PRIORITY : 1
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 2 hours    ACTUAL : 2 hours
 AS A     : user
 I WANT   : To be able to select the current line lineThickness, to be applied
            to subsequent shapes. Example:
@@ -53,12 +53,12 @@ I WANT   : To be able to select the current line lineThickness, to be applied
 SO THAT  : I can decide the line lineThickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
+TYPE     : BUG BUG4.401 : wenjess1 : Complete
 NAME     : Stroke Eraser working with varying line thickness
 PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL :
+ESTIMATE : 4 hours    ACTUAL : 1 day
 ISSUE    : The current stroke eraser doesn't erase strokes properly when
-           line lineThickness of shapes are changed.
+           line thickness of shapes are changed.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.411 : wenjess1 : NotStarted
