@@ -2,6 +2,9 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+
+import java.awt.geom.Area;
+import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 
 public class Polyline implements Shape {
@@ -91,14 +94,39 @@ public class Polyline implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        int size = this.isClosed ? this.points.size() : this.points.size() - 1;
-        for (int i = 0; i < size; i++) {
-            Point p1 = this.points.get(i);
-            Point p2 = this.points.get(i + 1);
-            // finish this
-            return true;
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+        ArrayList<Point> allPoints = new ArrayList<Point>();
+        allPoints.add(new Point(leftX, topY));
+        allPoints.add(new Point(leftX, bottomY));
+        allPoints.add(new Point(rightX, topY));
+        allPoints.add(new Point(rightX, bottomY));
+        allPoints.add(tool.getTopLeft());
+
+        GeneralPath polygon1 = new GeneralPath();  // Create a new empty path (polygon)
+        polygon1.moveTo(this.points.getFirst().x, this.points.getFirst().y);  // Move to the starting point (0, 0)
+        for (int i = 1; i < this.points.size(); i++) {
+            polygon1.lineTo(this.points.get(i).x, this.points.get(i).y);
         }
-        return false;
+        polygon1.closePath();
+
+        GeneralPath polygon2 = new GeneralPath();
+        polygon2.moveTo(leftX, topY);
+        polygon2.lineTo(rightX, topY);
+        polygon2.lineTo(rightX, bottomY);
+        polygon2.lineTo(leftX, bottomY);
+
+        // Create Area objects for both polygons
+        Area area1 = new Area(polygon1);
+        Area area2 = new Area(polygon2);
+
+        // Check if the polygons intersect
+        area1.intersect(area2);
+
+        // If the resulting area is not empty, the polygons intersect
+        return !area1.isEmpty();
     }
 
     /**
@@ -116,6 +144,7 @@ public class Polyline implements Shape {
             }
             g2d.setFill(this.color);
             g2d.setLineWidth(this.lineThickness);
+            g2d.strokePolygon(xPoints, yPoints, this.points.size());
             g2d.fillPolygon(xPoints, yPoints, this.points.size());
         } else {
             for (int i = 0; i < this.points.size() - 1; i++) {

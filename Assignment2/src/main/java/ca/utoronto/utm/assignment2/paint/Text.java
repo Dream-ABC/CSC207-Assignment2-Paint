@@ -129,7 +129,7 @@ public class Text implements Shape {
     /**
      * Checks if the given eraser object overlaps with this Text object.
      *
-     * @param eraser the Eraser object
+     * @param tool the Tool object
      * @return true if the eraser overlaps with this Text object, false otherwise
      */
     @Override
