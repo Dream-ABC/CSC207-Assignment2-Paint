@@ -57,7 +57,7 @@ TYPE     : BUG BUG4.401 : wenjess1 : Complete
 NAME     : Stroke Eraser working with varying line thickness
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 1 day
-ISSUE    : The current stroke eraser doesn't erase strokes properly when
+ISSUE    : The current StrokeEraser doesn't erase strokes properly when
            line thickness of shapes are changed.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -153,7 +153,7 @@ TYPE     : BUG BUG4.482 : wenjess1 : Complete
 NAME     : Improve precision of registering circle overlap for erasing
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
-ISSUE    : The stroke eraser currently removes Circle drawings prematurely,
+ISSUE    : The StrokeEraser currently removes Circle drawings prematurely,
            before the mouse cursor actually touches the Circle.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -161,6 +161,6 @@ TYPE     : BUG BUG4.483 : wenjess1 : Complete
 NAME     : Improve precision of registering text overlap for erasing
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
-ISSUE    : The stroke eraser currently removes Text prematurely,
+ISSUE    : The StrokeEraser currently removes Text prematurely,
            before the mouse cursor actually touches the Text.
 --------------------------------------------------------------------------

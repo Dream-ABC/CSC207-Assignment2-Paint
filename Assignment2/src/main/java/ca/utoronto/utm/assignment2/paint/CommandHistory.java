@@ -36,8 +36,8 @@ public class CommandHistory {
     }
     public void addToLast(ArrayList<Shape> state) {
         Command store = undoStack.peek();
-        if (store instanceof EraserStrokeCommand){
-            ((EraserStrokeCommand) store).addRemovedShapes(state);
+        if (store instanceof StrokeEraserCommand){
+            ((StrokeEraserCommand) store).addRemovedShapes(state);
         }
     }
     public void popLastCommand(){

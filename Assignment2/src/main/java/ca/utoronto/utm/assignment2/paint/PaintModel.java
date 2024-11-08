@@ -107,17 +107,17 @@ public class PaintModel extends Observable {
     }
 
     public void storeState(){
-        history.execute(new EraserStrokeCommand(this.selectedLayer, history));
+        history.execute(new StrokeEraserCommand(this.selectedLayer, history));
     }
 
-    public void addEraser(Eraser eraser) {
-        this.selectedLayer.addEraser(eraser);
+    public void addStrokeEraser(StrokeEraser strokeEraser) {
+        this.selectedLayer.addStrokeEraser(strokeEraser);
         notifyChange();
     }
 
-    public void removeEraser() {
+    public void removeStrokeEraser() {
         //history.execute(new EraserStrokeCommand(removedShapes, history));
-        this.selectedLayer.removeEraser();
+        this.selectedLayer.removeStrokeEraser();
         notifyChange();
     }
 

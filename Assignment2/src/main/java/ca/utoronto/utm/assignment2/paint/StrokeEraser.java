@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * A class to represent an eraser.
  * Erasers are represented as a square, where the user's mouse is the topLeft of the square.
  */
-public class Eraser implements Tool{
+public class StrokeEraser implements Tool{
     private Point topLeft;
     private double dimensionX;
     private double dimensionY;
@@ -16,7 +16,7 @@ public class Eraser implements Tool{
     /**
      * Constructs a default eraser, represented as a square that is of size 14.
      */
-    public Eraser(){
+    public StrokeEraser(){
         this.dimensionX = 14;
         this.dimensionY = 14;
         this.removedShapes = new ArrayList<>();

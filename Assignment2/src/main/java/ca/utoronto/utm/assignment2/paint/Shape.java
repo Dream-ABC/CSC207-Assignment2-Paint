@@ -11,6 +11,6 @@ public interface Shape {
     Color getColor();
     void setLineThickness(double lineThickness);
     String getShape();
-    boolean overlaps(Tool eraser);
+    boolean overlaps(Tool tool);
     void display(GraphicsContext g2d);
 }

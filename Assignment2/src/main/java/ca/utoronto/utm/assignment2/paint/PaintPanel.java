@@ -6,7 +6,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -20,7 +19,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     private ShapeFactory shapeFactory;
     private StrategyFactory strategyFactory;
     Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
-    private Eraser eraser;
+    private StrokeEraser strokeEraser;
     private SelectionTool selection;
 
     private Color color;
@@ -86,9 +85,9 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.shape = shape;
     }
 
-    public Eraser getEraser() { return eraser; }
+    public StrokeEraser getStrokeEraser() { return strokeEraser; }
 
-    public void setEraser(Eraser eraser) { this.eraser = eraser; }
+    public void setStrokeEraser(StrokeEraser strokeEraser) { this.strokeEraser = strokeEraser; }
 
     public SelectionTool getSelectionTool() {return selection;}
 

@@ -89,22 +89,22 @@ Oct 30,2024
 	Obstacles I face: Knowing how to refactor the code, designing good architecture and writing good code, etc
 
 Oct 31,2024
-	What I did yesterday: Thought about how to make an eraser tool
-	What I will do today: Try to actually make the eraser tool
+	What I did yesterday: Thought about how to make an strokeEraser tool
+	What I will do today: Try to actually make the strokeEraser tool
 	Obstacles I face: How to indicate to the user what they're selecting, how to actually select something and move it, ...
 
 Nov 1,2024
 	What I did yesterday: Completed BUG2.007
-	What I will do today: Continue working on the eraser tool
+	What I will do today: Continue working on the strokeEraser tool
 	Obstacles I face: Making clean and smart changes to code and/or architecture
 
 Nov 2,2024
-	What I did yesterday: Considered how to make an eraser tool
+	What I did yesterday: Considered how to make an strokeEraser tool
 	What I will do today: Add javadocs, work on US stories, help a teammate do pull requests
 	Obstacles I face: How to make it work with my teammates' new code
 
 Nov 3,2024
-	What I did yesterday: Completed eraser tool
+	What I did yesterday: Completed strokeEraser tool
 	What I will do today: Add javadocs and note architecture changes to architecture.txt
 	Obstacles I face: Writing good and effective javadocs + architecture.txt
 

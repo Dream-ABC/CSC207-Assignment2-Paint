@@ -10,7 +10,7 @@ public class PaintLayer extends Canvas {
 
     private String status;  // "changed", "unchanged", "removed"
     private ArrayList<Shape> shapes;
-    private Eraser eraser;
+    private StrokeEraser strokeEraser;
     private SelectionTool selectionTool;
 
     public PaintLayer() {
@@ -39,8 +39,8 @@ public class PaintLayer extends Canvas {
         this.shapes.remove(shape);
     }
 
-    public void addEraser(Eraser eraser) {this.eraser = eraser;}
-    public void removeEraser() {this.eraser = null;}
+    public void addStrokeEraser(StrokeEraser strokeEraser) {this.strokeEraser = strokeEraser;}
+    public void removeStrokeEraser() {this.strokeEraser = null;}
 
     public void addSelectionTool(SelectionTool selectionTool) {this.selectionTool = selectionTool;}
     public void removeSelectionTool() {this.selectionTool = null;}
@@ -63,8 +63,8 @@ public class PaintLayer extends Canvas {
             g2d.setFill(shape.getColor());
             shape.display(g2d);
         }
-        if (this.eraser != null){
-            eraser.display(g2d);
+        if (this.strokeEraser != null){
+            strokeEraser.display(g2d);
         }
         if (this.selectionTool != null){
             selectionTool.display(g2d);

@@ -16,7 +16,7 @@ public class StrategyFactory {
             case "triangle":
                 return new TriangleStrategy(panel);
             case "eraser":
-                return new EraserStrategy(panel);
+                return new StrokeEraserStrategy(panel);
             case "polyline":
                 return new PolylineStrategy(panel);
             case "selectiontool":

@@ -3,32 +3,32 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
-public class EraserStrategy implements ShapeStrategy {
+public class StrokeEraserStrategy implements ShapeStrategy {
     private PaintPanel panel;
 
-    public EraserStrategy(PaintPanel p) {
+    public StrokeEraserStrategy(PaintPanel p) {
         this.panel = p;
     }
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         this.panel.getModel().storeState();
-        Eraser eraser = new Eraser();
+        StrokeEraser strokeEraser = new StrokeEraser();
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x, topLeft.y);
-        eraser.setTopLeft(centre);
-        this.panel.setEraser(eraser);
-        this.panel.getModel().addEraser(eraser);
+        strokeEraser.setTopLeft(centre);
+        this.panel.setStrokeEraser(strokeEraser);
+        this.panel.getModel().addStrokeEraser(strokeEraser);
         eraseDrawings();
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Eraser eraser = panel.getEraser();
+        StrokeEraser strokeEraser = panel.getEraser();
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x, topLeft.y);
-        eraser.setTopLeft(centre);
-        this.panel.getModel().addEraser(eraser);
+        strokeEraser.setTopLeft(centre);
+        this.panel.getModel().addEraser(strokeEraser);
         eraseDrawings();
     }
 
