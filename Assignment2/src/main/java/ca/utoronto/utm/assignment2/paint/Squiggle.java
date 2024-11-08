@@ -76,7 +76,7 @@ public class Squiggle implements Shape {
         double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
         double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
         for (Point p : this.points) {
-            if (leftX <= p.x && p.x <= rightX && topY <= p.y && p.y <= bottomY){
+            if (leftX <= p.x+(this.lineThickness/2.0) && p.x-(this.lineThickness/2.0) <= rightX && topY <= p.y+(this.lineThickness/2.0) && p.y-(this.lineThickness/2.0) <= bottomY){
                 return true;
             }
         }
