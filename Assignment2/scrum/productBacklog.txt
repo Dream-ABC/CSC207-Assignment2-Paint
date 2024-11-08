@@ -388,13 +388,19 @@ SO THAT  : I can decide whether I want to draw solid or outlined shapes, for mor
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.482 : wenjess1 : Complete
-NAME     : Resizing of canvas occurs after any button click
+NAME     : Improve precision of registering circle overlap for erasing
 PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL : 4 hours
-ISSUE    : When the user clicks any button for the first time, the Paint
-           program display changes. In particular, the sizing of the canvas
-           and the layers display is shifted. It would be better for the
-           program display to remain the same at all times.
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The stroke eraser currently removes Circle drawings prematurely,
+           before the mouse cursor actually touches the Circle.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.483 : wenjess1 : Complete
+NAME     : Improve precision of registering text overlap for erasing
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The stroke eraser currently removes Text prematurely,
+           before the mouse cursor actually touches the Text.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.421 : tianshi8 : Complete
