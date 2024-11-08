@@ -47,5 +47,6 @@ public class EraserStrategy implements ShapeStrategy {
         this.panel.getModel().getHistory().addToLast(this.panel.getEraser().getRemovedShapes());
         this.panel.getModel().removeEraser();
         this.panel.setEraser(null);
+        this.panel.setCurrentShape(null);
     }
 }
