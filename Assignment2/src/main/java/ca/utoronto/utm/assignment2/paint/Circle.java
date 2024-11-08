@@ -155,6 +155,7 @@ public class Circle implements Shape{
                 }
                 return false;
         }
+
         private double clamp(double value, double min, double max) {
                 return Math.max(min, Math.min(max, value));
         }

@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * A class to represent drawing ovals.
  * Oval implements the Shape interface.
@@ -119,17 +121,17 @@ public class Oval implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
+        if (this.fillStyle.equals("Outline")){
+            return overlapsOutline(tool);
+        }
+        return overlapsSolid(tool);
+    }
+
+    private boolean overlapsSolid(Tool tool){
         double ovalCenterX = topLeft.x + (width / 2.0);
         double ovalCenterY = topLeft.y + (height / 2.0);
-        double radiusX, radiusY;
-        if (this.fillStyle.equals("Outline")){
-            radiusX = (width / 2.0) + (this.lineThickness/2.0);
-            radiusY = (height / 2.0) + (this.lineThickness/2.0);
-        }
-        else{
-            radiusX = (width / 2.0) + (this.lineThickness/2.0);
-            radiusY = (height / 2.0);
-        }
+        double radiusX = (width / 2.0);
+        double radiusY = (height / 2.0);
 
         double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
         double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
@@ -144,6 +146,47 @@ public class Oval implements Shape {
         double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
 
         return distanceSquared <= 1;
+    }
+
+    private boolean overlapsInsideAtPoint(Point p){
+        double ovalCenterX = topLeft.x + (width / 2.0);
+        double ovalCenterY = topLeft.y + (height / 2.0);
+        double radiusX = (width / 2.0) - (this.lineThickness/2.0);
+        double radiusY = (height / 2.0) - (this.lineThickness/2.0);
+
+        double distanceX = (ovalCenterX - p.x) / radiusX;
+        double distanceY = (ovalCenterY - p.y) / radiusY;
+        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+        return distanceSquared <= 1;
+    }
+
+    private boolean overlapsOutline(Tool tool){
+        double ovalCenterX = topLeft.x + (width / 2.0);
+        double ovalCenterY = topLeft.y + (height / 2.0);
+        double radiusX = (width / 2.0) + (this.lineThickness/2.0);
+        double radiusY = (height / 2.0) + (this.lineThickness/2.0);
+
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+        ArrayList<Point> allPoints = new ArrayList<Point>();
+        allPoints.add(new Point(leftX, topY));
+        allPoints.add(new Point(leftX, bottomY));
+        allPoints.add(new Point(rightX, topY));
+        allPoints.add(new Point(rightX, bottomY));
+        allPoints.add(tool.getTopLeft());
+
+        for (Point p : allPoints){
+            double distanceX = (ovalCenterX - p.x) / radiusX;
+            double distanceY = (ovalCenterY - p.y) / radiusY;
+            double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+            if (distanceSquared <= 1 && !overlapsInsideAtPoint(p)){
+                return true;
+            }
+        }
+        return false;
     }
 
     private double clamp(double value, double min, double max) {
