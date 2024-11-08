@@ -1,6 +1,8 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 /**
@@ -14,7 +16,7 @@ public class StrokeEraser implements Tool{
     private ArrayList<Shape> removedShapes;
 
     /**
-     * Constructs a default eraser, represented as a square that is of size 14.
+     * Constructs a default stroke eraser, represented as a square that is of size 14.
      */
     public StrokeEraser(){
         this.dimensionX = 14;
@@ -55,6 +57,7 @@ public class StrokeEraser implements Tool{
      */
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
+        g2d.setStroke(Color.BLACK);
         g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y - dimensionY/2,
                 this.dimensionX, this.dimensionY);
     }

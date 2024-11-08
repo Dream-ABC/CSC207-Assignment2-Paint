@@ -121,6 +121,16 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public void addPrecisionEraser(PrecisionEraser precisionEraser){
+        this.selectedLayer.addPrecisionEraser(precisionEraser);
+        notifyChange();
+    }
+
+    public void removePrecisionEraser(){
+        this.selectedLayer.removePrecisionEraser();
+        notifyChange();
+    }
+
     public void addSelectionTool(SelectionTool selectionTool) {
         this.selectedLayer.addSelectionTool(selectionTool);
         notifyChange();

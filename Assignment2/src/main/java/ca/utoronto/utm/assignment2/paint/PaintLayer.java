@@ -12,6 +12,7 @@ public class PaintLayer extends Canvas {
     private ArrayList<Shape> shapes;
     private StrokeEraser strokeEraser;
     private SelectionTool selectionTool;
+    private PrecisionEraser precisionEraser;
 
     public PaintLayer() {
         super(300, 300);  // default size
@@ -41,6 +42,9 @@ public class PaintLayer extends Canvas {
 
     public void addStrokeEraser(StrokeEraser strokeEraser) {this.strokeEraser = strokeEraser;}
     public void removeStrokeEraser() {this.strokeEraser = null;}
+
+    public void addPrecisionEraser(PrecisionEraser precisionEraser) {this.precisionEraser = precisionEraser;}
+    public void removePrecisionEraser() {this.precisionEraser = null;}
 
     public void addSelectionTool(SelectionTool selectionTool) {this.selectionTool = selectionTool;}
     public void removeSelectionTool() {this.selectionTool = null;}
