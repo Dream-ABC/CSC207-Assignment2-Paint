@@ -53,6 +53,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return mode;
     }
 
+    public String getFillStyle(){
+        return model.getFillStyle();
+    }
+
     /**
      * Controller aspect of this
      */
@@ -122,7 +126,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
             GraphicsContext g2d = layer.getGraphicsContext2D();
             g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
             if (layer.isVisible()) {
-                layer.display(g2d);
+                layer.display(g2d, model.getFillStyle());
             }
         }
     }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class PaintLayer extends Canvas {
 
     private String status;  // "changed", "unchanged", "removed"
-    private Color color;
     private ArrayList<Shape> shapes;
     private Eraser eraser;
 
@@ -18,7 +17,6 @@ public class PaintLayer extends Canvas {
         this.shapes = new ArrayList<>();
         this.setVisible(true);
         this.status = "changed";
-        this.color = Color.TRANSPARENT;
     }
 
     public PaintLayer(int width, int height) {
@@ -26,7 +24,6 @@ public class PaintLayer extends Canvas {
         this.shapes = new ArrayList<>();
         this.setVisible(true);
         this.status = "changed";
-        this.color = Color.TRANSPARENT;
     }
 
     public void addShape(Shape shape) {
@@ -34,7 +31,7 @@ public class PaintLayer extends Canvas {
     }
 
     public void addShapeFirst(Shape shape) {
-        this.shapes.add(0, shape);
+        this.shapes.addFirst(shape);
     }
 
     public void removeShape(Shape shape) {
@@ -48,21 +45,13 @@ public class PaintLayer extends Canvas {
         return shapes;
     }
 
-    void setShapes(ArrayList<Shape> shapes) {
+    public void setShapes(ArrayList<Shape> shapes) {
         this.shapes = shapes;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Color getColor() {
-        return this.color;
-    }
-
-    public void display(GraphicsContext g2d) {
+    public void display(GraphicsContext g2d, String fillStyle) {
         // background
-        g2d.setFill(this.color);
+        g2d.setFill(Color.TRANSPARENT);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         // shapes on this layer

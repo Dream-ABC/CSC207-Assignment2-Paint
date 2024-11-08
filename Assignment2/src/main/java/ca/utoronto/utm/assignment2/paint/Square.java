@@ -12,13 +12,15 @@ public class Square implements Shape {
     private Point origin;
     private double size;
     private Color color;
+    private final String fillStyle;
 
     /**
      * Constructs a default black square with a size of 0.
      */
-    public Square() {
+    public Square(String fillStyle) {
         this.size = 0;
         this.color = Color.BLACK;
+        this.fillStyle = fillStyle;
     }
 
     /**
@@ -103,28 +105,34 @@ public class Square implements Shape {
      */
     @Override
     public boolean overlaps(Eraser eraser) {
-        double eraserLeft = eraser.getCentre().x-(eraser.getDimension()/2.0);
-        double eraserRight = eraser.getCentre().x+(eraser.getDimension()/2.0);
-        double eraserTop = eraser.getCentre().y-(eraser.getDimension()/2.0);
-        double eraserBottom = eraser.getCentre().y+(eraser.getDimension()/2.0);
+        double squareLeft = this.topLeft.x;
+        double squareRight = this.topLeft.x + this.size;
+        double squareTop = this.topLeft.y;
+        double squareBottom = this.topLeft.y + this.size;
 
-        double rectLeft = this.topLeft.x;
-        double rectRight = this.topLeft.x + this.size;
-        double rectTop = this.topLeft.y;
-        double rectBottom = this.topLeft.y + this.size;
-
-        return eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom;
+        return eraser.getRightX() >= squareLeft &&
+                eraser.getLeftX() <= squareRight &&
+                eraser.getBottomY() >= squareTop &&
+                eraser.getTopY() <= squareBottom;
     }
 
     /**
      * Displays the Square with user-created color and size.
+     *
      * @param g2d GraphicsContext
      */
     @Override
     public void display(GraphicsContext g2d) {
-        g2d.setFill(this.color);
-        g2d.fillRect(this.topLeft.x, this.topLeft.y,
-                this.size, this.size);
+        if (this.fillStyle.equals("Solid")){
+            g2d.setFill(this.color);
+            g2d.fillRect(this.topLeft.x, this.topLeft.y,
+                    this.size, this.size);
+        }
+        else if (this.fillStyle.equals("Outline")){
+            g2d.setStroke(this.color);
+            g2d.strokeRect(this.topLeft.x, this.topLeft.y,
+                    this.size, this.size);
+        }
     }
 
 }

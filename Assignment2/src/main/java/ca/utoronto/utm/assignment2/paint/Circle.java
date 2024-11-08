@@ -12,13 +12,15 @@ public class Circle implements Shape{
         private Point centre;
         private double diameter;
         private Color color;
+        private final String fillStyle;
 
         /**
          * Constructs a default black circle with a diameter of 0.
          */
-        public Circle() {
+        public Circle(String fillStyle) {
                 this.diameter = 0;
                 this.color = Color.BLACK;
+                this.fillStyle = fillStyle;
         }
 
         /**
@@ -85,23 +87,19 @@ public class Circle implements Shape{
          */
         @Override
         public boolean overlaps(Eraser eraser) {
-                double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
-                double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
-                double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
-                double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
                 double Px, Py;
-                if (Math.abs(this.centre.x - leftX) < Math.abs(this.centre.x - rightX)){
-                        Px = leftX;
+                if (Math.abs(this.centre.x - eraser.getLeftX()) < Math.abs(this.centre.x - eraser.getRightX())){
+                        Px = eraser.getLeftX();
                 }
                 else{
-                        Px = rightX;
+                        Px = eraser.getRightX();
                 }
 
-                if (Math.abs(this.centre.y - topY) < Math.abs(this.centre.y - bottomY)){
-                        Py = topY;
+                if (Math.abs(this.centre.y - eraser.getTopY()) < Math.abs(this.centre.y - eraser.getBottomY())){
+                        Py = eraser.getTopY();
                 }
                 else{
-                        Py = bottomY;
+                        Py = eraser.getBottomY();
                 }
                 double distance = Math.sqrt(Math.pow(this.centre.x - Px, 2) + Math.pow(this.centre.y - Py, 2));
                 return distance <= (this.diameter/2.0);
@@ -109,12 +107,20 @@ public class Circle implements Shape{
 
         /**
          * Displays the Circle with user-created color and size.
+         *
          * @param g2d GraphicsContext
          */
         @Override
         public void display(GraphicsContext g2d) {
-                g2d.setFill(this.color);
-                g2d.fillOval(this.topLeft.x, this.topLeft.y,
-                        this.diameter, this.diameter);
+                if (this.fillStyle.equals("Solid")){
+                        g2d.setFill(this.color);
+                        g2d.fillOval(this.topLeft.x, this.topLeft.y,
+                                this.diameter, this.diameter);
+                }
+                else if (this.fillStyle.equals("Outline")){
+                        g2d.setStroke(this.color); // Set the color for the outline
+//                        g2d.setLineWidth(2); // Set the thickness of the outline (optional)
+                        g2d.strokeOval(this.topLeft.x, this.topLeft.y, this.diameter, this.diameter);
+                }
         }
 }

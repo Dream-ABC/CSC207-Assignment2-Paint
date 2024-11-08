@@ -18,7 +18,7 @@ public class OvalStrategy implements ShapeStrategy {
 
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Oval oval = (Oval) shapeFactory.getShape(panel.getMode());
+        Oval oval = (Oval) shapeFactory.getShape(panel.getMode(), panel.getFillStyle());
         this.panel.setCurrentShape(oval);
 
         // Set info of circle (radius=0)

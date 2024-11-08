@@ -59,17 +59,13 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Checks if the Eraser is overlapping the Squiggle.
-     * If it is, then the Eraser will erase the entire Squiggle.
+     * Checks if the Eraser is overlapping the Polyline.
+     * If it is, then the Eraser will erase the entire Polyline.
      * @param eraser the Eraser instance which is currently erasing drawings
-     * @return True if the Eraser should erase this Squiggle, False otherwise
+     * @return True if the Eraser should erase this Polyline, False otherwise
      */
     @Override
     public boolean overlaps(Eraser eraser) {
-        double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
-        double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
-        double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
-        double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
         int size = this.isClosed ? this.points.size() : this.points.size() - 1;
         for (int i = 0; i < size; i++) {
             Point p1 = this.points.get(i);
@@ -80,6 +76,7 @@ public class Polyline implements Shape {
 
     /**
      * Displays the Polyline with user-created color and points they drew.
+     *
      * @param g2d GraphicsContext
      */
     @Override

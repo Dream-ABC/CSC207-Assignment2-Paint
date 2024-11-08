@@ -2,7 +2,6 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import java.util.ArrayList;
 
 /**
  * A class to represent drawing ovals.
@@ -14,14 +13,16 @@ public class Oval implements Shape {
     private double width;
     private double height;
     private Color color;
+    private final String fillStyle;
 
     /**
      * Constructs a default black oval with a width and height of 0.
      */
-    public Oval() {
+    public Oval(String fillStyle) {
         this.width = 0;
         this.height = 0;
         this.color = Color.BLACK;
+        this.fillStyle = fillStyle;
     }
 
     /**
@@ -127,17 +128,8 @@ public class Oval implements Shape {
             a = this.width/2.0;
             b = this.height/2.0;
         }
-        double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
-        double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
-        double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
-        double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
-        ArrayList<Point> allPoints = new ArrayList<Point>();
-        allPoints.add(new Point(leftX, topY));
-        allPoints.add(new Point(leftX, bottomY));
-        allPoints.add(new Point(rightX, topY));
-        allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(eraser.getCentre());
-        for (Point point : allPoints) {
+
+        for (Point point : eraser.getAllPoints()) {
             if (Math.pow((point.x-h)/a, 2) + Math.pow((point.y-k)/b, 2) <= 1){
                 return true;
             }
@@ -147,12 +139,20 @@ public class Oval implements Shape {
 
     /**
      * Displays the Oval with user-created color and size.
+     *
      * @param g2d GraphicsContext
      */
     @Override
     public void display(GraphicsContext g2d) {
-        g2d.setFill(this.color);
-        g2d.fillOval(this.topLeft.x, this.topLeft.y,
-                this.width, this.height);
+        if (this.fillStyle.equals("Solid")){
+            g2d.setFill(this.color);
+            g2d.fillOval(this.topLeft.x, this.topLeft.y,
+                    this.width, this.height);
+        }
+        else if (this.fillStyle.equals("Outline")){
+            g2d.setStroke(this.color);
+            g2d.strokeOval(this.topLeft.x, this.topLeft.y,
+                    this.width, this.height);
+        }
     }
 }
