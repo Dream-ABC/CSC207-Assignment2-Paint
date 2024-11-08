@@ -24,7 +24,7 @@ public class Oval implements Shape {
         this.height = 0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
-        this.thickness = 1;
+        this.thickness = 1.0;
     }
 
     /**
@@ -96,11 +96,11 @@ public class Oval implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Circle
+     *
      */
     @Override
-    public double getThickness() {
-        return -1;
+    public void setThickness(double thickness) {
+        this.thickness = thickness;
     }
 
     /**

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Squiggle implements Shape {
     private ArrayList<Point> points;
     private Color color;
+    private double thickness;
 
     /**
      * Constructs a default black squiggle with no points.
@@ -19,6 +20,7 @@ public class Squiggle implements Shape {
     public Squiggle() {
         this.points = new ArrayList<>();
         this.color = Color.BLACK;
+        this.thickness = 1.0;
     }
 
     /**
@@ -46,11 +48,11 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Square
+     *
      */
     @Override
-    public double getThickness() {
-        return -1;
+    public void setThickness(double thickness) {
+        this.thickness = thickness;
     }
 
     /**
@@ -90,7 +92,8 @@ public class Squiggle implements Shape {
         for (int i = 0; i < this.points.size() - 1; i++) {
             Point p1 = this.points.get(i);
             Point p2 = this.points.get(i + 1);
-            g2d.setStroke(this.color);  // since there's no fill colour
+            g2d.setStroke(this.color);
+            g2d.setLineWidth(this.thickness);
             g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
         }
     }

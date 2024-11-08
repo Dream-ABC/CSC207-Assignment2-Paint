@@ -14,6 +14,7 @@ public class Rectangle implements Shape {
     private Point origin;
     private Color color;
     private final String fillStyle;
+    private double thickness;
 
     /**
      * Constructs a default black rectangle with a width and height of 0.
@@ -23,6 +24,7 @@ public class Rectangle implements Shape {
         this.height = 0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
+        this.thickness = 1.0;
     }
 
     /**
@@ -98,11 +100,11 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Rectangle
+     *
      */
     @Override
-    public double getThickness() {
-        return -1;
+    public void setThickness(double thickness) {
+        this.thickness = thickness;
     }
 
     /**
@@ -147,6 +149,7 @@ public class Rectangle implements Shape {
         }
         else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
+            g2d.setLineWidth(this.thickness);
             g2d.strokeRect(this.topLeft.x, this.topLeft.y,
                     this.width, this.height);
         }

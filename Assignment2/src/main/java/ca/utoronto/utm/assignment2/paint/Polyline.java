@@ -8,6 +8,7 @@ public class Polyline implements Shape {
     private ArrayList<Point> points;
     private Color color;
     private boolean isClosed;
+    private double thickness;
 
     /**
      * Constructs a default black polyline with no points.
@@ -16,6 +17,7 @@ public class Polyline implements Shape {
         this.points = new ArrayList<>();
         this.color = Color.BLACK;
         this.isClosed = false;
+        this.thickness = 1.0;
     }
 
     /**
@@ -66,11 +68,11 @@ public class Polyline implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Polyline
+     *
      */
     @Override
-    public double getThickness() {
-        return -1;
+    public void setThickness(double thickness) {
+        this.thickness = thickness;
     }
 
     /**
@@ -113,12 +115,14 @@ public class Polyline implements Shape {
                 yPoints[i] = this.points.get(i).y;
             }
             g2d.setFill(this.color);
+            g2d.setLineWidth(this.thickness);
             g2d.fillPolygon(xPoints, yPoints, this.points.size());
         } else {
             for (int i = 0; i < this.points.size() - 1; i++) {
                 Point p1 = this.points.get(i);
                 Point p2 = this.points.get(i + 1);
                 g2d.setStroke(this.color);
+                g2d.setLineWidth(this.thickness);
                 g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
             }
         }

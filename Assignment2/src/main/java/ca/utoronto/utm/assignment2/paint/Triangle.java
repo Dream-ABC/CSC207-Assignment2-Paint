@@ -17,6 +17,7 @@ public class Triangle extends Polygon implements Shape {
     private Point origin;
     private Color color;
     private final String fillStyle;
+    private double thickness;
 
     /**
      * Constructs a default black triangle with a base and height of 0.
@@ -26,6 +27,7 @@ public class Triangle extends Polygon implements Shape {
         this.height = 0.0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
+        this.thickness = 1.0;
     }
 
     /**
@@ -103,11 +105,11 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Triangle
+     *
      */
     @Override
-    public double getThickness() {
-        return -1;
+    public void setThickness(double thickness) {
+        this.thickness = thickness;
     }
 
     /**
@@ -196,6 +198,7 @@ public class Triangle extends Polygon implements Shape {
         }
         else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
+            g2d.setLineWidth(this.thickness);
             g2d.strokePolygon(xPoints, yPoints, 3);
         }
     }

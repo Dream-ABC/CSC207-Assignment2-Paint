@@ -22,7 +22,7 @@ public class Circle implements Shape{
                 this.diameter = 0;
                 this.color = Color.BLACK;
                 this.fillStyle = fillStyle;
-                this.thickness = 1;
+                this.thickness = 1.0;
         }
 
         /**
@@ -66,11 +66,11 @@ public class Circle implements Shape{
         }
 
         /**
-         * @return the stroke thickness of the Circle
+         *
          */
         @Override
-        public double getThickness() {
-                return this.thickness;
+        public void setThickness(double thickness) {
+                this.thickness = thickness;
         }
 
         /**
