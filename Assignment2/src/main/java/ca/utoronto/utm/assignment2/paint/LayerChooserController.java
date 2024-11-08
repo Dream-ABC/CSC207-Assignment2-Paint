@@ -5,8 +5,8 @@ import java.util.Observer;
 
 public class LayerChooserController implements Observer {
 
-    private PaintModel model;
-    private LayerChooserPanel panel;
+    private final PaintModel model;
+    private final LayerChooserPanel panel;
 
     public LayerChooserController(LayerChooserPanel panel, PaintModel model) {
         this.model = model;

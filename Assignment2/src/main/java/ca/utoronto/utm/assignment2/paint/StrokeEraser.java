@@ -1,22 +1,24 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 /**
  * A class to represent an eraser.
  * Erasers are represented as a square, where the user's mouse is the topLeft of the square.
  */
-public class Eraser implements Tool{
+public class StrokeEraser implements Tool{
     private Point topLeft;
-    private double dimensionX;
-    private double dimensionY;
-    private ArrayList<Shape> removedShapes;
+    private final double dimensionX;
+    private final double dimensionY;
+    private final ArrayList<Shape> removedShapes;
 
     /**
-     * Constructs a default eraser, represented as a square that is of size 14.
+     * Constructs a default stroke eraser, represented as a square that is of size 14.
      */
-    public Eraser(){
+    public StrokeEraser(){
         this.dimensionX = 14;
         this.dimensionY = 14;
         this.removedShapes = new ArrayList<>();
@@ -55,6 +57,7 @@ public class Eraser implements Tool{
      */
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
+        g2d.setStroke(Color.BLACK);
         g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y - dimensionY/2,
                 this.dimensionX, this.dimensionY);
     }

@@ -113,14 +113,6 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * @return 'Triangle' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Triangle";
-    }
-
-    /**
      * Calculates the area of a triangle created by three points (x1, y1), (x2, y2), (x3, y3).
      * @param x1 x-coord of first point on triangle
      * @param y1 y-coord of first point on triangle
@@ -246,7 +238,7 @@ public class Triangle extends Polygon implements Shape {
                     (xPoints[i] <= rightX) &&
                     (topY <= yPoints[i]) &&
                     (yPoints[i] <= bottomY) &&
-                    (!overlapsInsideAtPoint(new Point(xPoints[i], yPoints[i]))))
+                    (overlapsInsideAtPoint(new Point(xPoints[i], yPoints[i]))))
             {return true;}
         }
 

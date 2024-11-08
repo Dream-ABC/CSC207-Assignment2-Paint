@@ -13,7 +13,6 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Window;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * The TextEditorDialog class is responsible for creating and displaying a dialog
@@ -23,9 +22,9 @@ import java.util.stream.Collectors;
  */
 public class TextEditorDialog {
 
-    private Dialog<Void> dialog;
-    private PaintPanel paintPanel;
-    private Text displayedText;
+    private final Dialog<Void> dialog;
+    private final PaintPanel paintPanel;
+    private final Text displayedText;
 
     private TextField textField;
     private ComboBox fontChooser;
@@ -92,7 +91,7 @@ public class TextEditorDialog {
         // get all fonts that supports bold and italic
         List<String> supportedFonts = Font.getFamilies().stream()
                 .filter(this::supportsBoldAndItalic)
-                .collect(Collectors.toList());
+                .toList();
 
         this.fontChooser.getItems().addAll(supportedFonts);
         this.fontChooser.setValue("Arial");  // default font

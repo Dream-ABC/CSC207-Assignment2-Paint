@@ -7,8 +7,8 @@ import javafx.stage.Popup;
 
 public class LineThicknessSlider extends Slider implements ChangeListener {
 
-    private PaintPanel paintPanel;
-    private Slider slider;
+    private final PaintPanel paintPanel;
+    private final Slider slider;
 
     /**
      * Initializes a slider for controlling line thickness values, associates

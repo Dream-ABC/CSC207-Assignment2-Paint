@@ -110,14 +110,6 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * @return 'Rectangle' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Rectangle";
-    }
-
-    /**
      * Checks if the Tool is overlapping the Rectangle.
      * If it is, then the Eraser will erase the Rectangle.
      * @param tool the Eraser instance which is currently erasing drawings

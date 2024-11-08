@@ -3,32 +3,15 @@ package ca.utoronto.utm.assignment2.scribble;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Scribble extends Application {
 
         @Override
-        public void start(Stage stage) throws Exception {
+        public void start(Stage stage) {
 
-                /**
-                 * A stage is the top level GUI window.
-                 * A stage has a scene.
-                 * A scene is a tree/graph of stuff, that is. Nodes in the scene are ...
-                 *
-                 * LAYOUTS: which organize how its subtrees appear
-                 * https://docs.oracle.com/javafx/2/layout/builtin_layouts.htm#CHDGHCDG
-                 *
-                 * CONTROLS: things which you interact with...
-                 * https://docs.oracle.com/javafx/2/ui_controls/jfxpub-ui_controls.htm
-                 *
-                 * EVENTS: Controls communicate with your code through callbacks. Basically the Observable pattern.
-                 *
-                 **/
-
-               //  Canvas canvas = new Canvas(200,200);
+            //  Canvas canvas = new Canvas(200,200);
                 ScribblePanel scribblePanel = new ScribblePanel();
                 HBox root = new HBox(); // LAYOUT
                 root.setPadding(new Insets(5));
@@ -43,11 +26,5 @@ public class Scribble extends Application {
 
         public static void main(String[] args) {
                 launch(args);
-                /**
-                 * static method of Application
-                 * Creates an instance of Application,
-                 * starts the gui thread and calls
-                 * Application.start(stage) where stage is the window
-                 **/
         }
 }

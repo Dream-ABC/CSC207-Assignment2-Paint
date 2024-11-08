@@ -3,40 +3,40 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
-public class EraserStrategy implements ShapeStrategy {
-    private PaintPanel panel;
+public class StrokeEraserStrategy implements ShapeStrategy {
+    private final PaintPanel panel;
 
-    public EraserStrategy(PaintPanel p) {
+    public StrokeEraserStrategy(PaintPanel p) {
         this.panel = p;
     }
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         this.panel.getModel().storeState();
-        Eraser eraser = new Eraser();
+        StrokeEraser strokeEraser = new StrokeEraser();
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x, topLeft.y);
-        eraser.setTopLeft(centre);
-        this.panel.setEraser(eraser);
-        this.panel.getModel().addEraser(eraser);
+        strokeEraser.setTopLeft(centre);
+        this.panel.setStrokeEraser(strokeEraser);
+        this.panel.getModel().addStrokeEraser(strokeEraser);
         eraseDrawings();
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        Eraser eraser = panel.getEraser();
+        StrokeEraser strokeEraser = panel.getStrokeEraser();
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x, topLeft.y);
-        eraser.setTopLeft(centre);
-        this.panel.getModel().addEraser(eraser);
+        strokeEraser.setTopLeft(centre);
+        this.panel.getModel().addStrokeEraser(strokeEraser);
         eraseDrawings();
     }
 
     private void eraseDrawings(){
         ArrayList<Shape> currLayer = new ArrayList<>(this.panel.getModel().getSelectedLayer().getShapes());
         for (Shape shape : currLayer) {
-            if (shape.overlaps(this.panel.getEraser())) {
-                this.panel.getEraser().addRemovedShapes(shape);
+            if (shape.overlaps(this.panel.getStrokeEraser())) {
+                this.panel.getStrokeEraser().addRemovedShapes(shape);
                 this.panel.getModel().removeShape(shape);
             }
         }
@@ -44,9 +44,9 @@ public class EraserStrategy implements ShapeStrategy {
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        this.panel.getModel().getHistory().addToLast(this.panel.getEraser().getRemovedShapes());
-        this.panel.getModel().removeEraser();
-        this.panel.setEraser(null);
+        this.panel.getModel().getHistory().addToLast(this.panel.getStrokeEraser().getRemovedShapes());
+        this.panel.getModel().removeStrokeEraser();
+        this.panel.setStrokeEraser(null);
         this.panel.setCurrentShape(null);
     }
 }

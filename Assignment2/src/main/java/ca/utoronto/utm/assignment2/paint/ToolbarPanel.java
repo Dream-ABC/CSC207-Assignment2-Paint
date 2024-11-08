@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
@@ -101,8 +100,7 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent event) {
         for (Node node : this.getChildren()) {
-            if (node instanceof VBox) {
-                VBox container = (VBox) node;
+            if (node instanceof VBox container) {
                 ToggleButton button = (ToggleButton) container.getChildren().getFirst();
                 button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
             }

@@ -76,14 +76,6 @@ public class Circle implements Shape{
         }
 
         /**
-         * @return 'Circle' as a string
-         */
-        @Override
-        public String getShape() {
-                return "Circle";
-        }
-
-        /**
          * Checks if the Eraser is overlapping the Circle.
          * If it is, then the Eraser will erase the Circle.
          * @param tool the tool instance which is currently checking for overlaps

@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 
 public class SquareStrategy implements ShapeStrategy {
 
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public SquareStrategy(PaintPanel p) {
         this.panel = p;
@@ -12,7 +12,6 @@ public class SquareStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println("Started Square");
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point origin = new Point(topLeft.x, topLeft.y);
 
@@ -61,32 +60,29 @@ public class SquareStrategy implements ShapeStrategy {
     public void mouseReleased(MouseEvent mouseEvent) {
         Square square = (Square) this.panel.getCurrentShape();
         Point origin = square.getOrigin();
-        if(square!=null){
-            double x = mouseEvent.getX();
-            double y = mouseEvent.getY();
-            double width = Math.abs(origin.x - x);
-            double height = Math.abs(origin.y - y);
-            double sideLength = Math.min(width, height);
-            square.setSize(sideLength);
+        double x = mouseEvent.getX();
+        double y = mouseEvent.getY();
+        double width = Math.abs(origin.x - x);
+        double height = Math.abs(origin.y - y);
+        double sideLength = Math.min(width, height);
+        square.setSize(sideLength);
 
-            if (x < origin.x && y < origin.y) {
-                square.setTopLeft(new Point(origin.x - square.getSize(), origin.y - square.getSize()));
-            }
-            else if (x < origin.x) {
-                square.setTopLeft(new Point(origin.x - square.getSize(), origin.y));
-            }
-            else if (y < origin.y){
-                square.setTopLeft(new Point(origin.x, origin.y - square.getSize()));
-            }
-            else {
-                square.setTopLeft(new Point(origin.x, origin.y));
-            }
-
-            Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
-            this.panel.getModel().getSelectedLayer().removeShape(shape);
-            this.panel.getModel().addShapeFinal(square);
-            System.out.println("Added Square");
-            this.panel.setCurrentShape(null);
+        if (x < origin.x && y < origin.y) {
+            square.setTopLeft(new Point(origin.x - square.getSize(), origin.y - square.getSize()));
         }
+        else if (x < origin.x) {
+            square.setTopLeft(new Point(origin.x - square.getSize(), origin.y));
+        }
+        else if (y < origin.y){
+            square.setTopLeft(new Point(origin.x, origin.y - square.getSize()));
+        }
+        else {
+            square.setTopLeft(new Point(origin.x, origin.y));
+        }
+
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
+        this.panel.getModel().addShapeFinal(square);
+        this.panel.setCurrentShape(null);
     }
 }

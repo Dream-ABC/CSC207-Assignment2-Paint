@@ -11,7 +11,7 @@ import javafx.scene.text.Font;
  */
 public class Text implements Shape {
 
-    private javafx.scene.text.Text textNode;
+    private final javafx.scene.text.Text textNode;
     private Color color;
     private boolean isStrikethrough;
     private boolean isUnderlined;
@@ -114,16 +114,6 @@ public class Text implements Shape {
     @Override
     public void setLineThickness(double lineThickness) {
 
-    }
-
-    /**
-     * Retrieves the shape description of the text.
-     *
-     * @return a string representing the shape of the text, which is "Text".
-     */
-    @Override
-    public String getShape() {
-        return "Text";
     }
 
     /**

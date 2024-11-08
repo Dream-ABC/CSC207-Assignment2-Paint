@@ -1,9 +1,9 @@
 package ca.utoronto.utm.assignment2.paint;
 
 public class DeleteLayerCommand implements Command {
-    PaintLayer layer;
-    PaintModel model;
-    CommandHistory history;
+    final PaintLayer layer;
+    final PaintModel model;
+    final CommandHistory history;
 
     public DeleteLayerCommand(PaintModel m, PaintLayer l, CommandHistory h) {
         this.layer = l;

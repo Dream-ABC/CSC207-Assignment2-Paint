@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public class PaintModel extends Observable {
-    private ArrayList<PaintLayer> layers = new ArrayList<>();
+    private final ArrayList<PaintLayer> layers = new ArrayList<>();
     private PaintLayer selectedLayer;
     private String mode = "";
     private View view;
     private String fillStyle = "Solid";
     private double thickness = 1.0;
 
-    private CommandHistory history = new CommandHistory();
+    private final CommandHistory history = new CommandHistory();
 
     public String getFillStyle() {
         return this.fillStyle;
@@ -54,8 +54,6 @@ public class PaintModel extends Observable {
     public void removeLayer(PaintLayer layer) {
         if (this.layers.size() > 1) {
             // when there is only one layer, the user cannot remove it
-
-//            this.layers.remove(this.selectedLayer);
             int currIndex = this.layers.indexOf(selectedLayer);
             history.execute(new DeleteLayerCommand(this, layer, history));
             if (this.selectedLayer == layer) {
@@ -107,17 +105,16 @@ public class PaintModel extends Observable {
     }
 
     public void storeState(){
-        history.execute(new EraserStrokeCommand(this.selectedLayer, history));
+        history.execute(new StrokeEraserCommand(this.selectedLayer, history));
     }
 
-    public void addEraser(Eraser eraser) {
-        this.selectedLayer.addEraser(eraser);
+    public void addStrokeEraser(StrokeEraser strokeEraser) {
+        this.selectedLayer.addStrokeEraser(strokeEraser);
         notifyChange();
     }
 
-    public void removeEraser() {
-        //history.execute(new EraserStrokeCommand(removedShapes, history));
-        this.selectedLayer.removeEraser();
+    public void removeStrokeEraser() {
+        this.selectedLayer.removeStrokeEraser();
         notifyChange();
     }
 

@@ -66,14 +66,6 @@ public class ResizableCanvas extends Pane implements Observer {
         bottomLeftHandle.setOnMouseDragged(e -> resizeCanvas(e.getX(), e.getY(), -1, 1));
         leftHandle.setOnMouseDragged(e -> resizeCanvas(e.getX(), e.getY(), -1, 0));
 
-//        topLeftHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
-//        topHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
-//        topRightHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
-//        rightHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
-//        bottomRightHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
-//        bottomHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
-//        bottomLeftHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
-//        leftHandle.setOnMouseReleased(e -> {this.canvas.getModel().notifyChange(); setUpPositions();});
     }
 
     private void resizeCanvas(double mouseX, double mouseY, int xMultiplier, int yMultiplier) {

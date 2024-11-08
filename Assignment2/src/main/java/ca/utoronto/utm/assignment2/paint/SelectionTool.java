@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public class SelectionTool implements Tool {
     private Point origin;
     private double dimensionX;
     private double dimensionY;
-    private ArrayList<Shape> selectedShapes;
+    private final ArrayList<Shape> selectedShapes;
 
 
     /**
@@ -63,6 +64,7 @@ public class SelectionTool implements Tool {
      */
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
+        g2d.setStroke(Color.BLACK);
         g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y-dimensionY/2,
                 this.dimensionX, this.dimensionY);
     }

@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -16,23 +15,23 @@ import java.io.FileNotFoundException;
 
 public class View implements EventHandler<ActionEvent> {
 
-    private Stage stage;
-    private PaintModel paintModel;
-    private PaintPanel paintPanel;
-    private ToolbarPanel toolbarPanel;
-    private StatusbarPanel statusbarPanel;
-    private ZoomPanel zoomPanel;
-    private ShapeChooserPanel shapeChooserPanel;
-    private ColorPickerPopup colorPickerPopup;
-    private LayerChooserPanel layerChooserPanel;
-    private LayerChooserController layerChooserController;
-    private ResizableCanvas canvas;
+    private final Stage stage;
+    private final PaintModel paintModel;
+    private final PaintPanel paintPanel;
+    private final ToolbarPanel toolbarPanel;
+    private final StatusbarPanel statusbarPanel;
+    private final ZoomPanel zoomPanel;
+    private final ShapeChooserPanel shapeChooserPanel;
+    private final ColorPickerPopup colorPickerPopup;
+    private final LayerChooserPanel layerChooserPanel;
+    private final LayerChooserController layerChooserController;
+    private final ResizableCanvas canvas;
     private LineThicknessSlider lineThicknessSlider;
 
-    private BorderPane root;
-    private VBox topPanel;
-    private HBox bottomPanel;
-    private GridPane grid;
+    private final BorderPane root;
+    private final VBox topPanel;
+    private final HBox bottomPanel;
+    private final GridPane grid;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
@@ -72,8 +71,6 @@ public class View implements EventHandler<ActionEvent> {
         grid = new GridPane();
         //grid.setAlignment(Pos.CENTER);
         grid.getChildren().add(this.canvas);
-        //grid.setAlignment(Pos.CENTER);
-        //grid.setPadding(new Insets(stage.getHeight()/2 - grid.getHeight()/2, 10, 0, 0));
         root.setCenter(grid);
 
         Scene scene = new Scene(root);
@@ -202,9 +199,7 @@ public class View implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-//        System.out.println(((MenuItem) event.getSource()).getText());
         String command = ((MenuItem) event.getSource()).getText();
-//        System.out.println(command);
         if (command.equals("Exit")) {
             Platform.exit();
         } else if (command.equals("Colors")) {
