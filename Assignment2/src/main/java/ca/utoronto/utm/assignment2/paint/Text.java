@@ -139,10 +139,10 @@ public class Text implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double left = topLeft.x;
-        double right = left + this.textNode.getLayoutBounds().getWidth();
-        double top = topLeft.y;
-        double bottom = top + this.textNode.getLayoutBounds().getHeight();
+        double left = this.textNode.getLayoutBounds().getMinX() + topLeft.x;
+        double right = this.textNode.getLayoutBounds().getMaxX() + topLeft.x;
+        double top = this.textNode.getLayoutBounds().getMinY() + topLeft.y;
+        double bottom = this.textNode.getLayoutBounds().getMaxY() + topLeft.y;
 
         double eraserLeft = tool.getCentre().x-(tool.getDimensionX()/2.0);
         double eraserRight = tool.getCentre().x+(tool.getDimensionX()/2.0);
@@ -173,7 +173,6 @@ public class Text implements Shape {
         double textHeight = this.textNode.getLayoutBounds().getHeight();
 
         // Draw the textNode
-        System.out.println(this.textNode.getText());
         g2d.fillText(textNode.getText(), this.topLeft.x, this.topLeft.y);
 
         // Draw underline and strikethrough
