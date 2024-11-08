@@ -71,10 +71,10 @@ public class Squiggle implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double leftX = tool.getCentre().x-(tool.getDimensionX()/2.0);
-        double rightX = tool.getCentre().x+(tool.getDimensionX()/2.0);
-        double topY = tool.getCentre().y-(tool.getDimensionY()/2.0);
-        double bottomY = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
         for (Point p : this.points) {
             if (leftX <= p.x && p.x <= rightX && topY <= p.y && p.y <= bottomY){
                 return true;

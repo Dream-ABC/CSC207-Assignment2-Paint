@@ -108,10 +108,10 @@ public class Square implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double eraserLeft = tool.getCentre().x - (tool.getDimensionX() / 2.0);
-        double eraserRight = tool.getCentre().x + (tool.getDimensionX() / 2.0);
-        double eraserTop = tool.getCentre().y - (tool.getDimensionY() / 2.0);
-        double eraserBottom = tool.getCentre().y + (tool.getDimensionY() / 2.0);
+        double eraserLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double eraserTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double eraserBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
         double rectLeft = this.topLeft.x;
         double rectRight = this.topLeft.x + this.size;

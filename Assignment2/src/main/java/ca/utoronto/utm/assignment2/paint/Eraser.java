@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 /**
  * A class to represent an eraser.
- * Erasers are represented as a square, where the user's mouse is the centre of the square.
+ * Erasers are represented as a square, where the user's mouse is the topLeft of the square.
  */
 public class Eraser implements Tool{
-    private Point centre;
+    private Point topLeft;
     private double dimensionX;
     private double dimensionY;
     private ArrayList<Shape> removedShapes;
@@ -23,17 +23,17 @@ public class Eraser implements Tool{
     }
 
     /**
-     * @return the centre of the Eraser
+     * @return the topLeft of the Eraser
      */
-    public Point getCentre() {
-        return centre;
+    public Point getTopLeft() {
+        return topLeft;
     }
 
     /**
-     * @param centre centre of Eraser's square representation
+     * @param topLeft topLeft of Eraser's square representation
      */
-    public void setCentre(Point centre) {
-        this.centre = centre;
+    public void setTopLeft(Point topLeft) {
+        this.topLeft = topLeft;
     }
 
     /**
@@ -55,7 +55,7 @@ public class Eraser implements Tool{
      */
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
-        g2d.strokeRect(this.centre.x - dimensionX/2, this.centre.y - dimensionY/2,
+        g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y - dimensionY/2,
                 this.dimensionX, this.dimensionY);
     }
 }

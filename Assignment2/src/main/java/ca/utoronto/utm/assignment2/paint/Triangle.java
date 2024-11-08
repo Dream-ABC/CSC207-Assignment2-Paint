@@ -151,16 +151,16 @@ public class Triangle extends Polygon implements Shape {
         }
         double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
 
-        double leftX = tool.getCentre().x-(tool.getDimensionX()/2.0);
-        double rightX = tool.getCentre().x+(tool.getDimensionX()/2.0);
-        double topY = tool.getCentre().y-(tool.getDimensionY()/2.0);
-        double bottomY = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
         ArrayList<Point> allPoints = new ArrayList<Point>();
         allPoints.add(new Point(leftX, topY));
         allPoints.add(new Point(leftX, bottomY));
         allPoints.add(new Point(rightX, topY));
         allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(tool.getCentre());
+        allPoints.add(tool.getTopLeft());
 
         for (Point point : allPoints) {
             double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);

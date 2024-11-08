@@ -124,10 +124,10 @@ public class Oval implements Shape {
         double radiusX = width / 2;
         double radiusY = height / 2;
 
-        double rectLeft = tool.getCentre().x - (tool.getDimensionX() / 2);
-        double rectRight = tool.getCentre().x + (tool.getDimensionX() / 2);
-        double rectTop = tool.getCentre().y - (tool.getDimensionY() / 2);
-        double rectBottom = tool.getCentre().y + (tool.getDimensionY() / 2);
+        double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2);
+        double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2);
+        double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2);
+        double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2);
 
         double closestX = clamp(ovalCenterX, rectLeft, rectRight);
         double closestY = clamp(ovalCenterY, rectTop, rectBottom);
