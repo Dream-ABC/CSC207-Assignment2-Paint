@@ -118,7 +118,9 @@ PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
 I WANT   : To be able to select drawings on the canvas
-SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
+SO THAT  : I can register which shapes have been selected by the tool.
+           This will be useful for future user stories, such as dragging
+           drawings around the canvas or copying and pasting drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.468 : tianshi8 : Complete
@@ -140,7 +142,7 @@ ISSUE    :
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.481 : hingor13 : Started
-NAME     : Undo/Redo Bug while run on Initial Canvas with no changes
+NAME     : Undo/Redo Bug while run on initial canvas with no changes
 PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL :
 ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
@@ -148,8 +150,9 @@ ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.482 : wenjess1 : Complete
-NAME     : Fixing circle selection to become more precise
+NAME     : Improve precision of circle selection for erasing
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL : 1 hour
-ISSUE    : ...
+ISSUE    : The stroke eraser currently removes Circle drawings prematurely,
+           before the mouse cursor actually touches the Circle.
 --------------------------------------------------------------------------
