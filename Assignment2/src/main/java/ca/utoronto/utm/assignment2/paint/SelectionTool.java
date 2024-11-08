@@ -62,6 +62,7 @@ public class SelectionTool implements Tool {
      * @param g2d GraphicsContext
      */
     public void display(GraphicsContext g2d) {
+        g2d.setLineWidth(1);
         g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y-dimensionY/2,
                 this.dimensionX, this.dimensionY);
     }
