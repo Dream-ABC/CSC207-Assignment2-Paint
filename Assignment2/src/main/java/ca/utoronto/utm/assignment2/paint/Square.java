@@ -12,13 +12,15 @@ public class Square implements Shape {
     private Point origin;
     private double size;
     private Color color;
+    private final String fillStyle;
 
     /**
      * Constructs a default black square with a size of 0.
      */
-    public Square() {
+    public Square(String fillStyle) {
         this.size = 0;
         this.color = Color.BLACK;
+        this.fillStyle = fillStyle;
     }
 
     /**
@@ -121,12 +123,12 @@ public class Square implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
-        if (fillStyle.equals("Solid")){
+        if (this.fillStyle.equals("Solid")){
             g2d.setFill(this.color);
             g2d.fillRect(this.topLeft.x, this.topLeft.y,
                     this.size, this.size);
         }
-        else if (fillStyle.equals("Outline")){
+        else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
             g2d.strokeRect(this.topLeft.x, this.topLeft.y,
                     this.size, this.size);

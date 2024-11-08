@@ -15,14 +15,16 @@ public class Triangle extends Polygon implements Shape {
     private double height;
     private Point origin;
     private Color color;
+    private final String fillStyle;
 
     /**
      * Constructs a default black triangle with a base and height of 0.
      */
-    public Triangle() {
+    public Triangle(String fillStyle) {
         this.base = 0.0;
         this.height = 0.0;
         this.color = Color.BLACK;
+        this.fillStyle = fillStyle;
     }
 
     /**
@@ -170,11 +172,11 @@ public class Triangle extends Polygon implements Shape {
             yPoints[i] = points.get(i + 3);
         }
 
-        if (fillStyle.equals("Solid")){
+        if (this.fillStyle.equals("Solid")){
             g2d.setFill(this.color);
             g2d.fillPolygon(xPoints, yPoints, 3);
         }
-        else if (fillStyle.equals("Outline")){
+        else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
             g2d.strokePolygon(xPoints, yPoints, 3);
         }

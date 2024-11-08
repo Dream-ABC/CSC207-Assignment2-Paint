@@ -13,14 +13,16 @@ public class Oval implements Shape {
     private double width;
     private double height;
     private Color color;
+    private final String fillStyle;
 
     /**
      * Constructs a default black oval with a width and height of 0.
      */
-    public Oval() {
+    public Oval(String fillStyle) {
         this.width = 0;
         this.height = 0;
         this.color = Color.BLACK;
+        this.fillStyle = fillStyle;
     }
 
     /**
@@ -142,12 +144,12 @@ public class Oval implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
-        if (fillStyle.equals("Solid")){
+        if (this.fillStyle.equals("Solid")){
             g2d.setFill(this.color);
             g2d.fillOval(this.topLeft.x, this.topLeft.y,
                     this.width, this.height);
         }
-        else if (fillStyle.equals("Outline")){
+        else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
             g2d.strokeOval(this.topLeft.x, this.topLeft.y,
                     this.width, this.height);

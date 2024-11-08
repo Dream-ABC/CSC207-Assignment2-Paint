@@ -19,7 +19,7 @@ public class TriangleStrategy implements ShapeStrategy {
 
         // Create a triangle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Triangle triangle = (Triangle) shapeFactory.getShape(panel.getMode());
+        Triangle triangle = (Triangle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle());
         this.panel.setCurrentShape(triangle);
 
         // Set info of triangle (radius=0)
