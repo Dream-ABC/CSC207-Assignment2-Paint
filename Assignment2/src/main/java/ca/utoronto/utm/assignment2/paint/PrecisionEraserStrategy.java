@@ -29,6 +29,8 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
         Point centre = new Point(topLeft.x, topLeft.y);
         precisionEraser.setTopLeft(centre);
         precisionEraser.addPoint(topLeft);
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShape(precisionEraser);
     }
 
@@ -38,6 +40,8 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
         if(precisionEraser!=null) {
             Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
             precisionEraser.addPoint(topLeft);
+            Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+            this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShapeFinal(precisionEraser);
             this.panel.setCurrentShape(null);
         }
