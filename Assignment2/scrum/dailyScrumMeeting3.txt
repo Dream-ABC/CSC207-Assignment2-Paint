@@ -129,9 +129,9 @@ Nov 7,2024
 	Obstacles I face: Figuring out how to complete my tasks
 
 Nov 8,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed many tasks, did pull requests
+	What I will do today: Continue working on bugs and user stories
+	Obstacles I face: Avoiding any bugs in my code, and making sure it all works as intended
 
 Nov 9,2024
 	What I did yesterday:
