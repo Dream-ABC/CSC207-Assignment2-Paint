@@ -133,11 +133,11 @@ public class Triangle extends Polygon implements Shape {
     /**
      * Checks if the Eraser is overlapping the Triangle.
      * If it is, then the Eraser will erase the Triangle.
-     * @param eraser the Eraser instance which is currently erasing drawings
+     * @param tool the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Triangle, False otherwise
      */
     @Override
-    public boolean overlaps(Tool eraser) {
+    public boolean overlaps(Tool tool) {
         ObservableList<Double> points = this.getPoints();
         double[] xPoints = new double[3];
         double[] yPoints = new double[3];
@@ -147,16 +147,16 @@ public class Triangle extends Polygon implements Shape {
         }
         double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
 
-        double leftX = eraser.getCentre().x-(eraser.getDimensionX()/2.0);
-        double rightX = eraser.getCentre().x+(eraser.getDimensionX()/2.0);
-        double topY = eraser.getCentre().y-(eraser.getDimensionY()/2.0);
-        double bottomY = eraser.getCentre().y+(eraser.getDimensionY()/2.0);
+        double leftX = tool.getCentre().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getCentre().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getCentre().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getCentre().y+(tool.getDimensionY()/2.0);
         ArrayList<Point> allPoints = new ArrayList<Point>();
         allPoints.add(new Point(leftX, topY));
         allPoints.add(new Point(leftX, bottomY));
         allPoints.add(new Point(rightX, topY));
         allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(eraser.getCentre());
+        allPoints.add(tool.getCentre());
 
         for (Point point : allPoints) {
             double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
@@ -166,6 +166,11 @@ public class Triangle extends Polygon implements Shape {
                 return true;
             }
         }
+
+        for (int i = 0; i < 3; i++){
+            if ((leftX <= xPoints[i]) && (xPoints[i] <= rightX) && (topY <= yPoints[i]) && (yPoints[i] <= bottomY)) {return true;}
+        }
+
         return false;
     }
 

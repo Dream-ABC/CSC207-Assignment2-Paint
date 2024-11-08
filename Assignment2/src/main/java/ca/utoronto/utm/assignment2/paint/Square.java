@@ -102,11 +102,11 @@ public class Square implements Shape {
      * @return True if the Eraser should erase this Square, False otherwise
      */
     @Override
-    public boolean overlaps(Tool eraser) {
-        double eraserLeft = eraser.getCentre().x-(eraser.getDimensionX()/2.0);
-        double eraserRight = eraser.getCentre().x+(eraser.getDimensionX()/2.0);
-        double eraserTop = eraser.getCentre().y-(eraser.getDimensionY()/2.0);
-        double eraserBottom = eraser.getCentre().y+(eraser.getDimensionY()/2.0);
+    public boolean overlaps(Tool tool) {
+        double eraserLeft = tool.getCentre().x-(tool.getDimensionX()/2.0);
+        double eraserRight = tool.getCentre().x+(tool.getDimensionX()/2.0);
+        double eraserTop = tool.getCentre().y-(tool.getDimensionY()/2.0);
+        double eraserBottom = tool.getCentre().y+(tool.getDimensionY()/2.0);
 
         double rectLeft = this.topLeft.x;
         double rectRight = this.topLeft.x + this.size;

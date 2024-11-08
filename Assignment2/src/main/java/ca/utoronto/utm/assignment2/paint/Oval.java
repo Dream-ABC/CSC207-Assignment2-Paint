@@ -111,38 +111,33 @@ public class Oval implements Shape {
     /**
      * Checks if the Eraser is overlapping the Oval.
      * If it is, then the Eraser will erase the Oval.
-     * @param eraser the Eraser instance which is currently erasing drawings
+     * @param tool the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Oval, False otherwise
      */
     @Override
-    public boolean overlaps(Tool eraser) {
-        double h = this.topLeft.x+this.width/2.0;
-        double k = this.topLeft.y+this.height/2.0;
-        double a, b;
-        if (this.height > this.width){
-            a = this.height/2.0;
-            b = this.width/2.0;
-        }
-        else{
-            a = this.width/2.0;
-            b = this.height/2.0;
-        }
-        double leftX = eraser.getCentre().x-(eraser.getDimensionX()/2.0);
-        double rightX = eraser.getCentre().x+(eraser.getDimensionX()/2.0);
-        double topY = eraser.getCentre().y-(eraser.getDimensionY()/2.0);
-        double bottomY = eraser.getCentre().y+(eraser.getDimensionY()/2.0);
-        ArrayList<Point> allPoints = new ArrayList<Point>();
-        allPoints.add(new Point(leftX, topY));
-        allPoints.add(new Point(leftX, bottomY));
-        allPoints.add(new Point(rightX, topY));
-        allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(eraser.getCentre());
-        for (Point point : allPoints) {
-            if (Math.pow((point.x-h)/a, 2) + Math.pow((point.y-k)/b, 2) <= 1){
-                return true;
-            }
-        }
-        return false;
+    public boolean overlaps(Tool tool) {
+        double ovalCenterX = topLeft.x + (width / 2);
+        double ovalCenterY = topLeft.y + (height / 2);
+        double radiusX = width / 2;
+        double radiusY = height / 2;
+
+        double rectLeft = tool.getCentre().x - (tool.getDimensionX() / 2);
+        double rectRight = tool.getCentre().x + (tool.getDimensionX() / 2);
+        double rectTop = tool.getCentre().y - (tool.getDimensionY() / 2);
+        double rectBottom = tool.getCentre().y + (tool.getDimensionY() / 2);
+
+        double closestX = clamp(ovalCenterX, rectLeft, rectRight);
+        double closestY = clamp(ovalCenterY, rectTop, rectBottom);
+
+        double distanceX = (ovalCenterX - closestX) / radiusX;
+        double distanceY = (ovalCenterY - closestY) / radiusY;
+        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+        return distanceSquared <= 1;
+    }
+
+    private double clamp(double value, double min, double max) {
+        return Math.max(min, Math.min(max, value));
     }
 
     /**
