@@ -184,7 +184,6 @@ public class View implements EventHandler<ActionEvent> {
 
         menu = new Menu("View");
 
-
         menuItem = new MenuItem("Colors");
         menuItem.setOnAction(this); // Show the color popup
         menu.getItems().add(menuItem);

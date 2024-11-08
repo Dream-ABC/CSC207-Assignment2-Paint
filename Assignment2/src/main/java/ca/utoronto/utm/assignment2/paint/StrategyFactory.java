@@ -21,6 +21,8 @@ public class StrategyFactory {
                 return new PolylineStrategy(panel);
             case "selectiontool":
                 return new SelectionToolStrategy(panel);
+            case "text":
+                return new TextStrategy(panel);
             // add more strategies here
 
             default:

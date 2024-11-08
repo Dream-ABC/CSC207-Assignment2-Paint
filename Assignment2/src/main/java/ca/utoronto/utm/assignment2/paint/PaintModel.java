@@ -61,8 +61,6 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-
-
     public void switchLayerVisible(String layerName) {
         int layerIndex = Integer.parseInt(layerName.substring(5));
         history.execute(new ChangeLayerVisibilityCommand(layers.get(layerIndex)));

@@ -1,4 +1,5 @@
 package ca.utoronto.utm.assignment2.paint;
+
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,10 +15,10 @@ import java.util.Observer;
 
 public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEvent> {
 
-        private PaintModel model;
+    private PaintModel model;
 
-        public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
-                this.model = model;
+    public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
+        this.model = model;
 
                 String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Oval", "Triangle", "Eraser", "Outline", "Solid", "SelectionTool"};
                 ImageView[] buttonImages = new ImageView[buttonIds.length];
@@ -31,7 +32,8 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                         "src/main/java/ca/utoronto/utm/assignment2/images/eraser.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/outline.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/solid.png",
-                        "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png"};
+                        "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png",
+                        "src/main/java/ca/utoronto/utm/assignment2/images/text.png"};
 
                 for (int i = 0; i < buttonIds.length; i++) {
                         FileInputStream input = new FileInputStream(imageFiles[i]);

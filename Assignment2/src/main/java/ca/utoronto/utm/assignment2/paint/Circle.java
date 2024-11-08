@@ -23,61 +23,65 @@ public class Circle implements Shape{
                 this.fillStyle = fillStyle;
         }
 
-        /**
-         * @param centre centre of Circle
-         */
-        public void setCentre(Point centre) {
-                this.centre = centre;
-        }
+    /**
+     * @param centre centre of Circle
+     */
+    public void setCentre(Point centre) {
+        this.centre = centre;
+    }
 
-        /**
-         * @param topLeft top left corner of Circle
-         */
-        public void setTopLeft(Point topLeft) { this.topLeft = topLeft; }
+    /**
+     * @param topLeft top left corner of Circle
+     */
+    public void setTopLeft(Point topLeft) {
+        this.topLeft = topLeft;
+    }
 
-        /**
-         * @return the centre of the Circle.
-         */
-        public Point getCentre() { return this.centre; }
+    /**
+     * @return the centre of the Circle.
+     */
+    public Point getCentre() {
+        return this.centre;
+    }
 
-        /**
-         * @param diameter diameter of Circle
-         */
-        public void setDiameter(double diameter) {
-                this.diameter = diameter;
-        }
+    /**
+     * @param diameter diameter of Circle
+     */
+    public void setDiameter(double diameter) {
+        this.diameter = diameter;
+    }
 
-        /**
-         * @return the color of the Circle
-         */
-        @Override
-        public Color getColor() {
-                return this.color;
-        }
+    /**
+     * @return the color of the Circle
+     */
+    @Override
+    public Color getColor() {
+        return this.color;
+    }
 
-        /**
-         * @param color color of Circle
-         */
-        @Override
-        public void setColor(Color color) {
-                this.color = color;
-        }
+    /**
+     * @param color color of Circle
+     */
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
-        /**
-         * @return the stroke thickness of the Circle
-         */
-        @Override
-        public int getThickness() {
-                return -1;
-        }
+    /**
+     * @return the stroke thickness of the Circle
+     */
+    @Override
+    public int getThickness() {
+        return -1;
+    }
 
-        /**
-         * @return 'Circle' as a string
-         */
-        @Override
-        public String getShape() {
-                return "Circle";
-        }
+    /**
+     * @return 'Circle' as a string
+     */
+    @Override
+    public String getShape() {
+        return "Circle";
+    }
 
         /**
          * Checks if the Eraser is overlapping the Circle.
