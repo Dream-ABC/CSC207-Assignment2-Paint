@@ -5,7 +5,7 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
 public class SelectionToolStrategy implements ShapeStrategy{
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public SelectionToolStrategy(PaintPanel p) {
         this.panel = p;
@@ -49,8 +49,6 @@ public class SelectionToolStrategy implements ShapeStrategy{
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-//        this.panel.getModel().removeSelectionTool();
-//        this.panel.setSelectionTool(null);
         selectShapes();
 
         System.out.println(this.panel.getSelectionTool().getSelectedShapes().size());

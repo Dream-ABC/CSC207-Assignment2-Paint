@@ -5,9 +5,10 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 
 public class PrecisionEraser implements Shape {
-    private ArrayList<Point> points;
+    private final ArrayList<Point> points;
     private Point topLeft;
-    private double dimension;
+    private final double dimension;
+    private Color color;
 
     /**
      * Constructs a default stroke eraser, represented as a square that is of size 14.
@@ -15,6 +16,7 @@ public class PrecisionEraser implements Shape {
     public PrecisionEraser(){
         this.dimension = 14;
         this.points = new ArrayList<>();
+        this.color = Color.BLACK;
     }
 
     /**
@@ -33,26 +35,18 @@ public class PrecisionEraser implements Shape {
         this.topLeft = topLeft;
     }
 
-    public double getDimension() {
-        return dimension;
-    }
-
     @Override
     public void setColor(Color color) {
+        this.color = color;
     }
 
     @Override
     public Color getColor() {
-        return null;
+        return this.color;
     }
 
     @Override
     public void setLineThickness(double lineThickness) {
-    }
-
-    @Override
-    public String getShape() {
-        return "";
     }
 
     @Override
@@ -64,7 +58,7 @@ public class PrecisionEraser implements Shape {
     public void display(GraphicsContext g2d) {
         for (Point p : points) {
             g2d.setLineWidth(1);
-            g2d.setStroke(Color.BLACK);
+            g2d.setStroke(this.color);
             g2d.clearRect(p.x  - dimension/2.0, p.y  - dimension/2.0, this.dimension, this.dimension);
             g2d.strokeRect(this.topLeft.x - dimension/2.0, this.topLeft.y - dimension/2.0,
                     this.dimension, this.dimension);

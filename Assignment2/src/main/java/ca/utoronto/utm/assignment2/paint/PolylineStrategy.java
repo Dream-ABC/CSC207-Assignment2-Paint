@@ -6,7 +6,7 @@ import java.awt.geom.Point2D;
 
 public class PolylineStrategy implements ShapeStrategy {
 
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public PolylineStrategy(PaintPanel p) {
         this.panel = p;

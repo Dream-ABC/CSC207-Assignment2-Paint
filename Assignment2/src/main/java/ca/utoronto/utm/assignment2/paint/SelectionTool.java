@@ -11,7 +11,7 @@ public class SelectionTool implements Tool {
     private Point origin;
     private double dimensionX;
     private double dimensionY;
-    private ArrayList<Shape> selectedShapes;
+    private final ArrayList<Shape> selectedShapes;
 
 
     /**

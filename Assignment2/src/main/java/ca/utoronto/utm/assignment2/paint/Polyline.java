@@ -9,7 +9,7 @@ import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 
 public class Polyline implements Shape {
-    private ArrayList<Point> points;
+    private final ArrayList<Point> points;
     private Color color;
     private boolean isClosed;
     private double lineThickness;
@@ -80,14 +80,6 @@ public class Polyline implements Shape {
     }
 
     /**
-     * @return 'Polyline' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Polyline";
-    }
-
-    /**
      * Checks if the Tool is overlapping the Polyline.
      * If it is, then the Tool will erase the entire Polyline.
      * @param tool the Tool instance which is currently erasing drawings
@@ -99,12 +91,6 @@ public class Polyline implements Shape {
         double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
         double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
         double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
-        ArrayList<Point> allPoints = new ArrayList<Point>();
-        allPoints.add(new Point(leftX, topY));
-        allPoints.add(new Point(leftX, bottomY));
-        allPoints.add(new Point(rightX, topY));
-        allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(tool.getTopLeft());
 
         GeneralPath polygon1 = new GeneralPath();  // Create a new empty path (polygon)
         polygon1.moveTo(this.points.getFirst().x, this.points.getFirst().y);  // Move to the starting point (0, 0)

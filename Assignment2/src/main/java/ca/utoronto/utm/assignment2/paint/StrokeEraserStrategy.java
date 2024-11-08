@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 import java.util.ArrayList;
 
 public class StrokeEraserStrategy implements ShapeStrategy {
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public StrokeEraserStrategy(PaintPanel p) {
         this.panel = p;

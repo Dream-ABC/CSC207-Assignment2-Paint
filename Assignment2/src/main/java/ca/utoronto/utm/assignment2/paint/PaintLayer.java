@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class PaintLayer extends Canvas {
 
-    private String status;  // "changed", "unchanged", "removed"
+    private final String status;  // "changed", "unchanged", "removed"
     private ArrayList<Shape> shapes;
     private StrokeEraser strokeEraser;
     private SelectionTool selectionTool;

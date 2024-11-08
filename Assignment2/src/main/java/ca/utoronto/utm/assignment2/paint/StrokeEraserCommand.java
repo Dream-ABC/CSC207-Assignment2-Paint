@@ -3,8 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import java.util.ArrayList;
 
 public class StrokeEraserCommand implements Command {
-    private PaintLayer layer;
-    private CommandHistory history;
+    private final PaintLayer layer;
+    private final CommandHistory history;
     private ArrayList<Shape> removedShapes;
     private boolean changed = false;
     public StrokeEraserCommand(PaintLayer l, CommandHistory h) {

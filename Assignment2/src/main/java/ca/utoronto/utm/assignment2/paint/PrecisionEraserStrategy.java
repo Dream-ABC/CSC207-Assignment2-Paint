@@ -1,10 +1,10 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.input.MouseEvent;
-import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 public class PrecisionEraserStrategy implements ShapeStrategy {
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public PrecisionEraserStrategy(PaintPanel p) {
         this.panel = p;
@@ -42,6 +42,7 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
             precisionEraser.addPoint(topLeft);
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
+            precisionEraser.setColor(Color.TRANSPARENT);
             this.panel.getModel().addShapeFinal(precisionEraser);
             this.panel.setCurrentShape(null);
         }

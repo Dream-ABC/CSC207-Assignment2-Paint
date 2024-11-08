@@ -1,6 +1,5 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;      // dont know yet
@@ -11,11 +10,10 @@ import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Observer;
 
 public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEvent> {
 
-    private PaintModel model;
+    private final PaintModel model;
 
     public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
         this.model = model;
@@ -74,7 +72,6 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                 else{
                         model.setMode(command);
                 }
-                System.out.println(command);
         }
 }
 

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public class PaintModel extends Observable {
-    private ArrayList<PaintLayer> layers = new ArrayList<>();
+    private final ArrayList<PaintLayer> layers = new ArrayList<>();
     private PaintLayer selectedLayer;
     private String mode = "";
     private View view;
     private String fillStyle = "Solid";
     private double thickness = 1.0;
 
-    private CommandHistory history = new CommandHistory();
+    private final CommandHistory history = new CommandHistory();
 
     public String getFillStyle() {
         return this.fillStyle;

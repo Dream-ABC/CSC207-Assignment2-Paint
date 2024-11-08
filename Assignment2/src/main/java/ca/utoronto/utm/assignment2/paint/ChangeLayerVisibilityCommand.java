@@ -1,7 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 public class ChangeLayerVisibilityCommand implements Command {
-    private PaintLayer layer;
+    private final PaintLayer layer;
     public ChangeLayerVisibilityCommand(PaintLayer l) {
         this.layer = l;
     }
@@ -9,6 +9,6 @@ public class ChangeLayerVisibilityCommand implements Command {
         layer.setVisible(!layer.isVisible());
     }
     public void undo() {
-        layer.setVisible(!layer.isVisible());;
+        layer.setVisible(!layer.isVisible());
     }
 }

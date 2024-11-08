@@ -11,7 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class StatusbarPanel extends GridPane {
-    private PaintPanel paintPanel;
+    private final PaintPanel paintPanel;
 
     public StatusbarPanel(PaintPanel paintPanel) throws FileNotFoundException {
         String[] imageFiles = {

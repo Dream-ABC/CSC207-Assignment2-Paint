@@ -12,13 +12,13 @@ import java.util.function.Consumer;
 
 public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observer {
     private String mode;
-    private PaintModel model;
+    private final PaintModel model;
     private Shape shape;
 
     private ShapeStrategy strategy;
-    private ShapeFactory shapeFactory;
-    private StrategyFactory strategyFactory;
-    Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
+    private final ShapeFactory shapeFactory;
+    private final StrategyFactory strategyFactory;
+    final Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
     private StrokeEraser strokeEraser;
     private SelectionTool selection;
 
@@ -70,7 +70,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
      */
     public void setMode(String mode) {
         this.mode = mode;
-        System.out.println(this.mode);
     }
 
     public PaintModel getModel() {

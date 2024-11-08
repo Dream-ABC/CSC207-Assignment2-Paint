@@ -11,9 +11,9 @@ import java.util.ArrayList;
  */
 public class StrokeEraser implements Tool{
     private Point topLeft;
-    private double dimensionX;
-    private double dimensionY;
-    private ArrayList<Shape> removedShapes;
+    private final double dimensionX;
+    private final double dimensionY;
+    private final ArrayList<Shape> removedShapes;
 
     /**
      * Constructs a default stroke eraser, represented as a square that is of size 14.

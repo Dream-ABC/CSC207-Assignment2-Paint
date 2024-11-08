@@ -9,9 +9,9 @@ import javafx.scene.input.MouseButton;
  */
 public class TextStrategy implements ShapeStrategy {
 
-    private PaintPanel panel;
-    private TextEditorDialog textEditorDialog;
-    private Text text;
+    private final PaintPanel panel;
+    private final TextEditorDialog textEditorDialog;
+    private final Text text;
 
     /**
      * Constructs a new TextStrategy object.

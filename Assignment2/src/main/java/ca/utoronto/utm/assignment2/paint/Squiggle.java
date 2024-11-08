@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Squiggles are represented using Points.
  */
 public class Squiggle implements Shape {
-    private ArrayList<Point> points;
+    private final ArrayList<Point> points;
     private Color color;
     private double lineThickness;
 
@@ -56,17 +56,8 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * @return 'Squiggle' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Squiggle";
-    }
-
-    /**
      * Checks if the Eraser is overlapping the Squiggle.
      * If it is, then the Eraser will erase the entire Squiggle.
-     * @param eraser the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Squiggle, False otherwise
      */
     @Override

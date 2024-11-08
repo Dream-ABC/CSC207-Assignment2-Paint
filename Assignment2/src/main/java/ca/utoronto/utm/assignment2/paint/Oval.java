@@ -44,24 +44,10 @@ public class Oval implements Shape {
     }
 
     /**
-     * @return the top left point of the Oval
-     */
-    public Point getTopLeft() {
-        return this.topLeft;
-    }
-
-    /**
      * @param topLeft top left point of Oval
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
-    }
-
-    /**
-     * @return the width of the Oval
-     */
-    public double getWidth() {
-        return this.width;
     }
 
     /**
@@ -70,11 +56,6 @@ public class Oval implements Shape {
     public void setWidth(double width) {
         this.width = width;
     }
-
-    /**
-     * @return the height of the Oval
-     */
-    public double getHeight() { return this.height; }
 
     /**
      * @param height height of Oval
@@ -103,14 +84,6 @@ public class Oval implements Shape {
     @Override
     public void setLineThickness(double lineThickness) {
         this.lineThickness = lineThickness;
-    }
-
-    /**
-     * @return 'Oval' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Oval";
     }
 
     /**

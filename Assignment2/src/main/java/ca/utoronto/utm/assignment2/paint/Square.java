@@ -94,14 +94,6 @@ public class Square implements Shape {
     }
 
     /**
-     * @return 'Square' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Square";
-    }
-
-    /**
      * Checks if the Tool is overlapping the Square.
      * If it is, then the Tool will erase the Square.
      *

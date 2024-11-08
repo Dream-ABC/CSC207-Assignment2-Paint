@@ -3,9 +3,9 @@ package ca.utoronto.utm.assignment2.paint;
 import java.util.ArrayList;
 
 public class AddShapeCommand implements Command {
-    private Shape shape;
-    private PaintLayer layer;
-    private CommandHistory history;
+    private final Shape shape;
+    private final PaintLayer layer;
+    private final CommandHistory history;
 
     public AddShapeCommand(Shape s, PaintLayer l, CommandHistory h) {
         this.shape = s;
