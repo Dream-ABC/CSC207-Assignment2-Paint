@@ -192,14 +192,19 @@ public class Triangle extends Polygon implements Shape {
         double[] xPoints = new double[3];
         double[] yPoints = new double[3];
         xPoints[0] = points.get(0);
-
+        yPoints[0] = points.get(3) + (this.lineThickness);
+        xPoints[1] = points.get(1) + (this.lineThickness/2.0);
+        yPoints[1] = points.get(4) - (this.lineThickness/2.0);
+        xPoints[2] = points.get(2) - (this.lineThickness/2.0);
+        yPoints[2] = points.get(5) - (this.lineThickness/2.0);
 
         double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
 
         double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], p.x, p.y);
         double a2 = areaOfTriangle(p.x, p.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
         double a3 = areaOfTriangle(xPoints[0], yPoints[0], p.x, p.y, xPoints[2], yPoints[2]);
-        return a1 + a2 + a3 == A;
+        double marginOfError = 1e-10;
+        return Math.abs(A - a1 - a2 - a3) <= marginOfError;
     }
 
     private boolean overlapsOutline(Tool tool){
@@ -231,13 +236,18 @@ public class Triangle extends Polygon implements Shape {
             double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
             double a2 = areaOfTriangle(point.x, point.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
             double a3 = areaOfTriangle(xPoints[0], yPoints[0], point.x, point.y, xPoints[2], yPoints[2]);
-            if (a1 + a2 + a3 == A){
+            if (a1 + a2 + a3 == A && !overlapsInsideAtPoint(point)){
                 return true;
             }
         }
 
         for (int i = 0; i < 3; i++){
-            if ((leftX <= xPoints[i]) && (xPoints[i] <= rightX) && (topY <= yPoints[i]) && (yPoints[i] <= bottomY)) {return true;}
+            if ((leftX <= xPoints[i]) &&
+                    (xPoints[i] <= rightX) &&
+                    (topY <= yPoints[i]) &&
+                    (yPoints[i] <= bottomY) &&
+                    (!overlapsInsideAtPoint(new Point(xPoints[i], yPoints[i]))))
+            {return true;}
         }
 
         return false;
