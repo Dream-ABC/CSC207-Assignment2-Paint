@@ -146,3 +146,13 @@ ESTIMATE : 30 minutes    ACTUAL :
 ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
            duplicate canvases have been created.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.482 : wenjess1 : Started
+NAME     : Resizing of canvas occurs after any button click
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 4 hours
+ISSUE    : When the user clicks any button for the first time, the Paint
+           program display changes. In particular, the sizing of the canvas
+           and the layers display is shifted. It would be better for the
+           program display to remain the same at all times.
+--------------------------------------------------------------------------
