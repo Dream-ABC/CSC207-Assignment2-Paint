@@ -5,18 +5,18 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
 import javafx.stage.Popup;
 
-public class LineThickness extends Slider implements ChangeListener {
+public class LineThicknessSlider extends Slider implements ChangeListener {
 
     private PaintPanel paintPanel;
     private Slider slider;
 
     /**
-     * Initializes a slider for controlling transparency values, associates
-     * its values to transparency settings for shapes, and adds it to the view.
+     * Initializes a slider for controlling line thickness values, associates
+     * its values to line thickness settings for shapes, and adds it to the view.
      *
      * @param paintPanel the main panel where drawing actions are managed.
      */
-    public LineThickness(PaintPanel paintPanel) {
+    public LineThicknessSlider(PaintPanel paintPanel) {
 
         this.paintPanel = paintPanel;
 
@@ -25,19 +25,10 @@ public class LineThickness extends Slider implements ChangeListener {
         this.slider.setShowTickLabels(true);
         this.slider.setMajorTickUnit(1);
         this.slider.setBlockIncrement(1);
-        this.slider.setPrefWidth(10);
+        this.slider.setPrefWidth(400);
 
         // Add event handler
         this.slider.valueProperty().addListener(this);
-    }
-
-    /**
-     * Returns the slider node that allows users to adjust transparency.
-     *
-     * @return the Slider instance.
-     */
-    public Slider getSlider() {
-        return slider;
     }
 
     /**
@@ -48,7 +39,7 @@ public class LineThickness extends Slider implements ChangeListener {
         this.paintPanel.setDisable(true);
 
         Popup popup = new Popup();
-        popup.getContent().add(this.slider); // Add the opaqueness slider directly to the popup
+        popup.getContent().add(this.slider); // Add the slider directly to the popup
         popup.setAutoHide(true);
 
         // when the popup event is ended (popup closed), enable actions on canvas again
@@ -58,7 +49,7 @@ public class LineThickness extends Slider implements ChangeListener {
     }
 
     /**
-     * Whenever the value of the transparency slider changes, makes changes
+     * Whenever the value of the line thickness slider changes, makes changes
      * in paint panel as well.
      *
      * @param observable the observable value that has changed.

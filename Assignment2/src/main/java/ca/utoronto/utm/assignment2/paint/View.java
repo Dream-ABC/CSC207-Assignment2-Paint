@@ -27,6 +27,7 @@ public class View implements EventHandler<ActionEvent> {
     private LayerChooserPanel layerChooserPanel;
     private LayerChooserController layerChooserController;
     private ResizableCanvas canvas;
+    private LineThicknessSlider lineThicknessSlider;
 
     private BorderPane root;
     private VBox topPanel;
@@ -180,17 +181,21 @@ public class View implements EventHandler<ActionEvent> {
 
         menuBar.getMenus().add(menu);
 
-        // Another menu for Options
+        // Another menu for View
 
         menu = new Menu("View");
-
 
         menuItem = new MenuItem("Colors");
         menuItem.setOnAction(this); // Show the color popup
         menu.getItems().add(menuItem);
+        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
+
+        menuItem = new MenuItem("Opaqueness");
+        this.lineThicknessSlider = new LineThicknessSlider(this.paintPanel);
+        menuItem.setOnAction(event -> this.lineThicknessSlider.show()); // Show the slider popup
+        menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);
-        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
         return menuBar;
     }
