@@ -112,19 +112,11 @@ public class Square implements Shape {
         double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
         double eraserTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
         double eraserBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
-        double rectLeft, rectRight, rectTop, rectBottom;
-        if (this.fillStyle.equals("Outline")){
-            rectLeft = this.topLeft.x - (this.lineThickness/2.0);
-            rectRight = this.topLeft.x + this.size + (this.lineThickness/2.0);
-            rectTop = this.topLeft.y - (this.lineThickness/2.0);
-            rectBottom = this.topLeft.y + this.size + (this.lineThickness/2.0);
-        }
-        else{
-            rectLeft = this.topLeft.x;
-            rectRight = this.topLeft.x + this.size;
-            rectTop = this.topLeft.y;
-            rectBottom = this.topLeft.y + this.size;
-        }
+
+        double rectLeft = this.topLeft.x;
+        double rectRight = this.topLeft.x + this.size;
+        double rectTop = this.topLeft.y;
+        double rectBottom = this.topLeft.y + this.size;
 
         return eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom;
     }
