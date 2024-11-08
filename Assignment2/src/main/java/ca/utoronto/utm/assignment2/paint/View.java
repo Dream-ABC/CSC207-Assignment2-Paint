@@ -190,7 +190,7 @@ public class View implements EventHandler<ActionEvent> {
         menu.getItems().add(menuItem);
         menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
-        menuItem = new MenuItem("Opaqueness");
+        menuItem = new MenuItem("Line Thickness");
         this.lineThicknessSlider = new LineThicknessSlider(this.paintPanel);
         menuItem.setOnAction(event -> this.lineThicknessSlider.show()); // Show the slider popup
         menu.getItems().add(menuItem);

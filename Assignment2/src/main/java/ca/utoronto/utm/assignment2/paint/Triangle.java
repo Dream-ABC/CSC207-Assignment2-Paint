@@ -142,12 +142,22 @@ public class Triangle extends Polygon implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        ObservableList<Double> points = this.getPoints();
+        ObservableList<Double> points = this.getPoints(); // top, left, right
         double[] xPoints = new double[3];
         double[] yPoints = new double[3];
-        for (int i = 0; i < 3; i++) {
-            xPoints[i] = points.get(i);
-            yPoints[i] = points.get(i + 3);
+        if (this.fillStyle.equals("Outline")){
+            xPoints[0] = points.get(0);
+            yPoints[0] = points.get(3) - (this.lineThickness/2.0);
+            xPoints[1] = points.get(1) - (this.lineThickness/2.0);
+            yPoints[1] = points.get(4) + (this.lineThickness/2.0);
+            xPoints[2] = points.get(2) + (this.lineThickness/2.0);
+            yPoints[2] = points.get(5) + (this.lineThickness/2.0);
+        }
+        else{
+            for (int i = 0; i < 3; i++) {
+                xPoints[i] = points.get(i);
+                yPoints[i] = points.get(i + 3);
+            }
         }
         double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
 

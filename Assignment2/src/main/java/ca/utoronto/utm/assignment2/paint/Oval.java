@@ -119,15 +119,22 @@ public class Oval implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double ovalCenterX = topLeft.x + (width / 2);
-        double ovalCenterY = topLeft.y + (height / 2);
-        double radiusX = width / 2;
-        double radiusY = height / 2;
+        double ovalCenterX = topLeft.x + (width / 2.0);
+        double ovalCenterY = topLeft.y + (height / 2.0);
+        double radiusX, radiusY;
+        if (this.fillStyle.equals("Outline")){
+            radiusX = (width / 2.0) + (this.lineThickness/2.0);
+            radiusY = (height / 2.0) + (this.lineThickness/2.0);
+        }
+        else{
+            radiusX = (width / 2.0) + (this.lineThickness/2.0);
+            radiusY = (height / 2.0);
+        }
 
-        double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2);
-        double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2);
-        double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2);
-        double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2);
+        double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
         double closestX = clamp(ovalCenterX, rectLeft, rectRight);
         double closestY = clamp(ovalCenterY, rectTop, rectBottom);
