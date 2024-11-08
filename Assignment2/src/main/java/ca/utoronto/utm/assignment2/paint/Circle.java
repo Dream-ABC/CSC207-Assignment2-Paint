@@ -91,14 +91,21 @@ public class Circle implements Shape{
          */
         @Override
         public boolean overlaps(Tool tool) {
-                double centerX = topLeft.x + (diameter / 2);
-                double centerY = topLeft.y + (diameter / 2);
-                double radius = diameter / 2;
+                if (this.fillStyle.equals("Outline")){
+                        return overlapsOutline(tool);
+                }
+                return overlapsSolid(tool);
+        }
 
-                double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2);
-                double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2);
-                double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2);
-                double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2);
+        private boolean overlapsSolid(Tool tool){
+                double centerX = topLeft.x + (diameter / 2.0);
+                double centerY = topLeft.y + (diameter / 2.0);
+                double radius = (diameter / 2.0 );
+
+                double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+                double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+                double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+                double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
                 double closestX = clamp(centerX, rectLeft, rectRight);
                 double closestY = clamp(centerY, rectTop, rectBottom);
@@ -108,6 +115,45 @@ public class Circle implements Shape{
                 double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
 
                 return distanceSquared <= 1;
+        }
+
+        private boolean overlapsInsideAtPoint(Point p){
+                double centerX = topLeft.x + (diameter / 2.0);
+                double centerY = topLeft.y + (diameter / 2.0);
+                double radius = (diameter / 2.0 ) - (this.lineThickness/2.0);
+
+                double distanceX = (centerX - p.x) / radius;
+                double distanceY = (centerY - p.y) / radius;
+                double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+                return distanceSquared <= 1;
+        }
+
+        private boolean overlapsOutline(Tool tool){
+                double centerX = topLeft.x + (diameter / 2.0);
+                double centerY = topLeft.y + (diameter / 2.0);
+                double radius = (diameter / 2.0 ) + (this.lineThickness/2.0);
+
+                double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+                double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+                double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+                double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+                ArrayList<Point> allPoints = new ArrayList<Point>();
+                allPoints.add(new Point(leftX, topY));
+                allPoints.add(new Point(leftX, bottomY));
+                allPoints.add(new Point(rightX, topY));
+                allPoints.add(new Point(rightX, bottomY));
+                allPoints.add(tool.getTopLeft());
+
+                for (Point p : allPoints){
+                        double distanceX = (centerX - p.x) / radius;
+                        double distanceY = (centerY - p.y) / radius;
+                        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+                        if (distanceSquared <= 1 && !overlapsInsideAtPoint(p)){
+                                return true;
+                        }
+                }
+                return false;
         }
 
         private double clamp(double value, double min, double max) {
