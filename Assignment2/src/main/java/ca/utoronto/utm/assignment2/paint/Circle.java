@@ -87,21 +87,20 @@ public class Circle implements Shape{
          */
         @Override
         public boolean overlaps(Tool tool) {
-                double ovalCenterX = topLeft.x + (this.diameter / 2);
-                double ovalCenterY = topLeft.y + (this.diameter / 2);
-                double radiusX = this.diameter / 2;
-                double radiusY = this.diameter / 2;
+                double centerX = topLeft.x + (diameter / 2);
+                double centerY = topLeft.y + (diameter / 2);
+                double radius = diameter / 2;
 
                 double rectLeft = tool.getCentre().x - (tool.getDimensionX() / 2);
                 double rectRight = tool.getCentre().x + (tool.getDimensionX() / 2);
                 double rectTop = tool.getCentre().y - (tool.getDimensionY() / 2);
                 double rectBottom = tool.getCentre().y + (tool.getDimensionY() / 2);
 
-                double closestX = clamp(ovalCenterX, rectLeft, rectRight);
-                double closestY = clamp(ovalCenterY, rectTop, rectBottom);
+                double closestX = clamp(centerX, rectLeft, rectRight);
+                double closestY = clamp(centerY, rectTop, rectBottom);
 
-                double distanceX = (ovalCenterX - closestX) / radiusX;
-                double distanceY = (ovalCenterY - closestY) / radiusY;
+                double distanceX = (centerX - closestX) / radius;
+                double distanceY = (centerY - closestY) / radius;
                 double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
 
                 return distanceSquared <= 1;
