@@ -3,6 +3,7 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.awt.*;
 import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
@@ -112,6 +113,16 @@ public class Polyline implements Shape {
         }
         polygon1.closePath();
 
+        // Create a BasicStroke with the desired line thickness
+        float lineThickness = (float) this.lineThickness;
+        BasicStroke thickStroke = new BasicStroke(lineThickness, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+
+        // Apply the stroke to create a thick version of the polygon path
+        java.awt.Shape thickPolygonShape = thickStroke.createStrokedShape(polygon1);
+
+        // Create an Area from the thickened polygon shape
+        Area thickPolygonArea = new Area(thickPolygonShape);
+
         GeneralPath polygon2 = new GeneralPath();
         polygon2.moveTo(leftX, topY);
         polygon2.lineTo(rightX, topY);
@@ -119,14 +130,13 @@ public class Polyline implements Shape {
         polygon2.lineTo(leftX, bottomY);
 
         // Create Area objects for both polygons
-        Area area1 = new Area(polygon1);
         Area area2 = new Area(polygon2);
 
         // Check if the polygons intersect
-        area1.intersect(area2);
+        thickPolygonArea.intersect(area2);
 
         // If the resulting area is not empty, the polygons intersect
-        return !area1.isEmpty();
+        return !thickPolygonArea.isEmpty();
     }
 
     /**
