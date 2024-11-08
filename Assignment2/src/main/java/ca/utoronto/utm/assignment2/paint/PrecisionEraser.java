@@ -65,8 +65,8 @@ public class PrecisionEraser implements Shape {
         for (Point p : points) {
             g2d.setLineWidth(1);
             g2d.setStroke(Color.BLACK);
-            g2d.clearRect(p.x, p.y, this.dimension, this.dimension);
-            g2d.strokeRect(this.topLeft.x - dimension/2, this.topLeft.y - dimension/2,
+            g2d.clearRect(p.x  - dimension/2.0, p.y  - dimension/2.0, this.dimension, this.dimension);
+            g2d.strokeRect(this.topLeft.x - dimension/2.0, this.topLeft.y - dimension/2.0,
                     this.dimension, this.dimension);
         }
     }
