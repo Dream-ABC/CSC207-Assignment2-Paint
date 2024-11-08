@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * A class to represent drawing squares.
  * Square implements the Shape interface.
@@ -108,17 +110,63 @@ public class Square implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double eraserLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
-        double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
-        double eraserTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
-        double eraserBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
+        if (this.fillStyle.equals("Outline")){
+            return overlapsOutline(tool);
+        }
+        return overlapsSolid(tool);
+    }
 
+    private boolean overlapsSolid(Tool tool){
+        double eraserLeft = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double eraserRight = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double eraserTop = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double eraserBottom = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
         double rectLeft = this.topLeft.x;
         double rectRight = this.topLeft.x + this.size;
         double rectTop = this.topLeft.y;
         double rectBottom = this.topLeft.y + this.size;
 
         return eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom;
+    }
+
+    private boolean overlapsInsideAtPoint(Tool tool){
+        double rectLeft = this.topLeft.x + (this.lineThickness/2.0);
+        double rectRight = this.topLeft.x + this.size - (this.lineThickness/2.0);
+        double rectTop = this.topLeft.y + (this.lineThickness/2.0);
+        double rectBottom = this.topLeft.y + this.size - (this.lineThickness/2.0);
+
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+        ArrayList<Point> allPoints = new ArrayList<Point>();
+        allPoints.add(new Point(leftX, topY));
+        allPoints.add(new Point(leftX, bottomY));
+        allPoints.add(new Point(rightX, topY));
+        allPoints.add(new Point(rightX, bottomY));
+        allPoints.add(tool.getTopLeft());
+
+        for (Point p : allPoints){
+            if (!(rectLeft <= p.x && p.x <= rectRight && rectTop <= p.y && p.y <= rectBottom)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean overlapsOutline(Tool tool){
+        double eraserLeft = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double eraserRight = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double eraserTop = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double eraserBottom = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+
+        double rectLeft = this.topLeft.x - (this.lineThickness/2.0);
+        double rectRight = this.topLeft.x + this.size + (this.lineThickness/2.0);
+        double rectTop = this.topLeft.y - (this.lineThickness/2.0);
+        double rectBottom = this.topLeft.y + this.size + (this.lineThickness/2.0);
+
+        return (eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom)
+                && !overlapsInsideAtPoint(tool);
     }
 
     /**
