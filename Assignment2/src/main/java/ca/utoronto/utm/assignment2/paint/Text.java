@@ -138,18 +138,18 @@ public class Text implements Shape {
      * @return true if the eraser overlaps with this Text object, false otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
+    public boolean overlaps(Tool tool) {
         double left = topLeft.x;
         double right = left + this.textNode.getLayoutBounds().getWidth();
         double top = topLeft.y;
         double bottom = top + this.textNode.getLayoutBounds().getHeight();
 
-        // Check if eraser is in the correct range of x
-        if (eraser.getCentre().x < left || eraser.getCentre().x > right) {
-            return false;
-        }
-        // Check if eraser is in the correct range of y
-        return !(eraser.getCentre().y < top) && !(eraser.getCentre().y > bottom);
+        double eraserLeft = tool.getCentre().x-(tool.getDimensionX()/2.0);
+        double eraserRight = tool.getCentre().x+(tool.getDimensionX()/2.0);
+        double eraserTop = tool.getCentre().y-(tool.getDimensionY()/2.0);
+        double eraserBottom = tool.getCentre().y+(tool.getDimensionY()/2.0);
+
+        return eraserRight >= left && eraserLeft <= right && eraserBottom >= top && eraserTop <= bottom;
     }
 
     /**
