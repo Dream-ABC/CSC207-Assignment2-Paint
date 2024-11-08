@@ -17,6 +17,8 @@ public class StrategyFactory {
                 return new TriangleStrategy(panel);
             case "eraser":
                 return new EraserStrategy(panel);
+            case "polyline":
+                return new PolylineStrategy(panel);
             // add more strategies here
 
             default:

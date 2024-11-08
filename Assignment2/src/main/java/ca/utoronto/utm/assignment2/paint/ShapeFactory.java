@@ -9,6 +9,7 @@ public class ShapeFactory {
             case "square" -> new Square(fillStyle);
             case "oval" -> new Oval(fillStyle);
             case "triangle" -> new Triangle(fillStyle);
+            case "polyline" -> new Polyline();
             default -> null;
         };
     }

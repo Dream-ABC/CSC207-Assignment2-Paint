@@ -19,12 +19,35 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Adds a new point to the user's squiggle drawing.
+     * Gets the first point of the user's Polyline drawing
+     * @return the first point of the polyline
+     */
+    public Point getFirst() {return this.points.getFirst();}
+
+    /**
+     * Gets the last point of the user's Polyline drawing
+     * @return the last point of the polyline
+     */
+    public Point getLast() {return this.points.getLast();}
+
+    /**
+     * Adds a new point to the user's Polyline drawing.
      * @param p new point in Polyline
      */
     public void addPoint(Point p) {
         this.points.add(p);
     }
+
+    /**
+     * Removes the last point in the user's Polyline drawing if
+     * it is not the only point in the user's Polyline drawing.
+     */
+    public void popPoint() {if (this.points.size() > 1) this.points.removeLast();}
+
+    /**
+     * @param closed closed status of Polyline
+     */
+    public void setClosed(boolean closed) {this.isClosed = closed;}
 
     /**
      * @return the color of the Polyline
@@ -66,27 +89,42 @@ public class Polyline implements Shape {
      */
     @Override
     public boolean overlaps(Eraser eraser) {
+        double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
+        double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
+        double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
+        double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
         int size = this.isClosed ? this.points.size() : this.points.size() - 1;
         for (int i = 0; i < size; i++) {
             Point p1 = this.points.get(i);
-            Point p2 = this.points.get((i + 1) % this.points.size());
-            }
+            Point p2 = this.points.get(i + 1);
+            // finish this
+            return true;
+        }
         return false;
     }
 
     /**
      * Displays the Polyline with user-created color and points they drew.
-     *
      * @param g2d GraphicsContext
      */
     @Override
     public void display(GraphicsContext g2d) {
-        int size = this.isClosed ? this.points.size() : this.points.size() - 1;
-        for (int i = 0; i < size; i++) {
-            Point p1 = this.points.get(i);
-            Point p2 = this.points.get((i + 1) % this.points.size());
-            g2d.setStroke(this.color);  // since there's no fill colour
-            g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
+        if (this.isClosed) {
+            double[] xPoints = new double[this.points.size()];
+            double[] yPoints = new double[this.points.size()];
+            for (int i = 0; i < this.points.size(); i++) {
+                xPoints[i] = this.points.get(i).x;
+                yPoints[i] = this.points.get(i).y;
+            }
+            g2d.setFill(this.color);
+            g2d.fillPolygon(xPoints, yPoints, this.points.size());
+        } else {
+            for (int i = 0; i < this.points.size() - 1; i++) {
+                Point p1 = this.points.get(i);
+                Point p2 = this.points.get(i + 1);
+                g2d.setStroke(this.color);
+                g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
+            }
         }
     }
 }
