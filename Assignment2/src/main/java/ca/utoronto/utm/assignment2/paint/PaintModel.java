@@ -8,8 +8,18 @@ public class PaintModel extends Observable {
     private PaintLayer selectedLayer;
     private String mode = "";
     private View view;
+    private String fillStyle = "Solid";
 
     private CommandHistory history = new CommandHistory();
+
+    public String getFillStyle() {
+        return this.fillStyle;
+    }
+
+    public void setFillStyle(String fillStyle) {
+        this.fillStyle = fillStyle;
+        notifyChange();
+    }
 
     public boolean selectLayer(String layerName) {
         int layerIndex = Integer.parseInt(layerName.substring(5));

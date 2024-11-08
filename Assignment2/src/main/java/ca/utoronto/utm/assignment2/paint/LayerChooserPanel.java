@@ -38,7 +38,7 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         if (layer.getHeight() < 100) {layer.setHeight(100);}
         GraphicsContext g2d = layer.getGraphicsContext2D();
         g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
-        layer.display(g2d);
+        layer.display(g2d, model.getFillStyle());
         snapshot = layer.snapshot(params, null);
 
         ImageView thumbnail = new ImageView(snapshot);
