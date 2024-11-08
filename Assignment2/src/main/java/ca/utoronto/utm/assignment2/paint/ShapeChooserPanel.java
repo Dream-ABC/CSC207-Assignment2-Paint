@@ -30,7 +30,7 @@ public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEv
                         "src/main/java/ca/utoronto/utm/assignment2/images/triangle.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/eraser.png",
                         "src/main/java/ca/utoronto/utm/assignment2/images/outline.png",
-                        "src/main/java/ca/utoronto/utm/assignment2/images/solid.png"
+                        "src/main/java/ca/utoronto/utm/assignment2/images/solid.png",
                         "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png"};
 
                 for (int i = 0; i < buttonIds.length; i++) {

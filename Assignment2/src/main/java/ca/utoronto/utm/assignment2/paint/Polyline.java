@@ -82,17 +82,13 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Checks if the Eraser is overlapping the Polyline.
-     * If it is, then the Eraser will erase the entire Polyline.
-     * @param eraser the Eraser instance which is currently erasing drawings
-     * @return True if the Eraser should erase this Polyline, False otherwise
+     * Checks if the Tool is overlapping the Polyline.
+     * If it is, then the Tool will erase the entire Polyline.
+     * @param tool the Tool instance which is currently erasing drawings
+     * @return True if the Tool should erase this Polyline, False otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
-        double leftX = eraser.getCentre().x-(eraser.getDimension()/2.0);
-        double rightX = eraser.getCentre().x+(eraser.getDimension()/2.0);
-        double topY = eraser.getCentre().y-(eraser.getDimension()/2.0);
-        double bottomY = eraser.getCentre().y+(eraser.getDimension()/2.0);
+    public boolean overlaps(Tool tool) {
         int size = this.isClosed ? this.points.size() : this.points.size() - 1;
         for (int i = 0; i < size; i++) {
             Point p1 = this.points.get(i);

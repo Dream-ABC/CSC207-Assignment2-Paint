@@ -98,17 +98,18 @@ public class Square implements Shape {
     }
 
     /**
-     * Checks if the Eraser is overlapping the Square.
-     * If it is, then the Eraser will erase the Square.
-     * @param eraser the Eraser instance which is currently erasing drawings
-     * @return True if the Eraser should erase this Square, False otherwise
+     * Checks if the Tool is overlapping the Square.
+     * If it is, then the Tool will erase the Square.
+     *
+     * @param tool the Tool instance which is currently erasing drawings
+     * @return True if the Tool should erase this Square, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double eraserLeft = tool.getCentre().x-(tool.getDimensionX()/2.0);
-        double eraserRight = tool.getCentre().x+(tool.getDimensionX()/2.0);
-        double eraserTop = tool.getCentre().y-(tool.getDimensionY()/2.0);
-        double eraserBottom = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        double eraserLeft = tool.getCentre().x - (tool.getDimensionX() / 2.0);
+        double eraserRight = tool.getCentre().x + (tool.getDimensionX() / 2.0);
+        double eraserTop = tool.getCentre().y - (tool.getDimensionY() / 2.0);
+        double eraserBottom = tool.getCentre().y + (tool.getDimensionY() / 2.0);
 
         double rectLeft = this.topLeft.x;
         double rectRight = this.topLeft.x + this.size;
@@ -120,18 +121,19 @@ public class Square implements Shape {
 
     /**
      * Displays the Square with user-created color and size.
+     *
      * @param g2d GraphicsContext
      */
     @Override
     public void display(GraphicsContext g2d) {
-        if (this.fillStyle.equals("Solid")){
+        if (this.fillStyle.equals("Solid")) {
             g2d.setFill(this.color);
             g2d.fillRect(this.topLeft.x, this.topLeft.y,
                     this.size, this.size);
-        }
-        else if (this.fillStyle.equals("Outline")){
+        } else if (this.fillStyle.equals("Outline")) {
             g2d.setStroke(this.color);
             g2d.strokeRect(this.topLeft.x, this.topLeft.y,
                     this.size, this.size);
         }
     }
+}
