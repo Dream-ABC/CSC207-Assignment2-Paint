@@ -15,7 +15,8 @@ public class ShapeFactory {
                 return new Oval();
             case "triangle":
                 return new Triangle();
-
+            case "polyline":
+                return new Polyline();
             // add more shapes here
 
             default:
