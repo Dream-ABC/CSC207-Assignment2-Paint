@@ -21,4 +21,4 @@ BUG4.482 author:wenjess1 puller:hingor13 status:Completed
 BUG4.483 author:wenjess1 puller:hingor13 status:Completed
  US4.007 author:wenjess1 puller:hingor13 status:Completed
 BUG4.401 author:wenjess1 puller:hingor13 status:Completed
- US4.411 author:wenjess1 puller:hingor13 status:Waiting
+ US4.411 author:wenjess1 puller:hingor13 status:Completed
