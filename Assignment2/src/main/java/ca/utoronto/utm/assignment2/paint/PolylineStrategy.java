@@ -18,7 +18,7 @@ public class PolylineStrategy implements ShapeStrategy {
 
         if (this.panel.getCurrentShape() == null) {
             ShapeFactory shapeFactory = panel.getShapeFactory();
-            Polyline polyline = (Polyline) shapeFactory.getShape(panel.getMode());
+            Polyline polyline = (Polyline) shapeFactory.getShape(panel.getMode(), "");
             this.panel.setCurrentShape(polyline);
 
             polyline.addPoint(newPoint);
