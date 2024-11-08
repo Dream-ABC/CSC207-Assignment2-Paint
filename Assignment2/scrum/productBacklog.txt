@@ -93,20 +93,20 @@ SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.431 : pengxi60 : Started
+TYPE     : USER STORY US4.431 : pengxi60 : Completed
 NAME     : Draw Polyline
 PRIORITY : 3
-ESTIMATE : 4 hours ACTUAL :
+ESTIMATE : 4 hours ACTUAL : 3
 AS A     : user
 I WANT   : To add polylines and custom polygons on the canvas
 SO THAT  : I can have more freedom with the type of lines and shapes I can
            draw on the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.441 : hingor13 : NotStarted
+TYPE     : USER STORY US4.441 : pengxi60 : Started
 NAME     : Magnifier Tool
 PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 4 hours   ACTUAL :
 AS A     : user
 I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
