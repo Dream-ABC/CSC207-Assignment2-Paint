@@ -16,3 +16,4 @@ BUG4.481 author:hingor13 puller:tianshi8 status:Completed
  US4.006 author:wenjess1 puller:hingor13 status:Completed
  US4.431 author:pengxi60 puller:wenjess1 status:Completed
 BUG4.482 author:wenjess1 puller:         status:Waiting
+ US4.009 author:hingor13 puller:         status:Waiting
