@@ -67,8 +67,4 @@ public class TriangleStrategy implements ShapeStrategy {
         System.out.println("Added Triangle");
         this.panel.setCurrentShape(null);
     }
-
-    @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-    }
 }

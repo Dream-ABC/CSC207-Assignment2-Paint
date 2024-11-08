@@ -12,6 +12,15 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Window;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ * The TextEditorDialog class is responsible for creating and displaying a dialog
+ * that allows users to edit text properties such as font type, size, and style
+ * (bold, italic, underline, and strikethrough). The dialog is integrated with
+ * a PaintPanel object, enabling real-time updates to the displayed text.
+ */
 public class TextEditorDialog {
 
     private Dialog<Void> dialog;
@@ -26,6 +35,12 @@ public class TextEditorDialog {
     private ToggleButton underlineButton;
     private ToggleButton strikethroughButton;
 
+    /**
+     * Creates a new TextEditorDialog for editing a given Text object.
+     *
+     * @param paintPanel a panel that manages graphical elements and their settings
+     * @param displayedText the Text object that will be edited within the dialog
+     */
     public TextEditorDialog(PaintPanel paintPanel, Text displayedText) {
         this.paintPanel = paintPanel;
         this.displayedText = displayedText;
@@ -43,18 +58,44 @@ public class TextEditorDialog {
         });
     }
 
+    /**
+     * Checks if a given font supports both bold and italic styles.
+     *
+     * @param fontName the name of the font to be checked
+     * @return true if the font supports both bold and italic styles, false otherwise
+     */
+    private boolean supportsBoldAndItalic(String fontName) {
+        Font boldItalicFont = Font.font(fontName, FontWeight.BOLD, FontPosture.ITALIC, 12);
+
+        return boldItalicFont.getStyle().contains("Bold") && boldItalicFont.getStyle().contains("Italic");
+    }
+
+    /**
+     * Updates the font of the displayed text based on the current selections from the text editor dialog.
+     * Triggers a notification to the paint model to update the display accordingly.
+     */
     private void updateFont() {
         this.displayedText.setFont(this.getSelectedFont());
         this.paintPanel.getModel().notifyChange();
     }
 
+    /**
+     * Initializes the components of the text editor dialog, including the font
+     * chooser, size chooser, font style buttons (bold, italic, underline,
+     * strikethrough), and the text field. Each component is set up with relevant
+     * event handlers to update the displayed text and notify the model of changes.
+     */
     private void setBoxes() {
         // font chooser menu
         this.fontChooser = new ComboBox<>();
-        // get all fonts
-        String[] fontNames = Font.getFamilies().toArray(new String[0]);
-        this.fontChooser.getItems().addAll(fontNames);
-        this.fontChooser.setValue(fontNames[0]);  // default font
+
+        // get all fonts that supports bold and italic
+        List<String> supportedFonts = Font.getFamilies().stream()
+                .filter(this::supportsBoldAndItalic)
+                .collect(Collectors.toList());
+
+        this.fontChooser.getItems().addAll(supportedFonts);
+        this.fontChooser.setValue("Arial");  // default font
         this.fontChooser.setOnAction(e -> {
             this.updateFont();
         });
@@ -104,6 +145,11 @@ public class TextEditorDialog {
         });
     }
 
+    /**
+     * Retrieves the currently selected font based on the user's choices.
+     *
+     * @return the Font object that represents the selected font, weight, posture, and size
+     */
     public Font getSelectedFont() {
         FontWeight weight = boldButton.isSelected() ? FontWeight.BOLD : FontWeight.NORMAL;
         FontPosture posture = italicButton.isSelected() ? FontPosture.ITALIC : FontPosture.REGULAR;
@@ -112,6 +158,13 @@ public class TextEditorDialog {
                 Integer.parseInt((String) this.sizeChooser.getValue()));
     }
 
+    /**
+     * Displays the text editor dialog, initializing all components and laying them
+     * out in the dialog window. The method sets up the font chooser, size chooser,
+     * style buttons (bold, italic, underline, strikethrough), and the text field,
+     * placing them in appropriate layout containers. It then displays the dialog
+     * to the user and waits for user interaction.
+     */
     public void display() {
         // init all buttons, choosers and text field
         this.setBoxes();

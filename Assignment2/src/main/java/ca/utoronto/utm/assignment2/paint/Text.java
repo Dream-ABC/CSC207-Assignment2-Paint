@@ -1,10 +1,14 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * The Text class represents a text shape that can be drawn on the screen.
+ * It implements the Shape interface and provides functionalities to set
+ * text properties such as font, color, strikethrough, and underline.
+ */
 public class Text implements Shape {
 
     private javafx.scene.text.Text textNode;
@@ -13,63 +17,126 @@ public class Text implements Shape {
     private boolean isUnderlined;
     private Point topLeft;
 
+    /**
+     * Constructs a Text object with default settings.
+     * This constructor initializes the text node with the default font "Arial" at size 12
+     * and sets the text color to black.
+     */
     public Text() {
         this.color = Color.BLACK;
         this.textNode = new javafx.scene.text.Text();
-        this.textNode.setFont(Font.font(Font.getFamilies().getFirst(), 12));
+        this.textNode.setFont(Font.font("Arial", 12));
     }
 
+    /**
+     * Sets the top-left position of the Text object.
+     *
+     * @param topLeft the Point object representing the top-left position of the Text object
+     */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
     }
 
+    /**
+     * Retrieves the top-left position of the Text object.
+     *
+     * @return the top-left position as a Point object
+     */
     public Point getTopLeft() {
         return topLeft;
     }
 
+    /**
+     * Sets the font of the text node to the specified font.
+     *
+     * @param font the Font object to be set for the text node
+     */
     public void setFont(Font font) {
         this.textNode.setFont(font);
-        System.out.println("font style:" + font.getStyle());
-        System.out.println("style from node:"+this.textNode.getFont().getStyle());
-        System.out.println("set font:" + this.textNode.getFont());
     }
 
+    /**
+     * Sets the strikethrough property of the text.
+     *
+     * @param strikethrough a boolean indicating whether the text should have a strikethrough line.
+     */
     public void setStrikethrough(boolean strikethrough) {
         this.isStrikethrough = strikethrough;
     }
 
+    /**
+     * Sets the underline property of the text.
+     *
+     * @param underlined a boolean indicating whether the text should be underlined
+     */
     public void setUnderline(boolean underlined) {
         this.isUnderlined = underlined;
     }
 
+    /**
+     * Sets the text content for the text node.
+     *
+     * @param text the text content to be set for the text node
+     */
     public void setText(String text) {
         this.textNode.setText(text);
     }
 
+    /**
+     * Retrieves the text content from the text node.
+     *
+     * @return the text content of the text node as a String.
+     */
     public String getText() {
         return this.textNode.getText();
     }
 
+    /**
+     * Sets the color of the text object.
+     *
+     * @param color the Color object to be set for the text node
+     */
     @Override
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**
+     * Retrieves the color of the text object.
+     *
+     * @return the Color object representing the text color.
+     */
     @Override
     public Color getColor() {
         return this.color;
     }
 
+    /**
+     * Retrieves the thickness of the text object.
+     *
+     * @return an integer representing the thickness
+     */
     @Override
     public int getThickness() {
         return -1;
     }
 
+    /**
+     * Retrieves the shape description of the text.
+     *
+     * @return a string representing the shape of the text, which is "Text".
+     */
     @Override
     public String getShape() {
         return "Text";
     }
 
+    /**
+     * Checks if the given eraser object overlaps with this Text object.
+     *
+     * @param eraser the Eraser object
+     * @return true if the eraser overlaps with this Text object, false otherwise
+     */
     @Override
     public boolean overlaps(Eraser eraser) {
         double left = topLeft.x;
@@ -85,6 +152,12 @@ public class Text implements Shape {
         return !(eraser.getCentre().y < top) && !(eraser.getCentre().y > bottom);
     }
 
+    /**
+     * Renders the text on the provided GraphicsContext with the specified font, color,
+     * and optional strikethrough or underline styles.
+     *
+     * @param g2d the GraphicsContext for the current layer used to draw the text
+     */
     @Override
     public void display(GraphicsContext g2d) {
         // init text
@@ -120,6 +193,12 @@ public class Text implements Shape {
         }
     }
 
+    /**
+     * Returns a string representation of the Text object, including text content,
+     * font details, position, style attributes, and color.
+     *
+     * @return a string representation of the Text object
+     */
     public String toString() {
         return "Text{" + this.textNode.getText() + ","
                 + this.textNode.getFont().getName() + "," + this.textNode.getFont().getSize() + ","
