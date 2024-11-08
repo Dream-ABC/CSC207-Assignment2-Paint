@@ -17,15 +17,17 @@ public class Triangle extends Polygon implements Shape {
     private Point origin;
     private Color color;
     private final String fillStyle;
+    private double lineThickness;
 
     /**
      * Constructs a default black triangle with a base and height of 0.
      */
-    public Triangle(String fillStyle) {
+    public Triangle(String fillStyle, double lineThickness) {
         this.base = 0.0;
         this.height = 0.0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -103,11 +105,11 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Triangle
+     *
      */
     @Override
-    public int getThickness() {
-        return -1;
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -149,16 +151,16 @@ public class Triangle extends Polygon implements Shape {
         }
         double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
 
-        double leftX = tool.getCentre().x-(tool.getDimensionX()/2.0);
-        double rightX = tool.getCentre().x+(tool.getDimensionX()/2.0);
-        double topY = tool.getCentre().y-(tool.getDimensionY()/2.0);
-        double bottomY = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
         ArrayList<Point> allPoints = new ArrayList<Point>();
         allPoints.add(new Point(leftX, topY));
         allPoints.add(new Point(leftX, bottomY));
         allPoints.add(new Point(rightX, topY));
         allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(tool.getCentre());
+        allPoints.add(tool.getTopLeft());
 
         for (Point point : allPoints) {
             double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
@@ -196,6 +198,7 @@ public class Triangle extends Polygon implements Shape {
         }
         else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
+            g2d.setLineWidth(this.lineThickness);
             g2d.strokePolygon(xPoints, yPoints, 3);
         }
     }

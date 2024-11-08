@@ -12,13 +12,15 @@ import java.util.ArrayList;
 public class Squiggle implements Shape {
     private ArrayList<Point> points;
     private Color color;
+    private double lineThickness;
 
     /**
      * Constructs a default black squiggle with no points.
      */
-    public Squiggle() {
+    public Squiggle(double lineThickness) {
         this.points = new ArrayList<>();
         this.color = Color.BLACK;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -46,11 +48,11 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Square
+     *
      */
     @Override
-    public int getThickness() {
-        return -1;
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -69,10 +71,10 @@ public class Squiggle implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double leftX = tool.getCentre().x-(tool.getDimensionX()/2.0);
-        double rightX = tool.getCentre().x+(tool.getDimensionX()/2.0);
-        double topY = tool.getCentre().y-(tool.getDimensionY()/2.0);
-        double bottomY = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
         for (Point p : this.points) {
             if (leftX <= p.x && p.x <= rightX && topY <= p.y && p.y <= bottomY){
                 return true;
@@ -90,7 +92,8 @@ public class Squiggle implements Shape {
         for (int i = 0; i < this.points.size() - 1; i++) {
             Point p1 = this.points.get(i);
             Point p2 = this.points.get(i + 1);
-            g2d.setStroke(this.color);  // since there's no fill colour
+            g2d.setStroke(this.color);
+            g2d.setLineWidth(this.lineThickness);
             g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
         }
     }

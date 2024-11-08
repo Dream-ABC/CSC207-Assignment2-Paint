@@ -59,6 +59,13 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return model.getFillStyle();
     }
 
+    public double getLineThickness(){
+        return model.getLineThickness();
+    }
+
+    public void setLineThickness(double thickness){
+        model.setLineThickness(thickness);
+    }
     /**
      * Controller aspect of this
      */
@@ -132,7 +139,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
             GraphicsContext g2d = layer.getGraphicsContext2D();
             g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
             if (layer.isVisible()) {
-                layer.display(g2d, model.getFillStyle());
+                layer.display(g2d);
             }
         }
     }

@@ -16,7 +16,7 @@ public class CircleStrategy implements ShapeStrategy {
         Point firstClick = new Point(mouseEvent.getX(), mouseEvent.getY());
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Circle circle = (Circle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle());
+        Circle circle = (Circle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
         this.panel.setCurrentShape(circle);
 
         // Set info of circle (radius=0)

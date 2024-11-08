@@ -53,7 +53,7 @@ public class PaintLayer extends Canvas {
         this.shapes = shapes;
     }
 
-    public void display(GraphicsContext g2d, String fillStyle) {
+    public void display(GraphicsContext g2d) {
         // background
         g2d.setFill(Color.TRANSPARENT);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());

@@ -9,6 +9,7 @@ public class PaintModel extends Observable {
     private String mode = "";
     private View view;
     private String fillStyle = "Solid";
+    private double thickness = 1.0;
 
     private CommandHistory history = new CommandHistory();
 
@@ -19,6 +20,14 @@ public class PaintModel extends Observable {
     public void setFillStyle(String fillStyle) {
         this.fillStyle = fillStyle;
         notifyChange();
+    }
+
+    public double getLineThickness() {
+        return this.thickness;
+    }
+
+    public void setLineThickness(double thickness){
+        this.thickness = thickness;
     }
 
     public boolean selectLayer(String layerName) {

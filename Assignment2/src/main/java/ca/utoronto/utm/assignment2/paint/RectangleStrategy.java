@@ -18,7 +18,7 @@ public class RectangleStrategy implements ShapeStrategy {
 
         // Create a rectangle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Rectangle rectangle = (Rectangle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle());
+        Rectangle rectangle = (Rectangle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
         this.panel.setCurrentShape(rectangle);
 
         // Set info of rectangle (radius=0)

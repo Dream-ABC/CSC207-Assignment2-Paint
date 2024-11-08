@@ -16,7 +16,7 @@ public class SquiggleStrategy implements ShapeStrategy {
         Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
 
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Squiggle squiggle = (Squiggle) shapeFactory.getShape(panel.getMode(), "");
+        Squiggle squiggle = (Squiggle) shapeFactory.getShape(panel.getMode(), "", panel.getLineThickness());
         this.panel.setCurrentShape(squiggle);
 
         // Set info of squiggle (start point)

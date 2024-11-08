@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * A class to represent drawing rectangles.
  * Rectangle implements the Shape interface.
@@ -14,15 +16,17 @@ public class Rectangle implements Shape {
     private Point origin;
     private Color color;
     private final String fillStyle;
+    private double lineThickness;
 
     /**
      * Constructs a default black rectangle with a width and height of 0.
      */
-    public Rectangle(String fillStyle) {
+    public Rectangle(String fillStyle, double lineThickness) {
         this.width = 0;
         this.height = 0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -98,11 +102,11 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Rectangle
+     *
      */
     @Override
-    public int getThickness() {
-        return -1;
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -114,17 +118,17 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Checks if the Eraser is overlapping the Rectangle.
+     * Checks if the Tool is overlapping the Rectangle.
      * If it is, then the Eraser will erase the Rectangle.
-     * @param eraser the Eraser instance which is currently erasing drawings
+     * @param tool the Eraser instance which is currently erasing drawings
      * @return True if the Eraser should erase this Rectangle, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double eraserLeft = tool.getCentre().x-(tool.getDimensionX()/2.0);
-        double eraserRight = tool.getCentre().x+(tool.getDimensionX()/2.0);
-        double eraserTop = tool.getCentre().y-(tool.getDimensionY()/2.0);
-        double eraserBottom = tool.getCentre().y+(tool.getDimensionY()/2.0);
+        double eraserLeft = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double eraserRight = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double eraserTop = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double eraserBottom = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
 
         double rectLeft = this.topLeft.x;
         double rectRight = this.topLeft.x + this.width;
@@ -147,6 +151,7 @@ public class Rectangle implements Shape {
         }
         else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
+            g2d.setLineWidth(this.lineThickness);
             g2d.strokeRect(this.topLeft.x, this.topLeft.y,
                     this.width, this.height);
         }

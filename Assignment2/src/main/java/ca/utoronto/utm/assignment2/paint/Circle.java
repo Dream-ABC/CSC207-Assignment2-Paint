@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * A class to represent drawing circles.
  * Circle implements the Shape interface.
@@ -13,75 +15,73 @@ public class Circle implements Shape{
         private double diameter;
         private Color color;
         private final String fillStyle;
+        private double lineThickness;
 
         /**
          * Constructs a default black circle with a diameter of 0.
          */
-        public Circle(String fillStyle) {
+        public Circle(String fillStyle, double lineThickness) {
                 this.diameter = 0;
                 this.color = Color.BLACK;
                 this.fillStyle = fillStyle;
+                this.lineThickness = lineThickness;
         }
 
-    /**
-     * @param centre centre of Circle
-     */
-    public void setCentre(Point centre) {
-        this.centre = centre;
-    }
+        /**
+         * @param centre centre of Circle
+         */
+        public void setCentre(Point centre) {
+                this.centre = centre;
+        }
 
-    /**
-     * @param topLeft top left corner of Circle
-     */
-    public void setTopLeft(Point topLeft) {
-        this.topLeft = topLeft;
-    }
+        /**
+         * @param topLeft top left corner of Circle
+         */
+        public void setTopLeft(Point topLeft) { this.topLeft = topLeft; }
 
-    /**
-     * @return the centre of the Circle.
-     */
-    public Point getCentre() {
-        return this.centre;
-    }
+        /**
+         * @return the centre of the Circle.
+         */
+        public Point getCentre() { return this.centre; }
 
-    /**
-     * @param diameter diameter of Circle
-     */
-    public void setDiameter(double diameter) {
-        this.diameter = diameter;
-    }
+        /**
+         * @param diameter diameter of Circle
+         */
+        public void setDiameter(double diameter) {
+                this.diameter = diameter;
+        }
 
-    /**
-     * @return the color of the Circle
-     */
-    @Override
-    public Color getColor() {
-        return this.color;
-    }
+        /**
+         * @return the color of the Circle
+         */
+        @Override
+        public Color getColor() {
+                return this.color;
+        }
 
-    /**
-     * @param color color of Circle
-     */
-    @Override
-    public void setColor(Color color) {
-        this.color = color;
-    }
+        /**
+         * @param color color of Circle
+         */
+        @Override
+        public void setColor(Color color) {
+                this.color = color;
+        }
 
-    /**
-     * @return the stroke thickness of the Circle
-     */
-    @Override
-    public int getThickness() {
-        return -1;
-    }
+        /**
+         *
+         */
+        @Override
+        public void setLineThickness(double lineThickness) {
+                this.lineThickness = lineThickness;
+        }
 
-    /**
-     * @return 'Circle' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Circle";
-    }
+        /**
+         * @return 'Circle' as a string
+         */
+        @Override
+        public String getShape() {
+                return "Circle";
+        }
 
         /**
          * Checks if the Eraser is overlapping the Circle.
@@ -95,10 +95,10 @@ public class Circle implements Shape{
                 double centerY = topLeft.y + (diameter / 2);
                 double radius = diameter / 2;
 
-                double rectLeft = tool.getCentre().x - (tool.getDimensionX() / 2);
-                double rectRight = tool.getCentre().x + (tool.getDimensionX() / 2);
-                double rectTop = tool.getCentre().y - (tool.getDimensionY() / 2);
-                double rectBottom = tool.getCentre().y + (tool.getDimensionY() / 2);
+                double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2);
+                double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2);
+                double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2);
+                double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2);
 
                 double closestX = clamp(centerX, rectLeft, rectRight);
                 double closestY = clamp(centerY, rectTop, rectBottom);
@@ -109,6 +109,7 @@ public class Circle implements Shape{
 
                 return distanceSquared <= 1;
         }
+
         private double clamp(double value, double min, double max) {
                 return Math.max(min, Math.min(max, value));
         }
@@ -125,8 +126,8 @@ public class Circle implements Shape{
                                 this.diameter, this.diameter);
                 }
                 else if (this.fillStyle.equals("Outline")){
-                        g2d.setStroke(this.color); // Set the color for the outline
-//                        g2d.setLineWidth(2); // Set the thickness of the outline (optional)
+                        g2d.setStroke(this.color);
+                        g2d.setLineWidth(this.lineThickness);
                         g2d.strokeOval(this.topLeft.x, this.topLeft.y, this.diameter, this.diameter);
                 }
         }

@@ -13,14 +13,16 @@ public class Square implements Shape {
     private double size;
     private Color color;
     private final String fillStyle;
+    private double lineThickness;
 
     /**
      * Constructs a default black square with a size of 0.
      */
-    public Square(String fillStyle) {
+    public Square(String fillStyle, double lineThickness) {
         this.size = 0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -82,11 +84,11 @@ public class Square implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Square
+     *
      */
     @Override
-    public int getThickness() {
-        return -1;
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -106,10 +108,10 @@ public class Square implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double eraserLeft = tool.getCentre().x - (tool.getDimensionX() / 2.0);
-        double eraserRight = tool.getCentre().x + (tool.getDimensionX() / 2.0);
-        double eraserTop = tool.getCentre().y - (tool.getDimensionY() / 2.0);
-        double eraserBottom = tool.getCentre().y + (tool.getDimensionY() / 2.0);
+        double eraserLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double eraserTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double eraserBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
         double rectLeft = this.topLeft.x;
         double rectRight = this.topLeft.x + this.size;
@@ -132,6 +134,7 @@ public class Square implements Shape {
                     this.size, this.size);
         } else if (this.fillStyle.equals("Outline")) {
             g2d.setStroke(this.color);
+            g2d.setLineWidth(this.lineThickness);
             g2d.strokeRect(this.topLeft.x, this.topLeft.y,
                     this.size, this.size);
         }

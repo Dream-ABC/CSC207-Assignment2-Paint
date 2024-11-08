@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * A class to represent drawing ovals.
  * Oval implements the Shape interface.
@@ -14,15 +16,17 @@ public class Oval implements Shape {
     private double height;
     private Color color;
     private final String fillStyle;
+    private double lineThickness;
 
     /**
      * Constructs a default black oval with a width and height of 0.
      */
-    public Oval(String fillStyle) {
+    public Oval(String fillStyle, double lineThickness) {
         this.width = 0;
         this.height = 0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -94,11 +98,11 @@ public class Oval implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Circle
+     *
      */
     @Override
-    public int getThickness() {
-        return -1;
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -122,10 +126,10 @@ public class Oval implements Shape {
         double radiusX = width / 2;
         double radiusY = height / 2;
 
-        double rectLeft = tool.getCentre().x - (tool.getDimensionX() / 2);
-        double rectRight = tool.getCentre().x + (tool.getDimensionX() / 2);
-        double rectTop = tool.getCentre().y - (tool.getDimensionY() / 2);
-        double rectBottom = tool.getCentre().y + (tool.getDimensionY() / 2);
+        double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2);
+        double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2);
+        double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2);
+        double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2);
 
         double closestX = clamp(ovalCenterX, rectLeft, rectRight);
         double closestY = clamp(ovalCenterY, rectTop, rectBottom);
@@ -155,6 +159,7 @@ public class Oval implements Shape {
         }
         else if (this.fillStyle.equals("Outline")){
             g2d.setStroke(this.color);
+            g2d.setLineWidth(this.lineThickness);
             g2d.strokeOval(this.topLeft.x, this.topLeft.y,
                     this.width, this.height);
         }

@@ -17,35 +17,35 @@
 
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.007 : wenjess1 : NotStarted
-NAME     : Line thickness selector
+NAME     : Line lineThickness selector
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : To be able to select the current line thickness, to be applied
+I WANT   : To be able to select the current line lineThickness, to be applied
            to subsequent shapes. Example:
            		select fill style outline
-           		selects line thickness 1
+           		selects line lineThickness 1
            		mode circle
            		draw a circle
            		draw a circle
            		mode rectangle
            		draw a rectangle
-           		select line thickness 9
+           		select line lineThickness 9
            		draw a rectangle
            		draw a rectangle
            		select mode squiggle
            		draw a squiggle
            results in two thinly outlined circles and a thinly outlined
            rectangle as well as two thickly outlined rectangles and a thick squiggle
-SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
+SO THAT  : I can decide the line lineThickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : NotStarted
-NAME     : Stroke Eraser working with varying line thickness
+NAME     : Stroke Eraser working with varying line lineThickness
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL :
 ISSUE    : The current stroke eraser doesn't erase strokes properly when
-           line thickness of shapes are changed.
+           line lineThickness of shapes are changed.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.411 : wenjess1 : NotStarted
