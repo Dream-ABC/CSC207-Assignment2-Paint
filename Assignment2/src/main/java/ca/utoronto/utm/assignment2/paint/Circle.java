@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * A class to represent drawing circles.
  * Circle implements the Shape interface.
@@ -89,15 +91,16 @@ public class Circle implements Shape{
          */
         @Override
         public boolean overlaps(Tool tool) {
+                if (this.fillStyle.equals("Outline")){
+                        return overlapsOutline(tool);
+                }
+                return overlapsSolid(tool);
+        }
+
+        private boolean overlapsSolid(Tool tool){
                 double centerX = topLeft.x + (diameter / 2.0);
                 double centerY = topLeft.y + (diameter / 2.0);
-                double radius;
-                if (this.fillStyle.equals("Outline")){
-                        radius = (diameter / 2.0 ) + (this.lineThickness/2.0);
-                }
-                else{
-                        radius = (diameter / 2.0 );
-                }
+                double radius = (diameter / 2.0 );
 
                 double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
                 double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
@@ -112,6 +115,45 @@ public class Circle implements Shape{
                 double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
 
                 return distanceSquared <= 1;
+        }
+
+        private boolean overlapsInsideAtPoint(Point p){
+                double centerX = topLeft.x + (diameter / 2.0);
+                double centerY = topLeft.y + (diameter / 2.0);
+                double radius = (diameter / 2.0 ) - (this.lineThickness/2.0);
+
+                double distanceX = (centerX - p.x) / radius;
+                double distanceY = (centerY - p.y) / radius;
+                double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+                return distanceSquared <= 1;
+        }
+
+        private boolean overlapsOutline(Tool tool){
+                double centerX = topLeft.x + (diameter / 2.0);
+                double centerY = topLeft.y + (diameter / 2.0);
+                double radius = (diameter / 2.0 ) + (this.lineThickness/2.0);
+
+                double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+                double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+                double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+                double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+                ArrayList<Point> allPoints = new ArrayList<Point>();
+                allPoints.add(new Point(leftX, topY));
+                allPoints.add(new Point(leftX, bottomY));
+                allPoints.add(new Point(rightX, topY));
+                allPoints.add(new Point(rightX, bottomY));
+                allPoints.add(tool.getTopLeft());
+
+                for (Point p : allPoints){
+                        double distanceX = (centerX - p.x) / radius;
+                        double distanceY = (centerY - p.y) / radius;
+                        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+                        if (distanceSquared <= 1 && !overlapsInsideAtPoint(p)){
+                                return true;
+                        }
+                }
+                return false;
         }
         private double clamp(double value, double min, double max) {
                 return Math.max(min, Math.min(max, value));
