@@ -87,24 +87,24 @@ public class Circle implements Shape{
          */
         @Override
         public boolean overlaps(Tool tool) {
-                double radius = this.diameter / 2.0;
+                double ovalCenterX = topLeft.x + (this.diameter / 2);
+                double ovalCenterY = topLeft.y + (this.diameter / 2);
+                double radiusX = this.diameter / 2;
+                double radiusY = this.diameter / 2;
 
-                double rectHalfWidth = tool.getDimensionX() / 2.0;
-                double rectHalfHeight = tool.getDimensionY() / 2.0;
+                double rectLeft = tool.getCentre().x - (tool.getDimensionX() / 2);
+                double rectRight = tool.getCentre().x + (tool.getDimensionX() / 2);
+                double rectTop = tool.getCentre().y - (tool.getDimensionY() / 2);
+                double rectBottom = tool.getCentre().y + (tool.getDimensionY() / 2);
 
-                double rectLeft = tool.getCentre().x - rectHalfWidth;
-                double rectRight = tool.getCentre().x + rectHalfWidth;
-                double rectTop = tool.getCentre().y - rectHalfHeight;
-                double rectBottom = getCentre().y + rectHalfHeight;
+                double closestX = clamp(ovalCenterX, rectLeft, rectRight);
+                double closestY = clamp(ovalCenterY, rectTop, rectBottom);
 
-                double closestX = clamp(this.centre.x, rectLeft, rectRight);
-                double closestY = clamp(this.centre.y, rectTop, rectBottom);
-
-                double distanceX = this.centre.x - closestX;
-                double distanceY = this.centre.y - closestY;
+                double distanceX = (ovalCenterX - closestX) / radiusX;
+                double distanceY = (ovalCenterY - closestY) / radiusY;
                 double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
 
-                return distanceSquared <= (radius * radius);
+                return distanceSquared <= 1;
         }
         private double clamp(double value, double min, double max) {
                 return Math.max(min, Math.min(max, value));
