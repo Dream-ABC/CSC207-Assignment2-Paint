@@ -12,15 +12,15 @@ import java.util.ArrayList;
 public class Squiggle implements Shape {
     private ArrayList<Point> points;
     private Color color;
-    private double thickness;
+    private double lineThickness;
 
     /**
      * Constructs a default black squiggle with no points.
      */
-    public Squiggle() {
+    public Squiggle(double lineThickness) {
         this.points = new ArrayList<>();
         this.color = Color.BLACK;
-        this.thickness = 1.0;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -51,8 +51,8 @@ public class Squiggle implements Shape {
      *
      */
     @Override
-    public void setThickness(double thickness) {
-        this.thickness = thickness;
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -93,7 +93,7 @@ public class Squiggle implements Shape {
             Point p1 = this.points.get(i);
             Point p2 = this.points.get(i + 1);
             g2d.setStroke(this.color);
-            g2d.setLineWidth(this.thickness);
+            g2d.setLineWidth(this.lineThickness);
             g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
         }
     }

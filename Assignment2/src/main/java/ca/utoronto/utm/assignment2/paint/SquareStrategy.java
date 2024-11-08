@@ -18,7 +18,7 @@ public class SquareStrategy implements ShapeStrategy {
 
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Square square = (Square) shapeFactory.getShape(panel.getMode(), panel.getFillStyle());
+        Square square = (Square) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
         this.panel.setCurrentShape(square);
 
         // Set info of circle (radius=0)

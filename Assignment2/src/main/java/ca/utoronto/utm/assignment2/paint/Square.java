@@ -13,16 +13,16 @@ public class Square implements Shape {
     private double size;
     private Color color;
     private final String fillStyle;
-    private double thickness;
+    private double lineThickness;
 
     /**
      * Constructs a default black square with a size of 0.
      */
-    public Square(String fillStyle) {
+    public Square(String fillStyle, double lineThickness) {
         this.size = 0;
         this.color = Color.BLACK;
         this.fillStyle = fillStyle;
-        this.thickness = 1.0;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -87,8 +87,8 @@ public class Square implements Shape {
      *
      */
     @Override
-    public void setThickness(double thickness) {
-        this.thickness = thickness;
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -134,7 +134,7 @@ public class Square implements Shape {
                     this.size, this.size);
         } else if (this.fillStyle.equals("Outline")) {
             g2d.setStroke(this.color);
-            g2d.setLineWidth(this.thickness);
+            g2d.setLineWidth(this.lineThickness);
             g2d.strokeRect(this.topLeft.x, this.topLeft.y,
                     this.size, this.size);
         }

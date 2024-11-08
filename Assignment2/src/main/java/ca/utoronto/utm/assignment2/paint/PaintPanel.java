@@ -58,6 +58,13 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return model.getFillStyle();
     }
 
+    public double getLineThickness(){
+        return model.getLineThickness();
+    }
+
+    public void setLineThickness(double thickness){
+        model.setLineThickness(thickness);
+    }
     /**
      * Controller aspect of this
      */

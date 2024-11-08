@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 public interface Shape {
     void setColor(Color color);
     Color getColor();
-    void setThickness(double thickness);
+    void setLineThickness(double lineThickness);
     String getShape();
     boolean overlaps(Tool eraser);
     void display(GraphicsContext g2d);

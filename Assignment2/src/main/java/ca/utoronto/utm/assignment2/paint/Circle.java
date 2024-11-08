@@ -13,16 +13,16 @@ public class Circle implements Shape{
         private double diameter;
         private Color color;
         private final String fillStyle;
-        private double thickness;
+        private double lineThickness;
 
         /**
          * Constructs a default black circle with a diameter of 0.
          */
-        public Circle(String fillStyle) {
+        public Circle(String fillStyle, double lineThickness) {
                 this.diameter = 0;
                 this.color = Color.BLACK;
                 this.fillStyle = fillStyle;
-                this.thickness = 1.0;
+                this.lineThickness = lineThickness;
         }
 
         /**
@@ -69,8 +69,8 @@ public class Circle implements Shape{
          *
          */
         @Override
-        public void setThickness(double thickness) {
-                this.thickness = thickness;
+        public void setLineThickness(double lineThickness) {
+                this.lineThickness = lineThickness;
         }
 
         /**
@@ -124,7 +124,7 @@ public class Circle implements Shape{
                 }
                 else if (this.fillStyle.equals("Outline")){
                         g2d.setStroke(this.color);
-                        g2d.setLineWidth(this.thickness);
+                        g2d.setLineWidth(this.lineThickness);
                         g2d.strokeOval(this.topLeft.x, this.topLeft.y, this.diameter, this.diameter);
                 }
         }
