@@ -1,12 +1,11 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.input.MouseEvent;
-
 import java.awt.geom.Point2D;
 
 public class PolylineStrategy implements ShapeStrategy {
-
     private final PaintPanel panel;
+    private boolean isDragging = false;
 
     public PolylineStrategy(PaintPanel p) {
         this.panel = p;
@@ -15,6 +14,7 @@ public class PolylineStrategy implements ShapeStrategy {
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         Point newPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
+        isDragging = false;
 
         if (this.panel.getCurrentShape() == null) {
             ShapeFactory shapeFactory = panel.getShapeFactory();
@@ -32,17 +32,22 @@ public class PolylineStrategy implements ShapeStrategy {
             if (lastPoint.x == newPoint.x && lastPoint.y == newPoint.y) {
                 refreshCurrentShape(polyline, true);
                 this.panel.setCurrentShape(null);
+            } else {
+                polyline.addPoint(newPoint);
+                refreshCurrentShape(polyline, false);
             }
         }
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
+        isDragging = true;
         if (this.panel.getCurrentShape() != null) {
             Polyline polyline = (Polyline) this.panel.getCurrentShape();
-            Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
+            Point dragPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
+
             polyline.popPoint();
-            polyline.addPoint(point);
+            polyline.addPoint(dragPoint);
             refreshCurrentShape(polyline, false);
         }
     }
@@ -58,11 +63,11 @@ public class PolylineStrategy implements ShapeStrategy {
                 polyline.setClosed(true);
                 refreshCurrentShape(polyline, true);
                 this.panel.setCurrentShape(null);
-            } else {
-                polyline.addPoint(newPoint);
+            } else if (isDragging) {
                 refreshCurrentShape(polyline, false);
             }
         }
+        isDragging = false;
     }
 
     private void refreshCurrentShape(Polyline p, boolean isFinal) {

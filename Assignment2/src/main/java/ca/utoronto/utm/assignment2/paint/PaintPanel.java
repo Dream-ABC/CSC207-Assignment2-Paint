@@ -65,12 +65,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
     public void setLineThickness(double thickness){
         model.setLineThickness(thickness);
     }
-    /**
-     * Controller aspect of this
-     */
-    public void setMode(String mode) {
-        this.mode = mode;
-    }
 
     public PaintModel getModel() {
         return model;
@@ -111,11 +105,13 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
         if (this.strategy != null) {
             EventType<MouseEvent> mouseEventType = (EventType<MouseEvent>) mouseEvent.getEventType();
-
             Consumer<MouseEvent> handler = eventHandlers.get(mouseEventType);
+
             if (handler != null) {
                 handler.accept(mouseEvent);
             }
+
+            model.setSelectedShape(shape);
         }
     }
 
@@ -124,6 +120,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     @Override
     public void update(Observable o, Object arg) {
+
         for (PaintLayer layer : this.model.getLayers()){
             if (layer.getWidth() < 100){layer.setWidth(100);}
             if (layer.getHeight() < 100){layer.setHeight(100);}
