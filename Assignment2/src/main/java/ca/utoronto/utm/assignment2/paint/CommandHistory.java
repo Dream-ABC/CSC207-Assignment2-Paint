@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class CommandHistory {
-    private Stack<Command> undoStack = new Stack<>();
-    private Stack<Command> redoStack = new Stack<>();
-    private Stack<ArrayList<Shape>> stateStack = new Stack<>();
+    private final Stack<Command> undoStack = new Stack<>();
+    private final Stack<Command> redoStack = new Stack<>();
+    private final Stack<ArrayList<Shape>> stateStack = new Stack<>();
 
     public void execute(Command command) {
         command.execute();
@@ -17,8 +17,8 @@ public class CommandHistory {
     public void undo() {
         if (!(undoStack.isEmpty())) {
             Command command = undoStack.pop();
-            command.undo();
             redoStack.push(command);
+            command.undo();
         }
     }
 
@@ -39,11 +39,16 @@ public class CommandHistory {
     }
 
     public void addToLast(ArrayList<Shape> state) {
-        ((EraserStrokeCommand) undoStack.peek()).addRemovedShapes(state);
+        Command store = undoStack.peek();
+        ((StrokeEraserCommand) store).addRemovedShapes(state);
     }
 
     public void popLastCommand() {
         this.undoStack.pop();
+    }
+
+    public void popLastRedoCommand() {
+        this.redoStack.pop();
     }
 
     public Stack<Command> getUndoStack() {

@@ -5,8 +5,8 @@ import java.util.Observer;
 
 public class LayerChooserController implements Observer {
 
-    private PaintModel model;
-    private LayerChooserPanel panel;
+    private final PaintModel model;
+    private final LayerChooserPanel panel;
 
     public LayerChooserController(LayerChooserPanel panel, PaintModel model) {
         this.model = model;
@@ -16,6 +16,7 @@ public class LayerChooserController implements Observer {
     }
 
     public void selectLayer(String layerName) {
+        this.model.removeSelectionTool();
         if (layerName.equals("Layer+")) {
             // layer added
             this.model.addLayer();

@@ -9,18 +9,17 @@ import java.util.ArrayList;
 
 public class PaintLayer extends Canvas {
 
-//    private String status;  // "changed", "unchanged", "removed"
-    private Color color;
+    private final String status;  // "changed", "unchanged", "removed"
     private ArrayList<Shape> shapes;
-    private Eraser eraser;
+    private StrokeEraser strokeEraser;
+    private SelectionTool selectionTool;
     private Image background;
 
     public PaintLayer() {
         super(300, 300);  // default size
         this.shapes = new ArrayList<>();
         this.setVisible(true);
-//        this.status = "changed";
-        this.color = Color.TRANSPARENT;
+        this.status = "changed";
         this.background = null;
     }
 
@@ -28,8 +27,7 @@ public class PaintLayer extends Canvas {
         super(width, height);
         this.shapes = new ArrayList<>();
         this.setVisible(true);
-//        this.status = "changed";
-        this.color = Color.TRANSPARENT;
+        this.status = "changed";
         this.background = null;
     }
 
@@ -38,30 +36,25 @@ public class PaintLayer extends Canvas {
     }
 
     public void addShapeFirst(Shape shape) {
-        this.shapes.add(0, shape);
+        this.shapes.addFirst(shape);
     }
 
     public void removeShape(Shape shape) {
         this.shapes.remove(shape);
     }
 
-    public void addEraser(Eraser eraser) {this.eraser = eraser;}
-    public void removeEraser() {this.eraser = null;}
+    public void addStrokeEraser(StrokeEraser strokeEraser) {this.strokeEraser = strokeEraser;}
+    public void removeStrokeEraser() {this.strokeEraser = null;}
+
+    public void addSelectionTool(SelectionTool selectionTool) {this.selectionTool = selectionTool;}
+    public void removeSelectionTool() {this.selectionTool = null;}
 
     public ArrayList<Shape> getShapes() {
         return shapes;
     }
 
-    void setShapes(ArrayList<Shape> shapes) {
+    public void setShapes(ArrayList<Shape> shapes) {
         this.shapes = shapes;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Color getColor() {
-        return this.color;
     }
 
     public void setBackground(Image img) {
@@ -70,7 +63,7 @@ public class PaintLayer extends Canvas {
 
     public void display(GraphicsContext g2d) {
         // background
-        g2d.setFill(this.color);
+        g2d.setFill(Color.TRANSPARENT);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 
         if (this.background != null) {
@@ -82,16 +75,17 @@ public class PaintLayer extends Canvas {
             g2d.setFill(shape.getColor());
             shape.display(g2d);
         }
-        if (this.eraser != null){
-            eraser.display(g2d);
+        if (this.strokeEraser != null){
+            strokeEraser.display(g2d);
+        }
+        if (this.selectionTool != null){
+            selectionTool.display(g2d);
         }
     }
 
     public void reset() {
         this.shapes.clear();
-        this.color = Color.TRANSPARENT;
         this.background = null;
-        this.eraser = null;
         this.setVisible(true);
     }
 }

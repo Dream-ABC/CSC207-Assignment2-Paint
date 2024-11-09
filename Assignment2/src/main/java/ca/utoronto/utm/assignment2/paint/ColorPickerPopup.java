@@ -1,6 +1,5 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.application.Platform;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.paint.Color;
 import javafx.stage.Popup;
@@ -9,9 +8,9 @@ import java.util.Locale;
 
 public class ColorPickerPopup extends Popup {
 
-    private PaintPanel paintPanel;
-    private View view;
-    private ColorPicker colorPicker;
+    private final PaintPanel paintPanel;
+    private final View view;
+    private final ColorPicker colorPicker;
 
     public ColorPickerPopup(PaintPanel panel, View view) {
         Locale.setDefault(Locale.ENGLISH);

@@ -8,7 +8,7 @@
 --------------------------------------------------------------------------
 TYPE     : BUG BUG2.003 : tianshi8 : Complete
 NAME     : Architecture behind choosing selection mode is poor
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 6 hours
 ISSUE    : Code is not modular and is difficult to expand. Need a better
            architecture behind selecting a drawing mode, and handling
@@ -17,7 +17,7 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
            'if' blocks in the PaintPanel mouse event code.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.016 : hingor13 : Completed
+TYPE     : USER STORY US2.211 : hingor13 : Complete
 NAME     : Draw Square with Feedback
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 1 hour
@@ -31,7 +31,7 @@ SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.017 : wenjess1 : Complete
+TYPE     : USER STORY US2.221 : wenjess1 : Complete
 NAME     : Draw Oval with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 1 hour
@@ -44,7 +44,7 @@ SO THAT  : I can easily add ovals to my canvas and see the oval I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.018 : pengxi60 : Completed
+TYPE     : USER STORY US2.231 : pengxi60 : Complete
 NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 2 hours

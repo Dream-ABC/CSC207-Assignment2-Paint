@@ -1,9 +1,9 @@
 package ca.utoronto.utm.assignment2.paint;
 
 public class ChangeLayerCommand implements Command {
-    private PaintLayer oldLayer;
-    private PaintLayer newLayer;
-    private PaintModel model;
+    final PaintLayer oldLayer;
+    final PaintLayer newLayer;
+    final PaintModel model;
     private int index;
 
     public ChangeLayerCommand(PaintLayer o, PaintLayer n, PaintModel m) {

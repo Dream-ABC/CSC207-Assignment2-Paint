@@ -2,16 +2,15 @@ package ca.utoronto.utm.assignment2.paint;
 
 import java.util.ArrayList;
 
-public class EraserStrokeCommand implements Command {
-
-    private PaintLayer layer;
-    private CommandHistory history;
+public class StrokeEraserCommand implements Command {
+    private final PaintLayer layer;
+    private final CommandHistory history;
     private ArrayList<Shape> removedShapes;
     private boolean changed = false;
     private ArrayList<Integer> indices;
     private ArrayList<Shape> originalShapes;
 
-    public EraserStrokeCommand(PaintLayer l, CommandHistory h) {
+    public StrokeEraserCommand(PaintLayer l, CommandHistory h) {
         layer = l;
         history = h;
         indices = new ArrayList<>();

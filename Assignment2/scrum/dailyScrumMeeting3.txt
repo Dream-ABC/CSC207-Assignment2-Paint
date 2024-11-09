@@ -89,22 +89,22 @@ Oct 30,2024
 	Obstacles I face: Knowing how to refactor the code, designing good architecture and writing good code, etc
 
 Oct 31,2024
-	What I did yesterday: Thought about how to make an eraser tool
-	What I will do today: Try to actually make the eraser tool
+	What I did yesterday: Thought about how to make an strokeEraser tool
+	What I will do today: Try to actually make the strokeEraser tool
 	Obstacles I face: How to indicate to the user what they're selecting, how to actually select something and move it, ...
 
 Nov 1,2024
 	What I did yesterday: Completed BUG2.007
-	What I will do today: Continue working on the eraser tool
+	What I will do today: Continue working on the strokeEraser tool
 	Obstacles I face: Making clean and smart changes to code and/or architecture
 
 Nov 2,2024
-	What I did yesterday: Considered how to make an eraser tool
+	What I did yesterday: Considered how to make an strokeEraser tool
 	What I will do today: Add javadocs, work on US stories, help a teammate do pull requests
 	Obstacles I face: How to make it work with my teammates' new code
 
 Nov 3,2024
-	What I did yesterday: Completed eraser tool
+	What I did yesterday: Completed strokeEraser tool
 	What I will do today: Add javadocs and note architecture changes to architecture.txt
 	Obstacles I face: Writing good and effective javadocs + architecture.txt
 
@@ -114,29 +114,29 @@ Nov 4,2024
 	Obstacles I face: Ensuring I don't take on more than I can handle, while also helping my team complete all the tasks
 
 Nov 5,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Put sprints into sprintBacklog4
+	What I will do today: Think about how to effectively implement my tasks
+	Obstacles I face: Knowing how to change the code, creating effective classes and architecture
 
 Nov 6,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Thought about how to implement my tasks
+	What I will do today: Fix some naming conventions that we didn't follow (whoops...)
+	Obstacles I face: Figuring out how to rename things, making sure I follow the instructions, etc
 
 Nov 7,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Updated backlogs to ensure they were all updated and correct
+	What I will do today: Start on my tasks
+	Obstacles I face: Figuring out how to complete my tasks
 
 Nov 8,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed many tasks, did pull requests
+	What I will do today: Continue working on bugs and user stories
+	Obstacles I face: Avoiding any bugs in my code, and making sure it all works as intended
 
 Nov 9,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed all my user stories and tasks, accepted pull requests
+	What I will do today: Work on architecture, making javadocs, cleaning up code
+	Obstacles I face: Writing clearly and concisely
 
 Nov 10,2024
 	What I did yesterday:

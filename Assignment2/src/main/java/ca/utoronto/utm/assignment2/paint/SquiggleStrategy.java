@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 
 public class SquiggleStrategy implements ShapeStrategy {
 
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public SquiggleStrategy(PaintPanel p) {
         this.panel = p;
@@ -12,11 +12,10 @@ public class SquiggleStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println("Start Squiggle");
         Point point = new Point(mouseEvent.getX(), mouseEvent.getY());
 
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Squiggle squiggle = (Squiggle) shapeFactory.getShape(panel.getMode());
+        Squiggle squiggle = (Squiggle) shapeFactory.getShape(panel.getMode(), "", panel.getLineThickness());
         this.panel.setCurrentShape(squiggle);
 
         // Set info of squiggle (start point)
@@ -43,7 +42,6 @@ public class SquiggleStrategy implements ShapeStrategy {
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShapeFinal(squiggle);
-        System.out.println("Added Squiggle");
         this.panel.setCurrentShape(null);
     }
 }

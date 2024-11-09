@@ -3,7 +3,6 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -16,8 +15,8 @@ import java.util.*;
 
 
 public class LayerChooserPanel extends GridPane implements EventHandler<ActionEvent> {
-    private View view;
-    private PaintModel model;
+    private final View view;
+    private final PaintModel model;
     private Map<Integer, ImageView> buttonImages;
 
     public LayerChooserPanel(View view) {
@@ -34,6 +33,8 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         WritableImage snapshot;
         boolean store = layer.isVisible();
         layer.setVisible(true);
+        if (layer.getWidth() < 100) {layer.setWidth(100);}
+        if (layer.getHeight() < 100) {layer.setHeight(100);}
         GraphicsContext g2d = layer.getGraphicsContext2D();
         g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
         layer.display(g2d);
@@ -105,14 +106,12 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
     @Override
     public void handle(ActionEvent event) {
         for (Node node : this.getChildren()) {
-            if (node instanceof Button) {
-                Button button = (Button) node;
+            if (node instanceof Button button) {
                 button.setStyle("");
             }
         }
 
         String command = ((Button) event.getSource()).getId();
         view.setLayer(command);
-        System.out.println(command);
     }
 }

@@ -7,11 +7,45 @@ import java.util.Observable;
 import java.util.Stack;
 
 public class PaintModel extends Observable {
-    private ArrayList<PaintLayer> layers = new ArrayList<>();
+    private final ArrayList<PaintLayer> layers = new ArrayList<>();
     private PaintLayer selectedLayer;
-    private String mode = "";
+    private Shape selectedShape;
+    private String mode;
+    private View view;
+    private int zoomFactor;
+    private String fillStyle;
+    private double thickness;
+    private double canvasX, canvasY, canvasWidth, canvasHeight;
+    private double mouseX, mouseY;
 
-    private CommandHistory history = new CommandHistory();
+    private final CommandHistory history = new CommandHistory();
+
+    public PaintModel() {
+        this.selectedShape = null;
+        this.mode = "";
+        this.canvasWidth = 700;
+        this.canvasHeight = 400;
+        this.fillStyle = "Solid";
+        this.thickness = 1.0;
+        this.zoomFactor = 100;
+    }
+
+    public String getFillStyle() {
+        return this.fillStyle;
+    }
+
+    public void setFillStyle(String fillStyle) {
+        this.fillStyle = fillStyle;
+        notifyChange();
+    }
+
+    public double getLineThickness() {
+        return this.thickness;
+    }
+
+    public void setLineThickness(double thickness) {
+        this.thickness = thickness;
+    }
 
     public boolean selectLayer(String layerName) {
         int layerIndex = Integer.parseInt(layerName.substring(5));
@@ -24,13 +58,17 @@ public class PaintModel extends Observable {
     }
 
     public void addLayer() {
-        PaintLayer layer;
-        if (this.selectedLayer == null) {
-            layer = new PaintLayer();
-        } else {
-            layer = new PaintLayer(this.selectedLayer.getWidth(), this.selectedLayer.getHeight());
-        }
+//        PaintLayer layer;
+//        if (this.selectedLayer == null) {
+//            layer = new PaintLayer();
+//        } else {
+//            layer = new PaintLayer(this.selectedLayer.getWidth(), this.selectedLayer.getHeight());
+//        }
+//        history.execute(new AddLayerCommand(this, layer, history));
+        // this.selectedLayer = layer;
+        PaintLayer layer = new PaintLayer();
         history.execute(new AddLayerCommand(this, layer, history));
+        this.selectedLayer = layer;
         notifyChange();
     }
 
@@ -41,8 +79,6 @@ public class PaintModel extends Observable {
     public void removeLayer(PaintLayer layer) {
         if (this.layers.size() > 1) {
             // when there is only one layer, the user cannot remove it
-
-//            this.layers.remove(this.selectedLayer);
             int currIndex = this.layers.indexOf(selectedLayer);
             history.execute(new DeleteLayerCommand(this, layer, history));
             if (this.selectedLayer == layer) {
@@ -91,23 +127,45 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public void setSelectedShape(Shape selectedShape) {
+        this.selectedShape = selectedShape;
+        notifyChange();
+    }
+
+    public Shape getSelectedShape() {
+        return this.selectedShape;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
     public void setMode(String mode) {
         this.mode = mode;
         notifyChange();
     }
 
     public void storeState() {
-        history.execute(new EraserStrokeCommand(this.selectedLayer, history));
+        history.execute(new StrokeEraserCommand(this.selectedLayer, history));
     }
 
-    public void addEraser(Eraser eraser) {
-        this.selectedLayer.addEraser(eraser);
+    public void addStrokeEraser(StrokeEraser strokeEraser) {
+        this.selectedLayer.addStrokeEraser(strokeEraser);
         notifyChange();
     }
 
-    public void removeEraser() {
-        //history.execute(new EraserStrokeCommand(removedShapes, history));
-        this.selectedLayer.removeEraser();
+    public void removeStrokeEraser() {
+        this.selectedLayer.removeStrokeEraser();
+        notifyChange();
+    }
+
+    public void addSelectionTool(SelectionTool selectionTool) {
+        this.selectedLayer.addSelectionTool(selectionTool);
+        notifyChange();
+    }
+
+    public void removeSelectionTool() {
+        this.selectedLayer.removeSelectionTool();
         notifyChange();
     }
 
@@ -121,9 +179,61 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public double getCanvasX() {
+        return canvasX;
+    }
+
+    public double getCanvasY() {
+        return canvasY;
+    }
+
+    public void setCanvasPosition(double x, double y) {
+        this.canvasX = x;
+        this.canvasY = y;
+        notifyChange();
+    }
+
+    public double getCanvasWidth() {
+        return canvasWidth;
+    }
+
+    public double getCanvasHeight() {
+        return canvasHeight;
+    }
+
+    public void setCanvasSize(double width, double height) {
+        this.canvasWidth = width;
+        this.canvasHeight = height;
+        notifyChange();
+    }
+
+    public double getMouseX() {
+        return mouseX;
+    }
+
+    public double getMouseY() {
+        return mouseY;
+    }
+
+    public void setMousePosition(double x, double y) {
+        this.mouseX = x;
+        this.mouseY = y;
+        notifyChange();
+    }
+
+    public int getZoomFactor() {
+        return this.zoomFactor;
+    }
+
+    public void setZoomFactor(int zoomFactor, ResizableCanvas canvas) {
+        this.zoomFactor = zoomFactor;
+        canvas.scaleCanvas();
+        notifyChange();
+    }
+
     /**
      * Resets the paint model to its initial state.
-     *
+     * <p>
      * This method performs the following actions:
      * - Clears all existing layers.
      * - Creates and adds a new default layer.
@@ -188,11 +298,11 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
 
-    public CommandHistory getHistory() {
-        return history;
+    public void setView(View view) {
+        this.view = view;
     }
 
-    public String getMode() {
-        return mode;
+    public CommandHistory getHistory() {
+        return history;
     }
 }

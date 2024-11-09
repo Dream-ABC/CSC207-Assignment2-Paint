@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -17,51 +18,86 @@ import java.io.FileNotFoundException;
 
 public class View implements EventHandler<ActionEvent> {
 
-    private Stage stage;
-    private PaintModel paintModel;
-    private PaintPanel paintPanel;
-    private ToolbarPanel toolbarPanel;
-    private StatusbarPanel statusbarPanel;
-    private ZoomPanel zoomPanel;
-    private ShapeChooserPanel shapeChooserPanel;
-    private ColorPickerPopup colorPickerPopup;
-    private LayerChooserPanel layerChooserPanel;
-    private LayerChooserController layerChooserController;
+    private final Stage stage;
+    private final PaintModel paintModel;
+    private final PaintPanel paintPanel;
+    private final ToolbarPanel toolbarPanel;
+    private final StatusbarPanel statusbarPanel;
+    private final ZoomPanel zoomPanel;
+    private final ShapeChooserPanel shapeChooserPanel;
+    private final ColorPickerPopup colorPickerPopup;
+    private final LayerChooserPanel layerChooserPanel;
+    private final LayerChooserController layerChooserController;
+    private final ResizableCanvas canvas;
+    private LineThicknessSlider lineThicknessSlider;
     private FileHandlePopup fileHandlePopup;
+
+    private BorderPane root;
+    private VBox topPanel;
+    private HBox bottomPanel;
+    private ScrollPane canvasHolder;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
         this.stage = stage;
 
-        this.paintPanel = new PaintPanel(this.paintModel);
+        this.paintPanel = new PaintPanel(paintModel);
+        this.canvas = new ResizableCanvas(700, 400, paintModel, paintPanel);
+
         this.toolbarPanel = new ToolbarPanel();
-        this.statusbarPanel = new StatusbarPanel(this.paintPanel);
-        this.zoomPanel = new ZoomPanel();
-        this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
+
+        this.statusbarPanel = new StatusbarPanel();
+        paintModel.addObserver(statusbarPanel);
+
+        this.zoomPanel = new ZoomPanel(paintModel, canvas);
+        paintModel.addObserver(zoomPanel);
+
+        this.shapeChooserPanel = new ShapeChooserPanel(paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
-        this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
+        this.layerChooserController = new LayerChooserController(layerChooserPanel, paintModel);
         this.fileHandlePopup = new FileHandlePopup(this.paintPanel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
-        VBox topPanel = new VBox();
+        topPanel = new VBox();
         topPanel.getChildren().addAll(createMenuBar(), this.toolbarPanel);
 
         Region spacer = new Region();
-        spacer.setStyle("-fx-background-color: #f8f1f0");
+        spacer.setStyle("-fx-background: #f8f1f0");
 
-        HBox bottomPanel = new HBox();
+        bottomPanel = new HBox();
         HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS); // Let the spacer expand
         bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
 
-        BorderPane root = new BorderPane();
+        canvasHolder = new ScrollPane(this.canvas);
+        canvasHolder.setStyle("-fx-background: #f8f1f0; -fx-border-color: #f8f1f0;");
+        canvasHolder.setOnMouseMoved(e -> {
+            double scale = paintModel.getZoomFactor() / 100.0;
+
+            double scrollX = canvasHolder.getHvalue() * (canvasHolder.getContent().getBoundsInLocal().getWidth() - canvasHolder.getViewportBounds().getWidth());
+            double scrollY = canvasHolder.getVvalue() * (canvasHolder.getContent().getBoundsInLocal().getHeight() - canvasHolder.getViewportBounds().getHeight());
+
+            double canvasX = canvas.getBoundsInParent().getMinX() - scrollX;
+            double canvasY = canvas.getBoundsInParent().getMinY() - scrollY;
+
+            double adjustedX = (e.getX() - canvasX - 6) / scale;
+            double adjustedY = (e.getY() - canvasY - 6) / scale;
+
+            model.setMousePosition(adjustedX, adjustedY);
+            model.setCanvasPosition(canvasX, canvasY);
+            model.setCanvasSize(paintPanel.getWidth(), paintPanel.getHeight());
+        });
+
+        root = new BorderPane();
+        root.setStyle("-fx-background: #f8f1f0");
+
+        root.setCenter(canvasHolder);
+        root.setLeft(this.shapeChooserPanel);
+//        root.setRight(layerPane);
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
         this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
-        root.setCenter(this.paintPanel);
-        root.setLeft(this.shapeChooserPanel);
-        ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
-        root.setRight(layerPane);
+
         Scene scene = new Scene(root);
 
         FileInputStream inputIcon = new FileInputStream(iconImageFile);
@@ -71,6 +107,12 @@ public class View implements EventHandler<ActionEvent> {
         stage.setScene(scene);
         stage.setTitle("Paint");
         stage.show();
+        stage.setWidth(1000);
+        stage.setHeight(700);
+        canvas.setUpPositions();
+
+        this.paintModel.setView(this);
+
         root.requestFocus();
     }
 
@@ -143,26 +185,28 @@ public class View implements EventHandler<ActionEvent> {
 
         menuBar.getMenus().add(menu);
 
-        // Another menu for Options
+        // Another menu for View
 
         menu = new Menu("View");
-
 
         menuItem = new MenuItem("Colors");
         menuItem.setOnAction(this); // Show the color popup
         menu.getItems().add(menuItem);
+        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
+
+        menuItem = new MenuItem("Line Thickness");
+        this.lineThicknessSlider = new LineThicknessSlider(this.paintPanel);
+        menuItem.setOnAction(event -> this.lineThicknessSlider.show()); // Show the slider popup
+        menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);
-        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
         return menuBar;
     }
 
     @Override
     public void handle(ActionEvent event) {
-//        System.out.println(((MenuItem) event.getSource()).getText());
         String command = ((MenuItem) event.getSource()).getText();
-//        System.out.println(command);
         if (command.equals("Exit")) {
             Platform.exit();
         } else if (command.equals("Colors")) {

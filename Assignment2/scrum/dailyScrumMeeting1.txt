@@ -115,24 +115,24 @@ Nov 4,2024
 	Obstacles I face: A few bug fixes.
 
 Nov 5,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Worked on US3.015.
+	What I will do today: Plan on figuring out the math for the padding for US3.015.
+	Obstacles I face: The Math ain't Mathing.
 
 Nov 6,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Worked on US3.015
+	What I will do today: Complete US3.015 and Work on US4.009
+	Obstacles I face: None
 
 Nov 7,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Made Major Progress on US4.009
+	What I will do today: Finish US4.009, create and fixed a few more smaller bugs.
+	Obstacles I face: None
 
 Nov 8,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished US4.009 and a few smaller bugs.
+	What I will do today: Pull Requests for a group member's US and BUGs.
+	Obstacles I face: None
 
 Nov 9,2024
 	What I did yesterday:

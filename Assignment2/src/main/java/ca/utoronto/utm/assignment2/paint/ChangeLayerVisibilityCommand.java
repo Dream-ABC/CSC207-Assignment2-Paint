@@ -1,8 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 public class ChangeLayerVisibilityCommand implements Command {
-
-    private PaintLayer layer;
+    private final PaintLayer layer;
     private PaintModel model;
     private int index;
 

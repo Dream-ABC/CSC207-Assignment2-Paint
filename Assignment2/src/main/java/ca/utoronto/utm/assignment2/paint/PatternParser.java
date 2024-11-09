@@ -51,12 +51,13 @@ public class PatternParser {
 
                 // Creates the correct shape
                 String shapeType = content.substring(content.indexOf("&") + 1, content.indexOf("{"));
-                Shape shape = panel.getShapeFactory().getShape(shapeType);
+                // The fill style and line thickness are placeholders. They will be formally set at a later stage.
+                Shape shape = panel.getShapeFactory().getShape(shapeType, "", 0);
 
                 // Gets corresponding information and sets them to the shape
                 String[] dataString = content.substring(content.indexOf("{") + 1,
                         content.indexOf("}")).split(",");
-                shape.setShape(dataString);
+                shape.setShape(dataString);  // This is where the fill style and line thickness are formally set
 
                 return new AddShapeCommand(shape, model.getLayers().get(layerIndex), history, model);
 

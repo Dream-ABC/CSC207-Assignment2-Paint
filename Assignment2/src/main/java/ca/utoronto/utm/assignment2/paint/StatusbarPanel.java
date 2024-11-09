@@ -9,21 +9,24 @@ import javafx.scene.layout.GridPane;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Observable;
+import java.util.Observer;
 
-public class StatusbarPanel extends GridPane {
-    private PaintPanel paintPanel;
+public class StatusbarPanel extends GridPane implements Observer {
+    private TextField[] fields;
 
-    public StatusbarPanel(PaintPanel paintPanel) throws FileNotFoundException {
+    public StatusbarPanel() throws FileNotFoundException {
         String[] imageFiles = {
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Cursor.png",
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/ObjectSize.png",
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/CanvasSize.png",
         };
+        String[] defaultText = {"", "", "700 x 400px"};
 
-        this.paintPanel = paintPanel;
+        setStyle("-fx-background-color: #f8f1f0;");
+        setPadding(new Insets(7, 0, 7, 10));
 
-        this.setStyle("-fx-background-color: #f8f1f0;");
-        this.setPadding(new Insets(7, 0, 7, 10));
+        this.fields = new TextField[imageFiles.length];
 
         int col = 0;
         for (int i = 0; i < imageFiles.length; i++) {
@@ -39,7 +42,8 @@ public class StatusbarPanel extends GridPane {
             textField.setPrefWidth(110);
             textField.setPrefHeight(12);
             textField.setEditable(false);
-            textField.setText("1325 x 748px");
+            textField.setText(defaultText[i]);
+            fields[i] = textField;
 
             this.add(textField, col, 0);
             col++;
@@ -54,5 +58,22 @@ public class StatusbarPanel extends GridPane {
                 col++;
             }
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        PaintModel model = (PaintModel) o;
+        int mouseX = (int) model.getMouseX();
+        int mouseY = (int) model.getMouseY();
+        int canvasWidth = (int) model.getCanvasWidth();
+        int canvasHeight = (int) model.getCanvasHeight();
+
+        if (0 <= mouseX && mouseX <= canvasWidth && 0 <= mouseY && mouseY <= canvasHeight) {
+            fields[0].setText(mouseX + " x " + mouseY + "px");
+        } else {
+            fields[0].setText("");
+        }
+        fields[1].setText("");
+        fields[2].setText(canvasWidth + " x " + canvasHeight + "px");
     }
 }

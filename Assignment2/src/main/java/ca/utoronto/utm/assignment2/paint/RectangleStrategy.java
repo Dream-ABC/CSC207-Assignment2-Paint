@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 
 public class RectangleStrategy implements ShapeStrategy {
 
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public RectangleStrategy(PaintPanel p) {
         this.panel = p;
@@ -12,13 +12,12 @@ public class RectangleStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println("Started Rectangle");
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point origin = new Point(topLeft.x, topLeft.y);
 
         // Create a rectangle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Rectangle rectangle = (Rectangle) shapeFactory.getShape(panel.getMode());
+        Rectangle rectangle = (Rectangle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
         this.panel.setCurrentShape(rectangle);
 
         // Set info of rectangle (radius=0)
@@ -51,20 +50,17 @@ public class RectangleStrategy implements ShapeStrategy {
         Rectangle rectangle = (Rectangle) panel.getCurrentShape();
         Point origin = rectangle.getOrigin();
 
-        if (rectangle != null) {
-            double width = Math.abs(origin.x - mouseEvent.getX());
-            double height = Math.abs(origin.y - mouseEvent.getY());
-            double x = Math.min(rectangle.getTopLeft().x, mouseEvent.getX());
-            double y = Math.min(rectangle.getTopLeft().y, mouseEvent.getY());
-            rectangle.setTopLeft(new Point(x, y));
-            rectangle.setWidth(width);
-            rectangle.setHeight(height);
+        double width = Math.abs(origin.x - mouseEvent.getX());
+        double height = Math.abs(origin.y - mouseEvent.getY());
+        double x = Math.min(rectangle.getTopLeft().x, mouseEvent.getX());
+        double y = Math.min(rectangle.getTopLeft().y, mouseEvent.getY());
+        rectangle.setTopLeft(new Point(x, y));
+        rectangle.setWidth(width);
+        rectangle.setHeight(height);
 
-            Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
-            this.panel.getModel().getSelectedLayer().removeShape(shape);
-            this.panel.getModel().addShapeFinal(rectangle);
-            System.out.println("Added Rectangle");
-            this.panel.setCurrentShape(null);
-        }
+        Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
+        this.panel.getModel().getSelectedLayer().removeShape(shape);
+        this.panel.getModel().addShapeFinal(rectangle);
+        this.panel.setCurrentShape(null);
     }
 }

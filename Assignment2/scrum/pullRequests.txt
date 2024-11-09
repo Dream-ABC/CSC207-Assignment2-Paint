@@ -1,13 +1,26 @@
 Pull Requests:
 
-BUG3.007 author:wenjess1 puller:hingor13 status:Completed
+BUG3.371 author:wenjess1 puller:hingor13 status:Completed
 BUG3.004 author:pengxi60 puller:tianshi8 status:Completed
- US3.012 author:tianshi8 puller:pengxi60 status:Completed
- US3.013 author:tianshi8 puller:wenjess1 status:Completed
- US3.012 author:tianshi8 puller:hingor13 status:Completed
- US3.008 author:wenjess1 puller:pengxi60 status:Completed
+ US3.331 author:tianshi8 puller:pengxi60 status:Completed
+ US3.341 author:tianshi8 puller:wenjess1 status:Completed
+ US3.331 author:tianshi8 puller:hingor13 status:Completed
+ US3.311 author:wenjess1 puller:pengxi60 status:Completed
  US3.005 author:tianshi8 puller:pengxi60 status:Completed
- US3.016 author:pengxi60 puller:tianshi8 status:Completed
- US3.010 author:hingor13 puller:tianshi8 status:Completed
-BUG3.010 author:hingor13 puller:tianshi8 status:Completed
- US3.015 author:hingor13 puller:         status:Waiting
+ US3.361 author:pengxi60 puller:tianshi8 status:Completed
+ US3.321 author:hingor13 puller:tianshi8 status:Completed
+BUG3.341 author:hingor13 puller:tianshi8 status:Completed
+ US3.351 author:hingor13 puller:pengxi60 status:Completed
+BUG4.468 author:tianshi8 puller:hingor13 status:Rejected
+BUG4.481 author:hingor13 puller:tianshi8 status:Completed
+ US4.006 author:wenjess1 puller:hingor13 status:Completed
+ US4.431 author:pengxi60 puller:wenjess1 status:Completed
+ US4.009 author:hingor13 puller:wenjess1 status:Completed
+BUG4.482 author:wenjess1 puller:hingor13 status:Completed
+ US4.421 author:tianshi8 puller:wenjess1 status:Completed
+BUG4.483 author:wenjess1 puller:hingor13 status:Completed
+ US4.007 author:wenjess1 puller:hingor13 status:Completed
+BUG4.401 author:wenjess1 puller:hingor13 status:Completed
+ US4.411 author:wenjess1 puller:hingor13 status:Completed
+ US4.441 author:pengxi60 puller:wenjess1 status:Completed
+BUG4.484 author:pengxi60 puller:wenjess1 status:Completed

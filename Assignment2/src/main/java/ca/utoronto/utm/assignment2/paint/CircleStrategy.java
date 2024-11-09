@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 
 public class CircleStrategy implements ShapeStrategy {
 
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public CircleStrategy(PaintPanel p) {
         this.panel = p;
@@ -12,11 +12,10 @@ public class CircleStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println("Started Circle");
         Point firstClick = new Point(mouseEvent.getX(), mouseEvent.getY());
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Circle circle = (Circle) shapeFactory.getShape(panel.getMode());
+        Circle circle = (Circle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
         this.panel.setCurrentShape(circle);
 
         // Set info of circle (radius=0)
@@ -58,7 +57,6 @@ public class CircleStrategy implements ShapeStrategy {
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShapeFinal(circle);
-            System.out.println("Added Circle");
             this.panel.setCurrentShape(null);
         }
     }

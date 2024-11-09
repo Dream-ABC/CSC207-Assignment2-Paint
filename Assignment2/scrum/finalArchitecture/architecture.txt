@@ -1,5 +1,7 @@
 # Architecture
 
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 # MVC
 # ModelClasses
 	(list your classes here, no description)
@@ -9,11 +11,173 @@
 	(list your classes here, no description)
 
 # (other logical  ways of collecting your classes)
-	
-# Design Patterns Used (collections of classes into DP)
---------------------------------------------------------------------------------
-	(For each design pattern, pull from  and modify designPatternTemplate.txt)
 
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+# Design Patterns Used (collections of classes into DP)
+
+--------------------------------------------------------------------------------
+Name: Shape Strategy
+Pattern Name: Strategy
+Reference: https://www.oodesign.com/images/design_patterns/behavioral/strategy_implementation_-_uml_class_diagram.gif
+
+Purpose:
+	The Strategy pattern was implemented to align with the Open-Closed Principle.
+    In our application, each Shape (e.g. Circle, Rectangle) responds to mouse actions.
+    In particular, they respond to mouse clicks, drags, and releases to register that
+    they are being drawn onto the canvas. However, every Shape responds to these mouse
+    actions in different ways. For example, for a Circle, the first mouse click represents
+    the center of the Circle being drawn. However, for a Rectangle, the first mouse click
+    represents the top left corner of the Rectangle being drawn. Therefore, the Strategy pattern
+    allows us to create different strategies for different shapes, so that they can respond to
+    the user as needed. This approach ensures that our program is open for extension and
+    closed for modification: We can create new shape strategies and allow the context to decide
+    which one needs to be implemented (in this application, the context would be which shape button
+    the user clicked), instead of modifying the current existing code to use a new strategy.
+    As a result, this design keeps the application flexible and scalable.
+
+UML:
+	(UML will be made after we put things into folders).
+
+Classes:
+	ShapeStrategy: Strategy Interface
+	CircleStrategy: ConcreteStrategy
+    OvalStrategy: ConcreteStrategy
+    PolylineStrategy: ConcreteStrategy
+    PrecisionEraserStrategy: ConcreteStrategy
+    RectangleStrategy: ConcreteStrategy
+    SelectionToolStrategy: ConcreteStrategy
+    SquareStrategy: ConcreteStrategy
+    SquiggleStrategy: ConcreteStrategy
+    TextStrategy: ConcreteStrategy
+    TriangleStrategy: ConcreteStrategy
+	StrategyFactory: Context
+
+Usage:
+	A developer would use this part of the code if they wanted to add a new shape
+    strategy to the application. Firstly, they would need to create a new shape strategy
+    that implements the ShapeStrategy interface. Then, they would need to ensure the context,
+    which in our application is the StrategyFactory class, will use this new strategy
+    when desired.
+    (Note: How this last step is accomplished is discussed in the "Strategy Factory"
+    section below).
+
+--------------------------------------------------------------------------------
+Name: Strategy Factory
+Pattern Name: Factory
+Reference: https://www.oodesign.com/images/stories/factory%20implementation.gif
+
+Purpose:
+    (Note: For more context behind what a strategy is in our application, please
+    read the section "Shape Strategy" above).
+	The Factory pattern was implemented to align with the Open-Closed Principle.
+    In our application, the StrategyFactory is responsible for creating shape
+    strategies (e.g., CircleStrategy, RectangleStrategy) based on which shape the
+    user wants to draw. So, when the user clicks a button to choose a shape, that
+    shape type is passed to the StrategyFactory, which then instantiates the correct
+    shape strategy. This approach ensures that our program is open for extension and
+    closed for modification: We can add new shape features by creating new shape strategies
+    and updating the factory, instead of modifying the current existing code to support
+    the new shape feature. As a result, this design keeps the application flexible and scalable.
+
+UML:
+	(UML will be made after we put things into folders).
+
+Classes:
+	StrategyFactory: Factory
+    ShapeStrategy: Product Interface
+    CircleStrategy: ConcreteProduct
+    OvalStrategy: ConcreteProduct
+    PolylineStrategy: ConcreteProduct
+    PrecisionEraserStrategy: ConcreteProduct
+    RectangleStrategy: ConcreteProduct
+    SelectionToolStrategy: ConcreteProduct
+    SquareStrategy: ConcreteProduct
+    SquiggleStrategy: ConcreteProduct
+    TextStrategy: ConcreteProduct
+    TriangleStrategy: ConcreteProduct
+
+Usage:
+	A developer would use this part of the code if they wanted to add a new shape
+    feature to the application. Firstly, they would need to create a new shape strategy
+    that implements the ShapeStrategy interface. Then, they would need to update StrategyFactory
+    to create this new strategy, by creating a new case corresponding to the shape's name
+    (e.g. HexagonStrategy would have a case "hexagon").
+
+--------------------------------------------------------------------------------
+Name: Shape Factory
+Pattern Name: Factory
+Reference: https://www.oodesign.com/images/stories/factory%20implementation.gif
+
+Purpose:
+    The Factory pattern was implemented to align with the Open-Closed Principle.
+    In our application, the ShapeFactory is responsible for creating shape
+    objects (e.g., Circle, Rectangle) based on which type the user desires.
+    So, when the user clicks a button to choose a shape, that shape type is passed to
+    the ShapeFactory, which then instantiates the correct shape object.
+    This approach ensures that our program is open for extension and closed for modification:
+    We can add new shape features by creating new shape classes and updating the factory,
+    instead of modifying the current existing code to support the new shape feature.
+    As a result, this design keeps the application flexible and scalable.
+
+UML:
+	(UML will be made after we put things into folders).
+
+Classes:
+	ShapeFactory: Factory
+	Shape: Product Interface
+	Circle: ConcreteProduct
+	Oval: ConcreteProduct
+	Polyline: ConcreteProduct
+	PrecisionEraser: ConcreteProduct
+	Rectangle: ConcreteProduct
+	Square: ConcreteProduct
+	Squiggle: ConcreteProduct
+	Text: ConcreteProduct
+	Triangle: ConcreteProduct
+
+Usage:
+    A developer would use this part of the code if they wanted to add a new shape
+    feature to the application. Firstly, they would need to create a new shape class
+    that implements the Shape interface. Then, they would need to update ShapeFactory
+    to create this new shape, by creating a new case corresponding to the shape's name
+    (e.g. Hexagon would have a case "hexagon").
+
+--------------------------------------------------------------------------------
+Name: User Action Command
+Pattern Name: Command
+Reference: https://www.oodesign.com/images/design_patterns/behavioral/command_implementation_-_uml_class_diagram.gif
+
+Purpose:
+	(why is this pattern implemented? think SOLID as possible reasons and explain in terms of the application)
+
+UML:
+	(UML will be made after we put things into folders).
+
+Classes:
+	Command: Command
+	AddLayerCommand: ConcreteCommand
+	AddShapeCommand: ConcreteCommand
+	ChangeLayerCommand: ConcreteCommand
+	ChangeLayerVisibilityCommand: ConcreteCommand
+	DeleteLayerCommand: ConcreteCommand
+	StrokeEraserCommandCommand: ConcreteCommand
+	CommandHistory: Invoker
+	PaintModel: Client
+	PaintModel: Receiver
+
+Usage:
+    A developer would use this part of the code to
+	(Briefly describe why a developer would be playing with this part of
+	the code and how they would use it to achieve that purpose)
+
+--------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 # High Level Architecture Discussion
 

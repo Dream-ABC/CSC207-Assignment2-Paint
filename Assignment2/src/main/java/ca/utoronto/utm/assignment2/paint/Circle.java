@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * A class to represent drawing circles.
  * Circle implements the Shape interface.
@@ -12,13 +14,17 @@ public class Circle implements Shape {
     private Point centre;
     private double diameter;
     private Color color;
+    private String fillStyle;
+    private double lineThickness;
 
     /**
      * Constructs a default black circle with a diameter of 0.
      */
-    public Circle() {
+    public Circle(String fillStyle, double lineThickness) {
         this.diameter = 0;
         this.color = Color.BLACK;
+        this.fillStyle = fillStyle;
+        this.lineThickness = lineThickness;
     }
 
     /**
@@ -66,48 +72,89 @@ public class Circle implements Shape {
     }
 
     /**
-     * @return the stroke thickness of the Circle
+     *
      */
     @Override
-    public int getThickness() {
-        return -1;
-    }
-
-    /**
-     * @return 'Circle' as a string
-     */
-    @Override
-    public String getShape() {
-        return "Circle";
+    public void setLineThickness(double lineThickness) {
+        this.lineThickness = lineThickness;
     }
 
     /**
      * Checks if the Eraser is overlapping the Circle.
      * If it is, then the Eraser will erase the Circle.
      *
-     * @param eraser the Eraser instance which is currently erasing drawings
-     * @return True if the Eraser should erase this Circle, False otherwise
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool should find an overlap, False otherwise
      */
     @Override
-    public boolean overlaps(Eraser eraser) {
-        double leftX = eraser.getCentre().x - (eraser.getDimension() / 2.0);
-        double rightX = eraser.getCentre().x + (eraser.getDimension() / 2.0);
-        double topY = eraser.getCentre().y - (eraser.getDimension() / 2.0);
-        double bottomY = eraser.getCentre().y + (eraser.getDimension() / 2.0);
-        double Px, Py;
-        if (Math.abs(this.centre.x - leftX) < Math.abs(this.centre.x - rightX)) {
-            Px = leftX;
-        } else {
-            Px = rightX;
+    public boolean overlaps(Tool tool) {
+        if (this.fillStyle.equals("Outline")) {
+            return overlapsOutline(tool);
         }
+        return overlapsSolid(tool);
+    }
 
-        if (Math.abs(this.centre.y - topY) < Math.abs(this.centre.y - bottomY)) {
-            Py = topY;
-        } else {
-            Py = bottomY;
+    private boolean overlapsSolid(Tool tool) {
+        double centerX = topLeft.x + (diameter / 2.0);
+        double centerY = topLeft.y + (diameter / 2.0);
+        double radius = (diameter / 2.0);
+
+        double rectLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double rectRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
+
+        double closestX = clamp(centerX, rectLeft, rectRight);
+        double closestY = clamp(centerY, rectTop, rectBottom);
+
+        double distanceX = (centerX - closestX) / radius;
+        double distanceY = (centerY - closestY) / radius;
+        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+        return distanceSquared <= 1;
+    }
+
+    private boolean overlapsInsideAtPoint(Point p) {
+        double centerX = topLeft.x + (diameter / 2.0);
+        double centerY = topLeft.y + (diameter / 2.0);
+        double radius = (diameter / 2.0) - (this.lineThickness / 2.0);
+
+        double distanceX = (centerX - p.x) / radius;
+        double distanceY = (centerY - p.y) / radius;
+        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+
+        return distanceSquared <= 1;
+    }
+
+    private boolean overlapsOutline(Tool tool) {
+        double centerX = topLeft.x + (diameter / 2.0);
+        double centerY = topLeft.y + (diameter / 2.0);
+        double radius = (diameter / 2.0) + (this.lineThickness / 2.0);
+
+        double leftX = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double rightX = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double topY = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double bottomY = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
+        ArrayList<Point> allPoints = new ArrayList<Point>();
+        allPoints.add(new Point(leftX, topY));
+        allPoints.add(new Point(leftX, bottomY));
+        allPoints.add(new Point(rightX, topY));
+        allPoints.add(new Point(rightX, bottomY));
+        allPoints.add(tool.getTopLeft());
+
+        for (Point p : allPoints) {
+            double distanceX = (centerX - p.x) / radius;
+            double distanceY = (centerY - p.y) / radius;
+            double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+            if (distanceSquared <= 1 && !overlapsInsideAtPoint(p)) {
+                return true;
+            }
         }
-        double distance = Math.sqrt(Math.pow(this.centre.x - Px, 2) + Math.pow(this.centre.y - Py, 2));
-        return distance <= (this.diameter / 2.0);
+        return false;
+    }
+
+    private double clamp(double value, double min, double max) {
+        return Math.max(min, Math.min(max, value));
     }
 
     /**
@@ -117,26 +164,49 @@ public class Circle implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
-        g2d.setFill(this.color);
-        g2d.fillOval(this.topLeft.x, this.topLeft.y,
-                this.diameter, this.diameter);
+        if (this.fillStyle.equals("Solid")) {
+            g2d.setFill(this.color);
+            g2d.fillOval(this.topLeft.x, this.topLeft.y,
+                    this.diameter, this.diameter);
+        } else if (this.fillStyle.equals("Outline")) {
+            g2d.setStroke(this.color);
+            g2d.setLineWidth(this.lineThickness);
+            g2d.strokeOval(this.topLeft.x, this.topLeft.y, this.diameter, this.diameter);
+        }
     }
 
+    /**
+     * Sets the shape parameters for a Circle instance using an array of Strings.
+     *
+     * @param data an array of strings containing the following information in order:
+     *             data[0] - topLeft x-coordinate,
+     *             data[1] - topLeft y-coordinate,
+     *             data[2] - centre x-coordinate,
+     *             data[3] - centre y-coordinate,
+     *             data[4] - diameter,
+     *             data[5] - color (web format),
+     *             data[6] - fillStyle,
+     *             data[7] - lineThickness.
+     */
     @Override
     public void setShape(String[] data) {
         this.topLeft = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
         this.centre = new Point(Double.parseDouble(data[2]), Double.parseDouble(data[3]));
         this.diameter = Double.parseDouble(data[4]);
         this.color = Color.web(data[5]);
+        this.fillStyle = data[6];
+        this.lineThickness = Double.parseDouble(data[7]);
     }
 
     /**
      * Returns a string representation of a circle.
+     *
      * @return a string representation of the circle
      */
     public String toString() {
         return "Circle{" + this.topLeft.x + "," + this.topLeft.y + ","
-                + this.centre.x + "," + this.centre.y + "," +
-                this.diameter + "," + this.color.toString() + "}";
+                + this.centre.x + "," + this.centre.y + ","
+                + this.diameter + "," + this.color.toString() + ","
+                + this.fillStyle + "," + this.lineThickness + "}";
     }
 }

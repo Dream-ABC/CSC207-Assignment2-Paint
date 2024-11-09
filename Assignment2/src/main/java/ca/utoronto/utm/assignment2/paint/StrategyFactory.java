@@ -15,8 +15,16 @@ public class StrategyFactory {
                 return new OvalStrategy(panel);
             case "triangle":
                 return new TriangleStrategy(panel);
-            case "eraser":
-                return new EraserStrategy(panel);
+            case "stroke eraser":
+                return new StrokeEraserStrategy(panel);
+            case "polyline":
+                return new PolylineStrategy(panel);
+            case "selection tool":
+                return new SelectionToolStrategy(panel);
+            case "text":
+                return new TextStrategy(panel);
+            case "precision eraser":
+                return new PrecisionEraserStrategy(panel);
             // add more strategies here
 
             default:

@@ -13,18 +13,21 @@ import java.util.function.Consumer;
 
 public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observer {
     private String mode;
-    private PaintModel model;
+    private final PaintModel model;
     private Shape shape;
 
     private ShapeStrategy strategy;
-    private ShapeFactory shapeFactory;
-    private StrategyFactory strategyFactory;
-    Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
-    private Eraser eraser;
+    private final ShapeFactory shapeFactory;
+    private final StrategyFactory strategyFactory;
+    final Map<EventType<MouseEvent>, Consumer<MouseEvent>> eventHandlers;
+    private StrokeEraser strokeEraser;
+    private SelectionTool selection;
 
     private Color color;
 
     public PaintPanel(PaintModel model) {
+
+        setMinSize(100, 100);
 
         this.shapeFactory = new ShapeFactory();
         this.strategyFactory = new StrategyFactory();
@@ -52,12 +55,16 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return mode;
     }
 
-    /**
-     * Controller aspect of this
-     */
-    public void setMode(String mode) {
-        this.mode = mode;
-        System.out.println(this.mode);
+    public String getFillStyle(){
+        return model.getFillStyle();
+    }
+
+    public double getLineThickness(){
+        return model.getLineThickness();
+    }
+
+    public void setLineThickness(double thickness){
+        model.setLineThickness(thickness);
     }
 
     public PaintModel getModel() {
@@ -72,9 +79,13 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         this.shape = shape;
     }
 
-    public Eraser getEraser() { return eraser; }
+    public StrokeEraser getStrokeEraser() { return strokeEraser; }
 
-    public void setEraser(Eraser eraser) { this.eraser = eraser; }
+    public void setStrokeEraser(StrokeEraser strokeEraser) { this.strokeEraser = strokeEraser; }
+
+    public SelectionTool getSelectionTool() {return selection;}
+
+    public void setSelectionTool(SelectionTool selection) {this.selection = selection;}
 
     public ShapeFactory getShapeFactory() {
         return shapeFactory;
@@ -99,11 +110,13 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
         if (this.strategy != null) {
             EventType<MouseEvent> mouseEventType = (EventType<MouseEvent>) mouseEvent.getEventType();
-
             Consumer<MouseEvent> handler = eventHandlers.get(mouseEventType);
+
             if (handler != null) {
                 handler.accept(mouseEvent);
             }
+
+            model.setSelectedShape(shape);
         }
     }
 
@@ -112,6 +125,12 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     @Override
     public void update(Observable o, Object arg) {
+
+        for (PaintLayer layer : this.model.getLayers()){
+            if (layer.getWidth() < 100){layer.setWidth(100);}
+            if (layer.getHeight() < 100){layer.setHeight(100);}
+        }
+
         this.getChildren().setAll(this.model.getLayers());
         PaintModel model = (PaintModel) o;
         this.mode = model.getMode();

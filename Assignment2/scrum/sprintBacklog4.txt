@@ -6,10 +6,10 @@
 # Sprint 4 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.006 : wenjess1 : NotStarted
+TYPE     : USER STORY US4.006 : wenjess1 : Complete
 NAME     : Fill style selector
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+PRIORITY : 1
+ESTIMATE : 2 hours    ACTUAL : 2 hours
 AS A     : user
 I WANT   : To be able to select the current drawing style (filled or outline), to be applied
            to subsequent shapes. Example:
@@ -24,39 +24,48 @@ I WANT   : To be able to select the current drawing style (filled or outline), t
            		draw a rectangle
            		select mode squiggle
            		draw a squiggle
-           	results in two solid circles and a solid rectangle as well as
-           	two outlined rectangles and a squiggle
-SO THAT  :
+           results in two solid circles and a solid rectangle as well as
+           two outlined rectangles and a squiggle
+SO THAT  : I can decide whether I want to draw solid or outlined shapes, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.007 : wenjess1 : NotStarted
+TYPE     : USER STORY US4.007 : wenjess1 : Complete
 NAME     : Line thickness selector
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+PRIORITY : 1
+ESTIMATE : 2 hours    ACTUAL : 2 hours
 AS A     : user
 I WANT   : To be able to select the current line thickness, to be applied
            to subsequent shapes. Example:
            		select fill style outline
-           		selects line thickness 1
+           		selects line lineThickness 1
            		mode circle
            		draw a circle
            		draw a circle
            		mode rectangle
            		draw a rectangle
-           		select line thickness 9
+           		select line lineThickness 9
            		draw a rectangle
            		draw a rectangle
            		select mode squiggle
            		draw a squiggle
-           	results in two thinly outlined circles and a thinly outlined
-           	rectangle as well as two thickly outlined rectangles and a thick squiggle
-SO THAT  :
+           results in two thinly outlined circles and a thinly outlined
+           rectangle as well as two thickly outlined rectangles and a thick squiggle
+SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.020 : wenjess1 : NotStarted
+TYPE     : BUG BUG4.401 : wenjess1 : Complete
+NAME     : Stroke Eraser working with varying line thickness and outlined shapes
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 8 hours
+ISSUE    : The current StrokeEraser doesn't erase strokes properly when
+           line thickness of shapes are changed, or when shapes are drawn
+           as outlines instead of solids.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.411 : wenjess1 : Complete
 NAME     : Precision Eraser
-PRIORITY : 3
-ESTIMATE : 1 day    ACTUAL :
+PRIORITY : 2
+ESTIMATE : 1 day    ACTUAL : 8 hours
 AS A     : user
 I WANT   : To be able to erase a precise section of a drawing on the canvas
 SO THAT  : I have more customizability with the Paint application.
@@ -64,18 +73,10 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.010 : wenjess1 : NotStarted
-NAME     : Stroke Eraser working with varying line thickness
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL :
-ISSUE    : The current stroke eraser doesn't erase strokes properly when
-           line thickness of shapes are changed.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US4.019 : tianshi8 : NotStarted
+TYPE     : USER STORY US4.421 : tianshi8 : Complete
 NAME     : Text Editor
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 7 hours
 AS A     : user
 I WANT : to add and customize text on the canvas with options to change the
          font, size, and colour.
@@ -83,10 +84,50 @@ SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.008 : tianshi8 : Started
-NAME     : File menu is not implemented
+TYPE     : USER STORY US3.351 : hingor13 : Complete
+NAME     : Canvas Scalability
+PRIORITY : 2
+ESTIMATE : 3 hours    ACTUAL : 3 days
+AS A     : user
+I WANT   : A canvas that I can increase and decrease on demand
+SO THAT  : I can have the freedom in changing the dimension of the canvas
+           for my intents and purposes.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.431 : pengxi60 : Complete
+NAME     : Draw Polyline
+PRIORITY : 3
+ESTIMATE : 4 hours ACTUAL : 3 hours
+AS A     : user
+I WANT   : To add polylines and custom polygons on the canvas
+SO THAT  : I can have more freedom with the type of lines and shapes I can
+           draw on the canvas.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.441 : pengxi60 : Complete
+NAME     : Magnifier Tool
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+AS A     : user
+I WANT   : To be able to focus on a specific part of the canvas.
+SO THAT  : I can edit a specific part of the canvas with more precision.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.451 : hingor13 : NotStarted
+NAME     : Selection tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to select drawings on the canvas
+SO THAT  : I can register which shapes have been selected by the tool.
+           This will be useful for future user stories, such as dragging
+           drawings around the canvas or copying and pasting drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.468 : tianshi8 : Complete
+NAME     : File menu is not implemented
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 5 hours
 ISSUE    : The File menu is currently non-functional. The program should
            implement the following features:
                create a new file
@@ -94,46 +135,41 @@ ISSUE    : The File menu is currently non-functional. The program should
                load a file onto the canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.001 : pengxi60 : NotStarted
-NAME     : Draw Polyline
-PRIORITY : 3
-ESTIMATE :  ACTUAL :
-AS A     : user
-I WANT   :
-SO THAT  : I can add polylines to my canvas
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US4.011 : pengxi60 : NotStarted
-NAME     : Magnifier Tool
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to focus on a specific part of the canvas.
-SO THAT  : I can edit a specific part of the canvas with more precision.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.011 : pengxi60 : NotStarted
+TYPE     : BUG BUG4.47? : pengxi60 : NotStarted
 NAME     : UI
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    :
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.015 : hingor13 : NotStarted
-NAME     : Canvas Scalability
-PRIORITY : 3
-ESTIMATE : 3 hours    ACTUAL :
-AS A     : user
-I WANT   : A canvas that I can increase and decrease on demand
-SO THAT  : I can have the freedom in changing the dimension of the canvas
-           for my intents and purposes.
+TYPE     : BUG BUG4.481 : hingor13 : Started
+NAME     : Undo/Redo Bug while run on initial canvas with no changes
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
+           duplicate canvases have been created.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.009 : hingor13 : NotStarted
-NAME     : Selection tool
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to select drawings on the canvas
-SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
+TYPE     : BUG BUG4.482 : wenjess1 : Complete
+NAME     : Improve precision of registering circle overlap for erasing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The StrokeEraser currently removes Circle drawings prematurely,
+           before the mouse cursor actually touches the Circle.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.483 : wenjess1 : Complete
+NAME     : Improve precision of registering text overlap for erasing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The StrokeEraser currently removes Text prematurely,
+           before the mouse cursor actually touches the Text.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.484 : pengxi60 : Started
+NAME     : Polyline when switching over to another shape
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When new shape is selected while polyline is not completed drawing
+           it becomes un-interactable.
 --------------------------------------------------------------------------

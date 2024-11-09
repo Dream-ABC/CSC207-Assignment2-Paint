@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 
 public class OvalStrategy implements ShapeStrategy {
 
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public OvalStrategy(PaintPanel p) {
         this.panel = p;
@@ -14,11 +14,9 @@ public class OvalStrategy implements ShapeStrategy {
     public void mousePressed(MouseEvent mouseEvent) {
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
 
-        System.out.println("Started Oval");
-
         // Create a circle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Oval oval = (Oval) shapeFactory.getShape(panel.getMode());
+        Oval oval = (Oval) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
         this.panel.setCurrentShape(oval);
 
         // Set info of circle (radius=0)
@@ -58,7 +56,6 @@ public class OvalStrategy implements ShapeStrategy {
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShapeFinal(oval);
-        System.out.println("Added Oval");
         this.panel.setCurrentShape(null);
     }
 }

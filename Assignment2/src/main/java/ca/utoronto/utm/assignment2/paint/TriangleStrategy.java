@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 
 public class TriangleStrategy implements ShapeStrategy {
     
-    private PaintPanel panel;
+    private final PaintPanel panel;
 
     public TriangleStrategy(PaintPanel p) {
         this.panel = p;
@@ -12,14 +12,12 @@ public class TriangleStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        System.out.println("Started Triangle");
-        
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point origin = new Point(topLeft.x, topLeft.y);
 
         // Create a triangle using factory
         ShapeFactory shapeFactory = panel.getShapeFactory();
-        Triangle triangle = (Triangle) shapeFactory.getShape(panel.getMode());
+        Triangle triangle = (Triangle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
         this.panel.setCurrentShape(triangle);
 
         // Set info of triangle (radius=0)
@@ -64,7 +62,6 @@ public class TriangleStrategy implements ShapeStrategy {
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         this.panel.getModel().addShapeFinal(triangle);
-        System.out.println("Added Triangle");
         this.panel.setCurrentShape(null);
     }
 }

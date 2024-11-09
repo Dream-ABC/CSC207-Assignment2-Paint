@@ -5,9 +5,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -54,15 +54,23 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> 
             buttonContent.setSpacing(8);
             buttonContent.getChildren().addAll(icon, downArrow);
 
-            Button button = new Button();
+            ToggleButton button = new ToggleButton();
             button.setGraphic(buttonContent);
             button.setId(buttonIds[i]);
             button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
 
             button.setOnAction(this);
 
-            button.setOnMouseEntered(e -> button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;"));
-            button.setOnMouseExited(e -> button.setStyle("-fx-background-color: transparent; -fx-padding: 10;"));
+            button.setOnMouseEntered(e -> {
+                button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
+            });
+            button.setOnMouseExited(e -> {
+                if (button.isSelected()) {
+                    button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
+                } else {
+                    button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
+                }
+            });
 
             Label label = new Label(buttonIds[i]);
             label.setStyle("-fx-font-size: 12px; -fx-text-fill: #666465; -fx-text-alignment: center;");
@@ -92,13 +100,12 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent event) {
         for (Node node : this.getChildren()) {
-            if (node instanceof VBox) {
-                VBox container = (VBox) node;
-                Button button = (Button) container.getChildren().getFirst();
+            if (node instanceof VBox container) {
+                ToggleButton button = (ToggleButton) container.getChildren().getFirst();
                 button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
             }
         }
-        Button button = (Button) event.getSource();
+        ToggleButton button = (ToggleButton) event.getSource();
         button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
     }
 }

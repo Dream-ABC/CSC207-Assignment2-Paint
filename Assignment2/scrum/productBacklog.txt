@@ -16,54 +16,15 @@
 # as appropriate.
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.006 : UTORID : NotStarted
-NAME     : Fill style selector
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to select the current drawing style (filled or outline), to be applied
-           to subsequent shapes. Example: 
-           		selects fill style solid
-           		mode circle
-           		draw a circle
-           		draw a circle
-           		mode rectangle
-           		draw a rectangle
-           		select fill style outline
-           		draw a rectangle
-           		draw a rectangle
-           		select mode squiggle
-           		draw a squiggle
-           	results in two solid circles and a solid rectangle as well as
-           	two outlined rectangles and a squiggle
-SO THAT  : 
+TYPE     : BUG BUG4.484 : pengxi60 : Started
+NAME     : Polyline when switching over to another shape
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When new shape is selected while polyline is not completed drawing
+           it becomes un-interactable.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.007 : UTORID : NotStarted
-NAME     : Line thickness selector
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to select the current line thickness, to be applied
-           to subsequent shapes. Example:
-           		select fill style outline 
-           		selects line thickness 1
-           		mode circle
-           		draw a circle
-           		draw a circle
-           		mode rectangle
-           		draw a rectangle
-           		select line thickness 9
-           		draw a rectangle
-           		draw a rectangle
-           		select mode squiggle
-           		draw a squiggle
-           	results in two thinly outlined circles and a thinly outlined 
-           	rectangle as well as two thickly outlined rectangles and a thick squiggle
-SO THAT  : 
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.009 : hingor13 : NotStarted
+TYPE     : USER STORY US4.451 : hingor13 : Started
 NAME     : Selection tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
@@ -72,115 +33,12 @@ I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US?.011 : hingor13 : NotStarted
-NAME     : Magnifier Tool
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to focus on a specific part of the canvas.
-SO THAT  : I can edit a specific part of the canvas with more precision.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US4.020 : wenjess1 : NotStarted
-NAME     : Precision Eraser
-PRIORITY : 3
-ESTIMATE : 1 day    ACTUAL :
-AS A     : user
-I WANT   : To be able to erase a precise section of a drawing on the canvas
-SO THAT  : I have more customizability with the Paint application.
-           In particular, this would enhance my ease of control over the canvas
-           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.010 : wenjess1 : NotStarted
-NAME     : Stroke Eraser working with varying line thickness
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL :
-ISSUE    : The current stroke eraser doesn't erase strokes properly when
-           line thickness of shapes are changed.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
-NAME     : Copy/Paste
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to copy/paste certain selections.
-SO THAT  : I can reuse existing drawings on the canvas.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US3.015 : hingor13 : NotStarted
-NAME     : Canvas Scalability
-PRIORITY : 3
-ESTIMATE : 3 hours    ACTUAL :
-AS A     : user
-I WANT   : A canvas that I can increase and decrease on demand
-SO THAT  : I can have the freedom in changing the dimension of the canvas
-           for my intents and purposes.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.016 : pengxi60 : NotStarted
-NAME     : Paint GUI overhaul
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : an appealing and interactable user interface
-SO THAT  : I can work in a flexible and user-friendly environment.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
-NAME     : Filling Tool
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT : to click on a shape or the background to fill it with a specific
-         colour.
-SO THAT : I can quickly add colours to different parts of my drawing without
-          manually painting every area.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.018 : tianshi8 : NotStarted
-NAME     : Brush Style
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT : to choose from various brush styles (e.g., pencil, pen, marker).
-SO THAT : I can achieve different textures and line effects in my drawings.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.019 : tianshi8 : NotStarted
-NAME     : Text Editor
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT : to add and customize text on the canvas with options to change the
-         font, size, and colour.
-SO THAT : I can create more personalized and visually distinct text elements
-          within my drawings.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG?.008 : tianshi8 : NotStarted
-NAME     : File menu is not implemented
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : The File menu is currently non-functional. The program should
-           implement the following features:
-               create a new file
-               save the current canvas as a file
-               load a file onto the canvas
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG?.009 : tianshi8 : NotStarted
-NAME     : Edit menu is not implemented
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : The Edit menu is currently non-functional. The program should
-           implement the following features:
-               cut a selected shape
-               copy a selected shape
-               paste a selected shape
-               undo the last action
-               redo the previously undone action
+TYPE     : BUG BUG4.481 : hingor13 : Started
+NAME     : Undo/Redo Bug while run on Initial Canvas with no changes
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
+           duplicate canvases have been created.
 --------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
@@ -195,39 +53,6 @@ I WANT   : To click the center of the circle, drag, and release to specify
 SO THAT  : I can add circles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.002 : wenjess1 : Complete
-NAME     : Draw Circle Feedback
-PRIORITY : 2
-ESTIMATE : 4 hours    ACTUAL : 3 hours
-AS A     : user
-I WANT   : As a user is specifying a Circle, during the drag, a 'current'
-           circle should be on display. As the user drags, the 'current'
-           circle changes in real time so that a circle is drawn with
-           centre at users initial circle click, with radius out to
-           the current dragged mouse position.
-SO THAT  : I can see the circle I am about to build on release of the mouse
-           button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US1.003 : hingor13 : Completed
-NAME     : Draw Rectangle
-PRIORITY : 2
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-AS A     : user
-I WANT   : To click on one corner of a rectangle, drag, and release to
-		   specify two corners of a rectangle to be drawn in the current style.
-SO THAT  : I can add rectangles to my canvas
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US1.004 : pengxi60 : Completed
-NAME     : Draw Rectangle Feedback
-PRIORITY : 2
-ESTIMATE : 2 hours    ACTUAL : 1 hour
-AS A     : user
-I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid construction.
-SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : BUG BUG1.001 : wenjess1 : Complete
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1
@@ -235,7 +60,7 @@ ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : It would be nice to have icons instead of "Circle", "Rectangle", ...
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.002 : hingor13 : Completed
+TYPE     : BUG BUG1.002 : hingor13 : Complete
 NAME     : Drawing selection mode not indicated
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
@@ -253,7 +78,7 @@ ISSUE    : Squiggles are connected to each other by a straight line.
            the issue is with the representation of the squiggles in the Model.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG1.006 : pengxi60 : Completed
+TYPE     : BUG BUG1.006 : pengxi60 : Complete
 NAME     : Circle drawing is broken
 PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 1 hour
@@ -262,28 +87,66 @@ ISSUE    : The first click should specify the center of the circle, with
            implementation.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.007 : wenjess1 : Complete
-NAME     : Default shape selection is incorrect
-PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
-           It would be best to have no default shape selected.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US2.017 : wenjess1 : Complete
-NAME     : Draw Oval with Feedback & Shape Selection
+TYPE     : BUG BUG1.101 : hingor13 : Complete
+NAME     : Rectangle drawing is broken
 PRIORITY : 1
+ESTIMATE : 1 hour   ACTUAL : 1 hour
+ISSUE    : If the rectangle is dragged towards another side than bottom right,
+           the topLeft corner should be updated.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG1.111 : hingor13 : Complete
+NAME     : Drawing selection mode not indicated at start of Program
+PRIORITY : 2
+ESTIMATE : 1 hour   ACTUAL : 1 hour
+ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.002 : wenjess1 : Complete
+NAME     : Draw Circle Feedback
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 3 hours
+AS A     : user
+I WANT   : As a user is specifying a Circle, during the drag, a 'current'
+           circle should be on display. As the user drags, the 'current'
+           circle changes in real time so that a circle is drawn with
+           centre at users initial circle click, with radius out to
+           the current dragged mouse position.
+SO THAT  : I can see the circle I am about to build on release of the mouse
+           button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.003 : hingor13 : Complete
+NAME     : Draw Rectangle
+PRIORITY : 2
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+AS A     : user
+I WANT   : To click on one corner of a rectangle, drag, and release to
+		   specify two corners of a rectangle to be drawn in the current style.
+SO THAT  : I can add rectangles to my canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.004 : pengxi60 : Complete
+NAME     : Draw Rectangle Feedback
+PRIORITY : 2
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
-I WANT   : To select an oval tool, then click on one corner of an oval,
-           drag, and release to specify two corners of a bounding box of
-           the oval to be drawn in the current style, with real-time
-           feedback showing the current oval as I drag.
-SO THAT  : I can easily add ovals to my canvas and see the oval I am
-           building before releasing the mouse button.
+I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid-construction.
+SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.016 : hingor13 : Completed
+TYPE     : BUG BUG2.003 : tianshi8 : Complete
+NAME     : Architecture behind choosing selection mode is poor
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+ISSUE    : Code is not modular and is difficult to expand. Need a better
+           architecture behind selecting a drawing mode, and handling
+           the drawing events. Consider some design patterns here.
+           Refactor ShapeChooserPanel and PaintPanel to get rid of the
+           'if' blocks in the PaintPanel mouse event code.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US2.211 : hingor13 : Complete
 NAME     : Draw Square with Feedback
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 1 hour
@@ -297,7 +160,20 @@ SO THAT  : I can easily add squares to my canvas and see the square I am
            building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US2.018 : pengxi60 : Completed
+TYPE     : USER STORY US2.221 : wenjess1 : Complete
+NAME     : Draw Oval with Feedback & Shape Selection
+PRIORITY : 1
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To select an oval tool, then click on one corner of an oval,
+           drag, and release to specify two corners of a bounding box of
+           the oval to be drawn in the current style, with real-time
+           feedback showing the current oval as I drag.
+SO THAT  : I can easily add ovals to my canvas and see the oval I am
+           building before releasing the mouse button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US2.231 : pengxi60 : Complete
 NAME     : Draw Triangle with Feedback & Shape Selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 2 hours
@@ -310,20 +186,38 @@ SO THAT  : I can easily add triangles to my canvas and see the triangle I
            am building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG2.003 : tianshi8 : Complete
-NAME     : Architecture behind choosing selection mode is poor
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 6 hours
-ISSUE    : Code is not modular and is difficult to expand. Need a better
-           architecture behind selecting a drawing mode, and handling
-           the drawing events. Consider some design patterns here.
-           Refactor ShapeChooserPanel and PaintPanel to get rid of the
-           'if' blocks in the PaintPanel mouse event code.
+TYPE     : BUG BUG3.004 : pengxi60 : Complete
+NAME     : Architecture behind Model is poor
+PRIORITY : 1
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. In fact, it is currently incorrect, with
+           Squiggle's not drawing properly. Need to re-architect the Model
+           so that it is more flexible, and easier to work with.
+           Consider some design patterns, or change of responsibility
+           here.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.371 : wenjess1 : Complete
+NAME     : Default shape selection is incorrect
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
+           It would be best to have no default shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.361 : pengxi60 : Complete
+NAME     : Paint GUI overhaul
+PRIORITY : 1
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : An appealing and interactable user interface
+SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.005 : tianshi8 : Complete
 NAME     : Color selector
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
 I WANT   : To be able to select the current drawing color, to be applied
@@ -345,28 +239,9 @@ SO THAT  : I can use consistent colors and easily switch colors while
            drawing different shapes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.012 : tianshi8 : Complete
-NAME     : Layer Support
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 6 hours
-AS A     : user
-I WANT   : To be able to add new layers.
-SO THAT  : I can independently edit different layers and flexibly control
-           the drawing effects.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US3.013 : tianshi8 : Complete
-NAME     : Transparency
-PRIORITY : 3
-ESTIMATE : 2 hours    ACTUAL : 1 hour
-AS A     : user
-I WANT   : To be able to adjust the transparency of each object.
-SO THAT  : I can control the visibility of different elements in my artwork.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US3.008 : wenjess1 : Complete
+TYPE     : USER STORY US3.311 : wenjess1 : Complete
 NAME     : Stroke Eraser
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 1 day    ACTUAL : 1 day
 AS A     : user
 I WANT   : To be able to erase an entire stroke on the canvas
@@ -375,9 +250,9 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US3.010 : hingor13 : Completed
+TYPE     : USER STORY US3.321 : hingor13 : Complete
 NAME     : Undo/Redo button
-PRIORITY : 3
+PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL :1 day
 AS A     : user
 I WANT   : To be able to Undo or Redo any edits I make to the canvas.
@@ -385,19 +260,26 @@ SO THAT  : I can undo something I did incorrectly or imperfectly, and able
            to redo it if I undo something I didn't want to.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.004 : pengxi60 : Completed
-NAME     : Architecture behind Model is poor
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. Need to re-architect the Model
-           so that it is more flexible, and easier to work with.
-           Consider some design patterns, or change of responsibility
-           here.
+TYPE     : USER STORY US3.331 : tianshi8 : Complete
+NAME     : Layer Support
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+AS A     : user
+I WANT   : To be able to add new layers.
+SO THAT  : I can independently edit different layers and flexibly control
+           the drawing effects.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.010 : hingor13 : Completed
+TYPE     : USER STORY US3.341 : tianshi8 : Complete
+NAME     : Transparency
+PRIORITY : 2
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To be able to adjust the transparency of each object.
+SO THAT  : I can control the visibility of different elements in my artwork.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.341 : hingor13 : Complete
 NAME     : Redundant Opacity Slider
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL :15 minutes
@@ -406,6 +288,181 @@ ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
            will simplify the UI and reduce potential conflicts in opaqueness
            control.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US3.351 : hingor13 : Complete
+NAME     : Canvas Scalability
+PRIORITY : 2
+ESTIMATE : 3 hours    ACTUAL : 3 days
+AS A     : user
+I WANT   : A canvas that I can increase and decrease on demand
+SO THAT  : I can have the freedom in changing the dimension of the canvas
+           for my intents and purposes.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.468 : tianshi8 : Complete
+NAME     : File menu is not implemented
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 5 hours
+ISSUE    : The File menu is currently non-functional. The program should
+           implement the following features:
+               create a new file
+               save the current canvas as a file
+               load a file onto the canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.006 : wenjess1 : Complete
+NAME     : Fill style selector
+PRIORITY : 1
+ESTIMATE : 2 hours    ACTUAL : 2 hours
+AS A     : user
+I WANT   : To be able to select the current drawing style (filled or outline), to be applied
+           to subsequent shapes. Example:
+           		selects fill style solid
+           		mode circle
+           		draw a circle
+           		draw a circle
+           		mode rectangle
+           		draw a rectangle
+           		select fill style outline
+           		draw a rectangle
+           		draw a rectangle
+           		select mode squiggle
+           		draw a squiggle
+           results in two solid circles and a solid rectangle as well as
+           two outlined rectangles and a squiggle
+SO THAT  : I can decide whether I want to draw solid or outlined shapes, for more customizability.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.007 : wenjess1 : Complete
+NAME     : Line thickness selector
+PRIORITY : 1
+ESTIMATE : 2 hours    ACTUAL : 2 hours
+AS A     : user
+I WANT   : To be able to select the current line thickness, to be applied
+           to subsequent shapes. Example:
+           		select fill style outline
+           		selects line lineThickness 1
+           		mode circle
+           		draw a circle
+           		draw a circle
+           		mode rectangle
+           		draw a rectangle
+           		select line lineThickness 9
+           		draw a rectangle
+           		draw a rectangle
+           		select mode squiggle
+           		draw a squiggle
+           results in two thinly outlined circles and a thinly outlined
+           rectangle as well as two thickly outlined rectangles and a thick squiggle
+SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.482 : wenjess1 : Complete
+NAME     : Improve precision of registering circle overlap for erasing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The stroke Eraser currently removes Circle drawings prematurely,
+           before the mouse cursor actually touches the Circle.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.483 : wenjess1 : Complete
+NAME     : Improve precision of registering text overlap for erasing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The stroke Eraser currently removes Text prematurely,
+           before the mouse cursor actually touches the Text.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.421 : tianshi8 : Complete
+NAME     : Text Editor
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 7 hours
+AS A     : user
+I WANT : to add and customize text on the canvas with options to change the
+         font, size, and colour.
+SO THAT : I can create more personalized and visually distinct text elements
+          within my drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.401 : wenjess1 : Complete
+NAME     : Stroke Eraser working with varying line thickness and outlined shapes
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 8 hours
+ISSUE    : The current StrokeEraser doesn't erase strokes properly when
+           line thickness of shapes are changed, or when shapes are drawn
+           as outlines instead of solids.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.411 : wenjess1 : Complete
+NAME     : Precision Eraser
+PRIORITY : 2
+ESTIMATE : 1 day    ACTUAL : 8 hours
+AS A     : user
+I WANT   : To be able to erase a precise section of a drawing on the canvas
+SO THAT  : I have more customizability with the Paint application.
+           In particular, this would enhance my ease of control over the canvas
+           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.441 : pengxi60 : Complete
+NAME     : Magnifier Tool
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+AS A     : user
+I WANT   : To be able to focus on a specific part of the canvas.
+SO THAT  : I can edit a specific part of the canvas with more precision.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.431 : pengxi60 : Complete
+NAME     : Draw Polyline
+PRIORITY : 3
+ESTIMATE : 4 hours ACTUAL : 3 hours
+AS A     : user
+I WANT   : To add polylines and custom polygons on the canvas
+SO THAT  : I can have more freedom with the type of lines and shapes I can
+           draw on the canvas.
+--------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
-
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
+NAME     : Copy/Paste
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To be able to copy/paste certain selections.
+SO THAT  : I can reuse existing drawings on the canvas.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
+NAME     : Filling Tool
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To click on a shape or the background to fill it with a specific
+           colour.
+SO THAT  : I can quickly add colours to different parts of my drawing without
+           manually painting every area.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US?.018 : tianshi8 : NotStarted
+NAME     : Brush Style
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+AS A     : user
+I WANT   : To choose from various brush styles (e.g., pencil, pen, marker).
+SO THAT  : I can achieve different textures and line effects in my drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG?.009 : tianshi8 : NotStarted
+NAME     : Edit menu is not implemented
+PRIORITY : 3
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : The Edit menu is currently non-functional. The program should
+           implement the following features:
+               cut a selected shape
+               copy a selected shape
+               paste a selected shape
+               undo the last action
+               redo the previously undone action
+--------------------------------------------------------------------------

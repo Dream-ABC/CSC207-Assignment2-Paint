@@ -92,29 +92,29 @@ Oct 31,2024
 	Obstacles I face: Understanding the architecture behind model and how it interacts with other modules.
 
 Nov 1,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished BUG3.004 and made a pull request
+	What I will do today: Branch out and begin working on US3.016
+	Obstacles I face: Understanding how to add panels and style JavaFX elements.
 
 Nov 2,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Began working on US3.016
+	What I will do today: Continue working on US3.016
+	Obstacles I face: Thinking about architecture and design patterns to allows modules to hook up to their panels
 
 Nov 3,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished US3.016.
+	What I will do today: Brainstorming US and BUG I will take on in sprint4
+	Obstacles I face: Ensuring that I can complete all the US and BUG I selected.
 
 Nov 4,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Selected some BUG and US to do sprint4
+	What I will do today: Nothing, studying for CSC236
+	Obstacles I face: nothing
 
 Nov 5,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: nothing
+	What I will do today: Nothing, studying for CSC236
+	Obstacles I face: nothing
 
 Nov 6,2024
 	What I did yesterday:
