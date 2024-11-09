@@ -11,7 +11,6 @@ public class PaintModel extends Observable {
     private PaintPanel canvas;
     private String mode = "";
     private View view;
-    private String fillStyle;
     private int zoomFactor;
     private String fillStyle = "Solid";
     private double thickness = 1.0;
