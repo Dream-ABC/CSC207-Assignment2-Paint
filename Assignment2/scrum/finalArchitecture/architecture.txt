@@ -193,9 +193,13 @@ Classes:
 	PaintModel: Receiver
 
 Usage:
-    A developer would use this part of the code to
-	(Briefly describe why a developer would be playing with this part of
-	the code and how they would use it to achieve that purpose)
+    A developer would use this part of the code if they implement any new user action that
+    requires undo/redo functionality. First, they would create a new command class and implement
+    any methods that the command needs to be able to execute. Then, they need to modify the client
+    class PaintModel to request this new command when necessary. Additionally, when PaintModel
+    requests the new command, the new command should be passed in to the invoker CommandHistory.
+    No adjustments to CommandHistory is needed. Lastly, the new command will be executed in sequence
+    within the command queue in CommandHistory.
 
 --------------------------------------------------------------------------------
 
