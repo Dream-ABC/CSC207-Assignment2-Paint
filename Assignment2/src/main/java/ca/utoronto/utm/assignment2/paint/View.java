@@ -3,7 +3,6 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -69,8 +68,11 @@ public class View implements EventHandler<ActionEvent> {
         canvasHolder.setOnMouseMoved(e -> {
             double scale = paintModel.getZoomFactor() / 100.0;
 
-            double canvasX = canvas.getBoundsInParent().getMinX();
-            double canvasY = canvas.getBoundsInParent().getMinY();
+            double scrollX = canvasHolder.getHvalue() * (canvasHolder.getContent().getBoundsInLocal().getWidth() - canvasHolder.getViewportBounds().getWidth());
+            double scrollY = canvasHolder.getVvalue() * (canvasHolder.getContent().getBoundsInLocal().getHeight() - canvasHolder.getViewportBounds().getHeight());
+
+            double canvasX = canvas.getBoundsInParent().getMinX() - scrollX;
+            double canvasY = canvas.getBoundsInParent().getMinY() - scrollY;
 
             double adjustedX = (e.getX() - canvasX - 6) / scale;
             double adjustedY = (e.getY() - canvasY - 6) / scale;
