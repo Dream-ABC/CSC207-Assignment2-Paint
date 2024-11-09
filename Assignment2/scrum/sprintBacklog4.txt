@@ -123,10 +123,10 @@ SO THAT  : I can register which shapes have been selected by the tool.
            drawings around the canvas or copying and pasting drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.468 : tianshi8 : Started
+TYPE     : BUG BUG4.468 : tianshi8 : Complete
 NAME     : File menu is not implemented
 PRIORITY : 2
-ESTIMATE : 4 hours    ACTUAL : 4 hours
+ESTIMATE : 4 hours    ACTUAL : 5 hours
 ISSUE    : The File menu is currently non-functional. The program should
            implement the following features:
                create a new file

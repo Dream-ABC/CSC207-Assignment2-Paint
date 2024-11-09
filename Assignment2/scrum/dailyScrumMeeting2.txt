@@ -148,7 +148,7 @@ Nov 7,2024
 
 Nov 8,2024
 	What I did yesterday: Fix File menu. Continue to work on text editor.
-	What I will do today: Finish text editor.
+	What I will do today: Finish text editor. Fix File menu bug.
 	Obstacles I face: Listening to user inputs.
 
 Nov 9,2024
