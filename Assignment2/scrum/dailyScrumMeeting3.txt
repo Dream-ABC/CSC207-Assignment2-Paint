@@ -134,9 +134,9 @@ Nov 8,2024
 	Obstacles I face: Avoiding any bugs in my code, and making sure it all works as intended
 
 Nov 9,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Completed all my user stories and tasks, accepted pull requests
+	What I will do today: Work on architecture, making javadocs, cleaning up code
+	Obstacles I face: Writing clearly and concisely
 
 Nov 10,2024
 	What I did yesterday:
