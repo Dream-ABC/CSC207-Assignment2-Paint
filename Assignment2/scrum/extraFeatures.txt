@@ -42,3 +42,84 @@ Description:
 Reference:
 	US4.007 - Line thickness selector
 --------------------------------------------------------------------------------
+FeatureName: Polyline
+
+Description:
+	...
+
+Reference:
+	US4.431 - Draw Polyline
+	BUG4.484 - Polyline when switching over to another shape
+--------------------------------------------------------------------------------
+FeatureName: Magnifier Tool
+
+Description:
+	...
+
+Reference:
+	US4.441 - Magnifier Tool
+--------------------------------------------------------------------------------
+FeatureName: Paint GUI
+
+Description:
+	...
+
+Reference:
+	US3.361 - Paint GUI overhaul
+--------------------------------------------------------------------------------
+FeatureName: Color Selector
+
+Description:
+	...
+
+Reference:
+	US3.005 - Color Selector
+--------------------------------------------------------------------------------
+FeatureName: Layer Support
+
+Description:
+	...
+
+Reference:
+	US3.331 - Layer Support
+--------------------------------------------------------------------------------
+FeatureName: File Menu
+
+Description:
+	...
+
+Reference:
+	BUG4.468 - File menu is not implemented
+--------------------------------------------------------------------------------
+FeatureName: Text Editor
+
+Description:
+	...
+
+Reference:
+	US4.421 - Text Editor
+--------------------------------------------------------------------------------
+FeatureName: Undo/Redo
+
+Description:
+	...
+
+Reference:
+	US3.321 - Undo/Redo button
+--------------------------------------------------------------------------------
+FeatureName: Resizable Canvas
+
+Description:
+	...
+
+Reference:
+	US3.351 - Canvas Scalability
+--------------------------------------------------------------------------------
+FeatureName: Selection Tool
+
+Description:
+	...
+
+Reference:
+	US4.451 - Selection tool
+--------------------------------------------------------------------------------
