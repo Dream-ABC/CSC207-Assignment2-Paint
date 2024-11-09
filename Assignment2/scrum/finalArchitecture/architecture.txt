@@ -3,12 +3,29 @@
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 # MVC
+
 # ModelClasses
-	(list your classes here, no description)
+	PaintModel
+	PaintLayer
+
 # ViewClasses
-	(list your classes here, no description)
+    View
+	PaintPanel
+	ShapeChooserPanel
+	TextEditorDialog
+	ColorPickerPopup
+	LayerChooserPanel
+	ToolbarPanel
+	ZoomPanel
+
 # ControllerClasses
-	(list your classes here, no description)
+    View
+	PaintPanel
+	ShapeChooserPanel
+	LayerChooserController
+	ToolbarController
+	ZoomController
+	ZoomSliderController
 
 # (other logical  ways of collecting your classes)
 
