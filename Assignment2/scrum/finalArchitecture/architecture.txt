@@ -214,11 +214,11 @@ Usage:
 
 	(For each story, pull from and modify the highLevelTemplate.txt)
 
-How to modify our code:
+HOW TO MODIFY OUR CODE
 New drawing mode
 
-How to extend our code:
+HOW TO EXTEND OUR CODE
 Cut, copy, paste
 
-How to understand our current code:
+HOW TO UNDERSTAND OUR CODE
 All extra features
