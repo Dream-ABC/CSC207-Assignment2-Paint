@@ -103,10 +103,10 @@ SO THAT  : I can have more freedom with the type of lines and shapes I can
            draw on the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.441 : pengxi60 : Started
+TYPE     : USER STORY US4.441 : pengxi60 : Completed
 NAME     : Magnifier Tool
 PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL :
+ESTIMATE : 4 hours    ACTUAL : 6
 AS A     : user
 I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
@@ -163,4 +163,12 @@ PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
 ISSUE    : The StrokeEraser currently removes Text prematurely,
            before the mouse cursor actually touches the Text.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.484 : pengxi60 : Started
+NAME     : Polyline when switching over to another shape
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When new shape is selected while polyline is not completed drawing
+           it becomes un-interactable.
 --------------------------------------------------------------------------
