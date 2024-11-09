@@ -114,33 +114,24 @@ public class ResizableCanvas extends Pane implements Observer {
     public void scaleCanvas(double zoomFactor) {
         double scale = zoomFactor / 100.0;
 
-        // Scale the paint panel
         panel.getTransforms().clear();
         panel.getTransforms().add(new Scale(scale, scale));
 
-        // Calculate translations for handlers based on the scale
         double widthDiff = (panel.getWidth() * scale) - panel.getWidth();
         double heightDiff = (panel.getHeight() * scale) - panel.getHeight();
 
-        // Clear existing transforms for all handlers
         clearHandleTransforms();
 
-        // Top-left handle stays fixed (0,0)
-
-        // Handles that move horizontally only
         topHandle.getTransforms().add(new Translate(widthDiff/2, 0));
         bottomHandle.getTransforms().add(new Translate(widthDiff/2, heightDiff));
 
-        // Handles that move vertically only
         leftHandle.getTransforms().add(new Translate(0, heightDiff/2));
         rightHandle.getTransforms().add(new Translate(widthDiff, heightDiff/2));
 
-        // Handles that move both directions
         topRightHandle.getTransforms().add(new Translate(widthDiff, 0));
         bottomLeftHandle.getTransforms().add(new Translate(0, heightDiff));
         bottomRightHandle.getTransforms().add(new Translate(widthDiff, heightDiff));
 
-        // Update the container size to accommodate the scaled content
         updateLayers();
         setPrefSize((width * scale) + handleSize, (height * scale) + handleSize);
     }
