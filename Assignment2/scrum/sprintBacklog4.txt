@@ -143,12 +143,12 @@ ISSUE    : Currently the shape chooser panel is not located in the toolbar
            and is not scalable for future additions.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.481 : hingor13 : Started
+TYPE     : BUG BUG4.481 : hingor13 : Complete
 NAME     : Undo/Redo Bug while run on initial canvas with no changes
 PRIORITY : 1
-ESTIMATE : 30 minutes    ACTUAL :
-ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
-           duplicate canvases have been created.
+ESTIMATE : 30 minutes    ACTUAL : 30 minutes
+ISSUE    : When clicking undo/redo on a new canvas, duplicate canvases
+           are created.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.482 : wenjess1 : Complete
