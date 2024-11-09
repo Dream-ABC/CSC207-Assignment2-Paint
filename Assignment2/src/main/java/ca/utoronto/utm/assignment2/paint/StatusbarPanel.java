@@ -9,18 +9,20 @@ import javafx.scene.layout.GridPane;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Observable;
+import java.util.Observer;
 
-public class StatusbarPanel extends GridPane {
-    private final PaintPanel paintPanel;
+public class StatusbarPanel extends GridPane implements Observer {
+    private PaintModel model;
 
-    public StatusbarPanel(PaintPanel paintPanel) throws FileNotFoundException {
+    public StatusbarPanel(PaintModel model) throws FileNotFoundException {
         String[] imageFiles = {
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Cursor.png",
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/ObjectSize.png",
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/CanvasSize.png",
         };
 
-        this.paintPanel = paintPanel;
+        this.model = model;
 
         this.setStyle("-fx-background-color: #f8f1f0;");
         this.setPadding(new Insets(7, 0, 7, 10));
@@ -55,4 +57,7 @@ public class StatusbarPanel extends GridPane {
             }
         }
     }
+
+    @Override
+    public void update(Observable o, Object arg) {}
 }

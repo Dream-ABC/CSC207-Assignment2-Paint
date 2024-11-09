@@ -2,13 +2,15 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Scale;
+import javafx.scene.transform.Translate;
 
 import java.util.Observable;
 import java.util.Observer;
 
 public class ResizableCanvas extends Pane implements Observer {
-    private final PaintPanel canvas;
-    private final double handleSize = 5;
+    private final PaintPanel panel;
+    private final double handleSize = 6;
 
     private final Button topLeftHandle, topHandle, topRightHandle;
     private final Button rightHandle, bottomRightHandle, bottomHandle;
@@ -17,33 +19,30 @@ public class ResizableCanvas extends Pane implements Observer {
     private double width, height;
 
     public ResizableCanvas(double initialWidth, double initialHeight, PaintPanel panel) {
-        this.canvas = panel;
-        canvas.setMinSize(100, 100);
-        setMinSize(105, 105);
-        getChildren().add(canvas);
+        this.panel = panel;
+        this.panel.setStyle("-fx-background-color: white;");
+        this.panel.setMinSize(95, 95);
+        this.panel.getModel().addObserver(this);
 
-        width = initialWidth;
-        height = initialHeight;
+        setMinSize(100, 100);
+        getChildren().add(panel);
 
-        panel.getModel().addObserver(this);
+        this.width = initialWidth;
+        this.height = initialHeight;
 
-        topLeftHandle = createHandle();
-        topHandle = createHandle();
-        topRightHandle = createHandle();
-        rightHandle = createHandle();
-        bottomRightHandle = createHandle();
-        bottomHandle = createHandle();
-        bottomLeftHandle = createHandle();
-        leftHandle = createHandle();
+        this.topLeftHandle = createHandle();
+        this.topHandle = createHandle();
+        this.topRightHandle = createHandle();
+        this.rightHandle = createHandle();
+        this.bottomRightHandle = createHandle();
+        this.bottomHandle = createHandle();
+        this.bottomLeftHandle = createHandle();
+        this.leftHandle = createHandle();
 
         getChildren().addAll(topLeftHandle, topHandle, topRightHandle, rightHandle, bottomRightHandle, bottomHandle, bottomLeftHandle, leftHandle);
-
         updateLayers();
-
         setPrefSize(initialWidth + handleSize, initialHeight + handleSize);
-
         setupDragEvents();
-
         setUpPositions();
     }
 
@@ -65,28 +64,24 @@ public class ResizableCanvas extends Pane implements Observer {
         bottomHandle.setOnMouseDragged(e -> resizeCanvas(e.getX(), e.getY(), 0, 1));
         bottomLeftHandle.setOnMouseDragged(e -> resizeCanvas(e.getX(), e.getY(), -1, 1));
         leftHandle.setOnMouseDragged(e -> resizeCanvas(e.getX(), e.getY(), -1, 0));
-
     }
 
     private void resizeCanvas(double mouseX, double mouseY, int xMultiplier, int yMultiplier) {
-        width = canvas.getWidth() + xMultiplier * mouseX;
-        height = canvas.getHeight() + yMultiplier * mouseY;
-
-
+        width = panel.getWidth() + xMultiplier * mouseX;
+        height = panel.getHeight() + yMultiplier * mouseY;
         updateLayers();
 
         setPrefSize(width + handleSize, height + handleSize);
 
-        this.canvas.update(this.canvas.getModel(), null);
+        this.panel.update(this.panel.getModel(), null);
 
-        this.canvas.getModel().notifyChange();
+        this.panel.getModel().notifyChange();
         setUpPositions();
-
     }
 
     public void setUpPositions() {
-        double w = canvas.getWidth();
-        double h = canvas.getHeight();
+        double w = panel.getWidth();
+        double h = panel.getHeight();
         double halfHandle = handleSize / 2;
 
         setPosition(topLeftHandle, 0, 0);
@@ -98,8 +93,8 @@ public class ResizableCanvas extends Pane implements Observer {
         setPosition(bottomLeftHandle, 0, h);
         setPosition(leftHandle, 0, h / 2);
 
-        canvas.setLayoutX(halfHandle);
-        canvas.setLayoutY(halfHandle);
+        panel.setLayoutX(halfHandle);
+        panel.setLayoutY(halfHandle);
     }
 
     private void setPosition(Button handle, double x, double y) {
@@ -107,8 +102,44 @@ public class ResizableCanvas extends Pane implements Observer {
         handle.setLayoutY(y);
     }
 
+    public void scaleCanvas(double zoomFactor) {
+        double scale = zoomFactor / 100.0;
+
+        panel.getTransforms().clear();
+        panel.getTransforms().add(new Scale(scale, scale));
+
+        double widthDiff = (panel.getWidth() * scale) - panel.getWidth();
+        double heightDiff = (panel.getHeight() * scale) - panel.getHeight();
+
+        clearHandleTransforms();
+
+        topHandle.getTransforms().add(new Translate(widthDiff/2, 0));
+        bottomHandle.getTransforms().add(new Translate(widthDiff/2, heightDiff));
+
+        leftHandle.getTransforms().add(new Translate(0, heightDiff/2));
+        rightHandle.getTransforms().add(new Translate(widthDiff, heightDiff/2));
+
+        topRightHandle.getTransforms().add(new Translate(widthDiff, 0));
+        bottomLeftHandle.getTransforms().add(new Translate(0, heightDiff));
+        bottomRightHandle.getTransforms().add(new Translate(widthDiff, heightDiff));
+
+        updateLayers();
+        setPrefSize((width * scale) + handleSize, (height * scale) + handleSize);
+    }
+
+    private void clearHandleTransforms() {
+        topLeftHandle.getTransforms().clear();
+        topHandle.getTransforms().clear();
+        topRightHandle.getTransforms().clear();
+        rightHandle.getTransforms().clear();
+        bottomRightHandle.getTransforms().clear();
+        bottomHandle.getTransforms().clear();
+        bottomLeftHandle.getTransforms().clear();
+        leftHandle.getTransforms().clear();
+    }
+
     private void updateLayers() {
-        for (PaintLayer layer: this.canvas.getModel().getLayers()) {
+        for (PaintLayer layer: this.panel.getModel().getLayers()) {
             layer.setWidth(width);
             layer.setHeight(height);
         }

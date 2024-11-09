@@ -1,17 +1,27 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import javafx.scene.transform.Scale;
+
 import java.util.ArrayList;
 import java.util.Observable;
 
 public class PaintModel extends Observable {
     private final ArrayList<PaintLayer> layers = new ArrayList<>();
     private PaintLayer selectedLayer;
+    private PaintPanel canvas;
     private String mode = "";
     private View view;
+    private String fillStyle;
+    private int zoomFactor;
     private String fillStyle = "Solid";
     private double thickness = 1.0;
 
     private final CommandHistory history = new CommandHistory();
+
+    public PaintModel() {
+        this.fillStyle = "Solid";
+        this.zoomFactor = 100;
+    }
 
     public String getFillStyle() {
         return this.fillStyle;
@@ -137,12 +147,19 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public void setZoomFactor(int zoomFactor, ResizableCanvas canvas) {
+        this.zoomFactor = zoomFactor;
+        canvas.scaleCanvas(zoomFactor);
+        notifyChange();
+    }
+
+    public int getZoomFactor(){
+        return this.zoomFactor;
+    }
+
     public void notifyChange(){
         this.setChanged();
         this.notifyObservers();
-        if (this.view != null) {
-            this.view.centerCanvas();
-        }
     }
 
     public void setView(View view){

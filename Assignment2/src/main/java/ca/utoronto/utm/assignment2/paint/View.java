@@ -28,24 +28,25 @@ public class View implements EventHandler<ActionEvent> {
     private final ResizableCanvas canvas;
     private LineThicknessSlider lineThicknessSlider;
 
-    private final BorderPane root;
-    private final VBox topPanel;
-    private final HBox bottomPanel;
-    private final GridPane grid;
+    private BorderPane root;
+    private VBox topPanel;
+    private HBox bottomPanel;
+    private ScrollPane canvasHolder;
 
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
         this.stage = stage;
 
-        this.paintPanel = new PaintPanel(this.paintModel);
-        this.toolbarPanel = new ToolbarPanel();
-        this.statusbarPanel = new StatusbarPanel(this.paintPanel);
-        this.zoomPanel = new ZoomPanel();
-        this.shapeChooserPanel = new ShapeChooserPanel(this.paintModel);
-        this.layerChooserPanel = new LayerChooserPanel(this);
-        this.layerChooserController = new LayerChooserController(this.layerChooserPanel, this.paintModel);
+        this.paintPanel = new PaintPanel(paintModel);
+        this.canvas = new ResizableCanvas(700, 400, paintPanel);
 
-        this.canvas = new ResizableCanvas(700, 400, this.paintPanel);
+        this.toolbarPanel = new ToolbarPanel();
+        this.statusbarPanel = new StatusbarPanel(paintModel);
+        this.zoomPanel = new ZoomPanel(paintModel, canvas);
+        paintModel.addObserver(zoomPanel);
+        this.shapeChooserPanel = new ShapeChooserPanel(paintModel);
+        this.layerChooserPanel = new LayerChooserPanel(this);
+        this.layerChooserController = new LayerChooserController(layerChooserPanel, paintModel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
@@ -59,19 +60,18 @@ public class View implements EventHandler<ActionEvent> {
         HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS); // Let the spacer expand
         bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
 
-        root = new BorderPane();
+        canvasHolder = new ScrollPane(this.canvas);
+        canvasHolder.setStyle("-fx-background-color: #f8f1f0;");
 
+        root = new BorderPane();
+        root.setStyle("-fx-background-color: #f8f1f0");
+
+        root.setCenter(canvasHolder);
+        root.setLeft(this.shapeChooserPanel);
+//        root.setRight(layerPane);
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
         this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
-        root.setLeft(this.shapeChooserPanel);
-        ScrollPane layerPane = new ScrollPane(this.layerChooserPanel);
-        root.setRight(layerPane);
-
-        grid = new GridPane();
-        //grid.setAlignment(Pos.CENTER);
-        grid.getChildren().add(this.canvas);
-        root.setCenter(grid);
 
         Scene scene = new Scene(root);
 
@@ -85,10 +85,8 @@ public class View implements EventHandler<ActionEvent> {
         stage.setWidth(1000);
         stage.setHeight(700);
         canvas.setUpPositions();
-        centerCanvas();
+
         this.paintModel.setView(this);
-        stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {centerCanvas();});
-        stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {centerCanvas();});
 
         root.requestFocus();
     }
@@ -104,22 +102,6 @@ public class View implements EventHandler<ActionEvent> {
     public void setLayer(String layerName) {
         this.layerChooserController.selectLayer(layerName);
     }
-
-    public void centerCanvas() {
-        double availableWidth = stage.getWidth() - shapeChooserPanel.getWidth() - layerChooserPanel.getWidth();
-        double availableHeight = stage.getHeight() - topPanel.getHeight() - bottomPanel.getHeight();
-
-        double paddingTop = (availableHeight - canvas.getHeight()) / 2;
-        double paddingLeft = (availableWidth - canvas.getWidth()) / 2;
-
-        paddingTop = Math.max(paddingTop, 0)/2;
-        paddingLeft = Math.max(paddingLeft, 0)/2;
-
-        // Apply padding to center the canvas within the grid
-        grid.setPadding(new Insets(paddingTop, 0, 0, paddingLeft));
-    }
-
-
 
     private MenuBar createMenuBar() {
 
