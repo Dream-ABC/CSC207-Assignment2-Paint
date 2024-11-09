@@ -1,24 +1,26 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.scene.transform.Scale;
-
 import java.util.ArrayList;
 import java.util.Observable;
 
 public class PaintModel extends Observable {
     private final ArrayList<PaintLayer> layers = new ArrayList<>();
     private PaintLayer selectedLayer;
-    private PaintPanel canvas;
     private String mode = "";
     private View view;
     private int zoomFactor;
-    private String fillStyle = "Solid";
-    private double thickness = 1.0;
+    private String fillStyle;
+    private double thickness;
+    private double canvasX, canvasY, canvasWidth, canvasHeight;
+    private double mouseX, mouseY;
 
     private final CommandHistory history = new CommandHistory();
 
     public PaintModel() {
+        this.canvasWidth = 700;
+        this.canvasHeight = 400;
         this.fillStyle = "Solid";
+        this.thickness = 1.0;
         this.zoomFactor = 100;
     }
 
@@ -146,14 +148,41 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-    public void setZoomFactor(int zoomFactor, ResizableCanvas canvas) {
-        this.zoomFactor = zoomFactor;
-        canvas.scaleCanvas(zoomFactor);
+    public double getCanvasX() {return canvasX;}
+    public double getCanvasY() {return canvasY;}
+
+    public void setCanvasPosition(double x, double y){
+        this.canvasX = x;
+        this.canvasY = y;
         notifyChange();
     }
 
-    public int getZoomFactor(){
+    public double getCanvasWidth() {return canvasWidth;}
+    public double getCanvasHeight() {return canvasHeight;}
+
+    public void setCanvasSize(double width, double height){
+        this.canvasWidth = width;
+        this.canvasHeight = height;
+        notifyChange();
+    }
+
+    public double getMouseX() {return mouseX;}
+    public double getMouseY() {return mouseY;}
+
+    public void setMousePosition(double x, double y){
+        this.mouseX = x;
+        this.mouseY = y;
+        notifyChange();
+    }
+
+    public int getZoomFactor() {
         return this.zoomFactor;
+    }
+
+    public void setZoomFactor(int zoomFactor, ResizableCanvas canvas) {
+        this.zoomFactor = zoomFactor;
+        canvas.scaleCanvas();
+        notifyChange();
     }
 
     public void notifyChange(){
@@ -168,7 +197,6 @@ public class PaintModel extends Observable {
     public CommandHistory getHistory() {
         return history;
     }
-
 
     public String getMode() {
         return mode;

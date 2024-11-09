@@ -89,6 +89,7 @@ public class ZoomPanel extends GridPane implements Observer {
     public void update(Observable o, Object arg) {
         PaintModel model = (PaintModel) o;
         int factor = model.getZoomFactor();
+        comboBox.valueProperty().set(factor + "%");
         comboBox.setPromptText(factor + "%");
         zoomSlider.setValue(factor);
     }

@@ -31,7 +31,7 @@ public class ZoomController implements EventHandler<ActionEvent> {
             int zoomFactor = model.getZoomFactor();
             int increment;
 
-            if (zoomFactor - 10 >= 200 || zoomFactor - 25 >= 200) {
+            if (zoomFactor + 10 >= 200 || zoomFactor + 25 >= 200) {
                 increment = 25;
             } else {
                 increment = 10;
@@ -40,7 +40,7 @@ public class ZoomController implements EventHandler<ActionEvent> {
             zoomFactor += increment;
             zoomFactor = (zoomFactor / increment) * increment;
 
-            if (zoomFactor < 12) zoomFactor = 12;
+            if (zoomFactor > 800) zoomFactor = 800;
             model.setZoomFactor(zoomFactor, canvas);
 
 
@@ -48,7 +48,7 @@ public class ZoomController implements EventHandler<ActionEvent> {
             int zoomFactor = model.getZoomFactor();
             int increment;
 
-            if ((zoomFactor + 10 >= 200 || zoomFactor + 25 >= 200) ) {
+            if ((zoomFactor - 10 >= 200 || zoomFactor - 25 >= 200) ) {
                 increment = 25;
             } else {
                 increment = 10;
@@ -57,7 +57,7 @@ public class ZoomController implements EventHandler<ActionEvent> {
             zoomFactor -= increment;
             zoomFactor = (zoomFactor / increment) * increment;
 
-            if (zoomFactor > 800) zoomFactor = 800;
+            if (zoomFactor < 12) zoomFactor = 12;
             model.setZoomFactor(zoomFactor, canvas);
         }
     }
