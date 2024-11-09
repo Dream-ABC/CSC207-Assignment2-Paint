@@ -56,7 +56,7 @@ SO THAT  : I can decide the line lineThickness of my outlined drawings, for more
 TYPE     : BUG BUG4.401 : wenjess1 : Complete
 NAME     : Stroke Eraser working with varying line thickness
 PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL : 1 day
+ESTIMATE : 4 hours    ACTUAL : 8 hours
 ISSUE    : The current StrokeEraser doesn't erase strokes properly when
            line thickness of shapes are changed.
 --------------------------------------------------------------------------
@@ -64,7 +64,7 @@ ISSUE    : The current StrokeEraser doesn't erase strokes properly when
 TYPE     : USER STORY US4.411 : wenjess1 : Complete
 NAME     : Precision Eraser
 PRIORITY : 2
-ESTIMATE : 1 day    ACTUAL : 1 day
+ESTIMATE : 1 day    ACTUAL : 8 hours
 AS A     : user
 I WANT   : To be able to erase a precise section of a drawing on the canvas
 SO THAT  : I have more customizability with the Paint application.
@@ -93,20 +93,20 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.431 : pengxi60 : Completed
+TYPE     : USER STORY US4.431 : pengxi60 : Complete
 NAME     : Draw Polyline
 PRIORITY : 3
-ESTIMATE : 4 hours ACTUAL : 3
+ESTIMATE : 4 hours ACTUAL : 3 hours
 AS A     : user
 I WANT   : To add polylines and custom polygons on the canvas
 SO THAT  : I can have more freedom with the type of lines and shapes I can
            draw on the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.441 : pengxi60 : Completed
+TYPE     : USER STORY US4.441 : pengxi60 : Complete
 NAME     : Magnifier Tool
 PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 6
+ESTIMATE : 4 hours    ACTUAL : 6 hours
 AS A     : user
 I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
