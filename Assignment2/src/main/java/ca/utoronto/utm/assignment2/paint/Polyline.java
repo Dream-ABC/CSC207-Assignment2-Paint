@@ -25,6 +25,14 @@ public class Polyline implements Shape {
     }
 
     /**
+     * Gets the number points in the user's Polyline drawing
+     * @return number of polyline points
+     */
+    public int getSize(){
+        return points.size();
+    }
+
+    /**
      * Gets the first point of the user's Polyline drawing
      * @return the first point of the polyline
      */

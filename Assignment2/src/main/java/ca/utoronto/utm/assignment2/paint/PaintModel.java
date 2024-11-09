@@ -6,7 +6,8 @@ import java.util.Observable;
 public class PaintModel extends Observable {
     private final ArrayList<PaintLayer> layers = new ArrayList<>();
     private PaintLayer selectedLayer;
-    private String mode = "";
+    private Shape selectedShape;
+    private String mode;
     private View view;
     private int zoomFactor;
     private String fillStyle;
@@ -17,6 +18,8 @@ public class PaintModel extends Observable {
     private final CommandHistory history = new CommandHistory();
 
     public PaintModel() {
+        this.selectedShape = null;
+        this.mode = "";
         this.canvasWidth = 700;
         this.canvasHeight = 400;
         this.fillStyle = "Solid";
@@ -110,6 +113,19 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public void setSelectedShape(Shape selectedShape) {
+        this.selectedShape = selectedShape;
+        notifyChange();
+    }
+
+    public Shape getSelectedShape() {
+        return this.selectedShape;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
     public void setMode(String mode) {
         this.mode = mode;
         notifyChange();
@@ -198,7 +214,4 @@ public class PaintModel extends Observable {
         return history;
     }
 
-    public String getMode() {
-        return mode;
-    }
 }
