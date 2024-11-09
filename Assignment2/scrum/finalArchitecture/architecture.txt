@@ -1,6 +1,7 @@
 # Architecture
 
 --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 # MVC
 # ModelClasses
 	(list your classes here, no description)
@@ -13,6 +14,7 @@
 
 
 
+--------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 # Design Patterns Used (collections of classes into DP)
 
@@ -63,8 +65,6 @@ Usage:
     section below).
 
 --------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------
 Name: Strategy Factory
 Pattern Name: Factory
 Reference: https://www.oodesign.com/images/stories/factory%20implementation.gif
@@ -107,8 +107,6 @@ Usage:
     (e.g. HexagonStrategy would have a case "hexagon").
 
 --------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------
 Name: Shape Factory
 Pattern Name: Factory
 Reference: https://www.oodesign.com/images/stories/factory%20implementation.gif
@@ -148,8 +146,6 @@ Usage:
     (e.g. Hexagon would have a case "hexagon").
 
 --------------------------------------------------------------------------------
-
---------------------------------------------------------------------------------
 Name: User Action Command
 Pattern Name: Command
 Reference: https://www.oodesign.com/images/design_patterns/behavioral/command_implementation_-_uml_class_diagram.gif
@@ -161,13 +157,19 @@ UML:
 	(UML will be made after we put things into folders).
 
 Classes:
-	(list classes involved and their roles based on Reference above)
-	class1: role1
-	class2: role1
-	class3: role1
-	class4: role1
+	Command: Command
+	AddLayerCommand: ConcreteCommand
+	AddShapeCommand: ConcreteCommand
+	ChangeLayerCommand: ConcreteCommand
+	ChangeLayerVisibilityCommand: ConcreteCommand
+	DeleteLayerCommand: ConcreteCommand
+	StrokeEraserCommandCommand: ConcreteCommand
+	CommandHistory: Invoker
+	PaintModel: Client
+	PaintModel: Receiver
 
 Usage:
+    A developer would use this part of the code to
 	(Briefly describe why a developer would be playing with this part of
 	the code and how they would use it to achieve that purpose)
 
@@ -175,6 +177,7 @@ Usage:
 
 
 
+--------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 # High Level Architecture Discussion
 
