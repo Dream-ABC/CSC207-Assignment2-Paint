@@ -400,7 +400,7 @@ SO THAT  : I can edit a specific part of the canvas with more precision.
 TYPE     : USER STORY US4.431 : pengxi60 : Complete
 NAME     : Draw Polyline
 PRIORITY : 3
-ESTIMATE : 4 hours ACTUAL : 3 hours
+ESTIMATE : 4 hours    ACTUAL : 3 hours
 AS A     : user
 I WANT   : To add polylines and custom polygons on the canvas
 SO THAT  : I can have more freedom with the type of lines and shapes I can
