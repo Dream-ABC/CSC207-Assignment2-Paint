@@ -34,7 +34,7 @@ NAME     : Line thickness selector
 PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 2 hours
 AS A     : user
-I WANT   : To be able to select the current line lineThickness, to be applied
+I WANT   : To be able to select the current line thickness, to be applied
            to subsequent shapes. Example:
            		select fill style outline
            		selects line lineThickness 1
@@ -50,7 +50,7 @@ I WANT   : To be able to select the current line lineThickness, to be applied
            		draw a squiggle
            results in two thinly outlined circles and a thinly outlined
            rectangle as well as two thickly outlined rectangles and a thick squiggle
-SO THAT  : I can decide the line lineThickness of my outlined drawings, for more customizability.
+SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : Complete

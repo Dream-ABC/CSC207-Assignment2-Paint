@@ -58,6 +58,7 @@ public class StrokeEraser implements Tool{
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
         g2d.setStroke(Color.BLACK);
+        g2d.setLineDashes(5, 3);
         g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y - dimensionY/2,
                 this.dimensionX, this.dimensionY);
     }

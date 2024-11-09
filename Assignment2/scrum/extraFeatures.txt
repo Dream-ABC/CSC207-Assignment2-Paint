@@ -1,6 +1,6 @@
 (replicate sections below for each feature you want to highlight)
 --------------------------------------------------------------------------------
-FeatureName: (name)
+FeatureName: Stroke Eraser
 
 Description: 
 	(describe the feature)
