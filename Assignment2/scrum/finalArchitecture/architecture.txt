@@ -151,7 +151,14 @@ Pattern Name: Command
 Reference: https://www.oodesign.com/images/design_patterns/behavioral/command_implementation_-_uml_class_diagram.gif
 
 Purpose:
-	(why is this pattern implemented? think SOLID as possible reasons and explain in terms of the application)
+	The Command pattern was implemented to align with the Single Responsibility Principle.
+	In our application, in order to support the Undo/Redo feature we have, we need to keep
+	track of all user actions performed (so that we can later know which action to undo/redo).
+	Each command class we have (e.g. AddLayerCommand, AddShapeCommand) only has one responsibility,
+	which is to handle one specific action. This ensures our code is clear, modular, and manageable.
+	The Command pattern also supports the Open-Close Principle, as creating a new command only
+	requires creating a new command class and doesn't need to modify any existing code. As a result,
+	this design also keeps the application flexible and scalable.
 
 UML:
 	(UML will be made after we put things into folders).
