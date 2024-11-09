@@ -167,7 +167,7 @@ ISSUE    : The StrokeEraser currently removes Text prematurely,
            before the mouse cursor actually touches the Text.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.484 : pengxi60 : Completed
+TYPE     : BUG BUG4.484 : pengxi60 : Complete
 NAME     : Polyline when switching over to another shape
 PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 2 hours
