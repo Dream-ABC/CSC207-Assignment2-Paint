@@ -23,3 +23,4 @@ BUG4.483 author:wenjess1 puller:hingor13 status:Completed
 BUG4.401 author:wenjess1 puller:hingor13 status:Completed
  US4.411 author:wenjess1 puller:hingor13 status:Completed
  US4.441 author:pengxi60 puller:wenjess1 status:Completed
+BUG4.484 author:pengxi60 puller:         status:Waiting
