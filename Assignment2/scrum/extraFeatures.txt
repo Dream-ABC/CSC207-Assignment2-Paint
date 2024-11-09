@@ -1,21 +1,44 @@
-(replicate sections below for each feature you want to highlight)
 --------------------------------------------------------------------------------
 FeatureName: Stroke Eraser
 
 Description: 
-	(describe the feature)
-
+	The stroke eraser removes an entire stroke at once. For example, when the user
+	draws a circle, using the stroke eraser will erase the entire circle at once.
+	For text, the stroke eraser erases the entire text, not one letter at a time.
 
 Reference: 
-	(list of the BUG/US involved in creating this feature)
+	US3.311 - Stroke Eraser
+	BUG4.482 - Improve precision of registering circle overlap for erasing
+	BUG4.483 - Improve precision of registering text overlap for erasing
+	BUG4.401 - Stroke Eraser working with varying line thickness and outlined shapes
+
 --------------------------------------------------------------------------------
-FeatureName: (name)
+FeatureName: Precision Eraser
 
 Description: 
-	(describe the feature)
-
+	The precision eraser allows the user to erase specific segments of a drawing
+	for finer detailing. It erases in the shape of a square.
 
 Reference: 
-	(list of the BUG/US involved in creating this feature)
+	US4.411 - Precision Eraser
 --------------------------------------------------------------------------------
-...
+FeatureName: Fill Style Selector
+
+Description:
+	The fill style selector allows users to choose whether they want to draw a solid
+	shape or an outlined shape. This option does not apply to squiggles, polylines,
+	or text.
+
+Reference:
+	US4.006 - Fill style selector
+--------------------------------------------------------------------------------
+FeatureName: Line Thickness Selector
+
+Description:
+	The line thickness selector allows users to choose how thick they want the outline
+	of their shape to be. Users select the line thickness through a slider that ranges
+	from 1-10. This option does not apply when users draw solid shapes.
+
+Reference:
+	US4.007 - Line thickness selector
+--------------------------------------------------------------------------------

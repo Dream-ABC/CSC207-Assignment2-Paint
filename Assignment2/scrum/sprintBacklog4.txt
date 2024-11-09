@@ -54,11 +54,12 @@ SO THAT  : I can decide the line thickness of my outlined drawings, for more cus
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : Complete
-NAME     : Stroke Eraser working with varying line thickness
+NAME     : Stroke Eraser working with varying line thickness and outlined shapes
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 8 hours
 ISSUE    : The current StrokeEraser doesn't erase strokes properly when
-           line thickness of shapes are changed.
+           line thickness of shapes are changed, or when shapes are drawn
+           as outlines instead of solids.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.411 : wenjess1 : Complete
