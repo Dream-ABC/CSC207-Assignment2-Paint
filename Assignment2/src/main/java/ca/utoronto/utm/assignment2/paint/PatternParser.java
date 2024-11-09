@@ -1,22 +1,35 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import java.util.ArrayList;
-import java.util.regex.*;
 
+/**
+ * The PatternParser class is responsible for parsing command strings and converting them into
+ * executable command objects. These command objects are then used to restore the user's
+ * previous drawing actions.
+ */
 public class PatternParser {
 
     private PaintPanel panel;
     private PaintModel model;
     private CommandHistory history;
 
+    /**
+     * Parses a command from a string and returns a corresponding Command object.
+     *
+     * @param content the string representation of the command to parse
+     * @param panel the PaintPanel instance containing the PaintModel and other necessary components
+     * @return a Command object based on the parsed content, or null if the command is directly executed
+     */
     public static Command parseLine(String content, PaintPanel panel) {
         PaintModel model = panel.getModel();
         CommandHistory history = model.getHistory();
         int layerIndex;
 
+        // Gets the command type
         String commandType = content.substring(0, content.indexOf("#"));
         int beginIndex = content.indexOf("#") + 1;
 
+        // Maps the command type to its corresponding case
         switch (commandType) {
             case "WIDTH":
                 model.getSelectedLayer().setWidth(Double.parseDouble(content.substring(beginIndex)));
@@ -33,10 +46,14 @@ public class PatternParser {
                 return new AddLayerCommand(model, new PaintLayer(width, height), history);
 
             case "AddShape":
+                // Gets the current layer where the shape is going to be drawn
                 layerIndex = Integer.parseInt(content.substring(beginIndex, content.indexOf("&")));
+
+                // Creates the correct shape
                 String shapeType = content.substring(content.indexOf("&") + 1, content.indexOf("{"));
                 Shape shape = panel.getShapeFactory().getShape(shapeType);
 
+                // Gets corresponding information and sets them to the shape
                 String[] dataString = content.substring(content.indexOf("{") + 1,
                         content.indexOf("}")).split(",");
                 shape.setShape(dataString);
@@ -60,21 +77,18 @@ public class PatternParser {
 
                 ArrayList<Shape> shapes = new ArrayList<>();
 
+                // Gets all the removed shapes
                 for (String index : shapeIndices) {
                     int i = Integer.parseInt(index);
                     shapes.add(model.getSelectedLayer().getShapes().get(i));
                 }
 
-                EraserStrokeCommand command = new EraserStrokeCommand(model.getSelectedLayer(), history);
-
-                model.storeState();
-                command.addRemovedShapes(shapes);
-                System.out.println(command.getRemovedShapes());
+                model.storeState();  // the eraser stroke command is created and executed here
                 for (Shape s : shapes) {
-                    model.getSelectedLayer().removeShape(s);
+                    model.removeShape(s);
                 }
-                panel.getModel().getHistory().addToLast(panel.getEraser().getRemovedShapes());
-                return command;
+                model.getHistory().addToLast(shapes);
+                return null; // already executed
 
             default:
                 return null;

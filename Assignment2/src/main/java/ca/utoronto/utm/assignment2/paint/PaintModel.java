@@ -1,9 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.image.Image;
-import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Stack;
@@ -89,7 +87,6 @@ public class PaintModel extends Observable {
     }
 
     public void removeShape(Shape shape) {
-        //history.execute(new DeleteShapeCommand(shape, this.getSelectedLayer(), history));
         this.selectedLayer.removeShape(shape);
         notifyChange();
     }
@@ -124,7 +121,17 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-    public void newFile() {
+    /**
+     * Resets the paint model to its initial state.
+     *
+     * This method performs the following actions:
+     * - Clears all existing layers.
+     * - Creates and adds a new default layer.
+     * - Sets the newly created layer as the selected layer.
+     * - Resets the history stack.
+     * - Notifies observers about the change in the model.
+     */
+    public void resetAll() {
         this.layers.clear();
         PaintLayer layer = new PaintLayer();
         this.layers.add(layer);
@@ -133,29 +140,42 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
-    public void resetLayer() {
-        this.selectedLayer.reset();
-        notifyChange();
-    }
-
-    public void openImage(Image image) {
+    /**
+     * Sets the background image for the currently selected layer.
+     * If the provided image is not null, it sets the image as the background
+     * of the selected layer and notifies observers of the change.
+     *
+     * @param image the background image to set for the selected layer
+     */
+    public void setBackground(Image image) {
         if (image != null) {
             this.selectedLayer.setBackground(image);
             notifyChange();
         }
     }
 
-    public void openPaint(Command command) {
+    /**
+     * Executes a given command and notifies observers of any changes.
+     *
+     * @param command the command to execute
+     */
+    public void executeCommand(Command command) {
         this.history.execute(command);
         notifyChange();
     }
 
-    public String savePaint() {
+    /**
+     * Aggregates all commands in the undo stack, excluding the initial AddLayerCommand, into a
+     * single string with each command on a new line.
+     *
+     * @return A string representation of all commands in the undo stack, each command separated by a newline.
+     */
+    public String saveCommands() {
         // convert all commands to string
         StringBuilder allCommands = new StringBuilder();
         Stack<Command> undoStack = this.history.getUndoStack();
 
-        // remove init AddLayerCommand
+        // remove init AddLayerCommand, since it is autometically executed when starting the program
         for (Command command : undoStack.subList(1, undoStack.size())) {
             allCommands.append(command.toString());
             allCommands.append("\n");
@@ -171,7 +191,6 @@ public class PaintModel extends Observable {
     public CommandHistory getHistory() {
         return history;
     }
-
 
     public String getMode() {
         return mode;
