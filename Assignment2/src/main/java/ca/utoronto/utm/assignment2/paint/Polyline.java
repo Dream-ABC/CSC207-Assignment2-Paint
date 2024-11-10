@@ -109,26 +109,32 @@ public class Polyline implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double leftX = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
-        double rightX = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
-        double topY = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
-        double bottomY = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
-
-        // Create a polygon based on the polyline
+        //if (this.fillStyle.equals("Outline")){
+        for (int i = 0; i < this.points.size() - 1; i++) {
+            if (checkBetweenPoints(points.get(i), points.get(i + 1), tool)) {
+                return true;
+            }
+        }
+        //}
+        //else {
         GeneralPath polygon1 = new GeneralPath();
-        polygon1.moveTo(this.points.getFirst().x, this.points.getFirst().y);  // Move to the starting point (0, 0)
+        polygon1.moveTo(this.points.getFirst().x, this.points.getFirst().y);
         for (int i = 1; i < this.points.size(); i++) {
             polygon1.lineTo(this.points.get(i).x, this.points.get(i).y);
         }
         polygon1.closePath();
 
-        // Create an accurate version of the polygon shape with the line thickness needed
         float lineThickness = (float) this.lineThickness;
         BasicStroke thickStroke = new BasicStroke(lineThickness, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
         java.awt.Shape thickPolygonShape = thickStroke.createStrokedShape(polygon1);
         Area thickPolygonArea = new Area(thickPolygonShape);
+        Area polylineArea = new Area(polygon1);
 
-        // Create a polygon based on the eraser
+        double leftX = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double rightX = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double topY = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double bottomY = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
+
         GeneralPath polygon2 = new GeneralPath();
         polygon2.moveTo(leftX, topY);
         polygon2.lineTo(rightX, topY);
@@ -136,10 +142,34 @@ public class Polyline implements Shape {
         polygon2.lineTo(leftX, bottomY);
         Area area2 = new Area(polygon2);
 
-        // If the resulting area is not empty, the polygons intersect
         thickPolygonArea.intersect(area2);
-        return !thickPolygonArea.isEmpty();
+        return !thickPolygonArea.isEmpty() || polylineArea.contains(area2.getBounds2D());
+        //}
     }
+
+    private boolean checkBetweenPoints(Point p1, Point p2, Tool tool) {
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+
+        double thickness = (this.lineThickness / 2.0);
+
+        int steps = 1000;
+        double x = (p2.x - p1.x)/steps;
+        double y = (p2.y - p1.y)/steps;
+
+        for (int i = 0; i < steps; i++){
+            double currX = p1.x + i*x;
+            double currY = p1.y + i*y;
+
+            if (leftX <= currX + thickness && currX - thickness <= rightX && topY <= currY+ thickness && currY - thickness <= bottomY){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Shifts all points of the Polyline by the specified horizontal and vertical offsets.
