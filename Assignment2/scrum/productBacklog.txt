@@ -17,7 +17,7 @@
 
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.485 : hingor13 : NotStarted
-NAME     : Fix Selection Tool for Outlined Shapes
+NAME     : Fix selection tool for outlined shapes
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL :
 ISSUE    : When the inside of a shape that is only outlined is selected,
@@ -27,7 +27,7 @@ ISSUE    : When the inside of a shape that is only outlined is selected,
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
 TYPE     : USER STORY US1.001 : rosenbl6 : Complete
-NAME     : Draw Circle
+NAME     : Draw circle
 PRIORITY : 1
 ESTIMATE : 2 hours ACTUAL : 2 hours
 AS A     : user
@@ -48,8 +48,8 @@ NAME     : Drawing selection mode not indicated
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Currently, you can't tell which mode "Circle", "Rectangle", ...
-           is currently selected. Is there a way
-           to highlight the currently selected mode?
+           is currently selected. It would be nice to highlight the currently
+           selected mode.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.005 : tianshi8 : Complete
@@ -57,14 +57,13 @@ NAME     : Squiggle is broken
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
 ISSUE    : Squiggles are connected to each other by a straight line.
-           Each drag of the mouse should be a separate squiggle. Possibly
-           the issue is with the representation of the squiggles in the Model.
+           Each drag of the mouse should be a separate squiggle.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.006 : pengxi60 : Complete
 NAME     : Circle drawing is broken
 PRIORITY : 1
-ESTIMATE : 2 hours    ACTUAL : 1 hour
+ESTIMATE : 2 hours    ACTUAL : 30 minutes
 ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
@@ -79,14 +78,14 @@ ISSUE    : If the rectangle is dragged towards another side than bottom right,
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.111 : hingor13 : Complete
-NAME     : Drawing selection mode not indicated at start of Program
+NAME     : Drawing selection mode not indicated at start of program
 PRIORITY : 2
 ESTIMATE : 1 hour   ACTUAL : 1 hour
-ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
+ISSUE    : When the program is executed, the initial drawing mode is not indicated.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US1.002 : wenjess1 : Complete
-NAME     : Draw Circle Feedback
+NAME     : Draw circle feedback
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 3 hours
 AS A     : user
@@ -100,7 +99,7 @@ SO THAT  : I can see the circle I am about to build on release of the mouse
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US1.003 : hingor13 : Complete
-NAME     : Draw Rectangle
+NAME     : Draw rectangle
 PRIORITY : 2
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 AS A     : user
@@ -110,11 +109,11 @@ SO THAT  : I can add rectangles to my canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US1.004 : pengxi60 : Complete
-NAME     : Draw Rectangle Feedback
+NAME     : Draw rectangle feedback
 PRIORITY : 2
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
-I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid-construction.
+I WANT   : To display the rectangle in mid-construction.
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -130,7 +129,7 @@ ISSUE    : Code is not modular and is difficult to expand. Need a better
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US2.211 : hingor13 : Complete
-NAME     : Draw Square with Feedback
+NAME     : Draw square with feedback
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 1 hour
 AS A     : user
@@ -144,7 +143,7 @@ SO THAT  : I can easily add squares to my canvas and see the square I am
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US2.221 : wenjess1 : Complete
-NAME     : Draw Oval with Feedback & Shape Selection
+NAME     : Draw oval with feedback and shape selection
 PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
@@ -157,7 +156,7 @@ SO THAT  : I can easily add ovals to my canvas and see the oval I am
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US2.231 : pengxi60 : Complete
-NAME     : Draw Triangle with Feedback & Shape Selection
+NAME     : Draw triangle with feedback and shape selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 2 hours
 AS A     : user
@@ -170,7 +169,7 @@ SO THAT  : I can easily add triangles to my canvas and see the triangle I
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.004 : pengxi60 : Complete
-NAME     : Architecture behind Model is poor
+NAME     : Architecture behind model is poor
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    : Having a list of different types of drawable things in the
@@ -223,7 +222,7 @@ SO THAT  : I can use consistent colors and easily switch colors while
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.311 : wenjess1 : Complete
-NAME     : Stroke Eraser
+NAME     : Stroke eraser
 PRIORITY : 2
 ESTIMATE : 1 day    ACTUAL : 1 day
 AS A     : user
@@ -244,7 +243,7 @@ SO THAT  : I can undo something I did incorrectly or imperfectly, and able
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.331 : tianshi8 : Complete
-NAME     : Layer Support
+NAME     : Layer support
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 6 hours
 AS A     : user
@@ -263,7 +262,7 @@ SO THAT  : I can control the visibility of different elements in my artwork.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.341 : hingor13 : Complete
-NAME     : Redundant Opacity Slider
+NAME     : Redundant opacity slider
 PRIORITY : 3
 ESTIMATE : 1 hour    ACTUAL :15 minutes
 ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
@@ -273,7 +272,7 @@ ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.351 : hingor13 : Complete
-NAME     : Canvas Scalability
+NAME     : Canvas scalability
 PRIORITY : 2
 ESTIMATE : 3 hours    ACTUAL : 3 days
 AS A     : user
@@ -357,7 +356,7 @@ ISSUE    : The stroke Eraser currently removes Text prematurely,
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.421 : tianshi8 : Complete
-NAME     : Text Editor
+NAME     : Text editor
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 7 hours
 AS A     : user
@@ -368,7 +367,7 @@ SO THAT : I can create more personalized and visually distinct text elements
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.401 : wenjess1 : Complete
-NAME     : Stroke Eraser working with varying line thickness and outlined shapes
+NAME     : Stroke eraser working with varying line thickness and outlined shapes
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 8 hours
 ISSUE    : The current StrokeEraser doesn't erase strokes properly when
@@ -377,7 +376,7 @@ ISSUE    : The current StrokeEraser doesn't erase strokes properly when
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.411 : wenjess1 : Complete
-NAME     : Precision Eraser
+NAME     : Precision eraser
 PRIORITY : 2
 ESTIMATE : 1 day    ACTUAL : 8 hours
 AS A     : user
@@ -396,7 +395,7 @@ ISSUE    : StrokeEraser, PrecisionEraser, and SelectionTool should display as
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.441 : pengxi60 : Complete
-NAME     : Magnifier Tool
+NAME     : Magnifier tool
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL : 6 hours
 AS A     : user
@@ -405,7 +404,7 @@ SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.431 : pengxi60 : Complete
-NAME     : Draw Polyline
+NAME     : Draw polyline
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL : 3 hours
 AS A     : user
@@ -415,7 +414,7 @@ SO THAT  : I can have more freedom with the type of lines and shapes I can
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.484 : pengxi60 : Complete
-NAME     : Polyline when switching over to another shape
+NAME     : polyline when switching over to another shape
 PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 2 hours
 ISSUE    : When new shape is selected while polyline is not completed drawing
@@ -423,7 +422,7 @@ ISSUE    : When new shape is selected while polyline is not completed drawing
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.481 : hingor13 : Complete
-NAME     : Undo/Redo Bug while run on initial canvas with no changes
+NAME     : Undo/Redo bug while run on initial canvas with no changes
 PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 30 minutes
 ISSUE    : When clicking undo/redo on a new canvas, duplicate canvases
@@ -451,7 +450,7 @@ ISSUE    : When left click is held done and right click is pressed, it causes
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.452 : hingor13 : Complete
-NAME     : Dragging Selected Shapes
+NAME     : Dragging selected shapes
 PRIORITY : 1
 ESTIMATE : 3 hour    ACTUAL : 30 minutes
 AS A     : user
@@ -460,7 +459,7 @@ SO THAT  : Reorganize my canvas and move shapes around.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.486 : hingor13 : Complete
-NAME     : Dragging Selected Shapes extremely fast
+NAME     : Dragging selected shapes extremely fast
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 10 minutes
 Issue    : When the selection tool is dragged very fast, the mouse is seen
@@ -469,7 +468,7 @@ Issue    : When the selection tool is dragged very fast, the mouse is seen
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.471 : tianshi8 : Complete
-NAME     : Text Editor Dialog Icons Not Displaying Correctly
+NAME     : Text editor dialog icons not displaying correctly
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 15 minutes
 Issue    : The strikethrough and italic buttons are not rendered with
@@ -489,7 +488,7 @@ ISSUE    : The Edit menu is currently non-functional. The program should
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.487 : hingor13 : Complete
-NAME     : Add Command for Dragging Shapes
+NAME     : Add command for dragging shapes
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Since dragging a shape is an undoable feature, a command has to
@@ -499,7 +498,7 @@ ISSUE    : Since dragging a shape is an undoable feature, a command has to
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
-NAME     : Filling Tool
+NAME     : Filling tool
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
@@ -510,7 +509,7 @@ SO THAT  : I can quickly add colours to different parts of my drawing without
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.018 : tianshi8 : NotStarted
-NAME     : Brush Style
+NAME     : Brush style
 PRIORITY : 3
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user

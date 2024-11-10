@@ -18,17 +18,16 @@ NAME     : Drawing selection mode not indicated
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Currently, you can't tell which mode "Circle", "Rectangle", ...
-           is currently selected. Is there a way
-           to highlight the currently selected mode?
+           is currently selected. It would be nice to highlight the currently
+           selected mode.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.005 : tianshi8 : Complete
 NAME     : Squiggle is broken
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
-ISSUE    : Squiggles are connected to each other by a straight line. Each drag
-           of the mouse should be a separate squiggle. Possibly
-           the issue is with the representation of the squiggles in the Model.
+ISSUE    : Squiggles are connected to each other by a straight line.
+           Each drag of the mouse should be a separate squiggle.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.006 : pengxi60 : Complete
@@ -38,39 +37,6 @@ ESTIMATE : 2 hours    ACTUAL : 30 minutes
 ISSUE    : The first click should specify the center of the circle, with
            a drag for the radius. This is not the case in the current
            implementation.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US1.002 : wenjess1 : Complete
-NAME     : Draw Circle Feedback
-PRIORITY : 2
-ESTIMATE : 4 hours    ACTUAL : 3 hours
-AS A     : user
-I WANT   : As a user is specifying a Circle, during the drag, a 'current'
-           circle should be on display. As the user drags, the 'current'
-           circle changes in real time so that a circle is drawn with
-           centre at users initial circle click, with radius out to
-           the current dragged mouse position.
-SO THAT  : I can see the circle I am about to build on release of the mouse
-           button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US1.003 : hingor13 : Complete
-NAME     : Draw Rectangle
-PRIORITY : 2
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-AS A     : user
-I WANT   : To click on one corner of a rectangle, drag, and release to
-                   specify two corners of a rectangle to be drawn in the current style.
-SO THAT  : I can add rectangles to my canvas
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US1.004 : pengxi60 : Complete
-NAME     : Draw Rectangle Feedback
-PRIORITY : 2
-ESTIMATE : 2 hours   ACTUAL : 1 hour
-AS A     : user
-I WANT   : Similarly to Draw Circle Feedback, display the rectangle in mid-construction.
-SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.101 : hingor13 : Complete
@@ -85,5 +51,38 @@ TYPE     : BUG BUG1.111 : hingor13 : Complete
 NAME     : Drawing selection mode not indicated at start of Program
 PRIORITY : 2
 ESTIMATE : 1 hour   ACTUAL : 1 hour
-ISSUE    : When the Paint.java is run, the initial drawing mode is not indicated.
+ISSUE    : When the program is executed, the initial drawing mode is not indicated.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.002 : wenjess1 : Complete
+NAME     : Draw circle feedback
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 3 hours
+AS A     : user
+I WANT   : As a user is specifying a Circle, during the drag, a 'current'
+           circle should be on display. As the user drags, the 'current'
+           circle changes in real time so that a circle is drawn with
+           centre at users initial circle click, with radius out to
+           the current dragged mouse position.
+SO THAT  : I can see the circle I am about to build on release of the mouse
+           button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.003 : hingor13 : Complete
+NAME     : Draw rectangle
+PRIORITY : 2
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+AS A     : user
+I WANT   : To click on one corner of a rectangle, drag, and release to
+           specify two corners of a rectangle to be drawn in the current style.
+SO THAT  : I can add rectangles to my canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.004 : pengxi60 : Complete
+NAME     : Draw rectangle feedback
+PRIORITY : 2
+ESTIMATE : 2 hours   ACTUAL : 1 hour
+AS A     : user
+I WANT   : To display the rectangle in mid-construction.
+SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
