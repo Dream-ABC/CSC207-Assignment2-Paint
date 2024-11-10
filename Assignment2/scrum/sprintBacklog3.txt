@@ -6,34 +6,6 @@
 # Sprint 3 Backlog UserStories go below
 
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.004 : pengxi60 : Complete
-NAME     : Architecture behind model is poor
-PRIORITY : 1
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. The model needs to be re-architected
-           to improve its flexibility and ease of use.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.371 : wenjess1 : Complete
-NAME     : Default shape selection is incorrect
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : When the user launches the Paint program, the default shape
-           selection is set to Circle. It would be best to have no default
-           shape selected.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.341 : hingor13 : Complete
-NAME     : Redundant opacity slider
-PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL : 15 minutes
-ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
-           already available in the color picker tool. Removing the slider
-           will simplify the UI and reduce potential conflicts in opaqueness
-           control.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US3.361 : pengxi60 : Complete
 NAME     : Paint GUI overhaul
 PRIORITY : 1
@@ -115,4 +87,32 @@ AS A     : user
 I WANT   : A canvas that I can increase and decrease the size of on demand.
 SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.004 : pengxi60 : Complete
+NAME     : Architecture behind model is poor
+PRIORITY : 1
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. The model needs to be re-architected
+           to improve its flexibility and ease of use.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.371 : wenjess1 : Complete
+NAME     : Default shape selection is incorrect
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user launches the Paint program, the default shape
+           selection is set to Circle. It would be best to have no default
+           shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.341 : hingor13 : Complete
+NAME     : Redundant opacity slider
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
+ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
+           already available in the color picker tool. Removing the slider
+           will simplify the UI and reduce potential conflicts in opaqueness
+           control.
 --------------------------------------------------------------------------

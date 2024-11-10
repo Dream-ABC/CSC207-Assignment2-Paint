@@ -36,6 +36,42 @@ I WANT   : To click the center of the circle, drag, and release to specify
 SO THAT  : I can add circles to my canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : USER STORY US1.002 : wenjess1 : Complete
+NAME     : Draw circle feedback
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 3 hours
+AS A     : user
+I WANT   : To have a 'current' circle on display when I'm drawing a circle.
+           As I drag my mouse, the 'current' circle should change in real time
+           so that a circle is drawn with centre at my initial circle click, with
+           radius out to the current dragged mouse position.
+SO THAT  : I can see the circle I am about to build on release of the mouse
+           button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.003 : hingor13 : Complete
+NAME     : Draw rectangle
+PRIORITY : 2
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+AS A     : user
+I WANT   : To click on one corner of a rectangle, drag, and release to
+		   specify two corners of a rectangle to be drawn in the current style.
+SO THAT  : I can add rectangles to my canvas.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US1.004 : pengxi60 : Complete
+NAME     : Draw rectangle feedback
+PRIORITY : 2
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+AS A     : user
+I WANT   : To have a 'current' rectangle on display when I'm drawing a rectangle.
+           As I drag my mouse, the 'current' rectangle should change in real time
+           so that a rectangle is drawn with the top-left corner at my initial
+           rectangle click, with the bottom-right corner at the current dragged
+           mouse position.
+SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG1.001 : wenjess1 : Complete
 NAME     : Icons instead of text for drawing mode selection
 PRIORITY : 1
@@ -84,51 +120,6 @@ ESTIMATE : 1 hour   ACTUAL : 1 hour
 ISSUE    : When the program is executed, the initial drawing mode is not indicated.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US1.002 : wenjess1 : Complete
-NAME     : Draw circle feedback
-PRIORITY : 2
-ESTIMATE : 4 hours    ACTUAL : 3 hours
-AS A     : user
-I WANT   : To have a 'current' circle on display when I'm drawing a circle.
-           As I drag my mouse, the 'current' circle should change in real time
-           so that a circle is drawn with centre at my initial circle click, with
-           radius out to the current dragged mouse position.
-SO THAT  : I can see the circle I am about to build on release of the mouse
-           button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US1.003 : hingor13 : Complete
-NAME     : Draw rectangle
-PRIORITY : 2
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-AS A     : user
-I WANT   : To click on one corner of a rectangle, drag, and release to
-		   specify two corners of a rectangle to be drawn in the current style.
-SO THAT  : I can add rectangles to my canvas.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US1.004 : pengxi60 : Complete
-NAME     : Draw rectangle feedback
-PRIORITY : 2
-ESTIMATE : 2 hours    ACTUAL : 1 hour
-AS A     : user
-I WANT   : To have a 'current' rectangle on display when I'm drawing a rectangle.
-           As I drag my mouse, the 'current' rectangle should change in real time
-           so that a rectangle is drawn with the top-left corner at my initial
-           rectangle click, with the bottom-right corner at the current dragged
-           mouse position.
-SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG2.003 : tianshi8 : Complete
-NAME     : Architecture behind choosing selection mode is poor
-PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL : 6 hours
-ISSUE    : The current code is not modular and is difficult to expand.
-           There needs to be a better architecture behind selecting a drawing
-           mode and handling the drawing events.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US2.211 : hingor13 : Complete
 NAME     : Draw square with feedback
 PRIORITY : 1
@@ -169,32 +160,13 @@ SO THAT  : I can easily add triangles to my canvas and see the triangle I
            am building before releasing the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG3.004 : pengxi60 : Complete
-NAME     : Architecture behind model is poor
+TYPE     : BUG BUG2.003 : tianshi8 : Complete
+NAME     : Architecture behind choosing selection mode is poor
 PRIORITY : 1
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. The model needs to be re-architected
-           to improve its flexibility and ease of use.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.371 : wenjess1 : Complete
-NAME     : Default shape selection is incorrect
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : When the user launches the Paint program, the default shape
-           selection is set to Circle. It would be best to have no default
-           shape selected.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.341 : hingor13 : Complete
-NAME     : Redundant opacity slider
-PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL : 15 minutes
-ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
-           already available in the color picker tool. Removing the slider
-           will simplify the UI and reduce potential conflicts in opaqueness
-           control.
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+ISSUE    : The current code is not modular and is difficult to expand.
+           There needs to be a better architecture behind selecting a drawing
+           mode and handling the drawing events.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.361 : pengxi60 : Complete
@@ -278,6 +250,34 @@ AS A     : user
 I WANT   : A canvas that I can increase and decrease the size of on demand.
 SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.004 : pengxi60 : Complete
+NAME     : Architecture behind model is poor
+PRIORITY : 1
+ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ISSUE    : Having a list of different types of drawable things in the
+           model is cumbersome. The model needs to be re-architected
+           to improve its flexibility and ease of use.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.371 : wenjess1 : Complete
+NAME     : Default shape selection is incorrect
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user launches the Paint program, the default shape
+           selection is set to Circle. It would be best to have no default
+           shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.341 : hingor13 : Complete
+NAME     : Redundant opacity slider
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
+ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
+           already available in the color picker tool. Removing the slider
+           will simplify the UI and reduce potential conflicts in opaqueness
+           control.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.468 : tianshi8 : Complete
