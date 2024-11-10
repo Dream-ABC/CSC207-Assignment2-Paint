@@ -11,9 +11,8 @@ NAME     : Architecture behind model is poor
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    : Having a list of different types of drawable things in the
-           model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. We need to re-architect the Model
-           so that it is more flexible and easier to work with.
+           model is cumbersome. The model needs to be re-architected
+           to improve its flexibility and ease of use.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.371 : wenjess1 : Complete
