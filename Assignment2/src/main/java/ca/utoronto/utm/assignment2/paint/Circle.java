@@ -162,6 +162,15 @@ public class Circle implements Shape {
         this.topLeft.shift(x, y);
     }
 
+    public Shape copy(){
+        Circle c = new Circle(fillStyle, lineThickness);
+        c.setDiameter(diameter);
+        c.setCentre(centre.copy());
+        c.setColor(color);
+        c.setTopLeft(topLeft.copy());
+        return c;
+    }
+
     /**
      * Displays the Circle with user-created color and size.
      *

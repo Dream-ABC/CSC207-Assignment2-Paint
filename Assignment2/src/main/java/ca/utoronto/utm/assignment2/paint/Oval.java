@@ -216,6 +216,16 @@ public class Oval implements Shape {
         this.topLeft.shift(x,y);
     }
 
+    public Oval copy(){
+        Oval o = new Oval(fillStyle, lineThickness);
+        o.setColor(color);
+        o.setHeight(height);
+        o.setWidth(width);
+        o.setOrigin(origin.copy());
+        o.setTopLeft(topLeft.copy());
+        return o;
+    }
+
     /**
      * Returns a string representation of an oval.
      * @return a string representation of the oval

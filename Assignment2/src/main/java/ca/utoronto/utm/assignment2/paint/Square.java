@@ -166,6 +166,15 @@ public class Square implements Shape {
         this.topLeft = new Point(topLeft.x + x, topLeft.y + y);
     }
 
+    public Square copy(){
+        Square s = new Square(fillStyle, lineThickness);
+        s.setColor(color);
+        s.setOrigin(origin.copy());
+        s.setSize(size);
+        s.setTopLeft(topLeft.copy());
+        return s;
+    }
+
     /**
      * Displays the Square with user-created color and size.
      *

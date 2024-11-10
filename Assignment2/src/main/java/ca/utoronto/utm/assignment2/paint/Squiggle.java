@@ -121,6 +121,15 @@ public class Squiggle implements Shape {
         }
     }
 
+    public Squiggle copy(){
+        Squiggle s = new Squiggle(this.lineThickness);
+        s.setColor(this.color);
+        for (Point p : this.points) {
+            s.addPoint(p.copy());
+        }
+        return s;
+    }
+
     /**
      * Returns a string representation of a squiggle.
      *

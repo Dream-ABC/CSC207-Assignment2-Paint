@@ -17,6 +17,8 @@ public class PaintModel extends Observable {
     private double thickness;
     private double canvasX, canvasY, canvasWidth, canvasHeight;
     private double mouseX, mouseY;
+    private ArrayList<Shape> copiedShapes;
+    private SelectionTool copiedSelectionTool;
 
     private final CommandHistory history = new CommandHistory();
 
@@ -175,6 +177,7 @@ public class PaintModel extends Observable {
 
     public void undo() {
         history.undo();
+        removeSelectionTool();
         notifyChange();
     }
 
@@ -184,20 +187,34 @@ public class PaintModel extends Observable {
     }
 
     public void copy() {
-
+        if (getSelectionTool() != null) {
+            this.copiedShapes = new ArrayList<>();
+            for (Shape shape : getSelectionTool().getSelectedShapes()) {
+                this.copiedShapes.add(shape.copy());
+            }
+            copiedSelectionTool = getSelectionTool().copy();
+        }
     }
 
     public void paste() {
-
+        if (copiedSelectionTool != null) {
+            history.execute(new PasteCommand(this.selectedLayer, history, copiedShapes, copiedSelectionTool, this));
+        }
+        notifyChange();
     }
 
     public void cut() {
         copy();
         delete();
+        notifyChange();
     }
 
     public void delete() {
-        history.execute(new DeleteSelectedCommand());
+        if (getSelectionTool() != null) {
+        history.execute(new DeleteSelectedCommand(this.selectedLayer, history, getSelectionTool().getSelectedShapes()));
+        this.removeSelectionTool();
+        }
+        notifyChange();
     }
 
 

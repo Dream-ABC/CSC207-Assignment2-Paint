@@ -305,6 +305,16 @@ public class Triangle extends Polygon implements Shape {
         updatePoints();
     }
 
+    public Triangle copy() {
+        Triangle t = new Triangle(fillStyle, lineThickness);
+        t.setBase(base);
+        t.setColor(color);
+        t.setHeight(height);
+        t.setOrigin(origin.copy());
+        t.setTopLeft(topLeft.copy());
+        return t;
+    }
+
     /**
      * Returns a string representation of a triangle.
      *
