@@ -1,5 +1,6 @@
 package ca.utoronto.utm.assignment2.paint;
 
+
 public class StrategyFactory {
     public ShapeStrategy getStrategy(String shapeName, PaintPanel panel) {
         return switch (shapeName.toLowerCase()) { // ignore case

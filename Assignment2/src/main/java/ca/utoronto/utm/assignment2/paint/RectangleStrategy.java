@@ -20,6 +20,7 @@ public class RectangleStrategy implements ShapeStrategy {
 
     /**
      * When the user does a left mouse click, a new Rectangle is created.
+     * The mouse click position is the top left corner of the Rectangle.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override
@@ -42,6 +43,7 @@ public class RectangleStrategy implements ShapeStrategy {
     /**
      * When the user does a left mouse drag, the current Rectangle's size is updated according to
      * the user's mouse position.
+     * The drag position is the bottom-right vertex of the Rectangle.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override
