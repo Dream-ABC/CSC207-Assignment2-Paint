@@ -31,7 +31,7 @@ public class Circle implements Shape {
     }
 
     /**
-     * Sets the center point of Circle
+     * Sets the center point of Circle.
      * @param centre centre of Circle
      */
     public void setCentre(Point centre) {
@@ -39,7 +39,7 @@ public class Circle implements Shape {
     }
 
     /**
-     * Sets the top left point of Circle
+     * Sets the top left point of Circle.
      * @param topLeft top left point of Circle
      */
     public void setTopLeft(Point topLeft) {
@@ -47,15 +47,15 @@ public class Circle implements Shape {
     }
 
     /**
-     * Returns the centre point of Circle
-     * @return centre of Circle.
+     * Returns the centre point of Circle.
+     * @return centre of Circle
      */
     public Point getCentre() {
         return this.centre;
     }
 
     /**
-     * Sets the diameter of Circle
+     * Sets the diameter of Circle.
      * @param diameter diameter of Circle
      */
     public void setDiameter(double diameter) {
@@ -63,7 +63,7 @@ public class Circle implements Shape {
     }
 
     /**
-     * Returns the color of Circle
+     * Returns the color of Circle.
      * @return color of Circle
      */
     @Override
@@ -72,7 +72,7 @@ public class Circle implements Shape {
     }
 
     /**
-     * Sets the color of Circle
+     * Sets the color of Circle.
      * @param color color of Circle
      */
     @Override

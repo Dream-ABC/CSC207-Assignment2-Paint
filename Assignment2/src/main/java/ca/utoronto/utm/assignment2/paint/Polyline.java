@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /**
  * A class to represent drawing polylines.
  * Polyline implements the Shape interface.
+ * Polylines are represented using Points.
  */
 public class Polyline implements Shape {
     private final ArrayList<Point> points;
@@ -31,27 +32,27 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Gets the number points in the user's Polyline drawing
+     * Gets the number points in the user's Polyline drawing.
      *
-     * @return number of polyline points
+     * @return number of Polyline points
      */
     public int getSize() {
         return points.size();
     }
 
     /**
-     * Gets the first point of the user's Polyline drawing
+     * Gets the first point of the user's Polyline drawing.
      *
-     * @return the first point of the polyline
+     * @return the first point of the Polyline
      */
     public Point getFirst() {
         return this.points.getFirst();
     }
 
     /**
-     * Gets the last point of the user's Polyline drawing
+     * Gets the last point of the user's Polyline drawing.
      *
-     * @return the last point of the polyline
+     * @return the last point of the Polyline
      */
     public Point getLast() {
         return this.points.getLast();
@@ -75,6 +76,7 @@ public class Polyline implements Shape {
     }
 
     /**
+     * Sets the closed status of the Polyline.
      * @param closed closed status of Polyline
      */
     public void setClosed(boolean closed) {
@@ -82,7 +84,8 @@ public class Polyline implements Shape {
     }
 
     /**
-     * @return the color of the Polyline
+     * Returns the color of Polyline.
+     * @return the color of Polyline
      */
     @Override
     public Color getColor() {
@@ -90,6 +93,7 @@ public class Polyline implements Shape {
     }
 
     /**
+     * Sets the color of Polyline.
      * @param color color of Polyline
      */
     @Override

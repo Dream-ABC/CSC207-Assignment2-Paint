@@ -17,6 +17,8 @@ public class Squiggle implements Shape {
 
     /**
      * Constructs a default black squiggle with no points.
+     * The line thickness is determined by the provided parameters.
+     * @param lineThickness ranges from 1.0 to 10.0
      */
     public Squiggle(double lineThickness) {
         this.points = new ArrayList<>();
@@ -50,10 +52,10 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * Checks if the Eraser is overlapping the Squiggle.
-     * If it is, then the Eraser will erase the entire Squiggle.
+     * Checks if the Tool is overlapping the Squiggle.
      *
-     * @return True if the Eraser should erase this Squiggle, False otherwise
+     * @param tool the Tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -70,7 +72,34 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * Displays the Squiggle with user-created color and points they drew.
+     * Shifts all points of the Squiggle by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
+    @Override
+    public void shift(double x, double y) {
+        for (Point p : this.points) {
+            p.shift(x, y);
+        }
+    }
+
+    /**
+     * Creates a copy of the Squiggle instance.
+     *
+     * @return a copy of the Squiggle instance
+     */
+    public Squiggle copy(){
+        Squiggle s = new Squiggle(this.lineThickness);
+        s.setColor(this.color);
+        for (Point p : this.points) {
+            s.addPoint(p.copy());
+        }
+        return s;
+    }
+
+    /**
+     * Displays the Squiggle with user-created color, line thickness, and points they drew.
      *
      * @param g2d GraphicsContext
      */
@@ -87,13 +116,12 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * Sets the shape's properties including line thickness, color, and points.
-     * The data array must contain these elements in the following order:
-     * line thickness, color (in web format), followed by coordinate pairs (x, y) for points.
+     * Sets the properties of the Squiggle shape based on the provided data array.
      *
-     * @param data an array of strings where the first element is the line thickness,
-     *             the second element is the color in web format, and the remaining
-     *             elements are coordinate pairs representing points.
+     * @param data an array should contain the following elements in order:
+     *             <p>data[0] - line thickness of the Squiggle</p>
+     *             <p>data[2] - color of the Squiggle in web format</p>
+     *             <p>data[i, i+1] - the x and y coordinates of a Point in the Squiggle</p>
      */
     @Override
     public void setShape(String[] data) {
@@ -107,26 +135,10 @@ public class Squiggle implements Shape {
         }
     }
 
-    @Override
-    public void shift(double x, double y) {
-        for (Point p : this.points) {
-            p.shift(x, y);
-        }
-    }
-
-    public Squiggle copy(){
-        Squiggle s = new Squiggle(this.lineThickness);
-        s.setColor(this.color);
-        for (Point p : this.points) {
-            s.addPoint(p.copy());
-        }
-        return s;
-    }
-
     /**
-     * Returns a string representation of a squiggle.
+     * Returns a string representation of a Squiggle.
      *
-     * @return a string representation of the squiggle
+     * @return a string representation of the Squiggle
      */
     public String toString() {
         StringBuilder points = new StringBuilder();

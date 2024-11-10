@@ -33,7 +33,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Returns the origin point of Oval (first mouse click)
+     * Returns the origin point of Oval (first mouse click).
      * @return the origin of Oval
      */
     public Point getOrigin() {
@@ -41,7 +41,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the origin point of Oval (first mouse click)
+     * Sets the origin point of Oval (first mouse click).
      * @param origin origin of Oval
      */
     public void setOrigin(Point origin) {
@@ -49,7 +49,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the top left point of Oval
+     * Sets the top left point of Oval.
      * @param topLeft top left point of Oval
      */
     public void setTopLeft(Point topLeft) {
@@ -57,7 +57,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the width of Oval
+     * Sets the width of Oval.
      * @param width width of Oval
      */
     public void setWidth(double width) {
@@ -65,13 +65,13 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the height of Oval
+     * Sets the height of Oval.
      * @param height height of Oval
      */
     public void setHeight(double height) { this.height = height; }
 
     /**
-     * Returns the color of Oval
+     * Returns the color of Oval.
      * @return the color of Oval
      */
     @Override
@@ -80,7 +80,7 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the color of Oval
+     * Sets the color of Oval.
      * @param color color of Oval
      */
     @Override
