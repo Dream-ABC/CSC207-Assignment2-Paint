@@ -35,10 +35,6 @@ public class PaintLayer extends Canvas {
         this.shapes.add(shape);
     }
 
-    public void addShapeFirst(Shape shape) {
-        this.shapes.addFirst(shape);
-    }
-
     public void removeShape(Shape shape) {
         this.shapes.remove(shape);
     }
@@ -48,6 +44,7 @@ public class PaintLayer extends Canvas {
 
     public void addSelectionTool(SelectionTool selectionTool) {this.selectionTool = selectionTool;}
     public void removeSelectionTool() {this.selectionTool = null;}
+    public SelectionTool getSelectionTool() {return selectionTool;}
 
     public ArrayList<Shape> getShapes() {
         return shapes;

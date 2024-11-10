@@ -213,6 +213,11 @@ public class Text implements Shape {
         this.textNode.setFont(Font.font(data[1], weight, posture, Double.parseDouble(data[2])));
     }
 
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+    }
+
     /**
      * Returns a string representation of the Text object, including text content,
      * font details, position, style attributes, and color.
