@@ -19,6 +19,7 @@ public class Circle implements Shape {
 
     /**
      * Constructs a default black circle with a diameter of 0.
+     * The fill style and line thickness are determined by the provided parameters.
      * @param fillStyle "Solid"/"Outline"
      * @param lineThickness ranges from 1.0 to 10.0
      */
@@ -231,14 +232,14 @@ public class Circle implements Shape {
      * Sets the shape parameters for a Circle instance using an array of Strings.
      *
      * @param data an array of strings containing the following information in order:
-     *             data[0] - topLeft x-coordinate,
-     *             data[1] - topLeft y-coordinate,
-     *             data[2] - centre x-coordinate,
-     *             data[3] - centre y-coordinate,
-     *             data[4] - diameter,
-     *             data[5] - color (web format),
-     *             data[6] - fillStyle,
-     *             data[7] - lineThickness.
+     *             <p>data[0] - x-coordinate of the top-left point</p>
+     *             <p>data[1] - y-coordinate of the top-left point</p>
+     *             <p>data[2] - x-coordinate of the centre</p>
+     *             <p>data[3] - y-coordinate of the centre</p>
+     *             <p>data[4] - diameter of the Circle</p>
+     *             <p>data[5] - color of the Circle in web format</p>
+     *             <p>data[6] - fill style of the Circle</p>
+     *             <p>data[7] - line thickness of the Circle</p>
      */
     @Override
     public void setShape(String[] data) {

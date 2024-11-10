@@ -8,6 +8,10 @@ import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.util.ArrayList;
 
+/**
+ * A class to represent drawing polylines.
+ * Polyline implements the Shape interface.
+ */
 public class Polyline implements Shape {
     private final ArrayList<Point> points;
     private Color color;
@@ -16,6 +20,8 @@ public class Polyline implements Shape {
 
     /**
      * Constructs a default black polyline with no points.
+     * The line thickness is determined by the provided parameters.
+     * @param lineThickness ranges from 1.0 to 10.0
      */
     public Polyline(double lineThickness) {
         this.points = new ArrayList<>();
@@ -93,10 +99,9 @@ public class Polyline implements Shape {
 
     /**
      * Checks if the Tool is overlapping the Polyline.
-     * If it is, then the Tool will erase the entire Polyline.
      *
-     * @param tool the Tool instance which is currently erasing drawings
-     * @return True if the Tool should erase this Polyline, False otherwise
+     * @param tool the Tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -105,41 +110,64 @@ public class Polyline implements Shape {
         double topY = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
         double bottomY = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
-        GeneralPath polygon1 = new GeneralPath();  // Create a new empty path (polygon)
+        // Create a polygon based on the polyline
+        GeneralPath polygon1 = new GeneralPath();
         polygon1.moveTo(this.points.getFirst().x, this.points.getFirst().y);  // Move to the starting point (0, 0)
         for (int i = 1; i < this.points.size(); i++) {
             polygon1.lineTo(this.points.get(i).x, this.points.get(i).y);
         }
         polygon1.closePath();
 
-        // Create a BasicStroke with the desired line thickness
+        // Create an accurate version of the polygon shape with the line thickness needed
         float lineThickness = (float) this.lineThickness;
         BasicStroke thickStroke = new BasicStroke(lineThickness, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
-
-        // Apply the stroke to create a thick version of the polygon path
         java.awt.Shape thickPolygonShape = thickStroke.createStrokedShape(polygon1);
-
-        // Create an Area from the thickened polygon shape
         Area thickPolygonArea = new Area(thickPolygonShape);
 
+        // Create a polygon based on the eraser
         GeneralPath polygon2 = new GeneralPath();
         polygon2.moveTo(leftX, topY);
         polygon2.lineTo(rightX, topY);
         polygon2.lineTo(rightX, bottomY);
         polygon2.lineTo(leftX, bottomY);
-
-        // Create Area objects for both polygons
         Area area2 = new Area(polygon2);
 
-        // Check if the polygons intersect
-        thickPolygonArea.intersect(area2);
-
         // If the resulting area is not empty, the polygons intersect
+        thickPolygonArea.intersect(area2);
         return !thickPolygonArea.isEmpty();
     }
 
     /**
-     * Displays the Polyline with user-created color and points they drew.
+     * Shifts all points of the Polyline by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
+    @Override
+    public void shift(double x, double y) {
+        for (Point p : this.points) {
+            p.shift(x, y);
+        }
+    }
+
+    /**
+     * Creates a copy of the Polyline instance.
+     *
+     * @return a copy of the Polyline instance
+     */
+    @Override
+    public Polyline copy() {
+        Polyline p = new Polyline(lineThickness);
+        p.setColor(this.color);
+        p.setClosed(this.isClosed);
+        for (Point p1 : this.points) {
+            p.addPoint(p1.copy());
+        }
+        return p;
+    }
+
+    /**
+     * Displays the Polyline with user-created color, line thickness, and points they drew.
      *
      * @param g2d GraphicsContext
      */
@@ -168,6 +196,15 @@ public class Polyline implements Shape {
         }
     }
 
+    /**
+     * Sets the properties of the Oval shape based on the provided data array.
+     *
+     * @param data an array should contain the following elements in order:
+     *             <p>data[0] - whether the Polyline is closed or not</p>
+     *             <p>data[1] - line thickness of the Polyline</p>
+     *             <p>data[2] - color of the Polyline in web format</p>
+     *             <p>data[i, i+1] - the x and y coordinates of a Point in the Polyline</p>
+     */
     @Override
     public void setShape(String[] data) {
         this.isClosed = Boolean.parseBoolean(data[0]);
@@ -181,23 +218,11 @@ public class Polyline implements Shape {
             this.points.add(new Point(x, y));
         }
     }
-    @Override
-    public void shift(double x, double y) {
-        for (Point p : this.points) {
-            p.shift(x, y);
-        }
-    }
 
-    public Polyline copy() {
-        Polyline p = new Polyline(lineThickness);
-        p.setColor(this.color);
-        p.setClosed(this.isClosed);
-        for (Point p1 : this.points) {
-            p.addPoint(p1.copy());
-        }
-        return p;
-    }
-
+    /**
+     * Returns a string representation of a polyline.
+     * @return a string representation of the polyline
+     */
     public String toString() {
         // get all points
         StringBuilder points = new StringBuilder();

@@ -20,6 +20,7 @@ public class Oval implements Shape {
 
     /**
      * Constructs a default black oval with a width and height of 0.
+     * The fill style and line thickness are determined by the provided parameters.
      * @param fillStyle "Solid"/"Outline"
      * @param lineThickness ranges from 1.0 to 10.0
      */
@@ -245,15 +246,15 @@ public class Oval implements Shape {
      * Sets the properties of the Oval shape based on the provided data array.
      *
      * @param data an array should contain the following elements in order:
-     *             data[0] - x-coordinate of the top-left point
-     *             data[1] - y-coordinate of the top-left point
-     *             data[2] - width of the Oval
-     *             data[3] - height of the Oval
-     *             data[4] - x-coordinate of the origin
-     *             data[5] - y-coordinate of the origin
-     *             data[6] - color of the Oval in web format
-     *             data[7] - fill style of the Oval
-     *             data[8] - line thickness of the Oval
+     *             <p>data[0] - x-coordinate of the top-left point</p>
+     *             <p>data[1] - y-coordinate of the top-left point</p>
+     *             <p>data[2] - width of the Oval</p>
+     *             <p>data[3] - height of the Oval</p>
+     *             <p>data[4] - x-coordinate of the origin</p>
+     *             <p>data[5] - y-coordinate of the origin</p>
+     *             <p>data[6] - color of the Oval in web format</p>
+     *             <p>data[7] - fill style of the Oval</p>
+     *             <p>data[8] - line thickness of the Oval</p>
      */
     @Override
     public void setShape(String[] data) {
