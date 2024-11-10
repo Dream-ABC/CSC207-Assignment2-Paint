@@ -4,11 +4,11 @@
 --------------------------------------------------------------------------------
 # MVC
 
-# ModelClasses
+# Model Classes
 	PaintModel
 	PaintLayer
 
-# ViewClasses
+# View Classes
     View
 	PaintPanel
 	ShapeChooserPanel
@@ -18,7 +18,7 @@
 	ToolbarPanel
 	ZoomPanel
 
-# ControllerClasses
+# Controller Classes
     View
 	PaintPanel
 	ShapeChooserPanel
@@ -27,9 +27,61 @@
 	ZoomController
 	ZoomSliderController
 
-# (other logical  ways of collecting your classes)
+# Layer Classes (classes that pertain to our layer feature)
+    AddLayerCommand
+    ChangeLayerCommand
+    ChangeLayerVisibilityCommand
+    DeleteLayerCommand
+    LayerChooserController
+    LayerChooserPanel
+    PaintLayer
+    PaintPanel
 
+# Drawing Mode Classes (classes that pertain to drawing modes)
+    Circle
+    CircleStrategy
+    Oval
+    OvalStrategy
+    Point
+    Polyline
+    PolylineStrategy
+    Rectangle
+    RectangleStrategy
+    Shape
+    ShapeFactory
+    ShapeStrategy
+    Square
+    SquareStrategy
+    Squiggle
+    SquiggleStrategy
+    StrategyFactory
+    Text
+    TextEditorDialog
+    TextStrategy
+    Triangle
+    TriangleStrategy
 
+# Tool Classes (classes that pertain to tools the user can use)
+    ColorPickupPopup
+    LineThicknessSlider
+    PrecisionEraser
+    PrecisionEraserStrategy
+    ResizableCanvas
+    SelectionTool
+    SelectionToolStrategy
+    StatusbarPanel
+    Tool
+    ToolbarController
+    ToolbarPanel
+    ZoomController
+    ZoomSliderController
+
+# File Classes (classes that pertain to the file menu)
+    Command
+    CommandHistory
+    FileHandlePopup
+    FileHandler
+    PatternParser
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
