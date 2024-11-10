@@ -84,6 +84,7 @@ public class Squiggle implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
+        g2d.setLineDashes();
         for (int i = 0; i < this.points.size() - 1; i++) {
             Point p1 = this.points.get(i);
             Point p2 = this.points.get(i + 1);

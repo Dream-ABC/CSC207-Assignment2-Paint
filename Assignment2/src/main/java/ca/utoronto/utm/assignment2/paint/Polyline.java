@@ -153,6 +153,7 @@ public class Polyline implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
+        g2d.setLineDashes();
         if (this.isClosed) {
             double[] xPoints = new double[this.points.size()];
             double[] yPoints = new double[this.points.size()];
