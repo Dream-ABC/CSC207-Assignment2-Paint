@@ -4,13 +4,29 @@ import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
+/**
+ * A class to represent the selection tool drawing strategy.
+ * SelectionToolStrategy implements the {@link ShapeStrategy} interface.
+ */
 public class SelectionToolStrategy implements ShapeStrategy{
     private final PaintPanel panel;
 
+    /**
+     * Creates an selectionToolStrategy strategy connected to the paint panel.
+     * @param p the main panel where drawing actions are managed
+     */
     public SelectionToolStrategy(PaintPanel p) {
         this.panel = p;
     }
 
+    /**
+     * Handles mouse press events. When the mouse is pressed, it checks if the
+     * mouse is within bounds of the existing selection tool. If so, it starts
+     * dragging the selection. Otherwise, a new selection tool is created at
+     * the mouse position.
+     *
+     * @param mouseEvent The mouse press event.
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
@@ -29,6 +45,14 @@ public class SelectionToolStrategy implements ShapeStrategy{
         }
     }
 
+    /**
+     * Handles mouse drag events. If the selection tool is being dragged, the
+     * selection's position is updated based on the mouse's movement. If not,
+     * the dimensions of the selection area are updated to enclose the mouse's
+     * drag area, and shapes within the selection area are selected.
+     *
+     * @param mouseEvent The mouse drag event.
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
         if (panel.getModel().getSelectionTool() != null) {
@@ -61,6 +85,10 @@ public class SelectionToolStrategy implements ShapeStrategy{
         }
     }
 
+    /**
+     * Selects all shapes within the current selection tool's bounds.
+     * Shapes that overlap with the selection tool are added to the selection.
+     */
     private void selectShapes(){
         ArrayList<Shape> currLayer = new ArrayList<>(this.panel.getModel().getSelectedLayer().getShapes());
         for (Shape shape : currLayer) {
@@ -70,12 +98,16 @@ public class SelectionToolStrategy implements ShapeStrategy{
         }
     }
 
+    /**
+     * Handles mouse release events. When the mouse is released, the dragging
+     * state of the selection tool is reset.
+     *
+     * @param mouseEvent The mouse release event.
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
             panel.getModel().getSelectionTool().setDragging(false);
-            System.out.println(this.panel.getModel().getSelectionTool().getSelectedShapes().size());
-            //doubt I need this
         }
     }
 

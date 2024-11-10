@@ -5,6 +5,10 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a selection tool that allows for selecting and dragging shapes
+ * within a specific rectangular area in a paint layer.
+ */
 public class SelectionTool implements Tool {
 
     private Point topLeft;
@@ -17,7 +21,10 @@ public class SelectionTool implements Tool {
     private PaintLayer layer;
 
     /**
-     * Constructs a default black rectangle with a width and height of 0.
+     * Constructs a default selection tool with a width and height of 0,
+     * and an empty selection list.
+     *
+     * @param layer The paint layer where the selection tool operates.
      */
     public SelectionTool(PaintLayer layer) {
         this.dimensionX = 0;
@@ -27,76 +34,173 @@ public class SelectionTool implements Tool {
         this.layer = layer;
     }
 
+    /**
+     * Gets the top-left point of the selection rectangle.
+     *
+     * @return The top-left point of the selection rectangle.
+     */
+    @Override
     public Point getTopLeft() {
         return this.topLeft;
     }
 
+    /**
+     * Sets the top-left point of the selection rectangle.
+     *
+     * @param topLeft The top-left point to set.
+     */
+    @Override
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
     }
 
+    /**
+     * Gets the origin point of the selection.
+     * The origin point refers to where the selection tool began drawing.
+     *
+     * @return The origin point of the selection.
+     */
     public Point getOrigin() {
         return this.origin;
     }
 
+    /**
+     * Sets the origin point of the selection.
+     * The origin point refers to where the selection tool began drawing.
+     *
+     * @param origin The origin point to set.
+     */
     public void setOrigin(Point origin) {
         this.origin = origin;
     }
 
+    /**
+     * Gets the width (dimensionX) of the selection rectangle.
+     *
+     * @return The width of the selection rectangle.
+     */
+    @Override
     public double getDimensionX() {
         return this.dimensionX;
     }
 
+    /**
+     * Sets the width (dimensionX) of the selection rectangle.
+     *
+     * @param dimensionX The width of the selection rectangle.
+     */
     public void setDimensionX(double dimensionX) {
         this.dimensionX = dimensionX;
     }
 
+    /**
+     * Gets the height (dimensionY) of the selection rectangle.
+     *
+     * @return The height of the selection rectangle.
+     */
+    @Override
     public double getDimensionY() {
         return this.dimensionY;
     }
 
+    /**
+     * Sets the height (dimensionY) of the selection rectangle.
+     *
+     * @param dimensionY The height of the selection rectangle.
+     */
     public void setDimensionY(double dimensionY) {
         this.dimensionY = dimensionY;
     }
 
+    /**
+     * Gets the list of selected shapes.
+     *
+     * @return A list of selected shapes.
+     */
     public ArrayList<Shape> getSelectedShapes() {
         return selectedShapes;
     }
 
+    /**
+     * Adds a shape to the selection.
+     *
+     * @param shape The shape to add to the selection.
+     */
     public void addSelectedShape(Shape shape) {
         this.selectedShapes.add(shape);
     }
 
+    /**
+     * Gets the old location of the selection before a drag operation.
+     *
+     * @return The old location of the selection.
+     */
     public Point getOldLocation() {
         return oldLocation;
     }
 
+    /**
+     * Sets the old location of the selection before a drag operation.
+     *
+     * @param oldLocation The old location to set.
+     */
     public void setOldLocation(Point oldLocation) {
         this.oldLocation = oldLocation;
     }
 
+    /**
+     * Shifts the selection by a specified x and y distance.
+     *
+     * @param x The distance to shift the selection along the x-axis.
+     * @param y The distance to shift the selection along the y-axis.
+     */
     public void shift(double x, double y) {
         this.topLeft.shift(x, y);
     }
 
+    /**
+     * Checks if a given point (x, y) is within the bounds of the selection rectangle.
+     *
+     * @param x The x-coordinate of the point to check.
+     * @param y The y-coordinate of the point to check.
+     * @return True if the point is within bounds, false otherwise.
+     */
     public boolean inBounds(double x, double y) {
         boolean a = this.topLeft.x - dimensionX / 2.0 <= x && x <= this.topLeft.x + dimensionX / 2.0;
         boolean b = this.topLeft.y - dimensionY / 2.0 <= y && y <= this.topLeft.y + dimensionY / 2.0;
         return a && b;
     }
 
+    /**
+     * Clears all selected shapes.
+     */
     public void clearSelectedShapes() {
         this.selectedShapes.clear();
     }
 
+    /**
+     * Sets whether the selection is being dragged.
+     *
+     * @param dragging True if the selection is being dragged, false otherwise.
+     */
     public void setDragging(boolean dragging) {
         this.dragging = dragging;
     }
 
+    /**
+     * Gets whether the selection is being dragged.
+     *
+     * @return True if the selection is being dragged, false otherwise.
+     */
     public boolean getDragging() {
         return this.dragging;
     }
 
+    /**
+     * Creates a copy of the current selection tool with the same properties.
+     *
+     * @return A new SelectionTool object that is a copy of this one.
+     */
     public SelectionTool copy() {
         SelectionTool s = new SelectionTool(layer);
         s.setTopLeft(this.topLeft.copy());
@@ -110,6 +214,7 @@ public class SelectionTool implements Tool {
      *
      * @param g2d GraphicsContext
      */
+    @Override
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
         g2d.setStroke(Color.BLACK);

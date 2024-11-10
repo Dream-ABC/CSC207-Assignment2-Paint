@@ -9,6 +9,12 @@ import javafx.scene.transform.Translate;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * A canvas that can be resized interactively with handles on the edges and corners.
+ * It listens for changes in the {@link PaintModel} and updates its size and position
+ * accordingly. The canvas provides resizing functionality by dragging handles,
+ * scaling based on zoom factor, and updating the layout of its child components.
+ */
 public class ResizableCanvas extends Pane implements Observer {
     private final PaintPanel panel;
     private final PaintModel model;
@@ -21,6 +27,15 @@ public class ResizableCanvas extends Pane implements Observer {
     private double width, height;
     private double lastMouseX, lastMouseY;
 
+    /**
+     * Constructs a new ResizableCanvas with the specified initial width, height,
+     * model, and panel.
+     *
+     * @param initialWidth The initial width of the canvas.
+     * @param initialHeight The initial height of the canvas.
+     * @param model The PaintModel that tracks the canvas state.
+     * @param panel The PaintPanel that represents the actual content of the canvas.
+     */
     public ResizableCanvas(double initialWidth, double initialHeight, PaintModel model, PaintPanel panel) {
         this.model = model;
         this.panel = panel;
@@ -50,6 +65,11 @@ public class ResizableCanvas extends Pane implements Observer {
         setUpPositions();
     }
 
+    /**
+     * Creates a handle button for resizing the canvas.
+     *
+     * @return A button styled as a handle for resizing.
+     */
     private Button createHandle() {
         Button handle = new Button();
         handle.setPrefSize(handleSize, handleSize);
@@ -59,6 +79,9 @@ public class ResizableCanvas extends Pane implements Observer {
         return handle;
     }
 
+    /**
+     * Sets up drag events for all resize handles.
+     */
     private void setupDragEvents() {
         setupHandleDragEvents(topLeftHandle, -1, -1);
         setupHandleDragEvents(topHandle, 0, -1);
@@ -70,6 +93,13 @@ public class ResizableCanvas extends Pane implements Observer {
         setupHandleDragEvents(leftHandle, -1, 0);
     }
 
+    /**
+     * Configures drag events for a specific handle, allowing it to resize the canvas.
+     *
+     * @param handle The handle button to set the event on.
+     * @param xMultiplier The multiplier for the x-axis resizing.
+     * @param yMultiplier The multiplier for the y-axis resizing.
+     */
     private void setupHandleDragEvents(Button handle, int xMultiplier, int yMultiplier) {
         handle.setOnMousePressed(e -> {
             lastMouseX = e.getSceneX();
@@ -100,6 +130,9 @@ public class ResizableCanvas extends Pane implements Observer {
         });
     }
 
+    /**
+     * Updates the size of the canvas based on the current resizing.
+     */
     private void updateCanvasSize() {
         double scale = model.getZoomFactor() / 100.0;
         setPrefSize(width * scale + handleSize, height * scale + handleSize);
@@ -118,6 +151,9 @@ public class ResizableCanvas extends Pane implements Observer {
         scaleCanvas();
     }
 
+    /**
+     * Positions the resize handles at the edges and vertices of the canvas.
+     */
     public void setUpPositions() {
         double w = panel.getWidth();
         double h = panel.getHeight();
@@ -136,11 +172,21 @@ public class ResizableCanvas extends Pane implements Observer {
         panel.setLayoutY(handleSize);
     }
 
+    /**
+     * Sets the position of a given resize handle.
+     *
+     * @param handle The handle button to set the position for.
+     * @param x The x-coordinate of the handle's position.
+     * @param y The y-coordinate of the handle's position.
+     */
     private void setPosition(Button handle, double x, double y) {
         handle.setLayoutX(x);
         handle.setLayoutY(y);
     }
 
+    /**
+     * Scales the canvas according to the current zoom factor.
+     */
     public void scaleCanvas() {
         double scale = model.getZoomFactor() / 100.0;
 
@@ -169,6 +215,9 @@ public class ResizableCanvas extends Pane implements Observer {
         updateLayers();
     }
 
+    /**
+     * Clears any transforms applied to the resize handles.
+     */
     private void clearHandleTransforms() {
         topLeftHandle.getTransforms().clear();
         topHandle.getTransforms().clear();
@@ -180,6 +229,9 @@ public class ResizableCanvas extends Pane implements Observer {
         leftHandle.getTransforms().clear();
     }
 
+    /**
+     * Updates the layers to match the current size of the canvas.
+     */
     private void updateLayers() {
         for (PaintLayer layer: model.getLayers()) {
             layer.setWidth(width);
@@ -187,6 +239,12 @@ public class ResizableCanvas extends Pane implements Observer {
         }
     }
 
+    /**
+     * Called when the {@link PaintModel} changes, updating the canvas size and layer positions.
+     *
+     * @param o The observable object (PaintModel).
+     * @param arg Additional argument passed by the `notifyObservers` method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         updateLayers();

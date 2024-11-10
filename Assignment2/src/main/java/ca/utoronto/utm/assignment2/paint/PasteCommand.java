@@ -2,6 +2,11 @@ package ca.utoronto.utm.assignment2.paint;
 
 import java.util.ArrayList;
 
+/**
+ * Command to paste previously copied shapes into the current layer, creating new copies of the shapes.
+ * The command stores the original state of the layer, adds the copied shapes to the layer, and moves them
+ * by a fixed offset. It also manages the selection tool for the pasted shapes.
+ */
 public class PasteCommand implements Command {
     private PaintLayer layer;
     private CommandHistory history;
@@ -10,6 +15,15 @@ public class PasteCommand implements Command {
     private PaintModel model;
     private ArrayList<Integer> shapeIndex;
 
+    /**
+     * Constructs a PasteCommand to paste previously copied shapes.
+     *
+     * @param l the paint layer to which shapes will be pasted
+     * @param h the command history for state management
+     * @param c the list of copied shapes to paste
+     * @param s the selection tool managing the selected shapes
+     * @param m the paint model managing the layers and selection
+     */
     public PasteCommand(PaintLayer l, CommandHistory h, ArrayList<Shape> c, SelectionTool s, PaintModel m) {
         layer = l;
         history = h;
@@ -23,6 +37,10 @@ public class PasteCommand implements Command {
         }
     }
 
+    /**
+     * Executes the paste operation by adding copies of the selected shapes
+     * to the paint layer and shifting them for visibility.
+     */
     public void execute() {
         history.addState(new ArrayList<Shape>(layer.getShapes()));
         SelectionTool selection = selectionTool.copy();
@@ -35,6 +53,9 @@ public class PasteCommand implements Command {
         model.addSelectionTool(selection);
     }
 
+    /**
+     * Undoes the paste operation by reverting the paint layer to its previous state.
+     */
     public void undo() {
         this.layer.setShapes(history.revertState());
     }

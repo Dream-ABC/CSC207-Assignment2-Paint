@@ -125,8 +125,8 @@ public class Oval implements Shape {
         double rectTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
         double rectBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
-        double closestX = clamp(ovalCenterX, rectLeft, rectRight);
-        double closestY = clamp(ovalCenterY, rectTop, rectBottom);
+        double closestX = findClosest(ovalCenterX, rectLeft, rectRight);
+        double closestY = findClosest(ovalCenterY, rectTop, rectBottom);
 
         double distanceX = (ovalCenterX - closestX) / radiusX;
         double distanceY = (ovalCenterY - closestY) / radiusY;
@@ -155,6 +155,14 @@ public class Oval implements Shape {
         return false;
     }
 
+    /**
+     * Calculates the vertical distance from the oval's center to the point on its
+     * edge at the specified x-coordinate. This method is used to determine the y-coordinate
+     * of a point on the oval's circumference.
+     *
+     * @param x the x-coordinate at which to calculate the corresponding y-coordinate on the oval's edge
+     * @return the vertical distance from the center to the point on the edge that exists at the x-coordinate
+     */
     private double calculateY(double x){
         double a = this.width/2.0;
         double b = this.height/2.0;
@@ -164,6 +172,14 @@ public class Oval implements Shape {
 
     }
 
+    /**
+     * Checks whether the specified point (x, y) is within the bounding box of the given tool.
+     *
+     * @param x the x-coordinate of the point to check
+     * @param y the y-coordinate of the point to check
+     * @param tool the tool whose bounding box is used for the boundary check
+     * @return true if the point (x, y) lies within the bounds of the tool's bounding box; false otherwise
+     */
     private boolean checkBound(double x, double y, Tool tool){
         double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
         double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
@@ -173,7 +189,16 @@ public class Oval implements Shape {
     }
 
 
-    private double clamp(double value, double min, double max) {
+    /**
+     * Finds the closest value to the specified value within a given range.
+     * If the value is outside the range, it returns the nearest boundary value.
+     *
+     * @param value the value to be checked
+     * @param min the minimum boundary of the range
+     * @param max the maximum boundary of the range
+     * @return the closest value to the specified value within the range [min, max]
+     */
+    private double findClosest(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
 

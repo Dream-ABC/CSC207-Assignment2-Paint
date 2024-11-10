@@ -71,6 +71,16 @@ public class Squiggle implements Shape {
 
     }
 
+    /**
+     * Checks if a line between two points intersects with a given tool's bounding box.
+     * The line is sampled in small steps to determine if any point along it lies
+     * within the tool's bounds, considering the tool's dimensions and the line thickness.
+     *
+     * @param p1 The first point defining the start of the line.
+     * @param p2 The second point defining the end of the line.
+     * @param tool The tool whose bounding box is checked for intersection with the line.
+     * @return true if the line intersects the tool's bounding box, false otherwise.
+     */
     private boolean checkBetweenPoints(Point p1, Point p2, Tool tool) {
         double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
         double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);

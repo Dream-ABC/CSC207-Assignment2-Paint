@@ -36,6 +36,14 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         updateAllLayers();
     }
 
+    /**
+     * Creates a thumbnail image representation of the given {@link PaintLayer}.
+     * This method captures a snapshot of the layer's current state and generates
+     * a resized thumbnail image that can be used for visual representation in the UI.
+     *
+     * @param layer the {@link PaintLayer} to create a thumbnail for
+     * @return an {@link ImageView} containing the thumbnail of the layer
+     */
     private ImageView createThumbnail(PaintLayer layer) {
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.WHITE);
