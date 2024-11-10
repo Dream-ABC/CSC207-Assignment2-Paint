@@ -86,14 +86,6 @@ public class Square implements Shape {
     }
 
     /**
-     *
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {
-        this.lineThickness = lineThickness;
-    }
-
-    /**
      * Checks if the Tool is overlapping the Square.
      * If it is, then the Tool will erase the Square.
      *

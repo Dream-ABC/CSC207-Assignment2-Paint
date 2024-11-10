@@ -102,14 +102,6 @@ public class Rectangle implements Shape {
     }
 
     /**
-     *
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {
-        this.lineThickness = lineThickness;
-    }
-
-    /**
      * Checks if the Tool is overlapping the Rectangle.
      * If it is, then the Eraser will erase the Rectangle.
      *

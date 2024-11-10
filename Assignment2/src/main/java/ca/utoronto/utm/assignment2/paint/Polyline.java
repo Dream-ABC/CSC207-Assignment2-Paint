@@ -92,14 +92,6 @@ public class Polyline implements Shape {
     }
 
     /**
-     *
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {
-        this.lineThickness = lineThickness;
-    }
-
-    /**
      * Checks if the Tool is overlapping the Polyline.
      * If it is, then the Tool will erase the entire Polyline.
      *

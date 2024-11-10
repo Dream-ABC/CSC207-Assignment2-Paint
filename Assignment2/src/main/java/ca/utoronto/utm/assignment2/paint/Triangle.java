@@ -105,14 +105,6 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     *
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {
-        this.lineThickness = lineThickness;
-    }
-
-    /**
      * Calculates the area of a triangle created by three points (x1, y1), (x2, y2), (x3, y3).
      * @param x1 x-coord of first point on triangle
      * @param y1 y-coord of first point on triangle

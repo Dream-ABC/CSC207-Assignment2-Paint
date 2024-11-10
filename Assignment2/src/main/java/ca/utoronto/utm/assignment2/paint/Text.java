@@ -114,13 +114,6 @@ public class Text implements Shape {
     }
 
     /**
-     * This method is not implemented since a Text object does not have thickness.
-     * Instead, it has bold.
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {}
-
-    /**
      * Checks if the given eraser object overlaps with this Text object.
      *
      * @param tool the Tool object

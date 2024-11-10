@@ -48,10 +48,6 @@ public class PrecisionEraser implements Shape {
     }
 
     @Override
-    public void setLineThickness(double lineThickness) {
-    }
-
-    @Override
     public boolean overlaps(Tool tool) {
         return false;
     }

@@ -79,14 +79,6 @@ public class Oval implements Shape {
     }
 
     /**
-     *
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {
-        this.lineThickness = lineThickness;
-    }
-
-    /**
      * Checks if the Eraser is overlapping the Oval.
      * If it is, then the Eraser will erase the Oval.
      * @param tool the Eraser instance which is currently erasing drawings

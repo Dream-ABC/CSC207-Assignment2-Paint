@@ -19,6 +19,8 @@ public class Circle implements Shape {
 
     /**
      * Constructs a default black circle with a diameter of 0.
+     * @param fillStyle "Solid"/"Outline"
+     * @param lineThickness ranges from 1.0 to 10.0
      */
     public Circle(String fillStyle, double lineThickness) {
         this.diameter = 0;
@@ -28,6 +30,7 @@ public class Circle implements Shape {
     }
 
     /**
+     * Sets the center point of Circle
      * @param centre centre of Circle
      */
     public void setCentre(Point centre) {
@@ -35,20 +38,23 @@ public class Circle implements Shape {
     }
 
     /**
-     * @param topLeft top left corner of Circle
+     * Sets the top left point of Circle
+     * @param topLeft top left point of Circle
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
     }
 
     /**
-     * @return the centre of the Circle.
+     * Returns the centre point of Circle
+     * @return centre of Circle.
      */
     public Point getCentre() {
         return this.centre;
     }
 
     /**
+     * Sets the diameter of Circle
      * @param diameter diameter of Circle
      */
     public void setDiameter(double diameter) {
@@ -56,7 +62,8 @@ public class Circle implements Shape {
     }
 
     /**
-     * @return the color of the Circle
+     * Returns the color of Circle
+     * @return color of Circle
      */
     @Override
     public Color getColor() {
@@ -64,6 +71,7 @@ public class Circle implements Shape {
     }
 
     /**
+     * Sets the color of Circle
      * @param color color of Circle
      */
     @Override
@@ -72,19 +80,10 @@ public class Circle implements Shape {
     }
 
     /**
-     *
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {
-        this.lineThickness = lineThickness;
-    }
-
-    /**
-     * Checks if the Eraser is overlapping the Circle.
-     * If it is, then the Eraser will erase the Circle.
+     * Checks if the Tool is overlapping the Circle.
      *
      * @param tool the tool instance which is currently checking for overlaps
-     * @return True if the tool should find an overlap, False otherwise
+     * @return True if the tool finds an overlap, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -94,6 +93,12 @@ public class Circle implements Shape {
         return overlapsSolid(tool);
     }
 
+    /**
+     * Checks if the Tool is overlapping a solid Circle.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsSolid(Tool tool) {
         double centerX = topLeft.x + (diameter / 2.0);
         double centerY = topLeft.y + (diameter / 2.0);
@@ -114,6 +119,12 @@ public class Circle implements Shape {
         return distanceSquared <= 1;
     }
 
+    /**
+     * Checks if the Point is overlapping the Circle.
+     *
+     * @param p the point which is being checked for overlaps
+     * @return True if the point is overlapping, False otherwise
+     */
     private boolean overlapsInsideAtPoint(Point p) {
         double centerX = topLeft.x + (diameter / 2.0);
         double centerY = topLeft.y + (diameter / 2.0);
@@ -125,6 +136,7 @@ public class Circle implements Shape {
 
         return distanceSquared <= 1;
     }
+
 
     private boolean overlapsOutline(Tool tool) {
         double centerX = topLeft.x + (diameter / 2.0);

@@ -50,14 +50,6 @@ public class Squiggle implements Shape {
     }
 
     /**
-     *
-     */
-    @Override
-    public void setLineThickness(double lineThickness) {
-        this.lineThickness = lineThickness;
-    }
-
-    /**
      * Checks if the Eraser is overlapping the Squiggle.
      * If it is, then the Eraser will erase the entire Squiggle.
      *
