@@ -139,9 +139,9 @@ Nov 9,2024
 	Obstacles I face: Writing clearly and concisely
 
 Nov 10,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Worked on architecture
+	What I will do today: Continue working on architecture and making javadocs
+	Obstacles I face: Writing clearly and concisely
 
 Nov 11,2024
 	What I did yesterday:
