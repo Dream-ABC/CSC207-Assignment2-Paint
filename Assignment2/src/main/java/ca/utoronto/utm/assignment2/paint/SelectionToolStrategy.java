@@ -13,29 +13,33 @@ public class SelectionToolStrategy implements ShapeStrategy{
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        SelectionTool selection = new SelectionTool();
-        Point origin = new Point(mouseEvent.getX(), mouseEvent.getY());
-        selection.setTopLeft(origin);
-        selection.setOrigin(origin);
-        this.panel.setSelectionTool(selection);
-        this.panel.getModel().addSelectionTool(selection);
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            SelectionTool selection = new SelectionTool();
+            Point origin = new Point(mouseEvent.getX(), mouseEvent.getY());
+            selection.setTopLeft(origin);
+            selection.setOrigin(origin);
+            this.panel.setSelectionTool(selection);
+            this.panel.getModel().addSelectionTool(selection);
+        }
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        SelectionTool selection = panel.getSelectionTool();
+        if (panel.getSelectionTool() != null) {
+            SelectionTool selection = panel.getSelectionTool();
 
-        Point origin = selection.getOrigin();
+            Point origin = selection.getOrigin();
 
-        double width = Math.abs(origin.x - mouseEvent.getX());
-        double height = Math.abs(origin.y - mouseEvent.getY());
-        double x = Math.min(origin.x, mouseEvent.getX());
-        double y = Math.min(origin.y, mouseEvent.getY());
-        selection.setTopLeft(new Point(x + width/2, y + height/2));
-        selection.setDimensionX(width);
-        selection.setDimensionY(height);
+            double width = Math.abs(origin.x - mouseEvent.getX());
+            double height = Math.abs(origin.y - mouseEvent.getY());
+            double x = Math.min(origin.x, mouseEvent.getX());
+            double y = Math.min(origin.y, mouseEvent.getY());
+            selection.setTopLeft(new Point(x + width / 2, y + height / 2));
+            selection.setDimensionX(width);
+            selection.setDimensionY(height);
 
-        this.panel.getModel().addSelectionTool(selection);
+            this.panel.getModel().addSelectionTool(selection);
+        }
     }
 
     private void selectShapes(){
@@ -49,10 +53,12 @@ public class SelectionToolStrategy implements ShapeStrategy{
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        selectShapes();
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            selectShapes();
 
-        System.out.println(this.panel.getSelectionTool().getSelectedShapes().size());
-        //doubt I need this
+            System.out.println(this.panel.getSelectionTool().getSelectedShapes().size());
+            //doubt I need this
+        }
     }
 
 }
