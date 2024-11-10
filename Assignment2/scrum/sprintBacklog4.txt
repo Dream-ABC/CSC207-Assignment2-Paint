@@ -245,3 +245,11 @@ ESTIMATE : 1 hour    ACTUAL :
 ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.488 : hingor13 : InProgress
+NAME     : Rough Squiggle and Precision Eraser Drawing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : When the squiggle tool and precision eraser tool are used,
+           the created strokes are very rough.
+--------------------------------------------------------------------------
