@@ -133,6 +133,7 @@ Classes:
     SelectionToolStrategy: ConcreteStrategy
     SquareStrategy: ConcreteStrategy
     SquiggleStrategy: ConcreteStrategy
+    StrokeEraserStrategy: ConcreteStrategy
     TextStrategy: ConcreteStrategy
     TriangleStrategy: ConcreteStrategy
 	StrategyFactory: Context
@@ -250,7 +251,9 @@ Classes:
 	ChangeLayerVisibilityCommand: ConcreteCommand
 	DeleteLayerCommand: ConcreteCommand
 	DeleteSelectedCommand: ConcreteCommand
-	StrokeEraserCommandCommand: ConcreteCommand
+	DragCommand: ConcreteCommand
+	PasteCommand: ConcreteCommand
+	StrokeEraserCommand: ConcreteCommand
 	PasteCommand: ConcreteCommand
 	CommandHistory: Invoker
 	PaintModel: Client
