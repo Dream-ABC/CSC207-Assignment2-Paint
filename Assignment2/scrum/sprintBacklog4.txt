@@ -135,14 +135,6 @@ ISSUE    : The File menu is currently non-functional. The program should
                load a file onto the canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.472 : pengxi60 : Started
-NAME     : Shape chooser UI
-PRIORITY : 3
-ESTIMATE : 2 hours    ACTUAL :
-ISSUE    : Currently the shape chooser panel is not located in the toolbar
-           and is not scalable for future additions.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : BUG BUG4.481 : hingor13 : Complete
 NAME     : Undo/Redo bug while run on initial canvas with no changes
 PRIORITY : 1
@@ -173,14 +165,6 @@ PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 2 hours
 ISSUE    : When new shape is selected while polyline is not completed drawing
            it becomes un-interactable.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.485 : hingor13 : NotStarted
-NAME     : Fix selection tool for outlined shapes
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
-ISSUE    : When the inside of a shape that is only outlined is selected,
-           the shape should not be selected
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.491 : hingor13 : Complete
@@ -244,4 +228,20 @@ PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Since dragging a shape is an undoable feature, a command has to
            be implemented for it.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.472 : pengxi60 : Started
+NAME     : Shape chooser UI
+PRIORITY : 3
+ESTIMATE : 2 hours    ACTUAL :
+ISSUE    : Currently the shape chooser panel is not located in the toolbar
+           and is not scalable for future additions.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.485 : hingor13 : NotStarted
+NAME     : Fix selection tool for outlined shapes
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : When the inside of a shape that is only outlined is selected,
+           the shape should not be selected
 --------------------------------------------------------------------------
