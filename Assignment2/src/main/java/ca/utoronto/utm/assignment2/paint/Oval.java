@@ -182,14 +182,6 @@ public class Oval implements Shape {
         return false;
     }
 
-    /**
-     *
-     *
-     * @param value given value
-     * @param min minimum value
-     * @param max maximum value
-     * @return
-     */
     private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
@@ -246,15 +238,15 @@ public class Oval implements Shape {
      * Sets the properties of the Oval based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - x-coordinate of the top-left point</p>
-     *             <p>data[1] - y-coordinate of the top-left point</p>
-     *             <p>data[2] - width of the Oval</p>
-     *             <p>data[3] - height of the Oval</p>
-     *             <p>data[4] - x-coordinate of the origin point</p>
-     *             <p>data[5] - y-coordinate of the origin point</p>
-     *             <p>data[6] - color of the Oval in web format</p>
-     *             <p>data[7] - fill style of the Oval</p>
-     *             <p>data[8] - line thickness of the Oval</p>
+     *             data[0] - x-coordinate of the top-left point
+     *             data[1] - y-coordinate of the top-left point
+     *             data[2] - width of the Ova
+     *             data[3] - height of the Oval
+     *             data[4] - x-coordinate of the origin point
+     *             data[5] - y-coordinate of the origin point
+     *             data[6] - color of the Oval in web format
+     *             data[7] - fill style of the Oval
+     *             data[8] - line thickness of the Oval
      */
     @Override
     public void setShape(String[] data) {
@@ -268,9 +260,11 @@ public class Oval implements Shape {
     }
 
     /**
-     * Returns a string representation of the Oval object, including its position, color,
-     * and style attributes.
-     * @return a string representation of the Oval object
+     * Returns a string representation of the Oval instance, including its coordinates
+     * of the top-left point, width, height, coordinates of the origin, color, fill style,
+     * and line thickness.
+     *
+     * @return a string representation of the Oval instance
      */
     public String toString() {
         return "Oval{" + this.topLeft.x + "," + this.topLeft.y + ","

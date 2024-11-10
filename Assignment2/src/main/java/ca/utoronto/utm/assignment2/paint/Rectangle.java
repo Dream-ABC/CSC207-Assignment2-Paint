@@ -249,15 +249,15 @@ public class Rectangle implements Shape {
      * Sets the properties of the Rectangle based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - x-coordinate of the top-left point</p>
-     *             <p>data[1] - y-coordinate of the top-left point</p>
-     *             <p>data[2] - width of the Rectangle</p>
-     *             <p>data[3] - height of the Rectangle</p>
-     *             <p>data[4] - x-coordinate of the origin point</p>
-     *             <p>data[5] - y-coordinate of the origin point</p>
-     *             <p>data[6] - color of the Rectangle in web format</p>
-     *             <p>data[7] - fill style of the Rectangle</p>
-     *             <p>data[8] - line thickness of the Rectangle</p>
+     *             data[0] - x-coordinate of the top-left point
+     *             data[1] - y-coordinate of the top-left point
+     *             data[2] - width of the Rectangle
+     *             data[3] - height of the Rectangle
+     *             data[4] - x-coordinate of the origin point
+     *             data[5] - y-coordinate of the origin point
+     *             data[6] - color of the Rectangle in web format
+     *             data[7] - fill style of the Rectangle
+     *             data[8] - line thickness of the Rectangle
      */
     @Override
     public void setShape(String[] data) {
@@ -271,10 +271,11 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Returns a string representation of the Rectangle object, including its position, color,
-     * and style attributes.
+     * Returns a string representation of the Rectangle instance, including its top-left
+     * point coordinates, width, height, origin point coordinates, color, fill style,
+     * and line thickness.
      *
-     * @return a string representation of the Rectangle
+     * @return a string representation of the Rectangle instance
      */
     public String toString() {
         return "Rectangle{" + this.topLeft.x + "," + this.topLeft.y + ","

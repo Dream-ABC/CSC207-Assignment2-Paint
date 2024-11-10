@@ -121,11 +121,11 @@ public class PrecisionEraser implements Shape {
      * Sets the properties of the PrecisionEraser based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - x-coordinate of the top-left point</p>
-     *             <p>data[1] - y-coordinate of the top-left point</p>
-     *             <p>data[2] - dimension of the PreciseEraser</p>
-     *             <p>data[3] - color of the PreciseEraser in web format</p>
-     *             <p>data[4 and onwards] - additional points as pairs of x and y coordinates</p>
+     *             data[0] - x-coordinate of the top-left point
+     *             data[1] - y-coordinate of the top-left point
+     *             data[2] - dimension of the PreciseEraser
+     *             data[3] - color of the PreciseEraser in web format
+     *             data[4 and onwards] - points as pairs of x and y coordinates
      */
     @Override
     public void setShape(String[] data) {
@@ -141,11 +141,11 @@ public class PrecisionEraser implements Shape {
     }
 
     /**
-     * Returns a string representation of the PrecisionEraser object,
+     * Returns a string representation of the PrecisionEraser instance,
      * including its top-left coordinates, dimension, color, and the points
-     * it contains.
+     * it contains in "x,y" format.
      *
-     * @return a string representation of the PrecisionEraser object
+     * @return a string representation of the PrecisionEraser instance
      */
     @Override
     public String toString() {

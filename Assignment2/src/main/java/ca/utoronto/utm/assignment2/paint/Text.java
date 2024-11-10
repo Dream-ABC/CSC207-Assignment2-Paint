@@ -207,16 +207,16 @@ public class Text implements Shape {
      * Sets the properties of the Text based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - text content</p>
-     *             <p>data[1] - font family</p>
-     *             <p>data[2] - font size as a string</p>
-     *             <p>data[3] - x-coordinate of the top-left point</p>
-     *             <p>data[4] - y-coordinate of the top-left point</p>
-     *             <p>data[5] - "true" for bold and "false" otherwise</p>
-     *             <p>data[6] - "true" for italic and "false" otherwise</p>
-     *             <p>data[7] - "true" for strikethrough and "false" otherwise</p>
-     *             <p>data[8] - "true" for underlined and "false" otherwise</p>
-     *             <p>data[9] - color of the Text in web format</p>
+     *             data[0] - text content
+     *             data[1] - text font
+     *             data[2] - font size
+     *             data[3] - x-coordinate of the top-left point
+     *             data[4] - y-coordinate of the top-left point
+     *             data[5] - "true" for bold and "false" otherwise
+     *             data[6] - "true" for italic and "false" otherwise
+     *             data[7] - "true" for strikethrough and "false" otherwise
+     *             data[8] - "true" for underlined and "false" otherwise
+     *             data[9] - color of the Text in web format
      */
     public void setShape(String[] data) {
         this.topLeft = new Point(Double.parseDouble(data[3]), Double.parseDouble(data[4]));
@@ -233,10 +233,11 @@ public class Text implements Shape {
     }
 
     /**
-     * Returns a string representation of the Text object, including text content,
-     * font details, position, style attributes, and color.
+     * Returns a string representation of the Text instance, including its text content,
+     * font name, font size, top-left position coordinates, style flags for bold, italic,
+     * underlined, and strikethrough, as well as color.
      *
-     * @return a string representation of the Text object
+     * @return a string representation of the Text instance
      */
     public String toString() {
         return "Text{" + this.textNode.getText() + ","
