@@ -31,15 +31,6 @@ ESTIMATE : 1 hour    ACTUAL :
 ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.488 : hingor13 : InProgress
-NAME     : Rough Squiggle and Precision Eraser Drawing
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
-ISSUE    : When the squiggle tool and precision eraser tool are used,
-           the created strokes are very rough.
---------------------------------------------------------------------------
-
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
@@ -519,6 +510,14 @@ PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Since dragging a shape is an undoable feature, a command has to
            be implemented for it.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.488 : hingor13 : Complete
+NAME     : Rough Squiggle and Precision Eraser Drawing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the squiggle tool and precision eraser tool are used,
+           the created strokes are very rough.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
