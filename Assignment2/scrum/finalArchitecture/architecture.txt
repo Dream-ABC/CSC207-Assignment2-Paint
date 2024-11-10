@@ -289,23 +289,52 @@ Implementation:
 		(any special discussion...)***
 
     X:
-    	This is the shape class named X. This class should implement the Shape interface,
+    	    This is the shape class named X. This class should implement the Shape interface,
     	and have all the attributes required to draw the new shape. For example, it could
-    	have a center point that corresponds to the user's first mouse click. The shape is
-    	then drawn centered at that point. Furthermore, since the
-    	current application has the option to draw solid or outlined shapes, as well as
-    	change the color of shapes, this new drawing should support those features as well.
-    	By our naming convention, there should be at Color color;
-                                                      private String fillStyle;
-                                                      private double lineThickness;
-    	mode should
-    	describing the attributes of the new shape as well as how it is drawn...
-    		(any special discussion...)
+    	have an attribute Point center that corresponds to the shape's center when drawn.
+    	    Furthermore, since the current application has the option to change the color of
+        shapes, this new shape should support that feature. There is also an additional optional
+        fill style feature, where the user can choose to draw a solid or outlined shape. The new
+        shape could support these options if appropriate. For example, the Squiggle tool does not
+        include a solid/outline option, as it is not applicable to this type of drawing.
+    	    By our naming conventions, if the color and fill style features are implemented,
+    	their attribute names should be as such:
+            - Color color (default is Color.BLACK)
+            - String fillStyle ("Solid"/"Outline", default is "Solid")
+            - double lineThickness (ranges from 1.0 to 10.0, default is 1.0)
+            In addition to these customization features, a new shape should be compatible with
+        the stroke eraser. The logic of collision detection between the stroke eraser and
+        the shape is implemented inside the overlaps(Tool tool) method. This can be achieved either
+        by leveraging existing methods in JavaFX or by using mathematical equations.
+            Another requirement for a new shape is to provide a String representation, allowing the
+        instructions for drawing the shape to be saved in a Paint file, so that it can be reloaded
+        when the user opens the file again. The String representation is provided by overloading
+        the toString() method. By convention, the String representation should follow a format like this:
+            "X{" + [Point(s) related to the shape, the shape's dimension, other info about the shape's display]
+            + "," + this.color.toString() + "," + this.fillStyle + "," + this.lineThickness + "}";
+        Moreover, the shape needs to be able to use this String representation to redraw itself.
+        This is the purpose of the setShape(String[] data) method, where the String representation is passed in,
+        and the shape sets all of its attributes accordingly.
+            Lastly, a new shape should be compatible with the selection tool. In our application, this
+        means that the shape should be able to be shifted around the canvas when selected by the
+        selection tool. This logic is implemented in the shift(double x, double y) method. This simply
+        requires shifting all Point objects of the shape by invoking the shift method on each Point.
 
 	XStrategy:
 		describing how user events are used to build the PaintModel...
 		(any special discussion...)
 
+	ShapeFactory:
+	    Include a new case for the new shape X. By convention, it should be
+	        case "X" -> new X(fillStyle, lineThickness);
+	    where fillStyle and lineThickness are optional parameters passed in,
+	    depending on whether the shape X supports those features (as discussed above in
+	    section X).
+
+	StrategyFactory:
+        Include a new case for the new shape X. By convention, it should be
+            case "X" -> new XStrategy(panel);
+        where panel is the PaintPanel.
 
 Example:
 	(for example, a list of files involved in the implementation of the Square drawing mode)
@@ -313,6 +342,8 @@ Example:
 
 HOW TO EXTEND OUR CODE
 Cut, copy, paste
+Changing eraser size
+Changing color of shape after drawing
 
 HOW TO UNDERSTAND OUR CODE
 All extra features

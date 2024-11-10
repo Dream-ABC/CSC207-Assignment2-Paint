@@ -2,34 +2,19 @@ package ca.utoronto.utm.assignment2.paint;
 
 public class StrategyFactory {
     public ShapeStrategy getStrategy(String shapeName, PaintPanel panel) {
-        switch (shapeName.toLowerCase()) { // ignore case
-            case "circle":
-                return new CircleStrategy(panel);
-            case "rectangle":
-                return new RectangleStrategy(panel);
-            case "squiggle":
-                return new SquiggleStrategy(panel);
-            case "square":
-                return new SquareStrategy(panel);
-            case "oval":
-                return new OvalStrategy(panel);
-            case "triangle":
-                return new TriangleStrategy(panel);
-            case "stroke eraser":
-                return new StrokeEraserStrategy(panel);
-            case "polyline":
-                return new PolylineStrategy(panel);
-            case "selection tool":
-                return new SelectionToolStrategy(panel);
-            case "text":
-                return new TextStrategy(panel);
-            case "precision eraser":
-                return new PrecisionEraserStrategy(panel);
-            // add more strategies here
-
-            default:
-                break;
-        }
-        return null; // case null or invalid shapeName
+        return switch (shapeName.toLowerCase()) { // ignore case
+            case "circle" -> new CircleStrategy(panel);
+            case "rectangle" -> new RectangleStrategy(panel);
+            case "squiggle" -> new SquiggleStrategy(panel);
+            case "square" -> new SquareStrategy(panel);
+            case "oval" -> new OvalStrategy(panel);
+            case "triangle" -> new TriangleStrategy(panel);
+            case "stroke eraser" -> new StrokeEraserStrategy(panel);
+            case "polyline" -> new PolylineStrategy(panel);
+            case "selection tool" -> new SelectionToolStrategy(panel);
+            case "text" -> new TextStrategy(panel);
+            case "precision eraser" -> new PrecisionEraserStrategy(panel);
+            default -> null;
+        };
     }
 }
