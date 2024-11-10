@@ -25,4 +25,4 @@ BUG4.401 author:wenjess1 puller:hingor13 status:Completed
  US4.441 author:pengxi60 puller:wenjess1 status:Completed
 BUG4.484 author:pengxi60 puller:wenjess1 status:Completed
 BUG4.491 author:hingor13 puller:pengxi60 status:Completed
- US4.452 author:hingor13 puller:         status:Waiting
+ US4.452 author:hingor13 puller:pengxi60 status:InProcess
