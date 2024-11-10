@@ -70,6 +70,7 @@ public class TextStrategy implements ShapeStrategy {
             // otherwise, add final shape and command
             if (!this.text.getText().isEmpty()) {
                 this.panel.getModel().addShapeFinal(this.text);
+                this.panel.resetCurrentShape();
             }
         }
     }

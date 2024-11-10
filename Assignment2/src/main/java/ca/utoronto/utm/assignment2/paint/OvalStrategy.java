@@ -82,7 +82,7 @@ public class OvalStrategy implements ShapeStrategy {
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShapeFinal(oval);
-            this.panel.setCurrentShape(null);
+            this.panel.resetCurrentShape();
         }
     }
 }
