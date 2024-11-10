@@ -16,13 +16,30 @@
 # as appropriate.
 
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.451 : hingor13 : Started
-NAME     : Selection tool
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+TYPE     : BUG BUG4.485 : hingor13 : NotStarted
+NAME     : Fix Selection Tool for Outlined Shapes
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : When the inside of a shape that is only outlined is selected,
+           the shape should not be selected
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.491 : hingor13 : InProgress
+NAME     : Click different mouse buttons causes at the same time causes bugs
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : When left click is held done and right click is pressed, it causes
+           mouse released to run making the shape null and causing errors when
+           it is continued to be dragged.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.452 : hingor13 : NotStarted
+NAME     : Dragging Selected Shapes
+PRIORITY : 1
+ESTIMATE : 3 hour    ACTUAL :
 AS A     : user
-I WANT   : To be able to select drawings on the canvas
-SO THAT  : I can move it to around the canvas as desired (e.g. place it in another spot)
+I WANT   : To be able to drag shapes that are selected.
+SO THAT  : Reorganize my canvas and move shapes around.
 --------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
@@ -421,6 +438,17 @@ PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 30 minutes
 ISSUE    : When clicking undo/redo on a new canvas, duplicate canvases
            are created.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.451 : hingor13 : Complete
+NAME     : Selection tool
+PRIORITY : 3
+ESTIMATE : 1 day    ACTUAL : 1 day
+AS A     : user
+I WANT   : To be able to select drawings on the canvas
+SO THAT  : I can register which shapes have been selected by the tool.
+           This will be useful for future user stories, such as dragging
+           drawings around the canvas or copying and pasting drawings.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
