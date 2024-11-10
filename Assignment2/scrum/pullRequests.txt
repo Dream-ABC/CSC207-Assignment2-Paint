@@ -27,3 +27,4 @@ BUG4.484 author:pengxi60 puller:wenjess1 status:Completed
 BUG4.491 author:hingor13 puller:pengxi60 status:Completed
  US4.452 author:hingor13 puller:pengxi60 status:Completed
 BUG4.486 author:hingor13 puller:wenjess1 status:Completed
+BUG4.471 author:tianshi8 puller:         status:Waiting

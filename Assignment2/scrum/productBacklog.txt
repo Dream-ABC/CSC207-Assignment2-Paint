@@ -459,6 +459,14 @@ Issue    : When the selection tool is dragged very fast, the mouse is seen
            outside the bounds of the current selection tool making it begin
            to edit the bounds of the selection tool.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.471 : tianshi8 : Complete
+NAME     : Text Editor Dialog Icons Not Displaying Correctly
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 15 min
+Issue    : The strikethrough and italic buttons are not rendered with
+           the intended style.
+--------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 --------------------------------------------------------------------------

@@ -153,13 +153,15 @@ Nov 8,2024
 
 Nov 9,2024
 	What I did yesterday: Finish text editor.
-	What I will do today:
-	Obstacles I face:
+	What I will do today: Update string representation for each shape since thickness,
+	                      fill style and polylines are added.
+	Obstacles I face: Solving merge conflict.
 
 Nov 10,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Update string representation for each shape since thickness,
+                          fill style and polylines are added.
+	What I will do today: Fix icon issue for text editor dialog. Finish writing for extra features.
+	Obstacles I face: Adjusting the size of icons.
 
 Nov 11,2024
 	What I did yesterday:
