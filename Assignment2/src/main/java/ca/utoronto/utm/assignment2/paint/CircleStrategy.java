@@ -13,7 +13,6 @@ public class CircleStrategy implements ShapeStrategy {
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
-
             Point firstClick = new Point(mouseEvent.getX(), mouseEvent.getY());
 
             ShapeFactory shapeFactory = panel.getShapeFactory();

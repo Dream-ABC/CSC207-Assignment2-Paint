@@ -15,12 +15,10 @@ public class OvalStrategy implements ShapeStrategy {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
             Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
 
-            // Create a circle using factory
             ShapeFactory shapeFactory = panel.getShapeFactory();
             Oval oval = (Oval) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
             this.panel.setCurrentShape(oval);
 
-            // Set info of circle (radius=0)
             oval.setOrigin(topLeft);
             oval.setTopLeft(topLeft);
             oval.setColor(this.panel.getColor());

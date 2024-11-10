@@ -16,12 +16,10 @@ public class RectangleStrategy implements ShapeStrategy {
             Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
             Point origin = new Point(topLeft.x, topLeft.y);
 
-            // Create a rectangle using factory
             ShapeFactory shapeFactory = panel.getShapeFactory();
             Rectangle rectangle = (Rectangle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
             this.panel.setCurrentShape(rectangle);
 
-            // Set info of rectangle (radius=0)
             rectangle.setTopLeft(topLeft);
             rectangle.setOrigin(origin);
             rectangle.setColor(this.panel.getColor());
