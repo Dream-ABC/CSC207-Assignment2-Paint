@@ -263,7 +263,7 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
 TYPE     : BUG BUG3.004 : pengxi60 : Complete
 NAME     : Architecture behind model is poor
 PRIORITY : 1
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 1 hour    ACTUAL : 1 hour
 ISSUE    : Having a list of different types of drawable things in the
            model is cumbersome. The model needs to be re-architected
            to improve its flexibility and ease of use.
