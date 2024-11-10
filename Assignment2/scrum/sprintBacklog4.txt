@@ -238,12 +238,20 @@ ISSUE    : When the squiggle tool and precision eraser tool are used,
            the created strokes are very rough.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.472 : pengxi60 : Started
+TYPE     : BUG BUG4.472 : pengxi60 : Complete
 NAME     : Shape chooser UI
 PRIORITY : 3
-ESTIMATE : 2 hours    ACTUAL :
+ESTIMATE : 2 hours    ACTUAL : 3
 ISSUE    : Currently the shape chooser panel is not located in the toolbar
            and is not scalable for future additions.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.473 : pengxi60 : Started
+NAME     : SelectionTool not working
+PRIORITY : 3
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When the selection tool is selected in the toolbar, it is not
+           showing up when the user tries to draw a selection box.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.485 : hingor13 : Complete
