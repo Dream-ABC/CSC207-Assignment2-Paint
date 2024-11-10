@@ -20,6 +20,8 @@ public class Oval implements Shape {
 
     /**
      * Constructs a default black oval with a width and height of 0.
+     * @param fillStyle "Solid"/"Outline"
+     * @param lineThickness ranges from 1.0 to 10.0
      */
     public Oval(String fillStyle, double lineThickness) {
         this.width = 0;
@@ -30,20 +32,23 @@ public class Oval implements Shape {
     }
 
     /**
-     * @return the origin of the Oval (first mouse click)
+     * Returns the origin point of Oval (first mouse click)
+     * @return the origin of Oval
      */
     public Point getOrigin() {
         return this.origin;
     }
 
     /**
-     * @param origin origin of Oval (first mouse click)
+     * Sets the origin point of Oval (first mouse click)
+     * @param origin origin of Oval
      */
     public void setOrigin(Point origin) {
         this.origin = origin;
     }
 
     /**
+     * Sets the top left point of Oval
      * @param topLeft top left point of Oval
      */
     public void setTopLeft(Point topLeft) {
@@ -51,6 +56,7 @@ public class Oval implements Shape {
     }
 
     /**
+     * Sets the width of Oval
      * @param width width of Oval
      */
     public void setWidth(double width) {
@@ -58,12 +64,14 @@ public class Oval implements Shape {
     }
 
     /**
+     * Sets the height of Oval
      * @param height height of Oval
      */
     public void setHeight(double height) { this.height = height; }
 
     /**
-     * @return the color of the Circle
+     * Returns the color of Oval
+     * @return the color of Oval
      */
     @Override
     public Color getColor() {
@@ -71,7 +79,8 @@ public class Oval implements Shape {
     }
 
     /**
-     * @param color color of Circle
+     * Sets the color of Oval
+     * @param color color of Oval
      */
     @Override
     public void setColor(Color color) {
@@ -79,10 +88,10 @@ public class Oval implements Shape {
     }
 
     /**
-     * Checks if the Eraser is overlapping the Oval.
-     * If it is, then the Eraser will erase the Oval.
-     * @param tool the Eraser instance which is currently erasing drawings
-     * @return True if the Eraser should erase this Oval, False otherwise
+     * Checks if the Tool is overlapping the Oval.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -92,6 +101,12 @@ public class Oval implements Shape {
         return overlapsSolid(tool);
     }
 
+    /**
+     * Checks if the Tool is overlapping a solid Oval.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsSolid(Tool tool){
         double ovalCenterX = topLeft.x + (width / 2.0);
         double ovalCenterY = topLeft.y + (height / 2.0);
@@ -113,6 +128,12 @@ public class Oval implements Shape {
         return distanceSquared <= 1;
     }
 
+    /**
+     * Checks if the Point is overlapping the Oval.
+     *
+     * @param p the point which is being checked for overlaps
+     * @return True if the point is overlapping, False otherwise
+     */
     private boolean overlapsInsideAtPoint(Point p){
         double ovalCenterX = topLeft.x + (width / 2.0);
         double ovalCenterY = topLeft.y + (height / 2.0);
@@ -126,6 +147,12 @@ public class Oval implements Shape {
         return distanceSquared <= 1;
     }
 
+    /**
+     * Checks if the Tool is overlapping an outlined Oval.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsOutline(Tool tool){
         double ovalCenterX = topLeft.x + (width / 2.0);
         double ovalCenterY = topLeft.y + (height / 2.0);
@@ -154,12 +181,47 @@ public class Oval implements Shape {
         return false;
     }
 
+    /**
+     *
+     *
+     * @param value given value
+     * @param min minimum value
+     * @param max maximum value
+     * @return
+     */
     private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
 
     /**
-     * Displays the Oval with user-created color and size.
+     * Shifts the top left point of Oval by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+    }
+
+    /**
+     * Creates a copy of the Oval instance.
+     *
+     * @return a copy of the Oval instance
+     */
+    @Override
+    public Oval copy(){
+        Oval o = new Oval(fillStyle, lineThickness);
+        o.setColor(color);
+        o.setHeight(height);
+        o.setWidth(width);
+        o.setOrigin(origin.copy());
+        o.setTopLeft(topLeft.copy());
+        return o;
+    }
+
+    /**
+     * Displays the Oval with user-created color, size, fill style, and line thickness.
      *
      * @param g2d GraphicsContext
      */
@@ -202,21 +264,6 @@ public class Oval implements Shape {
         this.color = Color.web(data[6]);
         this.fillStyle = data[7];
         this.lineThickness = Double.parseDouble(data[8]);
-    }
-
-    @Override
-    public void shift(double x, double y) {
-        this.topLeft.shift(x,y);
-    }
-
-    public Oval copy(){
-        Oval o = new Oval(fillStyle, lineThickness);
-        o.setColor(color);
-        o.setHeight(height);
-        o.setWidth(width);
-        o.setOrigin(origin.copy());
-        o.setTopLeft(topLeft.copy());
-        return o;
     }
 
     /**
