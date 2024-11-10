@@ -26,26 +26,34 @@ public class Polyline implements Shape {
 
     /**
      * Gets the number points in the user's Polyline drawing
+     *
      * @return number of polyline points
      */
-    public int getSize(){
+    public int getSize() {
         return points.size();
     }
 
     /**
      * Gets the first point of the user's Polyline drawing
+     *
      * @return the first point of the polyline
      */
-    public Point getFirst() {return this.points.getFirst();}
+    public Point getFirst() {
+        return this.points.getFirst();
+    }
 
     /**
      * Gets the last point of the user's Polyline drawing
+     *
      * @return the last point of the polyline
      */
-    public Point getLast() {return this.points.getLast();}
+    public Point getLast() {
+        return this.points.getLast();
+    }
 
     /**
      * Adds a new point to the user's Polyline drawing.
+     *
      * @param p new point in Polyline
      */
     public void addPoint(Point p) {
@@ -56,12 +64,16 @@ public class Polyline implements Shape {
      * Removes the last point in the user's Polyline drawing if
      * it is not the only point in the user's Polyline drawing.
      */
-    public void popPoint() {if (this.points.size() > 1) this.points.removeLast();}
+    public void popPoint() {
+        if (this.points.size() > 1) this.points.removeLast();
+    }
 
     /**
      * @param closed closed status of Polyline
      */
-    public void setClosed(boolean closed) {this.isClosed = closed;}
+    public void setClosed(boolean closed) {
+        this.isClosed = closed;
+    }
 
     /**
      * @return the color of the Polyline
@@ -90,15 +102,16 @@ public class Polyline implements Shape {
     /**
      * Checks if the Tool is overlapping the Polyline.
      * If it is, then the Tool will erase the entire Polyline.
+     *
      * @param tool the Tool instance which is currently erasing drawings
      * @return True if the Tool should erase this Polyline, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
-        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
-        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
-        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+        double leftX = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double rightX = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double topY = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double bottomY = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
         GeneralPath polygon1 = new GeneralPath();  // Create a new empty path (polygon)
         polygon1.moveTo(this.points.getFirst().x, this.points.getFirst().y);  // Move to the starting point (0, 0)
@@ -135,6 +148,7 @@ public class Polyline implements Shape {
 
     /**
      * Displays the Polyline with user-created color and points they drew.
+     *
      * @param g2d GraphicsContext
      */
     @Override
@@ -159,5 +173,33 @@ public class Polyline implements Shape {
                 g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
             }
         }
+    }
+
+    @Override
+    public void setShape(String[] data) {
+        this.isClosed = Boolean.parseBoolean(data[0]);
+        this.lineThickness = Double.parseDouble(data[1]);
+        this.color = Color.web(data[2]);
+
+        // set points
+        for (int i = 3; i < data.length; i += 2) {
+            double x = Double.parseDouble(data[i]);
+            double y = Double.parseDouble(data[i + 1]);
+            this.points.add(new Point(x, y));
+        }
+//        if (this.points.size() > 1) {
+//            this.points.add(this.points.get(0));
+//        }
+    }
+
+    public String toString() {
+        // get all points
+        StringBuilder points = new StringBuilder();
+        for (Point p : this.points) {
+            points.append(p.x + "," + p.y + ",");
+        }
+
+        return "Polyline{" + this.isClosed + "," + this.lineThickness + ","
+                + this.color.toString() + "," + points + "}";
     }
 }

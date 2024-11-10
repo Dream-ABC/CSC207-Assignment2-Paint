@@ -16,7 +16,7 @@ public class Triangle extends Polygon implements Shape {
     private double height;
     private Point origin;
     private Color color;
-    private final String fillStyle;
+    private String fillStyle;
     private double lineThickness;
 
     /**
@@ -269,5 +269,44 @@ public class Triangle extends Polygon implements Shape {
             g2d.strokePolygon(xPoints, yPoints, 3);
         }
     }
-}
 
+    /**
+     * Sets the shape properties of the Triangle object based on the provided data array.
+     * Each element in the data array should correspond to a specific property of the Triangle.
+     *
+     * @param data an array of strings containing the values to set the Triangle properties.
+     *             The elements should be in the following order:
+     *             data[0] - x coordinate of the top-left point
+     *             data[1] - y coordinate of the top-left point
+     *             data[2] - base length of the Triangle
+     *             data[3] - height of the Triangle
+     *             data[4] - x coordinate of the origin point
+     *             data[5] - y coordinate of the origin point
+     *             data[6] - fill style of the Triangle
+     *             data[7] - line thickness of the Triangle
+     *             data[8] - color of the Triangle in web format (e.g., "#ff0000" for red)
+     */
+    @Override
+    public void setShape(String[] data) {
+        this.topLeft = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+        this.base = Double.parseDouble(data[2]);
+        this.height = Double.parseDouble(data[3]);
+        this.origin = new Point(Double.parseDouble(data[4]), Double.parseDouble(data[5]));
+        this.fillStyle = data[6];
+        this.lineThickness = Double.parseDouble(data[7]);
+        this.color = Color.web(data[8]);
+
+        this.updatePoints();
+    }
+
+    /**
+     * Returns a string representation of a triangle.
+     *
+     * @return a string representation of the triangle
+     */
+    public String toString() {
+        return "Triangle{" + this.topLeft.x + "," + this.topLeft.y + "," + this.base + "," + this.height + ","
+                + this.origin.x + "," + this.origin.y + "," + this.fillStyle + "," + this.lineThickness + ","
+                + this.color.toString() + "}";
+    }
+}

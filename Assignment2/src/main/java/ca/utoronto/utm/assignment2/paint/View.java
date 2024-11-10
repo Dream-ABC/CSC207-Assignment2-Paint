@@ -6,6 +6,10 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -26,6 +30,7 @@ public class View implements EventHandler<ActionEvent> {
     private final LayerChooserController layerChooserController;
     private final ResizableCanvas canvas;
     private LineThicknessSlider lineThicknessSlider;
+    private FileHandlePopup fileHandlePopup;
 
     private BorderPane root;
     private VBox topPanel;
@@ -50,6 +55,7 @@ public class View implements EventHandler<ActionEvent> {
         this.shapeChooserPanel = new ShapeChooserPanel(paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(layerChooserPanel, paintModel);
+        this.fileHandlePopup = new FileHandlePopup(this.paintPanel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
@@ -205,10 +211,17 @@ public class View implements EventHandler<ActionEvent> {
             Platform.exit();
         } else if (command.equals("Colors")) {
             this.colorPickerPopup.display();
-        } else if (command.equals("Undo")){
+        } else if (command.equals("Undo")) {
             this.paintModel.undo();
-        } else if (command.equals("Redo")){
+        } else if (command.equals("Redo")) {
             this.paintModel.redo();
+        } else if (command.equals("New")) {
+            this.fileHandlePopup.newFile();
+        } else if (command.equals("Open")) {
+            this.fileHandlePopup.openFile();
+        } else if (command.equals("Save")) {
+//            this.paintModel.saveFile(new FileHandler(this.paintPanel));
+            this.fileHandlePopup.saveFile();
         }
 
         this.paintModel.notifyChange();

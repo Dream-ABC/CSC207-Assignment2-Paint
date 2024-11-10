@@ -15,7 +15,7 @@ public class Oval implements Shape {
     private double width;
     private double height;
     private Color color;
-    private final String fillStyle;
+    private String fillStyle;
     private double lineThickness;
 
     /**
@@ -184,5 +184,42 @@ public class Oval implements Shape {
             g2d.strokeOval(this.topLeft.x, this.topLeft.y,
                     this.width, this.height);
         }
+    }
+
+    /**
+     * Sets the properties of the Oval shape based on the provided data array.
+     *
+     * @param data an array should contain the following elements in order:
+     *             data[0] - x-coordinate of the top-left point
+     *             data[1] - y-coordinate of the top-left point
+     *             data[2] - width of the Oval
+     *             data[3] - height of the Oval
+     *             data[4] - x-coordinate of the origin
+     *             data[5] - y-coordinate of the origin
+     *             data[6] - color of the Oval in web format
+     *             data[7] - fill style of the Oval
+     *             data[8] - line thickness of the Oval
+     */
+    @Override
+    public void setShape(String[] data) {
+        this.topLeft = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+        this.width = Double.parseDouble(data[2]);
+        this.height = Double.parseDouble(data[3]);
+        this.origin = new Point(Double.parseDouble(data[4]), Double.parseDouble(data[5]));
+        this.color = Color.web(data[6]);
+        this.fillStyle = data[7];
+        this.lineThickness = Double.parseDouble(data[8]);
+    }
+
+    /**
+     * Returns a string representation of an oval.
+     * @return a string representation of the oval
+     */
+    public String toString() {
+        return "Oval{" + this.topLeft.x + "," + this.topLeft.y + ","
+                + this.width + "," + this.height + ","
+                + this.origin.x + "," + this.origin.y + ","
+                + this.color.toString() + ","
+                + this.fillStyle + "," + this.lineThickness + "}";
     }
 }

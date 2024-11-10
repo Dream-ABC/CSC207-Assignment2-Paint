@@ -2,6 +2,7 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -12,19 +13,22 @@ public class PaintLayer extends Canvas {
     private ArrayList<Shape> shapes;
     private StrokeEraser strokeEraser;
     private SelectionTool selectionTool;
+    private Image background;
 
     public PaintLayer() {
         super(300, 300);  // default size
         this.shapes = new ArrayList<>();
         this.setVisible(true);
         this.status = "changed";
+        this.background = null;
     }
 
-    public PaintLayer(int width, int height) {
+    public PaintLayer(double width, double height) {
         super(width, height);
         this.shapes = new ArrayList<>();
         this.setVisible(true);
         this.status = "changed";
+        this.background = null;
     }
 
     public void addShape(Shape shape) {
@@ -53,10 +57,18 @@ public class PaintLayer extends Canvas {
         this.shapes = shapes;
     }
 
+    public void setBackground(Image img) {
+        this.background = img;
+    }
+
     public void display(GraphicsContext g2d) {
         // background
         g2d.setFill(Color.TRANSPARENT);
         g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+
+        if (this.background != null) {
+            g2d.drawImage(this.background, 0, 0, this.getWidth(), this.getHeight());
+        }
 
         // shapes on this layer
         for (Shape shape : this.shapes) {
@@ -69,5 +81,11 @@ public class PaintLayer extends Canvas {
         if (this.selectionTool != null){
             selectionTool.display(g2d);
         }
+    }
+
+    public void reset() {
+        this.shapes.clear();
+        this.background = null;
+        this.setVisible(true);
     }
 }

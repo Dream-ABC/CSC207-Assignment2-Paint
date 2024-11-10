@@ -3,6 +3,7 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -74,6 +75,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return shape;
     }
 
+    public void resetCurrentShape() {
+        this.shape = null;
+    }
+
     public void setCurrentShape(Shape shape) {
         this.shape = shape;
     }
@@ -88,6 +93,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
     public ShapeFactory getShapeFactory() {
         return shapeFactory;
+    }
+
+    public StrategyFactory getStrategyFactory() {
+        return strategyFactory;
     }
 
     public void setColor(Color color) {

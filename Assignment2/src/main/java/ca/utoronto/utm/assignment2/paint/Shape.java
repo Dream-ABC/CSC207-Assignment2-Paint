@@ -12,4 +12,5 @@ public interface Shape {
     void setLineThickness(double lineThickness);
     boolean overlaps(Tool tool);
     void display(GraphicsContext g2d);
+    void setShape(String[] data);
 }

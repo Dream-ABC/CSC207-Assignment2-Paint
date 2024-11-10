@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 /**
  * The Text class represents a text shape that can be drawn on the screen.
@@ -111,10 +113,12 @@ public class Text implements Shape {
         return this.color;
     }
 
+    /**
+     * This method is not implemented since a Text object does not have thickness.
+     * Instead, it has bold.
+     */
     @Override
-    public void setLineThickness(double lineThickness) {
-
-    }
+    public void setLineThickness(double lineThickness) {}
 
     /**
      * Checks if the given eraser object overlaps with this Text object.
@@ -129,10 +133,10 @@ public class Text implements Shape {
         double top = this.textNode.getLayoutBounds().getMinY() + topLeft.y;
         double bottom = this.textNode.getLayoutBounds().getMaxY() + topLeft.y;
 
-        double eraserLeft = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
-        double eraserRight = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
-        double eraserTop = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
-        double eraserBottom = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+        double eraserLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double eraserTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double eraserBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
         return eraserRight >= left && eraserLeft <= right && eraserBottom >= top && eraserTop <= bottom;
     }
@@ -178,6 +182,38 @@ public class Text implements Shape {
     }
 
     /**
+     * Configures the shape based on the provided array of strings.
+     * The array should contain specific data needed to set various
+     * properties of the shape such as text content, font details,
+     * position, style attributes, and color.
+     *
+     * @param data an array of strings where:
+     *             data[0] is the text content,
+     *             data[1] is the font family,
+     *             data[2] is the font size as a string,
+     *             data[3] is the x-coordinate of the top-left position,
+     *             data[4] is the y-coordinate of the top-left position,
+     *             data[5] should be "true" for bold and "false" otherwise,
+     *             data[6] should be "true" for italic and "false" otherwise,
+     *             data[7] should be "true" for strikethrough and "false" otherwise,
+     *             data[8] should be "true" for underlined and "false" otherwise,
+     *             data[9] is the color as a web string format.
+     */
+    public void setShape(String[] data) {
+        this.topLeft = new Point(Double.parseDouble(data[3]), Double.parseDouble(data[4]));
+        this.color = Color.web(data[9]);
+
+        this.textNode.setText(data[0]);
+        this.isStrikethrough = data[7].equals("true");
+        this.isUnderlined = data[8].equals("true");
+
+        // set font
+        FontWeight weight = Boolean.parseBoolean(data[5]) ? FontWeight.BOLD : FontWeight.NORMAL;
+        FontPosture posture = Boolean.parseBoolean(data[6]) ? FontPosture.ITALIC : FontPosture.REGULAR;
+        this.textNode.setFont(Font.font(data[1], weight, posture, Double.parseDouble(data[2])));
+    }
+
+    /**
      * Returns a string representation of the Text object, including text content,
      * font details, position, style attributes, and color.
      *
@@ -188,7 +224,7 @@ public class Text implements Shape {
                 + this.textNode.getFont().getName() + "," + this.textNode.getFont().getSize() + ","
                 + this.topLeft.x + "," + this.topLeft.y + ","
                 + this.textNode.getFont().getStyle().contains("Bold") + ","
-                + this.textNode.getFont().getStyle().contains("Italic") +","
+                + this.textNode.getFont().getStyle().contains("Italic") + ","
                 + this.isStrikethrough + "," + this.isUnderlined + ","
                 + this.color.toString() + "}";
     }
