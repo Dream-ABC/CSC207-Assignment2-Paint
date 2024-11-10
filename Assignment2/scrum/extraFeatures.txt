@@ -70,7 +70,11 @@ Reference:
 FeatureName: Color Selector
 
 Description:
-	...
+	The color selector tool allows users to choose any color for drawing shapes,
+	offering flexibility in color selection. Users can customize colors in three
+	different modes: HSB, RGB, and Web (Hexadecimal) color codes. Additionally,
+	users can adjust the opacity of the selected color, enabling more precise
+	and dynamic control over colors.
 
 Reference:
 	US3.005 - Color Selector
@@ -78,7 +82,9 @@ Reference:
 FeatureName: Layer Support
 
 Description:
-	...
+    The layer support feature allows users to add and draw on different layers.
+    Users can switch between layers to draw various shapes and freely delete
+    unwanted layers. Additionally, users can set any layer to be invisible.
 
 Reference:
 	US3.331 - Layer Support
@@ -86,7 +92,12 @@ Reference:
 FeatureName: File Menu
 
 Description:
-	...
+    The File menu allows users to create a new file, save their current progress,
+    or open a previously saved file. The menu supports two types of files: .png
+    and a custom file type .paint, which can only be opened by this program.
+    When users create a new file or open a .paint file, all current progress will be lost.
+    However, when users open a .png file, its content will be set as the background
+    of the current layer without losing any progress.
 
 Reference:
 	BUG4.468 - File menu is not implemented
@@ -94,10 +105,15 @@ Reference:
 FeatureName: Text Editor
 
 Description:
-	...
+	The text editor tool allows users to type text in a customized font and color.
+    When users choose to add text at any position on the canvas, a separate window
+    will pop up, where users can adjust the font and size using a scroll menu.
+    Additionally, users can set the text to be bold, italic, underlined, or
+    strikethrough using dedicated buttons.
 
 Reference:
 	US4.421 - Text Editor
+	BUG BUG4.471 : Text Editor Dialog Icons Not Displaying Correctly
 --------------------------------------------------------------------------------
 FeatureName: Undo/Redo
 
