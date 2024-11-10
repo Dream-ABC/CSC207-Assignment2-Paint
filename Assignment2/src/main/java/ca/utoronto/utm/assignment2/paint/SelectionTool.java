@@ -13,6 +13,7 @@ public class SelectionTool implements Tool {
     private double dimensionY;
     private final ArrayList<Shape> selectedShapes;
     private Point oldLocation;
+    private boolean dragging;
 
 
     /**
@@ -22,6 +23,7 @@ public class SelectionTool implements Tool {
         this.dimensionX = 0;
         this.dimensionY = 0;
         selectedShapes = new ArrayList<>();
+        dragging = false;
     }
 
     public Point getTopLeft(){
@@ -71,6 +73,13 @@ public class SelectionTool implements Tool {
 
     public void clearSelectedShapes() {
         this.selectedShapes.clear();
+    }
+
+    public void setDragging(boolean dragging) {
+        this.dragging = dragging;
+    }
+    public boolean getDragging() {
+        return this.dragging;
     }
 
     /**
