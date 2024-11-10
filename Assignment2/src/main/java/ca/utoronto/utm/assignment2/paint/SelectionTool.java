@@ -61,9 +61,6 @@ public class SelectionTool implements Tool {
     public void setOldLocation(Point oldLocation) {this.oldLocation = oldLocation;}
     public void shift(double x, double y) {
         this.topLeft.shift(x, y);
-        for (Shape shape : selectedShapes) {
-            shape.shift(x, y);
-        }
     }
     public boolean inBounds(double x, double y) {
         boolean a = this.topLeft.x - dimensionX/2.0 <= x && x <= this.topLeft.x + dimensionX/2.0;

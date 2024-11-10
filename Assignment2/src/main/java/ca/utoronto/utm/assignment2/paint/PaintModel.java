@@ -19,6 +19,7 @@ public class PaintModel extends Observable {
     private double mouseX, mouseY;
     private ArrayList<Shape> copiedShapes;
     private SelectionTool copiedSelectionTool;
+    private DragCommand dragCommand;
 
     private final CommandHistory history = new CommandHistory();
 
@@ -165,6 +166,15 @@ public class PaintModel extends Observable {
 
     public SelectionTool getSelectionTool() {
         return this.selectedLayer.getSelectionTool();
+    }
+
+    public void shiftStart(double x, double y) {
+        dragCommand = new DragCommand(getSelectionTool().getSelectedShapes(), x, y);
+        history.execute(dragCommand);
+    }
+
+    public void addShift(double x, double y) {
+        dragCommand.addShift(x, y);
     }
 
     public void undo() {
