@@ -325,17 +325,19 @@ Implementation:
 	    attribute is named panel.
 	        When a left mouse press occurs, which corresponds to the method mousePressed(MouseEvent mouseEvent),
 	    a new shape X is created using the ShapeFactory from PaintPanel. The newly created shape X is then set as the current
-	    shape within PaintPanel. This is necessary because PaintModel, which is responsible for notifying the view to
-	    display shapes on the canvas, needs to know the shape type from PaintPanel. Next, using the position of the mouse press,
-	    shape X's position is set accordingly. For example,
-	    it could represent the center of shape X or the top left corner of shape X. Finally, the shape X is added to the PaintModel,
-	    which adds and renders the user-drawn shape X onto the canvas.
+	    shape within PaintPanel. This step is crucial because PaintModel, responsible for notifying the view to display shapes
+	    on the canvas, needs to know the shape type from PaintPanel. Next, using the position of the mouse press, shape X's
+	    position is set accordingly. For example, it could represent the center of shape X or the top left corner of shape X.
+	    Lastly, the shape X is added to the PaintModel, which adds and renders the user-drawn shape X onto the canvas.
 	        When a left mouse drag occurs, which corresponds to the method mouseDragged(MouseEvent mouseEvent),
-        the current shape X being drawn updates its size or position based on the new mouse coordinates. Any necessary
-        mathematical calculations needed to update the shape are performed here. Lastly, the previous version of shape X is removed
-        from the model, and the updated version is added in its place.
+        the current shape X being drawn is retrieved from PaintPanel's current shape. It then updates its size and/or position
+        according to the new mouse coordinates. Lastly, the previous version of shape X is removed from the PaintModel, and the
+        updated version is added in its place.
             When a left mouse release occurs, which corresponds to the method mouseReleased(MouseEvent mouseEvent),
-
+        the current shape X being drawn is retrieved from PaintPanel's current shape. The final update for its size
+        and/or position are performed based on the position of the left mouse release. Once again, the previous version of shape
+        X is removed from the PaintModel, and the final updated version is added in its place. Lastly, the current shape in PaintModel
+        is set to null, indicating that drawing has been completed for shape X and no shape is currently being drawn anymore.
 
 	ShapeFactory:
 	    Include a new case for the new shape X. By convention, it should be
