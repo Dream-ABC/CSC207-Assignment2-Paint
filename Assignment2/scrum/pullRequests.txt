@@ -31,3 +31,4 @@ BUG4.471 author:tianshi8 puller:wenjess1 status:Completed
 BUG4.442 author:wenjess1 puller:hingor13 status:Completed
 BUG4.009 author:hingor13 puller:wenjess1 status:Completed
 BUG4.487 author:hingor13 puller:wenjess1 status:Completed
+BUG4.488 author:hingor13 puller:         status:Waiting
