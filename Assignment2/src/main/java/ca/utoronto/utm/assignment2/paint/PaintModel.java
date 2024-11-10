@@ -169,7 +169,7 @@ public class PaintModel extends Observable {
     }
 
     public void shiftStart(double x, double y) {
-        dragCommand = new DragCommand(getSelectionTool().getSelectedShapes(), x, y);
+        dragCommand = new DragCommand(getSelectionTool().getSelectedShapes(), x, y, this.selectedLayer);
         history.execute(dragCommand);
     }
 

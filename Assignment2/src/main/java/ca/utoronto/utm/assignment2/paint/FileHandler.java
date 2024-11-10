@@ -71,11 +71,11 @@ public class FileHandler {
 
     /**
      * Opens a dialog to select and load a PNG image.
-     *
+     * <p>
      * This method uses a FileChooser to open a dialog that filters for PNG files.
      * Once an image file is selected, it attempts to load the image and sets it
      * as the background of the currently selected layer in the panel's model.
-     *
+     * <p>
      * If the image is loaded successfully, a success message is printed to the console.
      * If there is a failure in loading the image, an error message is printed to the console.
      */
@@ -100,7 +100,7 @@ public class FileHandler {
 
     /**
      * Saves the currently selected layer of the PaintPanel as a custom .paint file.
-     *
+     * <p>
      * This method opens a file chooser dialog to specify the save location and
      * configures it to save files with the .paint extension. It writes the
      * width and height information of the selected layer, followed by all the
@@ -141,11 +141,11 @@ public class FileHandler {
 
     /**
      * Opens a file chooser dialog to select and load a .paint file.
-     *
+     * <p>
      * This method uses a FileChooser to open a dialog that filters for files with the .paint extension.
      * Once a file is selected, it reads each line of the file, parses it into commands using PatternParser,
      * and executes these commands to replicate the drawing state stored in the file.
-     *
+     * <p>
      * If the file is loaded successfully, a success message with the file path is printed to the console.
      * If there is a failure in loading the file, an error message is printed to the console.
      */

@@ -1,6 +1,8 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The PatternParser class is responsible for parsing command strings and converting them into
@@ -29,6 +31,9 @@ public class PatternParser {
         String commandType = content.substring(0, content.indexOf("#"));
         int beginIndex = content.indexOf("#") + 1;
 
+        // All arraylist that may be used
+        ArrayList<Shape> shapes;
+
         // Maps the command type to its corresponding case
         switch (commandType) {
             case "WIDTH":
@@ -54,6 +59,31 @@ public class PatternParser {
                 // The fill style and line thickness are placeholders. They will be formally set at a later stage.
                 Shape shape = panel.getShapeFactory().getShape(shapeType, "", 0);
 
+                // Deal with polyline
+                if (shapeType.equals("Polyline")) {
+                    String[] coordinates = content.substring(content.indexOf(";") + 1).split(",");
+
+                    // add initial point
+                    Point firstPoint = new Point(Double.parseDouble(coordinates[0]),
+                            Double.parseDouble(coordinates[1]));
+                    ((Polyline) shape).addPoint(firstPoint);
+
+                    // add middle points
+                    for (int i = 0; i < coordinates.length - 2; i += 2) {
+                        ((Polyline) shape).addPoint(new Point(Double.parseDouble(coordinates[i]),
+                                Double.parseDouble(coordinates[i + 1])));
+                    }
+
+                    // add last point, set isClosed
+                    Point lastPoint = new Point(Double.parseDouble(coordinates[coordinates.length - 3]),
+                            Double.parseDouble(coordinates[coordinates.length - 2]));  // last element is "}"
+                    ((Polyline) shape).addPoint(lastPoint);
+
+                    if (Point2D.distance(lastPoint.x, lastPoint.y, firstPoint.x, firstPoint.y) < 10) {
+                        ((Polyline) shape).setClosed(true);
+                    }
+                }
+
                 // Gets corresponding information and sets them to the shape
                 String[] dataString = content.substring(content.indexOf("{") + 1,
                         content.indexOf("}")).split(",");
@@ -76,7 +106,7 @@ public class PatternParser {
             case "EraserStroke":
                 String[] shapeIndices = content.substring(beginIndex).split(",");
 
-                ArrayList<Shape> shapes = new ArrayList<>();
+                shapes = new ArrayList<>();
 
                 // Gets all the removed shapes
                 for (String index : shapeIndices) {
@@ -89,7 +119,48 @@ public class PatternParser {
                     model.removeShape(s);
                 }
                 model.getHistory().addToLast(shapes);
-                return null; // already executed
+                return null;  // already executed
+
+            case "Paste":
+                // Restores the selection tool for the paste command
+                String[] toolData = content.substring(content.indexOf("Selection Tool{") + 1).split(",");
+                SelectionTool tool = new SelectionTool(model.getSelectedLayer());
+                tool.setTool(toolData);
+
+                // Restores shapes to paste
+                shapes = new ArrayList<>();
+                for (String index : content.substring(content.indexOf("}") + 1).split(",")) {
+                    int i = Integer.parseInt(index);
+                    shapes.add(model.getSelectedLayer().getShapes().get(i));
+                }
+
+                return new PasteCommand(model.getSelectedLayer(), history, shapes, tool, model);
+
+            case "DeleteSelected":
+                shapes = new ArrayList<>();
+                for (String index : content.substring(beginIndex).split(",")) {
+                    int i = Integer.parseInt(index);
+                    shapes.add(model.getSelectedLayer().getShapes().get(i));
+                }
+
+                return new DeleteSelectedCommand(model.getSelectedLayer(), history, shapes);
+
+            case "Drag":
+                double x = Double.parseDouble(content.substring(beginIndex, content.indexOf("&"))
+                        .split(",")[0]);
+                double y = Double.parseDouble(content.substring(beginIndex, content.indexOf("&"))
+                        .split(",")[1]);
+
+                shapes = new ArrayList<>();
+                for (String index : content.substring(content.indexOf("&") + 1).split(",")) {
+                    int i = Integer.parseInt(index);
+                    shapes.add(model.getSelectedLayer().getShapes().get(i));
+                }
+
+                DragCommand drag = new DragCommand(shapes, 0, 0, model.getSelectedLayer());
+                history.execute(drag);
+                drag.addShift(x, y);
+                return null;  // already executed
 
             default:
                 return null;

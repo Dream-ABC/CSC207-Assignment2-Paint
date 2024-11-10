@@ -18,14 +18,17 @@ public class Polyline implements Shape {
     private Color color;
     private boolean isClosed;
     private double lineThickness;
+    private ArrayList<Point> log;
 
     /**
      * Constructs a default black polyline with no points.
      * The line thickness is determined by the provided parameters.
+     *
      * @param lineThickness ranges from 1.0 to 10.0
      */
     public Polyline(double lineThickness) {
         this.points = new ArrayList<>();
+        this.log = new ArrayList<>();
         this.color = Color.BLACK;
         this.isClosed = false;
         this.lineThickness = lineThickness;
@@ -65,6 +68,7 @@ public class Polyline implements Shape {
      */
     public void addPoint(Point p) {
         this.points.add(p);
+        this.log.add(p.copy());
     }
 
     /**
@@ -72,11 +76,15 @@ public class Polyline implements Shape {
      * it is not the only point in the user's Polyline drawing.
      */
     public void popPoint() {
-        if (this.points.size() > 1) this.points.removeLast();
+        if (this.points.size() > 1) {
+            this.points.removeLast();
+            this.log.removeLast();
+        }
     }
 
     /**
      * Sets the closed status of the Polyline.
+     *
      * @param closed closed status of Polyline
      */
     public void setClosed(boolean closed) {
@@ -85,6 +93,7 @@ public class Polyline implements Shape {
 
     /**
      * Returns the color of Polyline.
+     *
      * @return the color of Polyline
      */
     @Override
@@ -94,6 +103,7 @@ public class Polyline implements Shape {
 
     /**
      * Sets the color of Polyline.
+     *
      * @param color color of Polyline
      */
     @Override
@@ -241,16 +251,13 @@ public class Polyline implements Shape {
      */
     @Override
     public void setShape(String[] data) {
-        this.isClosed = Boolean.parseBoolean(data[0]);
+        if (!this.isClosed) {
+            // If isClosed is not set due to the end point being close to the start point,
+            // set isClosed based on the input.
+            this.isClosed = Boolean.parseBoolean(data[0]);
+        }
         this.lineThickness = Double.parseDouble(data[1]);
         this.color = Color.web(data[2]);
-
-        // set points
-        for (int i = 3; i < data.length; i += 2) {
-            double x = Double.parseDouble(data[i]);
-            double y = Double.parseDouble(data[i + 1]);
-            this.points.add(new Point(x, y));
-        }
     }
 
     /**
@@ -261,13 +268,10 @@ public class Polyline implements Shape {
      * @return a string representation of the Polyline instance
      */
     public String toString() {
-        // get all points
-        StringBuilder points = new StringBuilder();
-        for (Point p : this.points) {
-            points.append(p.x + "," + p.y + ",");
+        StringBuilder log = new StringBuilder();
+        for (Point p : this.log) {
+            log.append(p.x).append(",").append(p.y).append(",");
         }
-
-        return "Polyline{" + this.isClosed + "," + this.lineThickness + ","
-                + this.color.toString() + "," + points + "}";
+        return "Polyline{" + this.isClosed + "," + this.lineThickness + "," + this.color.toString() + ",;" + log + "}";
     }
 }

@@ -20,7 +20,7 @@ public class SelectionToolStrategy implements ShapeStrategy{
                 panel.getModel().getSelectionTool().setDragging(true);
             }
             else {
-                SelectionTool selection = new SelectionTool();
+                SelectionTool selection = new SelectionTool(this.panel.getModel().getSelectedLayer());
                 Point origin = new Point(mouseEvent.getX(), mouseEvent.getY());
                 selection.setTopLeft(origin);
                 selection.setOrigin(origin);

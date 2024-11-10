@@ -17,6 +17,7 @@ public class Rectangle implements Shape {
     private Color color;
     private String fillStyle;
     private double lineThickness;
+    private Point originalPosition;
 
     /**
      * Constructs a default black rectangle with a width and height of 0.
@@ -46,6 +47,7 @@ public class Rectangle implements Shape {
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
+        this.originalPosition = topLeft.copy();
     }
 
     /**
@@ -278,7 +280,7 @@ public class Rectangle implements Shape {
      * @return a string representation of the Rectangle instance
      */
     public String toString() {
-        return "Rectangle{" + this.topLeft.x + "," + this.topLeft.y + ","
+        return "Rectangle{" + this.originalPosition.x + "," + this.originalPosition.y + ","
                 + this.width + "," + this.height + ","
                 + this.origin.x + "," + this.origin.y + ","
                 + this.color.toString() + ","
