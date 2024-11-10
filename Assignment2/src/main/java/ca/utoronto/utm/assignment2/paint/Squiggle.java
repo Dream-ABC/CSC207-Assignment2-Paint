@@ -118,12 +118,12 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * Sets the properties of the Squiggle shape based on the provided data array.
+     * Sets the properties of the Squiggle based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - line thickness of the Squiggle</p>
-     *             <p>data[1] - color of the Squiggle in web format</p>
-     *             <p>data[2 and onwards] - Points of the Squiggle as pairs of x and y coordinates</p>
+     *             data[0] - line thickness of the Squiggle
+     *             data[1] - color of the Squiggle in web format
+     *             data[2 and onwards] - points of the Squiggle as pairs of x and y coordinates
      */
     @Override
     public void setShape(String[] data) {
@@ -138,10 +138,10 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * Returns a string representation of the Squiggle object, including its style attributes, color,
-     * and points.
+     * Returns a string representation of the Squiggle instance, including its
+     * line thickness, color, and coordinates of points in "x,y" format.
      *
-     * @return a string representation of the Squiggle
+     * @return a string representation of the Squiggle instance
      */
     public String toString() {
         StringBuilder points = new StringBuilder();

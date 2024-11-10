@@ -58,33 +58,17 @@ public class TextEditorDialog {
         });
     }
 
-    /**
-     * Checks if a given font supports both bold and italic styles.
-     *
-     * @param fontName the name of the font to be checked
-     * @return true if the font supports both bold and italic styles, false otherwise
-     */
     private boolean supportsBoldAndItalic(String fontName) {
         Font boldItalicFont = Font.font(fontName, FontWeight.BOLD, FontPosture.ITALIC, 12);
 
         return boldItalicFont.getStyle().contains("Bold") && boldItalicFont.getStyle().contains("Italic");
     }
 
-    /**
-     * Updates the font of the displayed text based on the current selections from the text editor dialog.
-     * Triggers a notification to the paint model to update the display accordingly.
-     */
     private void updateFont() {
         this.displayedText.setFont(this.getSelectedFont());
         this.paintPanel.getModel().notifyChange();
     }
 
-    /**
-     * Initializes the components of the text editor dialog, including the font
-     * chooser, size chooser, font style buttons (bold, italic, underline,
-     * strikethrough), and the text field. Each component is set up with relevant
-     * event handlers to update the displayed text and notify the model of changes.
-     */
     private void setBoxes() {
         // font chooser menu
         this.fontChooser = new ComboBox<>();

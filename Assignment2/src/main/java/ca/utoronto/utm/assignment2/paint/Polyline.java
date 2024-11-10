@@ -201,13 +201,13 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Sets the properties of the Polyline shape based on the provided data array.
+     * Sets the properties of the Polyline based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - whether the Polyline is closed or not</p>
-     *             <p>data[1] - line thickness of the Polyline</p>
-     *             <p>data[2] - color of the Polyline in web format</p>
-     *             <p>data[3 and onwards] - Points of the Polyline as pairs of x and y coordinates</p>
+     *             data[0] - whether the Polyline is closed or not
+     *             data[1] - line thickness of the Polyline
+     *             data[2] - color of the Polyline in web format
+     *             data[3 and onwards] - Points of the Polyline as pairs of x and y coordinates
      */
     @Override
     public void setShape(String[] data) {
@@ -224,9 +224,11 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Returns a string representation of the Polyline object, including its position, color,
-     * and style attributes.
-     * @return a string representation of the Polyline object
+     * Returns a string representation of the Polyline instance,
+     * including whether the polyline is closed, line thickness, color,
+     * and the list of points in the format "x,y", for each point.
+     *
+     * @return a string representation of the Polyline instance
      */
     public String toString() {
         // get all points

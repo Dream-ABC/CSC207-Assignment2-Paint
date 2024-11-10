@@ -171,14 +171,6 @@ public class Circle implements Shape {
         return false;
     }
 
-    /**
-     *
-     *
-     * @param value given value
-     * @param min minimum value
-     * @param max maximum value
-     * @return
-     */
     private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
@@ -232,14 +224,14 @@ public class Circle implements Shape {
      * Sets the properties of the Circle based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - x-coordinate of the top-left point</p>
-     *             <p>data[1] - y-coordinate of the top-left point</p>
-     *             <p>data[2] - x-coordinate of the centre point</p>
-     *             <p>data[3] - y-coordinate of the centre point</p>
-     *             <p>data[4] - diameter of the Circle</p>
-     *             <p>data[5] - color of the Circle in web format</p>
-     *             <p>data[6] - fill style of the Circle</p>
-     *             <p>data[7] - line thickness of the Circle</p>
+     *             data[0] - x-coordinate of the top-left point
+     *             data[1] - y-coordinate of the top-left point
+     *             data[2] - x-coordinate of the centre point
+     *             data[3] - y-coordinate of the centre point
+     *             data[4] - diameter of the Circle
+     *             data[5] - color of the Circle in web format
+     *             data[6] - fill style of the Circle
+     *             data[7] - line thickness of the Circle
      */
     @Override
     public void setShape(String[] data) {
@@ -252,10 +244,10 @@ public class Circle implements Shape {
     }
 
     /**
-     * Returns a string representation of the Circle object, including its position, color,
-     * and style attributes.
+     * Returns a string representation of the Circle instance, including its
+     * top-left point, center point, diameter, color, fill style, and line thickness.
      *
-     * @return a string representation of the Circle object
+     * @return a string representation of the Circle instance
      */
     public String toString() {
         return "Circle{" + this.topLeft.x + "," + this.topLeft.y + ","

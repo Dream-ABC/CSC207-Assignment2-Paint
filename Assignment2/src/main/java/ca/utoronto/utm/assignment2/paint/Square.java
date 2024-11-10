@@ -230,14 +230,14 @@ public class Square implements Shape {
      * Sets the properties of the Square based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             <p>data[0] - x-coordinate of the top-left point</p>
-     *             <p>data[1] - y-coordinate of the top-left point</p>
-     *             <p>data[2] - x-coordinate of the origin point</p>
-     *             <p>data[3] - y-coordinate of the origin point</p>
-     *             <p>data[4] - size of the Square</p>
-     *             <p>data[5] - color of the Square in web format</p>
-     *             <p>data[6] - fill style of the Square</p>
-     *             <p>data[7] - line thickness of the Square</p>
+     *             data[0] - x-coordinate of the top-left point
+     *             data[1] - y-coordinate of the top-left point
+     *             data[2] - x-coordinate of the origin point
+     *             data[3] - y-coordinate of the origin point
+     *             data[4] - size of the Square
+     *             data[5] - color of the Square in web format
+     *             data[6] - fill style of the Square
+     *             data[7] - line thickness of the Square
      */
     @Override
     public void setShape(String[] data) {
@@ -250,10 +250,11 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns a string representation of the Square object, including its position, color,
-     * and style attributes.
+     * Returns a string representation of the Square instance, including its top-left
+     * point coordinates, origin point coordinates, size, color, fill style,
+     * and line thickness.
      *
-     * @return a string representation of the Square
+     * @return a string representation of the Square instance
      */
     public String toString() {
         return "Square{" + this.topLeft.x + "," + this.topLeft.y + ","
