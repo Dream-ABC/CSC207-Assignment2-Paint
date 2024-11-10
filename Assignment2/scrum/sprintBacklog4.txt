@@ -237,3 +237,11 @@ ISSUE    : The Edit menu is currently non-functional. The program should
                paste a selected shape
                delete a selected shape
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.487 : hingor13 : Complete
+NAME     : Add Command for Dragging Shapes
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :30 minutes
+ISSUE    : Since dragging a shape is an undoable feature, a command has to
+           be implemented for it.
+--------------------------------------------------------------------------

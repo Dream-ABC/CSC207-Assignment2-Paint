@@ -23,14 +23,6 @@ ESTIMATE : 1 hour    ACTUAL :
 ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.487 : hingor13 : NotStarted
-NAME     : Add Command for Dragging Shapes
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
-ISSUE    : Since dragging a shape is an undoable feature, a command has to
-           be implemented for it.
---------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
@@ -486,6 +478,14 @@ ISSUE    : The Edit menu is currently non-functional. The program should
                copy a selected shape
                paste a selected shape
                delete a selected shape
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.487 : hingor13 : Complete
+NAME     : Add Command for Dragging Shapes
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :30 minutes
+ISSUE    : Since dragging a shape is an undoable feature, a command has to
+           be implemented for it.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
