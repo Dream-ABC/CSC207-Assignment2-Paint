@@ -243,15 +243,15 @@ public class Oval implements Shape {
     }
 
     /**
-     * Sets the properties of the Oval shape based on the provided data array.
+     * Sets the properties of the Oval based on the provided data array.
      *
      * @param data an array should contain the following elements in order:
      *             <p>data[0] - x-coordinate of the top-left point</p>
      *             <p>data[1] - y-coordinate of the top-left point</p>
      *             <p>data[2] - width of the Oval</p>
      *             <p>data[3] - height of the Oval</p>
-     *             <p>data[4] - x-coordinate of the origin</p>
-     *             <p>data[5] - y-coordinate of the origin</p>
+     *             <p>data[4] - x-coordinate of the origin point</p>
+     *             <p>data[5] - y-coordinate of the origin point</p>
      *             <p>data[6] - color of the Oval in web format</p>
      *             <p>data[7] - fill style of the Oval</p>
      *             <p>data[8] - line thickness of the Oval</p>
@@ -268,8 +268,8 @@ public class Oval implements Shape {
     }
 
     /**
-     * Returns a string representation of an oval.
-     * @return a string representation of the oval
+     * Returns a string representation of an Oval.
+     * @return a string representation of the Oval
      */
     public String toString() {
         return "Oval{" + this.topLeft.x + "," + this.topLeft.y + ","

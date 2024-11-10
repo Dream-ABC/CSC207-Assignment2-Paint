@@ -229,13 +229,13 @@ public class Circle implements Shape {
     }
 
     /**
-     * Sets the shape parameters for a Circle instance using an array of Strings.
+     * Sets the properties of the Circle based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
      *             <p>data[0] - x-coordinate of the top-left point</p>
      *             <p>data[1] - y-coordinate of the top-left point</p>
-     *             <p>data[2] - x-coordinate of the centre</p>
-     *             <p>data[3] - y-coordinate of the centre</p>
+     *             <p>data[2] - x-coordinate of the centre point</p>
+     *             <p>data[3] - y-coordinate of the centre point</p>
      *             <p>data[4] - diameter of the Circle</p>
      *             <p>data[5] - color of the Circle in web format</p>
      *             <p>data[6] - fill style of the Circle</p>
@@ -254,7 +254,7 @@ public class Circle implements Shape {
     /**
      * Returns a string representation of a Circle.
      *
-     * @return a string representation of Circle
+     * @return a string representation of the Circle
      */
     public String toString() {
         return "Circle{" + this.topLeft.x + "," + this.topLeft.y + ","

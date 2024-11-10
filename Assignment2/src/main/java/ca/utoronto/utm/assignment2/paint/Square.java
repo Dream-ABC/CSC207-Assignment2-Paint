@@ -19,6 +19,9 @@ public class Square implements Shape {
 
     /**
      * Constructs a default black square with a size of 0.
+     * The fill style and line thickness are determined by the provided parameters.
+     * @param fillStyle "Solid"/"Outline"
+     * @param lineThickness ranges from 1.0 to 10.0
      */
     public Square(String fillStyle, double lineThickness) {
         this.size = 0;
@@ -28,13 +31,15 @@ public class Square implements Shape {
     }
 
     /**
-     * @return the top left point of the Square
+     * Returns the top left point of Square
+     * @return the top left point of Square
      */
     public Point getTopLeft() {
         return this.topLeft;
     }
 
     /**
+     * Sets the top left point of Square
      * @param topLeft top left corner of Square
      */
     public void setTopLeft(Point topLeft) {
@@ -42,35 +47,40 @@ public class Square implements Shape {
     }
 
     /**
-     * @return the size of the Square
+     * Returns the size of Square (width and height)
+     * @return the size of Square
      */
     public double getSize() {
         return this.size;
     }
 
     /**
-     * @param size size of Square (width and height)
+     * Sets the size of Square (width and height)
+     * @param size size of Square
      */
     public void setSize(double size) {
         this.size = size;
     }
 
     /**
-     * @return the origin of the Rectangle (first mouse click)
+     * Returns the origin point of Square (first mouse click)
+     * @return the origin of Square
      */
     public Point getOrigin() {
         return this.origin;
     }
 
     /**
-     * @param origin origin of Square (first mouse click)
+     * Sets the origin point of Square (first mouse click)
+     * @param origin origin of Square
      */
     public void setOrigin(Point origin) {
         this.origin = origin;
     }
 
     /**
-     * @return the color of the Square
+     * Returns the color of Square
+     * @return the color of Square
      */
     @Override
     public Color getColor() {
@@ -78,6 +88,7 @@ public class Square implements Shape {
     }
 
     /**
+     * Sets the color of Square
      * @param color color of Square
      */
     @Override
@@ -87,10 +98,9 @@ public class Square implements Shape {
 
     /**
      * Checks if the Tool is overlapping the Square.
-     * If it is, then the Tool will erase the Square.
      *
-     * @param tool the Tool instance which is currently erasing drawings
-     * @return True if the Tool should erase this Square, False otherwise
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -100,6 +110,12 @@ public class Square implements Shape {
         return overlapsSolid(tool);
     }
 
+    /**
+     * Checks if the Tool is overlapping a solid Square.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsSolid(Tool tool) {
         double eraserLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
         double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
@@ -113,6 +129,12 @@ public class Square implements Shape {
         return eraserRight >= rectLeft && eraserLeft <= rectRight && eraserBottom >= rectTop && eraserTop <= rectBottom;
     }
 
+    /**
+     * Checks if any corners/centre of the Tool is overlapping the Square.
+     *
+     * @param tool the tool instance which is being checked for overlaps
+     * @return True if any point of the tool is overlapping, False otherwise
+     */
     private boolean overlapsInsideAtPoint(Tool tool) {
         double rectLeft = this.topLeft.x + (this.lineThickness / 2.0);
         double rectRight = this.topLeft.x + this.size - (this.lineThickness / 2.0);
@@ -138,6 +160,12 @@ public class Square implements Shape {
         return true;
     }
 
+    /**
+     * Checks if the Tool is overlapping an outlined Square.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsOutline(Tool tool) {
         double eraserLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
         double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
@@ -153,11 +181,22 @@ public class Square implements Shape {
                 && !overlapsInsideAtPoint(tool);
     }
 
+    /**
+     * Shifts the top left point of Square by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
     @Override
     public void shift(double x, double y) {
         this.topLeft = new Point(topLeft.x + x, topLeft.y + y);
     }
 
+    /**
+     * Creates a copy of the Square instance.
+     *
+     * @return a copy of the Square instance
+     */
     public Square copy(){
         Square s = new Square(fillStyle, lineThickness);
         s.setColor(color);
@@ -168,7 +207,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Displays the Square with user-created color and size.
+     * Displays the Square with user-created color, size, fill style, and line thickness.
      *
      * @param g2d GraphicsContext
      */
@@ -188,17 +227,17 @@ public class Square implements Shape {
     }
 
     /**
-     * Sets the properties of a Square instance using an array of Strings.
+     * Sets the properties of the Square based on the provided data array.
      *
      * @param data an array of Strings where:
-     *             data[0] is the x-coordinate of the top left point,
-     *             data[1] is the y-coordinate of the top left point,
-     *             data[2] is the x-coordinate of the origin point,
-     *             data[3] is the y-coordinate of the origin point,
-     *             data[4] is the size of the square,
-     *             data[5] is the color in web format,
-     *             data[6] is the fill style,
-     *             data[7] is the line thickness.
+     *             <p>data[0] - x-coordinate of the top-left point</p>
+     *             <p>data[1] - y-coordinate of the top-left point</p>
+     *             <p>data[2] - x-coordinate of the origin point</p>
+     *             <p>data[3] - y-coordinate of the origin point</p>
+     *             <p>data[4] - size of the Square</p>
+     *             <p>data[5] - color of the Square in web format</p>
+     *             <p>data[6] - fill style of the Square</p>
+     *             <p>data[7] - line thickness of the Square</p>
      */
     @Override
     public void setShape(String[] data) {
@@ -211,9 +250,9 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns a string representation of a square.
+     * Returns a string representation of a Square.
      *
-     * @return a string representation of the square
+     * @return a string representation of the Square
      */
     public String toString() {
         return "Square{" + this.topLeft.x + "," + this.topLeft.y + ","
