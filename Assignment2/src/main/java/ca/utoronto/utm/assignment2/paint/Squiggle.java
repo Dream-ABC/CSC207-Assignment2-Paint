@@ -114,6 +114,13 @@ public class Squiggle implements Shape {
         }
     }
 
+    @Override
+    public void shift(double x, double y) {
+        for (Point p : this.points) {
+            p.shift(x, y);
+        }
+    }
+
     /**
      * Returns a string representation of a squiggle.
      *

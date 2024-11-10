@@ -161,6 +161,11 @@ public class Square implements Shape {
                 && !overlapsInsideAtPoint(tool);
     }
 
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft = new Point(topLeft.x + x, topLeft.y + y);
+    }
+
     /**
      * Displays the Square with user-created color and size.
      *

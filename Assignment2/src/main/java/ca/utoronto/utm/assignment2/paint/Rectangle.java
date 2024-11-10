@@ -177,6 +177,11 @@ public class Rectangle implements Shape {
                 && !overlapsInsideAtPoint(tool);
     }
 
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+    }
+
     /**
      * Displays the Rectangle with user-created color and size.
      *
