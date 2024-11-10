@@ -137,7 +137,12 @@ public class Circle implements Shape {
         return distanceSquared <= 1;
     }
 
-
+    /**
+     * Checks if the Tool is overlapping an outlined Circle.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsOutline(Tool tool) {
         double centerX = topLeft.x + (diameter / 2.0);
         double centerY = topLeft.y + (diameter / 2.0);
@@ -165,17 +170,31 @@ public class Circle implements Shape {
         return false;
     }
 
+    /**
+     *
+     *
+     * @param value given value
+     * @param min minimum value
+     * @param max maximum value
+     * @return
+     */
     private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
 
+    /**
+     * Shifts the top left point of Circle by (x,y).
+     *
+     * @param x the horizontal shift
+     * @param y the vertical shift
+     */
     @Override
     public void shift(double x, double y) {
         this.topLeft.shift(x, y);
     }
 
     /**
-     * Displays the Circle with user-created color and size.
+     * Displays the Circle with user-created color, size, fill style, and line thickness.
      *
      * @param g2d GraphicsContext
      */
