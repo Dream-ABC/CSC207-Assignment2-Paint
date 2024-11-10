@@ -73,6 +73,14 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : BUG BUG4.442 : wenjess1 : Started
+NAME     : Dashed lines for erasers and selection tool
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : StrokeEraser, PrecisionEraser, and SelectionTool should display as
+           dashed lines to differentiate it from shape drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US4.421 : tianshi8 : Complete
 NAME     : Text Editor
 PRIORITY : 2
