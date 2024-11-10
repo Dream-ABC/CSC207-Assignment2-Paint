@@ -2,6 +2,9 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.canvas.GraphicsContext;
 
+/**
+ * An interface for all tools the application has.
+ */
 public interface Tool {
     Point getTopLeft();
     void setTopLeft(Point topLeft);
