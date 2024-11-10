@@ -378,8 +378,9 @@ Example:
 
 HOW TO EXTEND OUR CODE
 --------------------------------------------------------------------------------
-Name: Resize Erasers
+Name: Resizable Erasers
 Description:
+
 Possible implementation:
 --------------------------------------------------------------------------------
 Name: Dynamic Color Change for Drawn Shapes
