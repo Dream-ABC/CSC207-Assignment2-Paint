@@ -1,5 +1,7 @@
 # Architecture
 
+
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 # MVC
@@ -83,6 +85,8 @@
     FileHandler
     PatternParser
 
+
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 # Design Patterns Used (collections of classes into DP)
@@ -132,7 +136,6 @@ Usage:
     when desired.
     (Note: How this last step is accomplished is discussed in the "Strategy Factory"
     section below).
-
 --------------------------------------------------------------------------------
 Name: Strategy Factory
 Pattern Name: Factory
@@ -174,7 +177,6 @@ Usage:
     that implements the ShapeStrategy interface. Then, they would need to update StrategyFactory
     to create this new strategy, by creating a new case corresponding to the shape's name
     (e.g. HexagonStrategy would have a case "hexagon").
-
 --------------------------------------------------------------------------------
 Name: Shape Factory
 Pattern Name: Factory
@@ -213,7 +215,6 @@ Usage:
     that implements the Shape interface. Then, they would need to update ShapeFactory
     to create this new shape, by creating a new case corresponding to the shape's name
     (e.g. Hexagon would have a case "hexagon").
-
 --------------------------------------------------------------------------------
 Name: User Action Command
 Pattern Name: Command
@@ -252,7 +253,6 @@ Usage:
     requests the new command, the new command should be passed in to the invoker CommandHistory.
     No adjustments to CommandHistory is needed. Lastly, the new command will be executed in sequence
     within the command queue in CommandHistory.
-
 --------------------------------------------------------------------------------
 
 
@@ -356,7 +356,7 @@ Possible implementation:
 --------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
-Stroke Eraser, Precision Eraser, Fill Style Selector, Line Thickness Selector, Polyline + Other Shapes, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool
+Stroke Eraser, Precision Eraser, Fill Style Selector, Line Thickness Selector, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool
 --------------------------------------------------------------------------------
 Name: Stroke Eraser
 Description:
