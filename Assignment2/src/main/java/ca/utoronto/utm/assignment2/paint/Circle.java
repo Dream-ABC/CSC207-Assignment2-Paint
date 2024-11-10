@@ -212,7 +212,7 @@ public class Circle implements Shape {
     /**
      * Displays the Circle with user-created color, size, fill style, and line thickness.
      *
-     * @param g2d GraphicsContext
+     * @param g2d the GraphicsContext for the current layer used to draw the Circle
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -252,9 +252,10 @@ public class Circle implements Shape {
     }
 
     /**
-     * Returns a string representation of a Circle.
+     * Returns a string representation of the Circle object, including its position, color,
+     * and style attributes.
      *
-     * @return a string representation of the Circle
+     * @return a string representation of the Circle object
      */
     public String toString() {
         return "Circle{" + this.topLeft.x + "," + this.topLeft.y + ","

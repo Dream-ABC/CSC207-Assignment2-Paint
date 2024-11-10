@@ -34,7 +34,7 @@ public class Polyline implements Shape {
     /**
      * Gets the number points in the user's Polyline drawing.
      *
-     * @return number of Polyline points
+     * @return the number of Polyline points
      */
     public int getSize() {
         return points.size();
@@ -173,7 +173,7 @@ public class Polyline implements Shape {
     /**
      * Displays the Polyline with user-created color, line thickness, and points they drew.
      *
-     * @param g2d GraphicsContext
+     * @param g2d the GraphicsContext for the current layer used to draw the Polyline
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -201,9 +201,9 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Sets the properties of the Oval shape based on the provided data array.
+     * Sets the properties of the Polyline shape based on the provided data array.
      *
-     * @param data an array should contain the following elements in order:
+     * @param data an array of strings containing the following information in order:
      *             <p>data[0] - whether the Polyline is closed or not</p>
      *             <p>data[1] - line thickness of the Polyline</p>
      *             <p>data[2] - color of the Polyline in web format</p>
@@ -224,8 +224,9 @@ public class Polyline implements Shape {
     }
 
     /**
-     * Returns a string representation of a polyline.
-     * @return a string representation of the polyline
+     * Returns a string representation of the Polyline object, including its position, color,
+     * and style attributes.
+     * @return a string representation of the Polyline object
      */
     public String toString() {
         // get all points

@@ -224,7 +224,7 @@ public class Oval implements Shape {
     /**
      * Displays the Oval with user-created color, size, fill style, and line thickness.
      *
-     * @param g2d GraphicsContext
+     * @param g2d the GraphicsContext for the current layer used to draw the Oval
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -245,7 +245,7 @@ public class Oval implements Shape {
     /**
      * Sets the properties of the Oval based on the provided data array.
      *
-     * @param data an array should contain the following elements in order:
+     * @param data an array of strings containing the following information in order:
      *             <p>data[0] - x-coordinate of the top-left point</p>
      *             <p>data[1] - y-coordinate of the top-left point</p>
      *             <p>data[2] - width of the Oval</p>
@@ -268,8 +268,9 @@ public class Oval implements Shape {
     }
 
     /**
-     * Returns a string representation of an Oval.
-     * @return a string representation of the Oval
+     * Returns a string representation of the Oval object, including its position, color,
+     * and style attributes.
+     * @return a string representation of the Oval object
      */
     public String toString() {
         return "Oval{" + this.topLeft.x + "," + this.topLeft.y + ","

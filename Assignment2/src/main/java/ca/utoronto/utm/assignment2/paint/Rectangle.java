@@ -33,7 +33,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Returns the top left point of Rectangle
+     * Returns the top left point of Rectangle.
      * @return the top left point of Rectangle
      */
     public Point getTopLeft() {
@@ -41,7 +41,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Sets the top left point of Rectangle
+     * Sets the top left point of Rectangle.
      * @param topLeft top left corner of Rectangle
      */
     public void setTopLeft(Point topLeft) {
@@ -49,7 +49,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Returns the width of Rectangle
+     * Returns the width of Rectangle.
      * @return the width of Rectangle
      */
     public double getWidth() {
@@ -57,7 +57,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Sets the width of Rectangle
+     * Sets the width of Rectangle.
      * @param width width of Rectangle
      */
     public void setWidth(double width) {
@@ -65,7 +65,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Returns the height of Rectangle
+     * Returns the height of Rectangle.
      * @return the height of Rectangle
      */
     public double getHeight() {
@@ -73,7 +73,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Sets the height of Rectangle
+     * Sets the height of Rectangle.
      * @param height height of Rectangle
      */
     public void setHeight(double height) {
@@ -81,7 +81,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Returns the origin point of Rectangle (first mouse click)
+     * Returns the origin point of Rectangle (first mouse click).
      * @return the origin of Rectangle
      */
     public Point getOrigin() {
@@ -89,7 +89,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Sets the origin point of Rectangle (first mouse click)
+     * Sets the origin point of Rectangle (first mouse click).
      * @param origin origin of Rectangle
      */
     public void setOrigin(Point origin) {
@@ -97,7 +97,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Returns the color of Rectangle
+     * Returns the color of Rectangle.
      * @return the color of Rectangle
      */
     @Override
@@ -106,7 +106,7 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Sets the color of Rectangle
+     * Sets the color of Rectangle.
      * @param color color of Rectangle
      */
     @Override
@@ -228,7 +228,7 @@ public class Rectangle implements Shape {
     /**
      * Displays the Rectangle with user-created color, size, fill style, and line thickness.
      *
-     * @param g2d GraphicsContext
+     * @param g2d the GraphicsContext for the current layer used to draw the Rectangle
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -248,7 +248,7 @@ public class Rectangle implements Shape {
     /**
      * Sets the properties of the Rectangle based on the provided data array.
      *
-     * @param data an array should contain the following elements in order:
+     * @param data an array of strings containing the following information in order:
      *             <p>data[0] - x-coordinate of the top-left point</p>
      *             <p>data[1] - y-coordinate of the top-left point</p>
      *             <p>data[2] - width of the Rectangle</p>
@@ -271,7 +271,8 @@ public class Rectangle implements Shape {
     }
 
     /**
-     * Returns a string representation of a Rectangle.
+     * Returns a string representation of the Rectangle object, including its position, color,
+     * and style attributes.
      *
      * @return a string representation of the Rectangle
      */

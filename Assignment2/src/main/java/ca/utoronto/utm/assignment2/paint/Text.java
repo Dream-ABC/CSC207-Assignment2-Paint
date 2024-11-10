@@ -117,7 +117,7 @@ public class Text implements Shape {
      * Checks if the given eraser object overlaps with this Text object.
      *
      * @param tool the Tool object
-     * @return true if the eraser overlaps with this Text object, false otherwise
+     * @return True if the eraser overlaps with this Text object, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -135,10 +135,38 @@ public class Text implements Shape {
     }
 
     /**
+     * Shifts the top left point of Text by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+    }
+
+    /**
+     * Creates a copy of the Text instance.
+     *
+     * @return a copy of the Text instance
+     */
+    @Override
+    public Text copy() {
+        Text t = new Text();
+        t.setText(textNode.getText());
+        t.setFont(textNode.getFont());
+        t.setColor(color);
+        t.setStrikethrough(isStrikethrough);
+        t.setUnderline(isUnderlined);
+        t.setTopLeft(topLeft.copy());
+        return t;
+    }
+
+    /**
      * Renders the text on the provided GraphicsContext with the specified font, color,
      * and optional strikethrough or underline styles.
      *
-     * @param g2d the GraphicsContext for the current layer used to draw the text
+     * @param g2d the GraphicsContext for the current layer used to draw the Text
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -176,22 +204,19 @@ public class Text implements Shape {
     }
 
     /**
-     * Configures the shape based on the provided array of strings.
-     * The array should contain specific data needed to set various
-     * properties of the shape such as text content, font details,
-     * position, style attributes, and color.
+     * Sets the properties of the Text based on the provided data array.
      *
-     * @param data an array of strings where:
-     *             data[0] is the text content,
-     *             data[1] is the font family,
-     *             data[2] is the font size as a string,
-     *             data[3] is the x-coordinate of the top-left position,
-     *             data[4] is the y-coordinate of the top-left position,
-     *             data[5] should be "true" for bold and "false" otherwise,
-     *             data[6] should be "true" for italic and "false" otherwise,
-     *             data[7] should be "true" for strikethrough and "false" otherwise,
-     *             data[8] should be "true" for underlined and "false" otherwise,
-     *             data[9] is the color as a web string format.
+     * @param data an array of strings containing the following information in order:
+     *             <p>data[0] - text content</p>
+     *             <p>data[1] - font family</p>
+     *             <p>data[2] - font size as a string</p>
+     *             <p>data[3] - x-coordinate of the top-left point</p>
+     *             <p>data[4] - y-coordinate of the top-left point</p>
+     *             <p>data[5] - "true" for bold and "false" otherwise</p>
+     *             <p>data[6] - "true" for italic and "false" otherwise</p>
+     *             <p>data[7] - "true" for strikethrough and "false" otherwise</p>
+     *             <p>data[8] - "true" for underlined and "false" otherwise</p>
+     *             <p>data[9] - color of the Text in web format</p>
      */
     public void setShape(String[] data) {
         this.topLeft = new Point(Double.parseDouble(data[3]), Double.parseDouble(data[4]));
@@ -205,22 +230,6 @@ public class Text implements Shape {
         FontWeight weight = Boolean.parseBoolean(data[5]) ? FontWeight.BOLD : FontWeight.NORMAL;
         FontPosture posture = Boolean.parseBoolean(data[6]) ? FontPosture.ITALIC : FontPosture.REGULAR;
         this.textNode.setFont(Font.font(data[1], weight, posture, Double.parseDouble(data[2])));
-    }
-
-    @Override
-    public void shift(double x, double y) {
-        this.topLeft.shift(x,y);
-    }
-
-    public Text copy() {
-        Text t = new Text();
-        t.setText(textNode.getText());
-        t.setFont(textNode.getFont());
-        t.setColor(color);
-        t.setStrikethrough(isStrikethrough);
-        t.setUnderline(isUnderlined);
-        t.setTopLeft(topLeft.copy());
-        return t;
     }
 
     /**

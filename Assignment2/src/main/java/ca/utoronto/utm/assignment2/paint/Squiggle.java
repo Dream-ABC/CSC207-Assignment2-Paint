@@ -36,7 +36,8 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * @return the color of the Squiggle
+     * Returns the color of Squiggle.
+     * @return the color of Squiggle
      */
     @Override
     public Color getColor() {
@@ -44,6 +45,7 @@ public class Squiggle implements Shape {
     }
 
     /**
+     * Sets the color of Squiggle.
      * @param color color of Squiggle
      */
     @Override
@@ -101,7 +103,7 @@ public class Squiggle implements Shape {
     /**
      * Displays the Squiggle with user-created color, line thickness, and points they drew.
      *
-     * @param g2d GraphicsContext
+     * @param g2d the GraphicsContext for the current layer used to draw the Squiggle
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -118,7 +120,7 @@ public class Squiggle implements Shape {
     /**
      * Sets the properties of the Squiggle shape based on the provided data array.
      *
-     * @param data an array should contain the following elements in order:
+     * @param data an array of strings containing the following information in order:
      *             <p>data[0] - line thickness of the Squiggle</p>
      *             <p>data[2] - color of the Squiggle in web format</p>
      *             <p>data[i, i+1] - the x and y coordinates of a Point in the Squiggle</p>
@@ -136,7 +138,8 @@ public class Squiggle implements Shape {
     }
 
     /**
-     * Returns a string representation of a Squiggle.
+     * Returns a string representation of the Squiggle object, including its style attributes, color,
+     * and points.
      *
      * @return a string representation of the Squiggle
      */

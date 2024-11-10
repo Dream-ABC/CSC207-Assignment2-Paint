@@ -21,6 +21,9 @@ public class Triangle extends Polygon implements Shape {
 
     /**
      * Constructs a default black triangle with a base and height of 0.
+     * The fill style and line thickness are determined by the provided parameters.
+     * @param fillStyle "Solid"/"Outline"
+     * @param lineThickness ranges from 1.0 to 10.0
      */
     public Triangle(String fillStyle, double lineThickness) {
         this.base = 0.0;
@@ -31,13 +34,15 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * @return the top left point of the Triangle
+     * Returns the top left point of Triangle.
+     * @return the top left point of Triangle
      */
     public Point getTopLeft() {
         return this.topLeft;
     }
 
     /**
+     * Sets the top left point of Triangle.
      * @param topLeft top left point of Triangle
      */
     public void setTopLeft(Point topLeft) {
@@ -45,20 +50,23 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * @return the origin of the Triangle (first mouse click)
+     * Returns the origin point of Triangle (first mouse click).
+     * @return the origin of the Triangle
      */
     public Point getOrigin() {
         return origin;
     }
 
     /**
-     * @param origin origin of Triangle (first mouse click)
+     * Sets the origin point of Triangle (first mouse click).
+     * @param origin origin of Triangle
      */
     public void setOrigin(Point origin) {
         this.origin = origin;
     }
 
     /**
+     * Sets the base width of Triangle.
      * @param base base width of Triangle
      */
     public void setBase(double base) {
@@ -66,13 +74,15 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * @return the height of the Triangle
+     * Returns the height of Triangle.
+     * @return the height of Triangle
      */
     public double getHeight() {
         return this.height;
     }
 
     /**
+     * Sets the height of Triangle.
      * @param height height of Triangle
      */
     public void setHeight(double height) {
@@ -89,7 +99,8 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * @return the color of the Triangle
+     * Returns the color of Triangle.
+     * @return the color of Triangle
      */
     @Override
     public Color getColor() {
@@ -97,6 +108,7 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
+     * Sets the color of Triangle.
      * @param color color of Triangle
      */
     @Override
@@ -119,10 +131,10 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * Checks if the Eraser is overlapping the Triangle.
-     * If it is, then the Eraser will erase the Triangle.
-     * @param tool the Eraser instance which is currently erasing drawings
-     * @return True if the Eraser should erase this Triangle, False otherwise
+     * Checks if the Tool is overlapping the Triangle.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -132,6 +144,12 @@ public class Triangle extends Polygon implements Shape {
         return overlapsSolid(tool);
     }
 
+    /**
+     * Checks if the Tool is overlapping a solid Triangle.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsSolid(Tool tool){
         ObservableList<Double> points = this.getPoints(); // top, left, right
         double[] xPoints = new double[3];
@@ -141,6 +159,11 @@ public class Triangle extends Polygon implements Shape {
             xPoints[i] = points.get(i);
             yPoints[i] = points.get(i + 3);
         }
+
+        // Checks if any point of the tool (left, right, top, bottom) are inside the triangle.
+        // This is calculated using math:
+        //      If a point is inside a triangle, then the 3 triangles formed from that point
+        //      with the vertexes of the og triangle, will have the same area as the og triangle
 
         double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
 
@@ -165,6 +188,7 @@ public class Triangle extends Polygon implements Shape {
             }
         }
 
+        // Checks if any of the triangle vertexes is inside the tool
         for (int i = 0; i < 3; i++){
             if ((leftX <= xPoints[i]) && (xPoints[i] <= rightX) && (topY <= yPoints[i]) && (yPoints[i] <= bottomY)) {return true;}
         }
@@ -172,6 +196,12 @@ public class Triangle extends Polygon implements Shape {
         return false;
     }
 
+    /**
+     * Checks if the Point is overlapping the Triangle.
+     *
+     * @param p the point which is being checked for overlaps
+     * @return True if the point is overlapping, False otherwise
+     */
     private boolean overlapsInsideAtPoint(Point p){
         ObservableList<Double> points = this.getPoints(); // top, left, right
         double[] xPoints = new double[3];
@@ -192,6 +222,12 @@ public class Triangle extends Polygon implements Shape {
         return Math.abs(A - a1 - a2 - a3) <= marginOfError;
     }
 
+    /**
+     * Checks if the Tool is overlapping an outlined Triangle.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     private boolean overlapsOutline(Tool tool){
         ObservableList<Double> points = this.getPoints(); // top, left, right
         double[] xPoints = new double[3];
@@ -239,8 +275,35 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * Displays the Triangle with user-created color and size.
-     * @param g2d GraphicsContext
+     * Shifts the top left point of Triangle by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+        updatePoints();
+    }
+
+    /**
+     * Creates a copy of the Triangle instance.
+     *
+     * @return a copy of the Triangle instance
+     */
+    public Triangle copy() {
+        Triangle t = new Triangle(fillStyle, lineThickness);
+        t.setBase(base);
+        t.setColor(color);
+        t.setHeight(height);
+        t.setOrigin(origin.copy());
+        t.setTopLeft(topLeft.copy());
+        return t;
+    }
+
+    /**
+     * Displays the Triangle with user-created color, size, fill style, and line thickness.
+     * @param g2d the GraphicsContext for the current layer used to draw the Triangle
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -265,10 +328,9 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * Sets the shape properties of the Triangle object based on the provided data array.
-     * Each element in the data array should correspond to a specific property of the Triangle.
+     * Sets the properties of the Triangle based on the provided data array.
      *
-     * @param data an array of strings containing the values to set the Triangle properties.
+     * @param data an array of strings containing the following information in order:
      *             The elements should be in the following order:
      *             data[0] - x coordinate of the top-left point
      *             data[1] - y coordinate of the top-left point
@@ -293,26 +355,11 @@ public class Triangle extends Polygon implements Shape {
         this.updatePoints();
     }
 
-    @Override
-    public void shift(double x, double y) {
-        this.topLeft.shift(x,y);
-        updatePoints();
-    }
-
-    public Triangle copy() {
-        Triangle t = new Triangle(fillStyle, lineThickness);
-        t.setBase(base);
-        t.setColor(color);
-        t.setHeight(height);
-        t.setOrigin(origin.copy());
-        t.setTopLeft(topLeft.copy());
-        return t;
-    }
-
     /**
-     * Returns a string representation of a triangle.
+     * Returns a string representation of the Triangle object, including its position, size,
+     * style attributes, and color.
      *
-     * @return a string representation of the triangle
+     * @return a string representation of the Triangle object
      */
     public String toString() {
         return "Triangle{" + this.topLeft.x + "," + this.topLeft.y + "," + this.base + "," + this.height + ","

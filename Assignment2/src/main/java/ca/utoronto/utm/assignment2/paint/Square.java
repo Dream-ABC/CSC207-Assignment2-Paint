@@ -31,7 +31,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns the top left point of Square
+     * Returns the top left point of Square.
      * @return the top left point of Square
      */
     public Point getTopLeft() {
@@ -39,7 +39,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Sets the top left point of Square
+     * Sets the top left point of Square.
      * @param topLeft top left corner of Square
      */
     public void setTopLeft(Point topLeft) {
@@ -47,7 +47,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns the size of Square (width and height)
+     * Returns the size of Square (width and height).
      * @return the size of Square
      */
     public double getSize() {
@@ -55,7 +55,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Sets the size of Square (width and height)
+     * Sets the size of Square (width and height).
      * @param size size of Square
      */
     public void setSize(double size) {
@@ -63,7 +63,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns the origin point of Square (first mouse click)
+     * Returns the origin point of Square (first mouse click).
      * @return the origin of Square
      */
     public Point getOrigin() {
@@ -71,7 +71,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Sets the origin point of Square (first mouse click)
+     * Sets the origin point of Square (first mouse click).
      * @param origin origin of Square
      */
     public void setOrigin(Point origin) {
@@ -79,7 +79,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns the color of Square
+     * Returns the color of Square.
      * @return the color of Square
      */
     @Override
@@ -88,7 +88,7 @@ public class Square implements Shape {
     }
 
     /**
-     * Sets the color of Square
+     * Sets the color of Square.
      * @param color color of Square
      */
     @Override
@@ -209,7 +209,7 @@ public class Square implements Shape {
     /**
      * Displays the Square with user-created color, size, fill style, and line thickness.
      *
-     * @param g2d GraphicsContext
+     * @param g2d the GraphicsContext for the current layer used to draw the Square
      */
     @Override
     public void display(GraphicsContext g2d) {
@@ -229,7 +229,7 @@ public class Square implements Shape {
     /**
      * Sets the properties of the Square based on the provided data array.
      *
-     * @param data an array of Strings where:
+     * @param data an array of strings containing the following information in order:
      *             <p>data[0] - x-coordinate of the top-left point</p>
      *             <p>data[1] - y-coordinate of the top-left point</p>
      *             <p>data[2] - x-coordinate of the origin point</p>
@@ -250,7 +250,8 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns a string representation of a Square.
+     * Returns a string representation of the Square object, including its position, color,
+     * and style attributes.
      *
      * @return a string representation of the Square
      */
