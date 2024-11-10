@@ -378,10 +378,6 @@ Example:
 
 HOW TO EXTEND OUR CODE
 --------------------------------------------------------------------------------
-Name: Cut, Copy, Paste
-Description:
-Possible implementation:
---------------------------------------------------------------------------------
 Name: Resize Erasers
 Description:
 Possible implementation:
