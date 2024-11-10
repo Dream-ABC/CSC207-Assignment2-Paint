@@ -183,7 +183,7 @@ ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.491 : hingor13 : InProgress
+TYPE     : BUG BUG4.491 : hingor13 : Complete
 NAME     : Click different mouse buttons causes at the same time causes bugs
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL :

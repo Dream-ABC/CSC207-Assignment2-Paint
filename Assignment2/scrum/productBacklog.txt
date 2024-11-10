@@ -24,15 +24,6 @@ ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.491 : hingor13 : InProgress
-NAME     : Click different mouse buttons causes at the same time causes bugs
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
-ISSUE    : When left click is held done and right click is pressed, it causes
-           mouse released to run making the shape null and causing errors when
-           it is continued to be dragged.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US4.452 : hingor13 : NotStarted
 NAME     : Dragging Selected Shapes
 PRIORITY : 1
@@ -493,4 +484,13 @@ ISSUE    : The Edit menu is currently non-functional. The program should
                paste a selected shape
                undo the last action
                redo the previously undone action
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.491 : hingor13 : Complete
+NAME     : Click different mouse buttons causes at the same time causes bugs
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : When left click is held done and right click is pressed, it causes
+           mouse released to run making the shape null and causing errors when
+           it is continued to be dragged.
 --------------------------------------------------------------------------
