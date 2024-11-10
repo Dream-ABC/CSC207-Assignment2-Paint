@@ -491,6 +491,10 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the stroke eraser in this application.
 
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+        		(any special discussion...)***
+
     StrokeEraser:
             StrokeEraser implements the Tool interface. As a result, the attributes and methods required for
         this tool would include:
@@ -540,6 +544,10 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the precision eraser in this application.
 
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+        		(any special discussion...)***
+
     PrecisionEraser:
             PrecisionEraser implements the Shape interface. A key feature of the eraser's attributes is
         its color attribute, which determines its visual representation. While the user is still using
@@ -566,22 +574,41 @@ Description:
         The fill style selector allows users to choose whether they want to draw a solid
     shape or an outlined shape. This option does not apply to squiggles, polylines,
     or text.
+        The fill style selector consists of ***an image icon appearing in the left button panel.
+    	When the user clicks the image icon, the drawing mode is enabled.***
 
 Classes/Interfaces Involved:
-    View
     ShapeChooserPanel
+    PaintModel
+    ShapeFactory
 
 Implementation:
     Below is the implementation of the fill style selector in this application.
-    View:
 
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+        		(any special discussion...)***
+
+    ShapeChooserPanel:
+        When the button for a fill style is clicked, either "Solid" or "Outline", the ShapeChooserPanel
+        then sets PaintModel's fillStyle to be what the user selected.
+
+    PaintModel:
+        After a
+
+    ShapeFactory:
+        With the provided String fillStyle passed in as a parameter, the ShapeFactory can create the correct
+        shape and fill style for any shape type.
 --------------------------------------------------------------------------------
 Name: Line Thickness Selector
 
 Description:
         The line thickness selector allows users to choose how thick they want the outline
-    of their shape to be. Users select the line thickness through a slider that ranges
-    from 1-50. The default value is 1. This option does not apply when users draw solid shapes.
+    of their shape to be. This option does not apply when users draw solid shapes.
+        The line thickness selector is found within the menu item View -> Line Thickness. It is a
+    Slider that ranges from 0-50, with the default value being 1. Once the user adjusts the Slider
+    to their desired value, all outlined shapes in the application will have that selected line
+    thickness value.
 
 Classes/Interfaces Involved:
     View
@@ -590,6 +617,10 @@ Classes/Interfaces Involved:
 
 Implementation:
     Below is the implementation of the line thickness selector in this application.
+
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+        		(any special discussion...)***
 
     View:
             View creates the menu item "Line Thickness". When the user clicks this menu item,
