@@ -267,7 +267,49 @@ Usage:
 	(For each story, pull from and modify the highLevelTemplate.txt)
 
 HOW TO MODIFY OUR CODE
-New drawing mode
+--------------------------------------------------------------------------------
+New Drawing Mode
+Description:
+    A drawing mode enables a user to draw an object onto the screen, which could
+    be a shape (e.g. Circle) or other elements (e.g. Text). ***The
+	drawing mode consists of an image icon appearing in the left button panel.
+	When the user clicks the image icon, the drawing mode is enabled. This means
+	that a strategy for handling user input for this drawing mode is installed.***
+
+	At this point, all mouse events in ...
+
+Implementation:
+	(inventory of ideas, required files, how they are tied to the architecture,
+		naming conventions (example: images/ButtonIconSquare.jpg, MHStrategySquare, ShapeSquare...)
+
+	To add a new drawing mode X, provide the following:
+
+	***image icon: Create a jpg image with dimensions 128x128, and place it
+		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+		(any special discussion...)***
+
+    X:
+    	This is the shape class named X. This class should implement the Shape interface,
+    	and have all the attributes required to draw the new shape. For example, it could
+    	have a center point that corresponds to the user's first mouse click. The shape is
+    	then drawn centered at that point. Furthermore, since the
+    	current application has the option to draw solid or outlined shapes, as well as
+    	change the color of shapes, this new drawing should support those features as well.
+    	By our naming convention, there should be at Color color;
+                                                      private String fillStyle;
+                                                      private double lineThickness;
+    	mode should
+    	describing the attributes of the new shape as well as how it is drawn...
+    		(any special discussion...)
+
+	XStrategy:
+		describing how user events are used to build the PaintModel...
+		(any special discussion...)
+
+
+Example:
+	(for example, a list of files involved in the implementation of the Square drawing mode)
+--------------------------------------------------------------------------------
 
 HOW TO EXTEND OUR CODE
 Cut, copy, paste
