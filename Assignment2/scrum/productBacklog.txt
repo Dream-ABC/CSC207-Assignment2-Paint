@@ -24,13 +24,13 @@ ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.452 : hingor13 : InProgress
-NAME     : Dragging Selected Shapes
+TYPE     : BUG BUG4.486 : hingor13 : InProgress
+NAME     : Dragging Selected Shapes extremely fast
 PRIORITY : 1
-ESTIMATE : 3 hour    ACTUAL :
-AS A     : user
-I WANT   : To be able to drag shapes that are selected.
-SO THAT  : Reorganize my canvas and move shapes around.
+ESTIMATE : 1 hour    ACTUAL :
+Issue    : When the selection tool is dragged very fast, the mouse is seen
+           outside the bounds of the current selection tool making it begin
+           to edit the bounds of the selection tool.
 --------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
@@ -441,6 +441,24 @@ SO THAT  : I can register which shapes have been selected by the tool.
            This will be useful for future user stories, such as dragging
            drawings around the canvas or copying and pasting drawings.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.491 : hingor13 : Complete
+NAME     : Click different mouse buttons causes at the same time causes bugs
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : When left click is held done and right click is pressed, it causes
+           mouse released to run making the shape null and causing errors when
+           it is continued to be dragged.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.452 : hingor13 : Complete
+NAME     : Dragging Selected Shapes
+PRIORITY : 1
+ESTIMATE : 3 hour    ACTUAL :30 minutes
+AS A     : user
+I WANT   : To be able to drag shapes that are selected.
+SO THAT  : Reorganize my canvas and move shapes around.
+--------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 --------------------------------------------------------------------------
@@ -484,13 +502,4 @@ ISSUE    : The Edit menu is currently non-functional. The program should
                paste a selected shape
                undo the last action
                redo the previously undone action
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.491 : hingor13 : Complete
-NAME     : Click different mouse buttons causes at the same time causes bugs
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
-ISSUE    : When left click is held done and right click is pressed, it causes
-           mouse released to run making the shape null and causing errors when
-           it is continued to be dragged.
 --------------------------------------------------------------------------
