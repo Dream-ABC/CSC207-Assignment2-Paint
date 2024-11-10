@@ -521,7 +521,7 @@ ISSUE    : When the inside of a shape that is only outlined is selected,
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.489 : tianshi8 : Complete
-NAME     : File Menu Cannot Save Paste Commands, Drag Commands, and Polyline Shapes
+NAME     : File menu cannot save paste commands, drag commands, and polyline shapes
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 6 hours
 ISSUE    : The string representation for polyline shapes, paste commands,
@@ -529,7 +529,7 @@ ISSUE    : The string representation for polyline shapes, paste commands,
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.490 : tianshi8 : Complete
-NAME     : Polyline Shape Not Properly Completed
+NAME     : Polyline shape not properly completed
 PRIORITY : 1
 ESTIMATE : 1 hour     ACTUAL : 20 min
 ISSUE    : When re-entering polyline mode, the tool continues from the last polyline

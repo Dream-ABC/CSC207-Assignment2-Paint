@@ -51,6 +51,7 @@ Description:
 Reference:
 	US4.431 - Draw polyline
 	BUG4.484 - Polyline when switching over to another shape
+	BUG4.490 - Polyline shape not properly completed
 --------------------------------------------------------------------------------
 FeatureName: Magnifier Tool
 
@@ -102,7 +103,7 @@ Description:
 
 Reference:
 	BUG4.468 - File menu is not implemented
-	BUG BUG4.489 - File Menu Cannot Save Paste Commands, Drag Commands, and Polyline Shapes
+	BUG BUG4.489 - File menu cannot save paste commands, drag commands, and polyline shapes
 --------------------------------------------------------------------------------
 FeatureName: Text Editor
 
@@ -142,6 +143,7 @@ Reference:
 	US4.451 - Selection tool
 	US4.452 - Dragging selected shapes
 	BUG4.486 - Dragging selected shapes extremely fast
+	BUG4.485 - Fix selection tool for outlined shapes
 --------------------------------------------------------------------------------
 FeatureName: Cut/Copy/Paste/Delete
 
