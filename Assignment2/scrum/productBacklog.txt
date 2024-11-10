@@ -527,6 +527,14 @@ ESTIMATE : 4 hours    ACTUAL : 6 hours
 ISSUE    : The string representation for polyline shapes, paste commands,
            and drag commands has not been implemented.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.490 : tianshi8 : Started
+NAME     : Polyline Shape Not Properly Completed
+PRIORITY : 1
+ESTIMATE : 1 hour     ACTUAL :
+ISSUE    : When re-entering polyline mode, the tool continues from the last polyline
+           instead of allowing the user to start a new one.
+--------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 --------------------------------------------------------------------------
