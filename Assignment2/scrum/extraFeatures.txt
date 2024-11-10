@@ -139,3 +139,11 @@ Description:
 Reference:
 	US4.451 - Selection tool
 --------------------------------------------------------------------------------
+FeatureName: Cut/Copy/Paste/Delete
+
+Description:
+	...
+
+Reference:
+	US4.451 - Selection tool
+--------------------------------------------------------------------------------

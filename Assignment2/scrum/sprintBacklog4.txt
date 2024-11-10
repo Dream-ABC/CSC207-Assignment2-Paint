@@ -225,3 +225,15 @@ ESTIMATE : 1 hour    ACTUAL : 15 min
 Issue    : The strikethrough and italic buttons are not rendered with
            the intended style.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.009 : hingor13 : Complete
+NAME     : Edit menu is not implemented
+PRIORITY : 2
+ESTIMATE : 2 hours    ACTUAL : 2 hours
+ISSUE    : The Edit menu is currently non-functional. The program should
+           implement the following features:
+               cut a selected shape
+               copy a selected shape
+               paste a selected shape
+               delete a selected shape
+--------------------------------------------------------------------------
