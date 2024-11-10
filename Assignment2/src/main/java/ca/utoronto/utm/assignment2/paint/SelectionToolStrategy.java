@@ -16,6 +16,7 @@ public class SelectionToolStrategy implements ShapeStrategy{
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
             if (panel.getModel().getSelectionTool() != null && panel.getModel().getSelectionTool().inBounds(mouseEvent.getX(), mouseEvent.getY())) {
                 panel.getModel().getSelectionTool().setOldLocation(new Point(mouseEvent.getX(), mouseEvent.getY()));
+                panel.getModel().shiftStart(0, 0);
                 panel.getModel().getSelectionTool().setDragging(true);
             }
             else {
@@ -36,6 +37,7 @@ public class SelectionToolStrategy implements ShapeStrategy{
                 double y = mouseEvent.getY() - panel.getModel().getSelectionTool().getOldLocation().y;
 
                 panel.getModel().getSelectionTool().shift(x, y);
+                panel.getModel().addShift(x, y);
                 panel.getModel().getSelectionTool().setOldLocation(new Point(mouseEvent.getX(), mouseEvent.getY()));
                 this.panel.getModel().notifyChange();
             }
