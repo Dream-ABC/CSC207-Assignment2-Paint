@@ -148,4 +148,5 @@ Description:
 
 Reference:
 	BUG4.009 - Edit menu is not implemented
+	BUG4.487 - Add Command for Dragging Shapes
 --------------------------------------------------------------------------------

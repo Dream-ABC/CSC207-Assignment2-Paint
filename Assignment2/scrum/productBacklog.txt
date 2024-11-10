@@ -387,6 +387,14 @@ SO THAT  : I have more customizability with the Paint application.
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : BUG BUG4.442 : wenjess1 : Complete
+NAME     : Dashed lines for erasers and selection tool
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
+ISSUE    : StrokeEraser, PrecisionEraser, and SelectionTool should display as
+           dashed lines to differentiate it from shape drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : USER STORY US4.441 : pengxi60 : Complete
 NAME     : Magnifier Tool
 PRIORITY : 3
@@ -436,7 +444,7 @@ SO THAT  : I can register which shapes have been selected by the tool.
 TYPE     : BUG BUG4.491 : hingor13 : Complete
 NAME     : Click different mouse buttons causes at the same time causes bugs
 PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : When left click is held done and right click is pressed, it causes
            mouse released to run making the shape null and causing errors when
            it is continued to be dragged.
@@ -445,7 +453,7 @@ ISSUE    : When left click is held done and right click is pressed, it causes
 TYPE     : USER STORY US4.452 : hingor13 : Complete
 NAME     : Dragging Selected Shapes
 PRIORITY : 1
-ESTIMATE : 3 hour    ACTUAL :30 minutes
+ESTIMATE : 3 hour    ACTUAL : 30 minutes
 AS A     : user
 I WANT   : To be able to drag shapes that are selected.
 SO THAT  : Reorganize my canvas and move shapes around.
@@ -463,7 +471,7 @@ Issue    : When the selection tool is dragged very fast, the mouse is seen
 TYPE     : BUG BUG4.471 : tianshi8 : Complete
 NAME     : Text Editor Dialog Icons Not Displaying Correctly
 PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 15 min
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
 Issue    : The strikethrough and italic buttons are not rendered with
            the intended style.
 --------------------------------------------------------------------------
@@ -483,21 +491,12 @@ ISSUE    : The Edit menu is currently non-functional. The program should
 TYPE     : BUG BUG4.487 : hingor13 : Complete
 NAME     : Add Command for Dragging Shapes
 PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :30 minutes
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : Since dragging a shape is an undoable feature, a command has to
            be implemented for it.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
---------------------------------------------------------------------------
-TYPE     : USER STORY US?.014 : pengxi60 : NotStarted
-NAME     : Copy/Paste
-PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
-AS A     : user
-I WANT   : To be able to copy/paste certain selections.
-SO THAT  : I can reuse existing drawings on the canvas.
---------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US?.017 : tianshi8 : NotStarted
 NAME     : Filling Tool
