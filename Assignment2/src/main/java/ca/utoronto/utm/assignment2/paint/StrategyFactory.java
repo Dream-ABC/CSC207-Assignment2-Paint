@@ -1,7 +1,14 @@
 package ca.utoronto.utm.assignment2.paint;
 
-
+/**
+ * A factory to instantiate new shape strategies for all shapes that users can draw.
+ */
 public class StrategyFactory {
+    /**
+     * Constructs a new ShapeStrategy based on the provided parameters.
+     * @param shapeName a string representation of the shape's name
+     * @param panel the PaintPanel where drawn shapes are displayed
+     */
     public ShapeStrategy getStrategy(String shapeName, PaintPanel panel) {
         return switch (shapeName.toLowerCase()) { // ignore case
             case "circle" -> new CircleStrategy(panel);
