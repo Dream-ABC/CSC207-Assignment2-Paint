@@ -3,6 +3,8 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 
 /**
  * The Text class represents a text shape that can be drawn on the screen.
@@ -111,16 +113,11 @@ public class Text implements Shape {
         return this.color;
     }
 
-    @Override
-    public void setLineThickness(double lineThickness) {
-
-    }
-
     /**
      * Checks if the given eraser object overlaps with this Text object.
      *
      * @param tool the Tool object
-     * @return true if the eraser overlaps with this Text object, false otherwise
+     * @return True if the eraser overlaps with this Text object, False otherwise
      */
     @Override
     public boolean overlaps(Tool tool) {
@@ -129,23 +126,52 @@ public class Text implements Shape {
         double top = this.textNode.getLayoutBounds().getMinY() + topLeft.y;
         double bottom = this.textNode.getLayoutBounds().getMaxY() + topLeft.y;
 
-        double eraserLeft = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
-        double eraserRight = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
-        double eraserTop = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
-        double eraserBottom = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+        double eraserLeft = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
+        double eraserRight = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
+        double eraserTop = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
+        double eraserBottom = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
 
         return eraserRight >= left && eraserLeft <= right && eraserBottom >= top && eraserTop <= bottom;
+    }
+
+    /**
+     * Shifts the top left point of Text by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+    }
+
+    /**
+     * Creates a copy of the Text instance.
+     *
+     * @return a copy of the Text instance
+     */
+    @Override
+    public Text copy() {
+        Text t = new Text();
+        t.setText(textNode.getText());
+        t.setFont(textNode.getFont());
+        t.setColor(color);
+        t.setStrikethrough(isStrikethrough);
+        t.setUnderline(isUnderlined);
+        t.setTopLeft(topLeft.copy());
+        return t;
     }
 
     /**
      * Renders the text on the provided GraphicsContext with the specified font, color,
      * and optional strikethrough or underline styles.
      *
-     * @param g2d the GraphicsContext for the current layer used to draw the text
+     * @param g2d the GraphicsContext for the current layer used to draw the Text
      */
     @Override
     public void display(GraphicsContext g2d) {
         // init text
+        g2d.setLineDashes();
         g2d.setFont(this.textNode.getFont());
         g2d.setFill(this.color);
 
@@ -178,17 +204,47 @@ public class Text implements Shape {
     }
 
     /**
-     * Returns a string representation of the Text object, including text content,
-     * font details, position, style attributes, and color.
+     * Sets the properties of the Text based on the provided data array.
      *
-     * @return a string representation of the Text object
+     * @param data an array of strings containing the following information in order:
+     *             data[0] - text content
+     *             data[1] - text font
+     *             data[2] - font size
+     *             data[3] - x-coordinate of the top-left point
+     *             data[4] - y-coordinate of the top-left point
+     *             data[5] - "true" for bold and "false" otherwise
+     *             data[6] - "true" for italic and "false" otherwise
+     *             data[7] - "true" for strikethrough and "false" otherwise
+     *             data[8] - "true" for underlined and "false" otherwise
+     *             data[9] - color of the Text in web format
+     */
+    public void setShape(String[] data) {
+        this.topLeft = new Point(Double.parseDouble(data[3]), Double.parseDouble(data[4]));
+        this.color = Color.web(data[9]);
+
+        this.textNode.setText(data[0]);
+        this.isStrikethrough = data[7].equals("true");
+        this.isUnderlined = data[8].equals("true");
+
+        // set font
+        FontWeight weight = Boolean.parseBoolean(data[5]) ? FontWeight.BOLD : FontWeight.NORMAL;
+        FontPosture posture = Boolean.parseBoolean(data[6]) ? FontPosture.ITALIC : FontPosture.REGULAR;
+        this.textNode.setFont(Font.font(data[1], weight, posture, Double.parseDouble(data[2])));
+    }
+
+    /**
+     * Returns a string representation of the Text instance, including its text content,
+     * font name, font size, top-left position coordinates, style flags for bold, italic,
+     * underlined, and strikethrough, as well as color.
+     *
+     * @return a string representation of the Text instance
      */
     public String toString() {
         return "Text{" + this.textNode.getText() + ","
                 + this.textNode.getFont().getName() + "," + this.textNode.getFont().getSize() + ","
                 + this.topLeft.x + "," + this.topLeft.y + ","
                 + this.textNode.getFont().getStyle().contains("Bold") + ","
-                + this.textNode.getFont().getStyle().contains("Italic") +","
+                + this.textNode.getFont().getStyle().contains("Italic") + ","
                 + this.isStrikethrough + "," + this.isUnderlined + ","
                 + this.color.toString() + "}";
     }

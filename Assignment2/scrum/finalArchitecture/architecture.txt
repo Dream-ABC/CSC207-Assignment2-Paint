@@ -1,14 +1,16 @@
 # Architecture
 
+
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 # MVC
 
-# ModelClasses
+# Model Classes
 	PaintModel
 	PaintLayer
 
-# ViewClasses
+# View Classes
     View
 	PaintPanel
 	ShapeChooserPanel
@@ -18,7 +20,7 @@
 	ToolbarPanel
 	ZoomPanel
 
-# ControllerClasses
+# Controller Classes
     View
 	PaintPanel
 	ShapeChooserPanel
@@ -27,7 +29,70 @@
 	ZoomController
 	ZoomSliderController
 
-# (other logical  ways of collecting your classes)
+# Layer Classes (classes that pertain to our layer feature)
+    AddLayerCommand
+    ChangeLayerCommand
+    ChangeLayerVisibilityCommand
+    DeleteLayerCommand
+    LayerChooserController
+    LayerChooserPanel
+    PaintLayer
+    PaintPanel
+
+# Drawing Mode Classes (classes that pertain to drawing modes)
+    Circle
+    CircleStrategy
+    Oval
+    OvalStrategy
+    Point
+    Polyline
+    PolylineStrategy
+    Rectangle
+    RectangleStrategy
+    Shape
+    ShapeFactory
+    ShapeStrategy
+    Square
+    SquareStrategy
+    Squiggle
+    SquiggleStrategy
+    StrategyFactory
+    Text
+    TextEditorDialog
+    TextStrategy
+    Triangle
+    TriangleStrategy
+
+# Tool Classes (classes that pertain to tools the user can use)
+    ColorPickupPopup
+    LineThicknessSlider
+    PrecisionEraser
+    PrecisionEraserStrategy
+    ResizableCanvas
+    SelectionTool
+    SelectionToolStrategy
+    StatusbarPanel
+    Tool
+    ToolbarController
+    ToolbarPanel
+    ZoomController
+    ZoomSliderController
+
+# File Menu Classes (classes that pertain to the file menu)
+    Command
+    CommandHistory
+    FileHandlePopup
+    FileHandler
+    PatternParser
+
+# Edit Menu Classes (classes that pertain to the edit menu)
+    Command
+    CommandHistory
+    SelectionTool
+    SelectionToolStrategy
+    DeleteSelectedCommand
+    DragCommand
+    PasteCommand
 
 
 
@@ -42,7 +107,7 @@ Reference: https://www.oodesign.com/images/design_patterns/behavioral/strategy_i
 
 Purpose:
 	The Strategy pattern was implemented to align with the Open-Closed Principle.
-    In our application, each Shape (e.g. Circle, Rectangle) responds to mouse actions.
+    In our application, each Shape (e.g., Circle, Rectangle) responds to mouse actions.
     In particular, they respond to mouse clicks, drags, and releases to register that
     they are being drawn onto the canvas. However, every Shape responds to these mouse
     actions in different ways. For example, for a Circle, the first mouse click represents
@@ -68,6 +133,7 @@ Classes:
     SelectionToolStrategy: ConcreteStrategy
     SquareStrategy: ConcreteStrategy
     SquiggleStrategy: ConcreteStrategy
+    StrokeEraserStrategy: ConcreteStrategy
     TextStrategy: ConcreteStrategy
     TriangleStrategy: ConcreteStrategy
 	StrategyFactory: Context
@@ -80,7 +146,6 @@ Usage:
     when desired.
     (Note: How this last step is accomplished is discussed in the "Strategy Factory"
     section below).
-
 --------------------------------------------------------------------------------
 Name: Strategy Factory
 Pattern Name: Factory
@@ -121,8 +186,7 @@ Usage:
     feature to the application. Firstly, they would need to create a new shape strategy
     that implements the ShapeStrategy interface. Then, they would need to update StrategyFactory
     to create this new strategy, by creating a new case corresponding to the shape's name
-    (e.g. HexagonStrategy would have a case "hexagon").
-
+    (e.g., HexagonStrategy would have a case "hexagon").
 --------------------------------------------------------------------------------
 Name: Shape Factory
 Pattern Name: Factory
@@ -160,8 +224,7 @@ Usage:
     feature to the application. Firstly, they would need to create a new shape class
     that implements the Shape interface. Then, they would need to update ShapeFactory
     to create this new shape, by creating a new case corresponding to the shape's name
-    (e.g. Hexagon would have a case "hexagon").
-
+    (e.g., Hexagon would have a case "hexagon").
 --------------------------------------------------------------------------------
 Name: User Action Command
 Pattern Name: Command
@@ -171,7 +234,7 @@ Purpose:
 	The Command pattern was implemented to align with the Single Responsibility Principle.
 	In our application, in order to support the Undo/Redo feature we have, we need to keep
 	track of all user actions performed (so that we can later know which action to undo/redo).
-	Each command class we have (e.g. AddLayerCommand, AddShapeCommand) only has one responsibility,
+	Each command class we have (e.g., AddLayerCommand, AddShapeCommand) only has one responsibility,
 	which is to handle one specific action. This ensures our code is clear, modular, and manageable.
 	The Command pattern also supports the Open-Close Principle, as creating a new command only
 	requires creating a new command class and doesn't need to modify any existing code. As a result,
@@ -187,7 +250,11 @@ Classes:
 	ChangeLayerCommand: ConcreteCommand
 	ChangeLayerVisibilityCommand: ConcreteCommand
 	DeleteLayerCommand: ConcreteCommand
-	StrokeEraserCommandCommand: ConcreteCommand
+	DeleteSelectedCommand: ConcreteCommand
+	DragCommand: ConcreteCommand
+	PasteCommand: ConcreteCommand
+	StrokeEraserCommand: ConcreteCommand
+	PasteCommand: ConcreteCommand
 	CommandHistory: Invoker
 	PaintModel: Client
 	PaintModel: Receiver
@@ -200,7 +267,6 @@ Usage:
     requests the new command, the new command should be passed in to the invoker CommandHistory.
     No adjustments to CommandHistory is needed. Lastly, the new command will be executed in sequence
     within the command queue in CommandHistory.
-
 --------------------------------------------------------------------------------
 
 
@@ -214,3 +280,329 @@ Usage:
 
 	(For each story, pull from and modify the highLevelTemplate.txt)
 
+HOW TO MODIFY OUR CODE
+--------------------------------------------------------------------------------
+Name: New Drawing Mode
+
+Description:
+    A drawing mode enables a user to draw an object onto the screen, which could
+    be a shape (e.g., Circle) or other elements (e.g., Text). ***The
+	drawing mode consists of an image icon appearing in the left button panel.
+	When the user clicks the image icon, the drawing mode is enabled. This means
+	that a strategy for handling user input for this drawing mode is installed.***
+
+	At this point, all mouse events in ...
+
+Implementation:
+	To add a new drawing mode X, provide the following:
+
+	***image icon: Create a jpg image with dimensions 128x128, and place it
+		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+		(any special discussion...)***
+
+    ButtonPanel or something:
+            Add the button for shape X onto the UI.
+
+    X:
+    	    This is the shape class named X. This class should implement the Shape interface,
+    	and have all the attributes required to draw the new shape. For example, it could
+    	have an attribute Point center that corresponds to the shape's center when drawn.
+    	    Furthermore, since the current application has the option to change the color of
+        shapes, this new shape should support that feature. There is also an additional optional
+        fill style feature, where the user can choose to draw a solid or outlined shape. The new
+        shape could support these options if appropriate. For example, the Squiggle tool does not
+        include a solid/outline option, as it is not applicable to this type of drawing.
+    	    By our naming conventions, if the color and fill style features are implemented,
+    	their attribute names should be as such:
+            - Color color (default is Color.BLACK)
+            - String fillStyle ("Solid"/"Outline", default is "Solid")
+            - double lineThickness (ranges from 1.0 to 10.0, default is 1.0)
+            In addition to these customization features, a new shape should be compatible with
+        the stroke eraser. The logic of collision detection between the stroke eraser and
+        the shape is implemented inside the overlaps(Tool tool) method. This can be achieved either
+        by leveraging existing methods in JavaFX or by using mathematical equations.
+            Another requirement for a new shape is to provide a String representation, allowing the
+        instructions for drawing the shape to be saved in a Paint file, so that it can be reloaded
+        when the user opens the file again. The String representation is provided by overloading
+        the toString() method. By convention, the String representation should follow a format like this:
+            "X{" + [Point(s) related to the shape, the shape's dimension, other info about the shape's display]
+            + "," + this.color.toString() + "," + this.fillStyle + "," + this.lineThickness + "}";
+        Moreover, the shape needs to be able to use this String representation to redraw itself.
+        This is the purpose of the setShape(String[] data) method, where the String representation is passed in,
+        and the shape sets all of its attributes accordingly.
+            Lastly, a new shape should be compatible with the selection tool. In our application, this
+        means that the shape should be able to be shifted around the canvas when selected by the
+        selection tool. This logic is implemented in the shift(double x, double y) method. This simply
+        requires shifting all Point objects of the shape by invoking the shift method on each Point.
+        Additionally, the selection tool requires that the shape be able to be copied and pasted. This means
+        that we need to be able to create a duplicate of the new shape, which is the purpose of the copy()
+        method. This method should create a new instance of the shape, set all its attributes to match the
+        original, and then return the new instance.
+
+	XStrategy:
+	        XStrategy must handle three mouse events: left mouse press, left mouse drag, and left mouse release.
+	    The left mouse press marks the start of a new shape's creation, the left mouse drag adjusts the shape's size,
+	    and the left mouse release finalizes the shape. XStrategy should also take in PaintPanel as a parameter, so
+	    that shape X can be displayed onto the canvas when those mouse events occur. By convention, the PaintPanel
+	    attribute is named panel.
+	        When a left mouse press occurs, which corresponds to the method mousePressed(MouseEvent mouseEvent),
+	    a new shape X is created using the ShapeFactory from PaintPanel. The newly created shape X is then set as the current
+	    shape within PaintPanel. This step is crucial because PaintModel, responsible for notifying the view to display shapes
+	    on the canvas, needs to know the shape type from PaintPanel. Next, using the position of the mouse press, shape X's
+	    position is set accordingly. For example, it could represent the center of shape X or the top left corner of shape X.
+	    Lastly, the shape X is added to the PaintModel, which adds and renders the user-drawn shape X onto the canvas.
+	        When a left mouse drag occurs, which corresponds to the method mouseDragged(MouseEvent mouseEvent),
+        the current shape X being drawn is retrieved from PaintPanel's current shape. It then updates its size and/or position
+        according to the new mouse coordinates. Lastly, the previous version of shape X is removed from the PaintModel, and the
+        updated version is added in its place.
+            When a left mouse release occurs, which corresponds to the method mouseReleased(MouseEvent mouseEvent),
+        the current shape X being drawn is retrieved from PaintPanel's current shape. The final update for its size
+        and/or position are performed based on the position of the left mouse release. Once again, the previous version of shape
+        X is removed from the PaintModel, and the final updated version is added in its place. Lastly, the current shape in PaintModel
+        is set to null, indicating that drawing has been completed for shape X and no shape is currently being drawn anymore.
+
+	ShapeFactory:
+	    Include a new case for the new shape X. By convention, it should be
+	        case "X" -> new X(fillStyle, lineThickness);
+	    where fillStyle and lineThickness are optional parameters passed in,
+	    depending on whether the shape X supports those features (as discussed above in
+	    section X).
+
+	StrategyFactory:
+        Include a new case for the new shape X. By convention, it should be
+            case "X" -> new XStrategy(panel);
+        where panel is the PaintPanel.
+
+Example:
+	Square
+	SquareStrategy
+	ShapeFactory
+	StrategyFactory
+--------------------------------------------------------------------------------
+
+HOW TO EXTEND OUR CODE
+--------------------------------------------------------------------------------
+Name: New Slider - Resizable Erasers (Stroke and Precision)
+
+Description:
+    Resizable erasers would allow users to adjust the eraser size, providing
+    greater customization over the canvas and erasing process. This feature could
+    be implemented for both the stroke eraser and the precision eraser. One
+    possible implementation of this feature is to have a slider pop-up when the
+    user clicks on an eraser button. The slider value then corresponds to the
+    eraser's size, which could be any range desired.
+
+Implementation:
+    The specific implementation approach for this feature discussed above, is outlined below.
+
+    [Type]EraserSizeSlider:
+        A slider class could be created for both the stroke type and precision type eraser.
+        This class would need to create the Slider object, display the pop-up onto the PaintPanel
+        when appropriate, and register when the Slider object's value has changed.
+            First, the slider class should extend Slider and implement ChangeListener, in order to
+        support the creation of the slider object and to be able to register when the slider's value
+        has changed.
+            Next, the slider class should include a PaintPanel panel attribute, as the panel will
+        be responsible for displaying the slider in the program. This attribute will be initialized
+        inside the constructor, which will have a parameter for the PaintPanel.
+            Then, there should be a show() method within the slider class, which will create the pop-up
+        and display it onto the PaintPanel.
+            Lastly, an overridden changed() method should be implemented to automatically adjust the
+        eraser’s size based on the slider’s value.
+
+Example:
+    LineThicknessSlider - example of an implementation for [Type]EraserSizeSlider
+--------------------------------------------------------------------------------
+Name: New Tool - Dynamic Color Change for Drawn Shapes
+
+Description:
+    Dynamic color change would enable users to modify the color of their shapes even after the shapes have
+    been drawn and finalized (i.e., after the user releases their mouse). This would increase
+    customization options in the Paint program, enhancing the user experience. One possible implementation
+    of this feature is to create a new "Color Change" button. When the user presses this button, they can
+    select a color to apply to a shape. An icon will then appear at the mouse cursor, allowing the user to
+    click on a shape to change its color to the selected option.
+
+Implementation:
+    The specific implementation approach for this feature discussed above, is outlined below.
+
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+    		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+    		(any special discussion...)***
+
+    ButtonPanel or something:
+        Add the button for the color change onto the UI.
+
+    ColorChangeTool:
+        A new tool is required to implement this feature, which could be named as
+        ColorChangeTool. ColorChangeTool will implement the Tool interface. As a result, the attributes
+        and methods required for this tool would include:
+            - the top left point which indicates where the icon will be displayed, usually in relation
+              to the user's mouse location
+            - the dimensions of the tool, such as length and width
+            - a display(GraphicsContext g2d) method, to draw the icon onto the canvas and make it
+              visible to the user
+        There should also be a Color color attribute, to store which color the user desires to change into.
+
+    ColorChangePopup:
+            To allow the user to select a new color, we can create a new class that extends Popup,
+            which will create a ColorPicker and display it onto the PaintPanel. The color chosen
+            would then be saved within the ColorChangeTool's color attribute.
+
+    ColorChangeToolStrategy:
+        For a new tool to function, it needs to have a corresponding strategy class. In this case, it
+        could be named ColorChangeToolStrategy. This new strategy class would need to support mouse clicks,
+        and register whenever it clicks on a Shape. Fortunately, the current code for Shapes already supports
+        collision detection, so this will simply be an overlap(Tool tool) method call on each of the existing
+        shapes in the current canvas. If there is an overlap, the shape's color will be changed to the
+        ColorChange's color, which can be accomplished by calling the setColor(Color color) method.
+
+Example:
+    SelectionTool, StrokeEraser - examples of implementations for ColorChangeTool
+    ColorPickerPopup - example of an implementation for ColorChangePopup
+    SelectionToolStrategy, StrokeEraserStrategy - examples of implementations for ColorChangeToolStrategy
+--------------------------------------------------------------------------------
+
+HOW TO UNDERSTAND OUR CODE
+Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
+--------------------------------------------------------------------------------
+Name: Stroke Eraser
+
+Description:
+        The stroke eraser removes an entire stroke at once. For example, when the user
+    draws a circle, using the stroke eraser will erase the entire circle at once.
+    Note that for text, the stroke eraser erases the entire text, not one letter at a time.
+        Within this program, the stroke eraser is represented as a black dashed square of size 14,
+    centered at the mouse cursor.
+        The stroke eraser consists of ***an image icon appearing in the left button panel.
+    The stroke eraser is displayed as an image icon in the left button panel.*** When the user clicks
+    on the icon, the stroke eraser mode is activated, and a corresponding strategy for handling user
+    mouse input is applied. The stroke eraser strategy ensures that when the stroke eraser is clicked
+    or dragged across a shape, it removes the entire stroke of that shape from the canvas.
+
+Classes/Interfaces Involved:
+    Tool
+    StrokeEraser
+    ShapeStrategy
+    StrokeEraserStrategy
+    All Shape classes (e.g., Circle, Rectangle)
+    PaintPanel
+
+Implementation:
+    Below is the implementation of the stroke eraser in this application.
+
+    StrokeEraser:
+            StrokeEraser implements the Tool interface. As a result, the attributes and methods required for
+        this tool would include:
+            - the top left point of the stroke eraser's square representation
+            - the dimensions of the tool, which would be the size of the square
+            - a display(GraphicsContext g2d) method, to draw the stroke eraser's representation onto
+              the canvas and make it visible to the user, centered at the mouse cursor
+        Overall, for the implementation of the stroke eraser, the StrokeEraser class is simply responsible
+        for displaying its representation onto the canvas, PaintPanel.
+
+    StrokeEraserStrategy:
+            StrokeEraserStrategy implements the ShapeStrategy interface and handles the mouse press, mouse
+        drag, and mouse release actions for the stroke eraser tool. When the user performs a left mouse
+        press with the stroke eraser, the eraser starts the process of removing drawings. The eraser also
+        adds itself to the PaintPanel, so that the stroke eraser is rendered on the canvas.
+        This process
+        continues on as the stroke eraser is dragged around. The erasing process only ends once the user
+        has released their left mouse button.
+            The logic for determining when to erase drawings, specifically the collision detection between
+        the stroke eraser and the drawn shape, is implemented in the overlap(Tool tool) method within each
+        shape class. The approach differs for each shape, as each has its own unique geometry.
+            Overall, the StrokeEraserStrategy class detects when a stroke eraser collides with a shape, and removes
+        them from the canvas accordingly.
+--------------------------------------------------------------------------------
+Name: Precision Eraser
+
+Description:
+        The precision eraser allows the user to erase specific segments of a drawing for finer detailing.
+    It erases in the shape of a square. However, the precision eraser is implemented in a particular way:
+    it doesn't erase by removing the shape. Instead, it draws transparent squares wherever it moves,
+    creating the illusion of erasing.
+        Within this program, the precision eraser is represented as a black dashed square of size 14,
+    centered at the mouse cursor.
+        The precision eraser consists of ***an image icon appearing in the left button panel.
+    The precision eraser is displayed as an image icon in the left button panel.*** When the user clicks
+    on the icon, the precision eraser mode is activated, and a corresponding strategy for handling user
+    mouse input is applied. The precision eraser strategy ensures that the user has the customizability
+    and flexibility to erase specific aspects of a drawing.
+
+Classes/Interfaces Involved:
+    Shape
+    PrecisionEraser
+    ShapeStrategy
+    PrecisionEraserStrategy
+    PaintPanel
+
+Implementation:
+    Below is the implementation of the precision eraser in this application.
+
+    PrecisionEraser:
+            PrecisionEraser implements the Shape interface. A key feature of the eraser's attributes is
+        its color attribute, which determines its visual representation. While the user is still using
+        the precision eraser, it is displayed as a black dashed square on the canvas. Once the user finishes
+        using the eraser, the dashed square disappears by setting the color attribute to transparent, making it
+        effectively invisible.
+            PrecisionEraser is represented as a series of points, which is the path that the user drew when
+        using the precision eraser. The transparent rectangles are drawn using those points as their centre.
+            Overall, for the implementation of the precision eraser, the PrecisionEraser class is simply responsible
+        for displaying its representation onto the canvas and drawing the transparent squares in PaintPanel.
+
+    PrecisionEraserStrategy:
+            PrecisionEraserStrategy implements the ShapeStrategy interface and handles the mouse press, mouse
+        drag, and mouse release actions for the precision eraser tool. When the user performs a left mouse
+        press with the precision eraser, the eraser starts the process of 'removing' drawings by drawing
+        a transparent square that is the size of the eraser, located at the eraser's current location.
+        This process continues on as the precision eraser is dragged around. The erasing process only ends once the user
+        has released their left mouse button. As these transparent rectangles are drawn, they are stored as shapes in the
+        PaintModel, which then renders them on the canvas.
+--------------------------------------------------------------------------------
+Name: Fill Style Selector
+
+Description:
+        The fill style selector allows users to choose whether they want to draw a solid
+    shape or an outlined shape. This option does not apply to squiggles, polylines,
+    or text.
+
+Classes/Interfaces Involved:
+    View
+    ShapeChooserPanel
+
+Implementation:
+    Below is the implementation of the fill style selector in this application.
+    View:
+
+--------------------------------------------------------------------------------
+Name: Line Thickness Selector
+
+Description:
+        The line thickness selector allows users to choose how thick they want the outline
+    of their shape to be. Users select the line thickness through a slider that ranges
+    from 1-50. The default value is 1. This option does not apply when users draw solid shapes.
+
+Classes/Interfaces Involved:
+    View
+    LineThicknessSlider
+    PaintPanel
+
+Implementation:
+    Below is the implementation of the line thickness selector in this application.
+
+    View:
+            View creates the menu item "Line Thickness". When the user clicks this menu item,
+        the pop-up displaying the line thickness slider appears.
+
+    LineThicknessSlider:
+            LineThicknessSlider creates a Slider object, displays the pop-up screen onto the program
+        when appropriate, and registers when the Slider object's value has changed.
+        This is achieved by extending Slider and implementing ChangeListener, in order to support the
+        creation of the slider object and to be able to register when the slider's value has changed.
+            This class has a PaintPanel panel attribute, as the panel will be responsible for displaying
+        the slider in the program. There is also a show() method within the slider class, which will
+        create the pop-up screen and display it onto the PaintPanel. Lastly, there is an overridden
+        changed() method that automatically sets line thickness value in PaintPanel, based on the
+        slider’s value.
+--------------------------------------------------------------------------------

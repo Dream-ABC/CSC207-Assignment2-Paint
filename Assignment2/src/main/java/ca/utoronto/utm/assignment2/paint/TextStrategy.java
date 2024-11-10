@@ -26,10 +26,18 @@ public class TextStrategy implements ShapeStrategy {
         this.textEditorDialog = new TextEditorDialog(this.panel, this.text);
     }
 
+    /**
+     * Nothing occurs.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mousePressed(javafx.scene.input.MouseEvent mouseEvent) {
     }
 
+    /**
+     * Nothing occurs.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseDragged(javafx.scene.input.MouseEvent mouseEvent) {
     }

@@ -1,9 +1,8 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,6 +11,8 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Window;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -57,33 +58,17 @@ public class TextEditorDialog {
         });
     }
 
-    /**
-     * Checks if a given font supports both bold and italic styles.
-     *
-     * @param fontName the name of the font to be checked
-     * @return true if the font supports both bold and italic styles, false otherwise
-     */
     private boolean supportsBoldAndItalic(String fontName) {
         Font boldItalicFont = Font.font(fontName, FontWeight.BOLD, FontPosture.ITALIC, 12);
 
         return boldItalicFont.getStyle().contains("Bold") && boldItalicFont.getStyle().contains("Italic");
     }
 
-    /**
-     * Updates the font of the displayed text based on the current selections from the text editor dialog.
-     * Triggers a notification to the paint model to update the display accordingly.
-     */
     private void updateFont() {
         this.displayedText.setFont(this.getSelectedFont());
         this.paintPanel.getModel().notifyChange();
     }
 
-    /**
-     * Initializes the components of the text editor dialog, including the font
-     * chooser, size chooser, font style buttons (bold, italic, underline,
-     * strikethrough), and the text field. Each component is set up with relevant
-     * event handlers to update the displayed text and notify the model of changes.
-     */
     private void setBoxes() {
         // font chooser menu
         this.fontChooser = new ComboBox<>();
@@ -109,27 +94,55 @@ public class TextEditorDialog {
         });
 
         // font style buttons
-        this.boldButton = new ToggleButton("B");
-        boldButton.setStyle("-fx-font-weight: bold;");
+        this.boldButton = new ToggleButton();
+        Image image = new Image("file:src/main/java/ca/utoronto/utm/assignment2/images/bold.png");
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(15);
+        imageView.setFitWidth(15);
+        imageView.setPreserveRatio(true);
+        boldButton.setGraphic(imageView);
+        boldButton.setPrefWidth(20);
+        boldButton.setPrefHeight(20);
         boldButton.setOnAction(e -> {
             this.updateFont();
         });
 
-        this.italicButton = new ToggleButton("I");
-        italicButton.setStyle("-fx-font-style: italic;");
+        this.italicButton = new ToggleButton();
+        image = new Image("file:src/main/java/ca/utoronto/utm/assignment2/images/italic.png");
+        imageView = new ImageView(image);
+        imageView.setFitHeight(13);
+        imageView.setFitWidth(13);
+        imageView.setPreserveRatio(true);
+        italicButton.setGraphic(imageView);
+        italicButton.setPrefWidth(20);
+        italicButton.setPrefHeight(20);
         italicButton.setOnAction(e -> {
             this.updateFont();
         });
 
-        this.underlineButton = new ToggleButton("U");
-        underlineButton.setStyle("-fx-underline: true;");
+        this.underlineButton = new ToggleButton();
+        image = new Image("file:src/main/java/ca/utoronto/utm/assignment2/images/underline.png");
+        imageView = new ImageView(image);
+        imageView.setFitHeight(16);
+        imageView.setFitWidth(16);
+        imageView.setPreserveRatio(true);
+        underlineButton.setGraphic(imageView);
+        underlineButton.setPrefWidth(20);
+        underlineButton.setPrefHeight(20);
         underlineButton.setOnAction(e -> {
             this.displayedText.setUnderline(this.underlineButton.isSelected());
             this.paintPanel.getModel().notifyChange();
         });
 
-        this.strikethroughButton = new ToggleButton("S");
-        strikethroughButton.setStyle("-fx-strikethrough: true;");
+        this.strikethroughButton = new ToggleButton();
+        image = new Image("file:src/main/java/ca/utoronto/utm/assignment2/images/strikethrough.png");
+        imageView = new ImageView(image);
+        imageView.setFitHeight(15);
+        imageView.setFitWidth(15);
+        imageView.setPreserveRatio(true);
+        strikethroughButton.setGraphic(imageView);
+        strikethroughButton.setPrefWidth(20);
+        strikethroughButton.setPrefHeight(20);
         strikethroughButton.setOnAction(e -> {
             this.displayedText.setStrikethrough(this.strikethroughButton.isSelected());
             this.paintPanel.getModel().notifyChange();

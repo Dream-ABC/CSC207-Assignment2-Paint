@@ -13,7 +13,9 @@ public class AddLayerCommand implements Command {
 
     public void execute() {
         this.model.getLayers().add(layer);
+        this.model.setSelectedLayer(layer);
     }
+
     public void undo() {
         if (this.model.getLayers().size() > 1) {
             this.model.getLayers().remove(this.layer);
@@ -21,5 +23,9 @@ public class AddLayerCommand implements Command {
             history.popLastRedoCommand();
             history.undo();
         }
+    }
+
+    public String toString() {
+        return "AddLayer#" + this.layer.getWidth() + "," + this.layer.getHeight();
     }
 }

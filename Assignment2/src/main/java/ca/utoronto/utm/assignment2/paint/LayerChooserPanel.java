@@ -13,12 +13,22 @@ import javafx.scene.paint.Color;
 
 import java.util.*;
 
-
+/**
+ * A class that provides a graphical user interface for managing layers.
+ * LayerChooserPanel extends GridPane and implements the EventHandler interface
+ * to handle action events triggered by buttons representing different layers.
+ */
 public class LayerChooserPanel extends GridPane implements EventHandler<ActionEvent> {
     private final View view;
     private final PaintModel model;
     private Map<Integer, ImageView> buttonImages;
 
+    /**
+     * Constructs a LayerChooserPanel and initializes it with the given View.
+     *
+     * @param view The View associated with this LayerChooserPanel.
+     *             It provides access to the PaintModel and other necessary components.
+     */
     public LayerChooserPanel(View view) {
         this.view = view;
         this.model = view.getPaintModel();
@@ -49,6 +59,14 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         return thumbnail;
     }
 
+    /**
+     * Updates the visual representation of all layer buttons in the LayerChooserPanel.
+     *
+     * This method clears the current child nodes, retrieves the list of layers from the model
+     * and creates a thumbnail image for each layer. It then creates a button for each layer,
+     * setting the appropriate styles and event handlers based on the layer's visibility and
+     * selection status. Additionally, it adds buttons for adding and removing layers.
+     */
     public void updateAllLayers() {
 
         this.getChildren().clear();
@@ -101,8 +119,14 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         button.setText("-");
     }
 
-
-
+    /**
+     * Handles the action event triggered by the buttons in the LayerChooserPanel.
+     * This method resets the style for all buttons within the panel and updates
+     * the layer based on the button clicked.
+     *
+     * @param event The action event triggered by clicking a button. The event source
+     *              is expected to be a button which identifies the layer to be handled.
+     */
     @Override
     public void handle(ActionEvent event) {
         for (Node node : this.getChildren()) {

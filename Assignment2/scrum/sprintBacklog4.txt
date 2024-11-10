@@ -53,28 +53,19 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.401 : wenjess1 : Complete
-NAME     : Stroke Eraser working with varying line thickness and outlined shapes
-PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL : 8 hours
-ISSUE    : The current StrokeEraser doesn't erase strokes properly when
-           line thickness of shapes are changed, or when shapes are drawn
-           as outlines instead of solids.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US4.411 : wenjess1 : Complete
-NAME     : Precision Eraser
+NAME     : Precision eraser
 PRIORITY : 2
 ESTIMATE : 1 day    ACTUAL : 8 hours
 AS A     : user
 I WANT   : To be able to erase a precise section of a drawing on the canvas
 SO THAT  : I have more customizability with the Paint application.
            In particular, this would enhance my ease of control over the canvas
-           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+           (e.g., reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.421 : tianshi8 : Complete
-NAME     : Text Editor
+NAME     : Text editor
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 7 hours
 AS A     : user
@@ -85,7 +76,7 @@ SO THAT : I can create more personalized and visually distinct text elements
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.351 : hingor13 : Complete
-NAME     : Canvas Scalability
+NAME     : Canvas scalability
 PRIORITY : 2
 ESTIMATE : 3 hours    ACTUAL : 3 days
 AS A     : user
@@ -95,9 +86,9 @@ SO THAT  : I can have the freedom in changing the dimension of the canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.431 : pengxi60 : Complete
-NAME     : Draw Polyline
+NAME     : Draw polyline
 PRIORITY : 3
-ESTIMATE : 4 hours ACTUAL : 3 hours
+ESTIMATE : 4 hours    ACTUAL : 3 hours
 AS A     : user
 I WANT   : To add polylines and custom polygons on the canvas
 SO THAT  : I can have more freedom with the type of lines and shapes I can
@@ -105,7 +96,7 @@ SO THAT  : I can have more freedom with the type of lines and shapes I can
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.441 : pengxi60 : Complete
-NAME     : Magnifier Tool
+NAME     : Magnifier tool
 PRIORITY : 3
 ESTIMATE : 4 hours    ACTUAL : 6 hours
 AS A     : user
@@ -113,15 +104,24 @@ I WANT   : To be able to focus on a specific part of the canvas.
 SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.451 : hingor13 : NotStarted
+TYPE     : USER STORY US4.451 : hingor13 : Complete
 NAME     : Selection tool
 PRIORITY : 3
-ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
+ESTIMATE : 1 day    ACTUAL : 1 day
 AS A     : user
 I WANT   : To be able to select drawings on the canvas
 SO THAT  : I can register which shapes have been selected by the tool.
            This will be useful for future user stories, such as dragging
            drawings around the canvas or copying and pasting drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : USER STORY US4.452 : hingor13 : Complete
+NAME     : Dragging selected shapes
+PRIORITY : 1
+ESTIMATE : 3 hour    ACTUAL : 30 minutes
+AS A     : user
+I WANT   : To be able to drag shapes that are selected.
+SO THAT  : Reorganize my canvas and move shapes around.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.468 : tianshi8 : Complete
@@ -135,20 +135,12 @@ ISSUE    : The File menu is currently non-functional. The program should
                load a file onto the canvas
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.472 : pengxi60 : Started
-NAME     : Shape chooser UI
-PRIORITY : 3
-ESTIMATE : 2 hours    ACTUAL :
-ISSUE    : Currently the shape chooser panel is not located in the toolbar
-           and is not scalable for future additions.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.481 : hingor13 : Started
-NAME     : Undo/Redo Bug while run on initial canvas with no changes
+TYPE     : BUG BUG4.481 : hingor13 : Complete
+NAME     : Undo/Redo bug while run on initial canvas with no changes
 PRIORITY : 1
-ESTIMATE : 30 minutes    ACTUAL :
-ISSUE    : When Undo and Redo are run on a brand new canvas, issues are created since
-           duplicate canvases have been created.
+ESTIMATE : 30 minutes    ACTUAL : 30 minutes
+ISSUE    : When clicking undo/redo on a new canvas, duplicate canvases
+           are created.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.482 : wenjess1 : Complete
@@ -167,10 +159,97 @@ ISSUE    : The StrokeEraser currently removes Text prematurely,
            before the mouse cursor actually touches the Text.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.484 : pengxi60 : Completed
+TYPE     : BUG BUG4.484 : pengxi60 : Complete
 NAME     : Polyline when switching over to another shape
 PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 2 hours
 ISSUE    : When new shape is selected while polyline is not completed drawing
            it becomes un-interactable.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.491 : hingor13 : Complete
+NAME     : Executing multiple mouse actions simultaneously.
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When left click is held done and right click is pressed, it causes
+           mouse released to run making the shape null and causing errors when
+           it is continued to be dragged.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.401 : wenjess1 : Complete
+NAME     : Stroke eraser working with varying line thickness and outlined shapes
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 8 hours
+ISSUE    : The current StrokeEraser doesn't erase strokes properly when
+           line thickness of shapes are changed, or when shapes are drawn
+           as outlines instead of solids.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.442 : wenjess1 : Complete
+NAME     : Dashed lines for erasers and selection tool
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
+ISSUE    : StrokeEraser, PrecisionEraser, and SelectionTool should display as
+           dashed lines to differentiate it from shape drawings.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.486 : hingor13 : Complete
+NAME     : Dragging selected shapes extremely fast
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 10 minutes
+Issue    : When the selection tool is dragged very fast, the mouse is seen
+           outside the bounds of the current selection tool making it begin
+           to edit the bounds of the selection tool.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.471 : tianshi8 : Complete
+NAME     : Text editor dialog icons not displaying correctly
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
+Issue    : The strikethrough and italic buttons are not rendered with
+           the intended style.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.009 : hingor13 : Complete
+NAME     : Edit menu is not implemented
+PRIORITY : 2
+ESTIMATE : 2 hours    ACTUAL : 2 hours
+ISSUE    : The Edit menu is currently non-functional. The program should
+           implement the following features:
+               cut a selected shape
+               copy a selected shape
+               paste a selected shape
+               delete a selected shape
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.487 : hingor13 : Complete
+NAME     : Add command for dragging Shapes
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : Since dragging a shape is an undoable feature, a command has to
+           be implemented for it.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.488 : hingor13 : Complete
+NAME     : Rough squiggle and precision eraser drawing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the squiggle tool and precision eraser tool are used,
+           the created strokes are very rough.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.472 : pengxi60 : Started
+NAME     : Shape chooser UI
+PRIORITY : 3
+ESTIMATE : 2 hours    ACTUAL :
+ISSUE    : Currently the shape chooser panel is not located in the toolbar
+           and is not scalable for future additions.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.485 : hingor13 : InProgress
+NAME     : Fix selection tool for outlined shapes
+PRIORITY : 1
+ESTIMATE : 3 hour    ACTUAL :
+ISSUE    : When the inside of a shape that is only outlined is selected,
+           the shape should not be selected
 --------------------------------------------------------------------------

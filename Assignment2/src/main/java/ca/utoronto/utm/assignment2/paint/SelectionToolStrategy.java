@@ -13,46 +13,70 @@ public class SelectionToolStrategy implements ShapeStrategy{
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        SelectionTool selection = new SelectionTool();
-        Point origin = new Point(mouseEvent.getX(), mouseEvent.getY());
-        selection.setTopLeft(origin);
-        selection.setOrigin(origin);
-        this.panel.setSelectionTool(selection);
-        this.panel.getModel().addSelectionTool(selection);
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            if (panel.getModel().getSelectionTool() != null && panel.getModel().getSelectionTool().inBounds(mouseEvent.getX(), mouseEvent.getY())) {
+                panel.getModel().getSelectionTool().setOldLocation(new Point(mouseEvent.getX(), mouseEvent.getY()));
+                panel.getModel().shiftStart(0, 0);
+                panel.getModel().getSelectionTool().setDragging(true);
+            }
+            else {
+                SelectionTool selection = new SelectionTool();
+                Point origin = new Point(mouseEvent.getX(), mouseEvent.getY());
+                selection.setTopLeft(origin);
+                selection.setOrigin(origin);
+                this.panel.getModel().addSelectionTool(selection);
+            }
+        }
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        SelectionTool selection = panel.getSelectionTool();
+        if (panel.getModel().getSelectionTool() != null) {
+            if (panel.getModel().getSelectionTool().getDragging()) {
+                double x = mouseEvent.getX() - panel.getModel().getSelectionTool().getOldLocation().x;
+                double y = mouseEvent.getY() - panel.getModel().getSelectionTool().getOldLocation().y;
 
-        Point origin = selection.getOrigin();
+                panel.getModel().getSelectionTool().shift(x, y);
+                panel.getModel().addShift(x, y);
+                panel.getModel().getSelectionTool().setOldLocation(new Point(mouseEvent.getX(), mouseEvent.getY()));
+                this.panel.getModel().notifyChange();
+            }
+            else {
 
-        double width = Math.abs(origin.x - mouseEvent.getX());
-        double height = Math.abs(origin.y - mouseEvent.getY());
-        double x = Math.min(origin.x, mouseEvent.getX());
-        double y = Math.min(origin.y, mouseEvent.getY());
-        selection.setTopLeft(new Point(x + width/2, y + height/2));
-        selection.setDimensionX(width);
-        selection.setDimensionY(height);
+                SelectionTool selection = panel.getModel().getSelectionTool();
 
-        this.panel.getModel().addSelectionTool(selection);
+                Point origin = selection.getOrigin();
+
+                double width = Math.abs(origin.x - mouseEvent.getX());
+                double height = Math.abs(origin.y - mouseEvent.getY());
+                double x = Math.min(origin.x, mouseEvent.getX());
+                double y = Math.min(origin.y, mouseEvent.getY());
+                selection.setTopLeft(new Point(x + width / 2, y + height / 2));
+                selection.setDimensionX(width);
+                selection.setDimensionY(height);
+
+                panel.getModel().getSelectionTool().clearSelectedShapes();
+                selectShapes();
+            }
+        }
     }
 
     private void selectShapes(){
         ArrayList<Shape> currLayer = new ArrayList<>(this.panel.getModel().getSelectedLayer().getShapes());
         for (Shape shape : currLayer) {
-            if (shape.overlaps(this.panel.getSelectionTool())) {
-                this.panel.getSelectionTool().addSelectedShape(shape);
+            if (shape.overlaps(this.panel.getModel().getSelectionTool())) {
+                this.panel.getModel().getSelectionTool().addSelectedShape(shape);
             }
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        selectShapes();
-
-        System.out.println(this.panel.getSelectionTool().getSelectedShapes().size());
-        //doubt I need this
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            panel.getModel().getSelectionTool().setDragging(false);
+            System.out.println(this.panel.getModel().getSelectionTool().getSelectedShapes().size());
+            //doubt I need this
+        }
     }
 
 }

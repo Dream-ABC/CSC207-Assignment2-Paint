@@ -4,13 +4,13 @@ FeatureName: Stroke Eraser
 Description: 
 	The stroke eraser removes an entire stroke at once. For example, when the user
 	draws a circle, using the stroke eraser will erase the entire circle at once.
-	For text, the stroke eraser erases the entire text, not one letter at a time.
+	Note that for text, the stroke eraser erases the entire text, not one letter at a time.
 
 Reference: 
-	US3.311 - Stroke Eraser
+	US3.311 - Stroke eraser
 	BUG4.482 - Improve precision of registering circle overlap for erasing
 	BUG4.483 - Improve precision of registering text overlap for erasing
-	BUG4.401 - Stroke Eraser working with varying line thickness and outlined shapes
+	BUG4.401 - Stroke eraser working with varying line thickness and outlined shapes
 
 --------------------------------------------------------------------------------
 FeatureName: Precision Eraser
@@ -20,7 +20,8 @@ Description:
 	for finer detailing. It erases in the shape of a square.
 
 Reference: 
-	US4.411 - Precision Eraser
+	US4.411 - Precision eraser
+	BUG4.488 - Rough squiggle and precision eraser drawing
 --------------------------------------------------------------------------------
 FeatureName: Fill Style Selector
 
@@ -36,8 +37,8 @@ FeatureName: Line Thickness Selector
 
 Description:
 	The line thickness selector allows users to choose how thick they want the outline
-	of their shape to be. Users select the line thickness through a slider that ranges
-	from 1-10. This option does not apply when users draw solid shapes.
+    of their shape to be. Users select the line thickness through a slider that ranges
+    from 1-50. The default value is 1.
 
 Reference:
 	US4.007 - Line thickness selector
@@ -48,7 +49,7 @@ Description:
 	...
 
 Reference:
-	US4.431 - Draw Polyline
+	US4.431 - Draw polyline
 	BUG4.484 - Polyline when switching over to another shape
 --------------------------------------------------------------------------------
 FeatureName: Magnifier Tool
@@ -57,7 +58,7 @@ Description:
 	...
 
 Reference:
-	US4.441 - Magnifier Tool
+	US4.441 - Magnifier tool
 --------------------------------------------------------------------------------
 FeatureName: Paint GUI
 
@@ -70,23 +71,34 @@ Reference:
 FeatureName: Color Selector
 
 Description:
-	...
+	The color selector tool allows users to choose any color for drawing shapes,
+	offering flexibility in color selection. Users can customize colors in three
+	different modes: HSB, RGB, and Web (Hexadecimal) color codes. Additionally,
+	users can adjust the opacity of the selected color, enabling more precise
+	and dynamic control over colors.
 
 Reference:
-	US3.005 - Color Selector
+	US3.005 - Color selector
 --------------------------------------------------------------------------------
 FeatureName: Layer Support
 
 Description:
-	...
+    The layer support feature allows users to add and draw on different layers.
+    Users can switch between layers to draw various shapes and freely delete
+    unwanted layers. Additionally, users can set any layer to be invisible.
 
 Reference:
-	US3.331 - Layer Support
+	US3.331 - Layer support
 --------------------------------------------------------------------------------
 FeatureName: File Menu
 
 Description:
-	...
+    The File menu allows users to create a new file, save their current progress,
+    or open a previously saved file. The menu supports two types of files: .png
+    and a custom file type .paint, which can only be opened by this program.
+    When users create a new file or open a .paint file, all current progress will be lost.
+    However, when users open a .png file, its content will be set as the background
+    of the current layer without losing any progress.
 
 Reference:
 	BUG4.468 - File menu is not implemented
@@ -94,10 +106,15 @@ Reference:
 FeatureName: Text Editor
 
 Description:
-	...
+	The text editor tool allows users to type text in a customized font and color.
+    When users choose to add text at any position on the canvas, a separate window
+    will pop up, where users can adjust the font and size using a scroll menu.
+    Additionally, users can set the text to be bold, italic, underlined, or
+    strikethrough using dedicated buttons.
 
 Reference:
-	US4.421 - Text Editor
+	US4.421 - Text editor
+	BUG BUG4.471 : Text editor dialog icons not displaying correctly
 --------------------------------------------------------------------------------
 FeatureName: Undo/Redo
 
@@ -113,7 +130,7 @@ Description:
 	...
 
 Reference:
-	US3.351 - Canvas Scalability
+	US3.351 - Canvas scalability
 --------------------------------------------------------------------------------
 FeatureName: Selection Tool
 
@@ -122,4 +139,15 @@ Description:
 
 Reference:
 	US4.451 - Selection tool
+	US4.452 - Dragging selected shapes
+	BUG4.486 - Dragging selected shapes extremely fast
+--------------------------------------------------------------------------------
+FeatureName: Cut/Copy/Paste/Delete
+
+Description:
+	...
+
+Reference:
+	BUG4.009 - Edit menu is not implemented
+	BUG4.487 - Add command for dragging shapes
 --------------------------------------------------------------------------------

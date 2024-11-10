@@ -6,6 +6,10 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -20,11 +24,13 @@ public class View implements EventHandler<ActionEvent> {
     private final ToolbarPanel toolbarPanel;
     private final StatusbarPanel statusbarPanel;
     private final ZoomPanel zoomPanel;
+    private final ShapeChooserPanel shapeChooserPanel;
     private final ColorPickerPopup colorPickerPopup;
     private final LayerChooserPanel layerChooserPanel;
     private final LayerChooserController layerChooserController;
     private final ResizableCanvas canvas;
     private LineThicknessSlider lineThicknessSlider;
+    private FileHandlePopup fileHandlePopup;
 
     private BorderPane root;
     private VBox topPanel;
@@ -38,8 +44,7 @@ public class View implements EventHandler<ActionEvent> {
         this.paintPanel = new PaintPanel(paintModel);
         this.canvas = new ResizableCanvas(700, 400, paintModel, paintPanel);
 
-        this.toolbarPanel = new ToolbarPanel(paintModel);
-        paintModel.addObserver(toolbarPanel);
+        this.toolbarPanel = new ToolbarPanel(this.paintModel);
 
         this.statusbarPanel = new StatusbarPanel();
         paintModel.addObserver(statusbarPanel);
@@ -47,8 +52,10 @@ public class View implements EventHandler<ActionEvent> {
         this.zoomPanel = new ZoomPanel(paintModel, canvas);
         paintModel.addObserver(zoomPanel);
 
+        this.shapeChooserPanel = new ShapeChooserPanel(paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(layerChooserPanel, paintModel);
+        this.fileHandlePopup = new FileHandlePopup(this.paintPanel);
 
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
@@ -59,7 +66,7 @@ public class View implements EventHandler<ActionEvent> {
         spacer.setStyle("-fx-background: #f8f1f0");
 
         bottomPanel = new HBox();
-        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS); // Let the spacer expand
+        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS);
         bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
 
         canvasHolder = new ScrollPane(this.canvas);
@@ -85,8 +92,7 @@ public class View implements EventHandler<ActionEvent> {
         root.setStyle("-fx-background: #f8f1f0");
 
         root.setCenter(canvasHolder);
-//        root.setLeft(this.shapeChooserPanel);
-//        root.setRight(layerPane);
+        root.setLeft(this.shapeChooserPanel);
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
         this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
@@ -176,6 +182,10 @@ public class View implements EventHandler<ActionEvent> {
         menuItem.setOnAction(this);
         menu.getItems().add(menuItem);
 
+        menuItem = new MenuItem("Delete");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
         menuBar.getMenus().add(menu);
 
         // Another menu for View
@@ -183,13 +193,13 @@ public class View implements EventHandler<ActionEvent> {
         menu = new Menu("View");
 
         menuItem = new MenuItem("Colors");
-        menuItem.setOnAction(this); // Show the color popup
+        menuItem.setOnAction(this);
         menu.getItems().add(menuItem);
         menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
         menuItem = new MenuItem("Line Thickness");
         this.lineThicknessSlider = new LineThicknessSlider(this.paintPanel);
-        menuItem.setOnAction(event -> this.lineThicknessSlider.show()); // Show the slider popup
+        menuItem.setOnAction(event -> this.lineThicknessSlider.show());
         menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);
@@ -204,10 +214,24 @@ public class View implements EventHandler<ActionEvent> {
             Platform.exit();
         } else if (command.equals("Colors")) {
             this.colorPickerPopup.display();
-        } else if (command.equals("Undo")){
+        } else if (command.equals("Undo")) {
             this.paintModel.undo();
-        } else if (command.equals("Redo")){
+        } else if (command.equals("Redo")) {
             this.paintModel.redo();
+        } else if (command.equals("New")) {
+            this.fileHandlePopup.newFile();
+        } else if (command.equals("Open")) {
+            this.fileHandlePopup.openFile();
+        } else if (command.equals("Save")) {
+            this.fileHandlePopup.saveFile();
+        } else if (command.equals("Copy")){
+            this.paintModel.copy();
+        } else if (command.equals("Paste")){
+            this.paintModel.paste();
+        } else if (command.equals("Cut")) {
+            this.paintModel.cut();
+        } else if (command.equals("Delete")) {
+            this.paintModel.delete();
         }
 
         this.paintModel.notifyChange();
