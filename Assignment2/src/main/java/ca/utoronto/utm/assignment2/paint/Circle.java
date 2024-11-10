@@ -16,6 +16,7 @@ public class Circle implements Shape {
     private Color color;
     private String fillStyle;
     private double lineThickness;
+    private Point originalPosition;
 
     /**
      * Constructs a default black circle with a diameter of 0.
@@ -44,6 +45,7 @@ public class Circle implements Shape {
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
+        this.originalPosition = topLeft.copy();
     }
 
     /**
@@ -183,7 +185,9 @@ public class Circle implements Shape {
      */
     @Override
     public void shift(double x, double y) {
+        System.out.println("before shift:" +this.topLeft.x + "," + this.topLeft.y);
         this.topLeft.shift(x, y);
+        System.out.println("after shift:" +this.topLeft.x + "," + this.topLeft.y);
     }
 
     /**
@@ -244,13 +248,13 @@ public class Circle implements Shape {
     }
 
     /**
-     * Returns a string representation of the Circle instance, including its
+     * Returns a string representation of the Circle instance, including its original
      * top-left point, center point, diameter, color, fill style, and line thickness.
      *
      * @return a string representation of the Circle instance
      */
     public String toString() {
-        return "Circle{" + this.topLeft.x + "," + this.topLeft.y + ","
+        return "Circle{" + this.originalPosition.x + "," + this.originalPosition.y + ","
                 + this.centre.x + "," + this.centre.y + ","
                 + this.diameter + "," + this.color.toString() + ","
                 + this.fillStyle + "," + this.lineThickness + "}";

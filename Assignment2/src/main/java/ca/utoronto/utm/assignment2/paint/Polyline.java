@@ -18,6 +18,7 @@ public class Polyline implements Shape {
     private Color color;
     private boolean isClosed;
     private double lineThickness;
+    private ArrayList<Point> originalPosition;
 
     /**
      * Constructs a default black polyline with no points.
@@ -26,6 +27,7 @@ public class Polyline implements Shape {
      */
     public Polyline(double lineThickness) {
         this.points = new ArrayList<>();
+        this.originalPosition = new ArrayList<>();
         this.color = Color.BLACK;
         this.isClosed = false;
         this.lineThickness = lineThickness;
@@ -65,6 +67,7 @@ public class Polyline implements Shape {
      */
     public void addPoint(Point p) {
         this.points.add(p);
+        this.originalPosition.add(p.copy());
     }
 
     /**
@@ -72,7 +75,10 @@ public class Polyline implements Shape {
      * it is not the only point in the user's Polyline drawing.
      */
     public void popPoint() {
-        if (this.points.size() > 1) this.points.removeLast();
+        if (this.points.size() > 1) {
+            this.points.removeLast();
+            this.originalPosition.removeLast();
+        }
     }
 
     /**
@@ -233,7 +239,7 @@ public class Polyline implements Shape {
     public String toString() {
         // get all points
         StringBuilder points = new StringBuilder();
-        for (Point p : this.points) {
+        for (Point p : this.originalPosition) {
             points.append(p.x + "," + p.y + ",");
         }
 

@@ -39,10 +39,12 @@ public class StrokeEraserCommand implements Command {
         }
     }
 
-    public ArrayList<Shape> getRemovedShapes() {
-        return removedShapes;
-    }
-
+    /**
+     * Returns a string representation of the StrokeEraserCommand instance,
+     * including the indices of the shapes associated with this command.
+     *
+     * @return a string representation of the StrokeEraserCommand instance
+     */
     public String toString() {
 
         StringBuilder shapes = new StringBuilder();

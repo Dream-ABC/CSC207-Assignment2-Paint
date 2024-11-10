@@ -9,7 +9,6 @@ public class ChangeLayerVisibilityCommand implements Command {
         this.layer = l;
         this.model = m;
         this.index = m.getLayers().indexOf(this.layer);
-        System.out.println("visibility:"+this.index);
     }
 
     public void execute() {
@@ -21,7 +20,6 @@ public class ChangeLayerVisibilityCommand implements Command {
     }
 
     public String toString() {
-        System.out.println("visibility stored:"+this.index);
         return "ChangeVisibility#" + this.index;
     }
 }

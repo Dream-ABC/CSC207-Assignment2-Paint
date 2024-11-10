@@ -18,6 +18,7 @@ public class Triangle extends Polygon implements Shape {
     private Color color;
     private String fillStyle;
     private double lineThickness;
+    private Point originalPosition;
 
     /**
      * Constructs a default black triangle with a base and height of 0.
@@ -47,6 +48,7 @@ public class Triangle extends Polygon implements Shape {
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
+        this.originalPosition = topLeft.copy();
     }
 
     /**
@@ -355,13 +357,14 @@ public class Triangle extends Polygon implements Shape {
     }
 
     /**
-     * Returns a string representation of the Triangle instance, including its top-left coordinates,
-     * base, height, origin coordinates, fill style, line thickness, and color.
+     * Returns a string representation of the Triangle instance, including its original
+     * top-left coordinates, base, height, origin coordinates, fill style, line thickness,
+     * and color.
      *
      * @return a string representation of the Triangle instance
      */
     public String toString() {
-        return "Triangle{" + this.topLeft.x + "," + this.topLeft.y + "," + this.base + "," + this.height + ","
+        return "Triangle{" + this.originalPosition.x + "," + this.originalPosition.y + "," + this.base + "," + this.height + ","
                 + this.origin.x + "," + this.origin.y + "," + this.fillStyle + "," + this.lineThickness + ","
                 + this.color.toString() + "}";
     }

@@ -14,57 +14,74 @@ public class SelectionTool implements Tool {
     private final ArrayList<Shape> selectedShapes;
     private Point oldLocation;
     private boolean dragging;
-
+    private PaintLayer layer;
 
     /**
      * Constructs a default black rectangle with a width and height of 0.
      */
-    public SelectionTool() {
+    public SelectionTool(PaintLayer layer) {
         this.dimensionX = 0;
         this.dimensionY = 0;
         selectedShapes = new ArrayList<>();
         dragging = false;
+        this.layer = layer;
     }
 
-    public Point getTopLeft(){
+    public Point getTopLeft() {
         return this.topLeft;
     }
+
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
     }
-    public Point getOrigin(){
+
+    public Point getOrigin() {
         return this.origin;
     }
+
     public void setOrigin(Point origin) {
         this.origin = origin;
     }
 
-    public double getDimensionX(){
+    public double getDimensionX() {
         return this.dimensionX;
     }
+
     public void setDimensionX(double dimensionX) {
         this.dimensionX = dimensionX;
     }
-    public double getDimensionY(){
+
+    public double getDimensionY() {
         return this.dimensionY;
     }
+
     public void setDimensionY(double dimensionY) {
         this.dimensionY = dimensionY;
     }
+
     public ArrayList<Shape> getSelectedShapes() {
         return selectedShapes;
     }
+
     public void addSelectedShape(Shape shape) {
         this.selectedShapes.add(shape);
     }
-    public Point getOldLocation() {return oldLocation;}
-    public void setOldLocation(Point oldLocation) {this.oldLocation = oldLocation;}
+
+    public Point getOldLocation() {
+        return oldLocation;
+    }
+
+    public void setOldLocation(Point oldLocation) {
+        this.oldLocation = oldLocation;
+    }
+
     public void shift(double x, double y) {
         this.topLeft.shift(x, y);
     }
+
     public boolean inBounds(double x, double y) {
-        boolean a = this.topLeft.x - dimensionX/2.0 <= x && x <= this.topLeft.x + dimensionX/2.0;
-        boolean b = this.topLeft.y - dimensionY/2.0 <= y && y <= this.topLeft.y + dimensionY/2.0;
+        boolean a = this.topLeft.x - dimensionX / 2.0 <= x && x <= this.topLeft.x + dimensionX / 2.0;
+        boolean b = this.topLeft.y - dimensionY / 2.0 <= y && y <= this.topLeft.y + dimensionY / 2.0;
         return a && b;
     }
 
@@ -75,12 +92,13 @@ public class SelectionTool implements Tool {
     public void setDragging(boolean dragging) {
         this.dragging = dragging;
     }
+
     public boolean getDragging() {
         return this.dragging;
     }
 
     public SelectionTool copy() {
-        SelectionTool s = new SelectionTool();
+        SelectionTool s = new SelectionTool(layer);
         s.setTopLeft(this.topLeft.copy());
         s.setDimensionX(this.dimensionX);
         s.setDimensionY(this.dimensionY);
@@ -89,13 +107,60 @@ public class SelectionTool implements Tool {
 
     /**
      * Displays the Rectangle with user-created color and size.
+     *
      * @param g2d GraphicsContext
      */
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
         g2d.setStroke(Color.BLACK);
         g2d.setLineDashes(5, 3);
-        g2d.strokeRect(this.topLeft.x - dimensionX/2.0, this.topLeft.y-dimensionY/2.0,
+        g2d.strokeRect(this.topLeft.x - dimensionX / 2.0, this.topLeft.y - dimensionY / 2.0,
                 this.dimensionX, this.dimensionY);
+    }
+
+    /**
+     * Sets the properties of the SelectionTool based on the provided data array.
+     *
+     * @param data an array of strings containing the following information in order:
+     *             data[0] - x-coordinate of top-left point
+     *             data[1] - y-coordinate of top-left point
+     *             data[2] - x-coordinate of origin point
+     *             data[3] - y-coordinate of origin point
+     *             data[4] - dimension in X direction
+     *             data[5] - dimension in Y direction
+     *             data[6] - x-coordinate of the old location
+     *             data[7] - y-coordinate of the old location
+     *             data[8] - dragging status (true or false)
+     *             data[9 and onwards] - indices of selected shapes in the layer's shape list
+     */
+    public void setTool(String[] data) {
+        this.topLeft = new Point(Double.parseDouble(data[0]), Double.parseDouble(data[1]));
+        this.origin = new Point(Double.parseDouble(data[2]), Double.parseDouble(data[3]));
+        this.dimensionX = Double.parseDouble(data[4]);
+        this.dimensionY = Double.parseDouble(data[5]);
+        this.oldLocation = new Point(Double.parseDouble(data[6]), Double.parseDouble(data[7]));
+        this.dragging = Boolean.parseBoolean(data[8]);
+        for (int i = 9; i < data.length; i++) {
+            int index = Integer.parseInt(data[i]);
+            this.selectedShapes.add(this.layer.getShapes().get(index));
+        }
+    }
+
+    /**
+     * Returns a string representation of the SelectionTool instance, including
+     * the top-left coordinates, the origin, dimensions, old location, dragging status,
+     * and indices of the selected shapes.
+     *
+     * @return a string representation of the SelectionTool instance
+     */
+    public String toString() {
+        StringBuilder shapes = new StringBuilder();
+        for (Shape s : this.selectedShapes) {
+            shapes.append(this.layer.getShapes().indexOf(s)).append(",");
+        }
+
+        return "Selection Tool{" + this.topLeft.x + "," + this.topLeft.y + ","
+                + this.origin.x + "," + this.origin.y + "," + this.dimensionX + "," + this.dimensionY + ","
+                + this.oldLocation.x + "," + this.oldLocation.y + "," + this.dragging + "," + shapes + "}";
     }
 }

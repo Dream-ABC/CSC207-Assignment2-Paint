@@ -18,6 +18,7 @@ public class Text implements Shape {
     private boolean isStrikethrough;
     private boolean isUnderlined;
     private Point topLeft;
+    private Point originalPosition;
 
     /**
      * Constructs a Text object with default settings.
@@ -37,6 +38,7 @@ public class Text implements Shape {
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
+        this.originalPosition = topLeft.copy();
     }
 
     /**
@@ -234,7 +236,7 @@ public class Text implements Shape {
 
     /**
      * Returns a string representation of the Text instance, including its text content,
-     * font name, font size, top-left position coordinates, style flags for bold, italic,
+     * font name, font size, original top-left position coordinates, style flags for bold, italic,
      * underlined, and strikethrough, as well as color.
      *
      * @return a string representation of the Text instance
@@ -242,7 +244,7 @@ public class Text implements Shape {
     public String toString() {
         return "Text{" + this.textNode.getText() + ","
                 + this.textNode.getFont().getName() + "," + this.textNode.getFont().getSize() + ","
-                + this.topLeft.x + "," + this.topLeft.y + ","
+                + this.originalPosition.x + "," + this.originalPosition.y + ","
                 + this.textNode.getFont().getStyle().contains("Bold") + ","
                 + this.textNode.getFont().getStyle().contains("Italic") + ","
                 + this.isStrikethrough + "," + this.isUnderlined + ","

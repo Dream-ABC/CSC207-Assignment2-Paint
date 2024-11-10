@@ -29,6 +29,9 @@ public class PatternParser {
         String commandType = content.substring(0, content.indexOf("#"));
         int beginIndex = content.indexOf("#") + 1;
 
+        // All arraylist that may be used
+        ArrayList<Shape> shapes;
+
         // Maps the command type to its corresponding case
         switch (commandType) {
             case "WIDTH":
@@ -76,7 +79,7 @@ public class PatternParser {
             case "EraserStroke":
                 String[] shapeIndices = content.substring(beginIndex).split(",");
 
-                ArrayList<Shape> shapes = new ArrayList<>();
+                shapes = new ArrayList<>();
 
                 // Gets all the removed shapes
                 for (String index : shapeIndices) {
@@ -89,7 +92,48 @@ public class PatternParser {
                     model.removeShape(s);
                 }
                 model.getHistory().addToLast(shapes);
-                return null; // already executed
+                return null;  // already executed
+
+            case "Paste":
+                // Restores the selection tool for the paste command
+                String[] toolData = content.substring(content.indexOf("Selection Tool{") + 1).split(",");
+                SelectionTool tool = new SelectionTool(model.getSelectedLayer());
+                tool.setTool(toolData);
+
+                // Restores shapes to paste
+                shapes = new ArrayList<>();
+                for (String index : content.substring(content.indexOf("}") + 1).split(",")) {
+                    int i = Integer.parseInt(index);
+                    shapes.add(model.getSelectedLayer().getShapes().get(i));
+                }
+
+                return new PasteCommand(model.getSelectedLayer(), history, shapes, tool, model);
+
+            case "DeleteSelected":
+                shapes = new ArrayList<>();
+                for (String index : content.substring(beginIndex).split(",")) {
+                    int i = Integer.parseInt(index);
+                    shapes.add(model.getSelectedLayer().getShapes().get(i));
+                }
+
+                return new DeleteSelectedCommand(model.getSelectedLayer(), history, shapes);
+
+            case "Drag":
+                double x = Double.parseDouble(content.substring(beginIndex, content.indexOf("&"))
+                        .split(",")[0]);
+                double y = Double.parseDouble(content.substring(beginIndex, content.indexOf("&"))
+                        .split(",")[1]);
+
+                shapes = new ArrayList<>();
+                for (String index : content.substring(content.indexOf("&") + 1).split(",")) {
+                    int i = Integer.parseInt(index);
+                    shapes.add(model.getSelectedLayer().getShapes().get(i));
+                }
+
+                DragCommand drag = new DragCommand(shapes, 0, 0, model.getSelectedLayer());
+                history.execute(drag);
+                drag.addShift(x, y);
+                return null;  // already executed
 
             default:
                 return null;

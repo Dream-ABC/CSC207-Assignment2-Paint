@@ -14,6 +14,7 @@ public class Squiggle implements Shape {
     private final ArrayList<Point> points;
     private Color color;
     private double lineThickness;
+    private ArrayList<Point> originalPosition;
 
     /**
      * Constructs a default black squiggle with no points.
@@ -22,6 +23,7 @@ public class Squiggle implements Shape {
      */
     public Squiggle(double lineThickness) {
         this.points = new ArrayList<>();
+        this.originalPosition = new ArrayList<>();
         this.color = Color.BLACK;
         this.lineThickness = lineThickness;
     }
@@ -33,6 +35,7 @@ public class Squiggle implements Shape {
      */
     public void addPoint(Point p) {
         this.points.add(p);
+        this.originalPosition.add(p.copy());
     }
 
     /**
@@ -145,7 +148,7 @@ public class Squiggle implements Shape {
      */
     public String toString() {
         StringBuilder points = new StringBuilder();
-        for (Point p : this.points) {
+        for (Point p : this.originalPosition) {
             points.append(p.x + "," + p.y + ",");
         }
         return "Squiggle{" + this.lineThickness + "," + this.color.toString() + "," + points + "}";

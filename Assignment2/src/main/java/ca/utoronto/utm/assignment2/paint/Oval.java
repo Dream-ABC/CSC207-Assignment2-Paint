@@ -17,6 +17,7 @@ public class Oval implements Shape {
     private Color color;
     private String fillStyle;
     private double lineThickness;
+    private Point originalPosition;
 
     /**
      * Constructs a default black oval with a width and height of 0.
@@ -54,6 +55,7 @@ public class Oval implements Shape {
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
+        this.originalPosition = topLeft.copy();
     }
 
     /**
@@ -260,14 +262,14 @@ public class Oval implements Shape {
     }
 
     /**
-     * Returns a string representation of the Oval instance, including its coordinates
+     * Returns a string representation of the Oval instance, including its original coordinates
      * of the top-left point, width, height, coordinates of the origin, color, fill style,
      * and line thickness.
      *
      * @return a string representation of the Oval instance
      */
     public String toString() {
-        return "Oval{" + this.topLeft.x + "," + this.topLeft.y + ","
+        return "Oval{" + this.originalPosition.x + "," + this.originalPosition.y + ","
                 + this.width + "," + this.height + ","
                 + this.origin.x + "," + this.origin.y + ","
                 + this.color.toString() + ","

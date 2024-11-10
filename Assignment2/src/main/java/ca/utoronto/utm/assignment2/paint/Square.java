@@ -16,6 +16,7 @@ public class Square implements Shape {
     private Color color;
     private String fillStyle;
     private double lineThickness;
+    private Point originalPosition;
 
     /**
      * Constructs a default black square with a size of 0.
@@ -44,6 +45,7 @@ public class Square implements Shape {
      */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
+        this.originalPosition = topLeft.copy();
     }
 
     /**
@@ -250,14 +252,14 @@ public class Square implements Shape {
     }
 
     /**
-     * Returns a string representation of the Square instance, including its top-left
-     * point coordinates, origin point coordinates, size, color, fill style,
+     * Returns a string representation of the Square instance, including its original
+     * top-left point coordinates, origin point coordinates, size, color, fill style,
      * and line thickness.
      *
      * @return a string representation of the Square instance
      */
     public String toString() {
-        return "Square{" + this.topLeft.x + "," + this.topLeft.y + ","
+        return "Square{" + this.originalPosition.x + "," + this.originalPosition.y + ","
                 + this.origin.x + "," + this.origin.y + ","
                 + this.size + "," + this.color.toString() + ","
                 + this.fillStyle + "," + this.lineThickness + "}";
