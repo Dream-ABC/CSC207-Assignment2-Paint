@@ -66,7 +66,7 @@ public class View implements EventHandler<ActionEvent> {
         spacer.setStyle("-fx-background: #f8f1f0");
 
         bottomPanel = new HBox();
-        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS); // Let the spacer expand
+        HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS);
         bottomPanel.getChildren().addAll(this.statusbarPanel, spacer, this.zoomPanel);
 
         canvasHolder = new ScrollPane(this.canvas);
@@ -93,7 +93,6 @@ public class View implements EventHandler<ActionEvent> {
 
         root.setCenter(canvasHolder);
         root.setLeft(this.shapeChooserPanel);
-//        root.setRight(layerPane);
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
         this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
@@ -190,13 +189,13 @@ public class View implements EventHandler<ActionEvent> {
         menu = new Menu("View");
 
         menuItem = new MenuItem("Colors");
-        menuItem.setOnAction(this); // Show the color popup
+        menuItem.setOnAction(this);
         menu.getItems().add(menuItem);
         menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
         menuItem = new MenuItem("Line Thickness");
         this.lineThicknessSlider = new LineThicknessSlider(this.paintPanel);
-        menuItem.setOnAction(event -> this.lineThicknessSlider.show()); // Show the slider popup
+        menuItem.setOnAction(event -> this.lineThicknessSlider.show());
         menu.getItems().add(menuItem);
 
         menuBar.getMenus().add(menu);
@@ -220,7 +219,6 @@ public class View implements EventHandler<ActionEvent> {
         } else if (command.equals("Open")) {
             this.fileHandlePopup.openFile();
         } else if (command.equals("Save")) {
-//            this.paintModel.saveFile(new FileHandler(this.paintPanel));
             this.fileHandlePopup.saveFile();
         }
 

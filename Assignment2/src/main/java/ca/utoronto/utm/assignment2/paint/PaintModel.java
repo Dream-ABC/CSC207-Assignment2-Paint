@@ -58,14 +58,6 @@ public class PaintModel extends Observable {
     }
 
     public void addLayer() {
-//        PaintLayer layer;
-//        if (this.selectedLayer == null) {
-//            layer = new PaintLayer();
-//        } else {
-//            layer = new PaintLayer(this.selectedLayer.getWidth(), this.selectedLayer.getHeight());
-//        }
-//        history.execute(new AddLayerCommand(this, layer, history));
-        // this.selectedLayer = layer;
         PaintLayer layer = new PaintLayer();
         history.execute(new AddLayerCommand(this, layer, history));
         this.selectedLayer = layer;
@@ -289,7 +281,7 @@ public class PaintModel extends Observable {
         StringBuilder allCommands = new StringBuilder();
         Stack<Command> undoStack = this.history.getUndoStack();
 
-        // remove init AddLayerCommand, since it is autometically executed when starting the program
+        // remove init AddLayerCommand, since it is automatically executed when starting the program
         for (Command command : undoStack.subList(1, undoStack.size())) {
             allCommands.append(command.toString());
             allCommands.append("\n");

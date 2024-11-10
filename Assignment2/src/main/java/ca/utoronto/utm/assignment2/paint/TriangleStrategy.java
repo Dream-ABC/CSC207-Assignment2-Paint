@@ -16,12 +16,10 @@ public class TriangleStrategy implements ShapeStrategy {
             Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
             Point origin = new Point(topLeft.x, topLeft.y);
 
-            // Create a triangle using factory
             ShapeFactory shapeFactory = panel.getShapeFactory();
             Triangle triangle = (Triangle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
             this.panel.setCurrentShape(triangle);
 
-            // Set info of triangle (radius=0)
             triangle.setOrigin(origin);
             triangle.setTopLeft(topLeft);
             triangle.updatePoints();

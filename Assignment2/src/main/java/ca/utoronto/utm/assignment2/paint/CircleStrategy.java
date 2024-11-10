@@ -15,12 +15,11 @@ public class CircleStrategy implements ShapeStrategy {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
 
             Point firstClick = new Point(mouseEvent.getX(), mouseEvent.getY());
-            // Create a circle using factory
+
             ShapeFactory shapeFactory = panel.getShapeFactory();
             Circle circle = (Circle) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
             this.panel.setCurrentShape(circle);
 
-            // Set info of circle (radius=0)
             circle.setCentre(firstClick);
             circle.setTopLeft(firstClick);
             circle.setColor(this.panel.getColor());
@@ -40,7 +39,6 @@ public class CircleStrategy implements ShapeStrategy {
             Point newTopLeft = new Point(newX, newY);
             circle.setTopLeft(newTopLeft);
             circle.setDiameter(radius * 2);
-            // this.panel.getModel().addCircle(circle);
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShape(circle);

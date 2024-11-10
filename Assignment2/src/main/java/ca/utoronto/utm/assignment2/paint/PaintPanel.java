@@ -47,7 +47,6 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         eventHandlers.put(MouseEvent.MOUSE_PRESSED, event -> strategy.mousePressed(event));
         eventHandlers.put(MouseEvent.MOUSE_DRAGGED, event -> strategy.mouseDragged(event));
         eventHandlers.put(MouseEvent.MOUSE_RELEASED, event -> strategy.mouseReleased(event));
-        // add more mouse events here
     }
 
     public String getMode() {

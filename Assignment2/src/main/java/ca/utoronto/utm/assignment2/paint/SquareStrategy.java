@@ -16,12 +16,10 @@ public class SquareStrategy implements ShapeStrategy {
             Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
             Point origin = new Point(topLeft.x, topLeft.y);
 
-            // Create a circle using factory
             ShapeFactory shapeFactory = panel.getShapeFactory();
             Square square = (Square) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
             this.panel.setCurrentShape(square);
 
-            // Set info of circle (radius=0)
             square.setOrigin(origin);
             square.setTopLeft(topLeft);
             square.setColor(this.panel.getColor());

@@ -187,9 +187,6 @@ public class Polyline implements Shape {
             double y = Double.parseDouble(data[i + 1]);
             this.points.add(new Point(x, y));
         }
-//        if (this.points.size() > 1) {
-//            this.points.add(this.points.get(0));
-//        }
     }
     @Override
     public void shift(double x, double y) {
