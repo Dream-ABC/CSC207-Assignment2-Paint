@@ -183,10 +183,10 @@ public class Circle implements Shape {
     }
 
     /**
-     * Shifts the top left point of Circle by (x,y).
+     * Shifts the top left point of Circle by the specified horizontal and vertical offsets.
      *
-     * @param x the horizontal shift
-     * @param y the vertical shift
+     * @param x the horizontal offset
+     * @param y the vertical offset
      */
     @Override
     public void shift(double x, double y) {
