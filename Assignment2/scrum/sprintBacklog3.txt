@@ -7,23 +7,32 @@
 
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.004 : pengxi60 : Complete
-NAME     : Architecture behind Model is poor
+NAME     : Architecture behind model is poor
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 ISSUE    : Having a list of different types of drawable things in the
            model is cumbersome. In fact, it is currently incorrect, with
-           Squiggle's not drawing properly. Need to re-architect the Model
-           so that it is more flexible, and easier to work with.
-           Consider some design patterns, or change of responsibility
-           here.
+           Squiggle's not drawing properly. We need to re-architect the Model
+           so that it is more flexible and easier to work with.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG3.371 : wenjess1 : Complete
 NAME     : Default shape selection is incorrect
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : When the user launches the Paint program, the default shape selection is set to Circle.
-           It would be best to have no default shape selected.
+ISSUE    : When the user launches the Paint program, the default shape
+           selection is set to Circle. It would be best to have no default
+           shape selected.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG3.341 : hingor13 : Complete
+NAME     : Redundant opacity slider
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
+ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
+           already available in the color picker tool. Removing the slider
+           will simplify the UI and reduce potential conflicts in opaqueness
+           control.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.361 : pengxi60 : Complete
@@ -31,7 +40,7 @@ NAME     : Paint GUI overhaul
 PRIORITY : 1
 ESTIMATE : (1 hour, 2 hours, 4 hours, 1 day, 2 days, 4 days)    ACTUAL :
 AS A     : user
-I WANT   : An appealing and interactable user interface
+I WANT   : An appealing and interactable user interface.
 SO THAT  : I can work in a flexible and user-friendly environment.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -60,11 +69,11 @@ SO THAT  :  I can use consistent colors and easily switch colors while
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.311 : wenjess1 : Complete
-NAME     : Stroke Eraser
+NAME     : Stroke eraser
 PRIORITY : 2
 ESTIMATE : 1 day    ACTUAL : 1 day
 AS A     : user
-I WANT   : To be able to erase drawings on the canvas
+I WANT   : To be able to erase an entire stroke on the canvas.
 SO THAT  : I have more customizability with the Paint application.
            In particular, this would enhance my ease of control over the canvas
            (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
@@ -75,7 +84,7 @@ NAME     : Undo/Redo button
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 1 day
 AS A     : user
-I WANT   : To be able to Undo or Redo any edits I make to the canvas.
+I WANT   : To be able to undo or redo any edits I make to the canvas.
 SO THAT  : I can undo something I did incorrectly or imperfectly, and able
            to redo it if I undo something I didn't want to.
 --------------------------------------------------------------------------
@@ -104,17 +113,7 @@ NAME     : Canvas Scalability
 PRIORITY : 2
 ESTIMATE : 3 hours    ACTUAL : 3 days
 AS A     : user
-I WANT   : A canvas that I can increase and decrease on demand
+I WANT   : A canvas that I can increase and decrease the size of on demand.
 SO THAT  : I can have the freedom in changing the dimension of the canvas
            for my intents and purposes.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG3.341 : hingor13 : Complete
-NAME     : Redundant Opacity Slider
-PRIORITY : 3
-ESTIMATE : 1 hour    ACTUAL :15 minutes
-ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
-           already available in the color picker tool. Removing the slider
-           will simplify the UI and reduce potential conflicts in opaqueness
-           control.
 --------------------------------------------------------------------------
