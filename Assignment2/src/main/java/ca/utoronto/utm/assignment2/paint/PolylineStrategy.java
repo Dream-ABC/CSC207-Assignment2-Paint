@@ -3,14 +3,26 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.input.MouseEvent;
 import java.awt.geom.Point2D;
 
+/**
+ * A class to represent the polyline drawing strategy.
+ * PolylineStrategy implements the ShapeStrategy interface.
+ */
 public class PolylineStrategy implements ShapeStrategy {
     private final PaintPanel panel;
     private boolean isDragging = false;
 
+    /**
+     * Creates a polyline strategy connected to the paint panel.
+     * @param p the main panel where drawing actions are managed
+     */
     public PolylineStrategy(PaintPanel p) {
         this.panel = p;
     }
 
+    /**
+     * When the user does a left mouse click, a new Polyline is created.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
@@ -41,6 +53,11 @@ public class PolylineStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user does a left mouse drag, the current Polyline's line is updated according to
+     * the user's mouse position.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
         if (this.panel.getCurrentShape() != null) {
@@ -56,6 +73,10 @@ public class PolylineStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user does a left mouse release, the final Polyline is drawn onto the canvas.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {

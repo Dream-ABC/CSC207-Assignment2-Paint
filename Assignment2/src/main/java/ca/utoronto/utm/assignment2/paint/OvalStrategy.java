@@ -2,14 +2,26 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.input.MouseEvent;
 
+/**
+ * A class to represent the oval drawing strategy.
+ * OvalStrategy implements the ShapeStrategy interface.
+ */
 public class OvalStrategy implements ShapeStrategy {
 
     private final PaintPanel panel;
 
+    /**
+     * Creates an oval strategy connected to the paint panel.
+     * @param p the main panel where drawing actions are managed
+     */
     public OvalStrategy(PaintPanel p) {
         this.panel = p;
     }
 
+    /**
+     * When the user does a left mouse click, a new Oval is created.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
@@ -26,6 +38,11 @@ public class OvalStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user does a left mouse drag, the current Oval's size is updated according to
+     * the user's mouse position.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
         if (this.panel.getCurrentShape() != null) {
@@ -44,6 +61,10 @@ public class OvalStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user does a left mouse release, the final Oval is drawn onto the canvas.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         {

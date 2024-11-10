@@ -2,14 +2,26 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.input.MouseEvent;
 
+/**
+ * A class to represent the square drawing strategy.
+ * SquareStrategy implements the ShapeStrategy interface.
+ */
 public class SquareStrategy implements ShapeStrategy {
 
     private final PaintPanel panel;
 
+    /**
+     * Creates a square strategy connected to the paint panel.
+     * @param p the main panel where drawing actions are managed
+     */
     public SquareStrategy(PaintPanel p) {
         this.panel = p;
     }
 
+    /**
+     * When the user does a left mouse click, a new Square is created.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
@@ -27,6 +39,11 @@ public class SquareStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user does a left mouse drag, the current Square's size is updated according to
+     * the user's mouse position.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
         if (this.panel.getCurrentShape() != null) {
@@ -55,6 +72,10 @@ public class SquareStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user does a left mouse release, the final Square is drawn onto the canvas.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
