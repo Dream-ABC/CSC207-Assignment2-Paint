@@ -138,6 +138,8 @@ Description:
 
 Reference:
 	US4.451 - Selection tool
+	US4.452 - Dragging Selected Shapes
+	BUG4.486 - Dragging Selected Shapes extremely fast
 --------------------------------------------------------------------------------
 FeatureName: Cut/Copy/Paste/Delete
 
