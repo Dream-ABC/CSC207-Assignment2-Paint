@@ -464,7 +464,7 @@ Example:
 --------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
-Precision Eraser, Fill Style Selector, Line Thickness Selector, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
+Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
 --------------------------------------------------------------------------------
 Name: Stroke Eraser
 
@@ -559,4 +559,50 @@ Implementation:
         This process continues on as the precision eraser is dragged around. The erasing process only ends once the user
         has released their left mouse button. As these transparent rectangles are drawn, they are stored as shapes in the
         PaintModel, which then renders them on the canvas.
+--------------------------------------------------------------------------------
+Name: Fill Style Selector
+
+Description:
+        The fill style selector allows users to choose whether they want to draw a solid
+    shape or an outlined shape. This option does not apply to squiggles, polylines,
+    or text.
+
+Classes/Interfaces Involved:
+    View
+    ShapeChooserPanel
+
+Implementation:
+    Below is the implementation of the fill style selector in this application.
+    View:
+
+--------------------------------------------------------------------------------
+Name: Line Thickness Selector
+
+Description:
+        The line thickness selector allows users to choose how thick they want the outline
+    of their shape to be. Users select the line thickness through a slider that ranges
+    from 1-50. The default value is 1. This option does not apply when users draw solid shapes.
+
+Classes/Interfaces Involved:
+    View
+    LineThicknessSlider
+    PaintPanel
+
+Implementation:
+    Below is the implementation of the line thickness selector in this application.
+
+    View:
+            View creates the menu item "Line Thickness". When the user clicks this menu item,
+        the pop-up displaying the line thickness slider appears.
+
+    LineThicknessSlider:
+            LineThicknessSlider creates a Slider object, displays the pop-up screen onto the program
+        when appropriate, and registers when the Slider object's value has changed.
+        This is achieved by extending Slider and implementing ChangeListener, in order to support the
+        creation of the slider object and to be able to register when the slider's value has changed.
+            This class has a PaintPanel panel attribute, as the panel will be responsible for displaying
+        the slider in the program. There is also a show() method within the slider class, which will
+        create the pop-up screen and display it onto the PaintPanel. Lastly, there is an overridden
+        changed() method that automatically sets line thickness value in PaintPanel, based on the
+        slider’s value.
 --------------------------------------------------------------------------------

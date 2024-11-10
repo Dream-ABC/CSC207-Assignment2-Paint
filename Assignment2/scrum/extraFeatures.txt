@@ -37,8 +37,8 @@ FeatureName: Line Thickness Selector
 
 Description:
 	The line thickness selector allows users to choose how thick they want the outline
-	of their shape to be. Users select the line thickness through a slider that ranges
-	from 1-10. This option does not apply when users draw solid shapes.
+    of their shape to be. Users select the line thickness through a slider that ranges
+    from 1-50. The default value is 1.
 
 Reference:
 	US4.007 - Line thickness selector
