@@ -18,7 +18,7 @@ public class ShapeFactory {
             case "square" -> new Square(fillStyle, lineThickness);
             case "oval" -> new Oval(fillStyle, lineThickness);
             case "triangle" -> new Triangle(fillStyle, lineThickness);
-            case "polyline" -> new Polyline(lineThickness);
+            case "polyline" -> new Polyline(fillStyle, lineThickness);
             case "text" -> new Text();
             case "precision eraser" -> new PrecisionEraser();
             default -> null;
