@@ -246,10 +246,10 @@ ISSUE    : Currently the shape chooser panel is not located in the toolbar
            and is not scalable for future additions.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.485 : hingor13 : InProgress
+TYPE     : BUG BUG4.485 : hingor13 : Complete
 NAME     : Fix selection tool for outlined shapes
 PRIORITY : 1
-ESTIMATE : 3 hour    ACTUAL :
+ESTIMATE : 3 hour    ACTUAL : 3 hour
 ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
