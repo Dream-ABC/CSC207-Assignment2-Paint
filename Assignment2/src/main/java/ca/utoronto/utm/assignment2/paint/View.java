@@ -24,7 +24,6 @@ public class View implements EventHandler<ActionEvent> {
     private final ToolbarPanel toolbarPanel;
     private final StatusbarPanel statusbarPanel;
     private final ZoomPanel zoomPanel;
-    private final ShapeChooserPanel shapeChooserPanel;
     private final ColorPickerPopup colorPickerPopup;
     private final LayerChooserPanel layerChooserPanel;
     private final LayerChooserController layerChooserController;
@@ -52,7 +51,6 @@ public class View implements EventHandler<ActionEvent> {
         this.zoomPanel = new ZoomPanel(paintModel, canvas);
         paintModel.addObserver(zoomPanel);
 
-        this.shapeChooserPanel = new ShapeChooserPanel(paintModel);
         this.layerChooserPanel = new LayerChooserPanel(this);
         this.layerChooserController = new LayerChooserController(layerChooserPanel, paintModel);
         this.fileHandlePopup = new FileHandlePopup(this.paintPanel);
@@ -92,7 +90,6 @@ public class View implements EventHandler<ActionEvent> {
         root.setStyle("-fx-background: #f8f1f0");
 
         root.setCenter(canvasHolder);
-        root.setLeft(this.shapeChooserPanel);
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
         this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);

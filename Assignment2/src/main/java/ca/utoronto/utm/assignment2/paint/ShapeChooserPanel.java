@@ -2,90 +2,138 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;      // dont know yet
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
+import javafx.scene.Node;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
-public class ShapeChooserPanel extends GridPane implements EventHandler<ActionEvent> {
-
+public class ShapeChooserPanel extends VBox implements EventHandler<ActionEvent> {
     private final PaintModel model;
+    private final Popup shapePopup;
+
+    private static final String[] SHAPE_IDS = {
+            "Circle", "Oval", "Square", "Rectangle", "Polyline", "Triangle",
+    };
+
+    private static final String[] IMAGE_FILES = {
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/CircleTool.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/OvalTool.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/SquareTool.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangleTool.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/PolygonTool.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/TriangleTool.png",
+    };
 
     public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
         this.model = model;
+        this.shapePopup = createShapePopup();
+    }
 
-        String[] buttonIds = { "Circle", "Rectangle", "Square", "Squiggle", "Polyline", "Oval", "Triangle", "Stroke Eraser", "Outline", "Solid", "Selection Tool", "Text", "Precision Eraser"};
-        ImageView[] buttonImages = new ImageView[buttonIds.length];
-        String[] imageFiles = {"src/main/java/ca/utoronto/utm/assignment2/images/circle.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/rectangle.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/square.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/squiggle.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/polyline.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/oval.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/triangle.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/eraser.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/outline.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/solid.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/text.png",
-                "src/main/java/ca/utoronto/utm/assignment2/images/eraser.png"};
+    public void toggleShapePopup(ToggleButton sourceButton) {
+        if (shapePopup.isShowing()) {
+            shapePopup.hide();
+        } else {
+            shapePopup.show(sourceButton,
+                    sourceButton.localToScreen(0, 0).getX(),
+                    sourceButton.localToScreen(0, 0).getY() + sourceButton.getHeight());
+        }
+    }
 
-        for (int i = 0; i < buttonIds.length; i++) {
-            FileInputStream input = new FileInputStream(imageFiles[i]);
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(30);
-            imageView.setFitHeight(30);
-            imageView.setPreserveRatio(true);
-            buttonImages[i] = imageView;
+    private Popup createShapePopup() throws FileNotFoundException {
+        Popup popup = new Popup();
+
+        VBox container = new VBox();
+        container.setAlignment(Pos.CENTER);
+        container.setStyle("-fx-background-color: white; -fx-border-color: lightgray; " +
+                "-fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);");
+
+        FlowPane shapesPane = new FlowPane(5, 5);
+        shapesPane.setStyle("-fx-border-color: lightgray;");
+        shapesPane.setPadding(new Insets(5));
+        shapesPane.setPrefWrapLength(265);
+
+        for (int i = 0; i < SHAPE_IDS.length; i++) {
+            Button shapeButton = createShapeButton(SHAPE_IDS[i], IMAGE_FILES[i]);
+            shapesPane.getChildren().add(shapeButton);
         }
 
-        int row = 0;
-        for (int i = 0; i < buttonIds.length; i++) {
-            Button button = new Button();
-            button.setId(buttonIds[i]);
-            button.setMinWidth(100);
-            this.add(button, 0, row);
-            row++;
-            button.setOnAction(this);
-            button.setGraphic(buttonImages[i]);
-        }
+        Label label = new Label("Shapes");
+        label.setStyle("-fx-font-size: 12px; -fx-text-fill: #666465; -fx-text-alignment: center;");
+        label.setPadding(new Insets(2, 11, 2, 11));
+
+        container.getChildren().addAll(shapesPane, label);
+
+        popup.getContent().add(container);
+        return popup;
+    }
+
+    private Button createShapeButton(String id, String imageFile) throws FileNotFoundException {
+        FileInputStream input = new FileInputStream(imageFile);
+        ImageView imageView = new ImageView(new Image(input));
+        imageView.setFitWidth(18);
+        imageView.setFitHeight(18);
+        imageView.setPreserveRatio(true);
+
+        Button button = new Button();
+        button.setGraphic(imageView);
+        button.setId(id);
+        button.setPrefSize(40, 40);
+        button.setStyle("-fx-background-color: transparent;");
+
+        button.setOnMouseEntered(e ->
+                button.setStyle("-fx-background-color: #f0f0f0;")
+        );
+        button.setOnMouseExited(e ->
+                button.setStyle("-fx-background-color: transparent;")
+        );
+
+        button.setOnAction(this);
+
+        return button;
     }
 
     @Override
     public void handle(ActionEvent event) {
+        Button clickedButton = (Button) event.getSource();
+        String command = clickedButton.getId();
+
         this.model.removeSelectionTool();
 
+        if (command.equals("Polyline")) {
+            handlePolylineClose();
+        }
+
+        if (command.equals("Outline") || command.equals("Solid")) {
+            model.setFillStyle(command);
+        } else {
+            model.setMode(command);
+        }
+
+        shapePopup.hide();
+    }
+
+    private void handlePolylineClose() {
         Shape shape = model.getSelectedShape();
         if (Objects.equals(model.getMode(), "Polyline") && shape != null) {
             Polyline polyline = (Polyline) shape;
-            if (polyline.getSize() > 1) {  // Only close if there's more than one point
+            if (polyline.getSize() > 1) {
                 polyline.setClosed(true);
-                // Remove the current shape from the model and add it as final
                 Shape currentShape = this.model.getSelectedLayer().getShapes().getLast();
                 this.model.getSelectedLayer().removeShape(currentShape);
                 this.model.addShapeFinal(polyline);
             }
         }
-
-        for (Node node: this.getChildren()) {
-            Button button = (Button) node;
-            button.setStyle("");
-        }
-        ((Button) event.getSource()).setStyle("-fx-background-color: lightblue");
-        String command = ((Button) event.getSource()).getId();
-        if (command.equals("Outline") || command.equals("Solid")) {
-            model.setFillStyle(command);
-        }
-        else{
-            model.setMode(command);
-        }
     }
 }
-
-

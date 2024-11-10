@@ -1,11 +1,12 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -13,99 +14,138 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ToolbarPanel extends GridPane implements Observer {
-    private ToolbarController toolbarController;
+public class ToolbarPanel extends GridPane {
+    private final Map<String, ToggleButton> toolButtons;
+    private final Map<String, VBox> buttonContainers;
     private ShapeChooserPanel shapeChooserPanel;
+    private ToolbarController toolbarController;
+
+
+    // Constants
+    private static final String[] BUTTON_IDS = {
+            "Selection", "Image", "Tools", "Brushes", "Shapes", "Colours", "Layers"
+    };
+
+    private static final String[] IMAGE_FILES = {
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Resize.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Tools.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/BrushIcon.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Shapes.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Colors.png",
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Layers.png"
+    };
+
+    private static final String ARROW_IMAGE_FILE =
+            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/DownArrowModifier.png";
 
     public ToolbarPanel(PaintModel model) throws FileNotFoundException {
-        this.toolbarController = new ToolbarController(model);
+        this.toolButtons = new HashMap<>();
+        this.buttonContainers = new HashMap<>();
         this.shapeChooserPanel = new ShapeChooserPanel(model);
+        this.toolbarController = new ToolbarController(model, toolButtons, shapeChooserPanel);
 
+        this.setStyle("-fx-background-color: #fcf8f7");
+        initializeToolbar();
+    }
 
-
-        setStyle("-fx-background-color: #fcf8f7");
-
-        String[] buttonIds = {"Selection", "Image", "Tools", "Brushes", "Shapes", "Colours", "Layers"};
-        ImageView[] buttonImages = new ImageView[buttonIds.length];
-        String[] imageFiles = {
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Resize.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Tools.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/BrushIcon.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Shapes.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Colors.png",
-                "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Layers.png"
-        };
-        String arrowImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/DownArrowModifier.png";
-
+    private void initializeToolbar() throws FileNotFoundException {
         int col = 0;
-        for (int i = 0; i < buttonIds.length; i++) {
-            FileInputStream input = new FileInputStream(imageFiles[i]);
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            buttonImages[i] = imageView;
+        for (int i = 0; i < BUTTON_IDS.length; i++) {
+            String buttonId = BUTTON_IDS[i];
 
-            FileInputStream inputArrow = new FileInputStream(arrowImageFile);
-            Image imageArrow = new Image(inputArrow);
-            ImageView downArrow = new ImageView(imageArrow);
-            downArrow.setPreserveRatio(true);
-            downArrow.setFitHeight(6);
+            VBox buttonContent = createButtonContent(i);
 
-            ImageView icon = buttonImages[i];
+            ToggleButton button = createToggleButton(buttonId, buttonContent);
+            toolButtons.put(buttonId, button);
 
-            VBox buttonContent = new VBox(2);
-            buttonContent.setAlignment(Pos.CENTER);
-            buttonContent.setSpacing(8);
-            buttonContent.getChildren().addAll(icon, downArrow);
+            VBox container = createButtonContainer(button, buttonId);
+            buttonContainers.put(buttonId, container);
 
-            ToggleButton button = new ToggleButton();
-            button.setGraphic(buttonContent);
-            button.setId(buttonIds[i]);
-            button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
+            this.add(container, col++, 0);
 
-            button.setOnAction(toolbarController);
-
-            button.setOnMouseEntered(e -> {
-                button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
-            });
-            button.setOnMouseExited(e -> {
-                if (button.isSelected()) {
-                    button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
-                } else {
-                    button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
-                }
-            });
-
-            Label label = new Label(buttonIds[i]);
-            label.setStyle("-fx-font-size: 12px; -fx-text-fill: #666465; -fx-text-alignment: center;");
-            label.setPadding(new Insets(0, 11, 0, 11));
-
-            VBox container = new VBox();
-            container.setAlignment(Pos.CENTER);
-            container.setPadding(new Insets(14, 0, 6, 0));
-            container.setSpacing(10);
-            container.getChildren().addAll(button, label);
-
-            this.add(container, col, 0);
-            col++;
-
-            if (i < buttonIds.length - 1) {
-                Separator separator = new Separator();
-                separator.setOrientation(javafx.geometry.Orientation.VERTICAL);
-                separator.setPrefWidth(1);
-                separator.setPrefHeight(40);
-                separator.setPadding(new Insets(4, 0, 4, 3));
-                this.add(separator, col, 0);
-                col++;
+            if (i < BUTTON_IDS.length - 1) {
+                this.add(createSeparator(), col++, 0);
             }
         }
     }
 
-    @Override
-    public void update(Observable o, Object arg) {}
+    private VBox createButtonContent(int index) throws FileNotFoundException {
+        FileInputStream input = new FileInputStream(IMAGE_FILES[index]);
+        ImageView icon = new ImageView(new Image(input));
+
+        FileInputStream arrowInput = new FileInputStream(ARROW_IMAGE_FILE);
+        ImageView downArrow = new ImageView(new Image(arrowInput));
+        downArrow.setPreserveRatio(true);
+        downArrow.setFitHeight(6);
+
+        VBox buttonContent = new VBox(2);
+        buttonContent.setAlignment(Pos.CENTER);
+        buttonContent.setSpacing(8);
+        buttonContent.getChildren().addAll(icon, downArrow);
+        return buttonContent;
+    }
+
+    private ToggleButton createToggleButton(String buttonId, VBox content) {
+        ToggleButton button = new ToggleButton();
+        button.setGraphic(content);
+        button.setId(buttonId);
+        button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
+        button.setOnAction(toolbarController);
+
+        setupButtonHoverEffects(button);
+
+        return button;
+    }
+
+    private void setupButtonHoverEffects(ToggleButton button) {
+        button.setOnMouseEntered(e -> {
+            button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; " +
+                    "-fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
+        });
+
+        button.setOnMouseExited(e -> {
+            if (button.isSelected()) {
+                button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; " +
+                        "-fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
+            } else {
+                button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
+            }
+        });
+    }
+
+    private VBox createButtonContainer(ToggleButton button, String buttonId) {
+        Label label = new Label(buttonId);
+        label.setStyle("-fx-font-size: 12px; -fx-text-fill: #666465; -fx-text-alignment: center;");
+        label.setPadding(new Insets(0, 11, 0, 11));
+
+        VBox container = new VBox();
+        container.setAlignment(Pos.CENTER);
+        container.setPadding(new Insets(14, 0, 6, 0));
+        container.setSpacing(10);
+        container.getChildren().addAll(button, label);
+
+        return container;
+    }
+
+    private Separator createSeparator() {
+        Separator separator = new Separator();
+        separator.setOrientation(javafx.geometry.Orientation.VERTICAL);
+        separator.setPrefWidth(1);
+        separator.setPrefHeight(40);
+        separator.setPadding(new Insets(4, 0, 4, 3));
+        return separator;
+    }
+
+    public ToggleButton getToolButton(String buttonId) {
+        return toolButtons.get(buttonId);
+    }
+
+    public VBox getButtonContainer(String buttonId) {
+        return buttonContainers.get(buttonId);
+    }
+
 }
-
-
