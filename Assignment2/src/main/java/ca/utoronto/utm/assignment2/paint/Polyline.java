@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Polyline implements Shape {
     private final ArrayList<Point> points;
     private Color color;
+    private String fillStyle;
     private boolean isClosed;
     private double lineThickness;
     private ArrayList<Point> log;
@@ -26,12 +27,13 @@ public class Polyline implements Shape {
      *
      * @param lineThickness ranges from 1.0 to 10.0
      */
-    public Polyline(double lineThickness) {
+    public Polyline(String fillStyle, double lineThickness) {
         this.points = new ArrayList<>();
         this.log = new ArrayList<>();
         this.color = Color.BLACK;
-        this.isClosed = false;
+        this.fillStyle = fillStyle;
         this.lineThickness = lineThickness;
+        this.isClosed = false;
     }
 
     /**
@@ -119,14 +121,13 @@ public class Polyline implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        //if (this.fillStyle.equals("Outline")){
-        for (int i = 0; i < this.points.size() - 1; i++) {
-            if (checkBetweenPoints(points.get(i), points.get(i + 1), tool)) {
-                return true;
+        if (this.fillStyle.equals("Outline")) {
+            for (int i = 0; i < this.points.size() - 1; i++) {
+                if (checkBetweenPoints(points.get(i), points.get(i + 1), tool)) {
+                    return true;
+                }
             }
         }
-        //}
-        //else {
         GeneralPath polygon1 = new GeneralPath();
         polygon1.moveTo(this.points.getFirst().x, this.points.getFirst().y);
         for (int i = 1; i < this.points.size(); i++) {
@@ -154,7 +155,6 @@ public class Polyline implements Shape {
 
         thickPolygonArea.intersect(area2);
         return !thickPolygonArea.isEmpty() || polylineArea.contains(area2.getBounds2D());
-        //}
     }
 
     private boolean checkBetweenPoints(Point p1, Point p2, Tool tool) {
@@ -180,7 +180,6 @@ public class Polyline implements Shape {
         return false;
     }
 
-
     /**
      * Shifts all points of the Polyline by the specified horizontal and vertical offsets.
      *
@@ -201,7 +200,7 @@ public class Polyline implements Shape {
      */
     @Override
     public Polyline copy() {
-        Polyline p = new Polyline(lineThickness);
+        Polyline p = new Polyline(fillStyle, lineThickness);
         p.setColor(this.color);
         p.setClosed(this.isClosed);
         for (Point p1 : this.points) {
@@ -225,10 +224,15 @@ public class Polyline implements Shape {
                 xPoints[i] = this.points.get(i).x;
                 yPoints[i] = this.points.get(i).y;
             }
-            g2d.setFill(this.color);
-            g2d.setLineWidth(this.lineThickness);
-            g2d.strokePolygon(xPoints, yPoints, this.points.size());
-            g2d.fillPolygon(xPoints, yPoints, this.points.size());
+            if (this.fillStyle.equals("Solid")) {
+                g2d.setFill(this.color);
+                g2d.fillPolygon(xPoints, yPoints, this.points.size());
+            }
+            else if (this.fillStyle.equals("Outline")) {
+                g2d.setStroke(this.color);
+                g2d.setLineWidth(this.lineThickness);
+                g2d.strokePolygon(xPoints, yPoints, this.points.size());
+            }
         } else {
             for (int i = 0; i < this.points.size() - 1; i++) {
                 Point p1 = this.points.get(i);
@@ -252,8 +256,6 @@ public class Polyline implements Shape {
     @Override
     public void setShape(String[] data) {
         if (!this.isClosed) {
-            // If isClosed is not set due to the end point being close to the start point,
-            // set isClosed based on the input.
             this.isClosed = Boolean.parseBoolean(data[0]);
         }
         this.lineThickness = Double.parseDouble(data[1]);

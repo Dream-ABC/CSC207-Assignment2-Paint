@@ -18,6 +18,8 @@ public class ToolbarController implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        model.removeSelectionTool();
+
         toolButtons.values().forEach(button ->
                 button.setStyle("-fx-background-color: transparent; -fx-padding: 10;")
         );
@@ -25,6 +27,10 @@ public class ToolbarController implements EventHandler<ActionEvent> {
         ToggleButton button = (ToggleButton) event.getSource();
         button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; " +
                 "-fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
+
+        if (button.getId().equals("Selection")) {
+            model.setMode("Selection Tool");
+        }
 
         if (button.getId().equals("Shapes")) {
             shapeChooserPanel.toggleShapePopup(button);
