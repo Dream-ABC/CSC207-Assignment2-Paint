@@ -83,7 +83,7 @@ public class CircleStrategy implements ShapeStrategy {
                 Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
                 this.panel.getModel().getSelectedLayer().removeShape(shape);
                 this.panel.getModel().addShapeFinal(circle);
-                this.panel.setCurrentShape(null);
+                this.panel.resetCurrentShape();
             }
         }
     }

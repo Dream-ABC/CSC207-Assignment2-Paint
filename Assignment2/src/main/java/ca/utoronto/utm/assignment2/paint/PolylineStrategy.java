@@ -44,7 +44,6 @@ public class PolylineStrategy implements ShapeStrategy {
 
                 if (lastPoint.x == newPoint.x && lastPoint.y == newPoint.y) {
                     refreshCurrentShape(polyline, true);
-                    this.panel.setCurrentShape(null);
                 } else {
                     polyline.addPoint(newPoint);
                     refreshCurrentShape(polyline, false);
@@ -88,7 +87,6 @@ public class PolylineStrategy implements ShapeStrategy {
                 if (Point2D.distance(newPoint.x, newPoint.y, firstPoint.x, firstPoint.y) < 10) {
                     polyline.setClosed(true);
                     refreshCurrentShape(polyline, true);
-                    this.panel.setCurrentShape(null);
                 } else if (isDragging) {
                     refreshCurrentShape(polyline, false);
                 }
@@ -101,7 +99,9 @@ public class PolylineStrategy implements ShapeStrategy {
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         if (isFinal) {
+            System.out.println("final shape");
             this.panel.getModel().addShapeFinal(p);
+            this.panel.resetCurrentShape();
         } else {
             this.panel.getModel().addShape(p);
         }

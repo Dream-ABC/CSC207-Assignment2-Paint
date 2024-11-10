@@ -84,6 +84,10 @@ public class FileHandlePopup {
      * handling the close request to properly hide the dialog.
      */
     public void saveFile() {
+        if (this.panel.getCurrentShape() != null) {
+            // prevent unfinished polyline
+            this.model.addShapeFinal(this.panel.getCurrentShape());
+        }
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Choosing file type");
 

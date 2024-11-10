@@ -68,7 +68,7 @@ public class SquiggleStrategy implements ShapeStrategy {
             Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
             this.panel.getModel().getSelectedLayer().removeShape(shape);
             this.panel.getModel().addShapeFinal(squiggle);
-            this.panel.setCurrentShape(null);
+            this.panel.resetCurrentShape();
         }
     }
 }

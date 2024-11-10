@@ -130,6 +130,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
 
         this.getChildren().setAll(this.model.getLayers());
         PaintModel model = (PaintModel) o;
+
+        if (!Objects.equals(model.getMode(), this.mode)) {
+            this.shape = null;  // finish previous shape
+        }
         this.mode = model.getMode();
 
         for (PaintLayer layer : this.model.getLayers()) {
