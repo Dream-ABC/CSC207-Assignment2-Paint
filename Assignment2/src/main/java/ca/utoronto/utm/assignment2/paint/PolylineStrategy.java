@@ -13,61 +13,67 @@ public class PolylineStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        Point newPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
-        isDragging = false;
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            Point newPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
+            isDragging = false;
 
-        if (this.panel.getCurrentShape() == null) {
-            ShapeFactory shapeFactory = panel.getShapeFactory();
-            Polyline polyline = (Polyline) shapeFactory.getShape(panel.getMode(), "", panel.getLineThickness());
-            this.panel.setCurrentShape(polyline);
+            if (this.panel.getCurrentShape() == null) {
+                ShapeFactory shapeFactory = panel.getShapeFactory();
+                Polyline polyline = (Polyline) shapeFactory.getShape(panel.getMode(), "", panel.getLineThickness());
+                this.panel.setCurrentShape(polyline);
 
-            polyline.addPoint(newPoint);
-            polyline.setColor(this.panel.getColor());
-
-            this.panel.getModel().addShape(polyline);
-        } else {
-            Polyline polyline = (Polyline) this.panel.getCurrentShape();
-            Point lastPoint = polyline.getLast();
-
-            if (lastPoint.x == newPoint.x && lastPoint.y == newPoint.y) {
-                refreshCurrentShape(polyline, true);
-                this.panel.setCurrentShape(null);
-            } else {
                 polyline.addPoint(newPoint);
-                refreshCurrentShape(polyline, false);
+                polyline.setColor(this.panel.getColor());
+
+                this.panel.getModel().addShape(polyline);
+            } else {
+                Polyline polyline = (Polyline) this.panel.getCurrentShape();
+                Point lastPoint = polyline.getLast();
+
+                if (lastPoint.x == newPoint.x && lastPoint.y == newPoint.y) {
+                    refreshCurrentShape(polyline, true);
+                    this.panel.setCurrentShape(null);
+                } else {
+                    polyline.addPoint(newPoint);
+                    refreshCurrentShape(polyline, false);
+                }
             }
         }
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        isDragging = true;
         if (this.panel.getCurrentShape() != null) {
-            Polyline polyline = (Polyline) this.panel.getCurrentShape();
-            Point dragPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
+            isDragging = true;
+            if (this.panel.getCurrentShape() != null) {
+                Polyline polyline = (Polyline) this.panel.getCurrentShape();
+                Point dragPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
 
-            polyline.popPoint();
-            polyline.addPoint(dragPoint);
-            refreshCurrentShape(polyline, false);
+                polyline.popPoint();
+                polyline.addPoint(dragPoint);
+                refreshCurrentShape(polyline, false);
+            }
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        if (this.panel.getCurrentShape() != null) {
-            Polyline polyline = (Polyline) this.panel.getCurrentShape();
-            Point newPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
-            Point firstPoint = polyline.getFirst();
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            if (this.panel.getCurrentShape() != null) {
+                Polyline polyline = (Polyline) this.panel.getCurrentShape();
+                Point newPoint = new Point(mouseEvent.getX(), mouseEvent.getY());
+                Point firstPoint = polyline.getFirst();
 
-            if (Point2D.distance(newPoint.x, newPoint.y, firstPoint.x, firstPoint.y) < 10) {
-                polyline.setClosed(true);
-                refreshCurrentShape(polyline, true);
-                this.panel.setCurrentShape(null);
-            } else if (isDragging) {
-                refreshCurrentShape(polyline, false);
+                if (Point2D.distance(newPoint.x, newPoint.y, firstPoint.x, firstPoint.y) < 10) {
+                    polyline.setClosed(true);
+                    refreshCurrentShape(polyline, true);
+                    this.panel.setCurrentShape(null);
+                } else if (isDragging) {
+                    refreshCurrentShape(polyline, false);
+                }
             }
+            isDragging = false;
         }
-        isDragging = false;
     }
 
     private void refreshCurrentShape(Polyline p, boolean isFinal) {

@@ -12,24 +12,28 @@ public class StrokeEraserStrategy implements ShapeStrategy {
 
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
-        this.panel.getModel().storeState();
-        StrokeEraser strokeEraser = new StrokeEraser();
-        Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
-        Point centre = new Point(topLeft.x, topLeft.y);
-        strokeEraser.setTopLeft(centre);
-        this.panel.setStrokeEraser(strokeEraser);
-        this.panel.getModel().addStrokeEraser(strokeEraser);
-        eraseDrawings();
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            this.panel.getModel().storeState();
+            StrokeEraser strokeEraser = new StrokeEraser();
+            Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
+            Point centre = new Point(topLeft.x, topLeft.y);
+            strokeEraser.setTopLeft(centre);
+            this.panel.setStrokeEraser(strokeEraser);
+            this.panel.getModel().addStrokeEraser(strokeEraser);
+            eraseDrawings();
+        }
     }
 
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
-        StrokeEraser strokeEraser = panel.getStrokeEraser();
-        Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
-        Point centre = new Point(topLeft.x, topLeft.y);
-        strokeEraser.setTopLeft(centre);
-        this.panel.getModel().addStrokeEraser(strokeEraser);
-        eraseDrawings();
+        if (this.panel.getStrokeEraser() != null) {
+            StrokeEraser strokeEraser = panel.getStrokeEraser();
+            Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
+            Point centre = new Point(topLeft.x, topLeft.y);
+            strokeEraser.setTopLeft(centre);
+            this.panel.getModel().addStrokeEraser(strokeEraser);
+            eraseDrawings();
+        }
     }
 
     private void eraseDrawings(){
@@ -44,9 +48,11 @@ public class StrokeEraserStrategy implements ShapeStrategy {
 
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
-        this.panel.getModel().getHistory().addToLast(this.panel.getStrokeEraser().getRemovedShapes());
-        this.panel.getModel().removeStrokeEraser();
-        this.panel.setStrokeEraser(null);
-        this.panel.setCurrentShape(null);
+        if (mouseEvent.getButton().toString().equals("PRIMARY")) {
+            this.panel.getModel().getHistory().addToLast(this.panel.getStrokeEraser().getRemovedShapes());
+            this.panel.getModel().removeStrokeEraser();
+            this.panel.setStrokeEraser(null);
+            this.panel.setCurrentShape(null);
+        }
     }
 }
