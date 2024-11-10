@@ -374,7 +374,7 @@ Possible implementation:
 --------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
-Stroke Eraser, Precision Eraser, Fill Style Selector, Line Thickness Selector, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool
+Stroke Eraser, Precision Eraser, Fill Style Selector, Line Thickness Selector, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
 --------------------------------------------------------------------------------
 Name: Stroke Eraser
 Description:

@@ -145,5 +145,5 @@ Description:
 	...
 
 Reference:
-	US4.451 - Selection tool
+	BUG4.009 - Edit menu is not implemented
 --------------------------------------------------------------------------------
