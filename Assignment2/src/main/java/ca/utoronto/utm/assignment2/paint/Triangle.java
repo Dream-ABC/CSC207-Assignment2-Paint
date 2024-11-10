@@ -188,38 +188,7 @@ public class Triangle extends Polygon implements Shape {
             }
         }
 
-        // Checks if any of the triangle vertexes is inside the tool
-        for (int i = 0; i < 3; i++){
-            if ((leftX <= xPoints[i]) && (xPoints[i] <= rightX) && (topY <= yPoints[i]) && (yPoints[i] <= bottomY)) {return true;}
-        }
-
-        return false;
-    }
-
-    /**
-     * Checks if the Point is overlapping the Triangle.
-     *
-     * @param p the point which is being checked for overlaps
-     * @return True if the point is overlapping, False otherwise
-     */
-    private boolean overlapsInsideAtPoint(Point p){
-        ObservableList<Double> points = this.getPoints(); // top, left, right
-        double[] xPoints = new double[3];
-        double[] yPoints = new double[3];
-        xPoints[0] = points.get(0);
-        yPoints[0] = points.get(3) + (this.lineThickness);
-        xPoints[1] = points.get(1) + (this.lineThickness/2.0);
-        yPoints[1] = points.get(4) - (this.lineThickness/2.0);
-        xPoints[2] = points.get(2) - (this.lineThickness/2.0);
-        yPoints[2] = points.get(5) - (this.lineThickness/2.0);
-
-        double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
-
-        double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], p.x, p.y);
-        double a2 = areaOfTriangle(p.x, p.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
-        double a3 = areaOfTriangle(xPoints[0], yPoints[0], p.x, p.y, xPoints[2], yPoints[2]);
-        double marginOfError = 1e-10;
-        return Math.abs(A - a1 - a2 - a3) <= marginOfError;
+        return overlapsOutline(tool);
     }
 
     /**
@@ -240,36 +209,29 @@ public class Triangle extends Polygon implements Shape {
         xPoints[2] = points.get(2) + (this.lineThickness/2.0);
         yPoints[2] = points.get(5) + (this.lineThickness/2.0);
 
-        double A = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
+        return checkBetweenPoints(new Point(xPoints[0], yPoints[0]), new Point(xPoints[1], yPoints[1]), tool) ||
+                checkBetweenPoints(new Point(xPoints[2], yPoints[2]), new Point(xPoints[1], yPoints[1]), tool) ||
+                checkBetweenPoints(new Point(xPoints[0], yPoints[0]), new Point(xPoints[2], yPoints[2]), tool);
+    }
 
+
+    private boolean checkBetweenPoints(Point p1, Point p2, Tool tool) {
         double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
         double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
         double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
         double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
-        ArrayList<Point> allPoints = new ArrayList<Point>();
-        allPoints.add(new Point(leftX, topY));
-        allPoints.add(new Point(leftX, bottomY));
-        allPoints.add(new Point(rightX, topY));
-        allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(tool.getTopLeft());
 
-        for (Point point : allPoints) {
-            double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
-            double a2 = areaOfTriangle(point.x, point.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
-            double a3 = areaOfTriangle(xPoints[0], yPoints[0], point.x, point.y, xPoints[2], yPoints[2]);
-            double marginOfError = 1e-10;
-            if (Math.abs(A - a1 - a2 - a3) <= marginOfError && !overlapsInsideAtPoint(point)){
+        int steps = 1000;
+        double x = (p2.x - p1.x)/steps;
+        double y = (p2.y - p1.y)/steps;
+
+        for (int i = 0; i < steps; i++){
+            double currX = p1.x + i*x;
+            double currY = p1.y + i*y;
+
+            if (leftX <= currX && currX <= rightX && topY <= currY && currY <= bottomY){
                 return true;
             }
-        }
-
-        for (int i = 0; i < 3; i++){
-            if ((leftX <= xPoints[i]) &&
-                    (xPoints[i] <= rightX) &&
-                    (topY <= yPoints[i]) &&
-                    (yPoints[i] <= bottomY) &&
-                    (!overlapsInsideAtPoint(new Point(xPoints[i], yPoints[i]))))
-            {return true;}
         }
         return false;
     }
