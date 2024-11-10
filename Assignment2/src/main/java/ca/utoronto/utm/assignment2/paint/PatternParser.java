@@ -1,6 +1,8 @@
 package ca.utoronto.utm.assignment2.paint;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The PatternParser class is responsible for parsing command strings and converting them into
@@ -56,6 +58,31 @@ public class PatternParser {
                 String shapeType = content.substring(content.indexOf("&") + 1, content.indexOf("{"));
                 // The fill style and line thickness are placeholders. They will be formally set at a later stage.
                 Shape shape = panel.getShapeFactory().getShape(shapeType, "", 0);
+
+                // Deal with polyline
+                if (shapeType.equals("Polyline")) {
+                    String[] coordinates = content.substring(content.indexOf(";") + 1).split(",");
+
+                    // add initial point
+                    Point firstPoint = new Point(Double.parseDouble(coordinates[0]),
+                            Double.parseDouble(coordinates[1]));
+                    ((Polyline) shape).addPoint(firstPoint);
+
+                    // add middle points
+                    for (int i = 0; i < coordinates.length - 2; i += 2) {
+                        ((Polyline) shape).addPoint(new Point(Double.parseDouble(coordinates[i]),
+                                Double.parseDouble(coordinates[i + 1])));
+                    }
+
+                    // add last point, set isClosed
+                    Point lastPoint = new Point(Double.parseDouble(coordinates[coordinates.length - 3]),
+                            Double.parseDouble(coordinates[coordinates.length - 2]));  // last element is "}"
+                    ((Polyline) shape).addPoint(lastPoint);
+
+                    if (Point2D.distance(lastPoint.x, lastPoint.y, firstPoint.x, firstPoint.y) < 10) {
+                        ((Polyline) shape).setClosed(true);
+                    }
+                }
 
                 // Gets corresponding information and sets them to the shape
                 String[] dataString = content.substring(content.indexOf("{") + 1,

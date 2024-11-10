@@ -7,7 +7,6 @@ public class AddShapeCommand implements Command {
     private final PaintLayer layer;
     private final CommandHistory history;
     private int index;
-    private Point originalPoint;
 
     public AddShapeCommand(Shape s, PaintLayer l, CommandHistory h, PaintModel m) {
         this.shape = s;
