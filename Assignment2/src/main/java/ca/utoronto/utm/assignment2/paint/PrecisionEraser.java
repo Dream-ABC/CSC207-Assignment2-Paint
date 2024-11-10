@@ -16,7 +16,7 @@ public class PrecisionEraser implements Shape {
     private Color color;
 
     /**
-     * Constructs a default precision eraser, which is a square of size 14.
+     * Constructs a default PrecisionEraser, which is a square of size 14.
      */
     public PrecisionEraser() {
         this.dimension = 14;
@@ -138,11 +138,11 @@ public class PrecisionEraser implements Shape {
      * Sets the properties of the PrecisionEraser based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             data[0] - x-coordinate of the top-left point
-     *             data[1] - y-coordinate of the top-left point
-     *             data[2] - dimension of the PreciseEraser
-     *             data[3] - color of the PreciseEraser in web format
-     *             data[4 and onwards] - points as pairs of x and y coordinates
+     *             <p>data[0] - x-coordinate of the top-left point</p>
+     *             <p>data[1] - y-coordinate of the top-left point</p>
+     *             <p>data[2] - dimension of the PreciseEraser</p>
+     *             <p>data[3] - color of the PreciseEraser in web format</p>
+     *             <p>data[4 and onwards] - points as pairs of x and y coordinates</p>
      */
     @Override
     public void setShape(String[] data) {

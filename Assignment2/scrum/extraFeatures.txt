@@ -4,7 +4,7 @@ FeatureName: Stroke Eraser
 Description: 
 	The stroke eraser removes an entire stroke at once. For example, when the user
 	draws a circle, using the stroke eraser will erase the entire circle at once.
-	For text, the stroke eraser erases the entire text, not one letter at a time.
+	Note that for text, the stroke eraser erases the entire text, not one letter at a time.
 
 Reference: 
 	US3.311 - Stroke eraser

@@ -437,7 +437,7 @@ Implementation:
         A new tool is required to implement this feature, which could be named as
         ColorChangeTool. ColorChangeTool will implement the Tool interface. As a result, the attributes
         and methods required for this tool would include:
-            - a top left point which indicates where the icon will be displayed, usually in relation
+            - the top left point which indicates where the icon will be displayed, usually in relation
               to the user's mouse location
             - the dimensions of the tool, such as length and width
             - a display(GraphicsContext g2d) method, to draw the icon onto the canvas and make it
@@ -464,16 +464,99 @@ Example:
 --------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
-Stroke Eraser, Precision Eraser, Fill Style Selector, Line Thickness Selector, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
+Precision Eraser, Fill Style Selector, Line Thickness Selector, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
 --------------------------------------------------------------------------------
 Name: Stroke Eraser
 
 Description:
-    The stroke eraser removes an entire stroke at once. For example, when the user
+        The stroke eraser removes an entire stroke at once. For example, when the user
     draws a circle, using the stroke eraser will erase the entire circle at once.
-    For text, the stroke eraser erases the entire text, not one letter at a time.
+    Note that for text, the stroke eraser erases the entire text, not one letter at a time.
+        Within this program, the stroke eraser is represented as a black dashed square of size 14,
+    centered at the mouse cursor.
+        The stroke eraser consists of ***an image icon appearing in the left button panel.
+    The stroke eraser is displayed as an image icon in the left button panel.*** When the user clicks
+    on the icon, the stroke eraser mode is activated, and a corresponding strategy for handling user
+    mouse input is applied. The stroke eraser strategy ensures that when the stroke eraser is clicked
+    or dragged across a shape, it removes the entire stroke of that shape from the canvas.
 
-Classes Involved:
+Classes/Interfaces Involved:
+    Tool
+    StrokeEraser
+    ShapeStrategy
+    StrokeEraserStrategy
+    All Shape classes (e.g., Circle, Rectangle)
+    PaintPanel
 
 Implementation:
+    Below is the implementation of the stroke eraser in this application.
+
+    StrokeEraser:
+            StrokeEraser implements the Tool interface. As a result, the attributes and methods required for
+        this tool would include:
+            - the top left point of the stroke eraser's square representation
+            - the dimensions of the tool, which would be the size of the square
+            - a display(GraphicsContext g2d) method, to draw the stroke eraser's representation onto
+              the canvas and make it visible to the user, centered at the mouse cursor
+        Overall, for the implementation of the stroke eraser, the StrokeEraser class is simply responsible
+        for displaying its representation onto the canvas, PaintPanel.
+
+    StrokeEraserStrategy:
+            StrokeEraserStrategy implements the ShapeStrategy interface and handles the mouse press, mouse
+        drag, and mouse release actions for the stroke eraser tool. When the user performs a left mouse
+        press with the stroke eraser, the eraser starts the process of removing drawings. The eraser also
+        adds itself to the PaintPanel, so that the stroke eraser is rendered on the canvas.
+        This process
+        continues on as the stroke eraser is dragged around. The erasing process only ends once the user
+        has released their left mouse button.
+            The logic for determining when to erase drawings, specifically the collision detection between
+        the stroke eraser and the drawn shape, is implemented in the overlap(Tool tool) method within each
+        shape class. The approach differs for each shape, as each has its own unique geometry.
+            Overall, the StrokeEraserStrategy class detects when a stroke eraser collides with a shape, and removes
+        them from the canvas accordingly.
+--------------------------------------------------------------------------------
+Name: Precision Eraser
+
+Description:
+        The precision eraser allows the user to erase specific segments of a drawing for finer detailing.
+    It erases in the shape of a square. However, the precision eraser is implemented in a particular way:
+    it doesn't erase by removing the shape. Instead, it draws transparent squares wherever it moves,
+    creating the illusion of erasing.
+        Within this program, the precision eraser is represented as a black dashed square of size 14,
+    centered at the mouse cursor.
+        The precision eraser consists of ***an image icon appearing in the left button panel.
+    The precision eraser is displayed as an image icon in the left button panel.*** When the user clicks
+    on the icon, the precision eraser mode is activated, and a corresponding strategy for handling user
+    mouse input is applied. The precision eraser strategy ensures that the user has the customizability
+    and flexibility to erase specific aspects of a drawing.
+
+Classes/Interfaces Involved:
+    Shape
+    PrecisionEraser
+    ShapeStrategy
+    PrecisionEraserStrategy
+    PaintPanel
+
+Implementation:
+    Below is the implementation of the precision eraser in this application.
+
+    PrecisionEraser:
+            PrecisionEraser implements the Shape interface. A key feature of the eraser's attributes is
+        its color attribute, which determines its visual representation. While the user is still using
+        the precision eraser, it is displayed as a black dashed square on the canvas. Once the user finishes
+        using the eraser, the dashed square disappears by setting the color attribute to transparent, making it
+        effectively invisible.
+            PrecisionEraser is represented as a series of points, which is the path that the user drew when
+        using the precision eraser. The transparent rectangles are drawn using those points as their centre.
+            Overall, for the implementation of the precision eraser, the PrecisionEraser class is simply responsible
+        for displaying its representation onto the canvas and drawing the transparent squares in PaintPanel.
+
+    PrecisionEraserStrategy:
+            PrecisionEraserStrategy implements the ShapeStrategy interface and handles the mouse press, mouse
+        drag, and mouse release actions for the precision eraser tool. When the user performs a left mouse
+        press with the precision eraser, the eraser starts the process of 'removing' drawings by drawing
+        a transparent square that is the size of the eraser, located at the eraser's current location.
+        This process continues on as the precision eraser is dragged around. The erasing process only ends once the user
+        has released their left mouse button. As these transparent rectangles are drawn, they are stored as shapes in the
+        PaintModel, which then renders them on the canvas.
 --------------------------------------------------------------------------------

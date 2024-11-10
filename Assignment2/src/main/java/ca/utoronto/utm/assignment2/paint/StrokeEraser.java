@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * A class to represent the stroke eraser.
- * StrokeEraser implements the Shape interface.
+ * StrokeEraser implements the Tool interface.
  */
 public class StrokeEraser implements Tool {
     private Point topLeft;
@@ -16,7 +16,7 @@ public class StrokeEraser implements Tool {
     private final ArrayList<Shape> removedShapes;
 
     /**
-     * Constructs a default stroke eraser, which is a square of size 14.
+     * Constructs a default StrokeEraser, which is a square of size 14.
      */
     public StrokeEraser() {
         this.dimensionX = 14;
