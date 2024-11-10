@@ -201,10 +201,10 @@ I WANT   : To be able to drag shapes that are selected.
 SO THAT  : Reorganize my canvas and move shapes around.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.486 : hingor13 : InProgress
+TYPE     : BUG BUG4.486 : hingor13 : Complete
 NAME     : Dragging Selected Shapes extremely fast
 PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL :
+ESTIMATE : 1 hour    ACTUAL : 10 minutes
 Issue    : When the selection tool is dragged very fast, the mouse is seen
            outside the bounds of the current selection tool making it begin
            to edit the bounds of the selection tool.
