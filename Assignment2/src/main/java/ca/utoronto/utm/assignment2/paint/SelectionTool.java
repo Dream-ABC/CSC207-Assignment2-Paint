@@ -12,6 +12,7 @@ public class SelectionTool implements Tool {
     private double dimensionX;
     private double dimensionY;
     private final ArrayList<Shape> selectedShapes;
+    private Point oldLocation;
 
 
     /**
@@ -54,8 +55,22 @@ public class SelectionTool implements Tool {
     public void addSelectedShape(Shape shape) {
         this.selectedShapes.add(shape);
     }
-    public void removeSelectedShape(Shape shape) {
-        this.selectedShapes.remove(shape);
+    public Point getOldLocation() {return oldLocation;}
+    public void setOldLocation(Point oldLocation) {this.oldLocation = oldLocation;}
+    public void shift(double x, double y) {
+        this.topLeft.shift(x, y);
+        for (Shape shape : selectedShapes) {
+            shape.shift(x, y);
+        }
+    }
+    public boolean inBounds(double x, double y) {
+        boolean a = this.topLeft.x - dimensionX/2.0 <= x && x <= this.topLeft.x + dimensionX/2.0;
+        boolean b = this.topLeft.y - dimensionY/2.0 <= y && y <= this.topLeft.y + dimensionY/2.0;
+        return a && b;
+    }
+
+    public void clearSelectedShapes() {
+        this.selectedShapes.clear();
     }
 
     /**
@@ -65,7 +80,7 @@ public class SelectionTool implements Tool {
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
         g2d.setStroke(Color.BLACK);
-        g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y-dimensionY/2,
+        g2d.strokeRect(this.topLeft.x - dimensionX/2.0, this.topLeft.y-dimensionY/2.0,
                 this.dimensionX, this.dimensionY);
     }
 }

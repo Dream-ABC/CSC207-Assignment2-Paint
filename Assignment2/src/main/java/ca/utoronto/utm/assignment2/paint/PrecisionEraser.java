@@ -93,6 +93,11 @@ public class PrecisionEraser implements Shape {
         }
     }
 
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x, y);
+    }
+
     /**
      * Returns a string representation of the PrecisionEraser object,
      * including its top-left coordinates, dimension, color, and the points

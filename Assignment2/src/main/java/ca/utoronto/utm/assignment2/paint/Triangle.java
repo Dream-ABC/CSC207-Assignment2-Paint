@@ -299,6 +299,12 @@ public class Triangle extends Polygon implements Shape {
         this.updatePoints();
     }
 
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+        updatePoints();
+    }
+
     /**
      * Returns a string representation of a triangle.
      *

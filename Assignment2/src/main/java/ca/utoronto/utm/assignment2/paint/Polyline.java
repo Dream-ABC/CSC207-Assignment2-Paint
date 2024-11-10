@@ -191,6 +191,12 @@ public class Polyline implements Shape {
 //            this.points.add(this.points.get(0));
 //        }
     }
+    @Override
+    public void shift(double x, double y) {
+        for (Point p : this.points) {
+            p.shift(x, y);
+        }
+    }
 
     public String toString() {
         // get all points

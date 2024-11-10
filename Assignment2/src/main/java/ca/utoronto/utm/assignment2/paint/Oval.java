@@ -211,6 +211,11 @@ public class Oval implements Shape {
         this.lineThickness = Double.parseDouble(data[8]);
     }
 
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x,y);
+    }
+
     /**
      * Returns a string representation of an oval.
      * @return a string representation of the oval

@@ -157,6 +157,11 @@ public class Circle implements Shape {
         return Math.max(min, Math.min(max, value));
     }
 
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x, y);
+    }
+
     /**
      * Displays the Circle with user-created color and size.
      *
