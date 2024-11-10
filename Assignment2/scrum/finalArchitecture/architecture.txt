@@ -283,6 +283,7 @@ Usage:
 HOW TO MODIFY OUR CODE
 --------------------------------------------------------------------------------
 Name: New Drawing Mode
+
 Description:
     A drawing mode enables a user to draw an object onto the screen, which could
     be a shape (e.g. Circle) or other elements (e.g. Text). ***The
@@ -379,13 +380,45 @@ Example:
 HOW TO EXTEND OUR CODE
 --------------------------------------------------------------------------------
 Name: Resizable Erasers
-Description:
 
-Possible implementation:
+Description:
+    Resizable erasers would allow users to adjust the eraser size, providing
+    greater customization over the canvas and erasing process. This feature could
+    be implemented for both the stroke eraser and the precision eraser. One
+    possible implementation of this feature is to have a slider pop-up when the
+    user clicks on an eraser button. The slider value then corresponds to the
+    eraser's size. The size range available could be any particular range. In this
+    particular implementation that we're describing, we will arbitrary set it to
+    be from 1.0 to 50.0.
+
+Implementation:
+    The specific implementation approach for this feature discussed above, is outlined below.
+
+    [Type]EraserSizeSlider:
+        A slider class could be created for both the stroke type and precision type eraser.
+        This class would need to create the Slider object, display the pop-up onto the PaintPanel
+        when appropriate, and register when the Slider object's value has changed.
+            First, the slider class should extend Slider and implement ChangeListener, in order to
+        support the creation of the slider object and to be able to register when the slider's value
+        has changed.
+            Next, the slider class should include a PaintPanel panel attribute, as the panel will
+        be responsible for displaying the slider in the program. This attribute will be initialized
+        inside the constructor, which will have a parameter for the PaintPanel.
+            Then, there should be a show() method within the slider class, which will create the pop-up
+        and display it onto the PaintPanel.
+            Lastly, an overridden changed() method should be implemented to automatically adjust the
+        eraser’s size based on the slider’s value.
+
+Example:
+    LineThicknessSlider - example of an implementation for [Type]EraserSizeSlider
 --------------------------------------------------------------------------------
 Name: Dynamic Color Change for Drawn Shapes
+
 Description:
-Possible implementation:
+
+
+Implementation:
+
 --------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
