@@ -61,17 +61,36 @@ public class Squiggle implements Shape {
      */
     @Override
     public boolean overlaps(Tool tool) {
-        double leftX = tool.getTopLeft().x - (tool.getDimensionX() / 2.0);
-        double rightX = tool.getTopLeft().x + (tool.getDimensionX() / 2.0);
-        double topY = tool.getTopLeft().y - (tool.getDimensionY() / 2.0);
-        double bottomY = tool.getTopLeft().y + (tool.getDimensionY() / 2.0);
-        for (Point p : this.points) {
-            if (leftX <= p.x + (this.lineThickness / 2.0) && p.x - (this.lineThickness / 2.0) <= rightX && topY <= p.y + (this.lineThickness / 2.0) && p.y - (this.lineThickness / 2.0) <= bottomY) {
+        for (int i = 0; i < this.points.size() - 1; i++) {
+            if (checkBetweenPoints(points.get(i), points.get(i+1), tool)) {return true;}
+        }
+        return false;
+
+    }
+
+    private boolean checkBetweenPoints(Point p1, Point p2, Tool tool) {
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+
+        double thickness = (this.lineThickness / 2.0);
+
+        int steps = 1000;
+        double x = (p2.x - p1.x)/steps;
+        double y = (p2.y - p1.y)/steps;
+
+        for (int i = 0; i < steps; i++){
+            double currX = p1.x + i*x;
+            double currY = p1.y + i*y;
+
+            if (leftX <= currX + thickness && currX - thickness <= rightX && topY <= currY+ thickness && currY - thickness <= bottomY){
                 return true;
             }
         }
         return false;
     }
+
 
     /**
      * Shifts all points of the Squiggle by the specified horizontal and vertical offsets.

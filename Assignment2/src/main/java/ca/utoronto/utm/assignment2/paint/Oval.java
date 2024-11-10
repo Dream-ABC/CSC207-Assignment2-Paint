@@ -109,6 +109,10 @@ public class Oval implements Shape {
      * @return True if the tool finds an overlap, False otherwise
      */
     private boolean overlapsSolid(Tool tool){
+        if (overlapsOutline(tool)){
+            return true;
+        }
+
         double ovalCenterX = topLeft.x + (width / 2.0);
         double ovalCenterY = topLeft.y + (height / 2.0);
         double radiusX = (width / 2.0);
@@ -130,57 +134,42 @@ public class Oval implements Shape {
     }
 
     /**
-     * Checks if the Point is overlapping the Oval.
-     *
-     * @param p the point which is being checked for overlaps
-     * @return True if the point is overlapping, False otherwise
-     */
-    private boolean overlapsInsideAtPoint(Point p){
-        double ovalCenterX = topLeft.x + (width / 2.0);
-        double ovalCenterY = topLeft.y + (height / 2.0);
-        double radiusX = (width / 2.0) - (this.lineThickness/2.0);
-        double radiusY = (height / 2.0) - (this.lineThickness/2.0);
-
-        double distanceX = (ovalCenterX - p.x) / radiusX;
-        double distanceY = (ovalCenterY - p.y) / radiusY;
-        double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
-
-        return distanceSquared <= 1;
-    }
-
-    /**
      * Checks if the Tool is overlapping an outlined Oval.
      *
      * @param tool the tool instance which is currently checking for overlaps
      * @return True if the tool finds an overlap, False otherwise
      */
     private boolean overlapsOutline(Tool tool){
-        double ovalCenterX = topLeft.x + (width / 2.0);
-        double ovalCenterY = topLeft.y + (height / 2.0);
-        double radiusX = (width / 2.0) + (this.lineThickness/2.0);
-        double radiusY = (height / 2.0) + (this.lineThickness/2.0);
-
-        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
-        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
-        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
-        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
-        ArrayList<Point> allPoints = new ArrayList<Point>();
-        allPoints.add(new Point(leftX, topY));
-        allPoints.add(new Point(leftX, bottomY));
-        allPoints.add(new Point(rightX, topY));
-        allPoints.add(new Point(rightX, bottomY));
-        allPoints.add(tool.getTopLeft());
-
-        for (Point p : allPoints){
-            double distanceX = (ovalCenterX - p.x) / radiusX;
-            double distanceY = (ovalCenterY - p.y) / radiusY;
-            double distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
-            if (distanceSquared <= 1 && !overlapsInsideAtPoint(p)){
+        int steps = 1000;
+        double dx = this.width / steps;
+        for (int i = 0; i < steps; i++) {
+            double x = topLeft.x + i*dx;
+            double y = calculateY(x);
+            double centerY = this.topLeft.y + height/2;
+            if (checkBound(x, centerY - y, tool) || checkBound(x, centerY + y, tool)) {
                 return true;
             }
         }
         return false;
     }
+
+    private double calculateY(double x){
+        double a = this.width/2.0;
+        double b = this.height/2.0;
+        double h = this.topLeft.x + a;
+        return b*Math.pow(1-(x-h)*(x-h)/(a*a),0.5);
+
+
+    }
+
+    private boolean checkBound(double x, double y, Tool tool){
+        double leftX = tool.getTopLeft().x-(tool.getDimensionX()/2.0);
+        double rightX = tool.getTopLeft().x+(tool.getDimensionX()/2.0);
+        double topY = tool.getTopLeft().y-(tool.getDimensionY()/2.0);
+        double bottomY = tool.getTopLeft().y+(tool.getDimensionY()/2.0);
+        return leftX <= x && x <= rightX && topY <= y && y <= bottomY;
+    }
+
 
     private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
