@@ -594,7 +594,7 @@ Implementation:
         sets PaintModel's fillStyle to be what the user selected.
 
     PaintModel:
-            After PaintModel receives a new fillStyle, it notifies its Observer, PaintPanel, of the change.
+            After PaintModel receives a new fill style, it notifies its Observer, PaintPanel, of the change.
         This allows PaintPanel to acquire the latest fillStyle required for creating new shapes, which it
         will then pass into ShapeFactory when the user begins drawing shapes.
 
@@ -616,6 +616,7 @@ Classes/Interfaces Involved:
     View
     LineThicknessSlider
     PaintPanel
+    ShapeFactory
 
 Implementation:
     Below is the implementation of the line thickness selector in this application.
@@ -636,6 +637,11 @@ Implementation:
             This class has a PaintPanel panel attribute, as the panel will be responsible for displaying
         the slider in the program. There is also a show() method within the slider class, which will
         create the pop-up screen and display it onto the PaintPanel. Lastly, there is an overridden
-        changed() method that automatically sets line thickness value in PaintPanel, based on the
-        slider’s value.
+        changed() method that automatically sets line thickness value in PaintPanel, which then
+        sets the line thickness value in PaintModel, based on the slider’s value. PaintPanel will
+        then pass the line thickness value into ShapeFactory when the user begins drawing outlined shapes.
+
+    ShapeFactory:
+            With the provided double lineThickness passed in as a parameter, the ShapeFactory can create the correct
+            shape and line thickness for any outlined shape type.
 --------------------------------------------------------------------------------
