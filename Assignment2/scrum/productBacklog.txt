@@ -89,10 +89,9 @@ NAME     : Draw circle feedback
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 3 hours
 AS A     : user
-I WANT   : As a user is specifying a Circle, during the drag, a 'current'
-           circle should be on display. As the user drags, the 'current'
-           circle changes in real time so that a circle is drawn with
-           centre at users initial circle click, with radius out to
+I WANT   : To have a 'current' circle on display. As the user drags, the
+           'current' circle changes in real time so that a circle is drawn
+           with centre at users initial circle click, with radius out to
            the current dragged mouse position.
 SO THAT  : I can see the circle I am about to build on release of the mouse
            button.
@@ -113,7 +112,10 @@ NAME     : Draw rectangle feedback
 PRIORITY : 2
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 AS A     : user
-I WANT   : To display the rectangle in mid-construction.
+I WANT   : To have a 'current' rectangle on display. As the user drags, the
+           'current' rectangle changes in real time so that a rectangle is drawn
+           with the top-left corner at users initial rectangle click, with the
+           bottom-right corner at the current dragged mouse position.
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -121,11 +123,9 @@ TYPE     : BUG BUG2.003 : tianshi8 : Complete
 NAME     : Architecture behind choosing selection mode is poor
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 6 hours
-ISSUE    : Code is not modular and is difficult to expand. Need a better
-           architecture behind selecting a drawing mode, and handling
-           the drawing events. Consider some design patterns here.
-           Refactor ShapeChooserPanel and PaintPanel to get rid of the
-           'if' blocks in the PaintPanel mouse event code.
+ISSUE    : The current code is not modular and is difficult to expand.
+           There needs to be a better architecture behind selecting a drawing
+           mode and handling the drawing events.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US2.211 : hingor13 : Complete
@@ -160,10 +160,10 @@ NAME     : Draw triangle with feedback and shape selection
 PRIORITY : 1
 ESTIMATE : 4 hours    ACTUAL : 2 hours
 AS A     : user
-I WANT   : To select a triangle tool, then click on one corner of an
-           triangle, drag, and release to specify two corners of a bounding
-           box of the triangle to be drawn in the current style, with
-           real-time feedback showing the current triangle as I drag.
+I WANT   : To select an isosceles triangle tool, then click on one corner of
+           an isosceles triangle, drag, and release to specify two corners of
+           a bounding box of the isosceles triangle to be drawn in the current
+           style, with real-time feedback showing the current triangle as I drag.
 SO THAT  : I can easily add triangles to my canvas and see the triangle I
            am building before releasing the mouse button.
 --------------------------------------------------------------------------

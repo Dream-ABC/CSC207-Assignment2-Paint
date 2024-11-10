@@ -59,10 +59,9 @@ NAME     : Draw circle feedback
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 3 hours
 AS A     : user
-I WANT   : As a user is specifying a Circle, during the drag, a 'current'
-           circle should be on display. As the user drags, the 'current'
-           circle changes in real time so that a circle is drawn with
-           centre at users initial circle click, with radius out to
+I WANT   : To have a 'current' circle on display. As the user drags, the
+           'current' circle changes in real time so that a circle is drawn
+           with centre at users initial circle click, with radius out to
            the current dragged mouse position.
 SO THAT  : I can see the circle I am about to build on release of the mouse
            button.
@@ -83,6 +82,9 @@ NAME     : Draw rectangle feedback
 PRIORITY : 2
 ESTIMATE : 2 hours   ACTUAL : 1 hour
 AS A     : user
-I WANT   : To display the rectangle in mid-construction.
+I WANT   : To have a 'current' rectangle on display. As the user drags, the
+           'current' rectangle changes in real time so that a rectangle is drawn
+           with the top-left corner at users initial rectangle click, with the
+           bottom-right corner at the current dragged mouse position.
 SO THAT  : I can see the rectangle I am about to build on release of the mouse button.
 --------------------------------------------------------------------------
