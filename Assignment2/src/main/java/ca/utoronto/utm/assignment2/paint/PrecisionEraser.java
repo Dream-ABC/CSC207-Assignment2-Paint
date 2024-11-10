@@ -107,13 +107,41 @@ public class PrecisionEraser implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
-        for (Point p : points) {
-            g2d.setLineWidth(1);
-            g2d.setStroke(this.color);
-            g2d.setLineDashes(5, 3);
-            g2d.clearRect(p.x - dimension / 2.0, p.y - dimension / 2.0, this.dimension, this.dimension);
+//        for (Point p : points) {
+//            g2d.setLineWidth(1);
+//            g2d.setStroke(this.color);
+//            g2d.setLineDashes(5, 3);
+//            g2d.clearRect(p.x - dimension / 2.0, p.y - dimension / 2.0, this.dimension, this.dimension);
+//            g2d.strokeRect(this.topLeft.x - dimension / 2.0, this.topLeft.y - dimension / 2.0,
+//                    this.dimension, this.dimension);
+//        }
+
+        g2d.setLineDashes();
+
+        g2d.setLineWidth(1);
+        g2d.setStroke(this.color);
+        g2d.setLineDashes(5, 3);
+
+        double clearWidth = 5.0;
+        double clearHeight = 5.0;
+
+        for (int i = 0; i <= this.points.size() - 2; i++) {
+            Point p1 = this.points.get(i);
+            Point p2 = this.points.get(i + 1);
+
+            int steps = 20;
+            for (int j = 0; j <= steps; j++) {
+                double t = j / (double) steps;
+
+                double x = p1.x * (1 - t) + p2.x * t;
+                double y = p1.y * (1 - t) + p2.y * t;
+
+                g2d.clearRect(x - clearWidth / 2, y - clearHeight / 2, clearWidth, clearHeight);
+            }
+
             g2d.strokeRect(this.topLeft.x - dimension / 2.0, this.topLeft.y - dimension / 2.0,
                     this.dimension, this.dimension);
+
         }
     }
 
