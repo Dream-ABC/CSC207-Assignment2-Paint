@@ -15,8 +15,8 @@ public class SelectionToolStrategy implements ShapeStrategy{
     public void mousePressed(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
             if (panel.getModel().getSelectionTool() != null && panel.getModel().getSelectionTool().inBounds(mouseEvent.getX(), mouseEvent.getY())) {
-                System.out.println("a");
                 panel.getModel().getSelectionTool().setOldLocation(new Point(mouseEvent.getX(), mouseEvent.getY()));
+                panel.getModel().getSelectionTool().setDragging(true);
             }
             else {
                 SelectionTool selection = new SelectionTool();
@@ -31,7 +31,7 @@ public class SelectionToolStrategy implements ShapeStrategy{
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
         if (panel.getModel().getSelectionTool() != null) {
-            if (panel.getModel().getSelectionTool().inBounds(mouseEvent.getX(), mouseEvent.getY()) && this.panel.getModel().getSelectionTool().getOldLocation() != null) {
+            if (panel.getModel().getSelectionTool().getDragging()) {
                 double x = mouseEvent.getX() - panel.getModel().getSelectionTool().getOldLocation().x;
                 double y = mouseEvent.getY() - panel.getModel().getSelectionTool().getOldLocation().y;
 
@@ -71,7 +71,7 @@ public class SelectionToolStrategy implements ShapeStrategy{
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
-
+            panel.getModel().getSelectionTool().setDragging(false);
             System.out.println(this.panel.getModel().getSelectionTool().getSelectedShapes().size());
             //doubt I need this
         }
