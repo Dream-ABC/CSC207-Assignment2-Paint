@@ -122,7 +122,7 @@ This means ShapeChooserPanel's constructor must be modified to include the new b
 The new button's id will correspond to the PaintPanel's mode when drawing this new shape.
 
 Moreover, PaintPanel's handle method needs to be updated with a new case "[shapeName]",
-with code for what needs to occur when various mouse actions (e.g. press, drag, move, release) occur.
+with code for what needs to occur when various mouse actions (e.g., press, drag, move, release) occur.
     - Mouse press should typically be the centre/anchor point of the new shape drawing (similar to how the
       first mouse press is the centre of a Circle, or the first mouse press is the top left of a Rectangle).
     - Mouse drag should display the shape in mid-construction, so that the user can see the shape they're

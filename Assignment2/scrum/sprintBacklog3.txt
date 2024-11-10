@@ -47,7 +47,7 @@ AS A     : user
 I WANT   : To be able to erase an entire stroke on the canvas.
 SO THAT  : I have more customizability with the Paint application.
            In particular, this would enhance my ease of control over the canvas
-           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
+           (e.g., reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.321 : hingor13 : Complete

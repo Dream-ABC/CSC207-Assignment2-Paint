@@ -107,7 +107,7 @@ Reference: https://www.oodesign.com/images/design_patterns/behavioral/strategy_i
 
 Purpose:
 	The Strategy pattern was implemented to align with the Open-Closed Principle.
-    In our application, each Shape (e.g. Circle, Rectangle) responds to mouse actions.
+    In our application, each Shape (e.g., Circle, Rectangle) responds to mouse actions.
     In particular, they respond to mouse clicks, drags, and releases to register that
     they are being drawn onto the canvas. However, every Shape responds to these mouse
     actions in different ways. For example, for a Circle, the first mouse click represents
@@ -186,7 +186,7 @@ Usage:
     feature to the application. Firstly, they would need to create a new shape strategy
     that implements the ShapeStrategy interface. Then, they would need to update StrategyFactory
     to create this new strategy, by creating a new case corresponding to the shape's name
-    (e.g. HexagonStrategy would have a case "hexagon").
+    (e.g., HexagonStrategy would have a case "hexagon").
 --------------------------------------------------------------------------------
 Name: Shape Factory
 Pattern Name: Factory
@@ -224,7 +224,7 @@ Usage:
     feature to the application. Firstly, they would need to create a new shape class
     that implements the Shape interface. Then, they would need to update ShapeFactory
     to create this new shape, by creating a new case corresponding to the shape's name
-    (e.g. Hexagon would have a case "hexagon").
+    (e.g., Hexagon would have a case "hexagon").
 --------------------------------------------------------------------------------
 Name: User Action Command
 Pattern Name: Command
@@ -234,7 +234,7 @@ Purpose:
 	The Command pattern was implemented to align with the Single Responsibility Principle.
 	In our application, in order to support the Undo/Redo feature we have, we need to keep
 	track of all user actions performed (so that we can later know which action to undo/redo).
-	Each command class we have (e.g. AddLayerCommand, AddShapeCommand) only has one responsibility,
+	Each command class we have (e.g., AddLayerCommand, AddShapeCommand) only has one responsibility,
 	which is to handle one specific action. This ensures our code is clear, modular, and manageable.
 	The Command pattern also supports the Open-Close Principle, as creating a new command only
 	requires creating a new command class and doesn't need to modify any existing code. As a result,
@@ -286,7 +286,7 @@ Name: New Drawing Mode
 
 Description:
     A drawing mode enables a user to draw an object onto the screen, which could
-    be a shape (e.g. Circle) or other elements (e.g. Text). ***The
+    be a shape (e.g., Circle) or other elements (e.g., Text). ***The
 	drawing mode consists of an image icon appearing in the left button panel.
 	When the user clicks the image icon, the drawing mode is enabled. This means
 	that a strategy for handling user input for this drawing mode is installed.***
@@ -379,7 +379,7 @@ Example:
 
 HOW TO EXTEND OUR CODE
 --------------------------------------------------------------------------------
-Name: Resizable Erasers
+Name: Resizable Erasers (Stroke and Precision)
 
 Description:
     Resizable erasers would allow users to adjust the eraser size, providing
@@ -387,9 +387,7 @@ Description:
     be implemented for both the stroke eraser and the precision eraser. One
     possible implementation of this feature is to have a slider pop-up when the
     user clicks on an eraser button. The slider value then corresponds to the
-    eraser's size. The size range available could be any particular range. In this
-    particular implementation that we're describing, we will arbitrary set it to
-    be from 1.0 to 50.0.
+    eraser's size, which could be any range desired.
 
 Implementation:
     The specific implementation approach for this feature discussed above, is outlined below.
@@ -415,10 +413,24 @@ Example:
 Name: Dynamic Color Change for Drawn Shapes
 
 Description:
-
+    Dynamic color change would enable users to modify the color of their shapes even after the shapes have
+    been drawn and finalized (i.e., after the user releases their mouse). This would increase
+    customization options in the Paint program, enhancing the user experience. One possible implementation
+    of this feature is to create a new "Color Change" button. When the user presses this button, they can
+    select a color to apply to a shape. An icon will then appear at the mouse cursor, allowing the user to
+    click on a shape to change its color to the selected option.
 
 Implementation:
+    The specific implementation approach for this feature discussed above, is outlined below.
 
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+    		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+    		(any special discussion...)***
+
+    ColorChangeTool:
+
+
+    something like making a new tool, using the overlap function in shapes, and then putting in the new color
 --------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
