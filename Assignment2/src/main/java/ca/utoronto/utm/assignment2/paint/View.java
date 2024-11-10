@@ -1,8 +1,5 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -12,16 +9,16 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class View implements EventHandler<ActionEvent> {
+public class View {
 
     private final Stage stage;
     private final PaintModel paintModel;
     private final PaintPanel paintPanel;
+    private final MenuPanel menuPanel;
     private final ToolbarPanel toolbarPanel;
     private final StatusbarPanel statusbarPanel;
     private final ZoomPanel zoomPanel;
     private final ShapeChooserPanel shapeChooserPanel;
-    private final ColorPickerPopup colorPickerPopup;
     private final LayerChooserPanel layerChooserPanel;
     private final LayerChooserController layerChooserController;
     private final ResizableCanvas canvas;
@@ -39,7 +36,11 @@ public class View implements EventHandler<ActionEvent> {
         this.paintPanel = new PaintPanel(paintModel);
         this.canvas = new ResizableCanvas(700, 400, paintModel, paintPanel);
 
+        this.menuPanel = new MenuPanel(paintModel);
+        paintModel.addObserver(menuPanel);
+
         this.toolbarPanel = new ToolbarPanel();
+        paintModel.addObserver(toolbarPanel);
 
         this.statusbarPanel = new StatusbarPanel();
         paintModel.addObserver(statusbarPanel);
@@ -54,7 +55,7 @@ public class View implements EventHandler<ActionEvent> {
         String iconImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/PaintAppIcon.png";
 
         topPanel = new VBox();
-        topPanel.getChildren().addAll(createMenuBar(), this.toolbarPanel);
+        topPanel.getChildren().addAll(menuPanel, toolbarPanel);
 
         Region spacer = new Region();
         spacer.setStyle("-fx-background: #f8f1f0");
@@ -90,7 +91,6 @@ public class View implements EventHandler<ActionEvent> {
 //        root.setRight(layerPane);
         root.setTop(topPanel);
         root.setBottom(bottomPanel);
-        this.colorPickerPopup = new ColorPickerPopup(this.paintPanel, this);
 
         Scene scene = new Scene(root);
 
@@ -120,97 +120,5 @@ public class View implements EventHandler<ActionEvent> {
 
     public void setLayer(String layerName) {
         this.layerChooserController.selectLayer(layerName);
-    }
-
-    private MenuBar createMenuBar() {
-
-        MenuBar menuBar = new MenuBar();
-        Menu menu;
-        MenuItem menuItem;
-
-        // A menu for File
-
-        menu = new Menu("File");
-
-        menuItem = new MenuItem("New");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menuItem = new MenuItem("Open");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menuItem = new MenuItem("Save");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menu.getItems().add(new SeparatorMenuItem());
-
-        menuItem = new MenuItem("Exit");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menuBar.getMenus().add(menu);
-
-        // Another menu for Edit
-
-        menu = new Menu("Edit");
-
-        menuItem = new MenuItem("Cut");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menuItem = new MenuItem("Copy");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menuItem = new MenuItem("Paste");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menu.getItems().add(new SeparatorMenuItem());
-        menuItem = new MenuItem("Undo");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menuItem = new MenuItem("Redo");
-        menuItem.setOnAction(this);
-        menu.getItems().add(menuItem);
-
-        menuBar.getMenus().add(menu);
-
-        // Another menu for View
-
-        menu = new Menu("View");
-
-        menuItem = new MenuItem("Colors");
-        menuItem.setOnAction(this); // Show the color popup
-        menu.getItems().add(menuItem);
-        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
-
-        menuItem = new MenuItem("Line Thickness");
-        this.lineThicknessSlider = new LineThicknessSlider(this.paintPanel);
-        menuItem.setOnAction(event -> this.lineThicknessSlider.show()); // Show the slider popup
-        menu.getItems().add(menuItem);
-
-        menuBar.getMenus().add(menu);
-
-        return menuBar;
-    }
-
-    @Override
-    public void handle(ActionEvent event) {
-        String command = ((MenuItem) event.getSource()).getText();
-        if (command.equals("Exit")) {
-            Platform.exit();
-        } else if (command.equals("Colors")) {
-            this.colorPickerPopup.display();
-        } else if (command.equals("Undo")){
-            this.paintModel.undo();
-        } else if (command.equals("Redo")){
-            this.paintModel.redo();
-        }
-
-        this.paintModel.notifyChange();
     }
 }

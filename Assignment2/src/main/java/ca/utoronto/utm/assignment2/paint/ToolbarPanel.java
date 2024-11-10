@@ -15,8 +15,10 @@ import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Observable;
+import java.util.Observer;
 
-public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> {
+public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent>, Observer {
 
     public ToolbarPanel() throws FileNotFoundException {
         String[] buttonIds = {"Selection", "Image", "Tools", "Brushes", "Shapes", "Colours", "Layers"};
@@ -107,6 +109,11 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent> 
         }
         ToggleButton button = (ToggleButton) event.getSource();
         button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }
 
