@@ -193,6 +193,12 @@ public class Circle implements Shape {
         this.topLeft.shift(x, y);
     }
 
+    /**
+     * Creates a copy of the Circle instance.
+     *
+     * @return a copy of the Circle instance
+     */
+    @Override
     public Shape copy(){
         Circle c = new Circle(fillStyle, lineThickness);
         c.setDiameter(diameter);
@@ -245,9 +251,9 @@ public class Circle implements Shape {
     }
 
     /**
-     * Returns a string representation of a circle.
+     * Returns a string representation of a Circle.
      *
-     * @return a string representation of the circle
+     * @return a string representation of Circle
      */
     public String toString() {
         return "Circle{" + this.topLeft.x + "," + this.topLeft.y + ","

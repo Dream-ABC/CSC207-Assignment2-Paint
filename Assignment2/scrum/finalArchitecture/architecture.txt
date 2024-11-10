@@ -78,12 +78,18 @@
     ZoomController
     ZoomSliderController
 
-# File Classes (classes that pertain to the file menu)
+# File Menu Classes (classes that pertain to the file menu)
     Command
     CommandHistory
     FileHandlePopup
     FileHandler
     PatternParser
+
+# Edit Menu Classes (classes that pertain to the edit menu)
+    Command
+    CommandHistory
+    DeleteSelectedCommand
+    PasteCommand
 
 
 
@@ -240,7 +246,9 @@ Classes:
 	ChangeLayerCommand: ConcreteCommand
 	ChangeLayerVisibilityCommand: ConcreteCommand
 	DeleteLayerCommand: ConcreteCommand
+	DeleteSelectedCommand: ConcreteCommand
 	StrokeEraserCommandCommand: ConcreteCommand
+	PasteCommand: ConcreteCommand
 	CommandHistory: Invoker
 	PaintModel: Client
 	PaintModel: Receiver
@@ -316,6 +324,10 @@ Implementation:
         means that the shape should be able to be shifted around the canvas when selected by the
         selection tool. This logic is implemented in the shift(double x, double y) method. This simply
         requires shifting all Point objects of the shape by invoking the shift method on each Point.
+        Additionally, the selection tool requires that the shape be able to be copied and pasted. This means
+        that we need to be able to create a duplicate of the new shape, which is the purpose of the copy()
+        method. This method should create a new instance of the shape, set all its attributes to match the
+        original, and then return the new instance.
 
 	XStrategy:
 	        XStrategy must handle three mouse events: left mouse press, left mouse drag, and left mouse release.
