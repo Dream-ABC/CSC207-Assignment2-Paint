@@ -113,8 +113,6 @@ public class PrecisionEraser implements Shape {
         g2d.setStroke(this.color);
         g2d.setLineDashes(5, 3);
 
-        double clearWidth = 5.0;
-        double clearHeight = 5.0;
 
         for (int i = 0; i <= this.points.size() - 2; i++) {
             Point p1 = this.points.get(i);
@@ -127,7 +125,7 @@ public class PrecisionEraser implements Shape {
                 double x = p1.x * (1 - t) + p2.x * t;
                 double y = p1.y * (1 - t) + p2.y * t;
 
-                g2d.clearRect(x - clearWidth / 2, y - clearHeight / 2, clearWidth, clearHeight);
+                g2d.clearRect(x - dimension / 2, y - dimension / 2, dimension, dimension);
             }
 
             g2d.strokeRect(this.topLeft.x - dimension / 2.0, this.topLeft.y - dimension / 2.0,
