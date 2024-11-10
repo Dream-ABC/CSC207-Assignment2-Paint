@@ -575,7 +575,7 @@ Description:
     shape or an outlined shape. This option does not apply to squiggles, polylines,
     or text.
         The fill style selector consists of ***an image icon appearing in the left button panel.
-    	When the user clicks the image icon, the drawing mode is enabled.***
+    When the user clicks the image icon, the selected fill style mode is enabled.***
 
 Classes/Interfaces Involved:
     ShapeChooserPanel
@@ -590,11 +590,13 @@ Implementation:
         		(any special discussion...)***
 
     ShapeChooserPanel:
-        When the button for a fill style is clicked, either "Solid" or "Outline", the ShapeChooserPanel
-        then sets PaintModel's fillStyle to be what the user selected.
+            When the button for a fill style is clicked, either "Solid" or "Outline", the ShapeChooserPanel
+        sets PaintModel's fillStyle to be what the user selected.
 
     PaintModel:
-        After a
+            After PaintModel receives a new fillStyle, it notifies its Observer, PaintPanel, of the change.
+        This allows PaintPanel to acquire the latest fillStyle required for creating new shapes, which it
+        will then pass into ShapeFactory when the user begins drawing shapes.
 
     ShapeFactory:
         With the provided String fillStyle passed in as a parameter, the ShapeFactory can create the correct
