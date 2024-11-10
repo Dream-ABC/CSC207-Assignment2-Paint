@@ -15,14 +15,6 @@
 #     NotStarted,InProgress, Incomplete,Complete
 # as appropriate.
 
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.472 : pengxi60 : Started
-NAME     : Shape chooser UI
-PRIORITY : 3
-ESTIMATE : 2 hours    ACTUAL :
-ISSUE    : Currently the shape chooser panel is not located in the toolbar
-           and is not scalable for future additions.
---------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
@@ -534,6 +526,14 @@ PRIORITY : 1
 ESTIMATE : 1 hour     ACTUAL : 20 min
 ISSUE    : When re-entering polyline mode, the tool continues from the last polyline
            instead of allowing the user to start a new one.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.472 : pengxi60 : Complete
+NAME     : Shape chooser UI
+PRIORITY : 1
+ESTIMATE : 2 hours    ACTUAL : 3 hours
+ISSUE    : Currently the shape chooser panel is not located in the toolbar
+           and is not scalable for future additions.
 --------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
