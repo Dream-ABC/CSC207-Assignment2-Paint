@@ -135,9 +135,9 @@ Nov 8,2024
 	Obstacles I face: None
 
 Nov 9,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Did pull requests for group members
+	What I will do today: Finish BUG4.491 and US4.452
+	Obstacles I face: None
 
 Nov 10,2024
 	What I did yesterday:
