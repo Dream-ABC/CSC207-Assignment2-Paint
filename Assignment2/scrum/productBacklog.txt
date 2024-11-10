@@ -16,6 +16,14 @@
 # as appropriate.
 
 --------------------------------------------------------------------------
+TYPE     : BUG BUG4.472 : pengxi60 : Started
+NAME     : Shape chooser UI
+PRIORITY : 3
+ESTIMATE : 2 hours    ACTUAL :
+ISSUE    : Currently the shape chooser panel is not located in the toolbar
+           and is not scalable for future additions.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG4.485 : hingor13 : NotStarted
 NAME     : Fix selection tool for outlined shapes
 PRIORITY : 1
@@ -279,17 +287,13 @@ ISSUE    : The opaqueness slider is redundant as opaqueness adjustment is
            will simplify the UI and reduce potential conflicts in opaqueness
            control.
 --------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.468 : tianshi8 : Complete
-NAME     : File menu is not implemented
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 5 hours
-ISSUE    : The File menu is currently non-functional. The program should
-           implement the following features:
-               create a new file
-               save the current canvas as a file
-               load a file onto the canvas
---------------------------------------------------------------------------
+# Move User Stories from the ProductBacklog
+# to the appropriate sprintBacklogN.txt after the
+# Sprint Planning Meeting.
+
+# Sprint 4 Nov 10-Nov 10, 2024
+# Sprint 4 Backlog UserStories go below
+
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.006 : wenjess1 : Complete
 NAME     : Fill style selector
@@ -338,20 +342,15 @@ I WANT   : To be able to select the current line thickness, to be applied
 SO THAT  : I can decide the line thickness of my outlined drawings, for more customizability.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.482 : wenjess1 : Complete
-NAME     : Improve precision of registering circle overlap for erasing
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 1 hour
-ISSUE    : The stroke Eraser currently removes Circle drawings prematurely,
-           before the mouse cursor actually touches the Circle.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.483 : wenjess1 : Complete
-NAME     : Improve precision of registering text overlap for erasing
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 1 hour
-ISSUE    : The stroke Eraser currently removes Text prematurely,
-           before the mouse cursor actually touches the Text.
+TYPE     : USER STORY US4.411 : wenjess1 : Complete
+NAME     : Precision eraser
+PRIORITY : 2
+ESTIMATE : 1 day    ACTUAL : 8 hours
+AS A     : user
+I WANT   : To be able to erase a precise section of a drawing on the canvas
+SO THAT  : I have more customizability with the Paint application.
+           In particular, this would enhance my ease of control over the canvas
+           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.421 : tianshi8 : Complete
@@ -365,41 +364,14 @@ SO THAT : I can create more personalized and visually distinct text elements
           within my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.401 : wenjess1 : Complete
-NAME     : Stroke eraser working with varying line thickness and outlined shapes
-PRIORITY : 1
-ESTIMATE : 4 hours    ACTUAL : 8 hours
-ISSUE    : The current StrokeEraser doesn't erase strokes properly when
-           line thickness of shapes are changed, or when shapes are drawn
-           as outlines instead of solids.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US4.411 : wenjess1 : Complete
-NAME     : Precision eraser
+TYPE     : USER STORY US3.351 : hingor13 : Complete
+NAME     : Canvas scalability
 PRIORITY : 2
-ESTIMATE : 1 day    ACTUAL : 8 hours
+ESTIMATE : 3 hours    ACTUAL : 3 days
 AS A     : user
-I WANT   : To be able to erase a precise section of a drawing on the canvas
-SO THAT  : I have more customizability with the Paint application.
-           In particular, this would enhance my ease of control over the canvas
-           (e.g. reduce the need to constantly hit 'undo' just to erase a specific drawing).
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.442 : wenjess1 : Complete
-NAME     : Dashed lines for erasers and selection tool
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 15 minutes
-ISSUE    : StrokeEraser, PrecisionEraser, and SelectionTool should display as
-           dashed lines to differentiate it from shape drawings.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : USER STORY US4.441 : pengxi60 : Complete
-NAME     : Magnifier tool
-PRIORITY : 3
-ESTIMATE : 4 hours    ACTUAL : 6 hours
-AS A     : user
-I WANT   : To be able to focus on a specific part of the canvas.
-SO THAT  : I can edit a specific part of the canvas with more precision.
+I WANT   : A canvas that I can increase and decrease on demand
+SO THAT  : I can have the freedom in changing the dimension of the canvas
+           for my intents and purposes.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.431 : pengxi60 : Complete
@@ -412,20 +384,13 @@ SO THAT  : I can have more freedom with the type of lines and shapes I can
            draw on the canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.484 : pengxi60 : Complete
-NAME     : polyline when switching over to another shape
-PRIORITY : 1
-ESTIMATE : 30 minutes    ACTUAL : 2 hours
-ISSUE    : When new shape is selected while polyline is not completed drawing
-           it becomes un-interactable.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
-TYPE     : BUG BUG4.481 : hingor13 : Complete
-NAME     : Undo/Redo bug while run on initial canvas with no changes
-PRIORITY : 1
-ESTIMATE : 30 minutes    ACTUAL : 30 minutes
-ISSUE    : When clicking undo/redo on a new canvas, duplicate canvases
-           are created.
+TYPE     : USER STORY US4.441 : pengxi60 : Complete
+NAME     : Magnifier tool
+PRIORITY : 3
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+AS A     : user
+I WANT   : To be able to focus on a specific part of the canvas.
+SO THAT  : I can edit a specific part of the canvas with more precision.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US4.451 : hingor13 : Complete
@@ -439,15 +404,6 @@ SO THAT  : I can register which shapes have been selected by the tool.
            drawings around the canvas or copying and pasting drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.491 : hingor13 : Complete
-NAME     : Click different mouse buttons causes at the same time causes bugs
-PRIORITY : 1
-ESTIMATE : 1 hour    ACTUAL : 30 minutes
-ISSUE    : When left click is held done and right click is pressed, it causes
-           mouse released to run making the shape null and causing errors when
-           it is continued to be dragged.
---------------------------------------------------------------------------
---------------------------------------------------------------------------
 TYPE     : USER STORY US4.452 : hingor13 : Complete
 NAME     : Dragging selected shapes
 PRIORITY : 1
@@ -455,6 +411,75 @@ ESTIMATE : 3 hour    ACTUAL : 30 minutes
 AS A     : user
 I WANT   : To be able to drag shapes that are selected.
 SO THAT  : Reorganize my canvas and move shapes around.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.468 : tianshi8 : Complete
+NAME     : File menu is not implemented
+PRIORITY : 2
+ESTIMATE : 4 hours    ACTUAL : 5 hours
+ISSUE    : The File menu is currently non-functional. The program should
+           implement the following features:
+               create a new file
+               save the current canvas as a file
+               load a file onto the canvas
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.481 : hingor13 : Complete
+NAME     : Undo/Redo bug while run on initial canvas with no changes
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL : 30 minutes
+ISSUE    : When clicking undo/redo on a new canvas, duplicate canvases
+           are created.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.482 : wenjess1 : Complete
+NAME     : Improve precision of registering circle overlap for erasing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The StrokeEraser currently removes Circle drawings prematurely,
+           before the mouse cursor actually touches the Circle.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.483 : wenjess1 : Complete
+NAME     : Improve precision of registering text overlap for erasing
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 1 hour
+ISSUE    : The StrokeEraser currently removes Text prematurely,
+           before the mouse cursor actually touches the Text.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.484 : pengxi60 : Complete
+NAME     : Polyline when switching over to another shape
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL : 2 hours
+ISSUE    : When new shape is selected while polyline is not completed drawing
+           it becomes un-interactable.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.491 : hingor13 : Complete
+NAME     : Executing multiple mouse actions simultaneously.
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When left click is held done and right click is pressed, it causes
+           mouse released to run making the shape null and causing errors when
+           it is continued to be dragged.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.401 : wenjess1 : Complete
+NAME     : Stroke eraser working with varying line thickness and outlined shapes
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 8 hours
+ISSUE    : The current StrokeEraser doesn't erase strokes properly when
+           line thickness of shapes are changed, or when shapes are drawn
+           as outlines instead of solids.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.442 : wenjess1 : Complete
+NAME     : Dashed lines for erasers and selection tool
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 15 minutes
+ISSUE    : StrokeEraser, PrecisionEraser, and SelectionTool should display as
+           dashed lines to differentiate it from shape drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.486 : hingor13 : Complete
