@@ -183,6 +183,24 @@ public class PaintModel extends Observable {
         notifyChange();
     }
 
+    public void copy() {
+
+    }
+
+    public void paste() {
+
+    }
+
+    public void cut() {
+        copy();
+        delete();
+    }
+
+    public void delete() {
+        history.execute(new DeleteSelectedCommand());
+    }
+
+
     public double getCanvasX() {
         return canvasX;
     }

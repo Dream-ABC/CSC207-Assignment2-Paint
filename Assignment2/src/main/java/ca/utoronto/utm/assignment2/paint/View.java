@@ -183,6 +183,10 @@ public class View implements EventHandler<ActionEvent> {
         menuItem.setOnAction(this);
         menu.getItems().add(menuItem);
 
+        menuItem = new MenuItem("Delete");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
         menuBar.getMenus().add(menu);
 
         // Another menu for View
@@ -222,6 +226,14 @@ public class View implements EventHandler<ActionEvent> {
         } else if (command.equals("Save")) {
 //            this.paintModel.saveFile(new FileHandler(this.paintPanel));
             this.fileHandlePopup.saveFile();
+        } else if (command.equals("Copy")){
+            this.paintModel.copy();
+        } else if (command.equals("Paste")){
+            this.paintModel.paste();
+        } else if (command.equals("Cut")) {
+            this.paintModel.cut();
+        } else if (command.equals("Delete")) {
+            this.paintModel.delete();
         }
 
         this.paintModel.notifyChange();
