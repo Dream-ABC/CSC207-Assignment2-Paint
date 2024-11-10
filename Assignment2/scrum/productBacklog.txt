@@ -33,7 +33,7 @@ ESTIMATE : 2 hours ACTUAL : 2 hours
 AS A     : user
 I WANT   : To click the center of the circle, drag, and release to specify
            a circle to be drawn in the current style.
-SO THAT  : I can add circles to my canvas
+SO THAT  : I can add circles to my canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.001 : wenjess1 : Complete
@@ -56,8 +56,8 @@ TYPE     : BUG BUG1.005 : tianshi8 : Complete
 NAME     : Squiggle is broken
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 1 hour
-ISSUE    : Squiggles are connected to each other by a straight line.
-           Each drag of the mouse should be a separate squiggle.
+ISSUE    : Currently, squiggles are connected to each other by a straight line.
+           However, each drag of the mouse should be a separate squiggle.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.006 : pengxi60 : Complete
@@ -73,8 +73,8 @@ TYPE     : BUG BUG1.101 : hingor13 : Complete
 NAME     : Rectangle drawing is broken
 PRIORITY : 1
 ESTIMATE : 1 hour   ACTUAL : 1 hour
-ISSUE    : If the rectangle is dragged towards another side than bottom right,
-           the topLeft corner should be updated.
+ISSUE    : If the rectangle is dragged towards another side other than
+           bottom right, the top left corner should be updated.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG1.111 : hingor13 : Complete
@@ -104,7 +104,7 @@ ESTIMATE : 1 hour    ACTUAL : 30 minutes
 AS A     : user
 I WANT   : To click on one corner of a rectangle, drag, and release to
 		   specify two corners of a rectangle to be drawn in the current style.
-SO THAT  : I can add rectangles to my canvas
+SO THAT  : I can add rectangles to my canvas.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US1.004 : pengxi60 : Complete
