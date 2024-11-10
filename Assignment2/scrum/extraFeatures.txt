@@ -7,10 +7,10 @@ Description:
 	For text, the stroke eraser erases the entire text, not one letter at a time.
 
 Reference: 
-	US3.311 - Stroke Eraser
+	US3.311 - Stroke eraser
 	BUG4.482 - Improve precision of registering circle overlap for erasing
 	BUG4.483 - Improve precision of registering text overlap for erasing
-	BUG4.401 - Stroke Eraser working with varying line thickness and outlined shapes
+	BUG4.401 - Stroke eraser working with varying line thickness and outlined shapes
 
 --------------------------------------------------------------------------------
 FeatureName: Precision Eraser
@@ -20,7 +20,7 @@ Description:
 	for finer detailing. It erases in the shape of a square.
 
 Reference: 
-	US4.411 - Precision Eraser
+	US4.411 - Precision eraser
 --------------------------------------------------------------------------------
 FeatureName: Fill Style Selector
 
@@ -48,8 +48,8 @@ Description:
 	...
 
 Reference:
-	US4.431 - Draw Polyline
-	BUG4.484 - Polyline when switching over to another shape
+	US4.431 - Draw polyline
+	BUG4.484 - polyline when switching over to another shape
 --------------------------------------------------------------------------------
 FeatureName: Magnifier Tool
 
@@ -57,7 +57,7 @@ Description:
 	...
 
 Reference:
-	US4.441 - Magnifier Tool
+	US4.441 - Magnifier tool
 --------------------------------------------------------------------------------
 FeatureName: Paint GUI
 
@@ -77,7 +77,7 @@ Description:
 	and dynamic control over colors.
 
 Reference:
-	US3.005 - Color Selector
+	US3.005 - Color selector
 --------------------------------------------------------------------------------
 FeatureName: Layer Support
 
@@ -87,7 +87,7 @@ Description:
     unwanted layers. Additionally, users can set any layer to be invisible.
 
 Reference:
-	US3.331 - Layer Support
+	US3.331 - Layer support
 --------------------------------------------------------------------------------
 FeatureName: File Menu
 
@@ -112,8 +112,8 @@ Description:
     strikethrough using dedicated buttons.
 
 Reference:
-	US4.421 - Text Editor
-	BUG BUG4.471 : Text Editor Dialog Icons Not Displaying Correctly
+	US4.421 - Text editor
+	BUG BUG4.471 : Text editor dialog icons not displaying correctly
 --------------------------------------------------------------------------------
 FeatureName: Undo/Redo
 
@@ -129,7 +129,7 @@ Description:
 	...
 
 Reference:
-	US3.351 - Canvas Scalability
+	US3.351 - Canvas scalability
 --------------------------------------------------------------------------------
 FeatureName: Selection Tool
 
@@ -138,8 +138,8 @@ Description:
 
 Reference:
 	US4.451 - Selection tool
-	US4.452 - Dragging Selected Shapes
-	BUG4.486 - Dragging Selected Shapes extremely fast
+	US4.452 - Dragging selected shapes
+	BUG4.486 - Dragging selected shapes extremely fast
 --------------------------------------------------------------------------------
 FeatureName: Cut/Copy/Paste/Delete
 
@@ -148,5 +148,5 @@ Description:
 
 Reference:
 	BUG4.009 - Edit menu is not implemented
-	BUG4.487 - Add Command for Dragging Shapes
+	BUG4.487 - Add command for dragging shapes
 --------------------------------------------------------------------------------
