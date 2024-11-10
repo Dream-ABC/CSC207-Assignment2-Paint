@@ -519,6 +519,14 @@ ESTIMATE : 3 hour    ACTUAL : 3 hour
 ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.489 : tianshi8 : Complete
+NAME     : File Menu Cannot Save Paste Commands, Drag Commands, and Polyline Shapes
+PRIORITY : 1
+ESTIMATE : 4 hours    ACTUAL : 6 hours
+ISSUE    : The string representation for polyline shapes, paste commands,
+           and drag commands has not been implemented.
+--------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 --------------------------------------------------------------------------

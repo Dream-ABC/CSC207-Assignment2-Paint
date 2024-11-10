@@ -102,6 +102,7 @@ Description:
 
 Reference:
 	BUG4.468 - File menu is not implemented
+	BUG BUG4.489 - File Menu Cannot Save Paste Commands, Drag Commands, and Polyline Shapes
 --------------------------------------------------------------------------------
 FeatureName: Text Editor
 
