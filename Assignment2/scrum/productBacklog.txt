@@ -23,6 +23,14 @@ ESTIMATE : 1 hour    ACTUAL :
 ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.487 : hingor13 : NotStarted
+NAME     : Add Command for Dragging Shapes
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : Since dragging a shape is an undoable feature, a command has to
+           be implemented for it.
+--------------------------------------------------------------------------
 
 # COMPLETED USER STORIES/BUGS BELOW ###########################################
 --------------------------------------------------------------------------
