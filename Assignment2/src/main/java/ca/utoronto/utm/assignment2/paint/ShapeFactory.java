@@ -11,6 +11,7 @@ public class ShapeFactory {
             case "triangle" -> new Triangle(fillStyle, lineThickness);
             case "polyline" -> new Polyline(lineThickness);
             case "text" -> new Text();
+            case "precision eraser" -> new PrecisionEraser();
             default -> null;
         };
     }

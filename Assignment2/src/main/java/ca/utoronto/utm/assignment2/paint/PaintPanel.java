@@ -75,6 +75,10 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
         return shape;
     }
 
+    public void resetCurrentShape() {
+        this.shape = null;
+    }
+
     public void setCurrentShape(Shape shape) {
         this.shape = shape;
     }

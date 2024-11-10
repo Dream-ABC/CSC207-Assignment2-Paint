@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * A class to represent an eraser.
  * Erasers are represented as a square, where the user's mouse is the topLeft of the square.
  */
-public class StrokeEraser implements Tool{
+public class StrokeEraser implements Tool {
     private Point topLeft;
     private final double dimensionX;
     private final double dimensionY;
@@ -18,7 +18,7 @@ public class StrokeEraser implements Tool{
     /**
      * Constructs a default stroke eraser, represented as a square that is of size 14.
      */
-    public StrokeEraser(){
+    public StrokeEraser() {
         this.dimensionX = 14;
         this.dimensionY = 14;
         this.removedShapes = new ArrayList<>();
@@ -41,25 +41,32 @@ public class StrokeEraser implements Tool{
     /**
      * @return the dimension of the Eraser
      */
-    public double getDimensionX(){ return this.dimensionX; }
-    public double getDimensionY(){ return this.dimensionY; }
+    public double getDimensionX() {
+        return this.dimensionX;
+    }
 
-    public void addRemovedShapes(Shape shape){
+    public double getDimensionY() {
+        return this.dimensionY;
+    }
+
+    public void addRemovedShapes(Shape shape) {
         this.removedShapes.add(shape);
     }
-    public ArrayList<Shape> getRemovedShapes(){
+
+    public ArrayList<Shape> getRemovedShapes() {
         return this.removedShapes;
     }
 
     /**
      * Displays the Eraser, represented as a square, centered at the user's current mouse location.
+     *
      * @param g2d GraphicsContext
      */
     public void display(GraphicsContext g2d) {
         g2d.setLineWidth(1);
         g2d.setStroke(Color.BLACK);
         g2d.setLineDashes(5, 3);
-        g2d.strokeRect(this.topLeft.x - dimensionX/2, this.topLeft.y - dimensionY/2,
+        g2d.strokeRect(this.topLeft.x - dimensionX / 2, this.topLeft.y - dimensionY / 2,
                 this.dimensionX, this.dimensionY);
     }
 }

@@ -13,7 +13,12 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         this.panel.getModel().storeState();
-        PrecisionEraser precisionEraser = new PrecisionEraser();
+        this.panel.getModel().getHistory().popLastCommand();
+
+        ShapeFactory shapeFactory = panel.getShapeFactory();
+        PrecisionEraser precisionEraser = (PrecisionEraser) shapeFactory.getShape(panel.getMode(),
+                panel.getFillStyle(), panel.getLineThickness());
+
         Point topLeft = new Point(mouseEvent.getX(), mouseEvent.getY());
         Point centre = new Point(topLeft.x, topLeft.y);
         precisionEraser.setTopLeft(centre);

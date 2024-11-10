@@ -17,7 +17,7 @@ public class PatternParser {
      * Parses a command from a string and returns a corresponding Command object.
      *
      * @param content the string representation of the command to parse
-     * @param panel the PaintPanel instance containing the PaintModel and other necessary components
+     * @param panel   the PaintPanel instance containing the PaintModel and other necessary components
      * @return a Command object based on the parsed content, or null if the command is directly executed
      */
     public static Command parseLine(String content, PaintPanel panel) {

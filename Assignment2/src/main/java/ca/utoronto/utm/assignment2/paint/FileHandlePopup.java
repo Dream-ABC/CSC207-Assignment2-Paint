@@ -138,6 +138,7 @@ public class FileHandlePopup {
         // Waits for user response
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == buttonYes) {
+            this.panel.resetCurrentShape();
             this.model.resetAll();
             return true;
         }
