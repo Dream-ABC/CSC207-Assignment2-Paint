@@ -331,16 +331,15 @@ public class Triangle extends Polygon implements Shape {
      * Sets the properties of the Triangle based on the provided data array.
      *
      * @param data an array of strings containing the following information in order:
-     *             The elements should be in the following order:
-     *             data[0] - x coordinate of the top-left point
-     *             data[1] - y coordinate of the top-left point
-     *             data[2] - base length of the Triangle
-     *             data[3] - height of the Triangle
-     *             data[4] - x coordinate of the origin point
-     *             data[5] - y coordinate of the origin point
-     *             data[6] - fill style of the Triangle
-     *             data[7] - line thickness of the Triangle
-     *             data[8] - color of the Triangle in web format (e.g., "#ff0000" for red)
+     *             <p>data[0] - x-coordinate of the top-left point</p>
+     *             <p>data[1] - y-coordinate of the top-left point</p>
+     *             <p>data[2] - base length of the Triangle</p>
+     *             <p>data[3] - height of the Triangle</p>
+     *             <p>data[4] - x-coordinate of the origin point</p>
+     *             <p>data[5] - y-coordinate of the origin point</p>
+     *             <p>data[6] - fill style of the Triangle</p>
+     *             <p>data[7] - line thickness of the Triangle</p>
+     *             <p>data[8] - color of the Triangle in web format</p>
      */
     @Override
     public void setShape(String[] data) {

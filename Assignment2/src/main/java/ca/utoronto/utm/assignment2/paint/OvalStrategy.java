@@ -19,7 +19,7 @@ public class OvalStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse click, a new Oval is created.
+     * When the user performs a left mouse click, a new Oval is created.
      * The mouse click position is the top left corner of the bounding box of the Oval.
      * @param mouseEvent the mouse action performed by the user
      */
@@ -40,7 +40,7 @@ public class OvalStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse drag, the current Oval's size is updated according to
+     * When the user performs a left mouse drag, the current Oval's size is updated according to
      * the user's mouse position.
      * The drag position is the bottom-right vertex of the bounding box of the Oval.
      * @param mouseEvent the mouse action performed by the user
@@ -64,7 +64,7 @@ public class OvalStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse release, the final Oval is drawn onto the canvas.
+     * When the user performs a left mouse release, the final Oval is drawn onto the canvas.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override

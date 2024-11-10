@@ -122,8 +122,8 @@ public class Squiggle implements Shape {
      *
      * @param data an array of strings containing the following information in order:
      *             <p>data[0] - line thickness of the Squiggle</p>
-     *             <p>data[2] - color of the Squiggle in web format</p>
-     *             <p>data[i, i+1] - the x and y coordinates of a Point in the Squiggle</p>
+     *             <p>data[1] - color of the Squiggle in web format</p>
+     *             <p>data[2 and onwards] - Points of the Squiggle as pairs of x and y coordinates</p>
      */
     @Override
     public void setShape(String[] data) {

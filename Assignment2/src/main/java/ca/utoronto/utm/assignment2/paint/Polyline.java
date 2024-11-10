@@ -207,7 +207,7 @@ public class Polyline implements Shape {
      *             <p>data[0] - whether the Polyline is closed or not</p>
      *             <p>data[1] - line thickness of the Polyline</p>
      *             <p>data[2] - color of the Polyline in web format</p>
-     *             <p>data[i, i+1] - the x and y coordinates of a Point in the Polyline</p>
+     *             <p>data[3 and onwards] - Points of the Polyline as pairs of x and y coordinates</p>
      */
     @Override
     public void setShape(String[] data) {

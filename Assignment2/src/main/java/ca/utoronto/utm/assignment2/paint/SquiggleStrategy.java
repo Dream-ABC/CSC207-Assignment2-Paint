@@ -19,7 +19,7 @@ public class SquiggleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse click, a new Squiggle is created.
+     * When the user performs a left mouse click, a new Squiggle is created.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override
@@ -39,7 +39,7 @@ public class SquiggleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse drag, the current Squiggle's line is updated according to
+     * When the user performs a left mouse drag, the current Squiggle's line is updated according to
      * the user's mouse position.
      * @param mouseEvent the mouse action performed by the user
      */
@@ -56,7 +56,7 @@ public class SquiggleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse release, the final Squiggle is drawn onto the canvas.
+     * When the user performs a left mouse release, the final Squiggle is drawn onto the canvas.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override

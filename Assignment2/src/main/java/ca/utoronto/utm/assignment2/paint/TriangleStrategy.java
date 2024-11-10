@@ -15,7 +15,7 @@ public class TriangleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse click, a new Triangle is created.
+     * When the user performs a left mouse click, a new Triangle is created.
      * The mouse click position is the top left corner of the bounding box of the Triangle.
      * @param mouseEvent the mouse action performed by the user
      */
@@ -38,7 +38,7 @@ public class TriangleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse drag, the current Triangle's size is updated according to
+     * When the user performs a left mouse drag, the current Triangle's size is updated according to
      * the user's mouse position.
      * The drag position is the bottom-right vertex of the Triangle.
      * @param mouseEvent the mouse action performed by the user
@@ -63,7 +63,7 @@ public class TriangleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse release, the final Triangle is drawn onto the canvas.
+     * When the user performs a left mouse release, the final Triangle is drawn onto the canvas.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override

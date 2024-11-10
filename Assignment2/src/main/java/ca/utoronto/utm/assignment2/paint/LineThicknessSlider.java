@@ -5,6 +5,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Slider;
 import javafx.stage.Popup;
 
+/**
+ * A class for the line thickness slider, which will allow users to select their desired
+ * line thickness when drawing outlined shapes. The range is from 1.0 to 10.0.
+ */
 public class LineThicknessSlider extends Slider implements ChangeListener {
 
     private final PaintPanel paintPanel;
@@ -32,7 +36,8 @@ public class LineThicknessSlider extends Slider implements ChangeListener {
     }
 
     /**
-     *
+     * Displays the line thickness slider in a popup, enabling the user to adjust
+     * its position and select a value.
      */
     public void show() {
         // Prevent unexpected actions on canvas

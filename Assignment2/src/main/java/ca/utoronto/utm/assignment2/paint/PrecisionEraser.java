@@ -5,6 +5,10 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
+/**
+ * A class to represent the precision eraser.
+ * PrecisionEraser implements the Shape interface.
+ */
 public class PrecisionEraser implements Shape {
     private final ArrayList<Point> points;
     private Point topLeft;
@@ -12,7 +16,7 @@ public class PrecisionEraser implements Shape {
     private Color color;
 
     /**
-     * Constructs a default stroke eraser, represented as a square that is of size 14.
+     * Constructs a default stroke eraser, which is a square of size 14.
      */
     public PrecisionEraser() {
         this.dimension = 14;
@@ -21,37 +25,60 @@ public class PrecisionEraser implements Shape {
     }
 
     /**
-     * Adds a new point to the user's squiggle drawing.
+     * Adds a new point to the user's precise erasing.
      *
-     * @param p new point in Squiggle
+     * @param p new point in PrecisionEraser
      */
     public void addPoint(Point p) {
         this.points.add(p);
     }
 
-    public Point getTopLeft() {
-        return topLeft;
-    }
-
+    /**
+     * Sets the top left point of PrecisionEraser.
+     * @param topLeft top left point of PrecisionEraser
+     */
     public void setTopLeft(Point topLeft) {
         this.topLeft = topLeft;
     }
 
+    /**
+     * Sets the color of PrecisionEraser.
+     * @param color color of PrecisionEraser
+     */
     @Override
     public void setColor(Color color) {
         this.color = color;
     }
 
+    /**
+     * Returns the color of PrecisionEraser.
+     * @return the color of PrecisionEraser
+     */
     @Override
     public Color getColor() {
         return this.color;
     }
 
+    /**
+     * Checks if the Tool is overlapping the PrecisionEraser.
+     *
+     * @param tool the tool instance which is currently checking for overlaps
+     * @return True if the tool finds an overlap, False otherwise
+     */
     @Override
     public boolean overlaps(Tool tool) {
         return false;
     }
 
+
+    /**
+     * Displays the PrecisionEraser as a square with a black dashed outline.
+     * Then, it draws a transparent-colored square the size of the precision eraser,
+     * at the PrecisionEraser's position.
+     * The default size of this eraser is 14.
+     *
+     * @param g2d the GraphicsContext for the current layer used to draw the PrecisionEraser
+     */
     @Override
     public void display(GraphicsContext g2d) {
         for (Point p : points) {
@@ -65,16 +92,14 @@ public class PrecisionEraser implements Shape {
     }
 
     /**
-     * Sets the shape properties using the provided array of data.
+     * Sets the properties of the PrecisionEraser based on the provided data array.
      *
-     * @param data a String array containing the shape's properties. The array elements are expected to
-     *             be in the following order:
-     *             data[0] - top-left x-coordinate (String representation of a double)
-     *             data[1] - top-left y-coordinate (String representation of a double)
-     *             data[2] - dimension (String representation of a double)
-     *             data[3] - color (String representation of a color in web format)
-     *             data[4 and onwards] - additional points as pairs of x and y coordinates
-     *                                   (String representation of doubles)
+     * @param data an array of strings containing the following information in order:
+     *             <p>data[0] - x-coordinate of the top-left point</p>
+     *             <p>data[1] - y-coordinate of the top-left point</p>
+     *             <p>data[2] - dimension of the PreciseEraser</p>
+     *             <p>data[3] - color of the PreciseEraser in web format</p>
+     *             <p>data[4 and onwards] - additional points as pairs of x and y coordinates</p>
      */
     @Override
     public void setShape(String[] data) {
@@ -89,11 +114,22 @@ public class PrecisionEraser implements Shape {
         }
     }
 
+    /**
+     * Shifts the top left point of the PreciseEraser by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
     @Override
     public void shift(double x, double y) {
         this.topLeft.shift(x, y);
     }
 
+    /**
+     * Creates a copy of the PreciseEraser instance.
+     *
+     * @return a copy of the PreciseEraser instance
+     */
     public PrecisionEraser copy() {
         PrecisionEraser p = new PrecisionEraser();
         p.setTopLeft(this.topLeft.copy());

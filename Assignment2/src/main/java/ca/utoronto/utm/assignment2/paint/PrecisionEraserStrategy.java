@@ -3,13 +3,29 @@ package ca.utoronto.utm.assignment2.paint;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
+/**
+ * A class to represent the precision eraser erasing strategy.
+ * PrecisionEraserStrategy implements the ShapeStrategy interface.
+ */
 public class PrecisionEraserStrategy implements ShapeStrategy {
     private final PaintPanel panel;
 
+    /**
+     * Creates a precision eraser strategy connected to the paint panel.
+     * @param p the main panel where drawing actions are managed
+     */
     public PrecisionEraserStrategy(PaintPanel p) {
         this.panel = p;
     }
 
+    /**
+     * When the user performs a left mouse click, a new PrecisionEraser
+     * is created and begins erasing at the current mouse position,
+     * corresponding to the size of the precision eraser's square.
+     * This is done by drawing transparent-colored squares the size of the precision eraser,
+     * at the PrecisionEraser's position (current mouse position).
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {
@@ -29,6 +45,14 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user performs a left mouse drag, the PrecisionEraser
+     * continues erasing according to the current mouse position,
+     * corresponding to the size of the precision eraser's square.
+     * This is done by drawing transparent-colored squares the size of the precision eraser,
+     * at the PrecisionEraser's position (current mouse position)
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseDragged(MouseEvent mouseEvent) {
         if (this.panel.getCurrentShape() != null) {
@@ -43,6 +67,10 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
         }
     }
 
+    /**
+     * When the user performs a left mouse release, the PrecisionEraser disappears from the screen.
+     * @param mouseEvent the mouse action performed by the user
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if (mouseEvent.getButton().toString().equals("PRIMARY")) {

@@ -19,7 +19,7 @@ public class CircleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse click, a new Circle is created.
+     * When the user performs a left mouse click, a new Circle is created.
      * The mouse click position is the centre of the Circle.
      * @param mouseEvent the mouse action performed by the user
      */
@@ -40,7 +40,7 @@ public class CircleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse drag, the current Circle's size is updated according to
+     * When the user performs a left mouse drag, the current Circle's size is updated according to
      * the user's mouse position.
      * The drag changes the diameter of the Circle.
      * @param mouseEvent the mouse action performed by the user
@@ -64,7 +64,7 @@ public class CircleStrategy implements ShapeStrategy {
     }
 
     /**
-     * When the user does a left mouse release, the final Circle is drawn onto the canvas.
+     * When the user performs a left mouse release, the final Circle is drawn onto the canvas.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override
