@@ -31,7 +31,7 @@ public class PolylineStrategy implements ShapeStrategy {
 
             if (this.panel.getCurrentShape() == null) {
                 ShapeFactory shapeFactory = panel.getShapeFactory();
-                Polyline polyline = (Polyline) shapeFactory.getShape(panel.getMode(), "", panel.getLineThickness());
+                Polyline polyline = (Polyline) shapeFactory.getShape(panel.getMode(), panel.getFillStyle(), panel.getLineThickness());
                 this.panel.setCurrentShape(polyline);
 
                 polyline.addPoint(newPoint);
@@ -99,7 +99,6 @@ public class PolylineStrategy implements ShapeStrategy {
         Shape shape = this.panel.getModel().getSelectedLayer().getShapes().getLast();
         this.panel.getModel().getSelectedLayer().removeShape(shape);
         if (isFinal) {
-            System.out.println("final shape");
             this.panel.getModel().addShapeFinal(p);
             this.panel.resetCurrentShape();
         } else {
