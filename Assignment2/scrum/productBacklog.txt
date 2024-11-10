@@ -24,7 +24,7 @@ ISSUE    : When the inside of a shape that is only outlined is selected,
            the shape should not be selected
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.452 : hingor13 : NotStarted
+TYPE     : USER STORY US4.452 : hingor13 : InProgress
 NAME     : Dragging Selected Shapes
 PRIORITY : 1
 ESTIMATE : 3 hour    ACTUAL :

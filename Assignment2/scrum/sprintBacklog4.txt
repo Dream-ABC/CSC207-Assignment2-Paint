@@ -192,7 +192,7 @@ ISSUE    : When left click is held done and right click is pressed, it causes
            it is continued to be dragged.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : USER STORY US4.452 : hingor13 : NotStarted
+TYPE     : USER STORY US4.452 : hingor13 : InProgress
 NAME     : Dragging Selected Shapes
 PRIORITY : 1
 ESTIMATE : 3 hour    ACTUAL :
