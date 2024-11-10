@@ -24,6 +24,7 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
      * corresponding to the size of the precision eraser's square.
      * This is done by drawing transparent-colored squares the size of the precision eraser,
      * at the PrecisionEraser's position (current mouse position).
+     * The centre of the PrecisionEraser is defined by the current mouse position.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override
@@ -50,7 +51,8 @@ public class PrecisionEraserStrategy implements ShapeStrategy {
      * continues erasing according to the current mouse position,
      * corresponding to the size of the precision eraser's square.
      * This is done by drawing transparent-colored squares the size of the precision eraser,
-     * at the PrecisionEraser's position (current mouse position)
+     * at the PrecisionEraser's position (current mouse position).
+     * The centre of the PrecisionEraser is defined by the current mouse position.
      * @param mouseEvent the mouse action performed by the user
      */
     @Override

@@ -16,7 +16,7 @@ public class PrecisionEraser implements Shape {
     private Color color;
 
     /**
-     * Constructs a default stroke eraser, which is a square of size 14.
+     * Constructs a default precision eraser, which is a square of size 14.
      */
     public PrecisionEraser() {
         this.dimension = 14;
@@ -70,11 +70,37 @@ public class PrecisionEraser implements Shape {
         return false;
     }
 
+    /**
+     * Shifts the top left point of the PreciseEraser by the specified horizontal and vertical offsets.
+     *
+     * @param x the horizontal offset
+     * @param y the vertical offset
+     */
+    @Override
+    public void shift(double x, double y) {
+        this.topLeft.shift(x, y);
+    }
+
+    /**
+     * Creates a copy of the PreciseEraser instance.
+     *
+     * @return a copy of the PreciseEraser instance
+     */
+    public PrecisionEraser copy() {
+        PrecisionEraser p = new PrecisionEraser();
+        p.setTopLeft(this.topLeft.copy());
+        p.setColor(this.color);
+        for (Point p1 : this.points) {
+            p.addPoint(p1.copy());
+        }
+        return p;
+    }
 
     /**
      * Displays the PrecisionEraser as a square with a black dashed outline.
      * Then, it draws a transparent-colored square the size of the precision eraser,
      * at the PrecisionEraser's position.
+     * The user's mouse position represents the centre of the PrecisionEraser.
      * The default size of this eraser is 14.
      *
      * @param g2d the GraphicsContext for the current layer used to draw the PrecisionEraser
@@ -112,32 +138,6 @@ public class PrecisionEraser implements Shape {
             double y = Double.parseDouble(data[i + 1]);
             this.points.add(new Point(x, y));
         }
-    }
-
-    /**
-     * Shifts the top left point of the PreciseEraser by the specified horizontal and vertical offsets.
-     *
-     * @param x the horizontal offset
-     * @param y the vertical offset
-     */
-    @Override
-    public void shift(double x, double y) {
-        this.topLeft.shift(x, y);
-    }
-
-    /**
-     * Creates a copy of the PreciseEraser instance.
-     *
-     * @return a copy of the PreciseEraser instance
-     */
-    public PrecisionEraser copy() {
-        PrecisionEraser p = new PrecisionEraser();
-        p.setTopLeft(this.topLeft.copy());
-        p.setColor(this.color);
-        for (Point p1 : this.points) {
-            p.addPoint(p1.copy());
-        }
-        return p;
     }
 
     /**
