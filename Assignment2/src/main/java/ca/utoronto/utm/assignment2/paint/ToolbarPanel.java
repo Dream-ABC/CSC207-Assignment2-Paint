@@ -1,13 +1,11 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -18,9 +16,18 @@ import java.io.FileNotFoundException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent>, Observer {
+public class ToolbarPanel extends GridPane implements Observer {
+    private ToolbarController toolbarController;
+    private ShapeChooserPanel shapeChooserPanel;
 
-    public ToolbarPanel() throws FileNotFoundException {
+    public ToolbarPanel(PaintModel model) throws FileNotFoundException {
+        this.toolbarController = new ToolbarController(model);
+        this.shapeChooserPanel = new ShapeChooserPanel(model);
+
+
+
+        setStyle("-fx-background-color: #fcf8f7");
+
         String[] buttonIds = {"Selection", "Image", "Tools", "Brushes", "Shapes", "Colours", "Layers"};
         ImageView[] buttonImages = new ImageView[buttonIds.length];
         String[] imageFiles = {
@@ -33,8 +40,6 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent>,
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Layers.png"
         };
         String arrowImageFile = "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/DownArrowModifier.png";
-
-        this.setStyle("-fx-background-color: #fcf8f7");
 
         int col = 0;
         for (int i = 0; i < buttonIds.length; i++) {
@@ -61,7 +66,7 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent>,
             button.setId(buttonIds[i]);
             button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
 
-            button.setOnAction(this);
+            button.setOnAction(toolbarController);
 
             button.setOnMouseEntered(e -> {
                 button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
@@ -100,21 +105,7 @@ public class ToolbarPanel extends GridPane implements EventHandler<ActionEvent>,
     }
 
     @Override
-    public void handle(ActionEvent event) {
-        for (Node node : this.getChildren()) {
-            if (node instanceof VBox container) {
-                ToggleButton button = (ToggleButton) container.getChildren().getFirst();
-                button.setStyle("-fx-background-color: transparent; -fx-padding: 10;");
-            }
-        }
-        ToggleButton button = (ToggleButton) event.getSource();
-        button.setStyle("-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-radius: 4px; -fx-border-color: lightgray; -fx-padding: 9;");
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-
-    }
+    public void update(Observable o, Object arg) {}
 }
 
 
