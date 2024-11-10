@@ -13,4 +13,5 @@ public interface Shape {
     void display(GraphicsContext g2d);
     void setShape(String[] data);
     void shift(double x, double y);
+    Shape copy();
 }

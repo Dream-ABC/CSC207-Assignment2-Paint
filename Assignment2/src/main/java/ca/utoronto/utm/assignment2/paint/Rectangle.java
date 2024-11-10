@@ -174,6 +174,16 @@ public class Rectangle implements Shape {
         this.topLeft.shift(x,y);
     }
 
+    public Rectangle copy(){
+        Rectangle r = new Rectangle(fillStyle, lineThickness);
+        r.setColor(color);
+        r.setHeight(height);
+        r.setWidth(width);
+        r.setOrigin(origin.copy());
+        r.setTopLeft(topLeft.copy());
+        return r;
+    }
+
     /**
      * Displays the Rectangle with user-created color and size.
      *

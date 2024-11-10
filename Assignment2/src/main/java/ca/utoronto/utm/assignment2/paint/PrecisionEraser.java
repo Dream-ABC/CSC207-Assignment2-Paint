@@ -94,6 +94,16 @@ public class PrecisionEraser implements Shape {
         this.topLeft.shift(x, y);
     }
 
+    public PrecisionEraser copy() {
+        PrecisionEraser p = new PrecisionEraser();
+        p.setTopLeft(this.topLeft.copy());
+        p.setColor(this.color);
+        for (Point p1 : this.points) {
+            p.addPoint(p1.copy());
+        }
+        return p;
+    }
+
     /**
      * Returns a string representation of the PrecisionEraser object,
      * including its top-left coordinates, dimension, color, and the points

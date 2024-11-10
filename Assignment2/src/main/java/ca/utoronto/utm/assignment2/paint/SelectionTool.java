@@ -82,6 +82,14 @@ public class SelectionTool implements Tool {
         return this.dragging;
     }
 
+    public SelectionTool copy() {
+        SelectionTool s = new SelectionTool();
+        s.setTopLeft(this.topLeft.copy());
+        s.setDimensionX(this.dimensionX);
+        s.setDimensionY(this.dimensionY);
+        return s;
+    }
+
     /**
      * Displays the Rectangle with user-created color and size.
      * @param g2d GraphicsContext

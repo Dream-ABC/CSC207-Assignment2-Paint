@@ -188,6 +188,16 @@ public class Polyline implements Shape {
         }
     }
 
+    public Polyline copy() {
+        Polyline p = new Polyline(lineThickness);
+        p.setColor(this.color);
+        p.setClosed(this.isClosed);
+        for (Point p1 : this.points) {
+            p.addPoint(p1.copy());
+        }
+        return p;
+    }
+
     public String toString() {
         // get all points
         StringBuilder points = new StringBuilder();

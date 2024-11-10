@@ -212,6 +212,17 @@ public class Text implements Shape {
         this.topLeft.shift(x,y);
     }
 
+    public Text copy() {
+        Text t = new Text();
+        t.setText(textNode.getText());
+        t.setFont(textNode.getFont());
+        t.setColor(color);
+        t.setStrikethrough(isStrikethrough);
+        t.setUnderline(isUnderlined);
+        t.setTopLeft(topLeft.copy());
+        return t;
+    }
+
     /**
      * Returns a string representation of the Text object, including text content,
      * font details, position, style attributes, and color.
