@@ -108,13 +108,23 @@ public class Squiggle implements Shape {
     @Override
     public void display(GraphicsContext g2d) {
         g2d.setLineDashes();
-        for (int i = 0; i < this.points.size() - 1; i++) {
-            Point p1 = this.points.get(i);
-            Point p2 = this.points.get(i + 1);
-            g2d.setStroke(this.color);
-            g2d.setLineWidth(this.lineThickness);
-            g2d.strokeLine(p1.x, p1.y, p2.x, p2.y);
+        g2d.setFill(this.color);
+        g2d.setStroke(this.color);
+        g2d.setLineWidth(this.lineThickness);
+
+        Point start = this.points.getFirst();
+        g2d.beginPath();
+        g2d.moveTo(start.x, start.y);
+
+        for (int i = 0; i <= this.points.size() - 4; i += 3) {
+            Point control1 = this.points.get(i + 1);
+            Point control2 = this.points.get(i + 2);
+            Point end = this.points.get(i + 3);
+            g2d.bezierCurveTo(control1.x, control1.y, control2.x, control2.y, end.x, end.y);
         }
+
+        g2d.stroke();
+        g2d.closePath();
     }
 
     /**

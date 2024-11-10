@@ -25,7 +25,7 @@ public class LineThicknessSlider extends Slider implements ChangeListener {
         this.paintPanel = paintPanel;
 
         // Create popup and slider
-        this.slider = new Slider(1, 10, 1);
+        this.slider = new Slider(1, 50, 1);
         this.slider.setShowTickLabels(true);
         this.slider.setMajorTickUnit(1);
         this.slider.setBlockIncrement(1);
