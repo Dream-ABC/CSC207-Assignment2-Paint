@@ -169,6 +169,7 @@ public class Circle implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
+        g2d.setLineDashes();
         if (this.fillStyle.equals("Solid")) {
             g2d.setFill(this.color);
             g2d.fillOval(this.topLeft.x, this.topLeft.y,

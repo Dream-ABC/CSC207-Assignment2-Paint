@@ -150,6 +150,7 @@ public class Text implements Shape {
     @Override
     public void display(GraphicsContext g2d) {
         // init text
+        g2d.setLineDashes();
         g2d.setFont(this.textNode.getFont());
         g2d.setFill(this.color);
 

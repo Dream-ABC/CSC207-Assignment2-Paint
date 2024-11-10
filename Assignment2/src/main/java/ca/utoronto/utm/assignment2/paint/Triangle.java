@@ -167,7 +167,8 @@ public class Triangle extends Polygon implements Shape {
             double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
             double a2 = areaOfTriangle(point.x, point.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
             double a3 = areaOfTriangle(xPoints[0], yPoints[0], point.x, point.y, xPoints[2], yPoints[2]);
-            if (a1 + a2 + a3 == A){
+            double marginOfError = 1e-10;
+            if (Math.abs(A - a1 - a2 - a3) <= marginOfError){
                 return true;
             }
         }
@@ -228,7 +229,8 @@ public class Triangle extends Polygon implements Shape {
             double a1 = areaOfTriangle(xPoints[0], yPoints[0], xPoints[1], yPoints[1], point.x, point.y);
             double a2 = areaOfTriangle(point.x, point.y, xPoints[1], yPoints[1], xPoints[2], yPoints[2]);
             double a3 = areaOfTriangle(xPoints[0], yPoints[0], point.x, point.y, xPoints[2], yPoints[2]);
-            if (a1 + a2 + a3 == A && !overlapsInsideAtPoint(point)){
+            double marginOfError = 1e-10;
+            if (Math.abs(A - a1 - a2 - a3) <= marginOfError && !overlapsInsideAtPoint(point)){
                 return true;
             }
         }
@@ -238,10 +240,9 @@ public class Triangle extends Polygon implements Shape {
                     (xPoints[i] <= rightX) &&
                     (topY <= yPoints[i]) &&
                     (yPoints[i] <= bottomY) &&
-                    (overlapsInsideAtPoint(new Point(xPoints[i], yPoints[i]))))
+                    (!overlapsInsideAtPoint(new Point(xPoints[i], yPoints[i]))))
             {return true;}
         }
-
         return false;
     }
 
@@ -251,6 +252,7 @@ public class Triangle extends Polygon implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
+        g2d.setLineDashes();
         ObservableList<Double> points = this.getPoints();
         double[] xPoints = new double[3];
         double[] yPoints = new double[3];

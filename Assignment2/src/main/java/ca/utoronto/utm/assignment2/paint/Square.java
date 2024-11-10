@@ -173,6 +173,7 @@ public class Square implements Shape {
      */
     @Override
     public void display(GraphicsContext g2d) {
+        g2d.setLineDashes();
         if (this.fillStyle.equals("Solid")) {
             g2d.setFill(this.color);
             g2d.fillRect(this.topLeft.x, this.topLeft.y,
