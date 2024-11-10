@@ -21,6 +21,7 @@ Description:
 
 Reference: 
 	US4.411 - Precision eraser
+	BUG4.488 - Rough squiggle and precision eraser drawing
 --------------------------------------------------------------------------------
 FeatureName: Fill Style Selector
 
@@ -49,7 +50,7 @@ Description:
 
 Reference:
 	US4.431 - Draw polyline
-	BUG4.484 - polyline when switching over to another shape
+	BUG4.484 - Polyline when switching over to another shape
 --------------------------------------------------------------------------------
 FeatureName: Magnifier Tool
 

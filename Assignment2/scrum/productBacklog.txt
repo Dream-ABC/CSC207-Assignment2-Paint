@@ -513,7 +513,7 @@ ISSUE    : Since dragging a shape is an undoable feature, a command has to
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.488 : hingor13 : Complete
-NAME     : Rough Squiggle and Precision Eraser Drawing
+NAME     : Rough squiggle and precision eraser drawing
 PRIORITY : 1
 ESTIMATE : 1 hour    ACTUAL : 30 minutes
 ISSUE    : When the squiggle tool and precision eraser tool are used,

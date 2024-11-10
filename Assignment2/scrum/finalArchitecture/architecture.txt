@@ -467,7 +467,13 @@ HOW TO UNDERSTAND OUR CODE
 Stroke Eraser, Precision Eraser, Fill Style Selector, Line Thickness Selector, Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
 --------------------------------------------------------------------------------
 Name: Stroke Eraser
+
 Description:
+    The stroke eraser removes an entire stroke at once. For example, when the user
+    draws a circle, using the stroke eraser will erase the entire circle at once.
+    For text, the stroke eraser erases the entire text, not one letter at a time.
+
 Classes Involved:
+
 Implementation:
 --------------------------------------------------------------------------------
