@@ -278,10 +278,18 @@ ISSUE    : When the selection tool is selected in the toolbar, it is not
            showing up when the user tries to draw a selection box.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.474 : pengxi60 : Started
+TYPE     : BUG BUG4.474 : pengxi60 : Completed
 NAME     : Tools are not accessible by the user
 PRIORITY : 3
-ESTIMATE : 2 hours    ACTUAL :
+ESTIMATE : 2 hours    ACTUAL : 1 hour
 ISSUE    : When the user wants to erase, add text, or draw squiggle, there
            are no UI elements to allow them to do so.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.475 : pengxi60 : Started
+NAME     : Changing colour is not accessible to the user
+PRIORITY : 3
+ESTIMATE : 30 minutes    ACTUAL :
+ISSUE    : When the user wants to change the colour of their drawing tool
+           there is no UI element to allow them to do so.
 --------------------------------------------------------------------------
