@@ -119,8 +119,6 @@ public class View implements EventHandler<ActionEvent> {
         stage.setHeight(700);
         canvas.setUpPositions();
 
-        this.paintModel.setView(this);
-
         root.requestFocus();
     }
 

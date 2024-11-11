@@ -16,7 +16,6 @@ public class PaintModel extends Observable {
     private PaintLayer selectedLayer;
     private Shape selectedShape;
     private String mode;
-    private View view;
     private int zoomFactor;
     private String fillStyle;
     private double thickness;
@@ -528,12 +527,6 @@ public class PaintModel extends Observable {
         this.notifyObservers();
     }
 
-    /**
-     * Sets the view associated with the model.
-     */
-    public void setView(View view) {
-        this.view = view;
-    }
 
     /**
      * Gets the command history.
