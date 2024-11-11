@@ -6,7 +6,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-
 import java.util.*;
 import java.util.function.Consumer;
 

@@ -2,7 +2,6 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Stack;

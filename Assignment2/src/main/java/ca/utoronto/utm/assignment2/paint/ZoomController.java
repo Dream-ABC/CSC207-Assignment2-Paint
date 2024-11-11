@@ -2,12 +2,8 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
-import javafx.scene.control.Slider;
-
 import java.util.Objects;
 
 /**

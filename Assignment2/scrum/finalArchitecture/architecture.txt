@@ -102,7 +102,7 @@
 # Design Patterns Used (collections of classes into DP)
 
 --------------------------------------------------------------------------------
-Name: Observer - LayerChooserController, ZoomPanel, StatusBarPanel, ResizableCanvas
+Name: Observer - LayerChooserController, ZoomPanel, StatusbarPanel, ResizableCanvas
       Observable - PaintModel
 Pattern Name: Observer/Observable
 Reference: https://www.oodesign.com/images/design_patterns/behavioral/observer_implementation_-_uml_class_diagram.gif
@@ -111,12 +111,12 @@ Purpose:
 	(why is this pattern implemented? think SOLID as possible reasons and explain in terms of the application)
 
 UML:
-
+    ObserverObservableUML.png
 
 Classes:
 	LayerChooserController: Observer
 	ZoomPanel: Observer
-	StatusBarPanel: Observer
+	StatusbarPanel: Observer
 	ResizableCanvas: Observer
 
 Usage:

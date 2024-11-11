@@ -4,7 +4,6 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Color;
 import javafx.stage.Popup;
-
 import java.util.Locale;
 
 /**
