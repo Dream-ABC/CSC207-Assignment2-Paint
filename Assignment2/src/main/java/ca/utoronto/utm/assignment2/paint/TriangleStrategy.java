@@ -2,6 +2,10 @@ package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.input.MouseEvent;
 
+/**
+ * A class to represent the triangle drawing strategy.
+ * TriangleStrategy implements the ShapeStrategy interface.
+ */
 public class TriangleStrategy implements ShapeStrategy {
     
     private final PaintPanel panel;
