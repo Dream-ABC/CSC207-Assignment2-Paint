@@ -42,7 +42,6 @@ public class DragCommand implements Command {
      */
     @Override
     public void execute() {
-        System.out.println("execute:" + shiftX + "," + shiftY);
         for (Shape shape : selectedShapes) {
             shape.shift(shiftX, shiftY);
         }
@@ -73,7 +72,6 @@ public class DragCommand implements Command {
         shiftY += y;
         totalShiftX += x;
         totalShiftY += y;
-        System.out.println("totalShift:" + totalShiftX + "," + totalShiftY);
     }
 
     /**
@@ -86,8 +84,6 @@ public class DragCommand implements Command {
         for (Shape shape : selectedShapes) {
             shapes.append(layer.getShapes().indexOf(shape)).append(",");
         }
-        System.out.println("store:" + shiftX + "," + shiftY);
-
         return "Drag#" + totalShiftX + "," + totalShiftY + "&" + shapes;
     }
 }

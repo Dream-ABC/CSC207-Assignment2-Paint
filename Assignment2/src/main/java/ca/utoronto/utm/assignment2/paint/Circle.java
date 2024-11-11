@@ -197,9 +197,7 @@ public class Circle implements Shape {
      */
     @Override
     public void shift(double x, double y) {
-        System.out.println("before shift:" +this.topLeft.x + "," + this.topLeft.y);
         this.topLeft.shift(x, y);
-        System.out.println("after shift:" +this.topLeft.x + "," + this.topLeft.y);
     }
 
     /**
