@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -22,6 +21,7 @@ public class ToolbarPanel extends GridPane {
     private ShapeChooserPopUp shapeChooserPopUp;
     private ToolChooserPopUp toolChooserPopUp;
     private ToolbarController toolbarController;
+    private ColorChooserPopup colorChooserPopup;
 
 
     // Constants
@@ -47,7 +47,8 @@ public class ToolbarPanel extends GridPane {
         this.buttonContainers = new HashMap<>();
         this.shapeChooserPopUp = new ShapeChooserPopUp(model);
         this.toolChooserPopUp = new ToolChooserPopUp(model);
-        this.toolbarController = new ToolbarController(model, toolButtons, toolChooserPopUp ,shapeChooserPopUp);
+        this.colorChooserPopup = new ColorChooserPopup(model);
+        this.toolbarController = new ToolbarController(model, toolButtons, toolChooserPopUp ,shapeChooserPopUp, colorChooserPopup);
 
         this.setStyle("-fx-background-color: #fcf8f7");
         initializeToolbar();

@@ -1,6 +1,7 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -17,6 +18,7 @@ public class PaintModel extends Observable {
     private Shape selectedShape;
     private String mode;
     private int zoomFactor;
+    private Color color;
     private String fillStyle;
     private double thickness;
     private double canvasX, canvasY, canvasWidth, canvasHeight;
@@ -35,9 +37,29 @@ public class PaintModel extends Observable {
         this.mode = "";
         this.canvasWidth = 700;
         this.canvasHeight = 400;
+        this.color = Color.BLACK;
         this.fillStyle = "Solid";
         this.thickness = 1.0;
         this.zoomFactor = 100;
+    }
+
+    /**
+     * Gets the current color for the shapes in the model.
+     *
+     * @return the current color
+     */
+    public Color getColor() {
+        return this.color;
+    }
+
+    /**
+     * Sets the color for the shapes in the model.
+     *
+     * @param color the color to set
+     */
+    public void setColor(Color color) {
+        this.color = color;
+        notifyChange();
     }
 
     /**
