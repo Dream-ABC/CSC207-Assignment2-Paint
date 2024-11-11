@@ -34,7 +34,7 @@ public class PaintLayer extends Canvas {
     /**
      * Creates a new PaintLayer with specified width and height.
      *
-     * @param width the width of the layer
+     * @param width  the width of the layer
      * @param height the height of the layer
      */
     public PaintLayer(double width, double height) {
@@ -68,13 +68,17 @@ public class PaintLayer extends Canvas {
      *
      * @param strokeEraser the StrokeEraser instance to be assigned to the PaintLayer
      */
-    public void addStrokeEraser(StrokeEraser strokeEraser) {this.strokeEraser = strokeEraser;}
+    public void addStrokeEraser(StrokeEraser strokeEraser) {
+        this.strokeEraser = strokeEraser;
+    }
 
     /**
      * Removes the currently assigned StrokeEraser from the PaintLayer, effectively
      * disabling any currently active stroke eraser functionality in this layer.
      */
-    public void removeStrokeEraser() {this.strokeEraser = null;}
+    public void removeStrokeEraser() {
+        this.strokeEraser = null;
+    }
 
     /**
      * Adds a selection tool to the PaintLayer, allowing for shape selection and
@@ -82,13 +86,17 @@ public class PaintLayer extends Canvas {
      *
      * @param selectionTool the SelectionTool instance to be assigned to the PaintLayer
      */
-    public void addSelectionTool(SelectionTool selectionTool) {this.selectionTool = selectionTool;}
+    public void addSelectionTool(SelectionTool selectionTool) {
+        this.selectionTool = selectionTool;
+    }
 
     /**
      * Removes the currently assigned selection tool from the PaintLayer,
      * effectively disabling any shape selection and manipulation functionalities.
      */
-    public void removeSelectionTool() {this.selectionTool = null;}
+    public void removeSelectionTool() {
+        this.selectionTool = null;
+    }
 
     /**
      * Returns the current SelectionTool assigned to this PaintLayer.
@@ -96,7 +104,9 @@ public class PaintLayer extends Canvas {
      * @return the SelectionTool instance currently being used for shape selection
      * and manipulation
      */
-    public SelectionTool getSelectionTool() {return selectionTool;}
+    public SelectionTool getSelectionTool() {
+        return selectionTool;
+    }
 
     /**
      * Retrieves the list of shapes in the current PaintLayer.
@@ -145,10 +155,10 @@ public class PaintLayer extends Canvas {
             g2d.setFill(shape.getColor());
             shape.display(g2d);
         }
-        if (this.strokeEraser != null){
+        if (this.strokeEraser != null) {
             strokeEraser.display(g2d);
         }
-        if (this.selectionTool != null){
+        if (this.selectionTool != null) {
             selectionTool.display(g2d);
         }
     }

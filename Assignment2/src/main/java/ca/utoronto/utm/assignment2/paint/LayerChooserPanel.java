@@ -50,8 +50,12 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
         WritableImage snapshot;
         boolean store = layer.isVisible();
         layer.setVisible(true);
-        if (layer.getWidth() < 100) {layer.setWidth(100);}
-        if (layer.getHeight() < 100) {layer.setHeight(100);}
+        if (layer.getWidth() < 100) {
+            layer.setWidth(100);
+        }
+        if (layer.getHeight() < 100) {
+            layer.setHeight(100);
+        }
         GraphicsContext g2d = layer.getGraphicsContext2D();
         g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
         layer.display(g2d);
@@ -68,7 +72,7 @@ public class LayerChooserPanel extends GridPane implements EventHandler<ActionEv
 
     /**
      * Updates the visual representation of all layer buttons in the LayerChooserPanel.
-     *
+     * <p>
      * This method clears the current child nodes, retrieves the list of layers from the model
      * and creates a thumbnail image for each layer. It then creates a button for each layer,
      * setting the appropriate styles and event handlers based on the layer's visibility and

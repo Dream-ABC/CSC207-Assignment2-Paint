@@ -144,7 +144,7 @@ public class Text implements Shape {
      */
     @Override
     public void shift(double x, double y) {
-        this.topLeft.shift(x,y);
+        this.topLeft.shift(x, y);
     }
 
     /**

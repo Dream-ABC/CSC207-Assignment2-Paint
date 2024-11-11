@@ -35,7 +35,7 @@ public class TextEditorDialog {
     /**
      * Creates a new TextEditorDialog for editing a given Text object.
      *
-     * @param paintPanel a panel that manages graphical elements and their settings
+     * @param paintPanel    a panel that manages graphical elements and their settings
      * @param displayedText the Text object that will be edited within the dialog
      */
     public TextEditorDialog(PaintPanel paintPanel, Text displayedText) {

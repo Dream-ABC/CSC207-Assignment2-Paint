@@ -468,6 +468,7 @@ Example:
 ----------------------------------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
+Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
 ----------------------------------------------------------------------------------------------------------
 Name: Stroke Eraser
 
@@ -863,4 +864,202 @@ Implementation:
         and processes the command to return an appropriate Command object, and manages changes in PaintPanel if needed. For each command type, the method
         extracts necessary data from the string, creates the corresponding command object, and returns it, enabling the restoration of the drawing state
         stored in a PAINT file.
-----------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Name: Undo/Redo
+
+Description:
+            The Undo and Redo buttons allow any changes made to the canvas to be reverted or reapplied.
+            The buttons can be found in the menu item Edit. Using these buttons the user is able to
+         revert the following changes: adding a new shape, deleting shapes, dragging shapes, pasting
+         copied shapes, adding or removing layers, switching layers, changing layer visibility.
+
+Classes/Interfaces Involved:
+    All Command Classes (e.g., AddShapeCommand, AddLayerCommand)
+    CommandHistory
+    Command
+    PaintModel
+
+Implementation:
+    Below is the implementation of the Undo/Redo in this application.
+
+    Command:
+                The Command interface is implemented by all ConcreteCommand classes.
+                This allows for any new command to have the execute, undo, and toString methods.
+            These methods are mandatory to be able to undo or redo a change made to the canvas.
+
+    CommandHistory:
+                The CommandHistory is responsible for storing commands in two stacks, undoStack and
+            redoStack. The undoStack stores any commands that are undoable, when undo is called, the
+            top most command is popped from the stack is popped and undone. Then the command is
+            pushed onto the redoStack.
+                When a new command executes, the redoStack is cleared since these changes should not
+            be run again.
+                There are various other methods implemented for some commands which are only called
+            by specific classes. Such as changes to shapes, such as StrokeEraser require the previous
+            state of shapes to be stored such that it can be reverted back to when Undo is called.
+            The addToLast method is used to pass in information to the StrokeEraserCommand regarding
+            additional shapes that have been removed in the current stroke. the popLastCommand is used
+            by DeleteLayerCommand to allow another undo to be run in the case that there is only 1
+            remaining layer. Similarly, popLastRedoCommand is used by AddLayerCommand to deal with
+            the case of the user trying to undo an AddLayerCommand when only one layer remains.
+
+    PaintModel:
+                The PaintModel is where the CommandHistory is instantiated and stored and is
+            responsible for executing new commands and calling undo and redo methods on the
+            CommandHistory.
+--------------------------------------------------------------------------------
+Name: Resizable Canvas
+
+Description:
+                The Resizable Canvas allows for the canvas to be resized using the buttons in the
+            edges of the canvas. These buttons can be dragged to increase or decrease the size of
+            the canvas.
+                When resizing the canvas, the right buttons and bottom buttons match the mouse cursor
+            position while the left and top buttons apply the change on the opposite side of the canvas.
+
+Classes/Interfaces Involved:
+    ResizableCanvas
+    PaintPanel
+    PaintModel
+    View
+
+Implementation:
+    Below is the implementation of the Resizable Canvas in this application.
+
+    ResizableCanvas:
+                The ResizableCanvas extends the Pane, it is a custom Pane that holds the canvas,
+            which is the PaintPanel and also the buttons used for the resizing.
+                The ResizableCanvas is instantiated with a initial height and initial width
+            which is set as the canvas width and height.
+                There are 8 buttons created, one for every edge and vertex, created at size 6,
+            and set to their respective positions. These buttons are setOnAction such that when
+            the button is dragged, they cause an update on the size of the canvas, resizing
+            depending on the direction that the mouse was moved towards.
+                Since ResizableCanvas is an observer observing the paintModel, whenever their is an
+            update in paintModel, the canvas updates to confirm that the size of the canvas, and
+            the positions of the buttons are correct.
+--------------------------------------------------------------------------------
+Name: Selection Tool
+
+Description:
+                The selection tool allows for shapes to be selected on the selectedLayer and to be
+            dragged when the mouse is clicked inside the bounds of an existing selection tool.
+                The button is available on the top toolbar ribbon and can be drawn like any other
+            shape on the canvas.
+                When the selection tool is being dragged, any shapes previously selected before the
+            user began dragging will also be dragged maintaining their relative position inside the
+            selection tool.
+
+Classes/Interfaces Involved:
+    SelectionTool
+    SelectionToolStrategy
+    PaintModel
+    PaintLayer
+    PasteCommand
+    DeleteSelectedCommand
+    DragCommand
+    All Shape classes (e.g. Circle, Rectangle)
+
+Implementation:
+    Below is the implementation of the Selection Tool in this application.
+
+
+    SelectionTool:
+            SelectionTool implements the Tool interface. As a result, the attributes and methods required
+                    for this tool would include:
+                        - the top left point of the selection tool's rectangle representation
+                        - the dimensions of the tool
+                        - a display(GraphicsContext g2d) method, to draw the selection tool similar to how
+                            a rectangle would be drawn.
+                    Overall, for the implementation of the selection tool, the SelectionTool class is simply
+                    responsible for displaying its representation onto the canvas, PaintPanel and storing the
+                    selected shapes.
+
+    SelectionToolStrategy:
+                The SelectionToolStrategy handles the mouse events to draw and drag the selection tool.
+                When a mouse is pressed, if there exists a selection tool and the mouse is inside the
+            bounds of the selection tool, then the program prepares for the selection to be dragged by
+            creating a new DragCommand and setting the dragging as true. If there is no selection tool
+            or the mouse is not inside the bounds, a new selection tool is created and added to the model.
+                When the mouse is dragged, if dragging is set to true, the selection tool and selected shapes
+            are shifted while updating the previously created DragCommand. If dragging is set to false, then
+            the selection tool is drawn such that one of the vertices is at the the original placement and the
+            opposite vertex is at the mouse cursor. Then selectShapes is run to select all of the shapes in the
+            selected layer that have some part of the shape inside the bounds of the selection tool. To see if
+            any part of the shape is inside the selection tool, the overlap method in the shape is used.
+                When the mouse is released dragging is set to false.
+    PaintModel:
+                The paint model stores the current selection tool, it is used by other methods such as cut,
+            copy, delete, paste.
+--------------------------------------------------------------------------------
+Name: Cut/Copy/Paste/Delete
+
+Description:
+                The Cut, Copy, Paste, and Delete buttons apply operations on the shapes selected
+            by the Selection Tool.
+                The buttons are available under the menu item Edit.
+                Cut copies the selected shapes and deletes the selected shapes.
+                Copy copied the selected shapes.
+                Paste pastes the copied shapes onto the canvas shifted over.
+                Delete deletes the selected shapes.
+
+Classes/Interfaces Involved:
+    SelectionTool
+    PaintModel
+    View
+    Command
+    PasteCommand
+    DeleteSelectedCommand
+    CommandHistory
+    All Shape classes (e.g., Circle, Rectangle)
+
+Implementation:
+    Below is the implementation of the Undo/Redo in this application.
+
+    SelectionTool:
+                The SelectionTool is responsible for selecting the shapes such that the operations
+            like copy and paste can be applied on the selected shapes.
+
+    PaintModel:
+                The PaintModel has the methods that are called when any of the buttons are clicked.
+                For copy, there are two private attributes that stores a copy of the selectedShapes
+            and the SelectionTool.
+                For paste, a new PasteCommand is executed passing in the selected layer, the command
+            history, the ArrayList of copied selected shapes, a copy of the selection tool and the
+            paint model. The command is then executed making a copy of the shapes shifted from their
+            old positions.
+                For cut, the methods for copy and delete are called to recreate the effect of cut.
+                For delete, a new DeleteSelectedCommand is executed passing in the selected layer,
+            command history, and the ArrayList of shapes that are meant to be deleted.
+
+    View:
+                The view is responsible for creating the buttons and calling the methods in the
+            paint model when the buttons are pressed.
+
+    Command:
+                PasteCommand and DeleteSelectedCommand implement the Command Interface.
+
+    PasteCommand:
+                When a new PasteCommand is created, the layer, command history, ArrayList of
+            copied shapes, a copy of the selection tool, and the paint model are stored in
+            private attributes.
+                When the command is executed, a copy of the shapes are added to the layer,
+            and the selection tool is updated to a copy of the stored selection tool. Both
+            the selection tool and shapes are shifted over by 100 in both x and y directions
+            to allow the user to easily see the new shapes.
+                When the command is undone, the layer's shapes are reverted back to the old state
+            before the command was executed.
+
+    DeleteSelectedCommand:
+                When a new DeleteSelectedCommand is created, the layer, command history, and the
+            ArrayList of shapes to be deleted are stored in private attributes. In addition, the
+            indexes of the shapes are stored in a separate ArrayList.
+                When the command is executed, the state of shapes is stored and the shapes are
+            deleted from the selected layer's ArrayList of shapes.
+                When the command is undone, the state of the selected layer's shapes is reverted
+            back to before the command was executed.
+
+    CommandHistory:
+                The CommandHistory is used to undo or redo the paste and delete commands and also
+            the cut command since cut calls delete.
+--------------------------------------------------------------------------------
