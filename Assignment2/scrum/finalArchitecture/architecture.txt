@@ -102,7 +102,7 @@
 # Design Patterns Used (collections of classes into DP)
 
 ----------------------------------------------------------------------------------------------------------
-Name: Observer - LayerChooserController, ZoomPanel, StatusbarPanel, ResizableCanvas
+Name: Observer - LayerChooserController, ZoomPanel, StatusbarPanel, ResizableCanvas, PaintPanel
       Observable - PaintModel
 Pattern Name: Observer/Observable
 Reference: https://www.oodesign.com/images/design_patterns/behavioral/observer_implementation_-_uml_class_diagram.gif
