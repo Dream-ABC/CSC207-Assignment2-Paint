@@ -628,3 +628,224 @@ Implementation:
             With the provided double lineThickness passed in as a parameter, the ShapeFactory can create
         the correct shape and line thickness for any outlined shape type.
 ----------------------------------------------------------------------------------------------------------
+Name: Color Selector
+
+Description:
+            The color selector allows users to select a color for drawing shapes.
+            The color selector can be found in the menu item View -> Color Picker. Users can pick a color
+        from a standard color palette or enter custom color values in various modes (HSB, RGB, or Hexadecimal).
+        The color selector also allows users to adjust the opacity of the selected color, applying
+        consistent color choices across all shapes in the application.
+
+Classes/Interfaces Involved:
+    View
+    ColorPickerPopup
+    PaintPanel
+
+Implementation:
+    Below is the implementation of the color picker in this application.
+
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+        on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+        (any special discussion...)***
+
+    View:
+            View creates the menu item "Color". When the user clicks this menu item, the pop-up
+        displaying the color picker appears.
+
+    ColorPickerPopup:
+            ColorPickerPopup creates a ColorPicker object and displays the pop-up screen on the program
+        when appropriate. It listens for the color selection event and updates the selected color
+        in the PaintPanel. The user can choose a color either by selecting from the default color palette
+        or by entering custom color values in HSB, RGB, or Hex modes. This is achieved by extending
+        the Popup class, allowing the creation of the color selector and handling the selection event.
+            The ColorPickerPopup class uses JavaFX's built-in ColorPicker control and provides a
+        display() method that creates and shows the color picker pop-up. This method also temporarily
+        disables interactions on the PaintPanel to prevent unintended changes while the popup is active.
+        Once the popup is closed, actions on the PaintPanel are re-enabled. The selected color and opacity
+        are applied to all shapes drawn on the canvas.
+
+    PaintPanel:
+            PaintPanel listens for the color change events triggered by the ColorPickerPopup. When a color
+        is selected, PaintPanel updates the current color used for drawing shapes, ensuring that
+        the selected color is applied consistently across the canvas.
+--------------------------------------------------------------------------------
+Name: Text Editor
+
+Description:
+            The Text Editor allows users to add and edit text shapes on the canvas. It consists of an image icon
+        in the left button panel. When users click on this icon, the text editing mode is activated. Users can
+        then click anywhere on the canvas to place a text shape. A pop-up text editor dialog will appear, enabling
+        users to choose the text's font and size from a scrolling menu. The dialog also provides toggle buttons
+        to modify the text's style (bold, italic, underline, strikethrough). As users input or modify the text,
+        it is dynamically rendered and updated on the canvas, providing a flexible and interactive experience for
+        adding annotations or descriptions on the canvas.
+
+Classes/Interfaces Involved:
+    Shape
+    Text
+    TextEditorDialog
+    ShapeStrategy
+    TextStrategy
+    PaintPanel
+
+Implementation:
+    Below is the implementation of the color picker in this application.
+
+   ***image icon: Create png images with dimensions 15x15 for the toggle buttons of bold, italic, underline,
+       and strikethrough. These images should be displayed in the text editor pop-up screen and placed in the
+       following locations:
+           - "images/bold.png" for the bold button
+           - "images/italic.png" for the italic button
+           - "images/underline.png" for the underline button
+           - "images/strikethrough.png" for the strikethrough button.***
+
+    Text:
+            The Text class represents a text shape within the PaintPanel. It implements the Shape interface
+        to ensure consistency with other shapes in the application.
+            The class contains all the information necessary for a text shape, including the interactive text node,
+        font, size, style (bold, italic, underline, strikethrough), color, and position. The Text class provides
+        a set of getter and setter methods, which allow associated controllers (such as the TextEditorDialog)
+        to retrieve and update these properties.
+
+    TextEditorDialog:
+            TextEditorDialog creates a Dialog object and displays the pop-up screen on the program when appropriate.
+        A TextEditorDialog object is bound with a specific Text object, meaning changes made in a dialog will
+        only affect the associated Text shape. TextEditorDialog listens for the button selection events and
+        updates the selected font for the specified text shape. It offers a display() method to open the pop-up,
+        and a getSelectedFont() method to retrieve the user-selected font, ensuring that the customization is applied
+        dynamically to the text shape on the canvas.
+
+    TextStrategy:
+            The TextStrategy class takes a Text shape and its corresponding TextEditorDialog, and manages mouse events
+        (mousePressed, mouseDragged, and mouseReleased) to enable users to add and customize text on the current layer.
+            Specifically, when the primary mouse button is released, TextStrategy prompts the user by displaying
+        the TextEditorDialog, allowing them to set properties such as font, size, style, and color. Based on
+        the user's input, TextStrategy updates the Text shape's appearance on the canvas in real-time, ensuring
+        a smooth and interactive experience for text customization. Moreover, a Text shape is created only when
+        the text content is not empty. In other words, the Text shape will be removed from the layer if there is
+        no content in it.
+--------------------------------------------------------------------------------
+Name: Layer Support
+
+Description:
+            The layer support feature allows users to add and work on different layers. This feature can be used by
+        clicking on the image icon stating "Layers" on the toolbar on the top of the paint panel.
+            Users are able to add and remove different layers, switch between different layers to draw separate
+        shapes. Users can also set any layers to invisible, so that it will not be shown without the need to delete the work.
+
+Classes/Interfaces Involved:
+    AddLayerCommand
+    ChangeLayerCommand
+    ChangeLayerVisibilityCommand
+    DeleteLayerCommand
+    LayerChooserController
+    LayerChooserPanel
+    PaintLayer
+    Shape
+    StrokeEraser
+    SelectionTool
+    PaintPanel
+    PaintModel
+    View
+
+Implementation:
+    Below is the implementation of the color picker in this application.
+
+    ***image icon: Each layer has an image icon presenting the thumbnail of the layer, providing users a more intuitive
+        control over different layers, especially when the number of layers increases.***
+
+    AddLayerCommand:
+            The AddLayerCommand class provides an execute() method to add a layer to the PaintPanel, and an undo() method
+        to remove the added layer from the PaintPanel.
+
+    ChangeLayerCommand:
+            The ChangeLayerCommand class provides an execute() method to switch to a specific layer, and an undo() method
+        to switch to the previous layer.
+
+    ChangeLayerVisibilityCommand:
+            The ChangeLayerVisibilityCommand class provides an execute() method to change a layer's visibility to visible
+        or invisible, and an undo() method to change the layer's visibility to its previous state.
+
+    DeleteLayerCommand:
+            The DeleteLayerCommand class provides an execute() method to delete a specific layer from the PaintPanel,
+        and an undo() method to add the deleted layer back to the PaintPanel in the original order.
+
+    LayerChooserController:
+            The LayerChooserController class enables users to switch between layers and manage the visualization of the
+        image icons in the LayerChooserPanel. It observes changes in PaintModel and integrates with both PaintModel
+        and LayerChooserPanel to provide control over layer selection and thumbnail visualization.
+            The selectLayer() method allows users to change the currently selected layer in PaintModel, updating which
+        layer receives drawing inputs and edits. The update() method refreshes the layer thumbnails displayed in
+        LayerChooserPanel, ensuring that users see an accurate preview of each layer’s content. This design provides
+        intuitive layer management, allowing users to organize and visually navigate complex drawings more easily.
+
+    LayerChooserPanel:
+            The LayerChooserPanel class manages the visual representation of layer image icons within the panel.
+        It dynamically adds or removes icons in real-time as layers are created or deleted, ensuring that the panel
+        accurately reflects the current state of all layers. The class also incorporates intuitive color labeling
+        to distinguish different states: selected layers are highlighted, while invisible layers appear in a light grey color.
+            The LayerChooserPanel class provides an updateAllLayers() method to update all layer image icons, and a handle()
+        method to handle the action event triggered by the buttons in the LayerChooserPanel.
+
+    PaintLayer:
+            The PaintLayer class represents an individual layer within the drawing canvas, allowing for flexible layering
+         of different shapes. Each PaintLayer can contain a unique set of shapes, an optional background image, a stroke eraser,
+         and a selection tool for shape selection on individual layer. This structure enables users to independently draw, erase,
+         and select shapes on separate layers, offering precise control and organization for each layer individually.
+--------------------------------------------------------------------------------
+Name: File Menu
+
+Description:
+            The File Menu provides options for users to load or save their projects as files. This feature is accessible
+        under the "File" menu item.
+            The "New" option discards all current progress, allowing the user to start with a new PaintPanel. The "Open"
+        option enables users to open either a PNG file or a custom PAINT file based on their selection. Opening a PNG file
+        sets it as the background of the currently selected layer, while opening a PAINT file restores the entire state of
+        the project, including all previous actions, allowing users to undo actions unlimitedly. Note that when opening
+        a PAINT file, all current progress will be discarded.
+            The "Save" option lets users store their current work as either a PNG file or a custom PAINT file. Saving as a
+        PNG captures a static image of the PaintPanel, while the PAINT file preserves the full project state in PaintPanel,
+        including all shapes, layers, and undo/redo history for future editing.
+            The "Exit" option closes the application without saving, allowing users to exit quickly if they do not need to
+        store recent changes.
+
+Classes/Interfaces Involved:
+    FileHandlePopup
+    FileHandler
+    PatternParser
+    PaintPanel
+    PaintModel
+
+Implementation:
+    Below is the implementation of the line thickness selector in this application.
+
+    ***image icon: Create a jpg image with dimensions 128x128, and place it
+        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
+        		(any special discussion...)***
+
+    FileHandlePopup:
+            The FileHandlePopup class manages file operations in the PaintPanel, providing dialogs for opening, saving, and creating
+        new files. It allows users to choose between PNG and PAINT file formats, handling the loading, saving, and resetting of
+        the PaintPanel.
+            To be more specific, the openFile() method opens a dialog that lets users choose a file type (either .png or .paint) to open.
+        It then loads the corresponding file based on the user's selection; the saveFile() method displays a dialog that allows users
+        to save their work as either a PNG file or a PAINT file, depending on the user's choice; the newFile() method prompts the user
+        with a confirmation dialog to ensure they want to discard the current progress and start a new file. If confirmed, the PaintPanel
+        is reset and a new file is initialized. The FileHandlePopup will call corresponding methods in FileHandler based on user's choices
+        on opening or saving a file.
+
+    FileHandler:
+            The FileHandler class is responsible for handling file operations in the PaintPanel, including saving and opening PNG and PAINT files.
+        It interacts with the PaintPanel to perform these actions. The saveImage() method allows the user to save the current layer as a PNG file,
+        converting the PaintPanel content into a PNG image. The openImage() method enables the user to open a PNG file and set it as the background
+        of the selected layer. The savePaint() method saves the whole PaintPanel as a PAINT file by writing the canvas size and drawing commands
+        to the file, while openPaint() reads and executes the commands from a PAINT file using the PatternParser to restore the drawing state.
+
+    PatternParser:
+            The PatternParser class parses command strings from the loaded PAINT file and converts them into executable commands, which are then used to
+        restore the user's previous drawing actions in the PaintPanel. The parseLine() method takes a line of command string and a PaintPanel as input,
+        and processes the command to return an appropriate Command object, and manages changes in PaintPanel if needed. For each command type, the method
+        extracts necessary data from the string, creates the corresponding command object, and returns it, enabling the restoration of the drawing state
+        stored in a PAINT file.
+--------------------------------------------------------------------------------

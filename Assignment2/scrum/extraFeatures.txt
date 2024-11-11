@@ -121,7 +121,12 @@ Reference:
 FeatureName: Undo/Redo
 
 Description:
-	...
+    The Undo/Redo feature allows users to revert or reapply changes made. The features
+    that are revertible are: adding a new shape, deleting shapes, dragging shapes,
+    pasting copied shapes, adding or removing layers, switching layers, changing layer
+    visibility. After making a change, the user is able to click the Undo button to
+    revert the change but always has the option to reapply the change by clicking
+    the Redo button.
 
 Reference:
 	US3.321 - Undo/Redo button
@@ -129,7 +134,11 @@ Reference:
 FeatureName: Resizable Canvas
 
 Description:
-	...
+	Using the buttons on the edge of the canvas, the user is able to resize the canvas
+	to their heart content. When the size of the canvas exceeds the window size, a
+	scroll bar is visible for the user to move around the canvas with ease. Since the
+	canvas is set to the top left of the window, underneath the toolbar, using the
+	top and left handlers will cause the canvas to expand from the right and bottom.
 
 Reference:
 	US3.351 - Canvas scalability
@@ -137,7 +146,11 @@ Reference:
 FeatureName: Selection Tool
 
 Description:
-	...
+    The selection tool allows the user to select any shape that is on the selected
+    layer. When a shape is selected, click on the selected area and dragging allows
+    the selected shapes to be dragged alongside the selection box. This feature
+    allows for rearrangement of the canvas and the selection tool is also used for
+    other useful features.
 
 Reference:
 	US4.451 - Selection tool
@@ -148,7 +161,13 @@ Reference:
 FeatureName: Cut/Copy/Paste/Delete
 
 Description:
-	...
+	Using the selection tool, the user can select shapes on the selected layer and
+	perform various actions upon the shapes. The user is able to copy, paste, cut,
+	or delete the selected shapes. To paste shapes, the user must first select the
+	shapes using the selection tool, then rather copy the shapes or cut the shapes
+	using their respective buttons before being able to paste the selected shapes.
+	When the shapes are selected, the user also has the option to delete the
+	selected shapes.
 
 Reference:
 	BUG4.009 - Edit menu is not implemented
