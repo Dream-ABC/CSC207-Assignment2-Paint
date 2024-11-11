@@ -627,5 +627,5 @@ Implementation:
 
     ShapeFactory:
             With the provided double lineThickness passed in as a parameter, the ShapeFactory can create
-        the correctshape and line thickness for any outlined shape type.
+        the correct shape and line thickness for any outlined shape type.
 ----------------------------------------------------------------------------------------------------------
