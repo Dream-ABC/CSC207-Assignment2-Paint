@@ -40,3 +40,4 @@ BUG4.473 author:pengxi60 puller:wenjess1 status:Completed
 BUG4.474 author:pengxi60 puller:wenjess1 status:Completed
 BUG4.475 author:pengxi60 puller:wenjess1 status:Completed
 BUG4.491 author:tianshi8 puller:         status:Waiting
+BUG4.476 author:pengxi60 puller:         status:Waiting
