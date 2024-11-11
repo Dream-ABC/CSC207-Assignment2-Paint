@@ -120,9 +120,11 @@ Classes:
 	ResizableCanvas: Observer
 
 Usage:
-	(Briefly describe why a developer would be playing with this part of
-	the code and how they would use it to achieve that purpose)
-
+	A developer would use this part of the code if they wanted to update their class in response to changes in the
+	paintModel, such as when a new layer is added or the canvas is resized. For the developer to implement this,
+	they would need to add the observer as a observer of the observable PaintModel class using the
+	addObserver(Observer observer) method. Since their class must implement Observer, they must have an update()
+	method written in their class.
 ----------------------------------------------------------------------------------------------------------
 Name: Shape Strategy
 Pattern Name: Strategy
