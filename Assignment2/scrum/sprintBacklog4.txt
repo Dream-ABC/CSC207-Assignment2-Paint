@@ -262,6 +262,14 @@ ISSUE    : When re-entering polyline mode, the tool continues from the last poly
            instead of allowing the user to start a new one.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : BUG BUG4.491 : tianshi8 : Complete
+NAME     : Unused or Redundant Code
+PRIORITY : 1
+ESTIMATE : 10 min     ACTUAL : 10 min
+ISSUE    : There are redundant pieces of code and unused variables that should be removed
+           for better code quality.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG4.472 : pengxi60 : Complete
 NAME     : Shape chooser UI
 PRIORITY : 1
@@ -286,10 +294,18 @@ ISSUE    : When the user wants to erase, add text, or draw squiggle, there
            are no UI elements to allow them to do so.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
-TYPE     : BUG BUG4.475 : pengxi60 : Started
+TYPE     : BUG BUG4.475 : pengxi60 : Completed
 NAME     : Changing colour is not accessible to the user
 PRIORITY : 3
-ESTIMATE : 30 minutes    ACTUAL :
+ESTIMATE : 30 minutes    ACTUAL : 2 hours
 ISSUE    : When the user wants to change the colour of their drawing tool
            there is no UI element to allow them to do so.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.476 : pengxi60 : Started
+NAME     : Manipulating layers is not accessible to the user.
+PRIORITY : 3
+ESTIMATE : 1 hour    ACTUAL :
+ISSUE    : When the user wants to add or remove new layers there is no UI
+           elements to allow them to do so
 --------------------------------------------------------------------------

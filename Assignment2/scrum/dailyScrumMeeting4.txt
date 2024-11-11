@@ -117,29 +117,29 @@ Nov 5,2024
 	Obstacles I face: nothing
 
 Nov 6,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: nothing
+	What I will do today: nothing
+	Obstacles I face: nothing
 
 Nov 7,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: nothing
+	What I will do today: Start working on fixing resizable canvas
+	Obstacles I face: the current resizable canvas is very buggy when being resized
 
 Nov 8,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Fixed resizable canvas.
+	What I will do today: Started working on a zooming feature allowing the user to zoom-in and zoom-out of the canvas.
+	Obstacles I face: Zooming conflicts with the current resizing logic.
 
 Nov 9,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished implementing zoom feature.
+	What I will do today: Begin working on hooking up application features to the GUI
+	Obstacles I face: Finding a good framework to hook features up to.
 
 Nov 10,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Started working on a framework for the GUI features
+	What I will do today: Continue working on hooking up features.
+	Obstacles I face: TIME constraint.
 
 Nov 11,2024
 	What I did yesterday:
