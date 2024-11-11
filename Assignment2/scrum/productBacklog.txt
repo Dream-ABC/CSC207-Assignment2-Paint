@@ -528,7 +528,7 @@ ISSUE    : Currently the shape chooser panel is not located in the toolbar
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.473 : pengxi60 : Completed
 NAME     : Selection tool not working
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 1 hour
 ISSUE    : When the selection tool is selected in the toolbar, it is not
            showing up when the user tries to draw a selection box.
@@ -536,7 +536,7 @@ ISSUE    : When the selection tool is selected in the toolbar, it is not
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.474 : pengxi60 : Completed
 NAME     : Tools are not accessible by the user
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : 2 hours    ACTUAL : 1 hour
 ISSUE    : When the user wants to erase, add text, or draw squiggle, there
            are no UI elements to allow them to do so.
