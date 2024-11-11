@@ -6,20 +6,18 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
-import javafx.scene.Node;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
-public class ShapeChooserPanel extends VBox implements EventHandler<ActionEvent> {
+public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent> {
     private final PaintModel model;
     private final Popup shapePopup;
 
@@ -36,19 +34,25 @@ public class ShapeChooserPanel extends VBox implements EventHandler<ActionEvent>
             "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/TriangleTool.png",
     };
 
-    public ShapeChooserPanel(PaintModel model) throws FileNotFoundException {
+    public ShapeChooserPopUp(PaintModel model) throws FileNotFoundException {
         this.model = model;
         this.shapePopup = createShapePopup();
     }
 
     public void toggleShapePopup(ToggleButton sourceButton) {
-        if (shapePopup.isShowing()) {
-            shapePopup.hide();
-        } else {
+        if (!hideShapePopup()) {
             shapePopup.show(sourceButton,
                     sourceButton.localToScreen(0, 0).getX(),
                     sourceButton.localToScreen(0, 0).getY() + sourceButton.getHeight());
         }
+    }
+
+    public boolean hideShapePopup() {
+        if (shapePopup.isShowing()) {
+            shapePopup.hide();
+            return true;
+        }
+        return false;
     }
 
     private Popup createShapePopup() throws FileNotFoundException {
@@ -57,10 +61,11 @@ public class ShapeChooserPanel extends VBox implements EventHandler<ActionEvent>
         VBox container = new VBox();
         container.setAlignment(Pos.CENTER);
         container.setStyle("-fx-background-color: white; -fx-border-color: lightgray; " +
-                "-fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);");
+                "-fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);" +
+                "-fx-border-radius: 3px;");
 
         FlowPane shapesPane = new FlowPane(5, 5);
-        shapesPane.setStyle("-fx-border-color: lightgray;");
+        shapesPane.setStyle("-fx-border-color: lightgray; -fx-border-radius: 3px;");
         shapesPane.setPadding(new Insets(5));
         shapesPane.setPrefWrapLength(265);
 
@@ -115,12 +120,7 @@ public class ShapeChooserPanel extends VBox implements EventHandler<ActionEvent>
             handlePolylineClose();
         }
 
-        if (command.equals("Outline") || command.equals("Solid")) {
-            model.setFillStyle(command);
-        } else {
-            model.setMode(command);
-        }
-
+        model.setMode(command);
         shapePopup.hide();
     }
 
