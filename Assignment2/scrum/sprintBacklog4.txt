@@ -279,7 +279,7 @@ ISSUE    : Currently the shape chooser panel is not located in the toolbar
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.473 : pengxi60 : Completed
-NAME     : SelectionTool not working
+NAME     : Selection tool not working
 PRIORITY : 3
 ESTIMATE : 30 minutes    ACTUAL : 1 hour
 ISSUE    : When the selection tool is selected in the toolbar, it is not
