@@ -16,6 +16,11 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+ * The View class handles the graphical user interface for the Paint application.
+ * It organizes and displays the canvas, toolbar, status bar, and other panels,
+ * and manages user interactions, relaying commands to the {@link PaintModel}.
+ */
 public class View implements EventHandler<ActionEvent> {
 
     private final Stage stage;
@@ -36,6 +41,13 @@ public class View implements EventHandler<ActionEvent> {
     private HBox bottomPanel;
     private ScrollPane canvasHolder;
 
+    /**
+     * Constructs a View for the Paint application, setting up all UI components and layout.
+     *
+     * @param model the PaintModel associated with this view
+     * @param stage the primary Stage for this application
+     * @throws FileNotFoundException if the application icon file is not found
+     */
     public View(PaintModel model, Stage stage) throws FileNotFoundException {
         this.paintModel = model;
         this.stage = stage;
@@ -112,18 +124,38 @@ public class View implements EventHandler<ActionEvent> {
         root.requestFocus();
     }
 
+    /**
+     * Gets the PaintModel associated with this view.
+     *
+     * @return the PaintModel instance
+     */
     public PaintModel getPaintModel() {
         return this.paintModel;
     }
 
+    /**
+     * Gets the primary Stage for this application.
+     *
+     * @return the application's main Stage
+     */
     public Stage getStage() {
         return this.stage;
     }
 
+    /**
+     * Sets the active layer in the LayerChooserPanel based on the specified layer name.
+     *
+     * @param layerName the name of the layer to set as active
+     */
     public void setLayer(String layerName) {
         this.layerChooserController.selectLayer(layerName);
     }
 
+    /**
+     * Creates and configures the MenuBar for the application, including File, Edit, and View menus.
+     *
+     * @return the constructed MenuBar instance
+     */
     private MenuBar createMenuBar() {
 
         MenuBar menuBar = new MenuBar();
@@ -204,6 +236,12 @@ public class View implements EventHandler<ActionEvent> {
         return menuBar;
     }
 
+    /**
+     * Handles ActionEvents triggered by menu items, performing actions such as file handling,
+     * color picking, and editing commands.
+     *
+     * @param event the ActionEvent triggered by a menu item
+     */
     @Override
     public void handle(ActionEvent event) {
         String command = ((MenuItem) event.getSource()).getText();
