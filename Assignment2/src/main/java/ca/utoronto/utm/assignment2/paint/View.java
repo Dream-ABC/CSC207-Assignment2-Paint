@@ -216,14 +216,22 @@ public class View implements EventHandler<ActionEvent> {
         // Another menu for View
 
         menu = new Menu("View");
-        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
         menuItem = new MenuItem("Line Thickness");
         this.lineThicknessSlider = new LineThicknessSlider(this.paintPanel);
         menuItem.setOnAction(event -> this.lineThicknessSlider.show());
         menu.getItems().add(menuItem);
 
+        menuItem = new MenuItem("Fill");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
+        menuItem = new MenuItem("No Fill");
+        menuItem.setOnAction(this);
+        menu.getItems().add(menuItem);
+
         menuBar.getMenus().add(menu);
+        menuBar.setStyle("-fx-background-color: #f8f1f0; -fx-font-size: 14px;");
 
         return menuBar;
     }
@@ -257,6 +265,10 @@ public class View implements EventHandler<ActionEvent> {
             this.paintModel.cut();
         } else if (command.equals("Delete")) {
             this.paintModel.delete();
+        } else if (command.equals("Fill")) {
+            this.paintModel.setFillStyle("Solid");
+        } else if (command.equals("No Fill")) {
+            this.paintModel.setFillStyle("Outline");
         }
 
         this.paintModel.notifyChange();

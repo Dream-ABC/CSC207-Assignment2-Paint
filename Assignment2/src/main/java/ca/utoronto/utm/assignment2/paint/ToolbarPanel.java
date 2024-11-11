@@ -26,17 +26,14 @@ public class ToolbarPanel extends GridPane {
 
     // Constants
     private static final String[] BUTTON_IDS = {
-            "Selection", "Image", "Tools", "Brushes", "Shapes", "Colours", "Layers"
+            "Selection", "Tools", "Shapes", "Colours",
     };
 
     private static final String[] IMAGE_FILES = {
             "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/RectangularSelectionLarge.png",
-            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Resize.png",
             "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Tools.png",
-            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/BrushIcon.png",
             "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Shapes.png",
             "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Colors.png",
-            "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Layers.png"
     };
 
     private static final String ARROW_IMAGE_FILE =
