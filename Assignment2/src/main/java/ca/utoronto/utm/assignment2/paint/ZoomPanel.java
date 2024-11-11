@@ -14,13 +14,24 @@ import java.io.FileNotFoundException;
 import java.util.Observable;
 import java.util.Observer;
 
-@SuppressWarnings("unchecked")
+/**
+ * Represents the zoom control panel in the paint application.
+ * This panel includes zoom in/out buttons, a slider, and a combo box for zoom level selection.
+ * Implements Observer pattern to stay synchronized with the PaintModel.
+ */
 public class ZoomPanel extends GridPane implements Observer {
     private ZoomController zoomController;
     private ZoomSliderController zoomSliderController;
     private Slider zoomSlider;
     private ComboBox comboBox;
 
+    /**
+     * Constructs a new ZoomPanel with all zoom controls.
+     *
+     * @param model The PaintModel that maintains the application state
+     * @param canvas The ResizableCanvas that will be zoomed
+     * @throws FileNotFoundException If the zoom button images cannot be loaded
+     */
     public ZoomPanel(PaintModel model, ResizableCanvas canvas) throws FileNotFoundException {
         this.zoomController = new ZoomController(model, canvas);
         this.zoomSliderController = new ZoomSliderController(model, canvas);
@@ -85,6 +96,13 @@ public class ZoomPanel extends GridPane implements Observer {
         this.add(zoomIn, col, 0);
     }
 
+    /**
+     * Updates the zoom controls to reflect changes in the model.
+     * This method is called when the observed PaintModel changes.
+     *
+     * @param o The Observable object (PaintModel)
+     * @param arg The argument passed to the notifyObservers method (unused)
+     */
     @Override
     public void update(Observable o, Object arg) {
         PaintModel model = (PaintModel) o;
