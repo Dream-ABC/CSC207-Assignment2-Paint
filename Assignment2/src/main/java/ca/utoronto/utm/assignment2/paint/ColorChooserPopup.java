@@ -42,8 +42,12 @@ public class ColorChooserPopup extends Popup {
     }
 
     /**
-     * Toggles the color picker popup and manages its interactions with the PaintPanel.
+     * Toggles the display state of a color picker popup.
+     * If the popup is currently visible, hides it.
+     * If hidden, displays it below the source button with the color picker content.
      *
+     * @param sourceButton The ToggleButton that triggered the popup toggle action.
+     *                     Used to position the popup relative to the button's location.
      */
     public void togglePopup(ToggleButton sourceButton) {
         if (!hidePopup()) {
@@ -55,6 +59,12 @@ public class ColorChooserPopup extends Popup {
         }
     }
 
+    /**
+     * Attempts to hide the popup if it is currently showing.
+     *
+     * @return true if the popup was showing and was hidden,
+     *         false if the popup was already hidden
+     */
     public boolean hidePopup() {
         if (this.isShowing()) {
             this.hide();
