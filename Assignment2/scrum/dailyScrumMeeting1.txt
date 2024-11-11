@@ -140,9 +140,9 @@ Nov 9,2024
 	Obstacles I face: None
 
 Nov 10,2024
-	What I did yesterday:
-	What I will do today:
-	Obstacles I face:
+	What I did yesterday: Finished BUG4.491 and US4.452
+	What I will do today: Finished Assignment
+	Obstacles I face: None
 
 Nov 11,2024
 	What I did yesterday:
