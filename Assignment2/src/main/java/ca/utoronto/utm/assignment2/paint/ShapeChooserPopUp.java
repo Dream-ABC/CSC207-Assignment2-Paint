@@ -17,6 +17,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Objects;
 
+/**
+ * A popup component that allows users to choose different shapes for drawing.
+ * Manages the display and interaction with shape selection buttons.
+ */
 public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent> {
     private final PaintModel model;
     private final Popup shapePopup;
@@ -34,11 +38,24 @@ public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent>
             "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/TriangleTool.png",
     };
 
+    /**
+     * Constructs a new ShapeChooserPopUp with the specified paint model.
+     *
+     * @param model the PaintModel to be updated when shapes are selected
+     * @throws FileNotFoundException if any of the shape icon image files cannot be found
+     */
     public ShapeChooserPopUp(PaintModel model) throws FileNotFoundException {
         this.model = model;
         this.shapePopup = createShapePopup();
     }
 
+    /**
+     * Toggles the visibility of the shape chooser popup.
+     * If the popup is hidden, displays it below the source button.
+     * If visible, hides it.
+     *
+     * @param sourceButton the ToggleButton that triggered the popup
+     */
     public void togglePopup(ToggleButton sourceButton) {
         if (!hidePopup()) {
             shapePopup.show(sourceButton,
@@ -47,6 +64,12 @@ public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent>
         }
     }
 
+    /**
+     * Attempts to hide the shape chooser popup if it is currently showing.
+     *
+     * @return true if the popup was showing and was hidden,
+     *         false if the popup was already hidden
+     */
     public boolean hidePopup() {
         if (shapePopup.isShowing()) {
             shapePopup.hide();
@@ -55,6 +78,13 @@ public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent>
         return false;
     }
 
+    /**
+     * Creates and configures the shape chooser popup window.
+     * Sets up a container with a grid of shape buttons and a label.
+     *
+     * @return a configured Popup containing the shape selection interface
+     * @throws FileNotFoundException if any shape icon image files cannot be found
+     */
     private Popup createShapePopup() throws FileNotFoundException {
         Popup popup = new Popup();
 
@@ -84,6 +114,15 @@ public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent>
         return popup;
     }
 
+    /**
+     * Creates and configures a button for a specific shape type.
+     * The button includes an icon and hover effects.
+     *
+     * @param id the identifier for the shape type
+     * @param imageFile the path to the icon image file
+     * @return a configured Button with the specified shape icon
+     * @throws FileNotFoundException if the specified image file cannot be found
+     */
     private Button createShapeButton(String id, String imageFile) throws FileNotFoundException {
         FileInputStream input = new FileInputStream(imageFile);
         ImageView imageView = new ImageView(new Image(input));
@@ -109,6 +148,12 @@ public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent>
         return button;
     }
 
+    /**
+     * Handles shape selection events when a shape button is clicked.
+     * Updates the model's mode to the selected shape type and hides the popup.
+     *
+     * @param event the ActionEvent triggered by clicking a shape button
+     */
     @Override
     public void handle(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
@@ -124,6 +169,11 @@ public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent>
         shapePopup.hide();
     }
 
+    /**
+     * Handles the closing of a polyline shape when switching to a different shape.
+     * If the current shape is a polyline with more than one point,
+     * closes the polyline and adds it to the model.
+     */
     private void handlePolylineClose() {
         Shape shape = model.getSelectedShape();
         if (Objects.equals(model.getMode(), "Polyline") && shape != null) {
