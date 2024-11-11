@@ -101,6 +101,28 @@
 ----------------------------------------------------------------------------------------------------------
 # Design Patterns Used (collections of classes into DP)
 
+--------------------------------------------------------------------------------
+Name: Observer - LayerChooserController, ZoomPanel, StatusBarPanel, ResizableCanvas
+      Observable - PaintModel
+Pattern Name: Observer/Observable
+Reference: https://www.oodesign.com/images/design_patterns/behavioral/observer_implementation_-_uml_class_diagram.gif
+
+Purpose:
+	(why is this pattern implemented? think SOLID as possible reasons and explain in terms of the application)
+
+UML:
+
+
+Classes:
+	LayerChooserController: Observer
+	ZoomPanel: Observer
+	StatusBarPanel: Observer
+	ResizableCanvas: Observer
+
+Usage:
+	(Briefly describe why a developer would be playing with this part of
+	the code and how they would use it to achieve that purpose)
+
 ----------------------------------------------------------------------------------------------------------
 Name: Shape Strategy
 Pattern Name: Strategy
