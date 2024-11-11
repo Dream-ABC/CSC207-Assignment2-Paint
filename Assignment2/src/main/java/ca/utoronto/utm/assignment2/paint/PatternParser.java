@@ -2,7 +2,6 @@ package ca.utoronto.utm.assignment2.paint;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * The PatternParser class is responsible for parsing command strings and converting them into
@@ -10,10 +9,6 @@ import java.util.Arrays;
  * previous drawing actions.
  */
 public class PatternParser {
-
-    private PaintPanel panel;
-    private PaintModel model;
-    private CommandHistory history;
 
     /**
      * Parses a command from a string and returns a corresponding Command object.
