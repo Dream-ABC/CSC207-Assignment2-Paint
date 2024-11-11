@@ -271,22 +271,21 @@ HOW TO MODIFY OUR CODE
 Name: New Drawing Mode
 
 Description:
-    A drawing mode enables a user to draw an object onto the screen, which could be a shape (e.g., Circle)
-    or other elements (e.g., Text). ***The drawing mode consists of an image icon appearing in the left
-    button panel. When the user clicks the image icon, the drawing mode is enabled. This means that a
-    strategy for handling user input for this drawing mode is installed.***
-
-	At this point, all mouse events in ...
+        A drawing mode enables a user to draw an object onto the screen, which could be a shape (e.g., Circle)
+    or other elements (e.g., Text). The drawing mode consists of an image icon appearing in the shape
+    button panel's drop-down menu. When the user clicks the image icon, the drawing mode is enabled. This
+    means that the corresponding strategy for handling user input for this drawing mode is installed.
+	    At this point, the mouse events press, drag, and release will affect the drawing of the new drawing
+	mode. In particular, the mouse press should begin drawing, mouse drag should affect the size of the drawing
+	(e.g., for a Circle, drag increases or decreases its radius), and mouse release should finalize the drawing.
 
 Implementation:
 	To add a new drawing mode X, provide the following:
 
-	***image icon: Create a jpg image with dimensions 128x128, and place it
-		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-		(any special discussion...)***
-
-    ButtonPanel or something:
-            Add the button for shape X onto the UI.
+	Image icon:
+	        Create a png image with dimensions 18x18 that corresponds to the new drawing mode. Place this
+	      image in Assets/theme-light/XTool.png and Assets/theme-dark/XTool.png (light mode and dark mode
+	      for Paint). Then, display this icon in the ShapeChooserPopUp class.
 
     X:
     	    This is the shape class named X. This class should implement the Shape interface, and have all
