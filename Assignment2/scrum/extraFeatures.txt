@@ -78,6 +78,11 @@ Description:
 
 Reference:
 	US3.361 - Paint GUI overhaul
+	BUG4.472 - Shape chooser UI
+	BUG4.473 - Selection tool not working
+	BUG4.474 - Tools are not accessible by the user
+	BUG4.475 - Changing colour is not accessible to the user
+	BUG4.476 - Manipulating layers and fill style is not accessible to the user.
 --------------------------------------------------------------------------------
 FeatureName: Color Selector
 

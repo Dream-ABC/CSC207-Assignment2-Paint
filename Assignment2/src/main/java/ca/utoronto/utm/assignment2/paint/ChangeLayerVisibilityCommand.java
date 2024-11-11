@@ -38,8 +38,10 @@ public class ChangeLayerVisibilityCommand implements Command {
     }
 
     /**
+     * Returns a string representation of the ChangeLayerVisibilityCommand instance,
+     * including the index of the target layer.
      *
-     * @return
+     * @return a string representation of the ChangeLayerVisibilityCommand instance
      */
     @Override
     public String toString() {
