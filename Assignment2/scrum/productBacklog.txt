@@ -544,7 +544,7 @@ ISSUE    : When the user wants to erase, add text, or draw squiggle, there
 --------------------------------------------------------------------------
 TYPE     : BUG BUG4.475 : pengxi60 : Completed
 NAME     : Changing colour is not accessible to the user
-PRIORITY : 3
+PRIORITY : 1
 ESTIMATE : 30 minutes    ACTUAL : 2 hours
 ISSUE    : When the user wants to change the colour of their drawing tool
            there is no UI element to allow them to do so.
