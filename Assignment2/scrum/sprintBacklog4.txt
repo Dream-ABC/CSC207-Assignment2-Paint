@@ -262,6 +262,14 @@ ISSUE    : When re-entering polyline mode, the tool continues from the last poly
            instead of allowing the user to start a new one.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
+TYPE     : BUG BUG4.491 : tianshi8 : Complete
+NAME     : Unused or Redundant Code
+PRIORITY : 1
+ESTIMATE : 10 min     ACTUAL : 10 min
+ISSUE    : There are redundant pieces of code and unused variables that should be removed
+           for better code quality.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
 TYPE     : BUG BUG4.472 : pengxi60 : Complete
 NAME     : Shape chooser UI
 PRIORITY : 1
