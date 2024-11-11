@@ -108,7 +108,15 @@ Pattern Name: Observer/Observable
 Reference: https://www.oodesign.com/images/design_patterns/behavioral/observer_implementation_-_uml_class_diagram.gif
 
 Purpose:
-	(why is this pattern implemented? think SOLID as possible reasons and explain in terms of the application)
+	The Observer pattern was implemented to align with the Open-Closed Principle. In our application,
+	LayerChooserController, ZoomPanel, StatusBarPanel, and ResizableCanvas act as observers, each
+	monitoring the PaintModel as the observable object for state changes. When the PaintModel makes
+	any changes, all the observers are automatically notified and updated accordingly. As a result,
+	when new features are added, new observers can be introduced without altering the PaintModel
+	or existing observers, ensuring that the application can be expanded without modifying the existing
+	code. Additionally, all the information in the PaintModel is encapsulated, meaning the observers
+	do not need to know the specific implementations within the PaintModel, which follows the
+	Open-Closed Principle.
 
 UML:
     ObserverObservableUML.png
