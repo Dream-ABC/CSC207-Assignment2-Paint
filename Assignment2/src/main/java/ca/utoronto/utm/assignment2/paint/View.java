@@ -226,7 +226,7 @@ public class View implements EventHandler<ActionEvent> {
         menuItem.setOnAction(this);
         menu.getItems().add(menuItem);
 
-        menuItem = new MenuItem("No Fill");
+        menuItem = new MenuItem("Outline");
         menuItem.setOnAction(this);
         menu.getItems().add(menuItem);
 
@@ -267,7 +267,7 @@ public class View implements EventHandler<ActionEvent> {
             this.paintModel.delete();
         } else if (command.equals("Fill")) {
             this.paintModel.setFillStyle("Solid");
-        } else if (command.equals("No Fill")) {
+        } else if (command.equals("Outline")) {
             this.paintModel.setFillStyle("Outline");
         }
 
