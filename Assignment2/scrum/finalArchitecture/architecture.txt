@@ -648,8 +648,8 @@ Implementation:
         (any special discussion...)***
 
     View:
-            View creates the menu item "Color". When the user clicks this menu item, the pop-up
-        displaying the color picker appears.
+            View creates the menu item "Color". When the user clicks this menu item, the pop-up displaying
+        the color picker appears.
 
     ColorPickerPopup:
             ColorPickerPopup creates a ColorPicker object and displays the pop-up screen on the program
@@ -671,13 +671,13 @@ Implementation:
 Name: Text Editor
 
 Description:
-            The Text Editor allows users to add and edit text shapes on the canvas. It consists of an image icon
-        in the left button panel. When users click on this icon, the text editing mode is activated. Users can
-        then click anywhere on the canvas to place a text shape. A pop-up text editor dialog will appear, enabling
-        users to choose the text's font and size from a scrolling menu. The dialog also provides toggle buttons
-        to modify the text's style (bold, italic, underline, strikethrough). As users input or modify the text,
-        it is dynamically rendered and updated on the canvas, providing a flexible and interactive experience for
-        adding annotations or descriptions on the canvas.
+        The Text Editor allows users to add and edit text shapes on the canvas. It consists of an
+    image icon in the left button panel. When users click on this icon, the text editing mode is activated.
+    Users can then click anywhere on the canvas to place a text shape. A pop-up text editor dialog will
+    appear, enabling users to choose the text's font and size from a scrolling menu. The dialog also provides
+    toggle buttons to modify the text's style (bold, italic, underline, strikethrough). As users input or
+    modify the text, it is dynamically rendered and updated on the canvas, providing a flexible and
+    interactive experience for adding annotations or descriptions on the canvas.
 
 Classes/Interfaces Involved:
     Shape
@@ -690,31 +690,32 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the color picker in this application.
 
-   ***image icon: Create png images with dimensions 15x15 for the toggle buttons of bold, italic, underline,
-       and strikethrough. These images should be displayed in the text editor pop-up screen and placed in the
-       following locations:
-           - "images/bold.png" for the bold button
-           - "images/italic.png" for the italic button
-           - "images/underline.png" for the underline button
-           - "images/strikethrough.png" for the strikethrough button.***
+   Image icon:
+            Create png images with dimensions 15x15 for the toggle buttons of bold, italic, underline,
+        and strikethrough. These images should be displayed in the text editor pop-up screen and placed in
+        the following locations:
+            - "images/bold.png" for the bold button
+            - "images/italic.png" for the italic button
+            - "images/underline.png" for the underline button
+            - "images/strikethrough.png" for the strikethrough button.***
 
-    Text:
+   Text:
             The Text class represents a text shape within the PaintPanel. It implements the Shape interface
         to ensure consistency with other shapes in the application.
-            The class contains all the information necessary for a text shape, including the interactive text node,
-        font, size, style (bold, italic, underline, strikethrough), color, and position. The Text class provides
-        a set of getter and setter methods, which allow associated controllers (such as the TextEditorDialog)
-        to retrieve and update these properties.
+            The class contains all the information necessary for a text shape, including the interactive
+        text node, font, size, style (bold, italic, underline, strikethrough), color, and position. The
+        Text class provides a set of getter and setter methods, which allow associated controllers (such
+        as the TextEditorDialog) to retrieve and update these properties.
 
-    TextEditorDialog:
-            TextEditorDialog creates a Dialog object and displays the pop-up screen on the program when appropriate.
+   TextEditorDialog:
+            TextEditorDialog creates a Dialog object and displays the pop-up screen on the program whenappropriate.
         A TextEditorDialog object is bound with a specific Text object, meaning changes made in a dialog will
         only affect the associated Text shape. TextEditorDialog listens for the button selection events and
         updates the selected font for the specified text shape. It offers a display() method to open the pop-up,
         and a getSelectedFont() method to retrieve the user-selected font, ensuring that the customization is applied
         dynamically to the text shape on the canvas.
 
-    TextStrategy:
+   TextStrategy:
             The TextStrategy class takes a Text shape and its corresponding TextEditorDialog, and manages mouse events
         (mousePressed, mouseDragged, and mouseReleased) to enable users to add and customize text on the current layer.
             Specifically, when the primary mouse button is released, TextStrategy prompts the user by displaying
