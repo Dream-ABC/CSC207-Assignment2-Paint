@@ -372,24 +372,23 @@ Name: New Slider - Resizable Erasers (Stroke and Precision)
 
 Description:
     Resizable erasers would allow users to adjust the eraser size, providing greater customization over
-    the canvas and erasing process. This feature could be implemented for both the stroke eraser and the precision eraser. One
-    possible implementation of this feature is to have a slider pop-up when the
-    user clicks on an eraser button. The slider value then corresponds to the
-    eraser's size, which could be any range desired.
+    the canvas and erasing process. This feature could be implemented for both the stroke eraser and the
+    precision eraser. One possible implementation of this feature is to have a slider pop-up when the
+    user clicks on an eraser button. The slider value then corresponds to the eraser's size, which could
+    be any range desired.
 
 Implementation:
     The specific implementation approach for this feature discussed above, is outlined below.
 
     [Type]EraserSizeSlider:
-        A slider class could be created for both the stroke type and precision type eraser.
-        This class would need to create the Slider object, display the pop-up onto the PaintPanel
-        when appropriate, and register when the Slider object's value has changed.
-            First, the slider class should extend Slider and implement ChangeListener, in order to
-        support the creation of the slider object and to be able to register when the slider's value
-        has changed.
-            Next, the slider class should include a PaintPanel panel attribute, as the panel will
-        be responsible for displaying the slider in the program. This attribute will be initialized
-        inside the constructor, which will have a parameter for the PaintPanel.
+        A slider class could be created for both the stroke type and precision type eraser. This class
+        would need to create the Slider object, display the pop-up onto the PaintPanel when appropriate,
+        and register when the Slider object's value has changed.
+            First, the slider class should extend Slider and implement ChangeListener, in order to support
+        the creation of the slider object and to be able to register when the slider's value has changed.
+            Next, the slider class should include a PaintPanel panel attribute, as the panel will be
+        responsible for displaying the slider in the program. This attribute will be initialized inside
+        the constructor, which will have a parameter for the PaintPanel.
             Then, there should be a show() method within the slider class, which will create the pop-up
         and display it onto the PaintPanel.
             Lastly, an overridden changed() method should be implemented to automatically adjust the
@@ -397,7 +396,7 @@ Implementation:
 
 Example:
     LineThicknessSlider - example of an implementation for [Type]EraserSizeSlider
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: New Tool - Dynamic Color Change for Drawn Shapes
 
 Description:
@@ -446,24 +445,24 @@ Example:
     SelectionTool, StrokeEraser - examples of implementations for ColorChangeTool
     ColorPickerPopup - example of an implementation for ColorChangePopup
     SelectionToolStrategy, StrokeEraserStrategy - examples of implementations for ColorChangeToolStrategy
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
 HOW TO UNDERSTAND OUR CODE
 Magnifier Tool, Color Selector, Layer Support, File Menu, Text Editor, Undo/Redo, Resizable Canvas, Selection Tool, Cut/Copy/Paste/Delete
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Stroke Eraser
 
 Description:
-        The stroke eraser removes an entire stroke at once. For example, when the user
-    draws a circle, using the stroke eraser will erase the entire circle at once.
-    Note that for text, the stroke eraser erases the entire text, not one letter at a time.
+        The stroke eraser removes an entire stroke at once. For example, when the user draws a circle,
+    using the stroke eraser will erase the entire circle at once. Note that for text, the stroke eraser
+    erases the entire text, not one letter at a time.
         Within this program, the stroke eraser is represented as a black dashed square of size 14,
     centered at the mouse cursor.
-        The stroke eraser consists of ***an image icon appearing in the left button panel.
-    The stroke eraser is displayed as an image icon in the left button panel.*** When the user clicks
-    on the icon, the stroke eraser mode is activated, and a corresponding strategy for handling user
-    mouse input is applied. The stroke eraser strategy ensures that when the stroke eraser is clicked
-    or dragged across a shape, it removes the entire stroke of that shape from the canvas.
+        The stroke eraser consists of ***an image icon appearing in the left button panel. The stroke
+    eraser is displayed as an image icon in the left button panel.*** When the user clicks on the icon,
+    the stroke eraser mode is activated, and a corresponding strategy for handling user mouse input is
+    applied. The stroke eraser strategy ensures that when the stroke eraser is clicked or dragged across
+    a shape, it removes the entire stroke of that shape from the canvas.
 
 Classes/Interfaces Involved:
     Tool
@@ -481,8 +480,8 @@ Implementation:
         		(any special discussion...)***
 
     StrokeEraser:
-            StrokeEraser implements the Tool interface. As a result, the attributes and methods required for
-        this tool would include:
+            StrokeEraser implements the Tool interface. As a result, the attributes and methods required
+        for this tool would include:
             - the top left point of the stroke eraser's square representation
             - the dimensions of the tool, which would be the size of the square
             - a display(GraphicsContext g2d) method, to draw the stroke eraser's representation onto
@@ -501,21 +500,21 @@ Implementation:
             The logic for determining when to erase drawings, specifically the collision detection between
         the stroke eraser and the drawn shape, is implemented in the overlap(Tool tool) method within each
         shape class. The approach differs for each shape, as each has its own unique geometry.
-            Overall, the StrokeEraserStrategy class detects when a stroke eraser collides with a shape, and removes
-        them from the canvas accordingly.
---------------------------------------------------------------------------------
+            Overall, the StrokeEraserStrategy class detects when a stroke eraser collides with a shape,
+        and removes them from the canvas accordingly.
+----------------------------------------------------------------------------------------------------------
 Name: Precision Eraser
 
 Description:
         The precision eraser allows the user to erase specific segments of a drawing for finer detailing.
-    It erases in the shape of a square. However, the precision eraser is implemented in a particular way:
+    It erases in the shape of a square. However, the precision eraser is implemented in a particular way;
     it doesn't erase by removing the shape. Instead, it draws transparent squares wherever it moves,
     creating the illusion of erasing.
         Within this program, the precision eraser is represented as a black dashed square of size 14,
     centered at the mouse cursor.
-        The precision eraser consists of ***an image icon appearing in the left button panel.
-    The precision eraser is displayed as an image icon in the left button panel.*** When the user clicks
-    on the icon, the precision eraser mode is activated, and a corresponding strategy for handling user
+        The precision eraser consists of ***an image icon appearing in the left button panel. The
+    precision eraser is displayed as an image icon in the left button panel.*** When the user clicks on
+    the icon, the precision eraser mode is activated, and a corresponding strategy for handling user
     mouse input is applied. The precision eraser strategy ensures that the user has the customizability
     and flexibility to erase specific aspects of a drawing.
 
@@ -536,31 +535,32 @@ Implementation:
     PrecisionEraser:
             PrecisionEraser implements the Shape interface. A key feature of the eraser's attributes is
         its color attribute, which determines its visual representation. While the user is still using
-        the precision eraser, it is displayed as a black dashed square on the canvas. Once the user finishes
-        using the eraser, the dashed square disappears by setting the color attribute to transparent, making it
-        effectively invisible.
-            PrecisionEraser is represented as a series of points, which is the path that the user drew when
-        using the precision eraser. The transparent rectangles are drawn using those points as their centre.
-            Overall, for the implementation of the precision eraser, the PrecisionEraser class is simply responsible
-        for displaying its representation onto the canvas and drawing the transparent squares in PaintPanel.
+        the precision eraser, it is displayed as a black dashed square on the canvas. Once the user
+        finishes using the eraser, the dashed square disappears by setting the color attribute to
+        transparent, making it effectively invisible.
+            PrecisionEraser is represented as a series of points, which is the path that the user drew
+        when using the precision eraser. The transparent rectangles are drawn using those points as their
+        centre.
+            Overall, for the implementation of the precision eraser, the PrecisionEraser class is simply
+        responsible for displaying its representation onto the canvas and drawing the transparent squares
+        in PaintPanel.
 
     PrecisionEraserStrategy:
-            PrecisionEraserStrategy implements the ShapeStrategy interface and handles the mouse press, mouse
-        drag, and mouse release actions for the precision eraser tool. When the user performs a left mouse
-        press with the precision eraser, the eraser starts the process of 'removing' drawings by drawing
-        a transparent square that is the size of the eraser, located at the eraser's current location.
-        This process continues on as the precision eraser is dragged around. The erasing process only ends once the user
-        has released their left mouse button. As these transparent rectangles are drawn, they are stored as shapes in the
-        PaintModel, which then renders them on the canvas.
---------------------------------------------------------------------------------
+            PrecisionEraserStrategy implements the ShapeStrategy interface and handles the mouse press,
+        mouse drag, and mouse release actions for the precision eraser tool. When the user performs a left
+        mouse press with the precision eraser, the eraser starts the process of 'removing' drawings by
+        drawing a transparent square that is the size of the eraser, located at the eraser's current location.
+        This process continues on as the precision eraser is dragged around. The erasing process only ends
+        once the user has released their left mouse button. As these transparent rectangles are drawn, they
+        are stored as shapes in the PaintModel, which then renders them on the canvas.
+----------------------------------------------------------------------------------------------------------
 Name: Fill Style Selector
 
 Description:
-        The fill style selector allows users to choose whether they want to draw a solid
-    shape or an outlined shape. This option does not apply to squiggles, polylines,
-    or text.
-        The fill style selector consists of ***an image icon appearing in the left button panel.
-    When the user clicks the image icon, the selected fill style mode is enabled.***
+        The fill style selector allows users to choose whether they want to draw a solid shape or an
+    outlined shape. This option does not apply to squiggles, polylines, or text.
+        The fill style selector consists of ***an image icon appearing in the left button panel. When the
+    user clicks the image icon, the selected fill style mode is enabled.***
 
 Classes/Interfaces Involved:
     ShapeChooserPanel
@@ -586,16 +586,15 @@ Implementation:
     ShapeFactory:
         With the provided String fillStyle passed in as a parameter, the ShapeFactory can create the correct
         shape and fill style for any shape type.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Line Thickness Selector
 
 Description:
-        The line thickness selector allows users to choose how thick they want the outline
-    of their shape to be. This option does not apply when users draw solid shapes.
-        The line thickness selector is found within the menu item View -> Line Thickness. It is a
-    Slider that ranges from 0-50, with the default value being 1. Once the user adjusts the Slider
-    to their desired value, all outlined shapes in the application will have that selected line
-    thickness value.
+        The line thickness selector allows users to choose how thick they want the outline of their shape
+    to be. This option does not apply when users draw solid shapes.
+        The line thickness selector is found within the menu item View -> Line Thickness. It is a Slider
+    that ranges from 0-50, with the default value being 1. Once the user adjusts the Slider to their
+    desired value, all outlined shapes in the application will have that selected line thickness value.
 
 Classes/Interfaces Involved:
     View
@@ -611,22 +610,22 @@ Implementation:
         		(any special discussion...)***
 
     View:
-            View creates the menu item "Line Thickness". When the user clicks this menu item,
-        the pop-up displaying the line thickness slider appears.
+            View creates the menu item "Line Thickness". When the user clicks this menu item, the pop-up
+        displaying the line thickness slider appears.
 
     LineThicknessSlider:
-            LineThicknessSlider creates a Slider object, displays the pop-up screen onto the program
-        when appropriate, and registers when the Slider object's value has changed.
-        This is achieved by extending Slider and implementing ChangeListener, in order to support the
-        creation of the slider object and to be able to register when the slider's value has changed.
+            LineThicknessSlider creates a Slider object, displays the pop-up screen onto the program when
+        appropriate, and registers when the Slider object's value has changed. This is achieved by
+        extending Slider and implementing ChangeListener, in order to support the creation of the slider
+        object and to be able to register when the slider's value has changed.
             This class has a PaintPanel panel attribute, as the panel will be responsible for displaying
         the slider in the program. There is also a show() method within the slider class, which will
         create the pop-up screen and display it onto the PaintPanel. Lastly, there is an overridden
-        changed() method that automatically sets line thickness value in PaintPanel, which then
-        sets the line thickness value in PaintModel, based on the slider’s value. PaintPanel will
-        then pass the line thickness value into ShapeFactory when the user begins drawing outlined shapes.
+        changed() method that automatically sets line thickness value in PaintPanel, which then sets the
+        line thickness value in PaintModel, based on the slider’s value. PaintPanel will then pass the
+        line thickness value into ShapeFactory when the user begins drawing outlined shapes.
 
     ShapeFactory:
-            With the provided double lineThickness passed in as a parameter, the ShapeFactory can create the correct
-            shape and line thickness for any outlined shape type.
---------------------------------------------------------------------------------
+            With the provided double lineThickness passed in as a parameter, the ShapeFactory can create
+        the correctshape and line thickness for any outlined shape type.
+----------------------------------------------------------------------------------------------------------
