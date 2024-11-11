@@ -43,8 +43,10 @@ public class ChangeLayerCommand implements Command {
     }
 
     /**
+     * Returns a string representation of the ChangeLayerCommand instance including
+     * the index of the layer to be switched to.
      *
-     * @return
+     * @return a string representation of the ChangeLayerCommand instance
      */
     @Override
     public String toString() {

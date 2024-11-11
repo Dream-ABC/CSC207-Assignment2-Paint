@@ -47,8 +47,10 @@ public class AddLayerCommand implements Command {
     }
 
     /**
+     * Returns a string representation of the AddLayerCommand instance, including the width
+     * and height of the layer being added.
      *
-     * @return
+     * @return a string that describes the AddLayerCommand instance
      */
     @Override
     public String toString() {
