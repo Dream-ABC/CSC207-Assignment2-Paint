@@ -222,7 +222,7 @@ public class View implements EventHandler<ActionEvent> {
         menuItem.setOnAction(event -> this.lineThicknessSlider.show());
         menu.getItems().add(menuItem);
 
-        menuItem = new MenuItem("Fill");
+        menuItem = new MenuItem("Solid");
         menuItem.setOnAction(this);
         menu.getItems().add(menuItem);
 
@@ -265,7 +265,7 @@ public class View implements EventHandler<ActionEvent> {
             this.paintModel.cut();
         } else if (command.equals("Delete")) {
             this.paintModel.delete();
-        } else if (command.equals("Fill")) {
+        } else if (command.equals("Solid")) {
             this.paintModel.setFillStyle("Solid");
         } else if (command.equals("Outline")) {
             this.paintModel.setFillStyle("Outline");

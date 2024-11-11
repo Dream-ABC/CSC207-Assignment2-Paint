@@ -400,8 +400,8 @@ Example:
 Name: New Tool - Dynamic Color Change for Drawn Shapes
 
 Description:
-        Dynamic color change would enable users to modify the color of their shapes even after the shapes have
-    been drawn and finalized (i.e., after the user releases their mouse). This would increase
+        Dynamic color change would enable users to modify the color of their shapes even after the shapes
+    have been drawn and finalized (i.e., after the user releases their mouse). This would increase
     customization options in the Paint program, enhancing the user experience. One possible implementation
     of this feature is to create a new "Color Change" button. When the user presses this button, they can
     select a color to apply to a shape. An icon will then appear at the mouse cursor, allowing the user to
@@ -472,9 +472,9 @@ Implementation:
     Below is the implementation of the stroke eraser in this application.
 
     Image icon:
-            Create a png image with dimensions 18x18 that corresponds to the stroke eraser. Place this
-          image in Assets/theme-light/XTool.png and Assets/theme-dark/XTool.png (light mode and dark mode
-          for Paint). Then, display this icon in the ToolChooserPopUp class.
+            The icon for stroke eraser is found in Assets/theme-light/StrokeEraserTool.png and
+        Assets/theme-dark/StrokeEraserTool.png (light mode and dark mode for Paint). The icon is then
+        displayed in the ToolChooserPopUp class.
 
     StrokeEraser:
             StrokeEraser implements the Tool interface. As a result, the attributes and methods required
@@ -509,10 +509,9 @@ Description:
     creating the illusion of erasing.
         Within this program, the precision eraser is represented as a black dashed square of size 14,
     centered at the mouse cursor.
-        The precision eraser consists of ***an image icon appearing in the left button panel. The
-    precision eraser is displayed as an image icon in the left button panel.*** When the user clicks on
-    the icon, the precision eraser mode is activated, and a corresponding strategy for handling user
-    mouse input is applied. The precision eraser strategy ensures that the user has the customizability
+        The precision eraser is displayed as an image icon in the tool's pop-up panel. When the user
+    clicks on the icon, the precision eraser mode is activated, and a corresponding strategy for handling
+    user mouse input is applied. The precision eraser strategy ensures that the user has the customizability
     and flexibility to erase specific aspects of a drawing.
 
 Classes/Interfaces Involved:
@@ -525,9 +524,10 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the precision eraser in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
+    Image icon:
+            The icon for stroke eraser is found in Assets/theme-light/PrecisionEraserTool.png and
+        Assets/theme-dark/PrecisionEraserTool.png (light mode and dark mode for Paint). The icon is then
+        displayed in the ToolChooserPopUp class.
 
     PrecisionEraser:
             PrecisionEraser implements the Shape interface. A key feature of the eraser's attributes is
@@ -556,20 +556,21 @@ Name: Fill Style Selector
 Description:
         The fill style selector allows users to choose whether they want to draw a solid shape or an
     outlined shape. This option does not apply to squiggles, polylines, or text.
-        The fill style selector consists of ***an image icon appearing in the left button panel. When the
-    user clicks the image icon, the selected fill style mode is enabled.***
+        The fill style selector is found within the menu item "View". There is the option "Solid" to draw
+    solid shapes, and "Outline" to draw outlined shapes.
 
 Classes/Interfaces Involved:
     ShapeChooserPopUp
     PaintModel
     ShapeFactory
+    View
 
 Implementation:
     Below is the implementation of the fill style selector in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
+    View:
+            The menu bar created inside View, specifically the "View" option inside the menu bar, has fill
+        style options presented in its drop-down bar.
 
     ShapeChooserPopUp:
             When the button for a fill style is clicked, either "Solid" or "Outline", the ShapeChooserPopUp
@@ -602,13 +603,10 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the line thickness selector in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
-
     View:
-            View creates the menu item "Line Thickness". When the user clicks this menu item, the pop-up
-        displaying the line thickness slider appears.
+            View creates the menu bar, which inside the drop-down bar for "View", contains the item
+        "Line Thickness". When the user clicks this menu item, the pop-up displaying the line thickness
+        slider appears.
 
     LineThicknessSlider:
             LineThicknessSlider creates a Slider object, displays the pop-up screen onto the program when
@@ -642,10 +640,6 @@ Classes/Interfaces Involved:
 
 Implementation:
     Below is the implementation of the color picker in this application.
-
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        (any special discussion...)***
 
     View:
             View creates the menu item "Color". When the user clicks this menu item, the pop-up displaying
@@ -697,7 +691,7 @@ Implementation:
             - "images/bold.png" for the bold button
             - "images/italic.png" for the italic button
             - "images/underline.png" for the underline button
-            - "images/strikethrough.png" for the strikethrough button.***
+            - "images/strikethrough.png" for the strikethrough button.
 
    Text:
             The Text class represents a text shape within the PaintPanel. It implements the Shape interface
@@ -751,8 +745,9 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the color picker in this application.
 
-    ***image icon: Each layer has an image icon presenting the thumbnail of the layer, providing users a more intuitive
-        control over different layers, especially when the number of layers increases.***
+    Image icon:
+            Each layer has an image icon presenting the thumbnail of the layer, providing users a more intuitive
+        control over different layers, especially when the number of layers increases.
 
     AddLayerCommand:
             The AddLayerCommand class provides an execute() method to add a layer to the PaintPanel, and an undo() method
@@ -819,9 +814,8 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the line thickness selector in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
+    View:
+            View creates the file menu and displays it to the user when their mouse hovers over "File".
 
     FileHandlePopup:
             The FileHandlePopup class manages file operations in the PaintPanel, providing dialogs for opening, saving, and creating
