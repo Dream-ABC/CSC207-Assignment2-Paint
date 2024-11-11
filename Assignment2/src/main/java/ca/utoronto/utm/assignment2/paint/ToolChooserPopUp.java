@@ -36,15 +36,15 @@ public class ToolChooserPopUp extends VBox implements EventHandler<ActionEvent> 
         this.toolPopup = createToolPopup();
     }
 
-    public void toggleShapePopup(ToggleButton sourceButton) {
-        if (!hideShapePopup()) {
+    public void togglePopup(ToggleButton sourceButton) {
+        if (!hidePopup()) {
             toolPopup.show(sourceButton,
                     sourceButton.localToScreen(0, 0).getX(),
                     sourceButton.localToScreen(0, 0).getY() + sourceButton.getHeight());
         }
     }
 
-    public boolean hideShapePopup() {
+    public boolean hidePopup() {
         if (toolPopup.isShowing()) {
             toolPopup.hide();
             return true;

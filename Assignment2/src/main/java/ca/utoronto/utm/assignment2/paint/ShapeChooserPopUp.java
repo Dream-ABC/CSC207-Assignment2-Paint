@@ -39,15 +39,15 @@ public class ShapeChooserPopUp extends VBox implements EventHandler<ActionEvent>
         this.shapePopup = createShapePopup();
     }
 
-    public void toggleShapePopup(ToggleButton sourceButton) {
-        if (!hideShapePopup()) {
+    public void togglePopup(ToggleButton sourceButton) {
+        if (!hidePopup()) {
             shapePopup.show(sourceButton,
                     sourceButton.localToScreen(0, 0).getX(),
                     sourceButton.localToScreen(0, 0).getY() + sourceButton.getHeight());
         }
     }
 
-    public boolean hideShapePopup() {
+    public boolean hidePopup() {
         if (shapePopup.isShowing()) {
             shapePopup.hide();
             return true;

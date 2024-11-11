@@ -10,12 +10,16 @@ public class ToolbarController implements EventHandler<ActionEvent> {
     private Map<String, ToggleButton> toolButtons;
     private ToolChooserPopUp toolChooserPopUp;
     private ShapeChooserPopUp shapeChooserPopUp;
+    private ColorChooserPopup colorChooserPopup;
 
-    public ToolbarController(PaintModel model, Map<String, ToggleButton> toolButtons, ToolChooserPopUp toolChooserPopUp,ShapeChooserPopUp shapeChooserPopUp) {
+    public ToolbarController(PaintModel model, Map<String, ToggleButton> toolButtons,
+                             ToolChooserPopUp toolChooserPopUp, ShapeChooserPopUp shapeChooserPopUp,
+                             ColorChooserPopup colorChooserPopup) {
         this.model = model;
         this.toolButtons = toolButtons;
         this.toolChooserPopUp = toolChooserPopUp;
         this.shapeChooserPopUp = shapeChooserPopUp;
+        this.colorChooserPopup = colorChooserPopup;
     }
 
     @Override
@@ -32,17 +36,33 @@ public class ToolbarController implements EventHandler<ActionEvent> {
 
         if (button.getId().equals("Selection")) {
             model.setMode("Selection Tool");
-            shapeChooserPopUp.hideShapePopup();
+            toolChooserPopUp.hidePopup();
+            shapeChooserPopUp.hidePopup();
+            colorChooserPopup.hidePopup();
         }
 
         if (button.getId().equals("Tools")) {
-            toolChooserPopUp.toggleShapePopup(button);
-            shapeChooserPopUp.hideShapePopup();
+            button.setSelected(false);
+            toolButtons.get("Selection").setSelected(false);
+            toolChooserPopUp.togglePopup(button);
+            shapeChooserPopUp.hidePopup();
+            colorChooserPopup.hidePopup();
         }
 
         if (button.getId().equals("Shapes")) {
-            shapeChooserPopUp.toggleShapePopup(button);
-            toolChooserPopUp.hideShapePopup();
+            button.setSelected(false);
+            toolButtons.get("Selection").setSelected(false);
+            shapeChooserPopUp.togglePopup(button);
+            toolChooserPopUp.hidePopup();
+            colorChooserPopup.hidePopup();
+        }
+
+        if (button.getId().equals("Colours")) {
+            button.setSelected(false);
+            toolButtons.get("Selection").setSelected(false);
+            colorChooserPopup.togglePopup(button);
+            shapeChooserPopUp.hidePopup();
+            toolChooserPopUp.hidePopup();
         }
     }
 }

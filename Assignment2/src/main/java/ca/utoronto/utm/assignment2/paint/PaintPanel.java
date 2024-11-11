@@ -225,6 +225,7 @@ public class PaintPanel extends Pane implements EventHandler<MouseEvent>, Observ
             this.shape = null;  // finish previous shape
         }
         this.mode = model.getMode();
+        this.color = model.getColor();
 
         for (PaintLayer layer : this.model.getLayers()) {
             GraphicsContext g2d = layer.getGraphicsContext2D();
