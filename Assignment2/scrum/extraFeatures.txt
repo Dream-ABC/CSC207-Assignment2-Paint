@@ -46,7 +46,10 @@ Reference:
 FeatureName: Polyline
 
 Description:
-	...
+	The polyline tool allows users to create a connected series of line segments, as
+	well as unique polygons. Users can construct polygons by ending their polyline
+	drawing close to the starting point of their polyline drawing, and end regular
+	poly lines by double-clicking on the new last point.
 
 Reference:
 	US4.431 - Draw polyline
@@ -56,7 +59,13 @@ Reference:
 FeatureName: Magnifier Tool
 
 Description:
-	...
+    The magnifier tool enables users to zoom in and out on the canvas through four
+    different UI elements located at the bottom right of the program. Users can
+    select a predefined zoom level from a drop-down menu, which provides set values.
+    They can also adjust the zoom level smoothly and quickly using the slider.
+    The zoom-out button, positioned to the left of the slider, allows users to
+    decrease the zoom level. Conversely, the zoom-in button, positioned to the right
+    of the slider, lets users increase the zoom level.
 
 Reference:
 	US4.441 - Magnifier tool
@@ -64,10 +73,16 @@ Reference:
 FeatureName: Paint GUI
 
 Description:
-	...
+	Added GUI elements to enhance the overall appeal of the program, and closely
+	imitates Microsoft Paint's GUI.
 
 Reference:
 	US3.361 - Paint GUI overhaul
+	BUG4.472 - Shape chooser UI
+	BUG4.473 - Selection tool not working
+	BUG4.474 - Tools are not accessible by the user
+	BUG4.475 - Changing colour is not accessible to the user
+	BUG4.476 - Manipulating layers and fill style is not accessible to the user.
 --------------------------------------------------------------------------------
 FeatureName: Color Selector
 

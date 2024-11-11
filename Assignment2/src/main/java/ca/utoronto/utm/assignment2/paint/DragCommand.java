@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class DragCommand implements Command {
     private ArrayList<Shape> selectedShapes;
     private double shiftX, shiftY;
-    private double totalShiftX, totalShiftY;
     private PaintLayer layer;
     private ArrayList<Integer> selectedShapesIndex;
 
@@ -27,8 +26,6 @@ public class DragCommand implements Command {
         selectedShapes = s;
         shiftX = x;
         shiftY = y;
-        totalShiftX = 0;
-        totalShiftY = 0;
 
         layer = l;
         selectedShapesIndex = new ArrayList<>();
@@ -70,8 +67,6 @@ public class DragCommand implements Command {
         }
         shiftX += x;
         shiftY += y;
-        totalShiftX += x;
-        totalShiftY += y;
     }
 
     /**
@@ -84,6 +79,6 @@ public class DragCommand implements Command {
         for (Shape shape : selectedShapes) {
             shapes.append(layer.getShapes().indexOf(shape)).append(",");
         }
-        return "Drag#" + totalShiftX + "," + totalShiftY + "&" + shapes;
+        return "Drag#" + shiftX + "," + shiftY + "&" + shapes;
     }
 }

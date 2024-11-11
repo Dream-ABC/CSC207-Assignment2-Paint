@@ -13,17 +13,18 @@
 # View Classes
     View
 	PaintPanel
-	ShapeChooserPanel
+	ShapeChooserPopUp
 	TextEditorDialog
 	ColorPickerPopup
 	LayerChooserPanel
 	ToolbarPanel
+	ToolChooserPopUp
 	ZoomPanel
 
 # Controller Classes
     View
 	PaintPanel
-	ShapeChooserPanel
+	ShapeChooserPopUp
 	LayerChooserController
 	ToolbarController
 	ZoomController
@@ -99,6 +100,28 @@
 ----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 # Design Patterns Used (collections of classes into DP)
+
+--------------------------------------------------------------------------------
+Name: Observer - LayerChooserController, ZoomPanel, StatusBarPanel, ResizableCanvas
+      Observable - PaintModel
+Pattern Name: Observer/Observable
+Reference: https://www.oodesign.com/images/design_patterns/behavioral/observer_implementation_-_uml_class_diagram.gif
+
+Purpose:
+	(why is this pattern implemented? think SOLID as possible reasons and explain in terms of the application)
+
+UML:
+
+
+Classes:
+	LayerChooserController: Observer
+	ZoomPanel: Observer
+	StatusBarPanel: Observer
+	ResizableCanvas: Observer
+
+Usage:
+	(Briefly describe why a developer would be playing with this part of
+	the code and how they would use it to achieve that purpose)
 
 ----------------------------------------------------------------------------------------------------------
 Name: Shape Strategy
@@ -271,22 +294,21 @@ HOW TO MODIFY OUR CODE
 Name: New Drawing Mode
 
 Description:
-    A drawing mode enables a user to draw an object onto the screen, which could be a shape (e.g., Circle)
-    or other elements (e.g., Text). ***The drawing mode consists of an image icon appearing in the left
-    button panel. When the user clicks the image icon, the drawing mode is enabled. This means that a
-    strategy for handling user input for this drawing mode is installed.***
-
-	At this point, all mouse events in ...
+        A drawing mode enables a user to draw an object onto the screen, which could be a shape (e.g., Circle)
+    or other elements (e.g., Text). The drawing mode consists of an image icon appearing in the shape
+    button panel's pop-up menu. When the user clicks the image icon, the drawing mode is enabled. This
+    means that the corresponding strategy for handling user input for this drawing mode is installed.
+	    At this point, the mouse events press, drag, and release will affect the drawing of the new drawing
+	mode. In particular, the mouse press should begin drawing, mouse drag should affect the size of the drawing
+	(e.g., for a Circle, drag increases or decreases its radius), and mouse release should finalize the drawing.
 
 Implementation:
 	To add a new drawing mode X, provide the following:
 
-	***image icon: Create a jpg image with dimensions 128x128, and place it
-		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-		(any special discussion...)***
-
-    ButtonPanel or something:
-            Add the button for shape X onto the UI.
+	Image icon:
+	        Create a png image with dimensions 18x18 that corresponds to the new drawing mode. Place this
+	      image in Assets/theme-light/XTool.png and Assets/theme-dark/XTool.png (light mode and dark mode
+	      for Paint). Then, display this icon in the ShapeChooserPopUp class.
 
     X:
     	    This is the shape class named X. This class should implement the Shape interface, and have all
@@ -400,8 +422,8 @@ Example:
 Name: New Tool - Dynamic Color Change for Drawn Shapes
 
 Description:
-    Dynamic color change would enable users to modify the color of their shapes even after the shapes have
-    been drawn and finalized (i.e., after the user releases their mouse). This would increase
+        Dynamic color change would enable users to modify the color of their shapes even after the shapes
+    have been drawn and finalized (i.e., after the user releases their mouse). This would increase
     customization options in the Paint program, enhancing the user experience. One possible implementation
     of this feature is to create a new "Color Change" button. When the user presses this button, they can
     select a color to apply to a shape. An icon will then appear at the mouse cursor, allowing the user to
@@ -410,15 +432,13 @@ Description:
 Implementation:
     The specific implementation approach for this feature discussed above, is outlined below.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-    		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-    		(any special discussion...)***
-
-    ButtonPanel or something:
-        Add the button for the color change onto the UI.
+    Image icon:
+            Create a png image with dimensions 18x18 that corresponds to this color change tool. Place this
+        image in Assets/theme-light/XTool.png and Assets/theme-dark/XTool.png (light mode and dark mode
+        for Paint). Then, display this icon in the ToolChooserPopUp class.
 
     ColorChangeTool:
-        A new tool is required to implement this feature, which could be named as
+            A new tool is required to implement this feature, which could be named as
         ColorChangeTool. ColorChangeTool will implement the Tool interface. As a result, the attributes
         and methods required for this tool would include:
             - the top left point which indicates where the icon will be displayed, usually in relation
@@ -430,11 +450,11 @@ Implementation:
 
     ColorChangePopup:
             To allow the user to select a new color, we can create a new class that extends Popup,
-            which will create a ColorPicker and display it onto the PaintPanel. The color chosen
-            would then be saved within the ColorChangeTool's color attribute.
+        which will create a ColorPicker and display it onto the PaintPanel. The color chosen
+        would then be saved within the ColorChangeTool's color attribute.
 
     ColorChangeToolStrategy:
-        For a new tool to function, it needs to have a corresponding strategy class. In this case, it
+            For a new tool to function, it needs to have a corresponding strategy class. In this case, it
         could be named ColorChangeToolStrategy. This new strategy class would need to support mouse clicks,
         and register whenever it clicks on a Shape. Fortunately, the current code for Shapes already supports
         collision detection, so this will simply be an overlap(Tool tool) method call on each of the existing
@@ -458,11 +478,10 @@ Description:
     erases the entire text, not one letter at a time.
         Within this program, the stroke eraser is represented as a black dashed square of size 14,
     centered at the mouse cursor.
-        The stroke eraser consists of ***an image icon appearing in the left button panel. The stroke
-    eraser is displayed as an image icon in the left button panel.*** When the user clicks on the icon,
-    the stroke eraser mode is activated, and a corresponding strategy for handling user mouse input is
-    applied. The stroke eraser strategy ensures that when the stroke eraser is clicked or dragged across
-    a shape, it removes the entire stroke of that shape from the canvas.
+        The stroke eraser is displayed as an image icon in the tool's pop-up panel. When the user clicks
+    on the icon, the stroke eraser mode is activated, and a corresponding strategy for handling user mouse
+    input is applied. The stroke eraser strategy ensures that when the stroke eraser is clicked or dragged
+    across a shape, it removes the entire stroke of that shape from the canvas.
 
 Classes/Interfaces Involved:
     Tool
@@ -475,9 +494,10 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the stroke eraser in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
+    Image icon:
+            The icon for stroke eraser is found in Assets/theme-light/StrokeEraserTool.png and
+        Assets/theme-dark/StrokeEraserTool.png (light mode and dark mode for Paint). The icon is then
+        displayed in the ToolChooserPopUp class.
 
     StrokeEraser:
             StrokeEraser implements the Tool interface. As a result, the attributes and methods required
@@ -512,10 +532,9 @@ Description:
     creating the illusion of erasing.
         Within this program, the precision eraser is represented as a black dashed square of size 14,
     centered at the mouse cursor.
-        The precision eraser consists of ***an image icon appearing in the left button panel. The
-    precision eraser is displayed as an image icon in the left button panel.*** When the user clicks on
-    the icon, the precision eraser mode is activated, and a corresponding strategy for handling user
-    mouse input is applied. The precision eraser strategy ensures that the user has the customizability
+        The precision eraser is displayed as an image icon in the tool's pop-up panel. When the user
+    clicks on the icon, the precision eraser mode is activated, and a corresponding strategy for handling
+    user mouse input is applied. The precision eraser strategy ensures that the user has the customizability
     and flexibility to erase specific aspects of a drawing.
 
 Classes/Interfaces Involved:
@@ -528,9 +547,10 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the precision eraser in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
+    Image icon:
+            The icon for stroke eraser is found in Assets/theme-light/PrecisionEraserTool.png and
+        Assets/theme-dark/PrecisionEraserTool.png (light mode and dark mode for Paint). The icon is then
+        displayed in the ToolChooserPopUp class.
 
     PrecisionEraser:
             PrecisionEraser implements the Shape interface. A key feature of the eraser's attributes is
@@ -559,23 +579,24 @@ Name: Fill Style Selector
 Description:
         The fill style selector allows users to choose whether they want to draw a solid shape or an
     outlined shape. This option does not apply to squiggles, polylines, or text.
-        The fill style selector consists of ***an image icon appearing in the left button panel. When the
-    user clicks the image icon, the selected fill style mode is enabled.***
+        The fill style selector is found within the menu item "View". There is the option "Solid" to draw
+    solid shapes, and "Outline" to draw outlined shapes.
 
 Classes/Interfaces Involved:
-    ShapeChooserPanel
+    ShapeChooserPopUp
     PaintModel
     ShapeFactory
+    View
 
 Implementation:
     Below is the implementation of the fill style selector in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
+    View:
+            The menu bar created inside View, specifically the "View" option inside the menu bar, has fill
+        style options presented in its drop-down bar.
 
-    ShapeChooserPanel:
-            When the button for a fill style is clicked, either "Solid" or "Outline", the ShapeChooserPanel
+    ShapeChooserPopUp:
+            When the button for a fill style is clicked, either "Solid" or "Outline", the ShapeChooserPopUp
         sets PaintModel's fillStyle to be what the user selected.
 
     PaintModel:
@@ -605,13 +626,10 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the line thickness selector in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
-
     View:
-            View creates the menu item "Line Thickness". When the user clicks this menu item, the pop-up
-        displaying the line thickness slider appears.
+            View creates the menu bar, which inside the drop-down bar for "View", contains the item
+        "Line Thickness". When the user clicks this menu item, the pop-up displaying the line thickness
+        slider appears.
 
     LineThicknessSlider:
             LineThicknessSlider creates a Slider object, displays the pop-up screen onto the program when
@@ -632,11 +650,11 @@ Implementation:
 Name: Color Selector
 
 Description:
-            The color selector allows users to select a color for drawing shapes.
-            The color selector can be found in the menu item View -> Color Picker. Users can pick a color
-        from a standard color palette or enter custom color values in various modes (HSB, RGB, or Hexadecimal).
-        The color selector also allows users to adjust the opacity of the selected color, applying
-        consistent color choices across all shapes in the application.
+        The color selector allows users to select a color for drawing shapes.
+        The color selector can be found in the menu item View -> Color Picker. Users can pick a color
+    from a standard color palette or enter custom color values in various modes (HSB, RGB, or Hexadecimal).
+    The color selector also allows users to adjust the opacity of the selected color, applying consistent
+    color choices across all shapes in the application.
 
 Classes/Interfaces Involved:
     View
@@ -646,13 +664,9 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the color picker in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        (any special discussion...)***
-
     View:
-            View creates the menu item "Color". When the user clicks this menu item, the pop-up
-        displaying the color picker appears.
+            View creates the menu item "Color". When the user clicks this menu item, the pop-up displaying
+        the color picker appears.
 
     ColorPickerPopup:
             ColorPickerPopup creates a ColorPicker object and displays the pop-up screen on the program
@@ -670,17 +684,17 @@ Implementation:
             PaintPanel listens for the color change events triggered by the ColorPickerPopup. When a color
         is selected, PaintPanel updates the current color used for drawing shapes, ensuring that
         the selected color is applied consistently across the canvas.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Text Editor
 
 Description:
-            The Text Editor allows users to add and edit text shapes on the canvas. It consists of an image icon
-        in the left button panel. When users click on this icon, the text editing mode is activated. Users can
-        then click anywhere on the canvas to place a text shape. A pop-up text editor dialog will appear, enabling
-        users to choose the text's font and size from a scrolling menu. The dialog also provides toggle buttons
-        to modify the text's style (bold, italic, underline, strikethrough). As users input or modify the text,
-        it is dynamically rendered and updated on the canvas, providing a flexible and interactive experience for
-        adding annotations or descriptions on the canvas.
+        The Text Editor allows users to add and edit text shapes on the canvas. It consists of an
+    image icon in the left button panel. When users click on this icon, the text editing mode is activated.
+    Users can then click anywhere on the canvas to place a text shape. A pop-up text editor dialog will
+    appear, enabling users to choose the text's font and size from a scrolling menu. The dialog also provides
+    toggle buttons to modify the text's style (bold, italic, underline, strikethrough). As users input or
+    modify the text, it is dynamically rendered and updated on the canvas, providing a flexible and
+    interactive experience for adding annotations or descriptions on the canvas.
 
 Classes/Interfaces Involved:
     Shape
@@ -693,31 +707,32 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the color picker in this application.
 
-   ***image icon: Create png images with dimensions 15x15 for the toggle buttons of bold, italic, underline,
-       and strikethrough. These images should be displayed in the text editor pop-up screen and placed in the
-       following locations:
-           - "images/bold.png" for the bold button
-           - "images/italic.png" for the italic button
-           - "images/underline.png" for the underline button
-           - "images/strikethrough.png" for the strikethrough button.***
+   Image icon:
+            Create png images with dimensions 15x15 for the toggle buttons of bold, italic, underline,
+        and strikethrough. These images should be displayed in the text editor pop-up screen and placed in
+        the following locations:
+            - "images/bold.png" for the bold button
+            - "images/italic.png" for the italic button
+            - "images/underline.png" for the underline button
+            - "images/strikethrough.png" for the strikethrough button.
 
-    Text:
+   Text:
             The Text class represents a text shape within the PaintPanel. It implements the Shape interface
         to ensure consistency with other shapes in the application.
-            The class contains all the information necessary for a text shape, including the interactive text node,
-        font, size, style (bold, italic, underline, strikethrough), color, and position. The Text class provides
-        a set of getter and setter methods, which allow associated controllers (such as the TextEditorDialog)
-        to retrieve and update these properties.
+            The class contains all the information necessary for a text shape, including the interactive
+        text node, font, size, style (bold, italic, underline, strikethrough), color, and position. The
+        Text class provides a set of getter and setter methods, which allow associated controllers (such
+        as the TextEditorDialog) to retrieve and update these properties.
 
-    TextEditorDialog:
-            TextEditorDialog creates a Dialog object and displays the pop-up screen on the program when appropriate.
+   TextEditorDialog:
+            TextEditorDialog creates a Dialog object and displays the pop-up screen on the program whenappropriate.
         A TextEditorDialog object is bound with a specific Text object, meaning changes made in a dialog will
         only affect the associated Text shape. TextEditorDialog listens for the button selection events and
         updates the selected font for the specified text shape. It offers a display() method to open the pop-up,
         and a getSelectedFont() method to retrieve the user-selected font, ensuring that the customization is applied
         dynamically to the text shape on the canvas.
 
-    TextStrategy:
+   TextStrategy:
             The TextStrategy class takes a Text shape and its corresponding TextEditorDialog, and manages mouse events
         (mousePressed, mouseDragged, and mouseReleased) to enable users to add and customize text on the current layer.
             Specifically, when the primary mouse button is released, TextStrategy prompts the user by displaying
@@ -726,7 +741,7 @@ Implementation:
         a smooth and interactive experience for text customization. Moreover, a Text shape is created only when
         the text content is not empty. In other words, the Text shape will be removed from the layer if there is
         no content in it.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Layer Support
 
 Description:
@@ -753,8 +768,9 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the color picker in this application.
 
-    ***image icon: Each layer has an image icon presenting the thumbnail of the layer, providing users a more intuitive
-        control over different layers, especially when the number of layers increases.***
+    Image icon:
+            Each layer has an image icon presenting the thumbnail of the layer, providing users a more intuitive
+        control over different layers, especially when the number of layers increases.
 
     AddLayerCommand:
             The AddLayerCommand class provides an execute() method to add a layer to the PaintPanel, and an undo() method
@@ -794,7 +810,7 @@ Implementation:
          of different shapes. Each PaintLayer can contain a unique set of shapes, an optional background image, a stroke eraser,
          and a selection tool for shape selection on individual layer. This structure enables users to independently draw, erase,
          and select shapes on separate layers, offering precise control and organization for each layer individually.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: File Menu
 
 Description:
@@ -821,9 +837,8 @@ Classes/Interfaces Involved:
 Implementation:
     Below is the implementation of the line thickness selector in this application.
 
-    ***image icon: Create a jpg image with dimensions 128x128, and place it
-        		on display in the Button Panel, placed in Assets/ButtonIconX.jpg
-        		(any special discussion...)***
+    View:
+            View creates the file menu and displays it to the user when their mouse hovers over "File".
 
     FileHandlePopup:
             The FileHandlePopup class manages file operations in the PaintPanel, providing dialogs for opening, saving, and creating

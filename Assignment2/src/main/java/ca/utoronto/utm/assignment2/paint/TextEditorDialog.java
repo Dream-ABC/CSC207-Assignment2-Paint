@@ -38,7 +38,7 @@ public class TextEditorDialog {
     /**
      * Creates a new TextEditorDialog for editing a given Text object.
      *
-     * @param paintPanel a panel that manages graphical elements and their settings
+     * @param paintPanel    a panel that manages graphical elements and their settings
      * @param displayedText the Text object that will be edited within the dialog
      */
     public TextEditorDialog(PaintPanel paintPanel, Text displayedText) {
@@ -58,17 +58,32 @@ public class TextEditorDialog {
         });
     }
 
+    /**
+     * Determines if a specific font supports both bold and italic styles.
+     *
+     * @param fontName the name of the font to be checked for bold and italic support
+     * @return returns true if the font supports both bold and italic styles, false otherwise
+     */
     private boolean supportsBoldAndItalic(String fontName) {
         Font boldItalicFont = Font.font(fontName, FontWeight.BOLD, FontPosture.ITALIC, 12);
 
         return boldItalicFont.getStyle().contains("Bold") && boldItalicFont.getStyle().contains("Italic");
     }
 
+    /**
+     * Updates the font of the displayed text to the font currently selected by the user
+     * in the font chooser elements and notifies the paint panel model of the change.
+     */
     private void updateFont() {
         this.displayedText.setFont(this.getSelectedFont());
         this.paintPanel.getModel().notifyChange();
     }
 
+    /**
+     * Initializes the font chooser, size chooser, font style buttons (bold, italic, underline, strikethrough),
+     * and the text field. Sets up event handlers for each component of UI to update the displayed text and notify
+     * the changes whenever a user interaction occurs.
+     */
     private void setBoxes() {
         // font chooser menu
         this.fontChooser = new ComboBox<>();

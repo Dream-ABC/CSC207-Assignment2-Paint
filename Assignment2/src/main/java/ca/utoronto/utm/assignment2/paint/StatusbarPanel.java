@@ -12,9 +12,20 @@ import java.io.FileNotFoundException;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * A panel that displays status information in the paint application, including cursor position,
+ * object size, and canvas dimensions. Implements Observer to update display based on model changes.
+ */
 public class StatusbarPanel extends GridPane implements Observer {
     private TextField[] fields;
 
+    /**
+     * Constructs a new StatusbarPanel with three information fields:
+     * cursor position, object size, and canvas dimensions.
+     * Initializes the panel with icons and text fields in a grid layout.
+     *
+     * @throws FileNotFoundException if any of the required icon image files cannot be found
+     */
     public StatusbarPanel() throws FileNotFoundException {
         String[] imageFiles = {
                 "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/Cursor.png",
@@ -60,6 +71,14 @@ public class StatusbarPanel extends GridPane implements Observer {
         }
     }
 
+    /**
+     * Updates the status bar information when the paint model changes.
+     * Displays current mouse coordinates when cursor is within canvas bounds
+     * and updates the canvas dimensions display.
+     *
+     * @param o the Observable object (expected to be a PaintModel)
+     * @param arg the argument passed to the notifyObservers method (not used)
+     */
     @Override
     public void update(Observable o, Object arg) {
         PaintModel model = (PaintModel) o;

@@ -47,8 +47,10 @@ public class AddShapeCommand implements Command {
     }
 
     /**
+     * Returns a string representation of the AddShapeCommand instance, including the shape's index
+     * and its string representation.
      *
-     * @return
+     * @return a string that represents the AddShapeCommand instance
      */
     @Override
     public String toString() {

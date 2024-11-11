@@ -525,6 +525,39 @@ ESTIMATE : 2 hours    ACTUAL : 3 hours
 ISSUE    : Currently the shape chooser panel is not located in the toolbar
            and is not scalable for future additions.
 --------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.473 : pengxi60 : Completed
+NAME     : Selection tool not working
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL : 1 hour
+ISSUE    : When the selection tool is selected in the toolbar, it is not
+           showing up when the user tries to draw a selection box.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.474 : pengxi60 : Completed
+NAME     : Tools are not accessible by the user
+PRIORITY : 1
+ESTIMATE : 2 hours    ACTUAL : 1 hour
+ISSUE    : When the user wants to erase, add text, or draw squiggle, there
+           are no UI elements to allow them to do so.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.475 : pengxi60 : Completed
+NAME     : Changing colour is not accessible to the user
+PRIORITY : 1
+ESTIMATE : 30 minutes    ACTUAL : 2 hours
+ISSUE    : When the user wants to change the colour of their drawing tool
+           there is no UI element to allow them to do so.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+TYPE     : BUG BUG4.476 : pengxi60 : Complete
+NAME     : Manipulating layers and fill style is not accessible to the user.
+PRIORITY : 1
+ESTIMATE : 1 hour    ACTUAL : 30 minutes
+ISSUE    : When the user wants to add or remove new layers there is no UI
+           elements to allow them to do so. Fill style selection has this
+           issue as well.
+--------------------------------------------------------------------------
 
 # OMITTED USER STORIES/BUGS BELOW   ###########################################
 --------------------------------------------------------------------------

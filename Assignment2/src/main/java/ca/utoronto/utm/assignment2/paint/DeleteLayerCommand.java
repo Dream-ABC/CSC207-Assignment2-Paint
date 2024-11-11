@@ -56,8 +56,10 @@ public class DeleteLayerCommand implements Command {
     }
 
     /**
+     * Returns a string representation of the DeleteLayerCommand instance, including the index of
+     * the layer being deleted.
      *
-     * @return
+     * @return a string representing the DeleteLayerCommand instance
      */
     @Override
     public String toString() {
