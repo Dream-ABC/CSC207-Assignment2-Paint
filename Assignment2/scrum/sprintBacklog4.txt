@@ -69,10 +69,10 @@ NAME     : Text editor
 PRIORITY : 2
 ESTIMATE : 4 hours    ACTUAL : 7 hours
 AS A     : user
-I WANT : to add and customize text on the canvas with options to change the
-         font, size, and colour.
-SO THAT : I can create more personalized and visually distinct text elements
-          within my drawings.
+I WANT   : to add and customize text on the canvas with options to change the
+           font, size, and colour.
+SO THAT  : I can create more personalized and visually distinct text elements
+           within my drawings.
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
 TYPE     : USER STORY US3.351 : hingor13 : Complete
