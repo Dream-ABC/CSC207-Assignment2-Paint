@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ca.utoronto.utm.assignment2.paint</OriginalElement>
+  <nodes>
+    <node x="1015.0" y="666.0">ca.utoronto.utm.assignment2.paint.ZoomSliderController</node>
+    <node x="-17.0" y="846.0">ca.utoronto.utm.assignment2.paint.CircleStrategy</node>
+    <node x="1092.0" y="346.0">ca.utoronto.utm.assignment2.paint.ResizableCanvas</node>
+    <node x="95.5" y="906.0">ca.utoronto.utm.assignment2.paint.StrokeEraserStrategy</node>
+    <node x="498.5" y="46.0">ca.utoronto.utm.assignment2.paint.View</node>
+    <node x="890.0" y="726.0">ca.utoronto.utm.assignment2.paint.ToolbarController</node>
+    <node x="268.5" y="846.0">ca.utoronto.utm.assignment2.paint.OvalStrategy</node>
+    <node x="1194.5" y="166.0">ca.utoronto.utm.assignment2.paint.ZoomPanel</node>
+    <node x="979.5" y="406.0">ca.utoronto.utm.assignment2.paint.StatusbarPanel</node>
+    <node x="410.5" y="226.0">ca.utoronto.utm.assignment2.paint.Square</node>
+    <node x="501.0" y="166.0">ca.utoronto.utm.assignment2.paint.Oval</node>
+    <node x="560.5" y="226.0">ca.utoronto.utm.assignment2.paint.Text</node>
+    <node x="624.5" y="166.0">ca.utoronto.utm.assignment2.paint.Squiggle</node>
+    <node x="374.0" y="906.0">ca.utoronto.utm.assignment2.paint.TriangleStrategy</node>
+    <node x="785.5" y="406.0">ca.utoronto.utm.assignment2.paint.SelectionTool</node>
+    <node x="759.5" y="666.0">ca.utoronto.utm.assignment2.paint.ColorChooserPopup</node>
+    <node x="-138.5" y="726.0">ca.utoronto.utm.assignment2.paint.ShapeStrategy</node>
+    <node x="278.0" y="226.0">ca.utoronto.utm.assignment2.paint.Point</node>
+    <node x="605.5" y="726.0">ca.utoronto.utm.assignment2.paint.LayerChooserController</node>
+    <node x="-59.0" y="586.0">ca.utoronto.utm.assignment2.paint.AddLayerCommand</node>
+    <node x="493.0" y="846.0">ca.utoronto.utm.assignment2.paint.SelectionToolStrategy</node>
+    <node x="706.5" y="226.0">ca.utoronto.utm.assignment2.paint.Triangle</node>
+    <node x="584.5" y="406.0">ca.utoronto.utm.assignment2.paint.PatternParser</node>
+    <node x="454.0" y="346.0">ca.utoronto.utm.assignment2.paint.TextEditorDialog</node>
+    <node x="80.0" y="526.0">ca.utoronto.utm.assignment2.paint.DragCommand</node>
+    <node x="795.5" y="166.0">ca.utoronto.utm.assignment2.paint.Circle</node>
+    <node x="482.5" y="666.0">ca.utoronto.utm.assignment2.paint.LayerChooserPanel</node>
+    <node x="362.5" y="726.0">ca.utoronto.utm.assignment2.paint.ToolChooserPopUp</node>
+    <node x="345.0" y="406.0">ca.utoronto.utm.assignment2.paint.ShapeFactory</node>
+    <node x="860.0" y="226.0">ca.utoronto.utm.assignment2.paint.Rectangle</node>
+    <node x="157.5" y="166.0">ca.utoronto.utm.assignment2.paint.PaintPanel</node>
+    <node x="647.5" y="906.0">ca.utoronto.utm.assignment2.paint.RectangleStrategy</node>
+    <node x="888.0" y="346.0">ca.utoronto.utm.assignment2.paint.StrokeEraser</node>
+    <node x="188.0" y="586.0">ca.utoronto.utm.assignment2.paint.StrokeEraserCommand</node>
+    <node x="414.0" y="-14.0">ca.utoronto.utm.assignment2.paint.Shape</node>
+    <node x="788.0" y="846.0">ca.utoronto.utm.assignment2.paint.TextStrategy</node>
+    <node x="215.5" y="666.0">ca.utoronto.utm.assignment2.paint.ShapeChooserPopUp</node>
+    <node x="90.5" y="726.0">ca.utoronto.utm.assignment2.paint.CommandHistory</node>
+    <node x="212.5" y="346.0">ca.utoronto.utm.assignment2.paint.FileHandlePopup</node>
+    <node x="97.5" y="406.0">ca.utoronto.utm.assignment2.paint.ZoomController</node>
+    <node x="356.5" y="526.0">ca.utoronto.utm.assignment2.paint.PasteCommand</node>
+    <node x="467.5" y="586.0">ca.utoronto.utm.assignment2.paint.ChangeLayerCommand</node>
+    <node x="885.0" y="906.0">ca.utoronto.utm.assignment2.paint.PrecisionEraserStrategy</node>
+    <node x="615.0" y="526.0">ca.utoronto.utm.assignment2.paint.ChangeLayerVisibilityCommand</node>
+    <node x="957.5" y="166.0">ca.utoronto.utm.assignment2.paint.PrecisionEraser</node>
+    <node x="1055.5" y="846.0">ca.utoronto.utm.assignment2.paint.PolylineStrategy</node>
+    <node x="698.0" y="346.0">ca.utoronto.utm.assignment2.paint.Command</node>
+    <node x="-13.0" y="346.0">ca.utoronto.utm.assignment2.paint.ToolbarPanel</node>
+    <node x="832.0" y="586.0">ca.utoronto.utm.assignment2.paint.DeleteLayerCommand</node>
+    <node x="54.0" y="226.0">ca.utoronto.utm.assignment2.paint.FileHandler</node>
+    <node x="-143.5" y="406.0">ca.utoronto.utm.assignment2.paint.StrategyFactory</node>
+    <node x="338.5" y="46.0">ca.utoronto.utm.assignment2.paint.Paint</node>
+    <node x="978.0" y="526.0">ca.utoronto.utm.assignment2.paint.AddShapeCommand</node>
+    <node x="1178.0" y="906.0">ca.utoronto.utm.assignment2.paint.SquareStrategy</node>
+    <node x="1099.0" y="586.0">ca.utoronto.utm.assignment2.paint.DeleteSelectedCommand</node>
+    <node x="341.0" y="166.0">ca.utoronto.utm.assignment2.paint.Tool</node>
+    <node x="-40.0" y="666.0">ca.utoronto.utm.assignment2.paint.LineThicknessSlider</node>
+    <node x="-42.5" y="166.0">ca.utoronto.utm.assignment2.paint.PaintLayer</node>
+    <node x="-145.5" y="226.0">ca.utoronto.utm.assignment2.paint.PaintModel</node>
+    <node x="-148.0" y="906.0">ca.utoronto.utm.assignment2.paint.SquiggleStrategy</node>
+    <node x="1108.0" y="226.0">ca.utoronto.utm.assignment2.paint.Polyline</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ca.utoronto.utm.assignment2.paint.RectangleStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="743.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Squiggle" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="683.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.SelectionTool" target="ca.utoronto.utm.assignment2.paint.Tool" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="863.0" y="280.0" />
+      <point x="383.0" y="280.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.SelectionToolStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="603.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.TriangleStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="463.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.StrokeEraserStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="203.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.TextStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="863.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.SquareStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1263.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PrecisionEraserStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1003.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PrecisionEraser" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1043.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PolylineStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1143.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.SquiggleStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.StrokeEraser" target="ca.utoronto.utm.assignment2.paint.Tool" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="963.0" y="320.0" />
+      <point x="863.0" y="320.0" />
+      <point x="863.0" y="280.0" />
+      <point x="383.0" y="280.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.AddLayerCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="43.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Square" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.ChangeLayerCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Rectangle" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="923.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Oval" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="543.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.StrokeEraserCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="303.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.DragCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="163.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.ChangeLayerVisibilityCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="763.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Circle" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="843.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Polyline" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1163.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.OvalStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="343.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Text" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="603.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.DeleteSelectedCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1223.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.CircleStrategy" target="ca.utoronto.utm.assignment2.paint.ShapeStrategy" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="63.0" y="820.0" />
+      <point x="-57.0" y="820.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.AddShapeCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="1083.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.PasteCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="443.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.DeleteLayerCommand" target="ca.utoronto.utm.assignment2.paint.Command" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="943.0" y="500.0" />
+      <point x="583.0" y="500.0" />
+      <point x="583.0" y="460.0" />
+      <point x="763.0" y="460.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="ca.utoronto.utm.assignment2.paint.Triangle" target="ca.utoronto.utm.assignment2.paint.Shape" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="763.0" y="140.0" />
+      <point x="463.0" y="140.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.612796833773087" showDependencies="false" x="600.0000000000001" y="460.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
