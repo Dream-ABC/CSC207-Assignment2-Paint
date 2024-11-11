@@ -16,6 +16,11 @@ import javafx.stage.Popup;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+ * A popup component that provides a selection of drawing tools in the paint application.
+ * This class manages a popup window containing various drawing tools such as Squiggle,
+ * Stroke Eraser, Precision Eraser, and Text tools.
+ */
 public class ToolChooserPopUp extends VBox implements EventHandler<ActionEvent> {
     private final PaintModel model;
     private final Popup toolPopup;
@@ -31,11 +36,24 @@ public class ToolChooserPopUp extends VBox implements EventHandler<ActionEvent> 
             "src/main/java/ca/utoronto/utm/assignment2/Assets/theme-light/TextTool.png",
     };
 
+    /**
+     * Constructs a new ToolChooserPopUp with the specified paint model.
+     *
+     * @param model The PaintModel that maintains the application state
+     * @throws FileNotFoundException If any of the tool icons cannot be loaded
+     */
     public ToolChooserPopUp(PaintModel model) throws FileNotFoundException {
         this.model = model;
         this.toolPopup = createToolPopup();
     }
 
+    /**
+     * Toggles the visibility of the popup menu.
+     * If the popup is currently visible, it will be hidden.
+     * If it's hidden, it will be shown anchored to the specified button.
+     *
+     * @param sourceButton The ToggleButton that triggered the popup
+     */
     public void togglePopup(ToggleButton sourceButton) {
         if (!hidePopup()) {
             toolPopup.show(sourceButton,
@@ -44,6 +62,11 @@ public class ToolChooserPopUp extends VBox implements EventHandler<ActionEvent> 
         }
     }
 
+    /**
+     * Hides the popup if it is currently visible.
+     *
+     * @return true if the popup was visible and is now hidden, false if it was already hidden
+     */
     public boolean hidePopup() {
         if (toolPopup.isShowing()) {
             toolPopup.hide();
@@ -52,6 +75,14 @@ public class ToolChooserPopUp extends VBox implements EventHandler<ActionEvent> 
         return false;
     }
 
+    /**
+     * Creates and configures a popup window containing drawing tools.
+     * The popup includes a grid of tool buttons and a label, styled with a white background
+     * and drop shadow effect.
+     *
+     * @return A configured Popup containing the tool selection interface
+     * @throws FileNotFoundException if any of the tool icon image files cannot be found
+     */
     private Popup createToolPopup() throws FileNotFoundException {
         Popup popup = new Popup();
 
@@ -81,6 +112,15 @@ public class ToolChooserPopUp extends VBox implements EventHandler<ActionEvent> 
         return popup;
     }
 
+    /**
+     * Creates and configures a tool button with an icon image.
+     * The button is styled transparently with hover effects and connected to the action handler.
+     *
+     * @param id The identifier for the tool button, used to determine its function
+     * @param imageFile The file path to the icon image to be displayed on the button
+     * @return A configured Button with the specified icon and behavior
+     * @throws FileNotFoundException if the specified image file cannot be found
+     */
     private Button createToolButton(String id, String imageFile) throws FileNotFoundException {
         FileInputStream input = new FileInputStream(imageFile);
         ImageView imageView = new ImageView(new Image(input));
@@ -106,6 +146,12 @@ public class ToolChooserPopUp extends VBox implements EventHandler<ActionEvent> 
         return button;
     }
 
+    /**
+     * Handles tool selection events when a tool button is clicked.
+     * Updates the model's mode to the selected tool and hides the tool popup.
+     *
+     * @param event The ActionEvent triggered by clicking a tool button
+     */
     @Override
     public void handle(ActionEvent event) {
         Button clickedButton = (Button) event.getSource();
