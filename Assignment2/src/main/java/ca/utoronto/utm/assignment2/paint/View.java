@@ -101,6 +101,7 @@ public class View implements EventHandler<ActionEvent> {
 
         root.setCenter(canvasHolder);
         root.setTop(topPanel);
+        root.setRight(new ScrollPane(layerChooserPanel));
         root.setBottom(bottomPanel);
 
         Scene scene = new Scene(root);
