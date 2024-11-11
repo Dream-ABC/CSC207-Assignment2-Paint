@@ -101,14 +101,22 @@
 ----------------------------------------------------------------------------------------------------------
 # Design Patterns Used (collections of classes into DP)
 
---------------------------------------------------------------------------------
-Name: Observer - LayerChooserController, ZoomPanel, StatusbarPanel, ResizableCanvas
+----------------------------------------------------------------------------------------------------------
+Name: Observer - LayerChooserController, ZoomPanel, StatusbarPanel, ResizableCanvas, PaintPanel
       Observable - PaintModel
 Pattern Name: Observer/Observable
 Reference: https://www.oodesign.com/images/design_patterns/behavioral/observer_implementation_-_uml_class_diagram.gif
 
 Purpose:
-	(why is this pattern implemented? think SOLID as possible reasons and explain in terms of the application)
+	The Observer pattern was implemented to align with the Open-Closed Principle. In our application,
+	LayerChooserController, ZoomPanel, StatusBarPanel, and ResizableCanvas act as observers, each
+	monitoring the PaintModel as the observable object for state changes. When the PaintModel makes
+	any changes, all the observers are automatically notified and updated accordingly. As a result,
+	when new features are added, new observers can be introduced without altering the PaintModel
+	or existing observers, ensuring that the application can be expanded without modifying the existing
+	code. Additionally, all the information in the PaintModel is encapsulated, meaning the observers
+	do not need to know the specific implementations within the PaintModel, which follows the
+	Open-Closed Principle.
 
 UML:
     ObserverObservableUML.png
@@ -866,7 +874,7 @@ Implementation:
         and processes the command to return an appropriate Command object, and manages changes in PaintPanel if needed. For each command type, the method
         extracts necessary data from the string, creates the corresponding command object, and returns it, enabling the restoration of the drawing state
         stored in a PAINT file.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Undo/Redo
 
 Description:
@@ -909,7 +917,7 @@ Implementation:
                 The PaintModel is where the CommandHistory is instantiated and stored and is
             responsible for executing new commands and calling undo and redo methods on the
             CommandHistory.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Resizable Canvas
 
 Description:
@@ -940,7 +948,7 @@ Implementation:
                 Since ResizableCanvas is an observer observing the paintModel, whenever their is an
             update in paintModel, the canvas updates to confirm that the size of the canvas, and
             the positions of the buttons are correct.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Selection Tool
 
 Description:
@@ -993,7 +1001,7 @@ Implementation:
     PaintModel:
                 The paint model stores the current selection tool, it is used by other methods such as cut,
             copy, delete, paste.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Cut/Copy/Paste/Delete
 
 Description:
@@ -1064,4 +1072,4 @@ Implementation:
     CommandHistory:
                 The CommandHistory is used to undo or redo the paste and delete commands and also
             the cut command since cut calls delete.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
