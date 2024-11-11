@@ -12,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 

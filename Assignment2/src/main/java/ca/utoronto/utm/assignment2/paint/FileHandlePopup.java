@@ -6,7 +6,6 @@ import javafx.scene.control.Dialog;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
-
 import java.util.Optional;
 
 /**

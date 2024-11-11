@@ -1,7 +1,6 @@
 package ca.utoronto.utm.assignment2.paint;
 
 import javafx.scene.input.MouseEvent;
-
 import java.util.ArrayList;
 
 /**

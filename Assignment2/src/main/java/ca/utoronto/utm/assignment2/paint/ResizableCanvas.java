@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Scale;
 import javafx.scene.transform.Translate;
-
 import java.util.Observable;
 import java.util.Observer;
 

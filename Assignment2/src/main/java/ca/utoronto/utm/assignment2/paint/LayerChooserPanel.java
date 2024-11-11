@@ -10,7 +10,6 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.GridPane;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.paint.Color;
-
 import java.util.*;
 
 /**
