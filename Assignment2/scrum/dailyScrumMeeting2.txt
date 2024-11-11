@@ -160,8 +160,9 @@ Nov 9,2024
 Nov 10,2024
 	What I did yesterday: Update string representation for each shape since thickness,
                           fill style and polylines are added.
-	What I will do today: Fix icon issue for text editor dialog. Finish writing for extra features.
-	Obstacles I face: Adjusting the size of icons.
+	What I will do today: Fix icon issue for text editor dialog. Finish writing for extra features
+	                      and architecture.
+	Obstacles I face: Adjusting the size of icons, adding architecture descriptions.
 
 Nov 11,2024
 	What I did yesterday:
