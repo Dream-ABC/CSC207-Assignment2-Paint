@@ -661,7 +661,7 @@ Implementation:
             PaintPanel listens for the color change events triggered by the ColorPickerPopup. When a color
         is selected, PaintPanel updates the current color used for drawing shapes, ensuring that
         the selected color is applied consistently across the canvas.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Text Editor
 
 Description:
@@ -718,7 +718,7 @@ Implementation:
         a smooth and interactive experience for text customization. Moreover, a Text shape is created only when
         the text content is not empty. In other words, the Text shape will be removed from the layer if there is
         no content in it.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: Layer Support
 
 Description:
@@ -787,7 +787,7 @@ Implementation:
          of different shapes. Each PaintLayer can contain a unique set of shapes, an optional background image, a stroke eraser,
          and a selection tool for shape selection on individual layer. This structure enables users to independently draw, erase,
          and select shapes on separate layers, offering precise control and organization for each layer individually.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 Name: File Menu
 
 Description:
@@ -841,4 +841,4 @@ Implementation:
         and processes the command to return an appropriate Command object, and manages changes in PaintPanel if needed. For each command type, the method
         extracts necessary data from the string, creates the corresponding command object, and returns it, enabling the restoration of the drawing state
         stored in a PAINT file.
---------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
