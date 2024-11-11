@@ -1,12 +1,11 @@
 package ca.utoronto.utm.assignment2.paint;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -20,7 +19,8 @@ import java.util.Map;
 public class ToolbarPanel extends GridPane {
     private final Map<String, ToggleButton> toolButtons;
     private final Map<String, VBox> buttonContainers;
-    private ShapeChooserPanel shapeChooserPanel;
+    private ShapeChooserPopUp shapeChooserPopUp;
+    private ToolChooserPopUp toolChooserPopUp;
     private ToolbarController toolbarController;
 
 
@@ -45,8 +45,9 @@ public class ToolbarPanel extends GridPane {
     public ToolbarPanel(PaintModel model) throws FileNotFoundException {
         this.toolButtons = new HashMap<>();
         this.buttonContainers = new HashMap<>();
-        this.shapeChooserPanel = new ShapeChooserPanel(model);
-        this.toolbarController = new ToolbarController(model, toolButtons, shapeChooserPanel);
+        this.shapeChooserPopUp = new ShapeChooserPopUp(model);
+        this.toolChooserPopUp = new ToolChooserPopUp(model);
+        this.toolbarController = new ToolbarController(model, toolButtons, toolChooserPopUp ,shapeChooserPopUp);
 
         this.setStyle("-fx-background-color: #fcf8f7");
         initializeToolbar();

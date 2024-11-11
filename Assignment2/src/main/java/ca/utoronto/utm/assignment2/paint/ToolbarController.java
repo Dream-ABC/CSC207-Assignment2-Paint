@@ -8,12 +8,14 @@ import java.util.Map;
 public class ToolbarController implements EventHandler<ActionEvent> {
     private PaintModel model;
     private Map<String, ToggleButton> toolButtons;
-    private ShapeChooserPanel shapeChooserPanel;
+    private ToolChooserPopUp toolChooserPopUp;
+    private ShapeChooserPopUp shapeChooserPopUp;
 
-    public ToolbarController(PaintModel model, Map<String, ToggleButton> toolButtons, ShapeChooserPanel shapeChooserPanel) {
+    public ToolbarController(PaintModel model, Map<String, ToggleButton> toolButtons, ToolChooserPopUp toolChooserPopUp,ShapeChooserPopUp shapeChooserPopUp) {
         this.model = model;
         this.toolButtons = toolButtons;
-        this.shapeChooserPanel = shapeChooserPanel;
+        this.toolChooserPopUp = toolChooserPopUp;
+        this.shapeChooserPopUp = shapeChooserPopUp;
     }
 
     @Override
@@ -30,10 +32,17 @@ public class ToolbarController implements EventHandler<ActionEvent> {
 
         if (button.getId().equals("Selection")) {
             model.setMode("Selection Tool");
+            shapeChooserPopUp.hideShapePopup();
+        }
+
+        if (button.getId().equals("Tools")) {
+            toolChooserPopUp.toggleShapePopup(button);
+            shapeChooserPopUp.hideShapePopup();
         }
 
         if (button.getId().equals("Shapes")) {
-            shapeChooserPanel.toggleShapePopup(button);
+            shapeChooserPopUp.toggleShapePopup(button);
+            toolChooserPopUp.hideShapePopup();
         }
     }
 }
