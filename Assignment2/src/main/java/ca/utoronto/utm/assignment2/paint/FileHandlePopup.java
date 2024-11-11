@@ -33,12 +33,12 @@ public class FileHandlePopup {
 
     /**
      * Opens a dialog for the user to choose a file type they would like to open.
-     *
+     * <p>
      * This method displays a dialog with options to open either a .png file or a .paint file:
      * 1. If the user selects a .png file, the image is loaded using the handler's openImage method.
      * 2. If the user selects a .paint file, a new file is created after confirming, and the
      * existing .paint file is loaded using the handler's openPaint method.
-     *
+     * <p>
      * The dialog also handles user actions for closing the dialog without selection.
      */
     public void openFile() {
@@ -75,11 +75,11 @@ public class FileHandlePopup {
 
     /**
      * Opens a dialog allowing the user to choose a file type to save.
-     *
+     * <p>
      * The method presents a dialog with options to save the file as a .png or .paint file.
      * Depending on the user's choice, it invokes either the saveImage or savePaint method
      * from the handler to perform the appropriate save operation.
-     *
+     * <p>
      * Dialog management includes setting the title, content, and buttons, as well as
      * handling the close request to properly hide the dialog.
      */

@@ -52,7 +52,7 @@ public class LayerChooserController implements Observer {
     /**
      * Updates the LayerChooserPanel by refreshing all its layers.
      *
-     * @param o the observable object, typically the PaintModel
+     * @param o   the observable object, typically the PaintModel
      * @param arg an argument passed by the notifyObservers method, currently not used
      */
     @Override

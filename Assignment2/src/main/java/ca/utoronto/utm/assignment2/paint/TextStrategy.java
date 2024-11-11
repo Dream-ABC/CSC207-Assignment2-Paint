@@ -28,6 +28,7 @@ public class TextStrategy implements ShapeStrategy {
 
     /**
      * Nothing occurs.
+     *
      * @param mouseEvent the mouse action performed by the user
      */
     @Override
@@ -36,6 +37,7 @@ public class TextStrategy implements ShapeStrategy {
 
     /**
      * Nothing occurs.
+     *
      * @param mouseEvent the mouse action performed by the user
      */
     @Override
